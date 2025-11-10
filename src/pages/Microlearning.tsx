@@ -144,12 +144,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/microsoft-it/server-administration-server-2025/powershell-foundations" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* ChatGPT for IT Professionals */}
@@ -194,12 +188,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/chatgpt-and-openai/ai-and-chatgpt/chatgpt-it-professionals" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* Intune for Microsoft Enterprises */}
@@ -244,12 +232,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/microsoft-it/desktop-support/intune-microsoft-enterprises" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AI for Project Managers */}
@@ -294,12 +276,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/stormwind-microlearning-bytes/project-management-fundamentals/ai-project-managers" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* NIST Cybersecurity Framework 2.0 Overview */}
@@ -344,12 +320,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/stormwind-microlearning-bytes/cybersecurity/nist-cybersecurity-framework-20-overview" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* BGP Routing Fundamentals for IPv4 */}
@@ -394,12 +364,6 @@ const Microlearning = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/cisco/networking/bgp-routing-fundamentals-ipv4" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
             </div>
           </div>

@@ -142,16 +142,6 @@ const ProjectManagement = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button
-                  className="w-full"
-                  size="lg"
-                  asChild
-                >
-                  <a href="https://app.stormwindstudios.com/project-management-institute/project-management-certifications/pmp-official-exam-prep#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* ACP Featured Card */}
@@ -206,16 +196,6 @@ const ProjectManagement = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button
-                  className="w-full"
-                  size="lg"
-                  asChild
-                >
-                  <a href="https://app.stormwindstudios.com/project-management-institute/project-management-certifications/pmi-agile-certified-practitioner-pmi" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
             </div>
           </div>

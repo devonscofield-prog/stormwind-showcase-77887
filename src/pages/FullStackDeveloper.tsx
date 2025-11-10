@@ -124,15 +124,6 @@ const FullStackDeveloper = () => {
                         <span className="text-muted-foreground">Responsive & Mobile Design</span>
                       </li>
                     </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      onClick={() => window.open('https://app.stormwindstudios.com/scrimba/85411/adding-button', '_blank')}
-                    >
-                      Fully Interactive IDE
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
                   </div>
 
                   <div className="rounded-lg bg-card/50 border border-border p-6">

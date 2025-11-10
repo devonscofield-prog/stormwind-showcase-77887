@@ -168,10 +168,6 @@ const SkillsAssessments = () => {
                     <p className="text-muted-foreground mb-4">
                       Start identifying training needs and developing personalized learning paths today with over 100 specialized assessments
                     </p>
-                    <Button size="lg" onClick={() => window.open('https://app.stormwindstudios.com/skillsassessment', '_blank')}>
-                      Explore Skill Assessments
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
                   </div>
                 </div>
               </CardContent>

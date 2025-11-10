@@ -145,11 +145,9 @@ const LiveInstructorLed = () => {
               Experience the power of real-time learning with expert instructors. Our live courses combine interactive instruction, hands-on labs, and collaborative learning to accelerate your career growth. Ask questions, get immediate feedback, and learn alongside peers in a dynamic virtual classroom.
             </p>
             <div className="flex justify-center">
-              <Button size="lg" asChild>
-                <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Browse Course Calendar
-                </a>
+              <Button size="lg" onClick={() => navigate('/courses')}>
+                <Calendar className="w-5 h-5 mr-2" />
+                Browse Course Catalog
               </Button>
             </div>
           </div>

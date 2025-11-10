@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, ExternalLink, ChevronDown, ExternalLinkIcon, Copy } from "lucide-react";
+import { ArrowLeft, Home, ExternalLink, ChevronDown, ExternalLinkIcon, Copy, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
   DropdownMenu,
@@ -340,18 +340,16 @@ const Results = () => {
                       
                       if (isBusinessPro) {
                         return (
-                          <a
+                          <div
                             key={`tech-${index}`}
-                            href="https://showcase.stormwind.com/business-pro"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                            onClick={() => navigate('/business-pro')}
+                            className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                           >
                             <div className="flex items-center justify-between">
                               <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{tech}</h3>
-                              <ExternalLink className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
+                              <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
                             </div>
-                          </a>
+                          </div>
                         );
                       }
 
@@ -578,18 +576,16 @@ const Results = () => {
 
                       if (isMentoring) {
                         return (
-                          <a
+                          <div
                             key={`feature-${index}`}
-                            href="https://showcase.stormwind.com/mentoring"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                            onClick={() => navigate('/mentoring')}
+                            className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                           >
                             <div className="flex items-center justify-between">
                               <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{feature}</h3>
-                              <ExternalLink className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
+                              <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
                             </div>
-                          </a>
+                          </div>
                         );
                       }
                       
@@ -699,18 +695,16 @@ const Results = () => {
                       
                       if (isBusinessSkills) {
                         return (
-                          <a
+                          <div
                             key={`feature-${index}`}
-                            href="https://showcase.stormwind.com/business-skills"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            onClick={() => navigate('/business-skills')}
                             className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                           >
                             <div className="flex items-center justify-between">
                               <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{feature}</h3>
-                              <ExternalLink className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
+                              <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
                             </div>
-                          </a>
+                          </div>
                         );
                       }
                       
@@ -743,17 +737,15 @@ const Results = () => {
                     <p className="text-muted-foreground">AI-Driven Security Training</p>
                   </div>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a
-                      href="https://showcase.stormwind.com/phishing"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    <div
+                      onClick={() => navigate('/phishing')}
+                      className="group relative rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8 hover:border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
                     >
                       <div className="flex items-center justify-between">
                         <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">StormAI Phishing</h3>
-                        <ExternalLink className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
+                        <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </div>
               )}

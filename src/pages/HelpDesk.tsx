@@ -169,10 +169,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/comptia/desktop-support/comptia-core-1-220-1201-v15', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* ITIL v4 Foundations Featured Card */}
@@ -214,10 +210,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learning-path/140850/itil-v4-foundations-certification-study-plan', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* Network+ Featured Card */}
@@ -266,10 +258,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learning-path/133297/network-009-certification-study-plan', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* Security+ Featured Card */}
@@ -318,10 +306,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learning-path/134251/security-701-certification-study-plan', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* CompTIA Tech+ Featured Card */}
@@ -370,10 +354,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/comptia/desktop-support/comptia-tech-fc0-u71', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* MD-102: Endpoint Administrator Featured Card */}
@@ -415,10 +395,6 @@ const HelpDesk = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/desktop-support/md-102-endpoint-administrator#no-back', '_blank')}>
-                  Learn More
-                </Button>
               </div>
             </div>
 

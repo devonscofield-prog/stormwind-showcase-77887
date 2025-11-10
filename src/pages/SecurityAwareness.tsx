@@ -55,7 +55,7 @@ const SecurityAwareness = () => {
             <div className="flex justify-center gap-4">
               <Button
                 size="lg"
-                onClick={() => window.open('https://app.stormwindstudios.com/courses/170636', '_blank')}
+                onClick={() => navigate('/security-awareness')}
                 className="gap-2"
               >
                 Explore Training Programs

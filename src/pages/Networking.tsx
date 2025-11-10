@@ -180,12 +180,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/learning-path/133297/network-009-certification-study-plan" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CCNA Featured Card */}
@@ -236,12 +230,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/learning-path/147731/cisco-ccna-200-301-certification-study-plan" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CCNP Enterprise: ENARSI Featured Card */}
@@ -292,10 +280,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/cisco/networking/cisco-ccnp-enterprise-enarsi#no-back', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* Modern Networking with IPv6 Featured Card */}
@@ -347,10 +331,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/stormwind-microlearning-bytes/networking/modern-networking-ipv6', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* BGP Routing Fundamentals Featured Card */}
@@ -401,10 +381,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/cisco/networking/bgp-routing-fundamentals-ipv4', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* Wireshark for IT Professionals Featured Card */}
@@ -449,10 +425,6 @@ const Networking = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/stormwind-microlearning-bytes/networking/wireshark-it-professionals', '_blank')}>
-                  Learn More
-                </Button>
               </div>
             </div>
           </div>

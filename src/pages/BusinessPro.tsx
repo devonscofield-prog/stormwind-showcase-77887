@@ -217,14 +217,6 @@ const BusinessPro = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button
-                  className="w-full mt-auto"
-                  size="lg"
-                  onClick={() => window.open('https://app.stormwindstudios.com/desktop-applications/microsoft-power-platform/complete-masterclass-pl-900-certification', '_blank')}
-                >
-                  Learn More
-                </Button>
               </div>
 
               {/* PL-300 Featured Card */}
@@ -269,14 +261,6 @@ const BusinessPro = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button
-                  className="w-full mt-auto"
-                  size="lg"
-                  onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/microsoft-power-platform/pl-300-microsoft-power-bi-data-analyst#no-back', '_blank')}
-                >
-                  Learn More
-                </Button>
               </div>
             </div>
           </div>

@@ -566,12 +566,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/prometheus-certified-associate-pca" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
             </div>
           </div>

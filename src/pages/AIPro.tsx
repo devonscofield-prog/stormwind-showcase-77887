@@ -96,17 +96,6 @@ const AIPro = () => {
                         <span className="text-muted-foreground">Content Creation with AI</span>
                       </li>
                     </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      asChild
-                    >
-                      <a href="https://app.stormwindstudios.com/learning-path/150365/maximizing-productivity-chatgpt" target="_blank" rel="noopener noreferrer">
-                        See Learning Path
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
                   </div>
 
                   <div className="rounded-lg bg-card/50 border border-border p-6">
@@ -133,17 +122,6 @@ const AIPro = () => {
                         <span className="text-muted-foreground">Business Productivity Tips</span>
                       </li>
                     </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      asChild
-                    >
-                      <a href="https://app.stormwindstudios.com/learning-path/163815/work-smarter-microsoft-365-copilot" target="_blank" rel="noopener noreferrer">
-                        See Learning Path
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
                   </div>
 
                   <div className="rounded-lg bg-card/50 border border-border p-6">

@@ -75,10 +75,6 @@ const LearningPaths = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
               Structured training programs designed to accelerate your team's growth and certification success
             </p>
-            <Button size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learningpaths', '_blank')}>
-              Browse All Learning Paths
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
           </div>
 
           {/* Learning Paths Section */}
@@ -143,10 +139,6 @@ const LearningPaths = () => {
                       Don't see the perfect path? Our Learning Path Builder lets you create custom training 
                       programs tailored specifically to your team's needs and goals.
                     </p>
-                    <Button size="lg" onClick={() => window.open('https://app.stormwindstudios.com/team/learning-path/create', '_blank')}>
-                      Create Your Own
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
                   </div>
                 </div>
               </CardContent>
