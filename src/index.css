@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* StormWind Studios Brand Colors */
+    --background: 210 29% 97%; /* Light Gray Background #F6F8FA */
+    --foreground: 0 0% 17%; /* Dark Gray #2B2B2B */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+
+    /* StormWind Primary Green #009A77 */
+    --primary: 166 100% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Dark Green #006E59 */
+    --primary-dark: 166 100% 22%;
+
+    /* Light Green Accent #34D399 */
+    --accent-green: 160 64% 52%;
+
+    /* Teal Accent #20B2AA */
+    --accent-teal: 177 70% 41%;
+
+    /* Secondary - Medium Gray */
+    --secondary: 0 0% 43%; /* #6E6E6E */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 210 29% 95%;
+    --muted-foreground: 0 0% 43%;
+
+    /* Accent - Light Green */
+    --accent: 160 64% 52%;
+    --accent-foreground: 0 0% 17%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 29% 90%;
+    --input: 210 29% 90%;
+    --ring: 166 100% 30%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(166 100% 30%), hsl(166 100% 22%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 64% 52%), hsl(177 70% 41%));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 10px 15px -3px rgba(0, 154, 119, 0.2), 0 4px 6px -2px rgba(0, 154, 119, 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 0% 17%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 20%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 20%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 166 100% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-dark: 166 100% 22%;
+    --accent-green: 160 64% 52%;
+    --accent-teal: 177 70% 41%;
+
+    --secondary: 0 0% 43%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 160 64% 52%;
+    --accent-foreground: 0 0% 17%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 30%;
+    --input: 0 0% 30%;
+    --ring: 166 100% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
