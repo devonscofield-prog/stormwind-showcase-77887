@@ -1,7 +1,6 @@
 import FeatureCard from "./FeatureCard";
-import { Award, BookOpen, Users, Target, Check, ExternalLink } from "lucide-react";
+import { Award, BookOpen, Users, Target, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trainingLinks } from "@/lib/trainingLinks";
 
 interface ProjectManagementProps {
   selectedFeatures: string[];
@@ -43,36 +42,23 @@ const ProjectManagement = ({ selectedFeatures, toggleFeature }: ProjectManagemen
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed mb-6">
           Prepare for PMP® certification and meet continuing certification requirements (CCR) with StormWind's Project Management All Access Bundle. Featuring EPIC LIVE classes with expert instructor Ashley Hunt, 24-7 Instant Replay recordings, practice exams, 1:1 mentoring, and downloadable project templates. Earn Professional Development Units (PDUs) across technical, leadership, and strategic competencies to maintain your certification.
         </p>
-        <div className="flex gap-3">
-          <Button
-            size="lg"
-            variant={isSelected ? "default" : "outline"}
-            onClick={() => toggleFeature("Project Management")}
-            className={`gap-2 transition-all ${
-              !isSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
-            }`}
-          >
-            {isSelected ? (
-              <>
-                <Check className="w-5 h-5" />
-                Selected
-              </>
-            ) : (
-              "Select This Product"
-            )}
-          </Button>
-          <Button
-            size="lg"
-            variant="secondary"
-            asChild
-            className="gap-2"
-          >
-            <a href={trainingLinks["Project Management"]} target="_blank" rel="noopener noreferrer">
-              Learn More
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </Button>
-        </div>
+        <Button
+          size="lg"
+          variant={isSelected ? "default" : "outline"}
+          onClick={() => toggleFeature("Project Management")}
+          className={`gap-2 transition-all ${
+            !isSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
+          }`}
+        >
+          {isSelected ? (
+            <>
+              <Check className="w-5 h-5" />
+              Selected
+            </>
+          ) : (
+            "Select This Product"
+          )}
+        </Button>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

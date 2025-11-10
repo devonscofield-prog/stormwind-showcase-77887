@@ -1,7 +1,6 @@
 import FeatureCard from "./FeatureCard";
-import { Shield, Briefcase, Lock, Scale, Check, ExternalLink } from "lucide-react";
+import { Shield, Briefcase, Lock, Scale, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trainingLinks } from "@/lib/trainingLinks";
 
 interface HRComplianceProps {
   selectedFeatures: string[];
@@ -43,36 +42,23 @@ const HRCompliance = ({ selectedFeatures, toggleFeature }: HRComplianceProps) =>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed mb-6">
           Transform your workplace with our comprehensive compliance training. Covering essential topics like harassment prevention, workplace safety, data protection, and ethical leadership, our comprehensive training ensures your organization not only meets regulatory standards, but thrives with a culture of integrity and resilience.
         </p>
-        <div className="flex gap-3">
-          <Button
-            size="lg"
-            variant={isSelected ? "default" : "outline"}
-            onClick={() => toggleFeature("HR Compliance")}
-            className={`gap-2 transition-all ${
-              !isSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
-            }`}
-          >
-            {isSelected ? (
-              <>
-                <Check className="w-5 h-5" />
-                Selected
-              </>
-            ) : (
-              "Select This Product"
-            )}
-          </Button>
-          <Button
-            size="lg"
-            variant="secondary"
-            asChild
-            className="gap-2"
-          >
-            <a href={trainingLinks["HR Compliance"]} target="_blank" rel="noopener noreferrer">
-              Learn More
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </Button>
-        </div>
+        <Button
+          size="lg"
+          variant={isSelected ? "default" : "outline"}
+          onClick={() => toggleFeature("HR Compliance")}
+          className={`gap-2 transition-all ${
+            !isSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
+          }`}
+        >
+          {isSelected ? (
+            <>
+              <Check className="w-5 h-5" />
+              Selected
+            </>
+          ) : (
+            "Select This Product"
+          )}
+        </Button>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">

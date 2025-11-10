@@ -75,16 +75,9 @@ const EnterpriseReporting = () => {
           <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
             Enterprise Reporting and Administration
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Empower your team with our comprehensive SaaS platform, offering full control over user management and license allocation. Tailor the learning experience to your team's unique needs and drive measurable outcomes. As a manager, you'll have the tools to monitor progress, align training with organizational goals, and maximize your team's potential.
           </p>
-          <Button 
-            size="lg" 
-            className="text-lg px-8"
-            onClick={() => window.open("https://app.stormwindstudios.com/team/79609/reporting/92377", "_blank")}
-          >
-            Open Dashboard
-          </Button>
         </div>
 
         {/* Features Grid */}

@@ -47,16 +47,9 @@ const HRCompliancePage = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
               HR Compliance Training
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               Transform your workplace with comprehensive compliance training. Ensure your organization not only meets regulatory standards, but thrives with a culture of integrity and resilience.
             </p>
-            <Button
-              size="lg"
-              onClick={() => window.open('https://app.stormwindstudios.com/courses/170378', '_blank')}
-              className="gap-2"
-            >
-              Explore Courses
-            </Button>
           </div>
 
           {/* Overview Section */}

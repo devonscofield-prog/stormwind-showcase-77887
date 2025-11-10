@@ -1,6 +1,5 @@
-import { Brain, Clock, Wrench, CheckCircle2, FileBarChart, Target, UserCheck, Video, ArrowRight, BookOpen } from "lucide-react";
+import { Brain, Clock, Wrench, CheckCircle2, FileBarChart, Target, UserCheck, Video, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trainingLinks } from "@/lib/trainingLinks";
 import { useNavigate } from "react-router-dom";
 
 interface EnterpriseITProps {
@@ -17,10 +16,6 @@ const EnterpriseIT = ({
   toggleFeature 
 }: EnterpriseITProps) => {
   const navigate = useNavigate();
-  
-  const getFullUrl = (link: string) => {
-    return link.startsWith('/') ? window.location.origin + link : link;
-  };
   const consolidatedFeatures = [
     {
       icon: CheckCircle2,
@@ -181,21 +176,7 @@ const EnterpriseIT = ({
                   <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
                 </div>
               )}
-              <div className="flex items-center gap-2 mb-2">
-                <h4 className="text-base font-bold text-foreground relative z-10">{tech.category}</h4>
-                {trainingLinks[tech.category] && (
-                  <a
-                    href={getFullUrl(trainingLinks[tech.category])}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="flex-shrink-0 p-1 rounded-full hover:bg-primary/20 transition-colors relative z-10"
-                    aria-label={`Go to ${tech.category}`}
-                  >
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                  </a>
-                )}
-              </div>
+              <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
               <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
             </div>
           ))}
@@ -205,7 +186,7 @@ const EnterpriseIT = ({
       {/* Course Catalog Button */}
       <div className="flex justify-center mb-16">
         <Button
-          onClick={() => window.open('/courses', '_blank')}
+          onClick={() => navigate('/courses')}
           size="lg"
           className="gap-2"
         >
@@ -248,24 +229,10 @@ const EnterpriseIT = ({
               </div>
               
               {/* Title with Emoji */}
-              <div className="flex items-start justify-between gap-2 mb-3">
-                <h4 className="text-xl font-bold text-foreground flex items-center gap-2">
-                  <span>{feature.emoji}</span>
-                  <span>{feature.title}</span>
-                </h4>
-                {trainingLinks[feature.title] && (
-                  <a
-                    href={getFullUrl(trainingLinks[feature.title])}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="flex-shrink-0 p-1 rounded-full hover:bg-primary/20 transition-colors"
-                    aria-label={`Go to ${feature.title}`}
-                  >
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                  </a>
-                )}
-              </div>
+              <h4 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3">
+                <span>{feature.emoji}</span>
+                <span>{feature.title}</span>
+              </h4>
               
               {/* Description */}
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">

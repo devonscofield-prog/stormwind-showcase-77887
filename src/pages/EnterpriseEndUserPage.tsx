@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, FileText, Sparkles, Shield, TrendingUp, BookOpen, ExternalLink } from "lucide-react";
+import { ArrowLeft, Home, FileText, Sparkles, Shield, TrendingUp, BookOpen } from "lucide-react";
 import logoImage from "@/assets/stormwind-logo.png";
 
 const EnterpriseEndUserPage = () => {
@@ -92,7 +92,7 @@ const EnterpriseEndUserPage = () => {
                       size="sm"
                       variant="outline"
                       className="w-full gap-2"
-                      onClick={() => window.open('/desktop-apps', '_blank')}
+                      onClick={() => navigate('/desktop-apps')}
                     >
                       Learn More
                     </Button>
@@ -122,24 +122,6 @@ const EnterpriseEndUserPage = () => {
                         <span className="text-muted-foreground">AI Best Practices</span>
                       </li>
                     </ul>
-                    <div className="flex gap-2">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 gap-2"
-                        onClick={() => window.open('https://app.stormwindstudios.com/learning-path/150365/maximizing-productivity-chatgpt', '_blank')}
-                      >
-                        ChatGPT
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 gap-2"
-                        onClick={() => window.open('https://app.stormwindstudios.com/learning-path/163815/work-smarter-microsoft-365-copilot', '_blank')}
-                      >
-                        Copilot
-                      </Button>
-                    </div>
                   </div>
 
                   <div className="rounded-lg bg-card/50 border border-border p-6">
@@ -170,7 +152,7 @@ const EnterpriseEndUserPage = () => {
                       size="sm"
                       variant="outline"
                       className="w-full gap-2"
-                      onClick={() => window.open('/security-awareness', '_blank')}
+                      onClick={() => navigate('/security-awareness')}
                     >
                       Learn More
                     </Button>
@@ -204,7 +186,7 @@ const EnterpriseEndUserPage = () => {
                       size="sm"
                       variant="outline"
                       className="w-full gap-2"
-                      onClick={() => window.open('/business-skills', '_blank')}
+                      onClick={() => navigate('/business-skills')}
                     >
                       Learn More
                     </Button>

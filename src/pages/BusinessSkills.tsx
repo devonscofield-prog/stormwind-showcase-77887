@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, ExternalLink, Users, HeadphonesIcon, Briefcase, TrendingUp, Heart, GraduationCap, ShieldCheck, Target, Globe } from "lucide-react";
+import { ArrowLeft, Home, Users, HeadphonesIcon, Briefcase, TrendingUp, Heart, GraduationCap, ShieldCheck, Target, Globe, BookOpen } from "lucide-react";
 import logoImage from "@/assets/stormwind-logo.png";
 
 const BusinessSkills = () => {
@@ -44,19 +44,9 @@ const BusinessSkills = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
               Business Skills
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               Over 2000 high-impact bite-sized courses across 80+ topic areas for all industries and job roles
             </p>
-            <div className="flex justify-center">
-              <Button
-                size="lg"
-                onClick={() => window.open("https://app.stormwindstudios.com/courses/170352", "_blank")}
-                className="gap-2"
-              >
-                Explore All Courses
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-            </div>
           </div>
 
           {/* Overview Section */}
@@ -175,7 +165,7 @@ const BusinessSkills = () => {
 
                 <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
                   <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <ExternalLink className="w-6 h-6 text-primary" />
+                    <BookOpen className="w-6 h-6 text-primary" />
                     Training Benefits
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
