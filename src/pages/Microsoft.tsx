@@ -64,10 +64,8 @@ const Microsoft = () => {
               <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
                 Explore Courses
               </Button>
-              <Button size="lg" asChild className="gap-2">
-                <a href="/ranges" target="_blank" rel="noopener noreferrer">
-                  Explore Ranges
-                </a>
+              <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
+                Explore Ranges
               </Button>
             </div>
           </div>
@@ -234,10 +232,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/microsoft-365office-365-admin/ms-102-microsoft-365-administrator', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* MD-102 Featured Card */}
@@ -279,10 +273,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/desktop-support/md-102-endpoint-administrator#no-back', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* Windows Server 2025 Administration Featured Card */}
@@ -324,10 +314,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/server-administration-server-2025/windows-server-2025-administration', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* AZ-900 Featured Card */}
@@ -376,10 +362,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learning-path/160987/az-900-certification-study-plan', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* AZ-104 Featured Card */}
@@ -428,10 +410,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/microsoft-it/cloud-azure/az-104-microsoft-azure-administrator#no-back', '_blank')}>
-                  Learn More
-                </Button>
               </div>
 
               {/* PowerShell Administration Featured Card */}
@@ -480,10 +458,6 @@ const Microsoft = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" onClick={() => window.open('https://app.stormwindstudios.com/learning-path/155219/powershell-administration', '_blank')}>
-                  Learn More
-                </Button>
               </div>
             </div>
           </div>

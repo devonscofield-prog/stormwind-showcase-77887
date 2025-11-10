@@ -156,21 +156,6 @@ const DevOps = () => {
                     </ul>
                   </div>
                 </div>
-
-                <div className="flex flex-wrap justify-center gap-4 mt-8">
-                  <Button size="lg" className="gap-2" asChild>
-                    <a href="https://engineer.kodekloud.com/practice" target="_blank" rel="noopener noreferrer">
-                      Real World DevOps Practice
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                  <Button size="lg" className="gap-2" asChild>
-                    <a href="https://kodekloud.com/learning-paths/" target="_blank" rel="noopener noreferrer">
-                      DevOps Learning Paths
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
@@ -305,14 +290,6 @@ const DevOps = () => {
                     </ul>
                   </div>
                 </div>
-
-                <div className="flex justify-center mt-8">
-                  <Button size="lg" asChild>
-                    <a href="https://kodekloud.com/playgrounds/" target="_blank" rel="noopener noreferrer">
-                      Explore All Playgrounds
-                    </a>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
@@ -370,12 +347,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/cka-certification-course-certified-kubernetes-administrator" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* Terraform Featured Card */}
@@ -421,12 +392,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/terraform-associate-certification-hashicorp-certified" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* DCA Featured Card */}
@@ -472,12 +437,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/docker-certified-associate-exam-course" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CKAD Featured Card */}
@@ -523,12 +482,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/certified-kubernetes-application-developer-ckad" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CKS Featured Card */}
@@ -574,12 +527,6 @@ const DevOps = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full" size="lg" asChild>
-                  <a href="https://learn.kodekloud.com/user/courses/certified-kubernetes-security-specialist-cks" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* PCA Featured Card */}

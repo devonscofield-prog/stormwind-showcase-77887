@@ -46,10 +46,8 @@ const CloudTraining = () => {
               <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
                 Explore Courses
               </Button>
-              <Button size="lg" asChild className="gap-2">
-                <a href="/ranges" target="_blank" rel="noopener noreferrer">
-                  Explore Ranges
-                </a>
+              <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
+                Explore Ranges
               </Button>
             </div>
           </div>
@@ -198,12 +196,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/learning-path/160987/az-900-certification-study-plan" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AZ-104 */}
@@ -254,12 +246,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/microsoft-it/cloud-azure/az-104-microsoft-azure-administrator#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AZ-305 */}
@@ -310,12 +296,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/microsoft-it/cloud-azure/az-305-designing-microsoft-azure-infrastructure-solutions#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AZ-140 */}
@@ -366,12 +346,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/microsoft-it/cloud-azure/az-140-configuring-and-operating-microsoft-azure-virtual-desktop" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AWS Cloud Practitioner */}
@@ -422,12 +396,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/amazon/cloud-aws/aws-cloud-practitioner-clf-c02#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* AWS Architect Associate */}
@@ -478,12 +446,6 @@ const CloudTraining = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/amazon/cloud-aws/aws-architect-associate-saa-c03#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
             </div>
 

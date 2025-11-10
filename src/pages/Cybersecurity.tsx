@@ -45,10 +45,8 @@ const Cybersecurity = () => {
               <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
                 Explore Courses
               </Button>
-              <Button size="lg" asChild className="gap-2">
-                <a href="/ranges" target="_blank" rel="noopener noreferrer">
-                  Explore Ranges
-                </a>
+              <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
+                Explore Ranges
               </Button>
             </div>
           </div>
@@ -149,12 +147,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/learning-path/134251/security-701-certification-study-plan" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CISSP Featured Card */}
@@ -205,12 +197,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/learning-path/167217/cissp-certification-study-plan" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CompTIA CySA+ Featured Card */}
@@ -261,12 +247,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/comptia/cybersecurity/comptia-cysa-cs0-003#no-back" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CompTIA SecurityX Featured Card */}
@@ -310,12 +290,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/comptia/cybersecurity/comptia-securityx-cas-005" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* CompTIA PenTest+ Featured Card */}
@@ -359,12 +333,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/comptia/cybersecurity/comptia-pentest-v3-pt0-003" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
 
               {/* Ethical Hacking v13 Featured Card */}
@@ -415,12 +383,6 @@ const Cybersecurity = () => {
                     </div>
                   </div>
                 </div>
-
-                <Button className="w-full mt-auto" size="lg" asChild>
-                  <a href="https://app.stormwindstudios.com/ec-council/cybersecurity/ethical-hacking-v13" target="_blank" rel="noopener noreferrer">
-                    Learn More
-                  </a>
-                </Button>
               </div>
             </div>
           </div>

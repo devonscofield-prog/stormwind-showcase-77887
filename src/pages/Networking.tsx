@@ -56,12 +56,10 @@ const Networking = () => {
               <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
                 Explore Courses
               </Button>
-              <Button size="lg" asChild className="gap-2">
-                <a href="/ranges" target="_blank" rel="noopener noreferrer">
-                  Explore Ranges
-                </a>
+              <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
+                Explore Ranges
               </Button>
-          </div>
+            </div>
         </div>
 
           {/* Networking Technologies Section */}
