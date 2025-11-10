@@ -1,6 +1,7 @@
 import FeatureCard from "./FeatureCard";
 import { Award, BookOpen, Users, Target, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectManagementProps {
   selectedFeatures: string[];
@@ -8,6 +9,7 @@ interface ProjectManagementProps {
 }
 
 const ProjectManagement = ({ selectedFeatures, toggleFeature }: ProjectManagementProps) => {
+  const navigate = useNavigate();
   const isSelected = selectedFeatures.includes("Project Management");
   
   const features = [
@@ -63,7 +65,7 @@ const ProjectManagement = ({ selectedFeatures, toggleFeature }: ProjectManagemen
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} />
+          <FeatureCard key={index} {...feature} onClick={() => navigate('/project-management')} />
         ))}
       </div>
     </div>

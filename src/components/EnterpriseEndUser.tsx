@@ -1,5 +1,6 @@
 import { FileSpreadsheet, Sparkles, Shield, BookOpen, Check, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface EnterpriseEndUserProps {
   selectedFeatures: string[];
@@ -7,6 +8,7 @@ interface EnterpriseEndUserProps {
 }
 
 const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUserProps) => {
+  const navigate = useNavigate();
   const isMainSelected = selectedFeatures.includes("Enterprise End User");
 
   const features = [
@@ -59,37 +61,37 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        {features.map((feature, index) => (
-          <div 
-            key={index}
-            onClick={() => toggleFeature(feature.title)}
-            className={`group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer ${
-              selectedFeatures.includes(feature.title)
-                ? "border-primary bg-primary/10 shadow-card-hover"
-                : "border-border bg-card hover:border-primary hover:shadow-card-hover"
-            }`}
-          >
-            {selectedFeatures.includes(feature.title) && (
-              <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10">
-                <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
+        {features.map((feature, index) => {
+          const featureLinks: Record<string, string> = {
+            "Desktop App Training": "/desktop-apps",
+            "AI Training": "/ai-pro",
+            "Security Awareness Training": "/security-awareness",
+            "2,000+ Business Skills Courses": "/business-skills"
+          };
+          
+          return (
+            <div 
+              key={index}
+              onClick={() => navigate(featureLinks[feature.title])}
+              className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+            >
+              {/* Icon */}
+              <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
+                <feature.icon className="w-8 h-8 text-primary" />
               </div>
-            )}
-            {/* Icon */}
-            <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
-              <feature.icon className="w-8 h-8 text-primary" />
+              
+              {/* Title */}
+              <h4 className="text-xl font-bold text-foreground mb-3">
+                {feature.title}
+              </h4>
+              
+              {/* Description */}
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </div>
-            
-            {/* Title */}
-            <h4 className="text-xl font-bold text-foreground mb-3">
-              {feature.title}
-            </h4>
-            
-            {/* Description */}
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {feature.description}
-            </p>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

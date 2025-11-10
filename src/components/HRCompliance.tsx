@@ -1,6 +1,7 @@
 import FeatureCard from "./FeatureCard";
 import { Shield, Briefcase, Lock, Scale, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface HRComplianceProps {
   selectedFeatures: string[];
@@ -8,6 +9,7 @@ interface HRComplianceProps {
 }
 
 const HRCompliance = ({ selectedFeatures, toggleFeature }: HRComplianceProps) => {
+  const navigate = useNavigate();
   const isSelected = selectedFeatures.includes("HR Compliance");
   
   const features = [
@@ -63,7 +65,7 @@ const HRCompliance = ({ selectedFeatures, toggleFeature }: HRComplianceProps) =>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} />
+          <FeatureCard key={index} {...feature} onClick={() => navigate('/hr-compliance')} />
         ))}
       </div>
     </div>

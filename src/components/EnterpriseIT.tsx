@@ -160,26 +160,32 @@ const EnterpriseIT = ({
       <div className="mb-16">
         <h3 className="text-2xl font-bold mb-8 text-center">Technologies We Train On</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {technologies.map((tech, index) => (
-            <div 
-              key={index}
-              onClick={() => toggleTechnology(tech.category)}
-              className={`group relative overflow-hidden rounded-lg border-2 p-4 transition-all duration-300 cursor-pointer ${
-                selectedTechnologies.includes(tech.category)
-                  ? "border-primary bg-primary/10 shadow-card-hover"
-                  : "border-border bg-card hover:border-primary hover:shadow-card-hover"
-              }`}
-            >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-primary opacity-10 rounded-full -mr-10 -mt-10 transition-transform duration-300 group-hover:scale-150" />
-              {selectedTechnologies.includes(tech.category) && (
-                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                  <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
-                </div>
-              )}
-              <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
-            </div>
-          ))}
+          {technologies.map((tech, index) => {
+            const techLinks: Record<string, string> = {
+              "Microsoft": "/microsoft",
+              "Cloud": "/cloud",
+              "Cybersecurity": "/cybersecurity",
+              "AI": "/ai-pro",
+              "Networking": "/networking",
+              "Full Stack Developer": "/fullstack-developer",
+              "DevOps": "/devops",
+              "Business Pro": "/business-pro",
+              "Project Management": "/project-management",
+              "Help Desk": "/help-desk"
+            };
+            
+            return (
+              <div 
+                key={index}
+                onClick={() => navigate(techLinks[tech.category])}
+                className="group relative overflow-hidden rounded-lg border-2 p-4 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-primary opacity-10 rounded-full -mr-10 -mt-10 transition-transform duration-300 group-hover:scale-150" />
+                <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -199,73 +205,70 @@ const EnterpriseIT = ({
       <div className="mb-16">
         <div className="flex items-center justify-center gap-4 mb-8">
           <h3 className="text-2xl font-bold">Platform Features</h3>
-          <Button
-            variant={allFeaturesSelected ? "default" : "outline"}
-            size="sm"
-            onClick={handleSelectAll}
-          >
-            {allFeaturesSelected ? "Deselect All" : "Select All"}
-          </Button>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {consolidatedFeatures.map((feature, index) => (
-            <div 
-              key={index}
-              onClick={() => toggleFeature(feature.title)}
-              className={`group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer ${
-                selectedFeatures.includes(feature.title)
-                  ? "border-primary bg-primary/10 shadow-card-hover"
-                  : "border-border bg-card hover:border-primary hover:shadow-card-hover"
-              }`}
-            >
-              {selectedFeatures.includes(feature.title) && (
-                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10">
-                  <CheckCircle2 className="w-4 h-4 text-primary-foreground" />
+          {consolidatedFeatures.map((feature, index) => {
+            const featureLinks: Record<string, string> = {
+              "Learning Paths": "/learning-paths",
+              "Bytes: Microlearning": "/bytes",
+              "AI-Powered Learning": "/ai-learning",
+              "StormWind Ranges": "/ranges",
+              "Live Instructor Led Courses": "/live-instructor-led",
+              "1:1 Mentoring with Industry Experts": "/mentoring",
+              "Skills Assessments": "/skills-assessments",
+              "Enterprise Reporting and Administration": "/enterprise-reporting"
+            };
+            
+            return (
+              <div 
+                key={index}
+                onClick={() => navigate(featureLinks[feature.title])}
+                className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+              >
+                {/* Icon */}
+                <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
+                  <feature.icon className="w-8 h-8 text-primary" />
                 </div>
-              )}
-              {/* Icon */}
-              <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
-                <feature.icon className="w-8 h-8 text-primary" />
-              </div>
-              
-              {/* Title with Emoji */}
-              <h4 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3">
-                <span>{feature.emoji}</span>
-                <span>{feature.title}</span>
-              </h4>
-              
-              {/* Description */}
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                {feature.description}
-              </p>
-              
-              {/* Details */}
-              {feature.details && (
+                
+                {/* Title with Emoji */}
+                <h4 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3">
+                  <span>{feature.emoji}</span>
+                  <span>{feature.title}</span>
+                </h4>
+                
+                {/* Description */}
                 <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                  {feature.details}
+                  {feature.description}
                 </p>
-              )}
-              
-              {/* Bullets */}
-              {feature.bullets && (
-                <ul className="space-y-2 mb-3">
-                  {feature.bullets.map((bullet, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="flex-shrink-0">{bullet.emoji}</span>
-                      <span className="leading-relaxed">{bullet.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              
-              {/* Additional Info */}
-              {feature.additionalInfo && (
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.additionalInfo}
-                </p>
-              )}
-            </div>
-          ))}
+                
+                {/* Details */}
+                {feature.details && (
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    {feature.details}
+                  </p>
+                )}
+                
+                {/* Bullets */}
+                {feature.bullets && (
+                  <ul className="space-y-2 mb-3">
+                    {feature.bullets.map((bullet, idx) => (
+                      <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="flex-shrink-0">{bullet.emoji}</span>
+                        <span className="leading-relaxed">{bullet.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                
+                {/* Additional Info */}
+                {feature.additionalInfo && (
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.additionalInfo}
+                  </p>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 
