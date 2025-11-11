@@ -3,7 +3,6 @@ import { ArrowLeft, Home, Shield, Mail, Users, Briefcase, BookOpen } from "lucid
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import logoImage from "@/assets/stormwind-logo.png";
-
 const SecurityAwareness = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,28 +10,16 @@ const SecurityAwareness = () => {
     technologies = [],
     features = []
   } = location.state || {};
-
   useEffect(() => {
     document.title = "Security Awareness";
   }, []);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img 
-            src={logoImage} 
-            alt="StormWind Studios Logo" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
+          <img src={logoImage} alt="StormWind Studios Logo" className="h-12 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => navigate('/')} />
           <div className="flex gap-2">
-            <Button
-              onClick={() => navigate("/")}
-              variant="outline"
-              size="sm"
-            >
+            <Button onClick={() => navigate("/")} variant="outline" size="sm">
               <Home className="w-4 h-4 mr-2" />
               Home
             </Button>
@@ -53,13 +40,7 @@ const SecurityAwareness = () => {
               launched by cybercriminals and hackers.
             </p>
             <div className="flex justify-center gap-4">
-              <Button
-                size="lg"
-                onClick={() => navigate('/security-awareness')}
-                className="gap-2"
-              >
-                Explore Training Programs
-              </Button>
+              
             </div>
           </div>
 
@@ -232,8 +213,6 @@ const SecurityAwareness = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default SecurityAwareness;
