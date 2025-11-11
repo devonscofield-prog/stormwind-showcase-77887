@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Home, Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video, ArrowRight } from "lucide-react";
+import { ArrowLeft, Home, Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
 import logoImage from "@/assets/stormwind-logo.png";
 const AILearning = () => {
   const navigate = useNavigate();
@@ -27,31 +27,6 @@ const AILearning = () => {
     icon: Clock,
     title: "24/7 Availability",
     description: "Access your AI tutor anytime, anywhere, on any device for on-demand learning support."
-  }];
-  const exampleCourses = [{
-    name: "Cisco CCNA",
-    certification: "200-301",
-    url: "https://app.stormwindstudios.com/cisco/networking/cisco-ccna-200-301-implementing-and-administering-cisco-solutions"
-  }, {
-    name: "Microsoft 365 Certified",
-    certification: "MS-102",
-    url: "https://app.stormwindstudios.com/microsoft-it/microsoft-365office-365-admin/ms-102-microsoft-365-administrator"
-  }, {
-    name: "Microsoft Azure Fundamentals",
-    certification: "AZ-900",
-    url: "https://app.stormwindstudios.com/microsoft-it/cloud-azure/az-900-microsoft-azure-fundamentals"
-  }, {
-    name: "CompTIA Security+",
-    certification: "SY0-701",
-    url: "https://app.stormwindstudios.com/comptia/cybersecurity/comptia-security-sy0-701"
-  }, {
-    name: "CompTIA Network+",
-    certification: "N10-009",
-    url: "https://app.stormwindstudios.com/comptia/networking/comptia-network-n10-009"
-  }, {
-    name: "Project Management Professional",
-    certification: "PMP",
-    url: "https://app.stormwindstudios.com/project-management-institute/project-management-certifications/pmp-official-exam-prep"
   }];
   return <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
       {/* Header */}
@@ -138,39 +113,6 @@ const AILearning = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Example Courses */}
-        <section>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-3">Experience StormAI in Action</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Try StormAI in these popular certification courses and see how personalized learning 
-              accelerates your success.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-4">
-            {exampleCourses.map((course, index) => <div key={index} className="group flex items-center justify-between p-6 rounded-xl border-2 border-border hover:border-primary/50 bg-background hover:bg-primary/5 transition-all duration-300">
-                <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Bot className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-semibold text-lg">{course.name}</h3>
-                      <span className="text-sm font-medium text-primary/70">({course.certification})</span>
-                    </div>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm" asChild className="ml-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <a href={course.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    Try StormAI
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </Button>
-              </div>)}
           </div>
         </section>
 
