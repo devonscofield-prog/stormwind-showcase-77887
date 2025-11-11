@@ -1,6 +1,6 @@
 import { Brain, Clock, Wrench, CheckCircle2, FileBarChart, Target, UserCheck, Video, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface EnterpriseITProps {
   selectedTechnologies: string[];
@@ -15,7 +15,6 @@ const EnterpriseIT = ({
   toggleTechnology, 
   toggleFeature 
 }: EnterpriseITProps) => {
-  const navigate = useNavigate();
   const consolidatedFeatures = [
     {
       icon: CheckCircle2,
@@ -175,15 +174,15 @@ const EnterpriseIT = ({
             };
             
             return (
-              <div 
+              <Link 
                 key={index}
-                onClick={() => navigate(techLinks[tech.category])}
-                className="group relative overflow-hidden rounded-lg border-2 p-4 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+                to={techLinks[tech.category]}
+                className="group relative overflow-hidden rounded-lg border-2 p-4 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block"
               >
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-primary opacity-10 rounded-full -mr-10 -mt-10 transition-transform duration-300 group-hover:scale-150" />
                 <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -192,12 +191,14 @@ const EnterpriseIT = ({
       {/* Course Catalog Button */}
       <div className="flex justify-center mb-16">
         <Button
-          onClick={() => navigate('/courses')}
+          asChild
           size="lg"
           className="gap-2"
         >
-          <BookOpen className="w-5 h-5" />
-          View Complete Course Catalog
+          <Link to="/courses">
+            <BookOpen className="w-5 h-5" />
+            View Complete Course Catalog
+          </Link>
         </Button>
       </div>
 
@@ -220,10 +221,10 @@ const EnterpriseIT = ({
             };
             
             return (
-              <div 
+              <Link 
                 key={index}
-                onClick={() => navigate(featureLinks[feature.title])}
-                className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+                to={featureLinks[feature.title]}
+                className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block"
               >
                 {/* Icon */}
                 <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
@@ -266,7 +267,7 @@ const EnterpriseIT = ({
                     {feature.additionalInfo}
                   </p>
                 )}
-              </div>
+              </Link>
             );
           })}
         </div>

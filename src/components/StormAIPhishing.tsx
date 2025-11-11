@@ -1,7 +1,7 @@
 import FeatureCard from "./FeatureCard";
 import { Brain, Settings, FileText, Mail, GraduationCap, Target, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface StormAIPhishingProps {
   selectedFeatures: string[];
@@ -9,7 +9,6 @@ interface StormAIPhishingProps {
 }
 
 const StormAIPhishing = ({ selectedFeatures, toggleFeature }: StormAIPhishingProps) => {
-  const navigate = useNavigate();
   const isSelected = selectedFeatures.includes("StormAI Phishing");
   const features = [
     {
@@ -56,16 +55,16 @@ const StormAIPhishing = ({ selectedFeatures, toggleFeature }: StormAIPhishingPro
         <Button
           size="lg"
           variant="outline"
-          onClick={() => navigate('/phishing')}
+          asChild
           className="gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
         >
-          Learn More
+          <Link to="/phishing">Learn More</Link>
         </Button>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} onClick={() => navigate('/phishing')} />
+          <FeatureCard key={index} {...feature} href="/phishing" />
         ))}
       </div>
     </div>

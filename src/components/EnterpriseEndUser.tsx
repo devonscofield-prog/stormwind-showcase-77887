@@ -1,6 +1,6 @@
 import { FileSpreadsheet, Sparkles, Shield, BookOpen, Check, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface EnterpriseEndUserProps {
   selectedFeatures: string[];
@@ -8,7 +8,6 @@ interface EnterpriseEndUserProps {
 }
 
 const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUserProps) => {
-  const navigate = useNavigate();
   const isMainSelected = selectedFeatures.includes("Enterprise End User");
 
   const features = [
@@ -44,10 +43,10 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
         <Button
           size="lg"
           variant="outline"
-          onClick={() => navigate('/enterprise-end-user')}
+          asChild
           className="gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
         >
-          Learn More
+          <Link to="/enterprise-end-user">Learn More</Link>
         </Button>
       </div>
 
@@ -61,10 +60,10 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
           };
           
           return (
-            <div 
+            <Link 
               key={index}
-              onClick={() => navigate(featureLinks[feature.title])}
-              className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover"
+              to={featureLinks[feature.title]}
+              className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block"
             >
               {/* Icon */}
               <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
@@ -80,7 +79,7 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>
