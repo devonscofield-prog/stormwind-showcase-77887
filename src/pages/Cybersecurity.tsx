@@ -42,7 +42,7 @@ const Cybersecurity = () => {
               Comprehensive cybersecurity training covering governance, vendor-specific certifications, and industry frameworks
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=Cybersecurity')} className="gap-2">
                 Explore Courses
               </Button>
               <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">

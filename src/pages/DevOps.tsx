@@ -58,7 +58,7 @@ const DevOps = () => {
               Master modern DevOps practices with comprehensive training in containerization, orchestration, infrastructure as code, CI/CD, and cloud-native technologies
             </p>
             <div className="flex justify-center">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=DevOps')} className="gap-2">
                 Explore Courses
               </Button>
             </div>

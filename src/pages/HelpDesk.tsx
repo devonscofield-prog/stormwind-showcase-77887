@@ -42,7 +42,7 @@ const HelpDesk = () => {
               Build essential IT support skills with comprehensive training in hardware, software, networking, and customer service excellence
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=Help Desk')} className="gap-2">
                 Explore Courses
               </Button>
               <Button size="lg" asChild className="gap-2">

@@ -61,7 +61,7 @@ const Microsoft = () => {
               Master Microsoft technologies with comprehensive training in Windows Server, Microsoft 365, endpoint management, PowerShell, Exchange, SharePoint, and enterprise administration
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=Microsoft')} className="gap-2">
                 Explore Courses
               </Button>
               <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">

@@ -52,7 +52,7 @@ const AIPro = () => {
             <div className="flex justify-center">
               <Button
                 size="lg"
-                onClick={() => navigate('/courses')}
+                onClick={() => navigate('/courses?category=AI')}
                 className="gap-2"
               >
                 Explore Courses

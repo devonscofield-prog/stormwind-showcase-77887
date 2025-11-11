@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home, Zap, Search, EyeOff, Eye } from "lucide-react";
 import {
@@ -17,6 +17,7 @@ type Course = string | { name: string; isBytes?: boolean; isComingSoon?: boolean
 
 const Courses = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     document.title = "Course Catalog - StormWind Studios";
@@ -1298,7 +1299,12 @@ const Courses = () => {
     },
   };
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("All Courses");
+  const [selectedCategory, setSelectedCategory] = useState<string>(() => {
+    const categoryParam = searchParams.get("category");
+    return categoryParam && Object.keys(courseData).includes(categoryParam) 
+      ? categoryParam 
+      : "All Courses";
+  });
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("All Subcategories");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [hideComingSoon, setHideComingSoon] = useState<boolean>(false);

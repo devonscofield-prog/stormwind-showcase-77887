@@ -43,7 +43,7 @@ const CloudTraining = () => {
               Master cloud technologies with comprehensive training in Azure, AWS, and Google Cloud Platform. Build expertise in cloud architecture, administration, security, and deployment.
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=Cloud')} className="gap-2">
                 Explore Courses
               </Button>
               <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">

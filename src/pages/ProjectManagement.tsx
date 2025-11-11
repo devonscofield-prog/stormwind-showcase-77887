@@ -52,7 +52,7 @@ const ProjectManagement = () => {
             <div className="flex justify-center">
               <Button
                 size="lg"
-                onClick={() => navigate('/courses')}
+                onClick={() => navigate('/courses?category=Project Management')}
                 className="gap-2"
               >
                 Explore Courses

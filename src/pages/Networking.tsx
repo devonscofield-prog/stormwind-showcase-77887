@@ -53,7 +53,7 @@ const Networking = () => {
               Comprehensive networking training covering Cisco certifications, network security, infrastructure design, and hands-on practical experience
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses')} className="gap-2">
+              <Button size="lg" onClick={() => navigate('/courses?category=Networking')} className="gap-2">
                 Explore Courses
               </Button>
               <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">

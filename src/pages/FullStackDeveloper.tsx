@@ -79,7 +79,7 @@ const FullStackDeveloper = () => {
             <div className="flex justify-center gap-4">
               <Button
                 size="lg"
-                onClick={() => navigate('/courses')}
+                onClick={() => navigate('/courses?category=Full Stack Developer')}
                 className="gap-2"
               >
                 Explore Courses
