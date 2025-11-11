@@ -34,6 +34,14 @@ const Ranges = () => {
             className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
             onClick={() => navigate('/')}
           />
+          <Button
+            variant="outline"
+            onClick={() => navigate('/')}
+            className="bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white gap-2"
+          >
+            <Home className="w-4 h-4" />
+            Home
+          </Button>
         </div>
       </header>
 
