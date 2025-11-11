@@ -247,7 +247,7 @@ const LiveInstructorLed = () => {
                     {course.description}
                   </p>
 
-                  <div className="space-y-3 mb-6">
+                  <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
@@ -270,12 +270,6 @@ const LiveInstructorLed = () => {
                       </div>
                     </div>
                   </div>
-
-                  <Button className="w-full mt-auto" size="lg" asChild>
-                    <a href={course.url} target="_blank" rel="noopener noreferrer">
-                      Learn More
-                    </a>
-                  </Button>
                 </div>)}
             </div>
           </div>
