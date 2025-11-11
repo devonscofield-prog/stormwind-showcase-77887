@@ -1130,6 +1130,48 @@ const Courses = () => {
         { name: "Webinar: Microsoft Features to Protect Your Organization from Ransomware", isWebinar: true },
       ],
     },
+    "Security Awareness": {
+      "Security Awareness Fundamentals": [
+        { name: "Security Awareness" },
+        { name: "Cybersecurity Essentials" },
+        { name: "Guarding Your Passwords" },
+        { name: "Safe Systems Use" },
+        { name: "Staying Safe While Remote and Traveling" },
+      ],
+      "Email Protection": [
+        { name: "Email Protection" },
+        { name: "Email-Based Social Engineering Attacks" },
+        { name: "Exposing Spoofed Email Addresses" },
+        { name: "Guarding Against Email Attachments" },
+        { name: "Phishing Emails Exposed" },
+        { name: "Protected Email Use in Microsoft Office" },
+        { name: "Safe Email Usage 101" },
+      ],
+      "Executive Briefings": [
+        { name: "Emerging Security Concerns" },
+        { name: "Guiding Strategies for IT Security" },
+        { name: "Organizational System Threats" },
+        { name: "Persistent Security Concerns" },
+      ],
+      "Ransomware Defense": [
+        { name: "Ransomware Defense" },
+        { name: "Best Practices to Thwart Ransomware" },
+        { name: "Lessons Learned From Actual Ransomware Breaches" },
+        { name: "Ransomware Examined" },
+        { name: "Ransomware in the Modern World" },
+        { name: "Safe Systems Practices to Combat Ransomware" },
+        { name: "Understanding the Threat of Ransomware" },
+        { name: "Vehicles for Ransomware" },
+      ],
+      "Technical Security Awareness": [
+        { name: "Cybersecurity Risks" },
+        { name: "Ransomware Protection Measures" },
+        { name: "Secured Infrastructure" },
+        { name: "Secured Mobile Devices" },
+        { name: "Secured Workstations" },
+        { name: "Security Technologies" },
+      ],
+    },
   };
 
   const [selectedCategory, setSelectedCategory] = useState<string>("All Courses");
