@@ -97,12 +97,9 @@ const Mentoring = () => {
           {/* Instructors Section */}
           <div className="space-y-12">
             {instructors.map((instructor, index) => (
-              <a
+              <div
                 key={index}
-                href={instructor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`animate-fade-in rounded-2xl bg-gradient-to-br ${instructor.bgColor} border-2 ${instructor.borderColor} overflow-hidden shadow-lg block transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer`}
+                className={`animate-fade-in rounded-2xl bg-gradient-to-br ${instructor.bgColor} border-2 ${instructor.borderColor} overflow-hidden shadow-lg`}
               >
                 <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
                   {/* Instructor Image/Icon */}
@@ -149,7 +146,7 @@ const Mentoring = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
 
