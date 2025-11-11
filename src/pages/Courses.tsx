@@ -28,6 +28,7 @@ const Courses = () => {
       "Azure Fundamentals": [
         { name: "AZ-900: Microsoft Azure Fundamentals" },
         { name: "AZ-900: Microsoft Azure Fundamentals Exam Crash", isBytes: true },
+        { name: "AI-900: Microsoft Azure AI Fundamentals" },
         { name: "AZ-104: Microsoft Azure Administrator" },
         { name: "AZ-305: Designing Microsoft Azure Infrastructure Solutions" },
         { name: "AZ-700: Designing and Implementing Microsoft Azure Networking Solutions" },
