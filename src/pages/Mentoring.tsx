@@ -159,8 +159,10 @@ const Mentoring = () => {
               <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
                 Unlike traditional eLearning, you're never on your own. Get direct access to instructors for personalized help whenever you need it.
               </p>
-              <Button size="lg" className="px-8 py-6 text-lg">
-                Meet All Our Instructors
+              <Button size="lg" className="px-8 py-6 text-lg" asChild>
+                <a href="https://stormwindstudios.com/instructors" target="_blank" rel="noopener noreferrer">
+                  Meet All Our Instructors
+                </a>
               </Button>
             </div>
           </div>
