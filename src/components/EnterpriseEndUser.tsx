@@ -43,20 +43,11 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
         </p>
         <Button
           size="lg"
-          variant={isMainSelected ? "default" : "outline"}
-          onClick={() => toggleFeature("Enterprise End User")}
-          className={`gap-2 transition-all ${
-            !isMainSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
-          }`}
+          variant="outline"
+          onClick={() => navigate('/enterprise-end-user')}
+          className="gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
         >
-          {isMainSelected ? (
-            <>
-              <Check className="w-5 h-5" />
-              Selected
-            </>
-          ) : (
-            "Select This Product"
-          )}
+          Learn More
         </Button>
       </div>
 

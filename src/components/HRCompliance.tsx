@@ -46,20 +46,11 @@ const HRCompliance = ({ selectedFeatures, toggleFeature }: HRComplianceProps) =>
         </p>
         <Button
           size="lg"
-          variant={isSelected ? "default" : "outline"}
-          onClick={() => toggleFeature("HR Compliance")}
-          className={`gap-2 transition-all ${
-            !isSelected ? 'shadow-lg hover:shadow-xl hover:scale-105 border-2' : ''
-          }`}
+          variant="outline"
+          onClick={() => navigate('/hr-compliance')}
+          className="gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
         >
-          {isSelected ? (
-            <>
-              <Check className="w-5 h-5" />
-              Selected
-            </>
-          ) : (
-            "Select This Product"
-          )}
+          Learn More
         </Button>
       </div>
 
