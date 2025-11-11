@@ -503,7 +503,6 @@ const Courses = () => {
         { name: "Slack – A Complete Guide" },
         { name: "Office 2019" },
         { name: "Microsoft 365 Delve Beginner" },
-        { name: "Skype for Business Beginner" },
         { name: "Working with Teams Beginner" },
       ],
       "Word Applications": [
