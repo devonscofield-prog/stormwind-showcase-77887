@@ -1080,6 +1080,15 @@ const Courses = () => {
       "Service Provider": [
         { name: "Cisco CCNP Service Provider: SPCOR" },
       ],
+      "Palo Alto Networks": [
+        { name: "Palo Alto Networks Certified Network Security Engineer (PCNSE)" },
+      ],
+      "SonicWall": [
+        { name: "SonicWall Network Security Administrator for SonicOS 7" },
+      ],
+      "Network Monitoring": [
+        { name: "Splunk Core Certified User" },
+      ],
     },
     "Cybersecurity": {
       "CompTIA Security": [
