@@ -1,4 +1,4 @@
-import { ArrowLeft, Home, BookOpen, Target, Users, Zap, ExternalLink } from "lucide-react";
+import { ArrowLeft, Home, BookOpen, Target, Users, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -125,12 +125,12 @@ const LearningPaths = () => {
 
                   <div className="pt-4">
                     <h3 className="font-semibold text-lg mb-4">Popular Learning Paths</h3>
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      {preMadePaths.map(path => <a key={path.name} href={path.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all group">
-                          <span className="font-medium">{path.name}</span>
-                          <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                        </a>)}
-                    </div>
+                    <ul className="space-y-2">
+                      {preMadePaths.map(path => <li key={path.name} className="flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{path.name}</span>
+                        </li>)}
+                    </ul>
                   </div>
 
                   <div className="bg-accent/50 rounded-lg p-6 mt-6">
@@ -256,12 +256,12 @@ const LearningPaths = () => {
 
                   <div className="pt-4">
                     <h3 className="font-semibold text-lg mb-4">Most Popular Certification Study Plans</h3>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {certifications.map(cert => <a key={cert.name} href={cert.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all group">
-                          <span className="font-medium">{cert.name}</span>
-                          <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 ml-2" />
-                        </a>)}
-                    </div>
+                    <ul className="space-y-2">
+                      {certifications.map(cert => <li key={cert.name} className="flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{cert.name}</span>
+                        </li>)}
+                    </ul>
                   </div>
                 </div>
               </CardContent>
