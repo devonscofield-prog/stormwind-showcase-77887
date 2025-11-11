@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Hero from "@/components/Hero";
 import EnterpriseIT from "@/components/EnterpriseIT";
 import StormAIPhishing from "@/components/StormAIPhishing";
@@ -7,31 +7,17 @@ import EnterpriseEndUser from "@/components/EnterpriseEndUser";
 import HRCompliance from "@/components/HRCompliance";
 import ProjectManagement from "@/components/ProjectManagement";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
 import stormwindLogo from "@/assets/stormwind-logo.png";
 const Index = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [activeTab, setActiveTab] = useState("enterprise-it");
-  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(location.state?.technologies || []);
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>(location.state?.features || []);
+  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const toggleTechnology = (category: string) => {
     setSelectedTechnologies(prev => prev.includes(category) ? prev.filter(t => t !== category) : [...prev, category]);
   };
   const toggleFeature = (title: string) => {
     setSelectedFeatures(prev => prev.includes(title) ? prev.filter(f => f !== title) : [...prev, title]);
-  };
-  const handleSubmit = () => {
-    navigate("/results", {
-      state: {
-        technologies: selectedTechnologies,
-        features: selectedFeatures
-      }
-    });
-  };
-  const handleClearSelections = () => {
-    setSelectedTechnologies([]);
-    setSelectedFeatures([]);
   };
 
   // Set document title
@@ -108,16 +94,6 @@ const Index = () => {
               <HRCompliance selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
           </Tabs>
-
-          {/* Floating Buttons */}
-          {(selectedTechnologies.length > 0 || selectedFeatures.length > 0) && <div className="fixed top-1/2 right-6 transform -translate-y-1/2 z-40 flex flex-col gap-4">
-              <Button onClick={handleSubmit} size="lg" className="px-8 shadow-xl">
-                Submit Selection ({selectedTechnologies.length + selectedFeatures.length} items)
-              </Button>
-              <Button onClick={handleClearSelections} variant="outline" size="lg" className="px-8 shadow-xl">
-                Clear Selections
-              </Button>
-            </div>}
         </div>
       </section>
 

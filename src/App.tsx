@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Results from "./pages/Results";
 import Ranges from "./pages/Ranges";
 import Phishing from "./pages/Phishing";
 import Mentoring from "./pages/Mentoring";
@@ -29,9 +28,6 @@ import SkillsAssessments from "./pages/SkillsAssessments";
 import LiveInstructorLed from "./pages/LiveInstructorLed";
 import EnterpriseReporting from "./pages/EnterpriseReporting";
 import HRCompliancePage from "./pages/HRCompliancePage";
-import DemoHelper from "./pages/DemoHelper";
-import Calculate from "./pages/Calculate";
-import Features from "./pages/Features";
 import Courses from "./pages/Courses";
 import NotFound from "./pages/NotFound";
 
@@ -45,7 +41,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/results" element={<Results />} />
           <Route path="/ranges" element={<Ranges />} />
           <Route path="/phishing" element={<Phishing />} />
           <Route path="/mentoring" element={<Mentoring />} />
@@ -70,9 +65,6 @@ const App = () => (
           <Route path="/live-instructor-led" element={<LiveInstructorLed />} />
           <Route path="/enterprise-reporting" element={<EnterpriseReporting />} />
           <Route path="/hr-compliance" element={<HRCompliancePage />} />
-          <Route path="/demohelper" element={<DemoHelper />} />
-          <Route path="/calculate" element={<Calculate />} />
-          <Route path="/features" element={<Features />} />
           <Route path="/courses" element={<Courses />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

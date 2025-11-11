@@ -20,7 +20,6 @@ export const trainingLinks: Record<string, string> = {
   "1:1 Mentoring with Industry Experts": "/mentoring",
   "Enterprise Reporting and Administration": "/enterprise-reporting",
   "Live Instructor Led Courses": "/live-instructor-led",
-  "Platform Features": "/features",
   
   // Enterprise End User
   "Desktop App Training": "/desktop-apps",
