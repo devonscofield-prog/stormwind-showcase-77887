@@ -1266,6 +1266,50 @@ const Courses = () => {
         { name: "Intune for Microsoft Enterprises", isBytes: true },
       ],
     },
+    "Coming Soon": {
+      "Q4 2025 - Microsoft Copilot": [
+        { name: "Manager Readiness for Microsoft 365 Copilot", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: Prompting Practices", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: Teams", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: OneDrive", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: SharePoint", isComingSoon: true },
+        { name: "Microsoft 365 Copilot: Power Automate", isComingSoon: true },
+        { name: "Building Agents in Copilot Studio", isComingSoon: true },
+        { name: "Administering Microsoft Copilot AI", isComingSoon: true },
+      ],
+      "Q4 2025 - Other": [
+        { name: "CompTIA Linux+ (XK0-006)", isComingSoon: true },
+        { name: "AWS Certified CloudOps Engineer (SOA-C03)", isComingSoon: true },
+        { name: "CMMC Program Foundations", isComingSoon: true },
+      ],
+      "Q1 2026 - Microsoft": [
+        { name: "AZ-500: Microsoft Azure Security Technologies", isComingSoon: true },
+        { name: "AZ-104: Microsoft Azure Administrator Exam Crash", isComingSoon: true },
+        { name: "SC-300: Microsoft Identity and Access Administrator", isComingSoon: true },
+      ],
+      "Q1 2026 - Security & Networking": [
+        { name: "CISA", isComingSoon: true },
+        { name: "Ethical Hacking v13 Exam Crash", isComingSoon: true },
+        { name: "Cisco CCNP Enterprise: ENCOR v1.2", isComingSoon: true },
+        { name: "Cisco CCNA Cybersecurity", isComingSoon: true },
+      ],
+      "Q1 2026 - CompTIA": [
+        { name: "CompTIA A+ 1201 Exam Crash", isComingSoon: true },
+        { name: "CompTIA A+ 1202 Exam Crash", isComingSoon: true },
+        { name: "CompTIA Linux+ Exam Crash", isComingSoon: true },
+      ],
+      "Q2 2026 - Microsoft & AI": [
+        { name: "AB-100: Agentic AI Business Solutions Architect", isComingSoon: true },
+        { name: "AI-900: Microsoft Azure AI Fundamentals", isComingSoon: true },
+      ],
+      "Q2 2026 - Networking & Cloud": [
+        { name: "Proxmox VE 9 ICM", isComingSoon: true },
+        { name: "Cisco CCNA Automation", isComingSoon: true },
+        { name: "Cisco CCNP Enterprise: ENCOR Exam Crash", isComingSoon: true },
+        { name: "AWS Cloud Practitioner (CLF-C02) Exam Crash", isComingSoon: true },
+      ],
+    },
   };
 
   const [selectedCategory, setSelectedCategory] = useState<string>(() => {
