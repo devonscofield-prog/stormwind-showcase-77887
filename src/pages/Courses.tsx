@@ -1090,6 +1090,20 @@ const Courses = () => {
         { name: "Splunk Core Certified User" },
       ],
     },
+    "VDI/Virtualization": {
+      "VMware Horizon": [
+        { name: "Horizon ICM v7.12 for the Real World" },
+        { name: "Horizon ICM v8 for the Real World" },
+      ],
+      "VMware vSphere": [
+        { name: "vSphere ICM v7.0 for the Real World" },
+        { name: "VMware vSphere VCP 2024 - Data Center Virtualization (VCP-DCV)" },
+      ],
+      "Citrix": [
+        { name: "Citrix VDI Administration (CCA-V)" },
+        { name: "Citrix ADC-Netscaler" },
+      ],
+    },
     "Cybersecurity": {
       "CompTIA Security": [
         { name: "CompTIA Security+ (SY0-701)*" },
