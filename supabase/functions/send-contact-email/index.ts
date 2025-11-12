@@ -26,9 +26,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact request from:", email);
 
-    // Send email to learning director
+    // Send email notification to Devon
     const emailResponse = await resend.emails.send({
-      from: "StormWind Contact <contact@stormwindlive.com>",
+      from: "StormWind Contact Form <onboarding@resend.dev>",
       to: ["devon.scofield@stormwindlive.com"],
       subject: `New Contact Request from ${name}`,
       html: `
@@ -43,20 +43,6 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     console.log("Email sent successfully:", emailResponse);
-
-    // Send confirmation email to user
-    await resend.emails.send({
-      from: "StormWind Studios <noreply@stormwindlive.com>",
-      to: [email],
-      subject: "We received your message!",
-      html: `
-        <h1>Thank you for contacting us, ${name}!</h1>
-        <p>We have received your message and your learning director will get back to you as soon as possible.</p>
-        <p>Here's a copy of your message:</p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <p>Best regards,<br>The StormWind Studios Team</p>
-      `,
-    });
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
