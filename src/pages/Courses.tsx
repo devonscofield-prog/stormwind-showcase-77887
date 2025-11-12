@@ -2611,7 +2611,7 @@ const Courses = () => {
         "Project Teams (Part 1 of 9): Five Types of Project Teams",
         "Project Teams",
       ],
-      "Quality Management & Process Improvement": [
+      "Continuous Quality Improvement (CQI)": [
         "Business Process Reengineering (BPR) (Part 6 of 6): Pitfalls",
         "Business Process Reengineering (BPR) (Part 5 of 6): Key Steps",
         "Business Process Reengineering (BPR) (Part 4 of 6): Requirements",
