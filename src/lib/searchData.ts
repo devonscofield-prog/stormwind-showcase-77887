@@ -850,6 +850,1113 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Microsoft",
     keywords: ["power automate", "flow", "automation", "microsoft", "workflow"]
   },
+  
+  // More Full Stack Languages & Frameworks
+  {
+    title: "TypeScript",
+    description: "TypeScript programming language",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["typescript", "javascript", "programming", "types", "ts"]
+  },
+  {
+    title: "GraphQL",
+    description: "GraphQL API development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["graphql", "api", "query", "backend", "rest"]
+  },
+  {
+    title: "Svelte",
+    description: "Svelte framework for web development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["svelte", "javascript", "framework", "frontend", "sveltekit"]
+  },
+  {
+    title: "Django",
+    description: "Django Python web framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["django", "python", "web framework", "backend"]
+  },
+  {
+    title: "Flask",
+    description: "Flask Python web framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flask", "python", "web framework", "backend", "microframework"]
+  },
+  {
+    title: "Laravel",
+    description: "Laravel PHP web framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["laravel", "php", "web framework", "backend"]
+  },
+  {
+    title: "Go (Golang)",
+    description: "Go programming language",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["go", "golang", "programming", "backend", "google"]
+  },
+  {
+    title: "Dart & Flutter",
+    description: "Dart programming and Flutter mobile development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["dart", "flutter", "mobile", "android", "ios", "app development"]
+  },
+  {
+    title: "ASP.NET Core",
+    description: "ASP.NET Core web development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["asp.net", "aspnet", "core", "c#", "csharp", "microsoft", ".net"]
+  },
+  {
+    title: "C# Programming",
+    description: "C# programming language",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["c#", "csharp", "c sharp", "programming", "microsoft", ".net"]
+  },
+  {
+    title: "Entity Framework",
+    description: "Entity Framework ORM for .NET",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["entity framework", "ef", "orm", ".net", "database"]
+  },
+  {
+    title: "Blazor",
+    description: "Blazor web framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["blazor", "c#", "web", "spa", ".net"]
+  },
+  {
+    title: "PostgreSQL",
+    description: "PostgreSQL database",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["postgresql", "postgres", "database", "sql", "relational"]
+  },
+  {
+    title: "Redis",
+    description: "Redis in-memory database",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["redis", "cache", "database", "nosql", "memory"]
+  },
+  {
+    title: "Supabase",
+    description: "Supabase backend services",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["supabase", "backend", "database", "postgres", "firebase alternative"]
+  },
+  {
+    title: "Strapi",
+    description: "Strapi headless CMS",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["strapi", "cms", "headless", "backend"]
+  },
+  {
+    title: "SASS",
+    description: "SASS CSS preprocessor",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["sass", "scss", "css", "preprocessor", "styling"]
+  },
+  {
+    title: "Material UI",
+    description: "Material UI React component library",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["material ui", "mui", "react", "components", "ui library"]
+  },
+  {
+    title: "Shadcn UI",
+    description: "Shadcn UI component library",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["shadcn", "ui", "components", "react", "tailwind"]
+  },
+  {
+    title: "Chakra UI",
+    description: "Chakra UI React component library",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["chakra ui", "react", "components", "ui library"]
+  },
+  {
+    title: "Nuxt.js",
+    description: "Nuxt.js Vue framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nuxt", "nuxtjs", "vue", "ssr", "framework"]
+  },
+  {
+    title: "Alpine.js",
+    description: "Alpine.js lightweight framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["alpine", "alpinejs", "javascript", "lightweight", "framework"]
+  },
+  {
+    title: "HTMX",
+    description: "HTMX for dynamic HTML",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["htmx", "html", "ajax", "dynamic", "hypermedia"]
+  },
+  {
+    title: "Vite",
+    description: "Vite build tool",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vite", "build tool", "bundler", "development"]
+  },
+  {
+    title: "Deno",
+    description: "Deno JavaScript runtime",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["deno", "javascript", "typescript", "runtime", "nodejs alternative"]
+  },
+  {
+    title: "Remix.js",
+    description: "Remix full stack framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["remix", "remixjs", "react", "full stack", "framework"]
+  },
+  {
+    title: "SvelteKit",
+    description: "SvelteKit application framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["sveltekit", "svelte", "framework", "ssr"]
+  },
+  {
+    title: "Solid.js",
+    description: "Solid.js reactive framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["solid", "solidjs", "reactive", "javascript", "framework"]
+  },
+  {
+    title: "Qwik",
+    description: "Qwik framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["qwik", "framework", "performance", "resumability"]
+  },
+  {
+    title: "Express.js",
+    description: "Express.js Node.js framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["express", "expressjs", "nodejs", "backend", "api"]
+  },
+  {
+    title: "RabbitMQ",
+    description: "RabbitMQ message broker",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["rabbitmq", "message broker", "queue", "messaging"]
+  },
+  {
+    title: "MERN Stack",
+    description: "MongoDB, Express, React, Node.js stack",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mern", "mongodb", "express", "react", "nodejs", "stack"]
+  },
+  {
+    title: "Bulma CSS",
+    description: "Bulma CSS framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["bulma", "css", "framework", "styling"]
+  },
+  {
+    title: "Vuetify",
+    description: "Vuetify Vue component library",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vuetify", "vue", "components", "material design", "ui library"]
+  },
+  {
+    title: "Pinia",
+    description: "Pinia Vue state management",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["pinia", "vue", "state management", "vuex"]
+  },
+  {
+    title: "Riverpod",
+    description: "Riverpod Flutter state management",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["riverpod", "flutter", "state management", "dart"]
+  },
+  {
+    title: ".NET MAUI",
+    description: ".NET MAUI mobile development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["maui", ".net maui", "mobile", "xamarin", "cross-platform"]
+  },
+  {
+    title: "React Native",
+    description: "React Native mobile development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react native", "mobile", "ios", "android", "react"]
+  },
+  {
+    title: "Swift",
+    description: "Swift iOS development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["swift", "ios", "apple", "mobile", "swiftui"]
+  },
+  {
+    title: "Contentful",
+    description: "Contentful headless CMS",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["contentful", "cms", "headless", "content management"]
+  },
+  {
+    title: "Netlify",
+    description: "Netlify deployment and hosting",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["netlify", "deployment", "hosting", "jamstack"]
+  },
+  {
+    title: "Figma",
+    description: "Figma to code design",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["figma", "design", "ui", "ux", "prototyping"]
+  },
+  {
+    title: "OpenAI API",
+    description: "OpenAI API development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["openai", "api", "gpt", "ai", "chatgpt"]
+  },
+  {
+    title: "LangChain",
+    description: "LangChain AI development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["langchain", "ai", "llm", "chains", "agents"]
+  },
+  {
+    title: "Embeddings",
+    description: "Vector databases and embeddings",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["embeddings", "vector database", "ai", "similarity search"]
+  },
+  {
+    title: "Mistral AI",
+    description: "Mistral AI models",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mistral", "ai", "llm", "models"]
+  },
+  {
+    title: "Cloudflare",
+    description: "Cloudflare deployment",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["cloudflare", "deployment", "cdn", "workers"]
+  },
+  {
+    title: "Clean Code",
+    description: "Clean code principles",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["clean code", "best practices", "programming", "code quality"]
+  },
+  {
+    title: "Unit Testing",
+    description: "Unit testing fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["unit testing", "testing", "tdd", "test driven development"]
+  },
+  {
+    title: "Regular Expressions",
+    description: "Regular expressions tutorial",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["regex", "regular expressions", "pattern matching"]
+  },
+  {
+    title: "Accessibility",
+    description: "Web accessibility",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["accessibility", "a11y", "wcag", "inclusive design"]
+  },
+  {
+    title: "Markdown",
+    description: "Markdown syntax",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["markdown", "documentation", "formatting"]
+  },
+  
+  // More Networking Courses
+  {
+    title: "BGP Routing",
+    description: "BGP routing fundamentals",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["bgp", "routing", "border gateway protocol", "networking"]
+  },
+  {
+    title: "Fortinet NSE",
+    description: "Fortinet security and networking",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["fortinet", "firewall", "security", "fortigate", "nse", "fortianalyzer", "fortimanager"]
+  },
+  {
+    title: "Juniper JNCIA",
+    description: "Juniper networking certifications",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["juniper", "networking", "jncia", "jncis", "jncip", "routing", "switching", "junos"]
+  },
+  {
+    title: "Aruba ACA",
+    description: "Aruba networking",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["aruba", "wireless", "networking", "aca", "campus access"]
+  },
+  {
+    title: "Cisco Meraki",
+    description: "Cisco Meraki cloud networking",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "meraki", "cloud", "networking", "wireless", "firewall", "switches"]
+  },
+  {
+    title: "SonicWall",
+    description: "SonicWall firewall training",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["sonicwall", "firewall", "security", "networking", "sonicos"]
+  },
+  {
+    title: "CWNA",
+    description: "Certified Wireless Network Administrator",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cwna", "wireless", "networking", "wifi", "certification"]
+  },
+  {
+    title: "Cisco DevNet",
+    description: "Cisco DevNet Associate",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["devnet", "cisco", "automation", "programming", "api"]
+  },
+  {
+    title: "Cisco UCCX",
+    description: "Cisco Unified Contact Center Express",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["uccx", "cisco", "contact center", "collaboration", "call center"]
+  },
+  {
+    title: "Cisco ACI",
+    description: "Cisco Application Centric Infrastructure",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["aci", "cisco", "sdn", "software defined networking", "datacenter"]
+  },
+  {
+    title: "GNS3",
+    description: "Network modeling with GNS3",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["gns3", "network", "simulation", "lab", "modeling"]
+  },
+  
+  // More Cybersecurity Courses
+  {
+    title: "CEH - Certified Ethical Hacker",
+    description: "Certified Ethical Hacker",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["ceh", "ethical hacking", "penetration testing", "ec-council", "hacking"]
+  },
+  {
+    title: "CISA",
+    description: "Certified Information Systems Auditor",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cisa", "audit", "isaca", "security", "certification"]
+  },
+  {
+    title: "CISM",
+    description: "Certified Information Security Manager",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cism", "management", "isaca", "security", "certification"]
+  },
+  {
+    title: "CRISC",
+    description: "Certified in Risk and Information Systems Control",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["crisc", "risk", "isaca", "security", "certification"]
+  },
+  {
+    title: "CCISO",
+    description: "Chief Information Security Officer",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cciso", "ciso", "executive", "security", "leadership"]
+  },
+  {
+    title: "CHFI",
+    description: "Computer Hacking Forensic Investigator",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["chfi", "forensics", "investigation", "ec-council"]
+  },
+  {
+    title: "SecurityX",
+    description: "CompTIA SecurityX",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["securityx", "comptia", "cas", "advanced security"]
+  },
+  {
+    title: "Check Point CCSA",
+    description: "Check Point firewall certification",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["check point", "checkpoint", "ccsa", "firewall", "security"]
+  },
+  {
+    title: "Splunk Core",
+    description: "Splunk SIEM and monitoring",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["splunk", "siem", "monitoring", "security", "logs", "analytics"]
+  },
+  {
+    title: "Okta Certified Professional",
+    description: "Okta identity and access management",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["okta", "identity", "iam", "access management", "sso", "authentication"]
+  },
+  {
+    title: "F5 Application Delivery",
+    description: "F5 application delivery",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["f5", "load balancer", "application delivery", "networking", "big-ip"]
+  },
+  {
+    title: "Cisco Firepower",
+    description: "Cisco Firepower Services",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["firepower", "cisco", "firewall", "security", "ngfw"]
+  },
+  {
+    title: "CyberOps Associate",
+    description: "Cisco CyberOps Associate",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cyberops", "cisco", "security operations", "soc"]
+  },
+  {
+    title: "Metasploit",
+    description: "Metasploit penetration testing",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["metasploit", "penetration testing", "exploit", "hacking"]
+  },
+  {
+    title: "Nmap",
+    description: "Nmap network scanning",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["nmap", "network scanning", "reconnaissance", "port scan"]
+  },
+  
+  // Business Pro Power Platform
+  {
+    title: "PL-300 Power BI Data Analyst",
+    description: "Microsoft Power BI Data Analyst certification",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["pl-300", "power bi", "data analyst", "microsoft", "certification"]
+  },
+  {
+    title: "PL-900 Power Platform Fundamentals",
+    description: "Microsoft Power Platform Fundamentals",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["pl-900", "power platform", "fundamentals", "microsoft"]
+  },
+  {
+    title: "Tableau Desktop",
+    description: "Tableau data visualization",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["tableau", "data visualization", "analytics", "dashboard", "bi"]
+  },
+  {
+    title: "Microsoft Fabric",
+    description: "Microsoft Fabric data platform",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["fabric", "microsoft fabric", "data", "analytics", "unified", "lakehouse"]
+  },
+  {
+    title: "Azure Databricks",
+    description: "Azure Databricks data engineering",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["databricks", "azure", "data engineering", "spark", "analytics", "delta lake"]
+  },
+  {
+    title: "Copilot Studio",
+    description: "Microsoft Copilot Studio",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["copilot studio", "microsoft", "ai", "agents", "chatbot", "power virtual agents"]
+  },
+  {
+    title: "Power Pages",
+    description: "Microsoft Power Pages",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["power pages", "microsoft", "low code", "websites", "portals"]
+  },
+  {
+    title: "Azure Data Factory",
+    description: "Azure Data Factory ETL",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["data factory", "azure", "etl", "pipelines", "integration"]
+  },
+  {
+    title: "Azure Synapse",
+    description: "Azure Synapse Analytics",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["synapse", "azure", "data warehouse", "analytics", "big data"]
+  },
+  {
+    title: "Azure SQL",
+    description: "Azure SQL Database",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["azure sql", "database", "sql server", "managed instance"]
+  },
+  {
+    title: "DAX",
+    description: "Data Analysis Expressions for Power BI",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["dax", "power bi", "formulas", "calculations", "data analysis"]
+  },
+  {
+    title: "Power Query",
+    description: "Power Query data transformation",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["power query", "etl", "data transformation", "power bi"]
+  },
+  {
+    title: "Dataverse",
+    description: "Microsoft Dataverse",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["dataverse", "common data service", "cds", "database", "power platform"]
+  },
+  
+  // More Desktop Apps
+  {
+    title: "Microsoft Teams",
+    description: "Microsoft Teams collaboration",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["teams", "microsoft teams", "collaboration", "meetings", "chat", "video"]
+  },
+  {
+    title: "OneDrive",
+    description: "Microsoft OneDrive cloud storage",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["onedrive", "microsoft", "cloud storage", "files", "sync", "sharepoint"]
+  },
+  {
+    title: "OneNote",
+    description: "Microsoft OneNote note-taking",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["onenote", "microsoft", "notes", "notebook", "organization"]
+  },
+  {
+    title: "Planner",
+    description: "Microsoft Planner task management",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["planner", "microsoft", "tasks", "project", "kanban", "to-do"]
+  },
+  {
+    title: "Slack",
+    description: "Slack collaboration platform",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["slack", "collaboration", "chat", "messaging", "workspace", "communication"]
+  },
+  {
+    title: "Adobe InDesign",
+    description: "Adobe InDesign desktop publishing",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["indesign", "adobe", "desktop publishing", "layout", "design", "print"]
+  },
+  {
+    title: "Adobe Lightroom",
+    description: "Adobe Lightroom photo editing",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["lightroom", "adobe", "photo editing", "photography", "images"]
+  },
+  {
+    title: "Adobe Acrobat",
+    description: "Adobe Acrobat PDF management",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["acrobat", "adobe", "pdf", "documents", "forms"]
+  },
+  {
+    title: "Adobe InCopy",
+    description: "Adobe InCopy collaborative writing",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["incopy", "adobe", "writing", "editing", "collaboration"]
+  },
+  {
+    title: "Yammer",
+    description: "Microsoft Yammer social networking",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["yammer", "microsoft", "social", "networking", "communication"]
+  },
+  {
+    title: "Delve",
+    description: "Microsoft Delve",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["delve", "microsoft", "search", "discovery", "content"]
+  },
+  {
+    title: "Microsoft Project",
+    description: "Microsoft Project management",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["project", "microsoft project", "project management", "planning", "scheduling"]
+  },
+  {
+    title: "Access",
+    description: "Microsoft Access database",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["access", "microsoft access", "database", "tables", "queries"]
+  },
+  {
+    title: "Visio",
+    description: "Microsoft Visio diagramming",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["visio", "microsoft visio", "diagrams", "flowcharts", "visualization"]
+  },
+  
+  // DevOps Tools
+  {
+    title: "Certified Kubernetes Administrator",
+    description: "CKA certification",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["cka", "kubernetes", "k8s", "certification", "administrator", "linux foundation"]
+  },
+  {
+    title: "Certified Kubernetes Application Developer",
+    description: "CKAD certification",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["ckad", "kubernetes", "k8s", "certification", "developer", "application"]
+  },
+  {
+    title: "Certified Kubernetes Security Specialist",
+    description: "CKS certification",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["cks", "kubernetes", "k8s", "certification", "security"]
+  },
+  {
+    title: "HashiCorp Vault",
+    description: "HashiCorp Vault secrets management",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["vault", "hashicorp", "secrets", "security", "devops", "credentials"]
+  },
+  {
+    title: "HashiCorp Consul",
+    description: "HashiCorp Consul service mesh",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["consul", "hashicorp", "service mesh", "networking", "devops", "discovery"]
+  },
+  {
+    title: "ArgoCD",
+    description: "ArgoCD GitOps tool",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["argocd", "gitops", "kubernetes", "continuous deployment", "cd"]
+  },
+  {
+    title: "FluxCD",
+    description: "FluxCD GitOps tool",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["fluxcd", "flux", "gitops", "kubernetes", "continuous deployment"]
+  },
+  {
+    title: "Prometheus",
+    description: "Prometheus monitoring",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["prometheus", "monitoring", "metrics", "observability", "devops", "alerts"]
+  },
+  {
+    title: "Grafana",
+    description: "Grafana visualization",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["grafana", "visualization", "monitoring", "dashboard", "observability", "loki"]
+  },
+  {
+    title: "GitLab CI/CD",
+    description: "GitLab continuous integration and deployment",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["gitlab", "ci/cd", "continuous integration", "deployment", "pipeline", "devops"]
+  },
+  {
+    title: "GitHub Actions",
+    description: "GitHub Actions automation",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["github actions", "github", "ci/cd", "automation", "workflow", "actions"]
+  },
+  {
+    title: "AWS CodePipeline",
+    description: "AWS continuous delivery",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["codepipeline", "aws", "ci/cd", "continuous delivery", "pipeline"]
+  },
+  {
+    title: "Helm",
+    description: "Helm Kubernetes package manager",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["helm", "kubernetes", "package manager", "charts", "k8s", "deployment"]
+  },
+  {
+    title: "Istio",
+    description: "Istio service mesh",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["istio", "service mesh", "kubernetes", "microservices", "networking"]
+  },
+  {
+    title: "Kustomize",
+    description: "Kustomize Kubernetes configuration",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["kustomize", "kubernetes", "configuration", "yaml", "k8s"]
+  },
+  {
+    title: "Puppet",
+    description: "Puppet configuration management",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["puppet", "configuration management", "automation", "infrastructure"]
+  },
+  {
+    title: "Bash Scripting",
+    description: "Advanced Bash scripting",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["bash", "shell", "scripting", "linux", "automation"]
+  },
+  {
+    title: "LPIC-1",
+    description: "Linux Professional Institute certification",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["lpic", "linux", "certification", "sysadmin"]
+  },
+  
+  // More Microsoft Certifications
+  {
+    title: "MS-900 Microsoft 365 Fundamentals",
+    description: "Microsoft 365 fundamentals certification",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ms-900", "microsoft 365", "m365", "fundamentals", "certification"]
+  },
+  {
+    title: "MS-203 Exchange Messaging",
+    description: "Microsoft 365 Exchange messaging",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ms-203", "exchange", "messaging", "email", "microsoft 365"]
+  },
+  {
+    title: "MS-700 Managing Microsoft Teams",
+    description: "Managing Microsoft Teams",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ms-700", "teams", "microsoft teams", "collaboration", "certification"]
+  },
+  {
+    title: "MS-721 Collaboration Communications",
+    description: "Collaboration Communications Systems Engineer",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ms-721", "teams", "collaboration", "communications", "voice"]
+  },
+  {
+    title: "MS-740 Troubleshooting Microsoft Teams",
+    description: "Troubleshooting Microsoft Teams",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ms-740", "teams", "troubleshooting", "support"]
+  },
+  {
+    title: "MD-102 Endpoint Administrator",
+    description: "Microsoft Endpoint Administrator",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["md-102", "endpoint", "intune", "microsoft", "administration", "device management"]
+  },
+  {
+    title: "DP-900 Azure Data Fundamentals",
+    description: "Azure Data Fundamentals",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["dp-900", "azure", "data", "fundamentals", "certification", "database"]
+  },
+  {
+    title: "DP-300 Administering Relational Databases",
+    description: "Administering Azure SQL databases",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["dp-300", "azure", "sql", "database", "administration", "dba"]
+  },
+  {
+    title: "AI-900 Azure AI Fundamentals",
+    description: "Azure AI Fundamentals",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["ai-900", "azure", "ai", "artificial intelligence", "fundamentals", "machine learning"]
+  },
+  {
+    title: "AZ-140 Azure Virtual Desktop",
+    description: "Configuring and Operating Azure Virtual Desktop",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-140", "azure", "virtual desktop", "avd", "vdi", "wvd"]
+  },
+  {
+    title: "AZ-204 Developing Solutions for Azure",
+    description: "Azure Developer certification",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-204", "azure", "developer", "development", "cloud"]
+  },
+  {
+    title: "AZ-305 Designing Azure Infrastructure",
+    description: "Designing Microsoft Azure Infrastructure Solutions",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-305", "azure", "architect", "infrastructure", "design", "solutions"]
+  },
+  {
+    title: "AZ-400 DevOps Solutions",
+    description: "Designing and Implementing Microsoft DevOps Solutions",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-400", "azure", "devops", "ci/cd", "certification"]
+  },
+  {
+    title: "SC-200 Security Operations Analyst",
+    description: "Microsoft Security Operations Analyst",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["sc-200", "security", "operations", "soc", "sentinel", "defender"]
+  },
+  {
+    title: "SC-100 Cybersecurity Architect",
+    description: "Microsoft Cybersecurity Architect",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["sc-100", "security", "architect", "cybersecurity", "design"]
+  },
+  {
+    title: "70-761 Querying Data with Transact-SQL",
+    description: "SQL Server Transact-SQL querying",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["70-761", "sql", "tsql", "transact-sql", "querying", "database"]
+  },
+  {
+    title: "70-762 Developing SQL Databases",
+    description: "SQL Server database development",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["70-762", "sql", "database", "development", "sql server"]
+  },
+  {
+    title: "70-764 Administering SQL Database Infrastructure",
+    description: "SQL Server database administration",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["70-764", "sql", "database", "administration", "dba", "sql server"]
+  },
+  
+  // More Cloud Courses
+  {
+    title: "AWS Solutions Architect Professional",
+    description: "AWS Solutions Architect Professional certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "solutions architect", "professional", "cloud", "certification"]
+  },
+  {
+    title: "AWS SysOps Administrator",
+    description: "AWS System Operations certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "sysops", "system operations", "cloud", "administration"]
+  },
+  {
+    title: "AWS DevOps Engineer",
+    description: "AWS DevOps Engineer certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "devops", "engineer", "cloud", "ci/cd"]
+  },
+  {
+    title: "AWS Security Specialty",
+    description: "AWS Certified Security Specialty",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "security", "specialty", "cloud", "certification"]
+  },
+  {
+    title: "AWS Data Analytics Specialty",
+    description: "AWS Data Analytics Specialty",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "data", "analytics", "specialty", "big data"]
+  },
+  {
+    title: "AWS Database Specialty",
+    description: "AWS Database Specialty",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "database", "specialty", "rds", "dynamodb"]
+  },
+  {
+    title: "AWS Advanced Networking",
+    description: "AWS Advanced Networking Specialty",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "networking", "advanced", "specialty", "vpc"]
+  },
+  {
+    title: "GCP Professional Cloud Architect",
+    description: "Google Cloud Professional Cloud Architect",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["gcp", "google cloud", "architect", "professional", "certification"]
+  },
+  {
+    title: "GCP Cloud Digital Leader",
+    description: "Google Cloud Digital Leader",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["gcp", "google cloud", "digital leader", "fundamentals"]
+  },
+  
+  // TOGAF & Architecture
+  {
+    title: "TOGAF",
+    description: "TOGAF Enterprise Architecture",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["togaf", "enterprise architecture", "framework", "certification"]
+  },
+  
+  // Lean Six Sigma
+  {
+    title: "Lean Six Sigma",
+    description: "Lean Six Sigma certification",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["lean six sigma", "six sigma", "green belt", "yellow belt", "process improvement"]
+  },
+  
+  // Windows Support
+  {
+    title: "Windows 10",
+    description: "Windows 10 support and troubleshooting",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["windows 10", "windows", "microsoft", "support", "troubleshooting", "desktop"]
+  },
+  {
+    title: "Windows 11",
+    description: "Windows 11 new features",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["windows 11", "windows", "microsoft", "support", "desktop"]
+  },
+  {
+    title: "CompTIA Tech+",
+    description: "CompTIA Tech+ certification",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["tech+", "comptia", "it fundamentals", "entry level"]
+  },
 ];
 
 export const searchItems = (query: string): SearchItem[] => {
