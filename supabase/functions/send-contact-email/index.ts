@@ -8,6 +8,40 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Simple in-memory rate limiter (5 requests per hour per IP)
+const rateLimiter = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT = 5;
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimiter.get(ip);
+
+  if (!record || now > record.resetTime) {
+    rateLimiter.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+
+  if (record.count >= RATE_LIMIT) {
+    return false;
+  }
+
+  record.count++;
+  return true;
+}
+
+// HTML escape function to prevent injection attacks
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 interface ContactRequest {
   name: string;
   email: string;
@@ -22,23 +56,58 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Get client IP for rate limiting
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0] || 
+                     req.headers.get("x-real-ip") || 
+                     "unknown";
+
+    // Check rate limit
+    if (!checkRateLimit(clientIp)) {
+      console.log("Rate limit exceeded for IP:", clientIp);
+      return new Response(
+        JSON.stringify({ error: "Rate limit exceeded. Please try again later." }),
+        {
+          status: 429,
+          headers: {
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          },
+        }
+      );
+    }
+
     const { name, email, company, phone, message }: ContactRequest = await req.json();
+
+    // Server-side validation
+    if (!name || name.length > 100 || !email || email.length > 255 || 
+        !message || message.length > 5000) {
+      return new Response(
+        JSON.stringify({ error: "Invalid input. Please check your form fields." }),
+        {
+          status: 400,
+          headers: {
+            "Content-Type": "application/json",
+            ...corsHeaders,
+          },
+        }
+      );
+    }
 
     console.log("Received contact request from:", email);
 
-    // Send email notification
+    // Send email notification with escaped HTML to prevent injection
     const emailResponse = await resend.emails.send({
       from: "StormWind Contact Form <onboarding@resend.dev>",
       to: ["stormwindsubmissions@gmail.com"],
-      subject: `New Contact Request from ${name}`,
+      subject: `New Contact Request from ${escapeHtml(name)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ""}
+        ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ""}
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
       `,
     });
 
