@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import stormwindLogo from "@/assets/stormwind-logo.png";
+import { SearchBar } from "@/components/SearchBar";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -11,16 +12,21 @@ export const Navigation = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           <img 
             src={stormwindLogo} 
             alt="StormWind Studios" 
-            className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" 
+            className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
             onClick={() => navigate('/')}
           />
           
+          {/* Search Bar - Hidden on mobile */}
+          <div className="hidden lg:flex flex-1 max-w-xl mx-4">
+            <SearchBar />
+          </div>
+          
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6 flex-shrink-0">
             <Link to="/courses">
               <Button variant="ghost" className="text-foreground hover:text-primary">
                 Courses
@@ -54,7 +60,12 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-2 bg-card border-t border-border pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card border-t border-border pt-4 animate-fade-in">
+            {/* Mobile Search */}
+            <div className="lg:hidden px-2 mb-2">
+              <SearchBar />
+            </div>
+            
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
