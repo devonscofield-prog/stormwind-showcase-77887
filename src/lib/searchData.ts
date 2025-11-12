@@ -1957,6 +1957,557 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Help Desk",
     keywords: ["tech+", "comptia", "it fundamentals", "entry level"]
   },
+  
+  // Security Awareness Training
+  {
+    title: "Email Protection",
+    description: "Email security and phishing awareness",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["email", "protection", "phishing", "security", "awareness"]
+  },
+  {
+    title: "Guarding Your Passwords",
+    description: "Password security best practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["password", "security", "authentication", "credentials", "awareness"]
+  },
+  {
+    title: "Safe Systems Use",
+    description: "Safe system usage practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["safe systems", "usage", "security", "awareness", "best practices"]
+  },
+  {
+    title: "Staying Safe While Remote",
+    description: "Remote work and travel security",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["remote", "travel", "working", "security", "awareness", "vpn"]
+  },
+  {
+    title: "Safe Email Usage",
+    description: "Email safety and best practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["email", "safe usage", "security", "awareness", "phishing"]
+  },
+  {
+    title: "Emerging Security Concerns",
+    description: "Executive briefing on security trends",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["emerging", "security", "concerns", "executive", "trends"]
+  },
+  {
+    title: "Guiding Strategies for IT Security",
+    description: "IT security strategy guidance",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["strategy", "it security", "guidance", "executive"]
+  },
+  {
+    title: "Organizational System Threats",
+    description: "Understanding organizational threats",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["threats", "organizational", "security", "awareness"]
+  },
+  {
+    title: "Ransomware Defense",
+    description: "Protecting against ransomware",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["ransomware", "defense", "protection", "malware", "security"]
+  },
+  {
+    title: "Best Practices to Thwart Ransomware",
+    description: "Ransomware prevention best practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["ransomware", "best practices", "prevention", "security"]
+  },
+  {
+    title: "Cybersecurity Risks",
+    description: "Understanding cybersecurity risks",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["cybersecurity", "risks", "threats", "security", "awareness"]
+  },
+  {
+    title: "Secured Infrastructure",
+    description: "Infrastructure security practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["infrastructure", "security", "secured", "awareness"]
+  },
+  {
+    title: "Secured Mobile Devices",
+    description: "Mobile device security",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["mobile", "devices", "security", "smartphone", "tablet"]
+  },
+  {
+    title: "Secured Workstations",
+    description: "Workstation security practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["workstation", "security", "desktop", "computer", "endpoint"]
+  },
+  {
+    title: "Security Technologies",
+    description: "Overview of security technologies",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["security", "technologies", "tools", "awareness"]
+  },
+  
+  // More AI & OpenAI Courses
+  {
+    title: "Accelerating Back-End Development with ChatGPT",
+    description: "Using ChatGPT for backend development",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "backend", "development", "ai", "coding"]
+  },
+  {
+    title: "Accelerating Front-End Development with ChatGPT",
+    description: "Using ChatGPT for frontend development",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "frontend", "development", "ai", "coding"]
+  },
+  {
+    title: "Accelerating Web Development with ChatGPT",
+    description: "Using ChatGPT for web development",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "web development", "ai", "coding", "fullstack"]
+  },
+  {
+    title: "OpenAI Codex Tutorial",
+    description: "OpenAI Codex for code generation",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["openai", "codex", "code generation", "ai", "programming"]
+  },
+  {
+    title: "Deploy AI Apps on Cloudflare",
+    description: "Deploying AI applications on Cloudflare",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["cloudflare", "ai apps", "deployment", "workers"]
+  },
+  {
+    title: "Claude Code Tutorial",
+    description: "Using Claude for coding",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["claude", "coding", "ai", "anthropic", "development"]
+  },
+  {
+    title: "Model Context Protocol",
+    description: "Introduction to Model Context Protocol",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["mcp", "model context protocol", "ai", "integration"]
+  },
+  {
+    title: "AWS Certified AI Practitioner",
+    description: "AWS AI certification",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["aws", "ai", "practitioner", "certification", "machine learning"]
+  },
+  {
+    title: "OpenAI Tutorial Basics",
+    description: "OpenAI API basics",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["openai", "tutorial", "basics", "api", "ai"]
+  },
+  {
+    title: "Build AI Apps with ChatGPT and DALL-E",
+    description: "Building AI applications with OpenAI tools",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "dall-e", "gpt-4", "ai apps", "development"]
+  },
+  {
+    title: "Introduction to AI",
+    description: "AI fundamentals and introduction",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ai", "introduction", "fundamentals", "artificial intelligence"]
+  },
+  {
+    title: "Introduction to Deep Learning",
+    description: "Deep learning algorithms introduction",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["deep learning", "algorithms", "neural networks", "ai", "machine learning"]
+  },
+  {
+    title: "Ethics Considerations for ChatGPT",
+    description: "Ethical use of ChatGPT",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ethics", "chatgpt", "ai ethics", "responsible ai"]
+  },
+  {
+    title: "ChatGPT Features and Tools",
+    description: "ChatGPT tools and features overview",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "features", "tools", "plugins", "ai"]
+  },
+  {
+    title: "Getting Started with ChatGPT Plus",
+    description: "ChatGPT Plus introduction",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt plus", "premium", "subscription", "gpt-4"]
+  },
+  {
+    title: "Safe Data Practices for ChatGPT",
+    description: "Data security with ChatGPT",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["data", "security", "chatgpt", "privacy", "safe practices"]
+  },
+  {
+    title: "AI Communication Mastery",
+    description: "Crafting effective AI prompts",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ai communication", "prompts", "prompt engineering", "effectiveness"]
+  },
+  {
+    title: "AI Prompt Writing",
+    description: "AI prompt writing techniques",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["prompt writing", "ai", "prompts", "techniques"]
+  },
+  {
+    title: "Meta Llama2",
+    description: "Meta's Llama2 and open source LLMs",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["llama2", "meta", "open source", "llm", "ai"]
+  },
+  {
+    title: "AI Assisted Content Creation",
+    description: "Content creation with AI from ideation to execution",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ai", "content creation", "ideation", "writing", "productivity"]
+  },
+  {
+    title: "AI Foundations for Users",
+    description: "AI fundamentals from classification to creation",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ai foundations", "classification", "creation", "fundamentals"]
+  },
+  {
+    title: "AI Ethical Use and Responsibility",
+    description: "Ethical and responsible AI use",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["ai ethics", "responsibility", "ethical use", "governance"]
+  },
+  {
+    title: "Google Gemini in Docs",
+    description: "Using Gemini in Google Docs",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["gemini", "google docs", "ai", "google workspace"]
+  },
+  {
+    title: "Google Gemini in Gmail",
+    description: "Using Gemini in Gmail",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["gemini", "gmail", "ai", "email", "google workspace"]
+  },
+  {
+    title: "Google Gemini in Sheets",
+    description: "Using Gemini in Google Sheets",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["gemini", "google sheets", "ai", "spreadsheets", "google workspace"]
+  },
+  {
+    title: "Google Gemini in Slides",
+    description: "Using Gemini in Google Slides",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["gemini", "google slides", "ai", "presentations", "google workspace"]
+  },
+  
+  // More Project Management
+  {
+    title: "PM Leadership Skills: Motivating Your Team",
+    description: "Motivating project teams",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["leadership", "motivation", "team management", "project management"]
+  },
+  {
+    title: "PM Leadership Skills: Leading Change",
+    description: "Leading organizational change",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["leadership", "change management", "transformation", "project management"]
+  },
+  {
+    title: "PM Leadership Skills: Building High-Performing Teams",
+    description: "Building effective project teams",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["leadership", "team building", "high performance", "project management"]
+  },
+  {
+    title: "Emotional Intelligence and Psychological Safety",
+    description: "EQ and psychological safety in project management",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["emotional intelligence", "eq", "psychological safety", "leadership"]
+  },
+  {
+    title: "Practical Project Management with Microsoft Project",
+    description: "Using Microsoft Project for project management",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["microsoft project", "project management", "planning", "scheduling"]
+  },
+  {
+    title: "Microsoft Project 2019",
+    description: "Microsoft Project 2019 training",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["microsoft project", "2019", "project management", "planning"]
+  },
+  {
+    title: "TOGAF Part 1 Foundations",
+    description: "TOGAF enterprise architecture foundations",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["togaf", "enterprise architecture", "foundations", "certification"]
+  },
+  {
+    title: "TOGAF Part 2 Certified",
+    description: "TOGAF enterprise architecture certified",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["togaf", "enterprise architecture", "certified", "advanced"]
+  },
+  {
+    title: "Lean Six Sigma Green Belt",
+    description: "Lean Six Sigma Green Belt certification",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["lean six sigma", "green belt", "process improvement", "quality"]
+  },
+  {
+    title: "Lean Six Sigma Yellow Belt",
+    description: "Lean Six Sigma Yellow Belt certification",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["lean six sigma", "yellow belt", "process improvement", "quality"]
+  },
+  
+  // More Cisco & Networking
+  {
+    title: "Cisco CCNP Service Provider",
+    description: "Cisco CCNP Service Provider certification",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "ccnp", "service provider", "spcor", "networking"]
+  },
+  {
+    title: "Cisco Wireless Fundamentals",
+    description: "Cisco wireless networking fundamentals",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "wireless", "wifi", "fundamentals", "wlfndu"]
+  },
+  {
+    title: "Cisco Wireless LAN Essentials",
+    description: "Cisco wireless LAN essentials",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "wireless lan", "wifi", "essentials"]
+  },
+  {
+    title: "Cisco Collaboration CLCOR",
+    description: "Cisco CCNP Collaboration CLCOR",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "collaboration", "clcor", "ccnp", "voice"]
+  },
+  {
+    title: "Cisco Collaboration CLICA",
+    description: "Cisco CCNP Collaboration CLICA",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "collaboration", "clica", "ccnp", "voice"]
+  },
+  {
+    title: "Cisco Security SCOR",
+    description: "Cisco CCNP Security SCOR",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "security", "scor", "ccnp", "firewall"]
+  },
+  {
+    title: "Cisco Security SISE",
+    description: "Cisco CCNP Security SISE",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "security", "sise", "ccnp", "ise"]
+  },
+  {
+    title: "Cisco Security SVPN",
+    description: "Cisco CCNP Security SVPN",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "security", "svpn", "ccnp", "vpn"]
+  },
+  {
+    title: "Cisco ENWLSI",
+    description: "Cisco CCNP Enterprise Wireless",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "enwlsi", "enterprise", "wireless", "ccnp"]
+  },
+  {
+    title: "Cisco ENSLD",
+    description: "Cisco CCNP Enterprise Design",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "ensld", "enterprise", "design", "ccnp"]
+  },
+  {
+    title: "Cisco ENARSI",
+    description: "Cisco CCNP Enterprise Advanced Routing",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["cisco", "enarsi", "routing", "ccnp", "advanced"]
+  },
+  {
+    title: "Wireless and Mobile Security",
+    description: "Wireless and mobile device security",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["wireless", "mobile", "security", "wifi", "bluetooth"]
+  },
+  {
+    title: "Network Defender Professional",
+    description: "EC-Council Network Defender",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["network defender", "ec-council", "security", "defense"]
+  },
+  {
+    title: "Penetration Testing Professional",
+    description: "EC-Council Penetration Testing",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["penetration testing", "ec-council", "pentest", "ethical hacking"]
+  },
+  
+  // Coming Soon Courses
+  {
+    title: "CompTIA Linux+",
+    description: "CompTIA Linux+ certification",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["linux+", "comptia", "linux", "certification", "coming soon"]
+  },
+  {
+    title: "CMMC Program Foundations",
+    description: "Cybersecurity Maturity Model Certification",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["cmmc", "cybersecurity", "dod", "compliance", "coming soon"]
+  },
+  {
+    title: "Cisco CCNA Cybersecurity",
+    description: "Cisco CCNA Cybersecurity certification",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["cisco", "ccna", "cybersecurity", "security", "coming soon"]
+  },
+  {
+    title: "Cisco CCNA Automation",
+    description: "Cisco CCNA Automation certification",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["cisco", "ccna", "automation", "devnet", "coming soon"]
+  },
+  {
+    title: "Proxmox VE",
+    description: "Proxmox Virtual Environment training",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["proxmox", "virtualization", "virtual environment", "hypervisor", "coming soon"]
+  },
+  {
+    title: "AB-100 Agentic AI",
+    description: "Agentic AI Business Solutions Architect",
+    category: "Course",
+    path: "/courses?category=Coming Soon",
+    keywords: ["ab-100", "agentic ai", "ai agents", "microsoft", "coming soon"]
+  },
+  
+  // More Business Skills
+  {
+    title: "Leadership Skills",
+    description: "Leadership and management skills",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["leadership", "management", "skills", "business", "soft skills"]
+  },
+  {
+    title: "Communication Skills",
+    description: "Effective business communication",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["communication", "skills", "business", "presentation", "writing"]
+  },
+  {
+    title: "Time Management",
+    description: "Time management and productivity",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["time management", "productivity", "efficiency", "business skills"]
+  },
+  {
+    title: "Career Development",
+    description: "Professional career development",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["career", "development", "professional", "growth", "advancement"]
+  },
+  {
+    title: "Sales Skills",
+    description: "Sales and business development skills",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["sales", "selling", "business development", "negotiation"]
+  },
+  {
+    title: "Customer Service",
+    description: "Customer service excellence",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["customer service", "support", "client relations", "satisfaction"]
+  },
 ];
 
 export const searchItems = (query: string): SearchItem[] => {
