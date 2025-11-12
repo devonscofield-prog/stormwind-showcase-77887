@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
-import WelcomeOverlay from "./components/WelcomeOverlay";
 import Index from "./pages/Index";
 import Ranges from "./pages/Ranges";
 import Phishing from "./pages/Phishing";
@@ -45,7 +44,6 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <BackToTop />
-        <WelcomeOverlay />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ranges" element={<Ranges />} />
