@@ -32,6 +32,7 @@ import EnterpriseReporting from "./pages/EnterpriseReporting";
 import HRCompliancePage from "./pages/HRCompliancePage";
 import Courses from "./pages/Courses";
 import Contact from "./pages/Contact";
+import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/hr-compliance" element={<HRCompliancePage />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/search" element={<Search />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
