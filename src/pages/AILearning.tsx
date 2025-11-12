@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Home, Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 const AILearning = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,20 +29,7 @@ const AILearning = () => {
     description: "Access your AI tutor anytime, anywhere, on any device for on-demand learning support."
   }];
   return <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
-      {/* Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <img src={logoImage} alt="StormWind Studios" className="h-12 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => navigate('/')} />
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={() => navigate('/')} className="gap-2">
-                <Home className="w-4 h-4" />
-                Home
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <main className="container mx-auto px-4 py-12">
         {/* Hero Section */}

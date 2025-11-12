@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import stormwindLogo from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 const SkillsAssessments = () => {
   const navigate = useNavigate();
 
@@ -30,11 +30,7 @@ const SkillsAssessments = () => {
     assessments: ["Computer Hardware Support", "Windows Operating System Support", "Linux Operating System Support", "IT Service Management Foundations", "Administration of Red Hat Linux", "Advanced VMware vSphere Virtualization"]
   }];
   return <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <img 
-            src={stormwindLogo} 
+      <Navigation />
             alt="StormWind Studios" 
             className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
             onClick={() => navigate('/')}

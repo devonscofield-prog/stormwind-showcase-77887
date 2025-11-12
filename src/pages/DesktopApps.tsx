@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, ExternalLink, FileText, Table, Presentation, Mail, Database, Users, FolderKanban, BarChart3 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 
 const DesktopApps = () => {
   const navigate = useNavigate();
@@ -122,27 +122,7 @@ const DesktopApps = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img 
-            src={logoImage} 
-            alt="StormWind Studios Logo" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <div className="flex gap-2">
-            <Button
-              onClick={() => navigate("/")}
-              variant="outline"
-              size="sm"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-32 pb-16">

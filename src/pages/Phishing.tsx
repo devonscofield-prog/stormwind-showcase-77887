@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink } from "lucide-react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 import { trainingLinks } from "@/lib/trainingLinks";
 
 const Phishing = () => {
@@ -15,11 +15,7 @@ const Phishing = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <img 
-            src={logoImage} 
+      <Navigation />
             alt="StormWind Studios Logo" 
             className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
             onClick={() => navigate('/')}

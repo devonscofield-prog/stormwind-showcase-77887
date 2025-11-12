@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Users, BarChart3, Calendar, TrendingUp, ClipboardCheck, UserPlus } from "lucide-react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 const EnterpriseReporting = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,18 +35,7 @@ const EnterpriseReporting = () => {
     description: "Generate detailed reports and export learning data for stakeholder presentations, compliance documentation, or integration with your existing HR systems."
   }];
   return <div className="min-h-screen bg-background">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <img src={logoImage} alt="StormWind Studios" className="h-8 cursor-pointer" onClick={() => navigate("/")} />
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => navigate("/")}>
-              <Home className="h-4 w-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}

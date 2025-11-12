@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Navigation } from "@/components/Navigation";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -25,25 +26,7 @@ const Ranges = () => {
 
   return (
     <div className="min-h-screen bg-[#2B3440]">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1f2e]/95 backdrop-blur-sm border-b border-gray-700">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img 
-            src={logoImage} 
-            alt="StormWind Studios Logo" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <Button
-            variant="outline"
-            onClick={() => navigate('/')}
-            className="bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white gap-2"
-          >
-            <Home className="w-4 h-4" />
-            Home
-          </Button>
-        </div>
-      </header>
+      <Navigation />
 
       <div className="container mx-auto px-4 py-16 pt-32">
         {/* Hero Section */}

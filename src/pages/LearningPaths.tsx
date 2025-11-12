@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import stormwindLogo from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 const LearningPaths = () => {
   const navigate = useNavigate();
 
@@ -49,23 +49,7 @@ const LearningPaths = () => {
     url: "https://app.stormwindstudios.com/learning-path/167217/cissp-certification-study-plan"
   }];
   return <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <img 
-            src={stormwindLogo} 
-            alt="StormWind Studios" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => navigate("/")}>
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <main className="pt-32 pb-20 px-4">
         <div className="container mx-auto max-w-6xl">

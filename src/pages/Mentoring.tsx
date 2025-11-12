@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Award, BookOpen, Hammer } from "lucide-react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 import willPanek from "@/assets/will-panek.png";
 import ashleyHunt from "@/assets/ashley-hunt.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -59,28 +59,7 @@ const Mentoring = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img 
-            src={logoImage} 
-            alt="StormWind Studios Logo" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <div className="flex gap-2">
-            <Button
-              onClick={() => navigate("/")}
-              variant="outline"
-              size="sm"
-              className="border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-32 pb-16">

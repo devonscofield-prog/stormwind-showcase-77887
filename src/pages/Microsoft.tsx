@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Server, Shield, Users, Award, BookOpen, Video, Clock, Monitor, ExternalLink, Brain, Lightbulb, Target } from "lucide-react";
-import logoImage from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
@@ -37,18 +37,7 @@ const Microsoft = () => {
     color: "text-green-500"
   }];
   return <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <img src={logoImage} alt="StormWind Studios Logo" className="h-12 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => navigate('/')} />
-          <div className="flex gap-2">
-            <Button onClick={() => navigate("/")} variant="outline" size="sm">
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-32 pb-16">
