@@ -28,7 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to learning director (you can configure this email)
     const emailResponse = await resend.emails.send({
-      from: "StormWind Contact <onboarding@resend.dev>",
+      from: "StormWind Contact <contact@stormwindstudios.com>",
       to: ["contact@stormwindstudios.com"], // Replace with actual learning director email
       subject: `New Contact Request from ${name}`,
       html: `
@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to user
     await resend.emails.send({
-      from: "StormWind Studios <onboarding@resend.dev>",
+      from: "StormWind Studios <noreply@stormwindstudios.com>",
       to: [email],
       subject: "We received your message!",
       html: `
