@@ -36,7 +36,7 @@ export const searchData: SearchItem[] = [
     description: "Windows Server, Microsoft 365, Azure, PowerShell training",
     category: "Technology",
     path: "/microsoft",
-    keywords: ["microsoft", "windows", "server", "365", "azure", "powershell", "active directory", "exchange", "sharepoint", "intune"]
+    keywords: ["microsoft", "windows", "server", "windows server 2025", "365", "azure", "powershell", "active directory", "exchange", "sharepoint", "intune"]
   },
   {
     title: "Cloud Training",

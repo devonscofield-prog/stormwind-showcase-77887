@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import Hero from "@/components/Hero";
 import EnterpriseIT from "@/components/EnterpriseIT";
 import StormAIPhishing from "@/components/StormAIPhishing";
@@ -7,10 +6,8 @@ import EnterpriseEndUser from "@/components/EnterpriseEndUser";
 import HRCompliance from "@/components/HRCompliance";
 import ProjectManagement from "@/components/ProjectManagement";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
-import stormwindLogo from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 const Index = () => {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("enterprise-it");
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
@@ -36,36 +33,7 @@ const Index = () => {
     }
   }, [activeTab]);
   return <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <img 
-              src={stormwindLogo} 
-              alt="StormWind Studios" 
-              className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" 
-              onClick={() => navigate('/')}
-            />
-            <nav className="flex items-center gap-6">
-              <Link to="/courses">
-                <Button variant="ghost" className="text-foreground hover:text-primary">
-                  Courses
-                </Button>
-              </Link>
-              <Link to="/ranges">
-                <Button variant="ghost" className="text-foreground hover:text-primary">
-                  Ranges
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="default">
-                  Contact Us
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="pt-20">

@@ -66,6 +66,7 @@ const Courses = () => {
         { name: "70-745: Implementing a Software-Defined Datacenter" },
         { name: "Windows Server 2019 Administration" },
         { name: "Windows Server 2022" },
+        { name: "Windows Server 2025 Administration" },
         { name: "Microsoft Range Trailhead" },
       ],
       "Microsoft 365 Administration": [
