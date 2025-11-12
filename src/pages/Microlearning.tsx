@@ -24,22 +24,6 @@ const Microlearning = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-            alt="StormWind Studios Logo" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <div className="flex gap-2">
-            <Button
-              onClick={() => navigate("/")}
-              variant="outline"
-              size="sm"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
 
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-32 pb-16">

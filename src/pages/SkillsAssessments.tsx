@@ -31,18 +31,6 @@ const SkillsAssessments = () => {
   }];
   return <div className="min-h-screen bg-background">
       <Navigation />
-            alt="StormWind Studios" 
-            className="h-12 cursor-pointer hover:opacity-80 transition-opacity" 
-            onClick={() => navigate('/')}
-          />
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => navigate("/")}>
-              <Home className="w-4 h-4 mr-2" />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
 
       <main className="pt-32 pb-20 px-4">
         <div className="container mx-auto max-w-6xl">
