@@ -54,7 +54,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-2 bg-card border-t border-border pt-4">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-2 bg-card border-t border-border pt-4 animate-fade-in">
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
