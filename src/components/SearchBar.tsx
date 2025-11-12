@@ -38,8 +38,8 @@ export const SearchBar = () => {
   }, [query]);
 
   const handleSelect = (item: SearchItem) => {
-    // If navigating to courses, pass the search query
-    if (item.path === "/courses") {
+    // If it's a course or navigating to courses page, pass the search query
+    if (item.category === 'Course' || item.path === "/courses") {
       navigate(`/courses?query=${encodeURIComponent(query)}`);
     } else {
       navigate(item.path);
