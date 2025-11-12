@@ -26,10 +26,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact request from:", email);
 
-    // Send email notification to Devon
+    // Send email notification
     const emailResponse = await resend.emails.send({
       from: "StormWind Contact Form <onboarding@resend.dev>",
-      to: ["devon.scofield@stormwindlive.com"],
+      to: ["stormwindsubmissions@gmail.com"],
       subject: `New Contact Request from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
