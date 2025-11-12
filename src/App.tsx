@@ -31,6 +31,7 @@ import LiveInstructorLed from "./pages/LiveInstructorLed";
 import EnterpriseReporting from "./pages/EnterpriseReporting";
 import HRCompliancePage from "./pages/HRCompliancePage";
 import Courses from "./pages/Courses";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -70,6 +71,7 @@ const App = () => (
           <Route path="/enterprise-reporting" element={<EnterpriseReporting />} />
           <Route path="/hr-compliance" element={<HRCompliancePage />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
