@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home, Zap, Search, EyeOff, Eye } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import {
   Select,
   SelectContent,
@@ -1442,6 +1450,24 @@ const Courses = () => {
       {/* Main Content */}
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-7xl">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/" className="flex items-center gap-2">
+                    <Home className="w-4 h-4" />
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Course Catalog</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           {/* Hero Section */}
           <div className="text-center mb-12 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent pb-2 leading-tight">

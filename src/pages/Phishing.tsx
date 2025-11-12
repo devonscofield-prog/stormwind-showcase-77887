@@ -1,10 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { trainingLinks } from "@/lib/trainingLinks";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const Phishing = () => {
   const navigate = useNavigate();
@@ -19,6 +27,24 @@ const Phishing = () => {
 
       <main className="pt-32 pb-20 px-4">
         <div className="container mx-auto max-w-6xl">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/" className="flex items-center gap-2">
+                    <Home className="w-4 h-4" />
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>StormAI Phishing</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           {/* Page Header */}
           <div className="text-center mb-16">
             <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
