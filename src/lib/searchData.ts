@@ -2508,6 +2508,693 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Business Pro",
     keywords: ["customer service", "support", "client relations", "satisfaction"]
   },
+  
+  // Data & Analytics - Snowflake
+  {
+    title: "Snowflake Administration",
+    description: "Snowflake administration essentials",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["snowflake", "administration", "data warehouse", "cloud"]
+  },
+  {
+    title: "Snowflake Data Loading",
+    description: "Loading and querying data in Snowflake",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["snowflake", "data loading", "querying", "etl"]
+  },
+  {
+    title: "Getting Started with Snowflake",
+    description: "Introduction to Snowflake",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["snowflake", "getting started", "introduction", "data warehouse"]
+  },
+  
+  // SQL Server & T-SQL
+  {
+    title: "SSIS",
+    description: "SQL Server Integration Services",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["ssis", "sql server", "integration services", "etl", "data integration"]
+  },
+  {
+    title: "SSAS",
+    description: "SQL Server Analysis Services",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["ssas", "sql server", "analysis services", "olap", "cubes"]
+  },
+  {
+    title: "SSRS",
+    description: "SQL Server Reporting Services",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["ssrs", "sql server", "reporting services", "reports"]
+  },
+  {
+    title: "T-SQL",
+    description: "Transact-SQL programming",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["t-sql", "tsql", "transact-sql", "sql server", "database"]
+  },
+  {
+    title: "SQL Server DBA",
+    description: "SQL Server database administration",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["sql server", "dba", "database administrator", "administration"]
+  },
+  {
+    title: "SQL Server Performance Tuning",
+    description: "SQL Server performance optimization",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["sql server", "performance", "tuning", "optimization", "dba"]
+  },
+  {
+    title: "SQL Server High Availability",
+    description: "SQL Server high availability solutions",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["sql server", "high availability", "ha", "clustering", "alwayson"]
+  },
+  {
+    title: "MDX",
+    description: "Multidimensional Expressions for SSAS",
+    category: "Course",
+    path: "/courses?category=Business Pro",
+    keywords: ["mdx", "multidimensional", "ssas", "olap", "sql server"]
+  },
+  
+  // More JavaScript & Web Development
+  {
+    title: "Learn JavaScript",
+    description: "JavaScript programming fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["learn javascript", "javascript", "js", "programming", "fundamentals"]
+  },
+  {
+    title: "Modern JavaScript ES6+",
+    description: "Modern JavaScript with ES6 features",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["es6", "modern javascript", "javascript", "ecmascript", "arrow functions"]
+  },
+  {
+    title: "JavaScript Deep Dive",
+    description: "Advanced JavaScript concepts",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["javascript", "deep dive", "advanced", "closures", "prototypes"]
+  },
+  {
+    title: "Object Oriented JavaScript",
+    description: "OOP in JavaScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["oop", "object oriented", "javascript", "classes", "inheritance"]
+  },
+  {
+    title: "AJAX and JSON",
+    description: "AJAX and JSON in JavaScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["ajax", "json", "javascript", "asynchronous", "api"]
+  },
+  {
+    title: "JavaScript Interview Challenges",
+    description: "JavaScript coding interview preparation",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["javascript", "interview", "challenges", "coding", "preparation"]
+  },
+  {
+    title: "TypeScript Fundamentals",
+    description: "TypeScript basics and fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["typescript fundamentals", "typescript", "basics", "types"]
+  },
+  {
+    title: "TypeScript Masterclass",
+    description: "Advanced TypeScript programming",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["typescript masterclass", "typescript", "advanced", "generics"]
+  },
+  {
+    title: "Webpack",
+    description: "Webpack module bundler",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["webpack", "bundler", "build tool", "module bundler"]
+  },
+  
+  // More React
+  {
+    title: "React Hooks",
+    description: "React Hooks in depth",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react hooks", "hooks", "usestate", "useeffect", "react"]
+  },
+  {
+    title: "React with TypeScript",
+    description: "Building React apps with TypeScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react typescript", "react", "typescript", "tsx"]
+  },
+  {
+    title: "Advanced React",
+    description: "Advanced React patterns and techniques",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["advanced react", "react", "patterns", "performance"]
+  },
+  {
+    title: "Styled Components",
+    description: "Styling React with Styled Components",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["styled components", "react", "css-in-js", "styling"]
+  },
+  {
+    title: "React Class Components",
+    description: "React class-based components",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react class", "class components", "react", "lifecycle"]
+  },
+  {
+    title: "React Router",
+    description: "React Router for navigation",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react router", "routing", "navigation", "react"]
+  },
+  {
+    title: "React Router 6",
+    description: "React Router version 6",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react router 6", "router", "react", "navigation"]
+  },
+  {
+    title: "React 19",
+    description: "What's new in React 19",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react 19", "react", "new features", "updates"]
+  },
+  {
+    title: "React Interview Questions",
+    description: "React interview preparation",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react interview", "interview questions", "react", "preparation"]
+  },
+  {
+    title: "React Challenges",
+    description: "React coding challenges",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react challenges", "react", "coding", "practice"]
+  },
+  {
+    title: "Gatsby",
+    description: "Gatsby static site generator",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["gatsby", "static site", "react", "jamstack"]
+  },
+  
+  // Vue.js
+  {
+    title: "Vue 3",
+    description: "Vue 3 framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vue 3", "vue", "vuejs", "composition api"]
+  },
+  {
+    title: "Vue 3 Animations",
+    description: "Animations in Vue 3",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vue animations", "vue 3", "transitions", "animations"]
+  },
+  {
+    title: "Vue 3 with TypeScript",
+    description: "Vue 3 and TypeScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vue typescript", "vue 3", "typescript", "vue"]
+  },
+  {
+    title: "Vuex",
+    description: "Vuex state management",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vuex", "vue", "state management", "store"]
+  },
+  {
+    title: "Nuxt Router Middleware",
+    description: "Nuxt.js router middleware",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nuxt", "router", "middleware", "navigation"]
+  },
+  {
+    title: "Sapper",
+    description: "Sapper Svelte framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["sapper", "svelte", "framework", "ssr"]
+  },
+  
+  // HTML & CSS
+  {
+    title: "Learn HTML",
+    description: "HTML fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["html", "web development", "markup", "fundamentals"]
+  },
+  {
+    title: "Learn CSS",
+    description: "CSS styling fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["css", "styling", "web design", "cascading"]
+  },
+  {
+    title: "Responsive Web Design",
+    description: "Building responsive websites",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["responsive", "web design", "mobile", "media queries"]
+  },
+  {
+    title: "CSS Animations",
+    description: "CSS animation techniques",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["css animations", "animations", "transitions", "keyframes"]
+  },
+  {
+    title: "CSS Grid",
+    description: "CSS Grid layout system",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["css grid", "grid", "layout", "responsive"]
+  },
+  {
+    title: "Flexbox",
+    description: "CSS Flexbox layout",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flexbox", "css", "layout", "flexible"]
+  },
+  {
+    title: "CSS Variables",
+    description: "CSS custom properties",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["css variables", "custom properties", "css", "theming"]
+  },
+  {
+    title: "CSS Cascade Layers",
+    description: "CSS cascade layers",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["cascade layers", "css", "specificity", "cascade"]
+  },
+  {
+    title: "Bootstrap 5",
+    description: "Bootstrap 5 framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["bootstrap 5", "bootstrap", "css framework", "responsive"]
+  },
+  {
+    title: "Customizing Bootstrap",
+    description: "Bootstrap customization",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["bootstrap", "customization", "theming", "sass"]
+  },
+  {
+    title: "Bulma",
+    description: "Bulma CSS framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["bulma css", "bulma", "css framework", "flexbox"]
+  },
+  
+  // Backend & Databases
+  {
+    title: "Node.js Masterclass",
+    description: "Comprehensive Node.js course",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nodejs masterclass", "nodejs", "backend", "server"]
+  },
+  {
+    title: "Node.js Authentication",
+    description: "Authentication in Node.js",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nodejs auth", "authentication", "passport", "jwt"]
+  },
+  {
+    title: "Building RESTful APIs",
+    description: "RESTful API development with Node.js",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["restful api", "api", "rest", "nodejs"]
+  },
+  {
+    title: "GraphQL with Node.js",
+    description: "GraphQL API with Node.js",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["graphql nodejs", "graphql", "api", "nodejs"]
+  },
+  {
+    title: "MongoDB Essentials",
+    description: "MongoDB database essentials",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mongodb essentials", "mongodb", "nosql", "database"]
+  },
+  {
+    title: "Complete MongoDB Tutorial",
+    description: "Comprehensive MongoDB course",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mongodb tutorial", "mongodb", "database", "nosql"]
+  },
+  {
+    title: "PostgreSQL Tutorial",
+    description: "PostgreSQL database tutorial",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["postgresql tutorial", "postgres", "sql", "database"]
+  },
+  {
+    title: "Redis Stack",
+    description: "Redis database and caching",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["redis stack", "redis", "cache", "nosql"]
+  },
+  {
+    title: "MERN Auth",
+    description: "MERN stack authentication",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mern auth", "mern", "authentication", "fullstack"]
+  },
+  {
+    title: "MERN Stack",
+    description: "MERN stack development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mern stack tutorial", "mern", "mongodb", "express", "react"]
+  },
+  {
+    title: "Chatroom with Deno",
+    description: "Building a chatroom with Deno and WebSockets",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["deno", "chatroom", "websockets", "real-time"]
+  },
+  
+  // Python & Data Science
+  {
+    title: "Python for Everybody",
+    description: "Python programming for beginners",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["python for everybody", "python", "beginners", "programming"]
+  },
+  {
+    title: "Data Science with Python",
+    description: "Data science using Python",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["data science", "python", "pandas", "numpy", "analytics"]
+  },
+  {
+    title: "Django for Beginners",
+    description: "Django web framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["django beginners", "django", "python", "web framework"]
+  },
+  {
+    title: "Flask Web Development",
+    description: "Flask Python framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flask development", "flask", "python", "microframework"]
+  },
+  {
+    title: "Big Data and Machine Learning with R",
+    description: "R programming for data analysis",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["r programming", "big data", "machine learning", "analytics"]
+  },
+  
+  // .NET & C#
+  {
+    title: "C# Windows Forms",
+    description: "Windows Forms development with C#",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["windows forms", "c#", "desktop", "gui"]
+  },
+  {
+    title: "C# Entity Framework",
+    description: "Entity Framework with C#",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["entity framework c#", "ef", "orm", "database"]
+  },
+  {
+    title: "Master C# and SQL",
+    description: "C# and SQL Server development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["c# sql", "sql server", "database", "ado.net"]
+  },
+  {
+    title: "ASP.NET Core SOLID",
+    description: "SOLID principles and clean architecture",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["solid", "clean architecture", "asp.net core", "design patterns"]
+  },
+  {
+    title: "ASP.NET Core API",
+    description: "API development with ASP.NET Core",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["asp.net api", "web api", "rest", "asp.net core"]
+  },
+  {
+    title: "ASP.NET Core MVC",
+    description: "MVC web development with ASP.NET Core",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["asp.net mvc", "mvc", "web development", "asp.net core"]
+  },
+  {
+    title: "Azure for .NET Developers",
+    description: "Microsoft Azure for .NET developers",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["azure .net", "azure", "dotnet", "cloud"]
+  },
+  {
+    title: "Azure for ASP.NET Core",
+    description: "Deploying ASP.NET Core to Azure",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["azure asp.net", "azure", "asp.net core", "deployment"]
+  },
+  
+  // PHP
+  {
+    title: "Object Oriented PHP",
+    description: "OOP in PHP",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["oop php", "object oriented", "php", "classes"]
+  },
+  {
+    title: "PHP and MySQL",
+    description: "PHP and MySQL development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["php mysql", "php", "mysql", "database"]
+  },
+  {
+    title: "Laravel 6",
+    description: "Laravel PHP framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["laravel 6", "laravel", "php framework", "mvc"]
+  },
+  
+  // Mobile & Other
+  {
+    title: "Flutter Masterclass",
+    description: "Comprehensive Flutter course",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flutter masterclass", "flutter", "mobile", "dart"]
+  },
+  {
+    title: "Flutter Animations",
+    description: "Animations in Flutter",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flutter animations", "flutter", "animations", "mobile"]
+  },
+  {
+    title: "Flutter Forms",
+    description: "Form handling in Flutter",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flutter forms", "flutter", "forms", "validation"]
+  },
+  {
+    title: "Flutter with Firebase",
+    description: "Flutter and Firebase integration",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["flutter firebase", "flutter", "firebase", "backend"]
+  },
+  {
+    title: "Riverpod State Management",
+    description: "Riverpod for Flutter state management",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["riverpod flutter", "riverpod", "state management", "flutter"]
+  },
+  {
+    title: "iOS Swift SwiftUI",
+    description: "iOS development with Swift and SwiftUI",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["swift", "swiftui", "ios", "apple", "mobile"]
+  },
+  {
+    title: "UI Design Fundamentals",
+    description: "UI design principles",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["ui design", "design", "user interface", "ux"]
+  },
+  {
+    title: "Figma to Code",
+    description: "Converting Figma designs to code",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["figma code", "figma", "design to code", "ui"]
+  },
+  {
+    title: "Space Travel Website",
+    description: "Building a space travel website project",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["space website", "project", "web development", "portfolio"]
+  },
+  {
+    title: "Portfolio Website",
+    description: "Build and deploy your portfolio",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["portfolio", "personal website", "showcase", "deployment"]
+  },
+  {
+    title: "Practical Math for Developers",
+    description: "Math for frontend developers",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["math", "frontend", "calculations", "algorithms"]
+  },
+  {
+    title: "Binary Search",
+    description: "Binary search algorithm in JavaScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["binary search", "algorithm", "javascript", "data structures"]
+  },
+  {
+    title: "Merge Sort",
+    description: "Merge sort algorithm in JavaScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["merge sort", "sorting", "algorithm", "javascript"]
+  },
+  {
+    title: "Coding Challenges",
+    description: "Programming coding challenges",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["coding challenges", "practice", "algorithms", "programming"]
+  },
+  {
+    title: "Frontend Developer Career Path",
+    description: "Complete frontend developer path",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["frontend career", "career path", "web development", "roadmap"]
+  },
+  {
+    title: "Color Tool in JavaScript",
+    description: "Build a color tool with vanilla JavaScript",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["color tool", "javascript", "vanilla js", "project"]
+  },
+  {
+    title: "Movie Search App",
+    description: "Build a movie search app in React",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["movie app", "react", "api", "project"]
+  },
+  {
+    title: "Wordle Clone",
+    description: "Make a Wordle clone with React",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["wordle", "game", "react", "clone"]
+  },
+  {
+    title: "Tic Tac Toe",
+    description: "Build Tic Tac Toe with React Hooks",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["tic tac toe", "game", "react hooks", "project"]
+  },
+  {
+    title: "React Skeleton Screens",
+    description: "Create loading skeleton screens in React",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["skeleton screens", "loading", "react", "ui"]
+  },
 ];
 
 export const searchItems = (query: string): SearchItem[] => {
