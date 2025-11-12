@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.81.1';
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,6 +19,26 @@ serve(async (req) => {
     }
 
     console.log("Received chat request with", messages.length, "messages");
+
+    // Get knowledge base from database
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    );
+
+    const { data: knowledgeBase, error: kbError } = await supabase
+      .from('knowledge_base')
+      .select('content, source')
+      .limit(50);
+
+    if (kbError) {
+      console.error('Error fetching knowledge base:', kbError);
+    }
+
+    // Create knowledge base context
+    const knowledgeContext = knowledgeBase?.map(kb => 
+      `Source: ${kb.source}\n${kb.content}`
+    ).join('\n\n---\n\n') || '';
 
     const systemPrompt = `You are a helpful AI assistant for StormWind Studios, a comprehensive training platform showcase. You help users explore this showcase website and learn about our offerings.
 
@@ -52,6 +73,17 @@ IMPORTANT - Course Accuracy:
 - Do NOT invent course names, certification codes, or course details
 - When uncertain, guide users to explore the course catalog at /courses rather than making claims
 
+CRITICAL - Knowledge Base Restrictions:
+- You have access to an approved knowledge base containing official StormWind documentation
+- You MUST ONLY use information from this approved knowledge base
+- DO NOT surf the web for answers
+- DO NOT guess or make up information
+- If you don't know the answer with absolute certainty from the knowledge base, say: "I don't have that specific information in my knowledge base. For the most accurate details, please reach out to your learning director or use the contact form at /contact."
+- You may reference stormwindstudios.com for specific course descriptions, but prioritize keeping users on this info.stormwind.com page
+
+APPROVED KNOWLEDGE BASE:
+${knowledgeContext}
+
 When helping users:
 - Ask about their goals and skill level to recommend appropriate courses
 - Guide them to relevant showcase pages (e.g., "Check out /microsoft for Azure certifications")
@@ -59,7 +91,7 @@ When helping users:
 - Be professional, helpful, and concise
 - If they ask about specific courses, help them navigate to /courses to verify availability
 - If they mention career goals, suggest relevant learning paths and categories
-- Always prioritize accuracy over appearing knowledgeable - it's better to direct users to /courses than to provide incorrect information`;
+- Always prioritize accuracy over appearing knowledgeable - it's better to direct users to /contact or their learning director than to provide incorrect information`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
