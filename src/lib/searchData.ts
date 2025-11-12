@@ -363,6 +363,34 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Networking",
     keywords: ["ccnp", "cisco", "networking", "enterprise", "certification", "advanced"]
   },
+  {
+    title: "Wireshark",
+    description: "Network protocol analyzer and packet capture",
+    category: "Course",
+    path: "/courses?category=Bytes",
+    keywords: ["wireshark", "network", "packet", "capture", "protocol", "analyzer", "troubleshooting", "bytes"]
+  },
+  {
+    title: "IPv6",
+    description: "Internet Protocol version 6 fundamentals",
+    category: "Course",
+    path: "/courses?category=Bytes",
+    keywords: ["ipv6", "networking", "internet protocol", "ip", "bytes"]
+  },
+  {
+    title: "ITIL Foundations",
+    description: "IT service management framework",
+    category: "Course",
+    path: "/courses?category=Bytes",
+    keywords: ["itil", "service management", "framework", "it", "bytes"]
+  },
+  {
+    title: "NIST Cybersecurity Framework",
+    description: "National Institute of Standards and Technology security framework",
+    category: "Course",
+    path: "/courses?category=Bytes",
+    keywords: ["nist", "framework", "security", "cybersecurity", "standards", "bytes"]
+  },
   
   // AI Courses
   {
@@ -377,7 +405,7 @@ export const searchData: SearchItem[] = [
     description: "Using ChatGPT for IT tasks and automation",
     category: "Course",
     path: "/courses?category=AI",
-    keywords: ["chatgpt", "ai", "it", "automation", "professionals"]
+    keywords: ["chatgpt", "ai", "it", "automation", "professionals", "bytes"]
   },
   {
     title: "Microsoft 365 Copilot",
@@ -392,6 +420,90 @@ export const searchData: SearchItem[] = [
     category: "Course",
     path: "/courses?category=AI",
     keywords: ["prompt engineering", "ai", "chatgpt", "prompts", "llm"]
+  },
+  {
+    title: "ChatGPT Enterprise Adoption",
+    description: "Executive briefing on ChatGPT enterprise adoption",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "enterprise", "adoption", "executive", "ai", "bytes"]
+  },
+  {
+    title: "ChatGPT for Efficiency",
+    description: "Executive briefing on ChatGPT efficiency",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "efficiency", "productivity", "executive", "ai", "bytes"]
+  },
+  {
+    title: "ChatGPT Quickstart",
+    description: "Quick start guide to ChatGPT",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "quickstart", "getting started", "ai", "bytes"]
+  },
+  {
+    title: "ChatGPT Tools and Features",
+    description: "ChatGPT tools and features overview",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "tools", "features", "ai", "bytes"]
+  },
+  {
+    title: "Intro to ChatGPT Prompting",
+    description: "Introduction to ChatGPT prompting",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "prompting", "prompt", "ai", "bytes"]
+  },
+  {
+    title: "Under the Hood of ChatGPT",
+    description: "Understanding how ChatGPT works",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "under the hood", "how it works", "ai", "bytes"]
+  },
+  {
+    title: "Copilot in Word",
+    description: "Microsoft Copilot for Word",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "word", "microsoft", "ai", "productivity"]
+  },
+  {
+    title: "Copilot in Excel",
+    description: "Microsoft Copilot for Excel",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "excel", "microsoft", "ai", "productivity"]
+  },
+  {
+    title: "Copilot in PowerPoint",
+    description: "Microsoft Copilot for PowerPoint",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "powerpoint", "microsoft", "ai", "productivity"]
+  },
+  {
+    title: "Copilot in Outlook",
+    description: "Microsoft Copilot for Outlook",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "outlook", "microsoft", "ai", "productivity", "email"]
+  },
+  {
+    title: "Copilot in Teams",
+    description: "Microsoft Copilot for Teams",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "teams", "microsoft", "ai", "collaboration"]
+  },
+  {
+    title: "Google Gemini",
+    description: "Google Gemini AI assistant",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["gemini", "google", "ai", "assistant", "workspace"]
   },
   
   // DevOps Courses
@@ -460,6 +572,48 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Project Management",
     keywords: ["capm", "project management", "certification", "entry level"]
   },
+  {
+    title: "AI for Project Managers",
+    description: "Using AI in project management",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["ai", "project management", "artificial intelligence", "automation", "bytes"]
+  },
+  {
+    title: "Agile Principles",
+    description: "Core principles of agile methodology",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "principles", "methodology", "project management", "bytes"]
+  },
+  {
+    title: "Agile Roles",
+    description: "Roles in agile teams",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "roles", "scrum master", "product owner", "project management", "bytes"]
+  },
+  {
+    title: "Agile Frameworks",
+    description: "Overview of agile frameworks",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "frameworks", "scrum", "kanban", "project management", "bytes"]
+  },
+  {
+    title: "Agile Ceremonies",
+    description: "Agile ceremonies and meetings",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "ceremonies", "sprint", "standup", "retrospective", "bytes"]
+  },
+  {
+    title: "Agile Estimating",
+    description: "Estimation techniques in agile",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "estimating", "story points", "planning poker", "bytes"]
+  },
   
   // Full Stack Developer Courses
   {
@@ -490,8 +644,64 @@ export const searchData: SearchItem[] = [
     path: "/courses?category=Full Stack Developer",
     keywords: ["mongodb", "database", "nosql", "data"]
   },
+  {
+    title: "Vue.js Development",
+    description: "Vue.js framework for web development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["vue", "vuejs", "javascript", "frontend", "web development"]
+  },
+  {
+    title: "Angular Development",
+    description: "Angular framework for web applications",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["angular", "typescript", "javascript", "frontend", "web development"]
+  },
+  {
+    title: "Next.js Development",
+    description: "React framework for production",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nextjs", "next", "react", "ssr", "web development"]
+  },
+  {
+    title: "TypeScript",
+    description: "TypeScript programming language",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["typescript", "javascript", "programming", "types"]
+  },
+  {
+    title: "GraphQL",
+    description: "GraphQL API development",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["graphql", "api", "query", "backend"]
+  },
+  {
+    title: "Tailwind CSS",
+    description: "Utility-first CSS framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["tailwind", "css", "styling", "frontend"]
+  },
+  {
+    title: "Bootstrap",
+    description: "Bootstrap CSS framework",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["bootstrap", "css", "framework", "responsive"]
+  },
+  {
+    title: "Firebase",
+    description: "Firebase backend services",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["firebase", "backend", "database", "google"]
+  },
   
-  // Help Desk Courses
+  // Help Desk & Desktop Courses
   {
     title: "CompTIA A+",
     description: "CompTIA A+ certification training",
@@ -512,6 +722,133 @@ export const searchData: SearchItem[] = [
     category: "Course",
     path: "/courses?category=Help Desk",
     keywords: ["windows 10", "troubleshooting", "support", "help desk"]
+  },
+  
+  // Desktop Applications
+  {
+    title: "Microsoft Word",
+    description: "Microsoft Word training and skills",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["word", "microsoft", "office", "documents", "desktop"]
+  },
+  {
+    title: "Microsoft Excel",
+    description: "Microsoft Excel training and skills",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["excel", "microsoft", "office", "spreadsheets", "desktop"]
+  },
+  {
+    title: "Microsoft PowerPoint",
+    description: "Microsoft PowerPoint training and skills",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["powerpoint", "microsoft", "office", "presentations", "desktop"]
+  },
+  {
+    title: "Microsoft Outlook",
+    description: "Microsoft Outlook training and skills",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["outlook", "microsoft", "office", "email", "desktop"]
+  },
+  {
+    title: "Adobe Photoshop",
+    description: "Adobe Photoshop training",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["photoshop", "adobe", "image editing", "design", "desktop"]
+  },
+  {
+    title: "Adobe Illustrator",
+    description: "Adobe Illustrator training",
+    category: "Course",
+    path: "/courses?category=Desktop Applications",
+    keywords: ["illustrator", "adobe", "vector", "design", "desktop"]
+  },
+  
+  // Security Awareness
+  {
+    title: "Phishing Awareness",
+    description: "Recognize and avoid phishing attacks",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["phishing", "security", "awareness", "email", "cybersecurity"]
+  },
+  {
+    title: "Password Security",
+    description: "Password security best practices",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["password", "security", "authentication", "awareness"]
+  },
+  {
+    title: "Social Engineering",
+    description: "Understanding social engineering attacks",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["social engineering", "security", "awareness", "manipulation"]
+  },
+  {
+    title: "Data Protection",
+    description: "Data protection and privacy fundamentals",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["data protection", "privacy", "security", "gdpr", "compliance"]
+  },
+  {
+    title: "Ransomware Defense",
+    description: "Protecting against ransomware attacks",
+    category: "Course",
+    path: "/courses?category=Security Awareness",
+    keywords: ["ransomware", "security", "malware", "awareness", "protection"]
+  },
+  
+  // Virtualization
+  {
+    title: "VMware vSphere",
+    description: "VMware vSphere virtualization training",
+    category: "Course",
+    path: "/courses?category=VDI/Virtualization",
+    keywords: ["vmware", "vsphere", "virtualization", "vdi", "datacenter"]
+  },
+  {
+    title: "Citrix VDI",
+    description: "Citrix virtual desktop infrastructure",
+    category: "Course",
+    path: "/courses?category=VDI/Virtualization",
+    keywords: ["citrix", "vdi", "virtualization", "virtual desktop"]
+  },
+  {
+    title: "VMware Horizon",
+    description: "VMware Horizon virtual desktop",
+    category: "Course",
+    path: "/courses?category=VDI/Virtualization",
+    keywords: ["vmware", "horizon", "vdi", "virtual desktop", "virtualization"]
+  },
+  
+  // Power Platform
+  {
+    title: "Power BI",
+    description: "Microsoft Power BI data visualization",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["power bi", "powerbi", "data", "visualization", "analytics", "microsoft"]
+  },
+  {
+    title: "Power Apps",
+    description: "Microsoft Power Apps development",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["power apps", "powerapps", "low code", "microsoft", "development"]
+  },
+  {
+    title: "Power Automate",
+    description: "Microsoft Power Automate workflow automation",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["power automate", "flow", "automation", "microsoft", "workflow"]
   },
 ];
 
