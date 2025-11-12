@@ -38,7 +38,12 @@ export const SearchBar = () => {
   }, [query]);
 
   const handleSelect = (item: SearchItem) => {
-    navigate(item.path);
+    // If navigating to courses, pass the search query
+    if (item.path === "/courses") {
+      navigate(`/courses?query=${encodeURIComponent(query)}`);
+    } else {
+      navigate(item.path);
+    }
     setQuery("");
     setIsOpen(false);
     inputRef.current?.blur();

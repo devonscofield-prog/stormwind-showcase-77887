@@ -1330,7 +1330,10 @@ const Courses = () => {
       : "All Courses";
   });
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("All Subcategories");
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>(() => {
+    const queryParam = searchParams.get("query");
+    return queryParam || "";
+  });
   const [hideComingSoon, setHideComingSoon] = useState<boolean>(false);
 
   const categories = ["All Courses", ...Object.keys(courseData)];
