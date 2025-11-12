@@ -37,7 +37,7 @@ const EnterpriseReporting = () => {
   return <div className="min-h-screen bg-background">
       <Navigation />
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 pt-32 pb-16">
         {/* Hero Section */}
         <div className="text-center mb-20 animate-fade-in">
           <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
