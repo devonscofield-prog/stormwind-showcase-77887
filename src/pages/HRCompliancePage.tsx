@@ -208,6 +208,23 @@ const HRCompliancePage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Disclaimer */}
+              <div className="mt-12 rounded-lg bg-primary/10 border-2 border-primary/30 p-8 animate-fade-in">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <BookOpen className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold mb-3 text-foreground">
+                      Learn More About Our HR Compliance Offerings
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To learn more about specific courses and packages available in our HR Compliance offering, please contact your Learning Director. They can provide detailed information about customized training solutions tailored to your organization's needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
