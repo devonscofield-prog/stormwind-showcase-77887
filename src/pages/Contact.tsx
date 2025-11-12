@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -8,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Home } from "lucide-react";
+import stormwindLogo from "@/assets/stormwind-logo.png";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -20,6 +23,7 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -63,7 +67,29 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16 max-w-2xl">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <img 
+              src={stormwindLogo} 
+              alt="StormWind Studios" 
+              className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" 
+              onClick={() => navigate('/')}
+            />
+            <Button 
+              variant="default" 
+              onClick={() => navigate('/')}
+              className="gap-2"
+            >
+              <Home size={18} />
+              Home
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 pt-32 pb-16 max-w-2xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
           <p className="text-lg text-muted-foreground mb-4">
