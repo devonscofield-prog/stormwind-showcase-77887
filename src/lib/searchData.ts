@@ -195,13 +195,27 @@ export const searchData: SearchItem[] = [
     keywords: ["hr", "compliance", "human resources", "regulations", "legal"]
   },
   
-  // Popular Courses
+  // Microsoft Courses
   {
     title: "AZ-900: Azure Fundamentals",
     description: "Microsoft Azure fundamentals certification",
     category: "Course",
-    path: "/courses?category=Cloud",
-    keywords: ["az-900", "azure", "fundamentals", "cloud", "microsoft certification"]
+    path: "/courses?category=Microsoft",
+    keywords: ["az-900", "azure", "fundamentals", "cloud", "microsoft", "certification"]
+  },
+  {
+    title: "AZ-104: Azure Administrator",
+    description: "Microsoft Azure administrator certification",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-104", "azure", "administrator", "cloud", "microsoft", "certification"]
+  },
+  {
+    title: "AZ-500: Azure Security Technologies",
+    description: "Microsoft Azure security specialist certification",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-500", "azure", "security", "cloud", "microsoft", "certification"]
   },
   {
     title: "MS-102: Microsoft 365 Administrator",
@@ -211,12 +225,93 @@ export const searchData: SearchItem[] = [
     keywords: ["ms-102", "microsoft 365", "m365", "admin", "certification"]
   },
   {
-    title: "CCNA: Cisco Certified Network Associate",
-    description: "Cisco networking fundamentals certification",
+    title: "Windows Server 2019 Administration",
+    description: "Windows Server 2019 administration training",
     category: "Course",
-    path: "/courses?category=Networking",
-    keywords: ["ccna", "cisco", "networking", "certification", "routing", "switching"]
+    path: "/courses?category=Microsoft",
+    keywords: ["windows", "server", "2019", "administration", "microsoft", "windows server"]
   },
+  {
+    title: "Windows Server 2022",
+    description: "Windows Server 2022 training",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["windows", "server", "2022", "microsoft", "windows server"]
+  },
+  {
+    title: "Windows Server 2025 Administration",
+    description: "Windows Server 2025 administration training",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["windows", "server", "2025", "administration", "microsoft", "windows server"]
+  },
+  {
+    title: "AZ-800: Windows Server Hybrid Core Infrastructure",
+    description: "Administering Windows Server hybrid core infrastructure",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-800", "windows", "server", "hybrid", "infrastructure", "microsoft"]
+  },
+  {
+    title: "AZ-801: Windows Server Hybrid Advanced Services",
+    description: "Configuring Windows Server hybrid advanced services",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["az-801", "windows", "server", "hybrid", "services", "microsoft"]
+  },
+  {
+    title: "Active Directory Administration",
+    description: "Active Directory administration and management",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["active directory", "ad", "directory services", "ldap", "microsoft", "administration"]
+  },
+  {
+    title: "PowerShell Fundamentals",
+    description: "Windows PowerShell fundamentals training",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["powershell", "scripting", "automation", "windows", "microsoft"]
+  },
+  {
+    title: "SharePoint 365 Administration",
+    description: "SharePoint 365 administration training",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["sharepoint", "365", "administration", "collaboration", "microsoft"]
+  },
+  {
+    title: "Exchange Server Administration",
+    description: "Microsoft Exchange Server administration",
+    category: "Course",
+    path: "/courses?category=Microsoft",
+    keywords: ["exchange", "server", "email", "messaging", "microsoft", "administration"]
+  },
+  
+  // Cloud Courses
+  {
+    title: "AWS Cloud Practitioner",
+    description: "Amazon Web Services cloud practitioner certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "cloud practitioner", "amazon", "cloud", "certification"]
+  },
+  {
+    title: "AWS Solutions Architect Associate",
+    description: "AWS solutions architect associate certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["aws", "solutions architect", "amazon", "cloud", "certification"]
+  },
+  {
+    title: "Google Cloud Certified Associate",
+    description: "Google Cloud Platform associate certification",
+    category: "Course",
+    path: "/courses?category=Cloud",
+    keywords: ["gcp", "google cloud", "cloud", "certification"]
+  },
+  
+  // Cybersecurity Courses
   {
     title: "CompTIA Security+",
     description: "Entry-level cybersecurity certification",
@@ -225,19 +320,81 @@ export const searchData: SearchItem[] = [
     keywords: ["security+", "comptia", "security", "cybersecurity", "certification"]
   },
   {
-    title: "AWS Cloud Practitioner",
-    description: "Amazon Web Services fundamentals",
+    title: "CISSP Certification",
+    description: "Certified Information Systems Security Professional",
     category: "Course",
-    path: "/courses?category=Cloud",
-    keywords: ["aws", "cloud practitioner", "amazon", "cloud", "certification"]
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cissp", "security", "cybersecurity", "certification", "isc2"]
   },
   {
-    title: "PMP Certification",
-    description: "Project Management Professional certification",
+    title: "Ethical Hacking",
+    description: "Ethical hacking and penetration testing",
     category: "Course",
-    path: "/courses?category=Project Management",
-    keywords: ["pmp", "project management", "pmbok", "certification"]
+    path: "/courses?category=Cybersecurity",
+    keywords: ["ethical hacking", "penetration testing", "hacking", "security", "ceh"]
   },
+  {
+    title: "CompTIA CySA+",
+    description: "Cybersecurity analyst certification",
+    category: "Course",
+    path: "/courses?category=Cybersecurity",
+    keywords: ["cysa", "comptia", "security", "analyst", "cybersecurity", "certification"]
+  },
+  
+  // Networking Courses
+  {
+    title: "CCNA: Cisco Certified Network Associate",
+    description: "Cisco networking fundamentals certification",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["ccna", "cisco", "networking", "certification", "routing", "switching"]
+  },
+  {
+    title: "CompTIA Network+",
+    description: "CompTIA networking certification",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["network+", "comptia", "networking", "certification"]
+  },
+  {
+    title: "CCNP Enterprise",
+    description: "Cisco certified network professional enterprise",
+    category: "Course",
+    path: "/courses?category=Networking",
+    keywords: ["ccnp", "cisco", "networking", "enterprise", "certification", "advanced"]
+  },
+  
+  // AI Courses
+  {
+    title: "ChatGPT & AI Fundamentals",
+    description: "Learn to use AI tools effectively",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "ai", "artificial intelligence", "openai", "prompt engineering"]
+  },
+  {
+    title: "ChatGPT for IT Professionals",
+    description: "Using ChatGPT for IT tasks and automation",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["chatgpt", "ai", "it", "automation", "professionals"]
+  },
+  {
+    title: "Microsoft 365 Copilot",
+    description: "Microsoft 365 Copilot training",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["copilot", "microsoft 365", "ai", "productivity", "automation"]
+  },
+  {
+    title: "Prompt Engineering",
+    description: "Crafting effective AI prompts",
+    category: "Course",
+    path: "/courses?category=AI",
+    keywords: ["prompt engineering", "ai", "chatgpt", "prompts", "llm"]
+  },
+  
+  // DevOps Courses
   {
     title: "Docker & Kubernetes",
     description: "Container orchestration and deployment",
@@ -246,11 +403,115 @@ export const searchData: SearchItem[] = [
     keywords: ["docker", "kubernetes", "containers", "orchestration", "devops"]
   },
   {
-    title: "ChatGPT & AI Fundamentals",
-    description: "Learn to use AI tools effectively",
+    title: "Git & GitHub",
+    description: "Version control with Git and GitHub",
     category: "Course",
-    path: "/courses?category=AI",
-    keywords: ["chatgpt", "ai", "artificial intelligence", "openai", "prompt engineering"]
+    path: "/courses?category=DevOps",
+    keywords: ["git", "github", "version control", "source control", "devops"]
+  },
+  {
+    title: "Terraform Infrastructure as Code",
+    description: "Infrastructure as code with Terraform",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["terraform", "infrastructure as code", "iac", "devops", "automation"]
+  },
+  {
+    title: "CI/CD with GitHub Actions",
+    description: "Continuous integration and deployment",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["cicd", "github actions", "continuous integration", "deployment", "devops"]
+  },
+  {
+    title: "Ansible Automation",
+    description: "Automation with Ansible",
+    category: "Course",
+    path: "/courses?category=DevOps",
+    keywords: ["ansible", "automation", "configuration management", "devops"]
+  },
+  
+  // Project Management Courses
+  {
+    title: "PMP Certification",
+    description: "Project Management Professional certification",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["pmp", "project management", "pmbok", "certification", "pmi"]
+  },
+  {
+    title: "Agile & Scrum",
+    description: "Agile project management and Scrum framework",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["agile", "scrum", "project management", "methodology"]
+  },
+  {
+    title: "PMI-ACP: Agile Certified Practitioner",
+    description: "PMI Agile certified practitioner",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["pmi-acp", "agile", "certification", "project management"]
+  },
+  {
+    title: "CAPM Certification",
+    description: "Certified Associate in Project Management",
+    category: "Course",
+    path: "/courses?category=Project Management",
+    keywords: ["capm", "project management", "certification", "entry level"]
+  },
+  
+  // Full Stack Developer Courses
+  {
+    title: "React Development",
+    description: "Modern React development training",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["react", "javascript", "frontend", "web development", "jsx"]
+  },
+  {
+    title: "Node.js & Express",
+    description: "Backend development with Node.js",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["nodejs", "node", "express", "backend", "javascript"]
+  },
+  {
+    title: "Python Programming",
+    description: "Python programming fundamentals",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["python", "programming", "development", "coding"]
+  },
+  {
+    title: "MongoDB & Databases",
+    description: "Database design and management",
+    category: "Course",
+    path: "/courses?category=Full Stack Developer",
+    keywords: ["mongodb", "database", "nosql", "data"]
+  },
+  
+  // Help Desk Courses
+  {
+    title: "CompTIA A+",
+    description: "CompTIA A+ certification training",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["a+", "comptia", "help desk", "it support", "certification"]
+  },
+  {
+    title: "ITIL v4 Foundations",
+    description: "ITIL service management fundamentals",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["itil", "service management", "it service", "certification"]
+  },
+  {
+    title: "Windows 10 Troubleshooting",
+    description: "Windows 10 support and troubleshooting",
+    category: "Course",
+    path: "/courses?category=Help Desk",
+    keywords: ["windows 10", "troubleshooting", "support", "help desk"]
   },
 ];
 
