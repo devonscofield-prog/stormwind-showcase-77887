@@ -44,11 +44,6 @@ export const SearchBar = () => {
     inputRef.current?.blur();
   };
 
-  const handleViewAllResults = () => {
-    navigate(`/search?q=${encodeURIComponent(query)}`);
-    setIsOpen(false);
-  };
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen || results.length === 0) return;
 
@@ -122,7 +117,7 @@ export const SearchBar = () => {
       {isOpen && results.length > 0 && (
         <div className="absolute top-full mt-2 w-full bg-card border border-border rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
           <div className="p-2">
-            {results.slice(0, 5).map((item, index) => (
+            {results.map((item, index) => (
               <button
                 key={`${item.path}-${index}`}
                 onClick={() => handleSelect(item)}
@@ -155,14 +150,6 @@ export const SearchBar = () => {
                 </div>
               </button>
             ))}
-            {results.length > 5 && (
-              <button
-                onClick={handleViewAllResults}
-                className="w-full text-center px-3 py-2.5 text-sm font-medium text-primary hover:bg-accent rounded-md transition-colors border-t border-border mt-2"
-              >
-                View all {results.length} results
-              </button>
-            )}
           </div>
         </div>
       )}
