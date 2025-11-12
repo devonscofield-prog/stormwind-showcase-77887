@@ -26,10 +26,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Received contact request from:", email);
 
-    // Send email to learning director (you can configure this email)
+    // Send email to learning director
     const emailResponse = await resend.emails.send({
-      from: "StormWind Contact <contact@stormwindstudios.com>",
-      to: ["contact@stormwindstudios.com"], // Replace with actual learning director email
+      from: "StormWind Contact <contact@stormwindlive.com>",
+      to: ["devon.scofield@stormwindlive.com"],
       subject: `New Contact Request from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to user
     await resend.emails.send({
-      from: "StormWind Studios <noreply@stormwindstudios.com>",
+      from: "StormWind Studios <noreply@stormwindlive.com>",
       to: [email],
       subject: "We received your message!",
       html: `
