@@ -1530,10 +1530,6 @@ const Courses = () => {
                 </div>
               )}
             </div>
-
-            <p className="text-sm text-muted-foreground">
-              Showing <span className="font-semibold text-primary">{totalCourses}</span> course{totalCourses !== 1 ? 's' : ''}
-            </p>
           </div>
 
           {/* Courses List */}
