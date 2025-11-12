@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, Zap, Search, EyeOff, Eye } from "lucide-react";
+import { Home, Zap, Search } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import {
   Breadcrumb,
@@ -1334,7 +1334,6 @@ const Courses = () => {
     const queryParam = searchParams.get("query");
     return queryParam || "";
   });
-  const [hideComingSoon, setHideComingSoon] = useState<boolean>(false);
 
   const categories = ["All Courses", ...Object.keys(courseData)];
 
@@ -1353,13 +1352,8 @@ const Courses = () => {
   };
 
   const getFilteredCourses = () => {
-    const filterComingSoon = (courses: Course[]) => {
-      if (!hideComingSoon) return courses;
-      return courses.filter((course) => {
-        const isComingSoon = typeof course === 'object' && course.isComingSoon;
-        return !isComingSoon;
-      });
-    };
+    // Always show all courses including "Coming Soon"
+    const filterComingSoon = (courses: Course[]) => courses;
 
     // If there's a search query, search across ALL categories
     if (searchQuery.trim()) {
@@ -1481,28 +1475,17 @@ const Courses = () => {
               Explore our comprehensive collection of IT and project management courses. Filter by category to find exactly what you need.
             </p>
 
-            {/* Search Bar and Toggle */}
+            {/* Search Bar */}
             <div className="flex flex-col items-center justify-center gap-4 mb-6 max-w-2xl mx-auto">
-              <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                <div className="relative flex-1 w-full">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    type="text"
-                    placeholder="Search courses..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-full bg-background"
-                  />
-                </div>
-                <Button
-                  onClick={() => setHideComingSoon(!hideComingSoon)}
-                  variant={hideComingSoon ? "default" : "outline"}
-                  size="default"
-                  className="gap-2 whitespace-nowrap w-full sm:w-auto"
-                >
-                  {hideComingSoon ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-                  <span>{hideComingSoon ? "Show" : "Hide"} Coming Soon</span>
-                </Button>
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Search courses..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 w-full bg-background"
+                />
               </div>
             </div>
 
