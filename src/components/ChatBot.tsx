@@ -3,6 +3,7 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import MessageContent from "./MessageContent";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -199,7 +200,11 @@ const ChatBot = () => {
                         : "bg-muted text-foreground"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                    {msg.role === "user" ? (
+                      <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                    ) : (
+                      <MessageContent content={msg.content} />
+                    )}
                   </div>
                 </div>
               ))}
