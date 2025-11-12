@@ -1,8 +1,16 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Container, Cloud, GitBranch, Award, BookOpen, Video, Target, Code, Settings, ExternalLink } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import learningPathsImage from "@/assets/devops-learning-paths.jpg";
 const DevOps = () => {
   const navigate = useNavigate();
@@ -39,6 +47,23 @@ const DevOps = () => {
       {/* Hero Section */}
       <div className="container mx-auto px-4 pt-32 pb-16">
         <div className="max-w-7xl mx-auto">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/" className="flex items-center gap-2">
+                    <Home className="w-4 h-4" />
+                    Home
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>DevOps Training</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           <div className="text-center mb-20 animate-fade-in">
             <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">
               DevOps Training

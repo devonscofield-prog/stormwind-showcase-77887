@@ -1,9 +1,17 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Home, Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 const AILearning = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +40,24 @@ const AILearning = () => {
       <Navigation />
 
       <main className="container mx-auto px-4 pt-32 pb-12">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb className="mb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/" className="flex items-center gap-2">
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>StormAI Tutor</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center gap-3 mb-6">

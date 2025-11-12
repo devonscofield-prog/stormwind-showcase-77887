@@ -1,8 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -29,6 +37,24 @@ const Ranges = () => {
       <Navigation />
 
       <div className="container mx-auto px-4 py-16 pt-32">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb className="mb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#4FD1C5]">
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-gray-500" />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-[#4FD1C5]">Ranges</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-6xl md:text-7xl font-bold mb-8 text-[#4FD1C5]">
