@@ -66,9 +66,15 @@ const Contact = () => {
       <div className="container mx-auto px-4 py-16 max-w-2xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-4">
             Request pricing information or get in touch with your learning director
           </p>
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-xl mx-auto">
+            <p className="text-sm text-foreground">
+              <strong>Note:</strong> If you've already been working with a StormWind learning director, 
+              please reach out to them directly. This form is for new inquiries.
+            </p>
+          </div>
         </div>
 
         <div className="bg-card rounded-lg shadow-lg p-8">
