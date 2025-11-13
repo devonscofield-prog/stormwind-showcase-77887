@@ -110,7 +110,7 @@ const Webinars = () => {
       <Navigation />
       <BackToTop />
       
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 pt-24 pb-16">
         {/* Hero Section */}
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-5xl font-bold text-white mb-4">
