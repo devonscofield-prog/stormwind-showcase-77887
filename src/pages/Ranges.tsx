@@ -53,7 +53,7 @@ const Ranges = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {/* Azure Range */}
           <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-            <img src={azureRangeImage} alt="Azure Range" className="w-full h-48 object-cover" />
+            <img src={azureRangeImage} alt="Azure Range" className="w-full h-48 object-cover" loading="lazy" />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Azure Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -65,7 +65,7 @@ const Ranges = () => {
 
           {/* Microsoft Range */}
           <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-            <img src={microsoftRangeImage} alt="Microsoft Range" className="w-full h-48 object-cover" />
+            <img src={microsoftRangeImage} alt="Microsoft Range" className="w-full h-48 object-cover" loading="lazy" />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Microsoft Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -77,7 +77,7 @@ const Ranges = () => {
 
           {/* Network Range */}
           <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-            <img src={networkRangeImage} alt="Network Range" className="w-full h-48 object-cover" />
+            <img src={networkRangeImage} alt="Network Range" className="w-full h-48 object-cover" loading="lazy" />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Network Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -89,7 +89,7 @@ const Ranges = () => {
 
           {/* Cyber Range */}
           <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-            <img src={cyberRangeImage} alt="Cyber Range" className="w-full h-48 object-cover" />
+            <img src={cyberRangeImage} alt="Cyber Range" className="w-full h-48 object-cover" loading="lazy" />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Cyber Range</h3>
               <p className="text-gray-400 text-sm mb-4">

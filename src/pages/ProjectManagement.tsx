@@ -73,6 +73,7 @@ const ProjectManagement = () => {
                   src={ashleyHuntImage} 
                   alt="Ashley Hunt" 
                   className="w-48 h-48 rounded-lg object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="flex-1">

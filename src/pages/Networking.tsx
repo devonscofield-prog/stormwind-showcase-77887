@@ -150,7 +150,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -200,7 +200,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -250,7 +250,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -300,7 +300,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -351,7 +351,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -401,7 +401,7 @@ const Networking = () => {
               <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
+                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
