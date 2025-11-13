@@ -137,11 +137,35 @@ const Ranges = () => {
 
         {/* Tabbed Range Details */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12">
-            <TabsTrigger value="azure">Azure</TabsTrigger>
-            <TabsTrigger value="microsoft">Microsoft</TabsTrigger>
-            <TabsTrigger value="network">Network</TabsTrigger>
-            <TabsTrigger value="cyber">Cyber</TabsTrigger>
+          <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
+            <TabsTrigger 
+              value="azure" 
+              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
+            >
+              <Cloud className="w-4 h-4" />
+              Azure Range
+            </TabsTrigger>
+            <TabsTrigger 
+              value="microsoft"
+              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
+            >
+              <Server className="w-4 h-4" />
+              Microsoft Range
+            </TabsTrigger>
+            <TabsTrigger 
+              value="network"
+              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
+            >
+              <Network className="w-4 h-4" />
+              Network Range
+            </TabsTrigger>
+            <TabsTrigger 
+              value="cyber"
+              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
+            >
+              <Shield className="w-4 h-4" />
+              Cyber Range
+            </TabsTrigger>
           </TabsList>
 
           {/* Azure Range Content */}
