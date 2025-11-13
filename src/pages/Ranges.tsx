@@ -181,7 +181,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-6">Azure Services & Technologies</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {["Azure Portal & Azure CLI", "Azure Resource Manager (ARM) & Bicep", "Azure Virtual Machines (VMs)", "Azure Storage (Blob, File, Table, Queue)", "Azure Virtual Networks (VNet)", "Azure Load Balancer", "Azure Monitor & Log Analytics", "Azure Backup & Site Recovery", "Azure App Services", "Azure Networking (NSGs, Private Link, Peering)", "Azure Kubernetes Service (AKS)", "Azure Automation & Runbooks", "Azure Security Center (Defender for Cloud)", "Azure Key Vault", "Azure Policies", "Azure Virtual Desktop (AVD)", "Azure Infrastructure as Code (IaC)"].map(tech => <div key={tech} className="flex items-start gap-2">
@@ -246,7 +246,7 @@ const Ranges = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6">Platforms & Operating Systems</h3>
                 <div className="space-y-3">
                   {["Windows Server 2025", "Windows 11", "Hyper-V", "Microsoft SQL"].map(platform => <div key={platform} className="flex items-start gap-2">
@@ -255,7 +255,7 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6">Microsoft Technologies</h3>
                 <div className="space-y-3">
                   {["Windows Active Directory", "DNS Services", "Hyper-V Virtualization", "Group Policy Management", "File and Storage Server", "DHCP Services", "Remote Desktop Services", "Windows Security", "PowerShell Administration", "Windows Deployment Services", "Certificate Services", "Network Policy Server"].map(tech => <div key={tech} className="flex items-start gap-2">
@@ -348,7 +348,7 @@ const Ranges = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6">Platforms</h3>
                 <div className="space-y-3">
                   {["Cisco IOS", "Cisco Catalyst 9300", "Cisco Nexus 9500", "Nmap", "PowerDNS", "Windows Server 2019"].map(platform => <div key={platform} className="flex items-start gap-2">
@@ -357,7 +357,7 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6">Class Alignment</h3>
                 <div className="space-y-3">
                   {["Cisco CCNA", "CompTIA Network+ N10-009", "Cisco CCNP ENCOR", "Cisco CCNP ENARSI", "Modern Networking with IPv6"].map(cert => <div key={cert} className="flex items-start gap-2">
@@ -422,7 +422,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-6">Core Security Skills</h3>
               <p className="text-gray-400 mb-6">
                 Start your cyber range journey by mastering essential tools. These activities will prepare you for more advanced challenges ahead.
@@ -443,7 +443,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-6">Coming Soon</h3>
               <p className="text-gray-400 mb-6">
                 Our next events in the cyber range tackle key topics in cybersecurity. Learn to detect attacks against web applications, identify malicious activity, and secure authentication systems.
@@ -456,7 +456,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 text-center">
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 text-center hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-4">Built for beginners and seasoned professionals</h3>
               <p className="text-gray-400">
                 Transform your expertise into an unassailable asset against evolving cyber risks through hands-on CTF challenges.
