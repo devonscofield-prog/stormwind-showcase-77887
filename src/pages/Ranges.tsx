@@ -151,12 +151,27 @@ const Ranges = () => {
               <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                 Direct access to Azure cloud services. Practice and skill up on cloud technologies directly in Azure with a sandboxed environment.
               </p>
-              <Button
-                onClick={() => window.open('https://fast.wistia.com/embed/channel/ldye5f7b67?wchannelid=ldye5f7b67&wmediaid=4h1c0m2kaf', '_blank')}
-                className="bg-[#4FD1C5] hover:bg-[#3db8ad] text-white"
-              >
-                View Video
-              </Button>
+              
+              {/* Embedded Wistia Video */}
+              <div className="mb-8 max-w-4xl mx-auto">
+                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
+                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true"
+                      title="Azure Range Demo"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
@@ -230,12 +245,27 @@ const Ranges = () => {
               <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                 Master Microsoft technologies and Windows infrastructure with hands-on experience in enterprise environments.
               </p>
-              <Button
-                onClick={() => window.open('https://fast.wistia.com/embed/channel/ldye5f7b67?wchannelid=ldye5f7b67&wmediaid=v6zins19bi', '_blank')}
-                className="bg-[#4FD1C5] hover:bg-[#3db8ad] text-white"
-              >
-                View Video
-              </Button>
+              
+              {/* Embedded Wistia Video */}
+              <div className="mb-8 max-w-4xl mx-auto">
+                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
+                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true"
+                      title="Microsoft Range Demo"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -308,12 +338,27 @@ const Ranges = () => {
               <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                 A dynamic networking sandbox with routers, multi-layer switches, and connected hosts. From simple setups to advanced architectures.
               </p>
-              <Button
-                onClick={() => window.open('https://fast.wistia.com/embed/channel/ldye5f7b67?wchannelid=ldye5f7b67&wmediaid=6i6y01qjp0', '_blank')}
-                className="bg-[#4FD1C5] hover:bg-[#3db8ad] text-white"
-              >
-                View Video
-              </Button>
+              
+              {/* Embedded Wistia Video */}
+              <div className="mb-8 max-w-4xl mx-auto">
+                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
+                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true"
+                      title="Network Range Demo"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
@@ -408,12 +453,27 @@ const Ranges = () => {
               <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                 Enhance your cybersecurity skills with a cutting-edge practical training environment designed to keep you ahead of emerging threats.
               </p>
-              <Button
-                onClick={() => window.open('https://fast.wistia.com/embed/channel/ldye5f7b67?wchannelid=ldye5f7b67&wmediaid=gg8rfkzk3y', '_blank')}
-                className="bg-[#4FD1C5] hover:bg-[#3db8ad] text-white"
-              >
-                View Video
-              </Button>
+              
+              {/* Embedded Wistia Video */}
+              <div className="mb-8 max-w-4xl mx-auto">
+                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
+                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+                    <iframe
+                      src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true"
+                      title="Cyber Range Demo"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
