@@ -107,10 +107,10 @@ const Webinars = () => {
       color: "#4FD1C5",
       webinars: [
         {
-          title: "Unlocking Productivity with Microsoft 365 Copilot",
-          instructor: "Spike Xavier",
-          videoId: "tkq25orostk",
-          description: "Discover how Microsoft 365 Copilot can transform your productivity workflows and streamline daily tasks."
+          title: "ChatGPT Canvas: Slick New Feature",
+          instructor: "Dan Young",
+          videoId: "rq8sn5np57",
+          description: "Explore the new ChatGPT Canvas feature and learn how to leverage it for enhanced project collaboration and productivity."
         },
         {
           title: "Getting Started with AI in Your Project Management Workflow",
