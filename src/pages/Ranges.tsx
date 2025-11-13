@@ -301,7 +301,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-4">Over 70 Lab Activities Available</h3>
               <p className="text-gray-400">
                 Work with full networking devices where you can follow structured labs or break out and experiment with your own configurations.
