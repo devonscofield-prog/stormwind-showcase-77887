@@ -21,6 +21,14 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import stormwindLogo from "@/assets/stormwind-logo.png";
 
 type Course = string | { name: string; isBytes?: boolean; isComingSoon?: boolean; isWebinar?: boolean };
@@ -29,6 +37,8 @@ const Courses = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const COURSES_PER_PAGE = 50;
 
   useEffect(() => {
     document.title = "Course Catalog - StormWind Studios";
@@ -4491,17 +4501,58 @@ const Courses = () => {
 
   const filteredCourses = getFilteredCourses();
   
-  const getTotalCourses = () => {
-    let total = 0;
-    Object.entries(filteredCourses).forEach(([_, subcategories]) => {
-      Object.entries(subcategories as Record<string, Course[]>).forEach(([_, courses]) => {
-        total += courses.length;
+  // Flatten courses for pagination
+  const flattenedCourses = () => {
+    const flattened: Array<{
+      category: string;
+      subcategory: string;
+      course: Course;
+      index: number;
+    }> = [];
+    
+    Object.entries(filteredCourses).forEach(([category, subcategories]) => {
+      Object.entries(subcategories as Record<string, Course[]>).forEach(([subcategory, courses]) => {
+        courses.forEach((course, index) => {
+          flattened.push({ category, subcategory, course, index });
+        });
       });
     });
-    return total;
+    
+    return flattened;
   };
+
+  const allCourses = flattenedCourses();
+  const totalCourses = allCourses.length;
+  const totalPages = Math.ceil(totalCourses / COURSES_PER_PAGE);
   
-  const totalCourses = getTotalCourses();
+  // Get courses for current page
+  const startIndex = (currentPage - 1) * COURSES_PER_PAGE;
+  const endIndex = startIndex + COURSES_PER_PAGE;
+  const paginatedCourses = allCourses.slice(startIndex, endIndex);
+  
+  // Group paginated courses back into categories and subcategories
+  const groupedPaginatedCourses = () => {
+    const grouped: any = {};
+    
+    paginatedCourses.forEach(({ category, subcategory, course }) => {
+      if (!grouped[category]) {
+        grouped[category] = {};
+      }
+      if (!grouped[category][subcategory]) {
+        grouped[category][subcategory] = [];
+      }
+      grouped[category][subcategory].push(course);
+    });
+    
+    return grouped;
+  };
+
+  const displayCourses = groupedPaginatedCourses();
+  
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedSubcategory, searchQuery]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -4622,8 +4673,9 @@ const Courses = () => {
               ))}
             </div>
           ) : (
-            <div className="space-y-6">
-              {Object.entries(filteredCourses).map(([category, subcategories]) => (
+            <>
+              <div className="space-y-6">
+                {Object.entries(displayCourses).map(([category, subcategories]) => (
                 <div key={category} className="space-y-6">
                   {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
                     <div
@@ -4691,6 +4743,73 @@ const Courses = () => {
                 </div>
               ))}
             </div>
+            
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="mt-8 flex justify-center">
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (currentPage > 1) {
+                            setCurrentPage(currentPage - 1);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
+                        className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                      />
+                    </PaginationItem>
+                    
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      let pageNum;
+                      if (totalPages <= 5) {
+                        pageNum = i + 1;
+                      } else if (currentPage <= 3) {
+                        pageNum = i + 1;
+                      } else if (currentPage >= totalPages - 2) {
+                        pageNum = totalPages - 4 + i;
+                      } else {
+                        pageNum = currentPage - 2 + i;
+                      }
+                      
+                      return (
+                        <PaginationItem key={pageNum}>
+                          <PaginationLink
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setCurrentPage(pageNum);
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                            isActive={currentPage === pageNum}
+                          >
+                            {pageNum}
+                          </PaginationLink>
+                        </PaginationItem>
+                      );
+                    })}
+                    
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (currentPage < totalPages) {
+                            setCurrentPage(currentPage + 1);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
+                        className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
+            )}
+            </>
           )}
 
           {/* Footer Note */}
