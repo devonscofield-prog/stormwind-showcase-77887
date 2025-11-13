@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Cloud, Shield, Network, Briefcase } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BackToTop from "@/components/BackToTop";
 import { LazyVideo } from "@/components/LazyVideo";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Webinars = () => {
   const [activeTab, setActiveTab] = useState("microsoft");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate data loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const webinarCategories = {
     microsoft: {
@@ -181,33 +191,49 @@ const Webinars = () => {
               value={key}
               className="animate-fade-in"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {category.webinars.map((webinar, index) => (
-                  <div
-                    key={index}
-                    className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 group"
-                  >
-                    {/* Video Embed */}
-                    <LazyVideo 
-                      videoId={webinar.videoId}
-                      title={webinar.title}
-                    />
-                    
-                    {/* Webinar Info */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#4FD1C5] transition-colors">
-                        {webinar.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-3">
-                        Instructor: <span className="text-[#4FD1C5] font-semibold">{webinar.instructor}</span>
-                      </p>
-                      <p className="text-gray-500 text-sm leading-relaxed">
-                        {webinar.description}
-                      </p>
+              {isLoading ? (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {[...Array(4)].map((_, index) => (
+                    <div key={index} className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden">
+                      <Skeleton className="w-full h-64 bg-gray-800" />
+                      <div className="p-6 space-y-3">
+                        <Skeleton className="h-6 w-3/4 bg-gray-800" />
+                        <Skeleton className="h-4 w-1/2 bg-gray-800" />
+                        <Skeleton className="h-4 w-full bg-gray-800" />
+                        <Skeleton className="h-4 w-full bg-gray-800" />
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {category.webinars.map((webinar, index) => (
+                    <div
+                      key={index}
+                      className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 group"
+                    >
+                      {/* Video Embed */}
+                      <LazyVideo 
+                        videoId={webinar.videoId}
+                        title={webinar.title}
+                      />
+                      
+                      {/* Webinar Info */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#4FD1C5] transition-colors">
+                          {webinar.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm mb-3">
+                          Instructor: <span className="text-[#4FD1C5] font-semibold">{webinar.instructor}</span>
+                        </p>
+                        <p className="text-gray-500 text-sm leading-relaxed">
+                          {webinar.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </TabsContent>
           ))}
         </Tabs>

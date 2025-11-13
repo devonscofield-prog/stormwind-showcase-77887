@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home, Zap, Search } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -27,9 +28,16 @@ type Course = string | { name: string; isBytes?: boolean; isComingSoon?: boolean
 const Courses = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.title = "Course Catalog - StormWind Studios";
+    
+    // Simulate data loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
   }, []);
 
   const courseData = {
@@ -4590,75 +4598,100 @@ const Courses = () => {
           </div>
 
           {/* Courses List */}
-          <div className="space-y-6">
-            {Object.entries(filteredCourses).map(([category, subcategories]) => (
-              <div key={category} className="space-y-6">
-                {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
-                  <div
-                    key={subcategory}
-                    className="animate-fade-in bg-card rounded-xl border border-border p-4 sm:p-5 shadow-card hover:shadow-card-hover transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="h-0.5 w-8 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
-                      <h2 className="text-lg sm:text-xl font-bold text-foreground">
-                        {subcategory}
-                      </h2>
-                      <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
-                    </div>
+          {isLoading ? (
+            <div className="space-y-6">
+              {[...Array(3)].map((_, catIndex) => (
+                <div key={catIndex} className="bg-card rounded-xl border border-border p-4 sm:p-5 shadow-card">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Skeleton className="h-0.5 w-8" />
+                    <Skeleton className="h-6 w-48" />
+                    <Skeleton className="h-0.5 flex-1" />
+                  </div>
+                  <div className="grid gap-2">
+                    {[...Array(8)].map((_, courseIndex) => (
+                      <div key={courseIndex} className="flex items-start gap-2 p-2.5 rounded-lg bg-muted/30">
+                        <Skeleton className="w-1.5 h-1.5 rounded-full mt-0.5" />
+                        <Skeleton className="h-4 flex-1" />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <Skeleton className="h-3 w-32 mx-auto" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {Object.entries(filteredCourses).map(([category, subcategories]) => (
+                <div key={category} className="space-y-6">
+                  {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
+                    <div
+                      key={subcategory}
+                      className="animate-fade-in bg-card rounded-xl border border-border p-4 sm:p-5 shadow-card hover:shadow-card-hover transition-all duration-300"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="h-0.5 w-8 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
+                        <h2 className="text-lg sm:text-xl font-bold text-foreground">
+                          {subcategory}
+                        </h2>
+                        <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
+                      </div>
 
-                    <div className="grid gap-2">
-                      {courses.map((course, index) => {
-                        const courseName = typeof course === 'string' ? course : course.name;
-                        const isBytes = typeof course === 'object' && course.isBytes;
-                        const isComingSoon = typeof course === 'object' && course.isComingSoon;
-                        const isWebinar = typeof course === 'object' && course.isWebinar;
-                        
-                        return (
-                          <div
-                            key={index}
-                            className="group flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 border border-transparent hover:border-primary/20"
-                          >
-                            <div className="flex-shrink-0 mt-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform" />
-                            </div>
-                            <div className="flex-1 flex items-start justify-between gap-2">
-                              <p className="text-xs sm:text-sm leading-snug text-foreground">
-                                {courseName}
-                              </p>
-                              <div className="flex items-center gap-1.5 shrink-0">
-                                {isBytes && (
-                                  <Badge variant="secondary" className="flex items-center gap-0.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 py-0 h-5">
-                                    <Zap className="h-2.5 w-2.5" />
-                                    <span className="text-[10px] font-semibold">Bytes</span>
-                                  </Badge>
-                                )}
-                                {isWebinar && (
-                                  <Badge variant="secondary" className="flex items-center gap-0.5 bg-accent/10 text-accent-foreground border-accent/20 hover:bg-accent/20 py-0 h-5">
-                                    <span className="text-[10px] font-semibold">Webinar</span>
-                                  </Badge>
-                                )}
-                                {isComingSoon && (
-                                  <Badge variant="outline" className="flex items-center gap-0.5 bg-muted/50 text-muted-foreground border-muted-foreground/20 py-0 h-5">
-                                    <span className="text-[10px] font-semibold">Coming Soon</span>
-                                  </Badge>
-                                )}
+                      <div className="grid gap-2">
+                        {courses.map((course, index) => {
+                          const courseName = typeof course === 'string' ? course : course.name;
+                          const isBytes = typeof course === 'object' && course.isBytes;
+                          const isComingSoon = typeof course === 'object' && course.isComingSoon;
+                          const isWebinar = typeof course === 'object' && course.isWebinar;
+                          
+                          return (
+                            <div
+                              key={index}
+                              className="group flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 border border-transparent hover:border-primary/20"
+                            >
+                              <div className="flex-shrink-0 mt-0.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform" />
+                              </div>
+                              <div className="flex-1 flex items-start justify-between gap-2">
+                                <p className="text-xs sm:text-sm leading-snug text-foreground">
+                                  {courseName}
+                                </p>
+                                <div className="flex items-center gap-1.5 shrink-0">
+                                  {isBytes && (
+                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 py-0 h-5">
+                                      <Zap className="h-2.5 w-2.5" />
+                                      <span className="text-[10px] font-semibold">Bytes</span>
+                                    </Badge>
+                                  )}
+                                  {isWebinar && (
+                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-accent/10 text-accent-foreground border-accent/20 hover:bg-accent/20 py-0 h-5">
+                                      <span className="text-[10px] font-semibold">Webinar</span>
+                                    </Badge>
+                                  )}
+                                  {isComingSoon && (
+                                    <Badge variant="outline" className="flex items-center gap-0.5 bg-muted/50 text-muted-foreground border-muted-foreground/20 py-0 h-5">
+                                      <span className="text-[10px] font-semibold">Coming Soon</span>
+                                    </Badge>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                          );
+                        })}
+                      </div>
 
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <p className="text-xs text-muted-foreground text-center">
-                        {courses.length} course{courses.length !== 1 ? 's' : ''} in this subcategory
-                      </p>
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <p className="text-xs text-muted-foreground text-center">
+                          {courses.length} course{courses.length !== 1 ? 's' : ''} in this subcategory
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Footer Note */}
           <div className="mt-16 text-center">
