@@ -17,6 +17,7 @@ export const Navigation = () => {
             alt="StormWind Studios" 
             className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
             onClick={() => navigate('/')}
+            loading="lazy"
           />
           
           {/* Desktop Navigation */}

@@ -84,6 +84,7 @@ const Contact = () => {
               alt="StormWind Studios" 
               className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" 
               onClick={() => navigate('/')}
+              loading="lazy"
             />
             <Button 
               variant="default" 
