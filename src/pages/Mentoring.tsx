@@ -1,8 +1,9 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Award, BookOpen, Hammer } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -19,9 +20,16 @@ const Mentoring = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { technologies = [], features = [] } = location.state || {};
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.title = "Mentoring";
+    
+    // Simulate data loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   const instructors = [
@@ -100,60 +108,84 @@ const Mentoring = () => {
           </div>
 
           {/* Instructors Section */}
-          <div className="space-y-12">
-            {instructors.map((instructor, index) => (
-              <div
-                key={index}
-                className={`animate-fade-in rounded-2xl bg-gradient-to-br ${instructor.bgColor} border-2 ${instructor.borderColor} overflow-hidden shadow-lg`}
-              >
-                <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
-                  {/* Instructor Image/Icon */}
-                  <div className="flex flex-col items-center justify-center">
-                    {instructor.image ? (
-                      <img 
-                        src={instructor.image} 
-                        alt={instructor.name}
-                        className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl"
-                      />
-                    ) : (
-                      <div className="w-48 h-48 rounded-full bg-white border-4 border-white shadow-xl flex items-center justify-center">
-                        <instructor.icon className="w-24 h-24 text-primary" />
-                      </div>
-                    )}
-                    <div className="mt-6 text-center">
-                      <div className="inline-block px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm">
-                        <span className="text-sm font-semibold text-slate-700">{instructor.specialization}</span>
-                      </div>
+          {isLoading ? (
+            <div className="space-y-12">
+              {[...Array(3)].map((_, index) => (
+                <div key={index} className="rounded-2xl bg-white border-2 overflow-hidden shadow-lg">
+                  <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                      <Skeleton className="w-48 h-48 rounded-full" />
+                      <Skeleton className="h-8 w-32 rounded-full" />
                     </div>
-                  </div>
-
-                  {/* Instructor Details */}
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h2 className="text-4xl font-bold text-slate-900 mb-2">{instructor.name}</h2>
-                      <p className="text-lg text-slate-600 font-medium">{instructor.title}</p>
-                    </div>
-
-                    <div className="space-y-3">
-                      <p className="text-slate-700 leading-relaxed">
-                        {instructor.description}
-                      </p>
-                      
-                      <p className="text-slate-700 leading-relaxed font-medium">
-                        {instructor.expertise}
-                      </p>
-
-                      {instructor.personal && (
-                        <p className="text-slate-600 leading-relaxed italic">
-                          {instructor.personal}
-                        </p>
-                      )}
+                    <div className="md:col-span-2 space-y-4">
+                      <Skeleton className="h-10 w-48" />
+                      <Skeleton className="h-6 w-64" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-5/6" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-4/5" />
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-12">
+              {instructors.map((instructor, index) => (
+                <div
+                  key={index}
+                  className={`animate-fade-in rounded-2xl bg-gradient-to-br ${instructor.bgColor} border-2 ${instructor.borderColor} overflow-hidden shadow-lg`}
+                >
+                  <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
+                    {/* Instructor Image/Icon */}
+                    <div className="flex flex-col items-center justify-center">
+                      {instructor.image ? (
+                        <img 
+                          src={instructor.image} 
+                          alt={instructor.name}
+                          className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl"
+                        />
+                      ) : (
+                        <div className="w-48 h-48 rounded-full bg-white border-4 border-white shadow-xl flex items-center justify-center">
+                          <instructor.icon className="w-24 h-24 text-primary" />
+                        </div>
+                      )}
+                      <div className="mt-6 text-center">
+                        <div className="inline-block px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm">
+                          <span className="text-sm font-semibold text-slate-700">{instructor.specialization}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Instructor Details */}
+                    <div className="md:col-span-2 space-y-4">
+                      <div>
+                        <h2 className="text-4xl font-bold text-slate-900 mb-2">{instructor.name}</h2>
+                        <p className="text-lg text-slate-600 font-medium">{instructor.title}</p>
+                      </div>
+
+                      <div className="space-y-3">
+                        <p className="text-slate-700 leading-relaxed">
+                          {instructor.description}
+                        </p>
+                        
+                        <p className="text-slate-700 leading-relaxed font-medium">
+                          {instructor.expertise}
+                        </p>
+
+                        {instructor.personal && (
+                          <p className="text-slate-600 leading-relaxed italic">
+                            {instructor.personal}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Call to Action */}
           <div className="mt-16 text-center animate-fade-in">
