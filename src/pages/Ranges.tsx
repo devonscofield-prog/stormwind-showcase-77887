@@ -154,27 +154,27 @@ const Ranges = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <Database className="w-12 h-12 text-[#4FD1C5] mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Azure Storage Sandbox</h3>
                 <p className="text-gray-400 text-sm">Work with blobs, shared access signatures, and tools for uploading, securing, and managing data.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <GitBranch className="w-12 h-12 text-[#4FD1C5] mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Azure Networking Sandbox</h3>
                 <p className="text-gray-400 text-sm">Manage virtual networks, peering, public IPs, and troubleshooting connectivity.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <Server className="w-12 h-12 text-[#4FD1C5] mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Azure Compute Sandbox</h3>
                 <p className="text-gray-400 text-sm">Manage and configure virtual machines, extensions, and automation tools like cloud-init and scripts.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <Shield className="w-12 h-12 text-[#4FD1C5] mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Azure Firewall Sandbox</h3>
                 <p className="text-gray-400 text-sm">This sandbox provides a complete hub-and-spoke lab for testing Azure Firewall, transitive routing, and secure remote access end to end.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <Box className="w-12 h-12 text-[#4FD1C5] mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">Azure Base Sandbox</h3>
                 <p className="text-gray-400 text-sm">Empty Resource Group for testing new ideas or building from the ground up.</p>
@@ -227,19 +227,19 @@ const Ranges = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Enterprise Operating Systems</h3>
                 <p className="text-gray-400">Work with the latest Windows Server 2025 and Windows 11 in a production-like environment</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Active Directory</h3>
                 <p className="text-gray-400">Master domain services, user management, and organizational structure in a full AD environment</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Virtualization</h3>
                 <p className="text-gray-400">Deploy and manage virtual machines with Hyper-V, including nested virtualization scenarios</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Microsoft Security</h3>
                 <p className="text-gray-400">Implement and test security policies, encryption, and compliance measures across Windows infrastructure</p>
               </div>
@@ -309,7 +309,7 @@ const Ranges = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-4">Switching</h3>
                 <div className="space-y-2">
                   {["VLANs", "Private VLANs", "Trunking", "QoS"].map(item => <div key={item} className="flex items-start gap-2">
@@ -318,7 +318,7 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-4">Routing</h3>
                 <div className="space-y-2">
                   {["OSPF", "EIGRP", "BGP", "Static Routing", "Summarization", "Redistribution", "Route Filtering", "Policy-Based Routing"].map(item => <div key={item} className="flex items-start gap-2">
@@ -327,7 +327,7 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-4">Infrastructure</h3>
                 <div className="space-y-2">
                   {["DNS", "DHCP", "SSH", "GRE", "NTP"].map(item => <div key={item} className="flex items-start gap-2">
@@ -336,7 +336,7 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-4">IPv6</h3>
                 <div className="space-y-2">
                   {["OSPFv3", "BGP for IPv6", "6in4 Tunnels", "6to4 Tunnels", "6over4 Tunnels", "DHCPv6 PD", "IPv6 ACLs"].map(item => <div key={item} className="flex items-start gap-2">
@@ -404,19 +404,19 @@ const Ranges = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Realistic Challenges</h3>
                 <p className="text-gray-400">Dynamic 'capture the flag' challenges that simulate real-world scenarios, exposing vulnerabilities, breaches and cyber threats.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Expert Guidance</h3>
                 <p className="text-gray-400">Invaluable guidance from seasoned security professionals, equipping you with the latest insights and solutions.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Defense Tools</h3>
                 <p className="text-gray-400">Master top-tier defense tools and techniques through experiential learning with measurable achievements.</p>
               </div>
-              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
+              <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] transition-all duration-300">
                 <h3 className="text-xl font-semibold text-white mb-3">Real World Application</h3>
                 <p className="text-gray-400">Sharpen your abilities by facing and overcoming real-world challenges in an unparalleled training platform.</p>
               </div>
