@@ -122,7 +122,7 @@ const Ranges = () => {
           </TabsList>
 
           {/* Azure Range Content */}
-          <TabsContent value="azure" className="mt-0">
+          <TabsContent value="azure" className="mt-0 animate-fade-in">
             <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -195,7 +195,7 @@ const Ranges = () => {
           </TabsContent>
 
           {/* Microsoft Range Content */}
-          <TabsContent value="microsoft" className="mt-0">
+          <TabsContent value="microsoft" className="mt-0 animate-fade-in">
             <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -270,7 +270,7 @@ const Ranges = () => {
           </TabsContent>
 
           {/* Network Range Content */}
-          <TabsContent value="network" className="mt-0">
+          <TabsContent value="network" className="mt-0 animate-fade-in">
             <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -372,7 +372,7 @@ const Ranges = () => {
           </TabsContent>
 
           {/* Cyber Range Content */}
-          <TabsContent value="cyber" className="mt-0">
+          <TabsContent value="cyber" className="mt-0 animate-fade-in">
             <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
