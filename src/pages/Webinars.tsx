@@ -9,7 +9,7 @@ const Webinars = () => {
 
   const webinarCategories = {
     microsoft: {
-      title: "Microsoft & Copilot",
+      title: "Microsoft & Azure",
       icon: Cloud,
       color: "#4FD1C5",
       webinars: [
@@ -20,29 +20,22 @@ const Webinars = () => {
           description: "Learn how to leverage Copilot and Microsoft Defender XDR to enhance your Microsoft 365 administration capabilities."
         },
         {
-          title: "Unlocking Productivity with Microsoft 365 Copilot",
-          instructor: "Spike Xavier",
-          videoId: "tkq25orostk",
-          description: "Discover how Microsoft 365 Copilot can transform your productivity workflows and streamline daily tasks."
-        },
-        {
           title: "Getting Started with Microsoft Graph PowerShell",
           instructor: "Spike Xavier",
           videoId: "k92egxqxjl",
           description: "Master the fundamentals of Microsoft Graph PowerShell for efficient Microsoft 365 management."
-        }
-      ]
-    },
-    cloud: {
-      title: "Cloud & Azure",
-      icon: Cloud,
-      color: "#4FD1C5",
-      webinars: [
+        },
         {
           title: "Kickstart Your Azure Journey with Hands-On Learning",
           instructor: "Mike Pfeiffer",
           videoId: "mlatx2hqwl",
           description: "Begin your Azure learning journey with practical, hands-on exercises and real-world scenarios."
+        },
+        {
+          title: "Delivering Production-Ready Apps on Azure: Best Practices in Action",
+          instructor: "Mike Pfeiffer",
+          videoId: "oa46cxfoq5",
+          description: "Learn best practices for deploying and managing production-ready applications on Azure."
         }
       ]
     },
@@ -62,6 +55,18 @@ const Webinars = () => {
           instructor: "Dan Young",
           videoId: "t9upm4epoj",
           description: "Master network analysis with Wireshark, from basic packet capture to advanced troubleshooting techniques."
+        },
+        {
+          title: "Solving Network Requirements with ChatGPT",
+          instructor: "Dan Young",
+          videoId: "d01l174wlu",
+          description: "Discover how to leverage ChatGPT to solve complex networking requirements and streamline network design."
+        },
+        {
+          title: "Cisco Diagnostics: Unlocking the Top 5 Techniques",
+          instructor: "Raymond Lacoste",
+          videoId: "iywbnjbv1y",
+          description: "Master the top 5 diagnostic techniques for troubleshooting Cisco network devices and configurations."
         }
       ]
     },
@@ -87,6 +92,12 @@ const Webinars = () => {
           instructor: "Chris Paul",
           videoId: "1v94ags53o",
           description: "Learn to identify, prevent, and mitigate SQL injection vulnerabilities in your applications."
+        },
+        {
+          title: "Navigating the Future: Zero Trust Framework in Cybersecurity",
+          instructor: "Raymond Lacoste",
+          videoId: "8u14saekwr",
+          description: "Explore the Zero Trust security framework and learn how to implement it in your organization."
         }
       ]
     },
@@ -96,10 +107,28 @@ const Webinars = () => {
       color: "#4FD1C5",
       webinars: [
         {
+          title: "Unlocking Productivity with Microsoft 365 Copilot",
+          instructor: "Spike Xavier",
+          videoId: "tkq25orostk",
+          description: "Discover how Microsoft 365 Copilot can transform your productivity workflows and streamline daily tasks."
+        },
+        {
           title: "Getting Started with AI in Your Project Management Workflow",
           instructor: "Ashley Hunt",
           videoId: "7mm5dapj01",
           description: "Integrate AI tools into your project management workflow to enhance efficiency and decision-making."
+        },
+        {
+          title: "ChatGPT's GPT Store",
+          instructor: "Dan Young",
+          videoId: "h0sznrklhg",
+          description: "Explore the ChatGPT GPT Store and learn how to leverage custom GPTs for your projects."
+        },
+        {
+          title: "ChatGPT: The Secret Weapon for Project Managers",
+          instructor: "Ashley Hunt",
+          videoId: "vggf99ngqf",
+          description: "Discover how to use ChatGPT as a powerful tool to enhance project management efficiency and productivity."
         }
       ]
     }
@@ -123,7 +152,7 @@ const Webinars = () => {
 
         {/* Tabbed Interface */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-2 bg-transparent h-auto p-0 mb-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent h-auto p-0 mb-8">
             {Object.entries(webinarCategories).map(([key, category]) => {
               const IconComponent = category.icon;
               return (
