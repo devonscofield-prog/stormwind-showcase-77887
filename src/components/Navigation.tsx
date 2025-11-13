@@ -26,6 +26,11 @@ export const Navigation = () => {
                 Courses
               </Button>
             </Link>
+            <Link to="/webinars">
+              <Button variant="ghost" className="text-foreground hover:text-primary">
+                Webinars
+              </Button>
+            </Link>
             <Link to="/ranges">
               <Button variant="ghost" className="text-foreground hover:text-primary">
                 Ranges
@@ -61,6 +66,14 @@ export const Navigation = () => {
                 className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
               >
                 Courses
+              </Button>
+            </Link>
+            <Link to="/webinars" onClick={() => setMobileMenuOpen(false)}>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+              >
+                Webinars
               </Button>
             </Link>
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
