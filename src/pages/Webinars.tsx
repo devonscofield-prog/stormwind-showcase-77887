@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Cloud, Shield, Network, Briefcase } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BackToTop from "@/components/BackToTop";
+import { LazyVideo } from "@/components/LazyVideo";
 
 const Webinars = () => {
   const [activeTab, setActiveTab] = useState("microsoft");
@@ -187,15 +188,10 @@ const Webinars = () => {
                     className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 group"
                   >
                     {/* Video Embed */}
-                    <div className="relative aspect-video bg-black">
-                      <iframe
-                        src={`https://fast.wistia.net/embed/iframe/${webinar.videoId}?seo=true&videoFoam=false`}
-                        title={webinar.title}
-                        allow="autoplay; fullscreen"
-                        allowFullScreen
-                        className="absolute inset-0 w-full h-full"
-                      />
-                    </div>
+                    <LazyVideo 
+                      videoId={webinar.videoId}
+                      title={webinar.title}
+                    />
                     
                     {/* Webinar Info */}
                     <div className="p-6">
