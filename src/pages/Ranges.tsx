@@ -1,8 +1,9 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -20,17 +21,11 @@ import { ArrowRight, CheckCircle2, Cloud, Server, Network, Shield, Database, Git
 
 const Ranges = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("azure");
 
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-  
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#2B3440]">
@@ -77,7 +72,7 @@ const Ranges = () => {
               </p>
               <Button
                 variant="outline"
-                onClick={() => scrollToSection("azure-range")}
+                onClick={() => setActiveTab("azure")}
                 className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
               >
                 Explore Range
@@ -95,7 +90,7 @@ const Ranges = () => {
               </p>
               <Button
                 variant="outline"
-                onClick={() => scrollToSection("microsoft-range")}
+                onClick={() => setActiveTab("microsoft")}
                 className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
               >
                 Explore Range
@@ -113,7 +108,7 @@ const Ranges = () => {
               </p>
               <Button
                 variant="outline"
-                onClick={() => scrollToSection("network-range")}
+                onClick={() => setActiveTab("network")}
                 className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
               >
                 Explore Range
@@ -131,7 +126,7 @@ const Ranges = () => {
               </p>
               <Button
                 variant="outline"
-                onClick={() => scrollToSection("cyber-range")}
+                onClick={() => setActiveTab("cyber")}
                 className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
               >
                 Explore Range
@@ -140,8 +135,18 @@ const Ranges = () => {
           </Card>
         </div>
 
-        {/* Azure Range Details */}
-        <div id="azure-range" className="mb-24 scroll-mt-24">
+        {/* Tabbed Range Details */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12">
+            <TabsTrigger value="azure">Azure</TabsTrigger>
+            <TabsTrigger value="microsoft">Microsoft</TabsTrigger>
+            <TabsTrigger value="network">Network</TabsTrigger>
+            <TabsTrigger value="cyber">Cyber</TabsTrigger>
+          </TabsList>
+
+          {/* Azure Range Content */}
+          <TabsContent value="azure" className="mt-0">
+            <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 flex items-center justify-center gap-3">
@@ -231,11 +236,13 @@ const Ranges = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
+              </div>
+            </div>
+          </TabsContent>
 
-        {/* Microsoft Range Details */}
-        <div id="microsoft-range" className="mb-24 scroll-mt-24">
+          {/* Microsoft Range Content */}
+          <TabsContent value="microsoft" className="mt-0">
+            <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 flex items-center justify-center gap-3">
@@ -324,11 +331,13 @@ const Ranges = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+              </div>
+            </div>
+          </TabsContent>
 
-        {/* Network Range Details */}
-        <div id="network-range" className="mb-24 scroll-mt-24">
+          {/* Network Range Content */}
+          <TabsContent value="network" className="mt-0">
+            <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 flex items-center justify-center gap-3">
@@ -439,11 +448,13 @@ const Ranges = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+              </div>
+            </div>
+          </TabsContent>
 
-        {/* Cyber Range Details */}
-        <div id="cyber-range" className="mb-24 scroll-mt-24">
+          {/* Cyber Range Content */}
+          <TabsContent value="cyber" className="mt-0">
+            <div className="mb-24">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 flex items-center justify-center gap-3">
@@ -546,8 +557,10 @@ const Ranges = () => {
                 Transform your expertise into an unassailable asset against evolving cyber risks through hands-on CTF challenges.
               </p>
             </div>
-          </div>
-        </div>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
