@@ -4,31 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
 import cyberRangeImage from "@/assets/cyber-range.jpg";
 import logoImage from "@/assets/stormwind-logo.png";
 import { ArrowRight, CheckCircle2, Cloud, Server, Network, Shield, Database, GitBranch, Box, Boxes, Home } from "lucide-react";
-
 const Ranges = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("azure");
-
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-
-  return (
-    <div className="min-h-screen bg-[#2B3440]">
+  return <div className="min-h-screen bg-[#2B3440]">
       <Navigation />
 
       <div className="container mx-auto px-4 py-16 pt-32">
@@ -70,13 +59,7 @@ const Ranges = () => {
               <p className="text-gray-400 text-sm mb-4">
                 Master Azure cloud services with hands-on labs for compute, storage, networking, and security
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setActiveTab("azure")}
-                className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
-              >
-                Explore Range
-              </Button>
+              
             </div>
           </Card>
 
@@ -88,13 +71,7 @@ const Ranges = () => {
               <p className="text-gray-400 text-sm mb-4">
                 Practice with Windows Server, Active Directory, and enterprise Microsoft technologies
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setActiveTab("microsoft")}
-                className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
-              >
-                Explore Range
-              </Button>
+              
             </div>
           </Card>
 
@@ -106,13 +83,7 @@ const Ranges = () => {
               <p className="text-gray-400 text-sm mb-4">
                 Build and troubleshoot networks with routers, switches, and real-world scenarios
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setActiveTab("network")}
-                className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
-              >
-                Explore Range
-              </Button>
+              
             </div>
           </Card>
 
@@ -124,13 +95,7 @@ const Ranges = () => {
               <p className="text-gray-400 text-sm mb-4">
                 Develop security skills in a real world environment using applications like Splunk, Wireshark, OpenVAS, and Nmap
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setActiveTab("cyber")}
-                className="w-full bg-transparent border-[#4FD1C5] text-[#4FD1C5] hover:bg-[#4FD1C5] hover:text-white"
-              >
-                Explore Range
-              </Button>
+              
             </div>
           </Card>
         </div>
@@ -138,31 +103,19 @@ const Ranges = () => {
         {/* Tabbed Range Details */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
-            <TabsTrigger 
-              value="azure" 
-              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
-            >
+            <TabsTrigger value="azure" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3">
               <Cloud className="w-4 h-4" />
               Azure Range
             </TabsTrigger>
-            <TabsTrigger 
-              value="microsoft"
-              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
-            >
+            <TabsTrigger value="microsoft" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3">
               <Server className="w-4 h-4" />
               Microsoft Range
             </TabsTrigger>
-            <TabsTrigger 
-              value="network"
-              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
-            >
+            <TabsTrigger value="network" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3">
               <Network className="w-4 h-4" />
               Network Range
             </TabsTrigger>
-            <TabsTrigger 
-              value="cyber"
-              className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3"
-            >
+            <TabsTrigger value="cyber" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 flex items-center gap-2 py-3">
               <Shield className="w-4 h-4" />
               Cyber Range
             </TabsTrigger>
@@ -184,20 +137,17 @@ const Ranges = () => {
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-                    <iframe
-                      src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true"
-                      title="Azure Range Demo"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      style={{
+                  <div style={{
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
+                    <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         width: "100%",
                         height: "100%"
-                      }}
-                    />
+                      }} />
                   </div>
                 </div>
               </div>
@@ -234,30 +184,10 @@ const Ranges = () => {
             <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
               <h3 className="text-2xl font-bold text-white mb-6">Azure Services & Technologies</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                  "Azure Portal & Azure CLI",
-                  "Azure Resource Manager (ARM) & Bicep",
-                  "Azure Virtual Machines (VMs)",
-                  "Azure Storage (Blob, File, Table, Queue)",
-                  "Azure Virtual Networks (VNet)",
-                  "Azure Load Balancer",
-                  "Azure Monitor & Log Analytics",
-                  "Azure Backup & Site Recovery",
-                  "Azure App Services",
-                  "Azure Networking (NSGs, Private Link, Peering)",
-                  "Azure Kubernetes Service (AKS)",
-                  "Azure Automation & Runbooks",
-                  "Azure Security Center (Defender for Cloud)",
-                  "Azure Key Vault",
-                  "Azure Policies",
-                  "Azure Virtual Desktop (AVD)",
-                  "Azure Infrastructure as Code (IaC)",
-                ].map((tech) => (
-                  <div key={tech} className="flex items-start gap-2">
+                {["Azure Portal & Azure CLI", "Azure Resource Manager (ARM) & Bicep", "Azure Virtual Machines (VMs)", "Azure Storage (Blob, File, Table, Queue)", "Azure Virtual Networks (VNet)", "Azure Load Balancer", "Azure Monitor & Log Analytics", "Azure Backup & Site Recovery", "Azure App Services", "Azure Networking (NSGs, Private Link, Peering)", "Azure Kubernetes Service (AKS)", "Azure Automation & Runbooks", "Azure Security Center (Defender for Cloud)", "Azure Key Vault", "Azure Policies", "Azure Virtual Desktop (AVD)", "Azure Infrastructure as Code (IaC)"].map(tech => <div key={tech} className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-300">{tech}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
               </div>
@@ -280,20 +210,17 @@ const Ranges = () => {
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-                    <iframe
-                      src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true"
-                      title="Microsoft Range Demo"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      style={{
+                  <div style={{
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
+                    <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         width: "100%",
                         height: "100%"
-                      }}
-                    />
+                      }} />
                   </div>
                 </div>
               </div>
@@ -322,36 +249,19 @@ const Ranges = () => {
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
                 <h3 className="text-2xl font-bold text-white mb-6">Platforms & Operating Systems</h3>
                 <div className="space-y-3">
-                  {["Windows Server 2025", "Windows 11", "Hyper-V", "Microsoft SQL"].map((platform) => (
-                    <div key={platform} className="flex items-start gap-2">
+                  {["Windows Server 2025", "Windows 11", "Hyper-V", "Microsoft SQL"].map(platform => <div key={platform} className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-300">{platform}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
                 <h3 className="text-2xl font-bold text-white mb-6">Microsoft Technologies</h3>
                 <div className="space-y-3">
-                  {[
-                    "Windows Active Directory",
-                    "DNS Services",
-                    "Hyper-V Virtualization",
-                    "Group Policy Management",
-                    "File and Storage Server",
-                    "DHCP Services",
-                    "Remote Desktop Services",
-                    "Windows Security",
-                    "PowerShell Administration",
-                    "Windows Deployment Services",
-                    "Certificate Services",
-                    "Network Policy Server",
-                  ].map((tech) => (
-                    <div key={tech} className="flex items-start gap-2">
+                  {["Windows Active Directory", "DNS Services", "Hyper-V Virtualization", "Group Policy Management", "File and Storage Server", "DHCP Services", "Remote Desktop Services", "Windows Security", "PowerShell Administration", "Windows Deployment Services", "Certificate Services", "Network Policy Server"].map(tech => <div key={tech} className="flex items-start gap-2">
                       <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-300">{tech}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -375,20 +285,17 @@ const Ranges = () => {
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-                    <iframe
-                      src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true"
-                      title="Network Range Demo"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      style={{
+                  <div style={{
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
+                    <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         width: "100%",
                         height: "100%"
-                      }}
-                    />
+                      }} />
                   </div>
                 </div>
               </div>
@@ -405,45 +312,37 @@ const Ranges = () => {
               <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-4">Switching</h3>
                 <div className="space-y-2">
-                  {["VLANs", "Private VLANs", "Trunking", "QoS"].map((item) => (
-                    <div key={item} className="flex items-start gap-2">
+                  {["VLANs", "Private VLANs", "Trunking", "QoS"].map(item => <div key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-400 text-sm">{item}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
               <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-4">Routing</h3>
                 <div className="space-y-2">
-                  {["OSPF", "EIGRP", "BGP", "Static Routing", "Summarization", "Redistribution", "Route Filtering", "Policy-Based Routing"].map((item) => (
-                    <div key={item} className="flex items-start gap-2">
+                  {["OSPF", "EIGRP", "BGP", "Static Routing", "Summarization", "Redistribution", "Route Filtering", "Policy-Based Routing"].map(item => <div key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-400 text-sm">{item}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
               <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-4">Infrastructure</h3>
                 <div className="space-y-2">
-                  {["DNS", "DHCP", "SSH", "GRE", "NTP"].map((item) => (
-                    <div key={item} className="flex items-start gap-2">
+                  {["DNS", "DHCP", "SSH", "GRE", "NTP"].map(item => <div key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-400 text-sm">{item}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
               <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-4">IPv6</h3>
                 <div className="space-y-2">
-                  {["OSPFv3", "BGP for IPv6", "6in4 Tunnels", "6to4 Tunnels", "6over4 Tunnels", "DHCPv6 PD", "IPv6 ACLs"].map((item) => (
-                    <div key={item} className="flex items-start gap-2">
+                  {["OSPFv3", "BGP for IPv6", "6in4 Tunnels", "6to4 Tunnels", "6over4 Tunnels", "DHCPv6 PD", "IPv6 ACLs"].map(item => <div key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-400 text-sm">{item}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -452,23 +351,19 @@ const Ranges = () => {
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
                 <h3 className="text-2xl font-bold text-white mb-6">Platforms</h3>
                 <div className="space-y-3">
-                  {["Cisco IOS", "Cisco Catalyst 9300", "Cisco Nexus 9500", "Nmap", "PowerDNS", "Windows Server 2019"].map((platform) => (
-                    <div key={platform} className="flex items-start gap-2">
+                  {["Cisco IOS", "Cisco Catalyst 9300", "Cisco Nexus 9500", "Nmap", "PowerDNS", "Windows Server 2019"].map(platform => <div key={platform} className="flex items-start gap-2">
                       <span className="text-[#4FD1C5]">•</span>
                       <span className="text-gray-300">{platform}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
                 <h3 className="text-2xl font-bold text-white mb-6">Class Alignment</h3>
                 <div className="space-y-3">
-                  {["Cisco CCNA", "CompTIA Network+ N10-009", "Cisco CCNP ENCOR", "Cisco CCNP ENARSI", "Modern Networking with IPv6"].map((cert) => (
-                    <div key={cert} className="flex items-start gap-2">
+                  {["Cisco CCNA", "CompTIA Network+ N10-009", "Cisco CCNP ENCOR", "Cisco CCNP ENARSI", "Modern Networking with IPv6"].map(cert => <div key={cert} className="flex items-start gap-2">
                       <span className="text-[#4FD1C5]">•</span>
                       <span className="text-gray-300">{cert}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -492,20 +387,17 @@ const Ranges = () => {
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-                    <iframe
-                      src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true"
-                      title="Cyber Range Demo"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      style={{
+                  <div style={{
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
+                    <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         width: "100%",
                         height: "100%"
-                      }}
-                    />
+                      }} />
                   </div>
                 </div>
               </div>
@@ -536,26 +428,17 @@ const Ranges = () => {
                 Start your cyber range journey by mastering essential tools. These activities will prepare you for more advanced challenges ahead.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                {[
-                  "Security Incident and Event Management",
-                  "Vulnerability Assessments",
-                  "Network and Packet Analysis",
-                  "Incident Detection",
-                ].map((skill) => (
-                  <div key={skill} className="flex items-start gap-2">
+                {["Security Incident and Event Management", "Vulnerability Assessments", "Network and Packet Analysis", "Incident Detection"].map(skill => <div key={skill} className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-300">{skill}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               <div>
                 <h4 className="text-lg font-semibold text-white mb-4">TOOLS & TECHNOLOGIES</h4>
                 <div className="flex flex-wrap gap-3">
-                  {["OpenVAS", "NMAP", "Wireshark", "Splunk"].map((tool) => (
-                    <span key={tool} className="px-4 py-2 bg-[#2B3440] text-[#4FD1C5] rounded-lg border border-[#4FD1C5]">
+                  {["OpenVAS", "NMAP", "Wireshark", "Splunk"].map(tool => <span key={tool} className="px-4 py-2 bg-[#2B3440] text-[#4FD1C5] rounded-lg border border-[#4FD1C5]">
                       {tool}
-                    </span>
-                  ))}
+                    </span>)}
                 </div>
               </div>
             </div>
@@ -566,12 +449,10 @@ const Ranges = () => {
                 Our next events in the cyber range tackle key topics in cybersecurity. Learn to detect attacks against web applications, identify malicious activity, and secure authentication systems.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
-                {["Web Application Security", "Detecting Malicious PowerShell", "Advanced Threat Hunting"].map((topic) => (
-                  <div key={topic} className="flex items-start gap-2">
+                {["Web Application Security", "Detecting Malicious PowerShell", "Advanced Threat Hunting"].map(topic => <div key={topic} className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
                     <span className="text-gray-300">{topic}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
@@ -586,8 +467,6 @@ const Ranges = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Ranges;
