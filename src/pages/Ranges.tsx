@@ -49,7 +49,13 @@ const Ranges = () => {
         {/* Range Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {/* Azure Range */}
-          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+          <Card 
+            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
+            onClick={() => {
+              setActiveTab("azure");
+              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
             <ProgressiveImage src={azureRangeImage} alt="Azure Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Azure Range</h3>
@@ -61,7 +67,13 @@ const Ranges = () => {
           </Card>
 
           {/* Microsoft Range */}
-          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+          <Card 
+            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
+            onClick={() => {
+              setActiveTab("microsoft");
+              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
             <ProgressiveImage src={microsoftRangeImage} alt="Microsoft Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Microsoft Range</h3>
@@ -73,7 +85,13 @@ const Ranges = () => {
           </Card>
 
           {/* Network Range */}
-          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+          <Card 
+            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
+            onClick={() => {
+              setActiveTab("network");
+              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
             <ProgressiveImage src={networkRangeImage} alt="Network Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Network Range</h3>
@@ -85,7 +103,13 @@ const Ranges = () => {
           </Card>
 
           {/* Cyber Range */}
-          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+          <Card 
+            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
+            onClick={() => {
+              setActiveTab("cyber");
+              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+          >
             <ProgressiveImage src={cyberRangeImage} alt="Cyber Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Cyber Range</h3>
@@ -98,7 +122,7 @@ const Ranges = () => {
         </div>
 
         {/* Tabbed Range Details */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" id="range-tabs">
           <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
             <TabsTrigger value="azure" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 hover:bg-[#2B3440] hover:text-white transition-all duration-200 flex items-center gap-2 py-3">
               <Cloud className="w-4 h-4" />
