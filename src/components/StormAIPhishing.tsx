@@ -64,7 +64,7 @@ const StormAIPhishing = ({ selectedFeatures, toggleFeature }: StormAIPhishingPro
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} href="/phishing" />
+          <FeatureCard key={index} {...feature} href="/phishing" animationDelay={index * 100} />
         ))}
       </div>
     </div>
