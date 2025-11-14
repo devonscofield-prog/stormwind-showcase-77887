@@ -161,4 +161,104 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
   }
+
+  /* Glassmorphism */
+  .glass-card {
+    background: rgba(26, 31, 46, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-breadcrumb {
+    background: rgba(26, 31, 46, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Animated Grid Background */
+  @keyframes grid-move {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(40px);
+    }
+  }
+
+  .animated-grid {
+    background-image: 
+      linear-gradient(rgba(79, 209, 197, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79, 209, 197, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 20s linear infinite;
+  }
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-card {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-card:nth-child(2) {
+    animation-delay: 1s;
+  }
+
+  .float-card:nth-child(3) {
+    animation-delay: 2s;
+  }
+
+  .float-card:nth-child(4) {
+    animation-delay: 3s;
+  }
+
+  /* Icon Pulse Animation */
+  @keyframes icon-pulse {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .icon-animate:hover {
+    animation: icon-pulse 0.5s ease-in-out;
+  }
+
+  /* Gradient Overlay */
+  .gradient-overlay {
+    position: relative;
+  }
+
+  .gradient-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(26, 31, 46, 0.9), transparent);
+    pointer-events: none;
+  }
+
+  /* Glow Shadow */
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(79, 209, 197, 0.3), 0 0 40px rgba(79, 209, 197, 0.1);
+  }
+
+  .glow-teal-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-teal-hover:hover {
+    box-shadow: 0 0 30px rgba(79, 209, 197, 0.5), 0 0 60px rgba(79, 209, 197, 0.2);
+  }
 }
