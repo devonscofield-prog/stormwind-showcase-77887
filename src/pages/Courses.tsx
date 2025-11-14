@@ -35,9 +35,9 @@ type Course = string | { name: string; isBytes?: boolean; isComingSoon?: boolean
 
 const Courses = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
   const COURSES_PER_PAGE = 50;
 
   useEffect(() => {
@@ -4551,8 +4551,13 @@ const Courses = () => {
   
   // Reset to page 1 when filters change
   useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedCategory, selectedSubcategory, searchQuery]);
+    setSearchParams({ page: "1" });
+  }, [selectedCategory, selectedSubcategory, searchQuery, setSearchParams]);
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({ page: page.toString() });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -4755,8 +4760,7 @@ const Courses = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           if (currentPage > 1) {
-                            setCurrentPage(currentPage - 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            handlePageChange(currentPage - 1);
                           }
                         }}
                         className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
@@ -4781,8 +4785,7 @@ const Courses = () => {
                             href="#"
                             onClick={(e) => {
                               e.preventDefault();
-                              setCurrentPage(pageNum);
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                              handlePageChange(pageNum);
                             }}
                             isActive={currentPage === pageNum}
                           >
@@ -4798,8 +4801,7 @@ const Courses = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           if (currentPage < totalPages) {
-                            setCurrentPage(currentPage + 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            handlePageChange(currentPage + 1);
                           }
                         }}
                         className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
