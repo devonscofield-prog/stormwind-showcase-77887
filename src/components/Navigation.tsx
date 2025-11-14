@@ -9,7 +9,7 @@ export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
@@ -60,7 +60,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card border-t border-border pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 border-t border-gray-800 pt-4 animate-fade-in">
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
