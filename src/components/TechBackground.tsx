@@ -85,7 +85,7 @@ export const TechBackground = () => {
 
     const animate = () => {
       // Clear with slight trail effect
-      ctx.fillStyle = "rgba(43, 52, 64, 0.1)";
+      ctx.fillStyle = "rgba(15, 20, 25, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw terminal text
