@@ -5,6 +5,7 @@ import StormAIPhishing from "@/components/StormAIPhishing";
 import EnterpriseEndUser from "@/components/EnterpriseEndUser";
 import HRCompliance from "@/components/HRCompliance";
 import ProjectManagement from "@/components/ProjectManagement";
+import { TechBackground } from "@/components/TechBackground";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
 const Index = () => {
@@ -33,6 +34,9 @@ const Index = () => {
     }
   }, [activeTab]);
   return <div className="min-h-screen relative">
+      {/* Animated Tech Background */}
+      <TechBackground />
+      
       <Navigation />
 
       {/* Hero Section */}
