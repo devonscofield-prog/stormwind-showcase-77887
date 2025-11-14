@@ -28,7 +28,7 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureC
   if (href) {
     return (
       <Link to={href} className="block h-full">
-        <Card className="h-full cursor-pointer hover:shadow-card-hover transition-all duration-300 hover:border-primary">
+        <Card className="h-full cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50">
           {content}
         </Card>
       </Link>
@@ -36,7 +36,7 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureC
   }
 
   return (
-    <Card className={`h-full ${onClick ? 'cursor-pointer hover:shadow-card-hover transition-all duration-300 hover:border-primary' : ''}`} onClick={onClick}>
+    <Card className={`h-full ${onClick ? 'cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50' : ''}`} onClick={onClick}>
       {content}
     </Card>
   );
