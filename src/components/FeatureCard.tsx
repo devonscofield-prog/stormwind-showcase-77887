@@ -8,10 +8,9 @@ interface FeatureCardProps {
   description: string;
   onClick?: () => void;
   href?: string;
-  animationDelay?: number;
 }
 
-const FeatureCard = ({ icon: Icon, title, description, onClick, href, animationDelay = 0 }: FeatureCardProps) => {
+const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureCardProps) => {
   const content = (
     <CardContent className="p-6">
       <div className="flex flex-col items-start space-y-4">
@@ -26,15 +25,10 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href, animationD
     </CardContent>
   );
 
-  const cardClassName = `h-full cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50 opacity-0 animate-stagger-fade-in`;
-
   if (href) {
     return (
       <Link to={href} className="block h-full">
-        <Card 
-          className={cardClassName}
-          style={{ animationDelay: `${animationDelay}ms` }}
-        >
+        <Card className="h-full cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50">
           {content}
         </Card>
       </Link>
@@ -42,11 +36,7 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href, animationD
   }
 
   return (
-    <Card 
-      className={onClick ? cardClassName : 'h-full opacity-0 animate-stagger-fade-in'} 
-      onClick={onClick}
-      style={{ animationDelay: `${animationDelay}ms` }}
-    >
+    <Card className={`h-full ${onClick ? 'cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50' : ''}`} onClick={onClick}>
       {content}
     </Card>
   );

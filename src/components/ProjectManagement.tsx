@@ -55,7 +55,7 @@ const ProjectManagement = ({ selectedFeatures, toggleFeature }: ProjectManagemen
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} href="/project-management" animationDelay={index * 100} />
+          <FeatureCard key={index} {...feature} href="/project-management" />
         ))}
       </div>
     </div>

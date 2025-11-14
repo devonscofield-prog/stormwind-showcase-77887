@@ -63,8 +63,7 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
             <Link 
               key={index}
               to={featureLinks[feature.title]}
-              className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block opacity-0 animate-stagger-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block"
             >
               {/* Icon */}
               <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
