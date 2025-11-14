@@ -151,8 +151,7 @@ const EnterpriseIT = ({
             "Project Management": "/project-management",
             "Help Desk": "/help-desk"
           };
-          return <Link key={index} to={techLinks[tech.category]} className="group relative overflow-hidden rounded-lg border-2 p-4 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-primary opacity-10 rounded-full -mr-10 -mt-10 transition-transform duration-300 group-hover:scale-150" />
+          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block">
                 <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
               </Link>;
