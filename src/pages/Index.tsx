@@ -49,19 +49,19 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12">
-              <TabsTrigger value="enterprise-it" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 text-base font-semibold border-2 border-border data-[state=active]:border-primary transition-all duration-300">
+              <TabsTrigger value="enterprise-it" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
                 Enterprise IT
               </TabsTrigger>
-              <TabsTrigger value="project-management" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 text-base font-semibold border-2 border-border data-[state=active]:border-primary transition-all duration-300">
+              <TabsTrigger value="project-management" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
                 Project Management
               </TabsTrigger>
-              <TabsTrigger value="stormai-phishing" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 text-base font-semibold border-2 border-border data-[state=active]:border-primary transition-all duration-300">
+              <TabsTrigger value="stormai-phishing" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
                 StormAI Phishing
               </TabsTrigger>
-              <TabsTrigger value="enterprise-end-user" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 text-base font-semibold border-2 border-border data-[state=active]:border-primary transition-all duration-300">
+              <TabsTrigger value="enterprise-end-user" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
                 Enterprise End User
               </TabsTrigger>
-              <TabsTrigger value="hr-compliance" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 text-base font-semibold border-2 border-border data-[state=active]:border-primary transition-all duration-300">
+              <TabsTrigger value="hr-compliance" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
                 HR Compliance
               </TabsTrigger>
             </TabsList>
