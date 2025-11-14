@@ -183,7 +183,7 @@ const EnterpriseIT = ({
             "Skills Assessments": "/skills-assessments",
             "Enterprise Reporting and Administration": "/enterprise-reporting"
           };
-          return <Link key={index} to={featureLinks[feature.title]} className="group relative overflow-hidden rounded-lg border-2 p-6 transition-all duration-300 cursor-pointer border-border bg-card hover:border-primary hover:shadow-card-hover block">
+          return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block">
                 {/* Icon */}
                 <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
                   <feature.icon className="w-8 h-8 text-primary" />
