@@ -36,7 +36,7 @@ const EnterpriseEndUser = ({ selectedFeatures, toggleFeature }: EnterpriseEndUse
   return (
     <div className="animate-fade-in">
       <div className="mb-12">
-        <h2 className="text-4xl font-bold mb-6">Enterprise End User</h2>
+        <h2 className="text-4xl font-bold mb-6 text-gradient-primary leading-tight pb-2">Enterprise End User</h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed mb-6">
           Training for everyday productivity — from Microsoft Apps to Copilot readiness and Business Skills — built for the modern workforce.
         </p>
