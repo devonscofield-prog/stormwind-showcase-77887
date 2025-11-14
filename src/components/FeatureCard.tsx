@@ -11,14 +11,18 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureCardProps) => {
+  // Randomly assign gradient variants for visual variety
+  const gradients = ['icon-gradient-primary', 'icon-gradient-secondary', 'icon-gradient-tertiary'];
+  const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+  
   const content = (
     <CardContent className="p-6">
       <div className="flex flex-col items-start space-y-4">
-        <div className="p-3 rounded-lg bg-primary/10">
-          <Icon className="w-6 h-6 text-primary" />
+        <div className={`p-3 rounded-lg icon-container ${randomGradient}`}>
+          <Icon className="w-6 h-6 text-white" />
         </div>
         <div className="flex-1 w-full">
-          <h3 className="font-semibold text-lg mb-2">{title}</h3>
+          <h3 className="font-semibold text-lg mb-2 text-foreground">{title}</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
         </div>
       </div>
@@ -28,7 +32,7 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureC
   if (href) {
     return (
       <Link to={href} className="block h-full">
-        <Card className="h-full cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50">
+        <Card className="h-full cursor-pointer glass-feature-card transition-all duration-300 border-0">
           {content}
         </Card>
       </Link>
@@ -36,7 +40,7 @@ const FeatureCard = ({ icon: Icon, title, description, onClick, href }: FeatureC
   }
 
   return (
-    <Card className={`h-full ${onClick ? 'cursor-pointer hover:shadow-card-hover hover:shadow-glow transition-all duration-300 hover:border-primary/50' : ''}`} onClick={onClick}>
+    <Card className={`h-full glass-feature-card transition-all duration-300 border-0 ${onClick ? 'cursor-pointer' : ''}`} onClick={onClick}>
       {content}
     </Card>
   );
