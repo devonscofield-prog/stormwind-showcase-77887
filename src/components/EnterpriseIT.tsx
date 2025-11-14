@@ -183,13 +183,10 @@ const EnterpriseIT = ({
             "Skills Assessments": "/skills-assessments",
             "Enterprise Reporting and Administration": "/enterprise-reporting"
           };
-          const gradientClasses = ['icon-gradient-primary', 'icon-gradient-secondary', 'icon-gradient-tertiary'];
-          const randomGradient = gradientClasses[index % gradientClasses.length];
-          
           return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block">
                 {/* Icon */}
-                <div className={`mb-4 inline-flex p-4 rounded-xl ${randomGradient}`}>
-                  <feature.icon className="w-8 h-8 text-white" />
+                <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
+                  <feature.icon className="w-8 h-8 text-primary" />
                 </div>
                 
                 {/* Title with Emoji */}
