@@ -29,16 +29,16 @@ const Hero = ({ onTabChange }: HeroProps) => {
           willChange: 'transform'
         }}
       >
-        <div className="absolute inset-0 bg-foreground/80" />
+        <div className="absolute inset-0 bg-foreground/70" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-hero mb-6 leading-tight pb-2">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-hero mb-6 leading-tight pb-2 drop-shadow-2xl">
             Empowering the Future of Learning.
           </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto drop-shadow-lg">
             Training solutions that elevate your teams across IT, cybersecurity, and enterprise productivity.
           </p>
         </div>

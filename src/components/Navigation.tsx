@@ -9,7 +9,7 @@ export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-teal-500/20 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
@@ -23,17 +23,17 @@ export const Navigation = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 flex-shrink-0 ml-auto">
             <Link to="/courses">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Courses
               </Button>
             </Link>
             <Link to="/webinars">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Webinars
               </Button>
             </Link>
             <Link to="/ranges">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Ranges
               </Button>
             </Link>
@@ -60,11 +60,11 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card border-t border-border pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 border-t border-gray-800 pt-4 animate-fade-in">
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Courses
               </Button>
@@ -72,7 +72,7 @@ export const Navigation = () => {
             <Link to="/webinars" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Webinars
               </Button>
@@ -80,7 +80,7 @@ export const Navigation = () => {
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Ranges
               </Button>
