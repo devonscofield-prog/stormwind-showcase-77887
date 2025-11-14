@@ -139,6 +139,7 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 154, 119, 0.25));
   }
   
   .text-gradient-accent {
@@ -146,6 +147,7 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(52, 211, 153, 0.25));
   }
   
   .text-gradient-hero {
@@ -153,5 +155,6 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
   }
 }
