@@ -1,17 +1,33 @@
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-background.jpg";
+import { useEffect, useState } from "react";
 
 interface HeroProps {
   onTabChange: (tab: string) => void;
 }
 
 const Hero = ({ onTabChange }: HeroProps) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Parallax Effect */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out"
+        style={{ 
+          backgroundImage: `url(${heroBackground})`,
+          transform: `translateY(${scrollY * 0.5}px)`,
+          willChange: 'transform'
+        }}
       >
         <div className="absolute inset-0 bg-foreground/80" />
       </div>
