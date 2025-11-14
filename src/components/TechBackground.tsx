@@ -66,7 +66,7 @@ export const TechBackground = () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         speed: 0.2 + Math.random() * 0.5,
-        opacity: 0.1 + Math.random() * 0.15,
+        opacity: 0.3 + Math.random() * 0.3,
       });
     }
 
@@ -141,7 +141,7 @@ export const TechBackground = () => {
 
           if (distance < 150) {
             const opacity = 1 - distance / 150;
-            ctx.strokeStyle = `rgba(79, 209, 197, ${opacity * 0.2})`;
+            ctx.strokeStyle = `rgba(79, 209, 197, ${opacity * 0.4})`;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -151,7 +151,7 @@ export const TechBackground = () => {
             if (Math.random() > 0.98) {
               const midX = (nodes[i].x + nodes[j].x) / 2;
               const midY = (nodes[i].y + nodes[j].y) / 2;
-              ctx.fillStyle = "rgba(79, 209, 197, 0.6)";
+              ctx.fillStyle = "rgba(79, 209, 197, 0.8)";
               ctx.beginPath();
               ctx.arc(midX, midY, 2, 0, Math.PI * 2);
               ctx.fill();
