@@ -171,7 +171,7 @@ const EnterpriseIT = ({
         <div className="flex items-center justify-center gap-4 mb-8">
           <h3 className="text-2xl font-bold">Platform Features</h3>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {consolidatedFeatures.map((feature, index) => {
           const featureLinks: Record<string, string> = {
             "Learning Paths": "/learning-paths",
