@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
+import { TechBackground } from "@/components/TechBackground";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -18,8 +19,10 @@ const Ranges = () => {
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-  return <div className="min-h-screen bg-[#2B3440]">
-      <Navigation />
+  return <div className="min-h-screen bg-[#2B3440] relative">
+      <TechBackground />
+      <div className="relative z-10">
+        <Navigation />
 
       <div className="container mx-auto px-4 py-16 pt-32">
         {/* Breadcrumb Navigation */}
@@ -491,6 +494,7 @@ const Ranges = () => {
             </div>
           </TabsContent>
         </Tabs>
+      </div>
       </div>
     </div>;
 };
