@@ -23,17 +23,17 @@ export const Navigation = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 flex-shrink-0 ml-auto">
             <Link to="/courses">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Courses
               </Button>
             </Link>
             <Link to="/webinars">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Webinars
               </Button>
             </Link>
             <Link to="/ranges">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Ranges
               </Button>
             </Link>
@@ -64,7 +64,7 @@ export const Navigation = () => {
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Courses
               </Button>
@@ -72,7 +72,7 @@ export const Navigation = () => {
             <Link to="/webinars" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Webinars
               </Button>
@@ -80,7 +80,7 @@ export const Navigation = () => {
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-foreground hover:text-primary hover:bg-accent"
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Ranges
               </Button>
