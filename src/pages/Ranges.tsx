@@ -19,7 +19,7 @@ const Ranges = () => {
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-  return <div className="min-h-screen bg-[#1a1f2e] relative">
+  return <div className="min-h-screen bg-[#0f1419] relative">
       <TechBackground />
       <div className="relative z-10">
         <Navigation />
