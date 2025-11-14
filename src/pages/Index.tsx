@@ -66,23 +66,23 @@ const Index = () => {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="enterprise-it" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="enterprise-it" className="mt-0 glass-tab-primary -mx-6 px-6 py-8 rounded-xl">
               <EnterpriseIT selectedTechnologies={selectedTechnologies} selectedFeatures={selectedFeatures} toggleTechnology={toggleTechnology} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="project-management" className="mt-0 bg-[hsl(var(--section-green))] -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="project-management" className="mt-0 glass-tab-secondary -mx-6 px-6 py-8 rounded-xl">
               <ProjectManagement selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="stormai-phishing" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="stormai-phishing" className="mt-0 glass-tab-tertiary -mx-6 px-6 py-8 rounded-xl">
               <StormAIPhishing selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="enterprise-end-user" className="mt-0 bg-[hsl(var(--section-green))] -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="enterprise-end-user" className="mt-0 glass-tab-warm -mx-6 px-6 py-8 rounded-xl">
               <EnterpriseEndUser selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="hr-compliance" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="hr-compliance" className="mt-0 glass-tab-cool -mx-6 px-6 py-8 rounded-xl">
               <HRCompliance selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
           </Tabs>
