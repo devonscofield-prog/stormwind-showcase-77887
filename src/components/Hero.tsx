@@ -19,7 +19,7 @@ const Hero = ({ onTabChange }: HeroProps) => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-hero mb-6 leading-tight pb-2">
             Empowering the Future of Learning.
           </h1>
           <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">

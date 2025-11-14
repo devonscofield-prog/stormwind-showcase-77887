@@ -148,7 +148,7 @@ const EnterpriseIT = ({
   return (
     <div className="animate-fade-in">
       <div className="mb-12">
-        <h2 className="text-4xl font-bold mb-6">Enterprise IT</h2>
+        <h2 className="text-4xl font-bold mb-6 text-gradient-primary leading-tight pb-2">Enterprise IT</h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed">
           StormWind's one-stop training ecosystem for IT, DevOps, AI, Project Management, and Data Analytics.
           Stay up to date on evolving technology while learning directly from world-class instructors.
