@@ -62,23 +62,23 @@ const Index = () => {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="enterprise-it" className="mt-0 bg-gray-900/70 -mx-6 px-6 py-8 rounded-xl border border-teal-500/30 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <TabsContent value="enterprise-it" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
               <EnterpriseIT selectedTechnologies={selectedTechnologies} selectedFeatures={selectedFeatures} toggleTechnology={toggleTechnology} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="project-management" className="mt-0 bg-gray-900/70 -mx-6 px-6 py-8 rounded-xl border border-teal-500/30 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <TabsContent value="project-management" className="mt-0 bg-[hsl(var(--section-green))] -mx-6 px-6 py-8 rounded-xl">
               <ProjectManagement selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="stormai-phishing" className="mt-0 bg-gray-900/70 -mx-6 px-6 py-8 rounded-xl border border-teal-500/30 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <TabsContent value="stormai-phishing" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
               <StormAIPhishing selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="enterprise-end-user" className="mt-0 bg-gray-900/70 -mx-6 px-6 py-8 rounded-xl border border-teal-500/30 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <TabsContent value="enterprise-end-user" className="mt-0 bg-[hsl(var(--section-green))] -mx-6 px-6 py-8 rounded-xl">
               <EnterpriseEndUser selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="hr-compliance" className="mt-0 bg-gray-900/70 -mx-6 px-6 py-8 rounded-xl border border-teal-500/30 shadow-[0_0_20px_rgba(20,184,166,0.2)]">
+            <TabsContent value="hr-compliance" className="mt-0 bg-[hsl(var(--section-cream))] -mx-6 px-6 py-8 rounded-xl">
               <HRCompliance selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
           </Tabs>

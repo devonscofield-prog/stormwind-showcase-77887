@@ -84,8 +84,9 @@ export const TechBackground = () => {
     }
 
     const animate = () => {
-      // Clear canvas completely
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Clear with slight trail effect
+      ctx.fillStyle = "rgba(43, 52, 64, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw terminal text
       ctx.font = "14px 'Courier New', monospace";

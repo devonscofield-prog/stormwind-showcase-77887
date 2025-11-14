@@ -19,7 +19,7 @@ const Ranges = () => {
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-  return <div className="min-h-screen bg-[#0f1419] relative">
+  return <div className="min-h-screen bg-[#2B3440] relative">
       <TechBackground />
       <div className="relative z-10">
         <Navigation />
@@ -44,19 +44,26 @@ const Ranges = () => {
         </Breadcrumb>
 
         {/* Hero Section */}
-        
+        <div className="text-center mb-16 animate-fade-in">
+          <h1 className="text-6xl md:text-7xl font-bold mb-8 text-[#4FD1C5]">
+            StormWind Ranges
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto">
+            Hands-on IT training environments where professionals master cloud, networking, Microsoft technologies, and cybersecurity
+          </p>
+        </div>
 
         {/* Range Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {/* Azure Range */}
-          <Card 
-            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              setActiveTab("azure");
-              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-          >
-            <ProgressiveImage src={azureRangeImage} alt="Azure Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
+          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+            <ProgressiveImage 
+              src={azureRangeImage} 
+              alt="Azure Range" 
+              className="w-full h-48 object-cover"
+              blurAmount={25}
+              transitionDuration={600}
+            />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Azure Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -67,14 +74,14 @@ const Ranges = () => {
           </Card>
 
           {/* Microsoft Range */}
-          <Card 
-            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              setActiveTab("microsoft");
-              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-          >
-            <ProgressiveImage src={microsoftRangeImage} alt="Microsoft Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
+          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+            <ProgressiveImage 
+              src={microsoftRangeImage} 
+              alt="Microsoft Range" 
+              className="w-full h-48 object-cover"
+              blurAmount={25}
+              transitionDuration={600}
+            />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Microsoft Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -85,14 +92,14 @@ const Ranges = () => {
           </Card>
 
           {/* Network Range */}
-          <Card 
-            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              setActiveTab("network");
-              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-          >
-            <ProgressiveImage src={networkRangeImage} alt="Network Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
+          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+            <ProgressiveImage 
+              src={networkRangeImage} 
+              alt="Network Range" 
+              className="w-full h-48 object-cover"
+              blurAmount={25}
+              transitionDuration={600}
+            />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Network Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -103,14 +110,14 @@ const Ranges = () => {
           </Card>
 
           {/* Cyber Range */}
-          <Card 
-            className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-            onClick={() => {
-              setActiveTab("cyber");
-              document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-          >
-            <ProgressiveImage src={cyberRangeImage} alt="Cyber Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
+          <Card className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
+            <ProgressiveImage 
+              src={cyberRangeImage} 
+              alt="Cyber Range" 
+              className="w-full h-48 object-cover"
+              blurAmount={25}
+              transitionDuration={600}
+            />
             <div className="p-6">
               <h3 className="text-xl font-bold text-white mb-3">Cyber Range</h3>
               <p className="text-gray-400 text-sm mb-4">
@@ -122,7 +129,7 @@ const Ranges = () => {
         </div>
 
         {/* Tabbed Range Details */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" id="range-tabs">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
             <TabsTrigger value="azure" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 hover:bg-[#2B3440] hover:text-white transition-all duration-200 flex items-center gap-2 py-3">
               <Cloud className="w-4 h-4" />
@@ -159,16 +166,16 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
                   <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
                     <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }} />
                   </div>
                 </div>
               </div>
@@ -232,16 +239,16 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
                   <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
                     <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }} />
                   </div>
                 </div>
               </div>
@@ -307,16 +314,16 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
                   <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
                     <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }} />
                   </div>
                 </div>
               </div>
@@ -409,16 +416,16 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
                   <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
+                      padding: "56.25% 0 0 0",
+                      position: "relative"
+                    }}>
                     <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }} />
                   </div>
                 </div>
               </div>
