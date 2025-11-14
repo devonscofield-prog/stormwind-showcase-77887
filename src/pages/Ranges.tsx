@@ -12,16 +12,13 @@ import networkRangeImage from "@/assets/network-range.jpg";
 import cyberRangeImage from "@/assets/cyber-range.jpg";
 import logoImage from "@/assets/stormwind-logo.png";
 import { ArrowRight, CheckCircle2, Cloud, Server, Network, Shield, Database, GitBranch, Box, Boxes, Home } from "lucide-react";
-import ParticleBackground from "@/components/ParticleBackground";
-
 const Ranges = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("azure");
   useEffect(() => {
     document.title = "Ranges";
   }, []);
-  return <div className="min-h-screen bg-[#2B3440] relative overflow-hidden">
-      <ParticleBackground />
+  return <div className="min-h-screen bg-[#2B3440]">
       <Navigation />
 
       <div className="container mx-auto px-4 py-16 pt-32">
