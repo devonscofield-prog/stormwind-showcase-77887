@@ -32,16 +32,16 @@ const Index = () => {
       });
     }
   }, [activeTab]);
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen relative">
       <Navigation />
 
       {/* Hero Section */}
-      <div className="pt-20">
+      <div className="pt-20 relative z-10">
         <Hero onTabChange={setActiveTab} />
       </div>
 
       {/* Tabbed Content Section */}
-      <section id="content-section" className="py-16 scroll-mt-20">
+      <section id="content-section" className="py-16 scroll-mt-20 relative z-10 bg-card/50 backdrop-blur-sm rounded-t-3xl shadow-xl -mt-8">
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12">

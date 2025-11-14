@@ -27,6 +27,9 @@ const Hero = ({ onTabChange }: HeroProps) => {
           </p>
         </div>
       </div>
+      
+      {/* Gradient Border at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
     </section>
   );
 };
