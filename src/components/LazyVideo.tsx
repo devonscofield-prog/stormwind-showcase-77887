@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 interface LazyVideoProps {
   videoId: string;
   title: string;
+  posterImage?: string;
 }
 
-export const LazyVideo = ({ videoId, title }: LazyVideoProps) => {
+export const LazyVideo = ({ videoId, title, posterImage }: LazyVideoProps) => {
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +42,7 @@ export const LazyVideo = ({ videoId, title }: LazyVideoProps) => {
     >
       {isInView ? (
         <iframe
-          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true`}
+          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true${posterImage ? `&stillUrl=${encodeURIComponent(posterImage)}` : ''}`}
           title={title}
           allow="autoplay; fullscreen"
           allowFullScreen
