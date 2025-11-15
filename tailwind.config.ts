@@ -107,12 +107,40 @@ export default {
             opacity: "1"
           }
         },
+        "gradient": {
+          "0%, 100%": {
+            backgroundPosition: "0% 50%"
+          },
+          "50%": {
+            backgroundPosition: "100% 50%"
+          }
+        },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0px) translateX(0px)",
+            opacity: "0.3"
+          },
+          "25%": {
+            transform: "translateY(-20px) translateX(10px)",
+            opacity: "0.5"
+          },
+          "50%": {
+            transform: "translateY(-10px) translateX(-10px)",
+            opacity: "0.6"
+          },
+          "75%": {
+            transform: "translateY(-30px) translateX(5px)",
+            opacity: "0.4"
+          }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.4s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "gradient": "gradient 8s ease infinite",
+        "float": "float 10s ease-in-out infinite",
       },
     },
   },
