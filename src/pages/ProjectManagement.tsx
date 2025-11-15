@@ -82,28 +82,30 @@ const ProjectManagement = () => {
           {/* Student Testimonials */}
           <div className="mb-32 animate-fade-in">
             <h2 className="text-3xl font-bold mb-8 text-center">What Students Say About Ashley</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-                <p className="text-muted-foreground mb-4 italic">
-                  "Ashley is engaging with clear explanations and easy to understand examples. I feel a million times more prepared to take the PMP Exam than I did before class."
-                </p>
-                <p className="font-semibold text-foreground">Al Whitehouse</p>
-                <p className="text-sm text-muted-foreground">Wake County Government</p>
-              </div>
-              
-              <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-                <p className="text-muted-foreground mb-4 italic">
-                  "Ashley is amazing. She is definitely in the right job. She was engaging and helped the learning feel 'light' through all the sessions."
-                </p>
-                <p className="font-semibold text-foreground">Leslie Sedlac</p>
-                <p className="text-sm text-muted-foreground">SAIC</p>
-              </div>
-              
-              <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-                <p className="text-muted-foreground mb-4 italic">
-                  "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!"
-                </p>
-                <p className="font-semibold text-foreground">Danny Parsons</p>
+            <div className="max-w-3xl mx-auto bg-card border border-border rounded-lg p-8 shadow-lg">
+              <div className="space-y-8">
+                <div className="border-b border-border pb-8">
+                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                    "Ashley is engaging with clear explanations and easy to understand examples. I feel a million times more prepared to take the PMP Exam than I did before class."
+                  </p>
+                  <p className="font-semibold text-foreground">Al Whitehouse</p>
+                  <p className="text-sm text-muted-foreground">Wake County Government</p>
+                </div>
+                
+                <div className="border-b border-border pb-8">
+                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                    "Ashley is amazing. She is definitely in the right job. She was engaging and helped the learning feel 'light' through all the sessions."
+                  </p>
+                  <p className="font-semibold text-foreground">Leslie Sedlac</p>
+                  <p className="text-sm text-muted-foreground">SAIC</p>
+                </div>
+                
+                <div>
+                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                    "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!"
+                  </p>
+                  <p className="font-semibold text-foreground">Danny Parsons</p>
+                </div>
               </div>
             </div>
           </div>
