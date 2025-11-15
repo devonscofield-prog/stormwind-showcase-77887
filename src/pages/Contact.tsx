@@ -86,33 +86,33 @@ const Contact = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/" className="flex items-center gap-2">
+                <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#4FD1C5]">
                   <Home className="w-4 h-4" />
                   Home
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="text-gray-500" />
             <BreadcrumbItem>
-              <BreadcrumbPage>Contact Us</BreadcrumbPage>
+              <BreadcrumbPage className="text-[#4FD1C5]">Contact Us</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground mb-4">
+        <div className="text-center mb-12 animate-fade-in">
+          <h1 className="text-4xl font-bold text-white mb-4">Contact Us</h1>
+          <p className="text-lg text-gray-300 mb-4">
             Request pricing information or get in touch with your learning director
           </p>
-          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 max-w-xl mx-auto">
-            <p className="text-sm text-foreground">
-              <strong>Note:</strong> If you've already been working with a StormWind learning director, 
+          <div className="bg-[#4FD1C5]/10 border border-[#4FD1C5]/30 rounded-lg p-4 max-w-xl mx-auto">
+            <p className="text-sm text-gray-200">
+              <strong className="text-white">Note:</strong> If you've already been working with a StormWind learning director, 
               please reach out to them directly. This form is for new inquiries.
             </p>
           </div>
         </div>
 
-        <div className="bg-card rounded-lg shadow-lg p-8">
+        <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg shadow-lg p-8 hover:border-[#4FD1C5]/50 transition-all duration-300">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -120,9 +120,13 @@ const Contact = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name *</FormLabel>
+                    <FormLabel className="text-white">Name *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your name" {...field} />
+                      <Input 
+                        placeholder="Your name" 
+                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -134,9 +138,14 @@ const Contact = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email *</FormLabel>
+                    <FormLabel className="text-white">Email *</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="your.email@company.com" {...field} />
+                      <Input 
+                        type="email" 
+                        placeholder="your.email@company.com" 
+                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -148,9 +157,13 @@ const Contact = () => {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company</FormLabel>
+                    <FormLabel className="text-white">Company</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your company name" {...field} />
+                      <Input 
+                        placeholder="Your company name" 
+                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -162,9 +175,14 @@ const Contact = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone</FormLabel>
+                    <FormLabel className="text-white">Phone</FormLabel>
                     <FormControl>
-                      <Input type="tel" placeholder="Your phone number" {...field} />
+                      <Input 
+                        type="tel" 
+                        placeholder="Your phone number" 
+                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                        {...field} 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -176,11 +194,11 @@ const Contact = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message *</FormLabel>
+                    <FormLabel className="text-white">Message *</FormLabel>
                     <FormControl>
                       <Textarea 
                         placeholder="Tell us about your training needs, pricing inquiry, or any questions you have..."
-                        className="min-h-[150px]"
+                        className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
                         {...field} 
                       />
                     </FormControl>
@@ -189,7 +207,11 @@ const Contact = () => {
                 )}
               />
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Button 
+                type="submit" 
+                className="w-full bg-[#4FD1C5] hover:bg-[#3db8ac] text-white font-semibold transition-all duration-300" 
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
