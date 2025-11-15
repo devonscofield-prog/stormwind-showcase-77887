@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
+import { LazyVideo } from "@/components/LazyVideo";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -157,20 +158,11 @@ const Ranges = () => {
               
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
-                  </div>
-                </div>
+                <LazyVideo 
+                  videoId="4h1c0m2kaf" 
+                  title="Azure Range Demo"
+                  posterImage={azureRangeImage}
+                />
               </div>
             </div>
 
@@ -230,20 +222,11 @@ const Ranges = () => {
               
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
-                  </div>
-                </div>
+                <LazyVideo 
+                  videoId="v6zins19bi" 
+                  title="Microsoft Range Demo"
+                  posterImage={microsoftRangeImage}
+                />
               </div>
             </div>
 
@@ -305,20 +288,11 @@ const Ranges = () => {
               
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
-                  </div>
-                </div>
+                <LazyVideo 
+                  videoId="6i6y01qjp0" 
+                  title="Network Range Demo"
+                  posterImage={networkRangeImage}
+                />
               </div>
             </div>
 
@@ -407,20 +381,11 @@ const Ranges = () => {
               
               {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <div className="relative bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] transition-all">
-                  <div style={{
-                        padding: "56.25% 0 0 0",
-                        position: "relative"
-                      }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%"
-                        }} />
-                  </div>
-                </div>
+                <LazyVideo 
+                  videoId="gg8rfkzk3y" 
+                  title="Cyber Range Demo"
+                  posterImage={cyberRangeImage}
+                />
               </div>
             </div>
 
