@@ -4,11 +4,11 @@ import { Cloud, Shield, Network, Briefcase } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BackToTop from "@/components/BackToTop";
 import { Skeleton } from "@/components/ui/skeleton";
+import { VideoEmbed } from "@/components/VideoEmbed";
 
 const Webinars = () => {
   const [activeTab, setActiveTab] = useState("microsoft");
   const [isLoading, setIsLoading] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     // Simulate data loading
@@ -213,34 +213,7 @@ const Webinars = () => {
                       className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 group"
                     >
                       {/* Video Embed */}
-                      <div className="relative bg-[#1a1f2e] rounded-t-lg overflow-hidden">
-                        <div style={{
-                          padding: "56.25% 0 0 0",
-                          position: "relative"
-                        }}>
-                          {!videoLoaded[webinar.videoId] && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
-                              <Skeleton className="absolute inset-0 rounded-none" />
-                            </div>
-                          )}
-                          <iframe 
-                            src={`https://fast.wistia.net/embed/iframe/${webinar.videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false`}
-                            title={webinar.title}
-                            allow="autoplay; fullscreen" 
-                            allowFullScreen 
-                            onLoad={() => setVideoLoaded(prev => ({ ...prev, [webinar.videoId]: true }))}
-                            style={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
-                              width: "100%",
-                              height: "100%",
-                              opacity: videoLoaded[webinar.videoId] ? 1 : 0,
-                              transition: "opacity 0.3s ease-in-out"
-                            }} 
-                          />
-                        </div>
-                      </div>
+                      <VideoEmbed videoId={webinar.videoId} title={webinar.title} />
                       
                       {/* Webinar Info */}
                       <div className="p-6">
