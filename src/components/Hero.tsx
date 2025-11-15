@@ -1,27 +1,19 @@
 import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-background.jpg";
 import { useEffect, useState } from "react";
-import { Sparkles, Zap, Star } from "lucide-react";
+import { TechBackground } from "./TechBackground";
 
 interface HeroProps {
   onTabChange: (tab: string) => void;
 }
 
 const Hero = ({ onTabChange }: HeroProps) => {
-  const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
   const fullText = "Empowering the Future of Learning.";
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -47,45 +39,19 @@ const Hero = ({ onTabChange }: HeroProps) => {
 
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Animated Background Image with Zoom and Parallax */}
+      {/* Tech Background Animation */}
+      <TechBackground />
+      
+      {/* Static Background Image Overlay with Hero Colors */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out"
+        className="absolute inset-0 bg-cover bg-center opacity-30"
         style={{ 
           backgroundImage: `url(${heroBackground})`,
-          transform: `translateY(${scrollY * 0.5}px) scale(${isVisible ? 1.05 : 1.15})`,
-          willChange: 'transform',
-          opacity: isVisible ? 1 : 0
         }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-foreground/60" />
-        
-        {/* Animated Glow Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent animate-pulse" />
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${8 + Math.random() * 4}s`,
-            }}
-          >
-            {i % 3 === 0 ? (
-              <Sparkles className="w-4 h-4 text-primary/40" />
-            ) : i % 3 === 1 ? (
-              <Zap className="w-3 h-3 text-primary/30" />
-            ) : (
-              <Star className="w-3 h-3 text-primary/35" />
-            )}
-          </div>
-        ))}
-      </div>
+      />
+      
+      {/* Gradient Overlay to maintain color scheme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-foreground/60" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
