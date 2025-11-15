@@ -1,14 +1,16 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, ExternalLink, Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Skeleton } from "@/components/ui/skeleton";
 import projectManagementImage from "@/assets/project-management-logo.png";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
 const ProjectManagement = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const {
     technologies = [],
     features = []
@@ -80,17 +82,25 @@ const ProjectManagement = () => {
                     padding: "56.25% 0 0 0",
                     position: "relative"
                   }}>
+                    {!videoLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                        <Skeleton className="absolute inset-0 rounded-none" />
+                      </div>
+                    )}
                     <iframe 
                       src="https://fast.wistia.net/embed/iframe/21dgg0qzzp?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
                       title="Project Management Training with Ashley Hunt" 
                       allow="autoplay; fullscreen" 
                       allowFullScreen 
+                      onLoad={() => setVideoLoaded(true)}
                       style={{
                         position: "absolute",
                         top: 0,
                         left: 0,
                         width: "100%",
-                        height: "100%"
+                        height: "100%",
+                        opacity: videoLoaded ? 1 : 0,
+                        transition: "opacity 0.3s ease-in-out"
                       }} 
                     />
                   </div>
