@@ -60,7 +60,7 @@ const Hero = ({
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-2xl transition-all duration-1000 delay-300" style={{
           opacity: isVisible && typedText.length > 20 ? 1 : 0,
           transform: isVisible && typedText.length > 20 ? 'translateY(0)' : 'translateY(20px)'
-        }}>​Short form content, unprecendented access to hands on learning, and the best instructors in the world. Training can be time consuming and difficult to plan, we make it easy.</p>
+        }}>Bite-sized learning, unlimited hands-on practice, and world-class instructors. We transform complex training into simple, accessible experiences.</p>
         </div>
       </div>
       
