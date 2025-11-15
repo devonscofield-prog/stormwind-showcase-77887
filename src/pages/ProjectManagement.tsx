@@ -88,7 +88,7 @@ const ProjectManagement = () => {
           </div>
 
           {/* Video Section */}
-          <div className="mb-32 animate-fade-in">
+          <div className="mb-32 animate-fade-in max-w-4xl mx-auto">
             <LazyVideo 
               videoId="21dgg0qzzp" 
               title="Project Management Training Overview"
