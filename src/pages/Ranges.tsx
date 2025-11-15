@@ -162,7 +162,7 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
@@ -235,7 +235,7 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
@@ -310,7 +310,7 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
@@ -412,7 +412,7 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
