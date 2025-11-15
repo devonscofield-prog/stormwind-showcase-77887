@@ -44,14 +44,14 @@ const Hero = ({ onTabChange }: HeroProps) => {
       
       {/* Static Background Image Overlay with Hero Colors */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{ 
           backgroundImage: `url(${heroBackground})`,
         }}
       />
       
-      {/* Gradient Overlay to maintain color scheme */}
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-foreground/60" />
+      {/* Lighter Gradient Overlay to maintain color scheme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/30" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
@@ -73,7 +73,7 @@ const Hero = ({ onTabChange }: HeroProps) => {
           
           {/* Subtitle with Stagger Animation */}
           <p 
-            className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto drop-shadow-lg transition-all duration-1000 delay-300"
+            className="text-xl md:text-2xl text-primary-foreground max-w-3xl mx-auto drop-shadow-2xl transition-all duration-1000 delay-300"
             style={{
               opacity: isVisible && typedText.length > 20 ? 1 : 0,
               transform: isVisible && typedText.length > 20 ? 'translateY(0)' : 'translateY(20px)'
