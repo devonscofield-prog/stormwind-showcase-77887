@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import heroBackground from "@/assets/hero-background.jpg";
 import { useEffect, useState } from "react";
 import { TechBackground } from "./TechBackground";
 
@@ -38,23 +37,10 @@ const Hero = ({ onTabChange }: HeroProps) => {
   }, []);
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Tech Background Animation - More prominent */}
-      <div className="absolute inset-0 opacity-90">
-        <TechBackground />
-      </div>
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0f1419]">
+      {/* Tech Background Animation - Same as Ranges page */}
+      <TechBackground />
       
-      {/* Static Background Image - Darker */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-25"
-        style={{ 
-          backgroundImage: `url(${heroBackground})`,
-        }}
-      />
-      
-      {/* Darker Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/60 to-foreground/50" />
-
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
