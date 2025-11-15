@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Home } from "lucide-react";
-import stormwindLogo from "@/assets/stormwind-logo.png";
+import { Navigation } from "@/components/Navigation";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -75,28 +75,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <img 
-              src={stormwindLogo} 
-              alt="StormWind Studios" 
-              className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" 
-              onClick={() => navigate('/')}
-              loading="lazy"
-            />
-            <Button 
-              variant="default" 
-              onClick={() => navigate('/')}
-              className="gap-2"
-            >
-              <Home size={18} />
-              Home
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       <div className="container mx-auto px-4 pt-32 pb-16 max-w-2xl">
         {/* Breadcrumb Navigation */}
