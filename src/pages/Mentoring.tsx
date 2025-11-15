@@ -12,7 +12,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { LazyVideo } from "@/components/LazyVideo";
 import willPanek from "@/assets/will-panek.png";
 import ashleyHunt from "@/assets/ashley-hunt.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -106,16 +105,6 @@ const Mentoring = () => {
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Learn directly from world-class instructors with decades of experience and industry recognition
             </p>
-          </div>
-
-          {/* Video Section */}
-          <div className="mb-16 animate-fade-in">
-            <div className="max-w-4xl mx-auto">
-              <LazyVideo 
-                videoId="7a1320b55fdfe70aca3bd949075dfb600830b223" 
-                title="1:1 Mentoring with Industry Experts"
-              />
-            </div>
           </div>
 
           {/* Instructors Section */}
