@@ -76,7 +76,11 @@ const ProjectManagement = () => {
             {/* Instructor Training Video */}
             <div className="px-8 pb-8">
               <div className="max-w-3xl mx-auto">
-                <LazyVideo videoId="21dgg0qzzp" title="Project Management Training with Ashley Hunt" />
+                <LazyVideo 
+                  videoId="21dgg0qzzp" 
+                  title="Project Management Training with Ashley Hunt"
+                  posterImage={ashleyHuntImage}
+                />
               </div>
             </div>
 
