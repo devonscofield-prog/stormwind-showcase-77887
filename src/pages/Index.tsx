@@ -12,6 +12,8 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("enterprise-it");
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [isInitialMount, setIsInitialMount] = useState(true);
+  
   const toggleTechnology = (category: string) => {
     setSelectedTechnologies(prev => prev.includes(category) ? prev.filter(t => t !== category) : [...prev, category]);
   };
@@ -22,17 +24,20 @@ const Index = () => {
   // Set document title
   useEffect(() => {
     document.title = "Home";
+    setIsInitialMount(false);
   }, []);
 
-  // Scroll to content when tab changes
+  // Scroll to content when tab changes (but not on initial mount)
   useEffect(() => {
+    if (isInitialMount) return;
+    
     const contentSection = document.getElementById("content-section");
     if (contentSection) {
       contentSection.scrollIntoView({
         behavior: "smooth"
       });
     }
-  }, [activeTab]);
+  }, [activeTab, isInitialMount]);
   return <div className="min-h-screen relative">
       {/* Animated Tech Background */}
       <TechBackground />
