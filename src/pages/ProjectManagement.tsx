@@ -55,63 +55,63 @@ const ProjectManagement = () => {
           </div>
 
 
-          {/* Featured Instructor Section with Video */}
-          <div className="mb-32 rounded-lg bg-card border border-border p-8 animate-fade-in">
-            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-              <div className="flex-shrink-0">
-                <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-48 h-48 rounded-lg object-cover" loading="lazy" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-2">Senior Instructor: J. Ashley Hunt</h2>
-                <p className="text-primary font-semibold mb-4">PMP • MCAS • PROJECT+</p>
-                <p className="text-muted-foreground leading-relaxed">
-                  There's simply no substitute for a great instructor. Over the last 15 years, Ashley has helped thousands of students in hundreds of companies around the globe prepare for the PMP® exam. She has developed an admirable reputation as a consultative trainer, subject-matter-expert, and engaging speaker in several disciplines, consistently receiving exemplary evaluations and high praise from her students. Her lively personality and use of stories and experiences always produce a highly informative and entertaining learning engagement. Ashley has written numerous study guides, including one for the CompTIA Project+, PMI-ACP, and PMP 6th Edition.
-                </p>
+          {/* Featured Instructor Section with Video and Testimonials */}
+          <div className="mb-32 rounded-lg bg-card border border-border overflow-hidden animate-fade-in">
+            {/* Instructor Bio */}
+            <div className="p-8 pb-6">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="flex-shrink-0">
+                  <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-48 h-48 rounded-lg object-cover shadow-lg" loading="lazy" />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-3xl font-bold mb-2">Senior Instructor: J. Ashley Hunt</h2>
+                  <p className="text-primary font-semibold mb-4">PMP • MCAS • PROJECT+</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    There's simply no substitute for a great instructor. Over the last 15 years, Ashley has helped thousands of students in hundreds of companies around the globe prepare for the PMP® exam. She has developed an admirable reputation as a consultative trainer, subject-matter-expert, and engaging speaker in several disciplines, consistently receiving exemplary evaluations and high praise from her students. Her lively personality and use of stories and experiences always produce a highly informative and entertaining learning engagement. Ashley has written numerous study guides, including one for the CompTIA Project+, PMI-ACP, and PMP 6th Edition.
+                  </p>
+                </div>
               </div>
             </div>
             
             {/* Instructor Training Video */}
-            <div className="border-t border-border pt-8">
-              
+            <div className="px-8 pb-8">
               <div className="max-w-3xl mx-auto">
                 <LazyVideo videoId="21dgg0qzzp" title="Project Management Training with Ashley Hunt" />
               </div>
             </div>
-          </div>
 
-          {/* Student Testimonials */}
-          <div className="mb-32 animate-fade-in">
-            <h2 className="text-3xl font-bold mb-8 text-center">What Students Say About Ashley</h2>
-            <div className="max-w-3xl mx-auto bg-card border border-border rounded-lg p-8 shadow-lg">
-              <div className="space-y-8">
-                <div className="border-b border-border pb-8">
-                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+            {/* Student Testimonials */}
+            <div className="bg-gradient-to-b from-muted/30 to-muted/10 px-8 py-10 border-t border-border">
+              <h3 className="text-2xl font-bold mb-6 text-center">What Students Say About Ashley</h3>
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is engaging with clear explanations and easy to understand examples. I feel a million times more prepared to take the PMP Exam than I did before class."
                   </p>
-                  <p className="font-semibold text-foreground">Al Whitehouse</p>
-                  <p className="text-sm text-muted-foreground">Wake County Government</p>
+                  <p className="font-semibold text-foreground text-sm">Al Whitehouse</p>
+                  <p className="text-xs text-muted-foreground">Wake County Government</p>
                 </div>
                 
-                <div className="border-b border-border pb-8">
-                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is amazing. She is definitely in the right job. She was engaging and helped the learning feel 'light' through all the sessions."
                   </p>
-                  <p className="font-semibold text-foreground">Leslie Sedlac</p>
-                  <p className="text-sm text-muted-foreground">SAIC</p>
+                  <p className="font-semibold text-foreground text-sm">Leslie Sedlac</p>
+                  <p className="text-xs text-muted-foreground">SAIC</p>
                 </div>
                 
-                <div className="border-b border-border pb-8">
-                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!"
                   </p>
-                  <p className="font-semibold text-foreground">Danny Parsons</p>
+                  <p className="font-semibold text-foreground text-sm">Danny Parsons</p>
                 </div>
                 
-                <div>
-                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                  <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is incredibly knowledgeable, kept the class both focused and energized, and showed genuine kindness throughout the session. Their approachability and expertise made learning not just effective, but enjoyable."
                   </p>
-                  <p className="font-semibold text-foreground">State of Nebraska</p>
+                  <p className="font-semibold text-foreground text-sm">State of Nebraska</p>
                 </div>
               </div>
             </div>
