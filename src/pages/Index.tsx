@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Hero from "@/components/Hero";
 import EnterpriseIT from "@/components/EnterpriseIT";
 import StormAIPhishing from "@/components/StormAIPhishing";
@@ -12,7 +12,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState("enterprise-it");
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [isInitialMount, setIsInitialMount] = useState(true);
+  const isFirstRender = useRef(true);
   
   const toggleTechnology = (category: string) => {
     setSelectedTechnologies(prev => prev.includes(category) ? prev.filter(t => t !== category) : [...prev, category]);
@@ -24,12 +24,14 @@ const Index = () => {
   // Set document title
   useEffect(() => {
     document.title = "Home";
-    setIsInitialMount(false);
   }, []);
 
-  // Scroll to content when tab changes (but not on initial mount)
+  // Scroll to content when tab changes (but not on initial render)
   useEffect(() => {
-    if (isInitialMount) return;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     
     const contentSection = document.getElementById("content-section");
     if (contentSection) {
@@ -37,7 +39,7 @@ const Index = () => {
         behavior: "smooth"
       });
     }
-  }, [activeTab, isInitialMount]);
+  }, [activeTab]);
   return <div className="min-h-screen relative">
       {/* Animated Tech Background */}
       <TechBackground />
