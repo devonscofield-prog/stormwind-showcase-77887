@@ -100,11 +100,18 @@ const ProjectManagement = () => {
                   <p className="text-sm text-muted-foreground">SAIC</p>
                 </div>
                 
-                <div>
+                <div className="border-b border-border pb-8">
                   <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!"
                   </p>
                   <p className="font-semibold text-foreground">Danny Parsons</p>
+                </div>
+                
+                <div>
+                  <p className="text-lg text-muted-foreground mb-4 italic leading-relaxed">
+                    "Ashley is incredibly knowledgeable, kept the class both focused and energized, and showed genuine kindness throughout the session. Their approachability and expertise made learning not just effective, but enjoyable."
+                  </p>
+                  <p className="font-semibold text-foreground">State of Nebraska</p>
                 </div>
               </div>
             </div>
