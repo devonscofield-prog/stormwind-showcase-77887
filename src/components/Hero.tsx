@@ -59,13 +59,18 @@ const Hero = ({ onTabChange }: HeroProps) => {
           {/* Main Heading with Typing Animation */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight pb-2 relative min-h-[1.2em]">
             <span className="relative inline-block">
-              <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-lg opacity-50">
+              {/* Outer glow layers */}
+              <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-2xl opacity-60 scale-110">
                 {typedText}
               </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-xl opacity-70">
+                {typedText}
+              </span>
+              {/* Main text */}
               <span className="relative bg-gradient-to-r from-primary via-primary/90 to-primary bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text drop-shadow-2xl">
                 {typedText}
                 {typedText.length < fullText.length && (
-                  <span className="inline-block w-1 h-[0.9em] bg-primary ml-1 animate-pulse align-middle"></span>
+                  <span className="inline-block w-1 h-[0.9em] bg-primary ml-1 animate-pulse align-middle shadow-[0_0_10px_rgba(79,209,197,0.8)]"></span>
                 )}
               </span>
             </span>
