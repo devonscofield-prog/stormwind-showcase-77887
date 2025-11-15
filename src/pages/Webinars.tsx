@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BackToTop from "@/components/BackToTop";
 import { Skeleton } from "@/components/ui/skeleton";
 import { VideoEmbed } from "@/components/VideoEmbed";
+import { TechBackground } from "@/components/TechBackground";
 
 const Webinars = () => {
   const [activeTab, setActiveTab] = useState("microsoft");
@@ -146,20 +147,22 @@ const Webinars = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-[#1a1f2e] to-gray-900">
-      <Navigation />
-      <BackToTop />
-      
-      <div className="container mx-auto px-4 pt-24 pb-16">
-        {/* Hero Section */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-5xl font-bold text-white mb-4">
-            Expert-Led Webinars
-          </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Learn from industry experts through our comprehensive collection of webinars covering Microsoft, Cloud, Networking, Cybersecurity, and Project Management.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#0f1419] relative">
+      <TechBackground />
+      <div className="relative z-10">
+        <Navigation />
+        <BackToTop />
+        
+        <div className="container mx-auto px-4 pt-24 pb-16">
+          {/* Hero Section */}
+          <div className="text-center mb-12 animate-fade-in">
+            <h1 className="text-5xl font-bold text-white mb-4">
+              Expert-Led Webinars
+            </h1>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Learn from industry experts through our comprehensive collection of webinars covering Microsoft, Cloud, Networking, Cybersecurity, and Project Management.
+            </p>
+          </div>
 
         {/* Tabbed Interface */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -235,6 +238,7 @@ const Webinars = () => {
           ))}
         </Tabs>
       </div>
+    </div>
     </div>
   );
 };
