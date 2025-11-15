@@ -79,7 +79,6 @@ const ProjectManagement = () => {
                 <LazyVideo 
                   videoId="21dgg0qzzp" 
                   title="Project Management Training with Ashley Hunt"
-                  posterImage={ashleyHuntImage}
                 />
               </div>
             </div>
