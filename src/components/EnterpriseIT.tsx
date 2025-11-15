@@ -151,7 +151,7 @@ const EnterpriseIT = ({
             "Project Management": "/project-management",
             "Help Desk": "/help-desk"
           };
-          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block">
+          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1">
                 <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
               </Link>;
@@ -183,7 +183,7 @@ const EnterpriseIT = ({
             "Skills Assessments": "/skills-assessments",
             "Enterprise Reporting and Administration": "/enterprise-reporting"
           };
-          return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block">
+          return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1">
                 {/* Icon */}
                 <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5">
                   <feature.icon className="w-8 h-8 text-primary" />
