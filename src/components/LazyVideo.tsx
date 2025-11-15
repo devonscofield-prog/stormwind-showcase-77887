@@ -44,7 +44,7 @@ export const LazyVideo = ({ videoId, title, posterImage }: LazyVideoProps) => {
     >
       {isInView && isPlaying ? (
         <iframe
-          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&autoPlay=true`}
+          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&autoPlay=true&controlsVisibleOnLoad=false`}
           title={title}
           allow="autoplay; fullscreen"
           allowFullScreen
