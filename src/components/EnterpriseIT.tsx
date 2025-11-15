@@ -125,7 +125,7 @@ const EnterpriseIT = ({
     category: "Help Desk",
     items: "CompTIA (Tech+, A+, Net+, Sec+), ITIL v4 Foundations, and more"
   }];
-  return <div className="animate-fade-in bg-[hsl(var(--section-green))] rounded-2xl p-8 md:p-12">
+  return <div className="animate-fade-in">
       <div className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-gradient-primary leading-tight pb-2">Enterprise IT</h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed">
