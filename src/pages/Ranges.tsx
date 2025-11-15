@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
+import { Skeleton } from "@/components/ui/skeleton";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -16,6 +17,13 @@ import { ArrowRight, CheckCircle2, Cloud, Server, Network, Shield, Database, Git
 const Ranges = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("azure");
+  const [videoLoaded, setVideoLoaded] = useState({
+    azure: false,
+    microsoft: false,
+    network: false,
+    cyber: false
+  });
+
   useEffect(() => {
     document.title = "Ranges";
   }, []);
@@ -162,13 +170,27 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Azure Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    {!videoLoaded.azure && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
+                        <Skeleton className="absolute inset-0 rounded-none" />
+                      </div>
+                    )}
+                    <iframe 
+                      src="https://fast.wistia.net/embed/iframe/4h1c0m2kaf?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
+                      title="Azure Range Demo" 
+                      allow="autoplay; fullscreen" 
+                      allowFullScreen 
+                      onLoad={() => setVideoLoaded(prev => ({ ...prev, azure: true }))}
+                      style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
                           width: "100%",
-                          height: "100%"
-                        }} />
+                          height: "100%",
+                          opacity: videoLoaded.azure ? 1 : 0,
+                          transition: "opacity 0.3s ease-in-out"
+                        }} 
+                    />
                   </div>
                 </div>
               </div>
@@ -235,13 +257,27 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Microsoft Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    {!videoLoaded.microsoft && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
+                        <Skeleton className="absolute inset-0 rounded-none" />
+                      </div>
+                    )}
+                    <iframe 
+                      src="https://fast.wistia.net/embed/iframe/v6zins19bi?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
+                      title="Microsoft Range Demo" 
+                      allow="autoplay; fullscreen" 
+                      allowFullScreen 
+                      onLoad={() => setVideoLoaded(prev => ({ ...prev, microsoft: true }))}
+                      style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
                           width: "100%",
-                          height: "100%"
-                        }} />
+                          height: "100%",
+                          opacity: videoLoaded.microsoft ? 1 : 0,
+                          transition: "opacity 0.3s ease-in-out"
+                        }} 
+                    />
                   </div>
                 </div>
               </div>
@@ -310,13 +346,27 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Network Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    {!videoLoaded.network && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
+                        <Skeleton className="absolute inset-0 rounded-none" />
+                      </div>
+                    )}
+                    <iframe 
+                      src="https://fast.wistia.net/embed/iframe/6i6y01qjp0?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
+                      title="Network Range Demo" 
+                      allow="autoplay; fullscreen" 
+                      allowFullScreen 
+                      onLoad={() => setVideoLoaded(prev => ({ ...prev, network: true }))}
+                      style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
                           width: "100%",
-                          height: "100%"
-                        }} />
+                          height: "100%",
+                          opacity: videoLoaded.network ? 1 : 0,
+                          transition: "opacity 0.3s ease-in-out"
+                        }} 
+                    />
                   </div>
                 </div>
               </div>
@@ -412,13 +462,27 @@ const Ranges = () => {
                         padding: "56.25% 0 0 0",
                         position: "relative"
                       }}>
-                    <iframe src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true&controlsVisibleOnLoad=false" title="Cyber Range Demo" allow="autoplay; fullscreen" allowFullScreen style={{
+                    {!videoLoaded.cyber && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
+                        <Skeleton className="absolute inset-0 rounded-none" />
+                      </div>
+                    )}
+                    <iframe 
+                      src="https://fast.wistia.net/embed/iframe/gg8rfkzk3y?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
+                      title="Cyber Range Demo" 
+                      allow="autoplay; fullscreen" 
+                      allowFullScreen 
+                      onLoad={() => setVideoLoaded(prev => ({ ...prev, cyber: true }))}
+                      style={{
                           position: "absolute",
                           top: 0,
                           left: 0,
                           width: "100%",
-                          height: "100%"
-                        }} />
+                          height: "100%",
+                          opacity: videoLoaded.cyber ? 1 : 0,
+                          transition: "opacity 0.3s ease-in-out"
+                        }} 
+                    />
                   </div>
                 </div>
               </div>
