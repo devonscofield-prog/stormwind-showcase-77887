@@ -38,7 +38,7 @@ export const LazyVideo = ({ videoId, title, posterImage }: LazyVideoProps) => {
   return (
     <div
       ref={videoRef}
-      className="aspect-video bg-muted rounded-lg overflow-hidden"
+      className="aspect-video bg-muted rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:brightness-110 hover:shadow-xl cursor-pointer"
     >
       {isInView ? (
         <iframe
