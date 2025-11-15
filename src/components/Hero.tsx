@@ -39,19 +39,21 @@ const Hero = ({ onTabChange }: HeroProps) => {
 
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Tech Background Animation */}
-      <TechBackground />
+      {/* Tech Background Animation - More prominent */}
+      <div className="absolute inset-0 opacity-90">
+        <TechBackground />
+      </div>
       
-      {/* Static Background Image Overlay with Hero Colors */}
+      {/* Static Background Image - Darker */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-60"
+        className="absolute inset-0 bg-cover bg-center opacity-25"
         style={{ 
           backgroundImage: `url(${heroBackground})`,
         }}
       />
       
-      {/* Lighter Gradient Overlay to maintain color scheme */}
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/30" />
+      {/* Darker Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/60 to-foreground/50" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
