@@ -13,6 +13,27 @@ const Hero = ({ onTabChange }: HeroProps) => {
   const [typedText, setTypedText] = useState("");
   const fullText = "Empowering the Future of Learning.";
 
+  // Create typing sound effect
+  const playTypingSound = () => {
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    // Configure sound
+    oscillator.frequency.value = 800 + Math.random() * 200; // Vary pitch slightly
+    oscillator.type = 'sine';
+    
+    // Quick click sound
+    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.05);
+  };
+
   useEffect(() => {
     setIsVisible(true);
     
@@ -29,11 +50,14 @@ const Hero = ({ onTabChange }: HeroProps) => {
     const typingInterval = setInterval(() => {
       if (currentIndex <= fullText.length) {
         setTypedText(fullText.slice(0, currentIndex));
+        if (currentIndex > 0 && currentIndex <= fullText.length) {
+          playTypingSound();
+        }
         currentIndex++;
       } else {
         clearInterval(typingInterval);
       }
-    }, 50); // Adjust speed here (lower = faster)
+    }, 100); // Slower typing speed (was 50ms)
 
     return () => clearInterval(typingInterval);
   }, []);
