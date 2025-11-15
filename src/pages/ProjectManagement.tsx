@@ -3,29 +3,21 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, ExternalLink, Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import projectManagementImage from "@/assets/project-management-logo.png";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
 import { LazyVideo } from "@/components/LazyVideo";
-
 const ProjectManagement = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { technologies = [], features = [] } = location.state || {};
-
+  const {
+    technologies = [],
+    features = []
+  } = location.state || {};
   useEffect(() => {
     document.title = "Project Management";
   }, []);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -56,11 +48,7 @@ const ProjectManagement = () => {
               PMP® certification and continuing certification requirement (CCR) support with powerful EPIC LIVE classes and 24-7 Instant Replay recordings
             </p>
             <div className="flex justify-center">
-              <Button
-                size="lg"
-                onClick={() => navigate('/courses?category=Project Management')}
-                className="gap-2"
-              >
+              <Button size="lg" onClick={() => navigate('/courses?category=Project Management')} className="gap-2">
                 Explore Courses
               </Button>
             </div>
@@ -71,12 +59,7 @@ const ProjectManagement = () => {
           <div className="mb-32 rounded-lg bg-card border border-border p-8 animate-fade-in">
             <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
               <div className="flex-shrink-0">
-                <img 
-                  src={ashleyHuntImage} 
-                  alt="Ashley Hunt" 
-                  className="w-48 h-48 rounded-lg object-cover"
-                  loading="lazy"
-                />
+                <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-48 h-48 rounded-lg object-cover" loading="lazy" />
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold mb-2">Senior Instructor: J. Ashley Hunt</h2>
@@ -89,12 +72,9 @@ const ProjectManagement = () => {
             
             {/* Instructor Training Video */}
             <div className="border-t border-border pt-8">
-              <h3 className="text-xl font-semibold mb-4 text-center">Watch Ashley in Action</h3>
+              
               <div className="max-w-3xl mx-auto">
-                <LazyVideo 
-                  videoId="21dgg0qzzp" 
-                  title="Project Management Training with Ashley Hunt"
-                />
+                <LazyVideo videoId="21dgg0qzzp" title="Project Management Training with Ashley Hunt" />
               </div>
             </div>
           </div>
@@ -113,11 +93,7 @@ const ProjectManagement = () => {
               <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img
-                      src={ashleyHuntImage}
-                      alt="Ashley Hunt"
-                      className="w-16 h-16 rounded-full object-cover border-2 border-primary/20"
-                    />
+                    <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -167,11 +143,7 @@ const ProjectManagement = () => {
               <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <img
-                      src={ashleyHuntImage}
-                      alt="Ashley Hunt"
-                      className="w-16 h-16 rounded-full object-cover border-2 border-primary/20"
-                    />
+                    <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -379,23 +351,34 @@ const ProjectManagement = () => {
 
               <div className="rounded-lg bg-card border border-border p-8">
                 <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { title: "Project Fundamentals for the Accidental Project Manager", pdu: "8 Technical PDU" },
-                    { title: "Practical Project Management with Microsoft Project", pdu: "8.5 PDU" },
-                    { title: "Initiating a Project", pdu: "4 Technical PDU" },
-                    { title: "Planning for Risk Management", pdu: "4 Technical PDU" },
-                    { title: "Balancing Time, Cost, and Scope", pdu: "4 Technical PDU" },
-                    { title: "Managing a Project Team", pdu: "4 Technical PDU" },
-                    { title: "Microsoft Project 2019", pdu: "8.5 Technical PDU" }
-                  ].map((course, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
+                  {[{
+                  title: "Project Fundamentals for the Accidental Project Manager",
+                  pdu: "8 Technical PDU"
+                }, {
+                  title: "Practical Project Management with Microsoft Project",
+                  pdu: "8.5 PDU"
+                }, {
+                  title: "Initiating a Project",
+                  pdu: "4 Technical PDU"
+                }, {
+                  title: "Planning for Risk Management",
+                  pdu: "4 Technical PDU"
+                }, {
+                  title: "Balancing Time, Cost, and Scope",
+                  pdu: "4 Technical PDU"
+                }, {
+                  title: "Managing a Project Team",
+                  pdu: "4 Technical PDU"
+                }, {
+                  title: "Microsoft Project 2019",
+                  pdu: "8.5 Technical PDU"
+                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <div>
                         <p className="font-medium mb-1">{course.title}</p>
                         <p className="text-sm text-primary">{course.pdu}</p>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </section>
@@ -411,20 +394,25 @@ const ProjectManagement = () => {
 
               <div className="rounded-lg bg-card border border-border p-8">
                 <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { title: "Leading a Cross-Cultural Virtual Team", pdu: "2 Leadership PDU" },
-                    { title: "Building a Communications Management Plan that Works", pdu: "2 Leadership PDU" },
-                    { title: "Motivating a Team of Individuals", pdu: "2 Leadership PDU" },
-                    { title: "Negotiating for More", pdu: "2 Leadership PDU" }
-                  ].map((course, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
+                  {[{
+                  title: "Leading a Cross-Cultural Virtual Team",
+                  pdu: "2 Leadership PDU"
+                }, {
+                  title: "Building a Communications Management Plan that Works",
+                  pdu: "2 Leadership PDU"
+                }, {
+                  title: "Motivating a Team of Individuals",
+                  pdu: "2 Leadership PDU"
+                }, {
+                  title: "Negotiating for More",
+                  pdu: "2 Leadership PDU"
+                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <div>
                         <p className="font-medium mb-1">{course.title}</p>
                         <p className="text-sm text-primary">{course.pdu}</p>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </section>
@@ -440,21 +428,28 @@ const ProjectManagement = () => {
 
               <div className="rounded-lg bg-card border border-border p-8">
                 <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { title: "Transitioning to Agile Project Management", pdu: "4 PDU" },
-                    { title: "Building Successful Scrum Team", pdu: "8 PDU" },
-                    { title: "Working with Kanban Boards", pdu: "4 PDU" },
-                    { title: "Lean Six Sigma Yellow Belt", pdu: "16 PDU" },
-                    { title: "Lean Six Sigma Green Belt", pdu: "16 PDU" }
-                  ].map((course, index) => (
-                    <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
+                  {[{
+                  title: "Transitioning to Agile Project Management",
+                  pdu: "4 PDU"
+                }, {
+                  title: "Building Successful Scrum Team",
+                  pdu: "8 PDU"
+                }, {
+                  title: "Working with Kanban Boards",
+                  pdu: "4 PDU"
+                }, {
+                  title: "Lean Six Sigma Yellow Belt",
+                  pdu: "16 PDU"
+                }, {
+                  title: "Lean Six Sigma Green Belt",
+                  pdu: "16 PDU"
+                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <div>
                         <p className="font-medium mb-1">{course.title}</p>
                         <p className="text-sm text-primary">{course.pdu}</p>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </section>
@@ -475,8 +470,6 @@ const ProjectManagement = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ProjectManagement;
