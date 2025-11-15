@@ -66,9 +66,10 @@ const ProjectManagement = () => {
             </div>
           </div>
 
-          {/* Featured Instructor Section */}
+
+          {/* Featured Instructor Section with Video */}
           <div className="mb-32 rounded-lg bg-card border border-border p-8 animate-fade-in">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
               <div className="flex-shrink-0">
                 <img 
                   src={ashleyHuntImage} 
@@ -85,14 +86,17 @@ const ProjectManagement = () => {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Video Section */}
-          <div className="mb-32 animate-fade-in max-w-4xl mx-auto">
-            <LazyVideo 
-              videoId="21dgg0qzzp" 
-              title="Project Management Training Overview"
-            />
+            
+            {/* Instructor Training Video */}
+            <div className="border-t border-border pt-8">
+              <h3 className="text-xl font-semibold mb-4 text-center">Watch Ashley in Action</h3>
+              <div className="max-w-3xl mx-auto">
+                <LazyVideo 
+                  videoId="21dgg0qzzp" 
+                  title="Project Management Training with Ashley Hunt"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Featured Certifications Section */}
