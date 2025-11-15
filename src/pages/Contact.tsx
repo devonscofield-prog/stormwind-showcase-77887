@@ -34,6 +34,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 const Contact = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<ContactFormValues>({
@@ -56,12 +57,19 @@ const Contact = () => {
 
       if (error) throw error;
 
+      setShowSuccess(true);
+      
       toast({
         title: "Message sent!",
         description: "Your request has been sent to the learning director. They will contact you soon.",
       });
       
       form.reset();
+      
+      // Hide success animation after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -112,7 +120,34 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg shadow-lg p-8 hover:border-[#4FD1C5]/50 transition-all duration-300">
+        <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg shadow-lg p-8 hover:border-[#4FD1C5]/50 transition-all duration-300 relative overflow-hidden">
+          {/* Success Animation Overlay */}
+          {showSuccess && (
+            <div className="absolute inset-0 bg-[#1a1f2e]/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
+              <div className="text-center animate-scale-in">
+                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#4FD1C5]/20 border-2 border-[#4FD1C5] animate-pulse">
+                  <svg 
+                    className="w-10 h-10 text-[#4FD1C5]" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M5 13l4 4L19 7" 
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                <p className="text-gray-300 max-w-md">
+                  Your request has been received. A learning director will contact you soon.
+                </p>
+              </div>
+            </div>
+          )}
+          
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
