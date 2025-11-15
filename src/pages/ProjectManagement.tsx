@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import projectManagementImage from "@/assets/project-management-logo.png";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
+import { LazyVideo } from "@/components/LazyVideo";
 
 const ProjectManagement = () => {
   const navigate = useNavigate();
@@ -84,6 +85,14 @@ const ProjectManagement = () => {
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Video Section */}
+          <div className="mb-32 animate-fade-in">
+            <LazyVideo 
+              videoId="28528bc8bdb20b3ea46a18bfbd9ef9df" 
+              title="Project Management Training Overview"
+            />
           </div>
 
           {/* Featured Certifications Section */}
