@@ -6,7 +6,6 @@ import { Navigation } from "@/components/Navigation";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import projectManagementImage from "@/assets/project-management-logo.png";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
-import { LazyVideo } from "@/components/LazyVideo";
 const ProjectManagement = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -76,11 +75,26 @@ const ProjectManagement = () => {
             {/* Instructor Training Video */}
             <div className="px-8 pb-8">
               <div className="max-w-3xl mx-auto">
-                <LazyVideo 
-                  videoId="21dgg0qzzp" 
-                  title="Project Management Training with Ashley Hunt"
-                  posterImage={ashleyHuntImage}
-                />
+                <div className="relative bg-card rounded-lg border border-border overflow-hidden hover:border-primary transition-all">
+                  <div style={{
+                    padding: "56.25% 0 0 0",
+                    position: "relative"
+                  }}>
+                    <iframe 
+                      src="https://fast.wistia.net/embed/iframe/21dgg0qzzp?seo=true&videoFoam=true&controlsVisibleOnLoad=false" 
+                      title="Project Management Training with Ashley Hunt" 
+                      allow="autoplay; fullscreen" 
+                      allowFullScreen 
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                      }} 
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
