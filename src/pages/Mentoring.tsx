@@ -42,8 +42,6 @@ const Mentoring = () => {
       expertise: "Will is a passionate and authoritative instructor, and makes sure that his students can implement Microsoft technologies and get themselves certified along the way.",
       personal: "Outside the class and authorship, you'd be likely to find Will at the forge smithing his latest creation.",
       specialization: "Microsoft Technologies",
-      bgColor: "from-blue-50 to-blue-100",
-      borderColor: "border-blue-200",
       url: "https://app.stormwindstudios.com/instructor/will-panek",
     },
     {
@@ -54,8 +52,6 @@ const Mentoring = () => {
       description: "A world-recognized project management instructor, with authorship of books on PMP, ACP and Project+.",
       expertise: "Ashley has helped over 10,000 individuals get their PMP certification.",
       specialization: "Project Management",
-      bgColor: "from-purple-50 to-purple-100",
-      borderColor: "border-purple-200",
       url: "https://app.stormwindstudios.com/instructor/ashley-hunt",
     },
     {
@@ -67,14 +63,12 @@ const Mentoring = () => {
       expertise: "Raymond's engaging instruction style makes even the most obscenely complicated or obtuse concepts relatable and understandable.",
       personal: "Outside of class, Raymond enjoys dominating both on the golf course and the basketball court.",
       specialization: "Cisco Networking",
-      bgColor: "from-teal-50 to-teal-100",
-      borderColor: "border-teal-200",
       url: "https://app.stormwindstudios.com/instructor/raymond-lacoste",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -102,7 +96,7 @@ const Mentoring = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-6 text-primary tracking-tight">
               1:1 Mentoring with Industry Experts
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Learn directly from world-class instructors with decades of experience and industry recognition
             </p>
           </div>
@@ -111,7 +105,7 @@ const Mentoring = () => {
           {isLoading ? (
             <div className="space-y-12">
               {[...Array(3)].map((_, index) => (
-                <div key={index} className="rounded-2xl bg-white border-2 overflow-hidden shadow-lg">
+                <div key={index} className="rounded-2xl bg-card border overflow-hidden shadow-lg">
                   <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
                     <div className="flex flex-col items-center justify-center space-y-4">
                       <Skeleton className="w-48 h-48 rounded-full" />
@@ -135,7 +129,7 @@ const Mentoring = () => {
               {instructors.map((instructor, index) => (
                 <div
                   key={index}
-                  className={`animate-fade-in rounded-2xl bg-gradient-to-br ${instructor.bgColor} border-2 ${instructor.borderColor} overflow-hidden shadow-lg`}
+                  className="animate-fade-in rounded-2xl bg-card border overflow-hidden shadow-lg"
                 >
                   <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
                     {/* Instructor Image/Icon */}
@@ -144,16 +138,16 @@ const Mentoring = () => {
                         <img 
                           src={instructor.image} 
                           alt={instructor.name}
-                          className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl"
+                          className="w-48 h-48 rounded-full object-cover border-4 border-background shadow-xl"
                         />
                       ) : (
-                        <div className="w-48 h-48 rounded-full bg-white border-4 border-white shadow-xl flex items-center justify-center">
+                        <div className="w-48 h-48 rounded-full bg-background border-4 border-background shadow-xl flex items-center justify-center">
                           <instructor.icon className="w-24 h-24 text-primary" />
                         </div>
                       )}
                       <div className="mt-6 text-center">
-                        <div className="inline-block px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm">
-                          <span className="text-sm font-semibold text-slate-700">{instructor.specialization}</span>
+                        <div className="inline-block px-4 py-2 bg-muted rounded-full border shadow-sm">
+                          <span className="text-sm font-semibold text-foreground">{instructor.specialization}</span>
                         </div>
                       </div>
                     </div>
@@ -161,21 +155,21 @@ const Mentoring = () => {
                     {/* Instructor Details */}
                     <div className="md:col-span-2 space-y-4">
                       <div>
-                        <h2 className="text-4xl font-bold text-slate-900 mb-2">{instructor.name}</h2>
-                        <p className="text-lg text-slate-600 font-medium">{instructor.title}</p>
+                        <h2 className="text-4xl font-bold text-foreground mb-2">{instructor.name}</h2>
+                        <p className="text-lg text-muted-foreground font-medium">{instructor.title}</p>
                       </div>
 
                       <div className="space-y-3">
-                        <p className="text-slate-700 leading-relaxed">
+                        <p className="text-foreground leading-relaxed">
                           {instructor.description}
                         </p>
                         
-                        <p className="text-slate-700 leading-relaxed font-medium">
+                        <p className="text-foreground leading-relaxed font-medium">
                           {instructor.expertise}
                         </p>
 
                         {instructor.personal && (
-                          <p className="text-slate-600 leading-relaxed italic">
+                          <p className="text-muted-foreground leading-relaxed italic">
                             {instructor.personal}
                           </p>
                         )}
@@ -189,11 +183,11 @@ const Mentoring = () => {
 
           {/* Call to Action */}
           <div className="mt-16 text-center animate-fade-in">
-            <div className="bg-white rounded-2xl border-2 border-slate-200 p-8 md:p-12 shadow-lg">
-              <h3 className="text-3xl font-bold text-slate-900 mb-4">
+            <div className="bg-card rounded-2xl border p-8 md:p-12 shadow-lg">
+              <h3 className="text-3xl font-bold text-foreground mb-4">
                 Get Personal Guidance from Industry Leaders
               </h3>
-              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Unlike traditional eLearning, you're never on your own. Get direct access to instructors for personalized help whenever you need it.
               </p>
               <Button size="lg" className="px-8 py-6 text-lg" asChild>
