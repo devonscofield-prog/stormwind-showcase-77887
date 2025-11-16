@@ -26,7 +26,7 @@ export const Navigation = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.075)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
