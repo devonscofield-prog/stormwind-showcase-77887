@@ -114,7 +114,7 @@ export const Navigation = () => {
                   <Link to="/mentoring" className="cursor-pointer">Mentoring</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/ai-learning" className="cursor-pointer">AI Learning</Link>
+                  <Link to="/ai-learning" className="cursor-pointer">StormAI Tutor</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/bytes" className="cursor-pointer">Microlearning (Bytes)</Link>
@@ -292,7 +292,7 @@ export const Navigation = () => {
                 </Link>
                 <Link to="/ai-learning" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    AI Learning
+                    StormAI Tutor
                   </Button>
                 </Link>
                 <Link to="/bytes" onClick={() => setMobileMenuOpen(false)}>
