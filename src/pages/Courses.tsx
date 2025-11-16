@@ -3,7 +3,6 @@ import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home, Zap, Search } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { TechBackground } from "@/components/TechBackground";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Breadcrumb,
@@ -4565,8 +4564,7 @@ const Courses = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1419] relative">
-      <TechBackground />
+    <div className="min-h-screen bg-background">
       <div className="relative z-10">
         <Navigation />
 
