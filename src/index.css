@@ -419,8 +419,8 @@ All colors MUST be HSL.
 
   .glass-feature-card:hover {
     box-shadow: 
-      0 12px 40px -8px rgba(0, 154, 119, 0.25),
-      0 0 0 1px rgba(0, 154, 119, 0.1),
+      0 6px 20px -4px rgba(0, 154, 119, 0.125),
+      0 0 0 1px rgba(0, 154, 119, 0.05),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
     transform: translateY(-2px);
   }
@@ -433,7 +433,7 @@ All colors MUST be HSL.
       rgba(45, 45, 45, 0.9) 100%
     );
     border: 1px solid rgba(32, 178, 170, 0.3);
-    box-shadow: 0 0 15px rgba(32, 178, 170, 0.2);
+    box-shadow: 0 0 8px rgba(32, 178, 170, 0.1);
   }
 
   .dark .glass-feature-card::before {
@@ -448,8 +448,8 @@ All colors MUST be HSL.
   .dark .glass-feature-card:hover {
     border-color: rgba(32, 178, 170, 0.5);
     box-shadow: 
-      0 0 25px rgba(32, 178, 170, 0.4),
-      0 12px 40px -8px rgba(0, 0, 0, 0.4);
+      0 0 13px rgba(32, 178, 170, 0.2),
+      0 6px 20px -4px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
   }
 
@@ -465,17 +465,17 @@ All colors MUST be HSL.
   /* Gradient Icon Backgrounds */
   .icon-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-green)));
-    box-shadow: 0 4px 12px rgba(0, 154, 119, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 154, 119, 0.1);
   }
 
   .icon-gradient-secondary {
     background: linear-gradient(135deg, hsl(var(--accent-green)), hsl(var(--accent-teal)));
-    box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2);
+    box-shadow: 0 2px 6px rgba(52, 211, 153, 0.1);
   }
 
   .icon-gradient-tertiary {
     background: linear-gradient(135deg, hsl(var(--accent-teal)), hsl(var(--primary)));
-    box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
+    box-shadow: 0 2px 6px rgba(32, 178, 170, 0.1);
   }
 
   /* Icon hover animation */
@@ -485,6 +485,6 @@ All colors MUST be HSL.
 
   .glass-feature-card:hover .icon-container {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 154, 119, 0.3);
+    box-shadow: 0 3px 8px rgba(0, 154, 119, 0.15);
   }
 }
