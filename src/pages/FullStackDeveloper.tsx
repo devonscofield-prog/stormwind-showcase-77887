@@ -76,7 +76,7 @@ const FullStackDeveloper = () => {
           </Breadcrumb>
 
           <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight pb-2">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
               Full Stack Developer Package
             </h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">

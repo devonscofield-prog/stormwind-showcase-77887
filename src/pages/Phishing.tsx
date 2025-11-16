@@ -47,7 +47,7 @@ const Phishing = () => {
 
           {/* Page Header */}
           <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight pb-2">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
               StormAI Phishing
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

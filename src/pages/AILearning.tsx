@@ -64,7 +64,7 @@ const AILearning = () => {
             <div className="p-3 rounded-2xl bg-primary/10 backdrop-blur-sm">
               <Bot className="w-10 h-10 text-primary" />
             </div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight pb-2">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
               StormAI Tutor
             </h1>
           </div>
