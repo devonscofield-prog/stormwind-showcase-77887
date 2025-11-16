@@ -108,9 +108,6 @@ export const Navigation = () => {
                 <DropdownMenuLabel>Platform Features</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link to="/ranges" className="cursor-pointer">Ranges</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link to="/mentoring" className="cursor-pointer">Mentoring</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -280,11 +277,6 @@ export const Navigation = () => {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="pl-4 mt-2 space-y-2">
-                <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Ranges
-                  </Button>
-                </Link>
                 <Link to="/mentoring" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
                     Mentoring
