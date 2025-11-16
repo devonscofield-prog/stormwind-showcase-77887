@@ -1,13 +1,28 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import stormwindLogo from "@/assets/stormwind-logo.png";
 
 export const Navigation = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [techOpen, setTechOpen] = useState(false);
+  const [platformOpen, setPlatformOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
   return (
@@ -24,6 +39,101 @@ export const Navigation = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6 flex-shrink-0 ml-auto">
+            {/* Technologies Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                  Technologies
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-background border-border">
+                <DropdownMenuLabel>Technologies We Train On</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/microsoft" className="cursor-pointer">Microsoft</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/cloud" className="cursor-pointer">Cloud</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/cybersecurity" className="cursor-pointer">Cybersecurity</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/networking" className="cursor-pointer">Networking</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/devops" className="cursor-pointer">DevOps</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/fullstack-developer" className="cursor-pointer">Full Stack Developer</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/help-desk" className="cursor-pointer">Help Desk</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/desktop-apps" className="cursor-pointer">Desktop Apps</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/ai-learning" className="cursor-pointer">AI Learning</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/business-skills" className="cursor-pointer">Business Skills</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/project-management" className="cursor-pointer">Project Management</Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/phishing" className="cursor-pointer">StormAI Phishing</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/enterprise-end-user" className="cursor-pointer">Enterprise End User</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/hr-compliance" className="cursor-pointer">HR Compliance</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Platform Features Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                  Platform Features
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 bg-background border-border">
+                <DropdownMenuLabel>Platform Features</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/ranges" className="cursor-pointer">Ranges</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/mentoring" className="cursor-pointer">Mentoring</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/security-awareness" className="cursor-pointer">Security Awareness</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/bytes" className="cursor-pointer">Microlearning (Bytes)</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/learning-paths" className="cursor-pointer">Learning Paths</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/skills-assessments" className="cursor-pointer">Skills Assessments</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/live-instructor-led" className="cursor-pointer">Live Instructor Led</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/enterprise-reporting" className="cursor-pointer">Enterprise Reporting</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Link to="/courses">
               <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Courses
@@ -73,6 +183,146 @@ export const Navigation = () => {
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 dark:bg-[#2d2d2d]/95 border-t border-gray-800 dark:border-gray-700 pt-4 animate-fade-in">
+            {/* Technologies Collapsible */}
+            <Collapsible open={techOpen} onOpenChange={setTechOpen}>
+              <CollapsibleTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                >
+                  Technologies
+                  <ChevronDown className={`h-4 w-4 transition-transform ${techOpen ? 'rotate-180' : ''}`} />
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="pl-4 mt-2 space-y-2">
+                <Link to="/microsoft" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Microsoft
+                  </Button>
+                </Link>
+                <Link to="/cloud" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Cloud
+                  </Button>
+                </Link>
+                <Link to="/cybersecurity" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Cybersecurity
+                  </Button>
+                </Link>
+                <Link to="/networking" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Networking
+                  </Button>
+                </Link>
+                <Link to="/devops" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    DevOps
+                  </Button>
+                </Link>
+                <Link to="/fullstack-developer" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Full Stack Developer
+                  </Button>
+                </Link>
+                <Link to="/help-desk" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Help Desk
+                  </Button>
+                </Link>
+                <Link to="/desktop-apps" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Desktop Apps
+                  </Button>
+                </Link>
+                <Link to="/ai-learning" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    AI Learning
+                  </Button>
+                </Link>
+                <Link to="/business-skills" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Business Skills
+                  </Button>
+                </Link>
+                <Link to="/project-management" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Project Management
+                  </Button>
+                </Link>
+                <Link to="/phishing" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    StormAI Phishing
+                  </Button>
+                </Link>
+                <Link to="/enterprise-end-user" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Enterprise End User
+                  </Button>
+                </Link>
+                <Link to="/hr-compliance" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    HR Compliance
+                  </Button>
+                </Link>
+              </CollapsibleContent>
+            </Collapsible>
+
+            {/* Platform Features Collapsible */}
+            <Collapsible open={platformOpen} onOpenChange={setPlatformOpen}>
+              <CollapsibleTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-between text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                >
+                  Platform Features
+                  <ChevronDown className={`h-4 w-4 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="pl-4 mt-2 space-y-2">
+                <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Ranges
+                  </Button>
+                </Link>
+                <Link to="/mentoring" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Mentoring
+                  </Button>
+                </Link>
+                <Link to="/security-awareness" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Security Awareness
+                  </Button>
+                </Link>
+                <Link to="/bytes" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Microlearning (Bytes)
+                  </Button>
+                </Link>
+                <Link to="/learning-paths" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Learning Paths
+                  </Button>
+                </Link>
+                <Link to="/skills-assessments" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Skills Assessments
+                  </Button>
+                </Link>
+                <Link to="/live-instructor-led" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Live Instructor Led
+                  </Button>
+                </Link>
+                <Link to="/enterprise-reporting" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Enterprise Reporting
+                  </Button>
+                </Link>
+              </CollapsibleContent>
+            </Collapsible>
+
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
