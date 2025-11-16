@@ -41,8 +41,23 @@ const Index = () => {
     }
   }, [activeTab]);
   return <div className="min-h-screen relative">
-      {/* Animated Tech Background */}
-      <TechBackground />
+      {/* Floating Blobs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Large blob - top-right */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 blur-[60px] bg-gradient-to-br from-primary to-transparent animate-float-slow"></div>
+        
+        {/* Medium blob - left side */}
+        <div className="absolute top-1/4 -left-20 w-80 h-80 rounded-full opacity-15 blur-[50px] bg-gradient-to-br from-accent-teal to-transparent animate-float-medium" style={{animationDelay: '2s'}}></div>
+        
+        {/* Small blob - bottom-right */}
+        <div className="absolute bottom-20 -right-16 w-64 h-64 rounded-full opacity-20 blur-[40px] bg-gradient-to-br from-accent-green to-transparent animate-float-fast" style={{animationDelay: '4s'}}></div>
+        
+        {/* Medium blob - center-bottom */}
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full opacity-15 blur-[55px] bg-gradient-to-br from-primary to-transparent animate-float-slow" style={{animationDelay: '1s'}}></div>
+        
+        {/* Small accent - top-left */}
+        <div className="absolute top-1/3 -left-12 w-48 h-48 rounded-full opacity-10 blur-[35px] bg-gradient-to-br from-accent-teal to-transparent animate-float-medium" style={{animationDelay: '3s'}}></div>
+      </div>
       
       <Navigation />
 
@@ -52,44 +67,44 @@ const Index = () => {
       </div>
 
       {/* Tabbed Content Section */}
-      <section id="content-section" className="py-16 scroll-mt-20 relative z-10 bg-gradient-to-b from-[#3d3d3d]/70 via-[#3d3d3d]/85 to-[#3d3d3d] backdrop-blur-sm rounded-t-3xl shadow-xl -mt-8">
+      <section id="content-section" className="py-16 scroll-mt-20 relative z-10 bg-gradient-to-br from-background via-background to-primary/5 backdrop-blur-sm rounded-t-3xl shadow-xl -mt-8">
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12">
-              <TabsTrigger value="enterprise-it" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
+            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12 animate-scroll-reveal-scale">
+              <TabsTrigger value="enterprise-it" className="bg-transparent backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-all duration-300 cursor-pointer rounded-lg">
                 Enterprise IT
               </TabsTrigger>
-              <TabsTrigger value="project-management" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
+              <TabsTrigger value="project-management" className="bg-transparent backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-all duration-300 cursor-pointer rounded-lg">
                 Project Management
               </TabsTrigger>
-              <TabsTrigger value="stormai-phishing" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
+              <TabsTrigger value="stormai-phishing" className="bg-transparent backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-all duration-300 cursor-pointer rounded-lg">
                 StormAI Phishing
               </TabsTrigger>
-              <TabsTrigger value="enterprise-end-user" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
+              <TabsTrigger value="enterprise-end-user" className="bg-transparent backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-all duration-300 cursor-pointer rounded-lg">
                 Enterprise End User
               </TabsTrigger>
-              <TabsTrigger value="hr-compliance" className="bg-card/80 backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-primary/30 data-[state=active]:border-primary hover:border-primary/60 hover:bg-card hover:shadow-md transition-all duration-300 cursor-pointer rounded-lg">
+              <TabsTrigger value="hr-compliance" className="bg-transparent backdrop-blur-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-4 px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-all duration-300 cursor-pointer rounded-lg">
                 HR Compliance
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="enterprise-it" className="mt-0 glass-tab-primary -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="enterprise-it" className="mt-0 glass-tab-primary -mx-6 px-6 py-8 rounded-xl animate-scroll-reveal">
               <EnterpriseIT selectedTechnologies={selectedTechnologies} selectedFeatures={selectedFeatures} toggleTechnology={toggleTechnology} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="project-management" className="mt-0 glass-tab-secondary -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="project-management" className="mt-0 glass-tab-secondary -mx-6 px-6 py-8 rounded-xl animate-scroll-reveal">
               <ProjectManagement selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="stormai-phishing" className="mt-0 glass-tab-tertiary -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="stormai-phishing" className="mt-0 glass-tab-tertiary -mx-6 px-6 py-8 rounded-xl animate-scroll-reveal">
               <StormAIPhishing selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="enterprise-end-user" className="mt-0 glass-tab-warm -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="enterprise-end-user" className="mt-0 glass-tab-warm -mx-6 px-6 py-8 rounded-xl animate-scroll-reveal">
               <EnterpriseEndUser selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
 
-            <TabsContent value="hr-compliance" className="mt-0 glass-tab-cool -mx-6 px-6 py-8 rounded-xl">
+            <TabsContent value="hr-compliance" className="mt-0 glass-tab-cool -mx-6 px-6 py-8 rounded-xl animate-scroll-reveal">
               <HRCompliance selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
             </TabsContent>
           </Tabs>

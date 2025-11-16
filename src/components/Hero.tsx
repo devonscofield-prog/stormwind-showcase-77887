@@ -21,9 +21,8 @@ const Hero = ({
         setTypedText(fullText.slice(0, currentIndex));
         currentIndex++;
 
-        // Random delay between 60-150ms for natural typing feel
-        const delay = Math.random() * 90 + 60;
-        timeoutId = setTimeout(typeNextCharacter, delay);
+        // 80ms per character for typing effect
+        timeoutId = setTimeout(typeNextCharacter, 80);
       }
     };
 
@@ -48,16 +47,18 @@ const Hero = ({
               <span className="absolute inset-0 bg-gradient-to-r from-[#4FD1C5] via-[#4FD1C5]/80 to-[#4FD1C5] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-xl opacity-70">
                 {typedText}
               </span>
-              {/* Main text */}
-              <span className="relative text-white drop-shadow-2xl">
+              {/* Main text with glow */}
+              <span className="relative text-white drop-shadow-2xl" style={{
+                textShadow: '0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(79,209,197,0.3), 0 0 60px rgba(79,209,197,0.2)'
+              }}>
                 {typedText}
-                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-[#4FD1C5] ml-1 animate-pulse align-middle shadow-[0_0_20px_rgba(79,209,197,0.8)]"></span>}
+                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-[#4FD1C5] ml-1 animate-pulse align-middle shadow-[0_0_20px_rgba(79,209,197,0.8)]">|</span>}
               </span>
             </span>
           </h1>
           
           {/* Subtitle with Stagger Animation */}
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-2xl transition-all duration-1000 delay-300" style={{
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto drop-shadow-2xl transition-all duration-700 delay-500" style={{
           opacity: isVisible && typedText.length > 20 ? 1 : 0,
           transform: isVisible && typedText.length > 20 ? 'translateY(0)' : 'translateY(20px)'
         }}>Bite-sized learning, unlimited hands-on practice, and world-class instructors. We transform complex training into simple, accessible experiences.</p>
