@@ -75,7 +75,10 @@ export const Navigation = () => {
                   <Link to="/desktop-apps" className="cursor-pointer">Desktop Apps</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/ai-learning" className="cursor-pointer">AI Learning</Link>
+                  <Link to="/ai-pro" className="cursor-pointer">AI</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/security-awareness" className="cursor-pointer">Security Awareness</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/business-skills" className="cursor-pointer">Business Skills</Link>
@@ -111,7 +114,7 @@ export const Navigation = () => {
                   <Link to="/mentoring" className="cursor-pointer">Mentoring</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/security-awareness" className="cursor-pointer">Security Awareness</Link>
+                  <Link to="/ai-learning" className="cursor-pointer">AI Learning</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/bytes" className="cursor-pointer">Microlearning (Bytes)</Link>
@@ -232,9 +235,14 @@ export const Navigation = () => {
                     Desktop Apps
                   </Button>
                 </Link>
-                <Link to="/ai-learning" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/ai-pro" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    AI Learning
+                    AI
+                  </Button>
+                </Link>
+                <Link to="/security-awareness" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Security Awareness
                   </Button>
                 </Link>
                 <Link to="/business-skills" onClick={() => setMobileMenuOpen(false)}>
@@ -282,9 +290,9 @@ export const Navigation = () => {
                     Mentoring
                   </Button>
                 </Link>
-                <Link to="/security-awareness" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/ai-learning" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Security Awareness
+                    AI Learning
                   </Button>
                 </Link>
                 <Link to="/bytes" onClick={() => setMobileMenuOpen(false)}>
