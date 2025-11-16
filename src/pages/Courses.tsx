@@ -4686,7 +4686,7 @@ const Courses = () => {
             </div>
           ) : (
             <>
-              <div className="space-y-6">
+              <div key={currentPage} className="space-y-6 animate-fade-in">
                 {Object.entries(displayCourses).map(([category, subcategories]) => (
                 <div key={category} className="space-y-6">
                   {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
