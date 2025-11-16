@@ -10,7 +10,7 @@ All colors MUST be HSL.
   :root {
     /* StormWind Studios Brand Colors */
     --background: 210 29% 97%; /* Light Gray #F6F8FA */
-    --background-gradient: linear-gradient(135deg, hsl(210 29% 97%), hsl(210 29% 97%), hsl(166 100% 30% / 0.05));
+    --background-gradient: linear-gradient(135deg, hsl(210 29% 97%), hsl(210 29% 97%), hsl(166 58% 40% / 0.05));
     --foreground: 0 0% 17%; /* Dark Gray #2B2B2B */
     
     /* Alternating Section Backgrounds */
@@ -23,18 +23,18 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 17%;
 
-    /* StormWind Primary Green #009A77 */
-    --primary: 166 100% 30%;
+    /* StormWind Primary Green - Logo Color */
+    --primary: 166 58% 40%;
     --primary-foreground: 0 0% 100%;
 
-    /* Dark Green #006E59 */
-    --primary-dark: 166 100% 22%;
+    /* Dark Green */
+    --primary-dark: 166 58% 30%;
 
-    /* Light Green Accent #34D399 */
-    --accent-green: 160 64% 52%;
+    /* Light Green Accent */
+    --accent-green: 166 58% 52%;
 
-    /* Teal Accent #20B2AA */
-    --accent-teal: 177 70% 41%;
+    /* Teal Accent - Logo Color */
+    --accent-teal: 166 58% 40%;
 
     /* Secondary - Medium Gray */
     --secondary: 0 0% 43%; /* #6E6E6E */
@@ -44,34 +44,34 @@ All colors MUST be HSL.
     --muted: 210 29% 95%;
     --muted-foreground: 0 0% 43%;
 
-    /* Accent - Light Green */
-    --accent: 160 64% 52%;
-    --accent-foreground: 0 0% 17%;
+    /* Accent - Logo Green */
+    --accent: 166 58% 40%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 210 29% 90%;
     --input: 210 29% 90%;
-    --ring: 166 100% 30%;
+    --ring: 166 58% 40%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(166 100% 30%), hsl(166 100% 22%));
-    --gradient-accent: linear-gradient(135deg, hsl(160 64% 52%), hsl(177 70% 41%));
+    --gradient-primary: linear-gradient(135deg, hsl(166 58% 40%), hsl(166 58% 30%));
+    --gradient-accent: linear-gradient(135deg, hsl(166 58% 52%), hsl(166 58% 40%));
     
     /* Shadows */
     --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-card-hover: 0 10px 15px -3px rgba(0, 154, 119, 0.2), 0 4px 6px -2px rgba(0, 154, 119, 0.1);
-    --shadow-glow: 0 0 20px rgba(0, 154, 119, 0.15);
+    --shadow-card-hover: 0 10px 15px -3px hsl(166 58% 40% / 0.2), 0 4px 6px -2px hsl(166 58% 40% / 0.1);
+    --shadow-glow: 0 0 20px hsl(166 58% 40% / 0.15);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* Decorative Elements */
-    --gradient-blob-1: radial-gradient(circle at 20% 50%, rgba(0, 154, 119, 0.08) 0%, transparent 50%);
-    --gradient-blob-2: radial-gradient(circle at 80% 50%, rgba(32, 178, 170, 0.06) 0%, transparent 50%);
+    --gradient-blob-1: radial-gradient(circle at 20% 50%, hsl(166 58% 40% / 0.08) 0%, transparent 50%);
+    --gradient-blob-2: radial-gradient(circle at 80% 50%, hsl(166 58% 40% / 0.06) 0%, transparent 50%);
   }
 
   .dark {
@@ -86,12 +86,12 @@ All colors MUST be HSL.
     --popover: 0 0% 20%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 177 70% 41%; /* Teal accent */
+    --primary: 166 58% 40%; /* Logo Green */
     --primary-foreground: 0 0% 100%;
 
-    --primary-dark: 166 100% 22%;
-    --accent-green: 160 64% 52%;
-    --accent-teal: 177 70% 41%;
+    --primary-dark: 166 58% 30%;
+    --accent-green: 166 58% 52%;
+    --accent-teal: 166 58% 40%;
 
     --secondary: 0 0% 30%;
     --secondary-foreground: 0 0% 100%;
@@ -99,21 +99,21 @@ All colors MUST be HSL.
     --muted: 0 0% 28%;
     --muted-foreground: 0 0% 70%; /* Light gray for descriptions */
 
-    --accent: 177 70% 41%; /* Teal accent */
+    --accent: 166 58% 40%; /* Logo Green */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Teal borders for cards */
-    --border: 177 50% 35%;
+    /* Logo Green borders for cards */
+    --border: 166 50% 35%;
     --input: 0 0% 28%;
-    --ring: 177 70% 41%;
+    --ring: 166 58% 40%;
 
     /* Dark mode specific gradients and shadows */
     --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-card-hover: 0 0 20px rgba(32, 178, 170, 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(32, 178, 170, 0.3);
+    --shadow-card-hover: 0 0 20px hsl(166 58% 40% / 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px hsl(166 58% 40% / 0.3);
   }
 }
 
@@ -162,7 +162,7 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0, 154, 119, 0.25));
+    filter: drop-shadow(0 2px 4px hsl(166 58% 40% / 0.25));
   }
   
   .text-gradient-accent {
@@ -170,7 +170,7 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(52, 211, 153, 0.25));
+    filter: drop-shadow(0 2px 4px hsl(166 58% 52% / 0.25));
   }
   
   .text-gradient-hero {
@@ -218,8 +218,8 @@ All colors MUST be HSL.
 
   .animated-grid {
     background-image: 
-      linear-gradient(rgba(79, 209, 197, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(79, 209, 197, 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(166 58% 40% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(166 58% 40% / 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: grid-move 20s linear infinite;
   }
@@ -282,7 +282,7 @@ All colors MUST be HSL.
 
   /* Glow Shadow */
   .glow-teal {
-    box-shadow: 0 0 20px rgba(79, 209, 197, 0.3), 0 0 40px rgba(79, 209, 197, 0.1);
+    box-shadow: 0 0 20px hsl(166 58% 40% / 0.3), 0 0 40px hsl(166 58% 40% / 0.1);
   }
 
   .glow-teal-hover {
@@ -290,7 +290,7 @@ All colors MUST be HSL.
   }
 
   .glow-teal-hover:hover {
-    box-shadow: 0 0 30px rgba(79, 209, 197, 0.5), 0 0 60px rgba(79, 209, 197, 0.2);
+    box-shadow: 0 0 30px hsl(166 58% 40% / 0.5), 0 0 60px hsl(166 58% 40% / 0.2);
   }
 
   /* Grid animation for hero background */
@@ -307,42 +307,42 @@ All colors MUST be HSL.
   .glass-tab-primary {
     background: linear-gradient(
       135deg,
-      rgba(0, 154, 119, 0.08) 0%,
-      rgba(0, 110, 89, 0.12) 100%
+      hsl(166 58% 40% / 0.08) 0%,
+      hsl(166 58% 30% / 0.12) 100%
     );
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(0, 154, 119, 0.15);
+    border: 1px solid hsl(166 58% 40% / 0.15);
     box-shadow: 
-      0 8px 32px 0 rgba(0, 154, 119, 0.08),
+      0 8px 32px 0 hsl(166 58% 40% / 0.08),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
   }
 
   .glass-tab-secondary {
     background: linear-gradient(
       135deg,
-      rgba(52, 211, 153, 0.06) 0%,
-      rgba(32, 178, 170, 0.10) 100%
+      hsl(166 58% 52% / 0.06) 0%,
+      hsl(166 58% 40% / 0.10) 100%
     );
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(52, 211, 153, 0.12);
+    border: 1px solid hsl(166 58% 52% / 0.12);
     box-shadow: 
-      0 8px 32px 0 rgba(52, 211, 153, 0.06),
+      0 8px 32px 0 hsl(166 58% 52% / 0.06),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
   }
 
   .glass-tab-tertiary {
     background: linear-gradient(
       135deg,
-      rgba(32, 178, 170, 0.07) 0%,
-      rgba(0, 154, 119, 0.10) 100%
+      hsl(166 58% 40% / 0.07) 0%,
+      hsl(166 58% 40% / 0.10) 100%
     );
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(32, 178, 170, 0.13);
+    border: 1px solid hsl(166 58% 40% / 0.13);
     box-shadow: 
-      0 8px 32px 0 rgba(32, 178, 170, 0.07),
+      0 8px 32px 0 hsl(166 58% 40% / 0.07),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
   }
 
@@ -370,7 +370,7 @@ All colors MUST be HSL.
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(224, 247, 250, 0.2);
     box-shadow: 
-      0 8px 32px 0 rgba(32, 178, 170, 0.05),
+      0 8px 32px 0 hsl(166 58% 40% / 0.05),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
   }
 
@@ -396,9 +396,9 @@ All colors MUST be HSL.
     padding: 2px;
     background: linear-gradient(
       135deg,
-      rgba(0, 154, 119, 0.3),
-      rgba(52, 211, 153, 0.3),
-      rgba(32, 178, 170, 0.3)
+      hsl(166 58% 40% / 0.3),
+      hsl(166 58% 52% / 0.3),
+      hsl(166 58% 40% / 0.3)
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -409,16 +409,16 @@ All colors MUST be HSL.
   .glass-feature-card:hover::before {
     background: linear-gradient(
       135deg,
-      rgba(0, 154, 119, 0.6),
-      rgba(52, 211, 153, 0.6),
-      rgba(32, 178, 170, 0.6)
+      hsl(166 58% 40% / 0.6),
+      hsl(166 58% 52% / 0.6),
+      hsl(166 58% 40% / 0.6)
     );
   }
 
   .glass-feature-card:hover {
     box-shadow: 
-      0 6px 20px -4px rgba(0, 154, 119, 0.125),
-      0 0 0 1px rgba(0, 154, 119, 0.05),
+      0 6px 20px -4px hsl(166 58% 40% / 0.125),
+      0 0 0 1px hsl(166 58% 40% / 0.05),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
     transform: translateY(-2px);
   }
@@ -430,23 +430,23 @@ All colors MUST be HSL.
       rgba(51, 51, 51, 0.8) 0%,
       rgba(45, 45, 45, 0.9) 100%
     );
-    border: 1px solid rgba(32, 178, 170, 0.3);
-    box-shadow: 0 0 8px rgba(32, 178, 170, 0.1);
+    border: 1px solid hsl(166 58% 40% / 0.3);
+    box-shadow: 0 0 8px hsl(166 58% 40% / 0.1);
   }
 
   .dark .glass-feature-card::before {
     background: linear-gradient(
       135deg,
-      rgba(32, 178, 170, 0.4),
-      rgba(52, 211, 153, 0.3),
-      rgba(32, 178, 170, 0.4)
+      hsl(166 58% 40% / 0.4),
+      hsl(166 58% 52% / 0.3),
+      hsl(166 58% 40% / 0.4)
     );
   }
 
   .dark .glass-feature-card:hover {
-    border-color: rgba(32, 178, 170, 0.5);
+    border-color: hsl(166 58% 40% / 0.5);
     box-shadow: 
-      0 0 13px rgba(32, 178, 170, 0.2),
+      0 0 13px hsl(166 58% 40% / 0.2),
       0 6px 20px -4px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
   }
@@ -454,26 +454,26 @@ All colors MUST be HSL.
   .dark .glass-feature-card:hover::before {
     background: linear-gradient(
       135deg,
-      rgba(32, 178, 170, 0.6),
-      rgba(52, 211, 153, 0.5),
-      rgba(32, 178, 170, 0.6)
+      hsl(166 58% 40% / 0.6),
+      hsl(166 58% 52% / 0.5),
+      hsl(166 58% 40% / 0.6)
     );
   }
 
   /* Gradient Icon Backgrounds */
   .icon-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-green)));
-    box-shadow: 0 2px 6px rgba(0, 154, 119, 0.1);
+    box-shadow: 0 2px 6px hsl(166 58% 40% / 0.1);
   }
 
   .icon-gradient-secondary {
     background: linear-gradient(135deg, hsl(var(--accent-green)), hsl(var(--accent-teal)));
-    box-shadow: 0 2px 6px rgba(52, 211, 153, 0.1);
+    box-shadow: 0 2px 6px hsl(166 58% 52% / 0.1);
   }
 
   .icon-gradient-tertiary {
     background: linear-gradient(135deg, hsl(var(--accent-teal)), hsl(var(--primary)));
-    box-shadow: 0 2px 6px rgba(32, 178, 170, 0.1);
+    box-shadow: 0 2px 6px hsl(166 58% 40% / 0.1);
   }
 
   /* Icon hover animation */
@@ -483,6 +483,6 @@ All colors MUST be HSL.
 
   .glass-feature-card:hover .icon-container {
     transform: scale(1.05);
-    box-shadow: 0 3px 8px rgba(0, 154, 119, 0.15);
+    box-shadow: 0 3px 8px hsl(166 58% 40% / 0.15);
   }
 }
