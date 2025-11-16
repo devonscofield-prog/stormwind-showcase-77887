@@ -52,7 +52,7 @@ const SkillsAssessments = () => {
 
           {/* Page Header */}
           <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">Skills Assessments</h1>
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight pb-2">Skills Assessments</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Identify and address your team's training needs with comprehensive Skills Assessments that evaluate proficiency and develop personalized learning plans
             </p>

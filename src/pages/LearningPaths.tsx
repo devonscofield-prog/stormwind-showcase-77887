@@ -81,7 +81,7 @@ const LearningPaths = () => {
 
           {/* Page Header */}
           <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent leading-tight pb-2">Learning Paths & Certification Study Plans</h1>
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight pb-2">Learning Paths & Certification Study Plans</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
               Structured training programs designed to accelerate your team's growth and certification success
             </p>
