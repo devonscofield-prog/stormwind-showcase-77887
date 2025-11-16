@@ -43,12 +43,12 @@ export const Navigation = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
-                  Technologies
+                  Topics
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56 bg-background border-border">
-                <DropdownMenuLabel>Technologies We Train On</DropdownMenuLabel>
+                <DropdownMenuLabel>Topics We Train On</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                   <Link to="/microsoft" className="cursor-pointer">Microsoft</Link>
@@ -190,7 +190,7 @@ export const Navigation = () => {
                   variant="ghost"
                   className="w-full justify-between text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
                 >
-                  Technologies
+                  Topics
                   <ChevronDown className={`h-4 w-4 transition-transform ${techOpen ? 'rotate-180' : ''}`} />
                 </Button>
               </CollapsibleTrigger>
