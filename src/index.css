@@ -11,20 +11,20 @@ All colors MUST be HSL.
     /* StormWind Studios Brand Colors */
     --background: 166 20% 90%; /* More saturated green-tinted background */
     --background-gradient: linear-gradient(180deg, hsl(166 20% 90%), hsl(166 25% 86%));
-    --foreground: 0 0% 17%; /* Dark Gray #2B2B2B */
+    --foreground: 177 70% 41%; /* Teal from logo #20B2AA */
     
     /* Alternating Section Backgrounds */
     --section-cream: 40 40% 96%; /* Light cream */
     --section-green: 166 25% 92%; /* Soft green */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 17%;
+    --card-foreground: 177 70% 41%; /* Teal from logo */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 17%;
+    --popover-foreground: 177 70% 41%; /* Teal from logo */
 
-    /* StormWind Primary Green #009A77 */
-    --primary: 166 100% 30%;
+    /* StormWind Primary Teal #20B2AA - matching logo */
+    --primary: 177 70% 41%;
     --primary-foreground: 0 0% 100%;
 
     /* Dark Green #006E59 */
@@ -42,7 +42,7 @@ All colors MUST be HSL.
 
     /* Muted */
     --muted: 210 29% 95%;
-    --muted-foreground: 0 0% 43%;
+    --muted-foreground: 177 70% 41%; /* Teal from logo */
 
     /* Accent - Light Green */
     --accent: 160 64% 52%;
