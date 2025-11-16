@@ -127,7 +127,7 @@ const EnterpriseIT = ({
   }];
   return <div className="animate-fade-in">
       <div className="mb-12">
-        <h2 className="text-4xl font-bold mb-6 text-white leading-tight pb-2">Enterprise IT</h2>
+        <h2 className="text-4xl font-bold mb-6 text-foreground leading-tight pb-2">Enterprise IT</h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed">
           StormWind's one-stop training ecosystem for IT, DevOps, AI, Project Management, and Data Analytics.
           Stay up to date on evolving technology while learning directly from world-class instructors.
@@ -136,7 +136,7 @@ const EnterpriseIT = ({
 
       {/* Technologies Section */}
       <div className="mb-16">
-        <h3 className="text-2xl font-bold mb-8 text-center text-white">Technologies We Train On</h3>
+        <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Technologies We Train On</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {technologies.map((tech, index) => {
           const techLinks: Record<string, string> = {
@@ -169,7 +169,7 @@ const EnterpriseIT = ({
       {/* Consolidated Features Section */}
       <div className="mb-16">
         <div className="flex items-center justify-center gap-4 mb-8">
-          <h3 className="text-2xl font-bold text-white">Platform Features</h3>
+          <h3 className="text-2xl font-bold text-foreground">Platform Features</h3>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {consolidatedFeatures.map((feature, index) => {
