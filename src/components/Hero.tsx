@@ -42,16 +42,16 @@ const Hero = ({
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight pb-2 relative min-h-[1.2em]">
             <span className="relative inline-block">
               {/* Outer glow layers */}
-              <span className="absolute inset-0 bg-gradient-to-r from-[#4FD1C5] via-[#4FD1C5]/80 to-[#4FD1C5] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-2xl opacity-60 scale-110">
+              <span className="absolute inset-0 bg-gradient-to-r from-[#20B2AA] via-[#20B2AA]/80 to-[#20B2AA] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-2xl opacity-60 scale-110">
                 {typedText}
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#4FD1C5] via-[#4FD1C5]/80 to-[#4FD1C5] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-xl opacity-70">
+              <span className="absolute inset-0 bg-gradient-to-r from-[#20B2AA] via-[#20B2AA]/80 to-[#20B2AA] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text blur-xl opacity-70">
                 {typedText}
               </span>
               {/* Main text */}
               <span className="relative text-white drop-shadow-2xl">
                 {typedText}
-                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-[#4FD1C5] ml-1 animate-pulse align-middle shadow-[0_0_20px_rgba(79,209,197,0.8)]"></span>}
+                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-[#20B2AA] ml-1 animate-pulse align-middle shadow-[0_0_20px_rgba(32,178,170,0.8)]"></span>}
               </span>
             </span>
           </h1>
