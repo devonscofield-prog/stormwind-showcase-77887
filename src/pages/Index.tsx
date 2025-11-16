@@ -52,7 +52,7 @@ const Index = () => {
       </div>
 
       {/* Tabbed Content Section */}
-      <section id="content-section" className="py-16 scroll-mt-20 relative z-10 bg-gradient-to-b from-card/95 via-card/85 to-card/70 backdrop-blur-sm rounded-t-3xl shadow-xl -mt-8">
+      <section id="content-section" className="py-16 scroll-mt-20 relative z-10 bg-gradient-to-b from-[#3d3d3d]/70 via-[#3d3d3d]/85 to-[#3d3d3d] backdrop-blur-sm rounded-t-3xl shadow-xl -mt-8">
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12">
