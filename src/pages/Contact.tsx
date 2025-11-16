@@ -92,40 +92,40 @@ const Contact = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#4FD1C5]">
+                <Link to="/" className="flex items-center gap-2">
                   <Home className="w-4 h-4" />
                   Home
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator className="text-gray-500" />
+            <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-[#4FD1C5]">Contact Us</BreadcrumbPage>
+              <BreadcrumbPage>Contact Us</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
         <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl font-bold text-white mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-300 mb-4">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
+          <p className="text-lg text-muted-foreground mb-4">
             Request pricing information or get in touch with your learning director
           </p>
-          <div className="bg-[#4FD1C5]/10 border border-[#4FD1C5]/30 rounded-lg p-4 max-w-xl mx-auto">
-            <p className="text-sm text-gray-200">
-              <strong className="text-white">Note:</strong> If you've already been working with a StormWind learning director, 
+          <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto">
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Note:</strong> If you've already been working with a StormWind learning director, 
               please reach out to them directly. This form is for new inquiries.
             </p>
           </div>
         </div>
 
-        <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg shadow-lg p-8 hover:border-[#4FD1C5]/50 transition-all duration-300 relative overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
           {/* Success Animation Overlay */}
           {showSuccess && (
-            <div className="absolute inset-0 bg-[#1a1f2e]/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
+            <div className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
               <div className="text-center animate-scale-in">
-                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#4FD1C5]/20 border-2 border-[#4FD1C5] animate-pulse">
+                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 border-2 border-primary animate-pulse">
                   <svg 
-                    className="w-10 h-10 text-[#4FD1C5]" 
+                    className="w-10 h-10 text-primary" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -138,8 +138,8 @@ const Contact = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-300 max-w-md">
+                <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
+                <p className="text-muted-foreground max-w-md">
                   Your request has been received. A learning director will contact you soon.
                 </p>
               </div>
