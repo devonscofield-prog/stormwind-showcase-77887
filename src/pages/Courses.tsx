@@ -4766,7 +4766,7 @@ const Courses = () => {
                             handlePageChange(currentPage - 1);
                           }
                         }}
-                        className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                        className={currentPage === 1 ? 'pointer-events-none opacity-50 text-white' : 'text-white'}
                       />
                     </PaginationItem>
                     
@@ -4791,6 +4791,7 @@ const Courses = () => {
                               handlePageChange(pageNum);
                             }}
                             isActive={currentPage === pageNum}
+                            className="text-white"
                           >
                             {pageNum}
                           </PaginationLink>
@@ -4807,7 +4808,7 @@ const Courses = () => {
                             handlePageChange(currentPage + 1);
                           }
                         }}
-                        className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                        className={currentPage === totalPages ? 'pointer-events-none opacity-50 text-white' : 'text-white'}
                       />
                     </PaginationItem>
                   </PaginationContent>
