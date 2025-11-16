@@ -4574,7 +4574,7 @@ const Courses = () => {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#20B2AA]">
+                    <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#4FD1C5]">
                       <Home className="w-4 h-4" />
                       Home
                     </Link>
@@ -4582,7 +4582,7 @@ const Courses = () => {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-gray-500" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-[#20B2AA]">Course Catalog</BreadcrumbPage>
+                  <BreadcrumbPage className="text-[#4FD1C5]">Course Catalog</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -4605,7 +4605,7 @@ const Courses = () => {
                     placeholder="Search courses..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-full bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#20B2AA]"
+                    className="pl-10 w-full bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
                   />
                 </div>
               </div>
@@ -4641,11 +4641,11 @@ const Courses = () => {
                       <SelectValue placeholder="Select a subcategory" />
                     </SelectTrigger>
                     <SelectContent className="bg-[#1a1f2e] border-gray-700 z-50">
-                      <SelectItem value="All Subcategories" className="text-white focus:bg-[#252b3d] focus:text-[#20B2AA]">
+                      <SelectItem value="All Subcategories" className="text-white focus:bg-[#252b3d] focus:text-[#4FD1C5]">
                         All Subcategories
                       </SelectItem>
                       {subcategories.map((subcategory) => (
-                        <SelectItem key={subcategory} value={subcategory} className="text-white focus:bg-[#252b3d] focus:text-[#20B2AA]">
+                        <SelectItem key={subcategory} value={subcategory} className="text-white focus:bg-[#252b3d] focus:text-[#4FD1C5]">
                           {subcategory}
                         </SelectItem>
                       ))}
@@ -4688,14 +4688,14 @@ const Courses = () => {
                   {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
                     <div
                       key={subcategory}
-                      className="animate-fade-in bg-[#1a1f2e] rounded-xl border border-gray-700 p-4 sm:p-5 shadow-lg hover:border-[#20B2AA]/50 transition-all duration-300"
+                      className="animate-fade-in bg-[#1a1f2e] rounded-xl border border-gray-700 p-4 sm:p-5 shadow-lg hover:border-[#4FD1C5]/50 transition-all duration-300"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="h-0.5 w-8 bg-gradient-to-r from-[#20B2AA] to-[#20B2AA]/50 rounded-full" />
+                        <div className="h-0.5 w-8 bg-gradient-to-r from-[#4FD1C5] to-[#4FD1C5]/50 rounded-full" />
                         <h2 className="text-lg sm:text-xl font-bold text-white">
                           {subcategory}
                         </h2>
-                        <div className="h-0.5 flex-1 bg-gradient-to-r from-[#20B2AA]/50 to-transparent rounded-full" />
+                        <div className="h-0.5 flex-1 bg-gradient-to-r from-[#4FD1C5]/50 to-transparent rounded-full" />
                       </div>
 
                       <div className="grid gap-2">
@@ -4708,10 +4708,10 @@ const Courses = () => {
                           return (
                             <div
                               key={index}
-                              className="group flex items-start gap-2 p-2.5 rounded-lg bg-[#252b3d]/30 hover:bg-[#252b3d]/50 transition-all duration-200 border border-transparent hover:border-[#20B2AA]/20"
+                              className="group flex items-start gap-2 p-2.5 rounded-lg bg-[#252b3d]/30 hover:bg-[#252b3d]/50 transition-all duration-200 border border-transparent hover:border-[#4FD1C5]/20"
                             >
                               <div className="flex-shrink-0 mt-0.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#20B2AA] group-hover:scale-125 transition-transform" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#4FD1C5] group-hover:scale-125 transition-transform" />
                               </div>
                               <div className="flex-1 flex items-start justify-between gap-2">
                                 <p className="text-xs sm:text-sm leading-snug text-gray-200">
@@ -4719,7 +4719,7 @@ const Courses = () => {
                                 </p>
                                 <div className="flex items-center gap-1.5 shrink-0">
                                   {isBytes && (
-                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-[#20B2AA]/10 text-[#20B2AA] border-[#20B2AA]/20 hover:bg-[#20B2AA]/20 py-0 h-5">
+                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-[#4FD1C5]/10 text-[#4FD1C5] border-[#4FD1C5]/20 hover:bg-[#4FD1C5]/20 py-0 h-5">
                                       <Zap className="h-2.5 w-2.5" />
                                       <span className="text-[10px] font-semibold">Bytes</span>
                                     </Badge>
