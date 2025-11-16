@@ -4552,11 +4552,15 @@ const Courses = () => {
   
   // Reset to page 1 when filters change
   useEffect(() => {
-    setSearchParams({ page: "1" });
-  }, [selectedCategory, selectedSubcategory, searchQuery, setSearchParams]);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", "1");
+    setSearchParams(newParams);
+  }, [selectedCategory, selectedSubcategory, searchQuery]);
 
   const handlePageChange = (page: number) => {
-    setSearchParams({ page: page.toString() });
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", page.toString());
+    setSearchParams(newParams);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
