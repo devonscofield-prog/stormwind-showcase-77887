@@ -31,7 +31,7 @@ const Hero = ({
     timeoutId = setTimeout(typeNextCharacter, 500);
     return () => clearTimeout(timeoutId);
   }, []);
-  return <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0a0f14]">
+  return <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0f1419]">
       {/* Tech Background Animation - Same as Ranges page */}
       <TechBackground />
       
