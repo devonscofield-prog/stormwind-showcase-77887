@@ -4576,38 +4576,38 @@ const Courses = () => {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link to="/" className="flex items-center gap-2 text-gray-300 hover:text-[#4FD1C5]">
+                    <Link to="/" className="flex items-center gap-2">
                       <Home className="w-4 h-4" />
                       Home
                     </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-gray-500" />
+                <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-[#4FD1C5]">Course Catalog</BreadcrumbPage>
+                  <BreadcrumbPage>Course Catalog</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
 
             {/* Hero Section */}
             <div className="text-center mb-12 animate-fade-in">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white pb-2 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground pb-2 leading-tight">
                 Course Catalog
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Explore our comprehensive collection of IT and project management courses. Filter by category to find exactly what you need.
               </p>
 
               {/* Search Bar */}
               <div className="flex flex-col items-center justify-center gap-4 mb-6 max-w-2xl mx-auto">
                 <div className="relative w-full">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="text"
                     placeholder="Search courses..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-full bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                    className="pl-10 w-full"
                   />
                 </div>
               </div>
@@ -4615,7 +4615,7 @@ const Courses = () => {
               {/* Category and Subcategory Filters */}
               <div className="flex flex-col items-center justify-center gap-4 mb-6">
                 <div className="flex flex-col items-center gap-4 w-full">
-                  <label className="text-sm font-medium text-gray-300">
+                  <label className="text-sm font-medium text-muted-foreground">
                     Filter by Category:
                   </label>
                 <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl">
@@ -4635,19 +4635,19 @@ const Courses = () => {
 
               {subcategories.length > 0 && (
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-                  <label htmlFor="subcategory-select" className="text-sm font-medium text-gray-300 whitespace-nowrap">
+                  <label htmlFor="subcategory-select" className="text-sm font-medium text-muted-foreground whitespace-nowrap">
                     Filter by Subcategory:
                   </label>
                   <Select value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
-                    <SelectTrigger className="w-full sm:w-[300px] bg-[#252b3d] border-gray-600 text-white" id="subcategory-select">
+                    <SelectTrigger className="w-full sm:w-[300px]" id="subcategory-select">
                       <SelectValue placeholder="Select a subcategory" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#1a1f2e] border-gray-700 z-50">
-                      <SelectItem value="All Subcategories" className="text-white focus:bg-[#252b3d] focus:text-[#4FD1C5]">
+                    <SelectContent className="z-50">
+                      <SelectItem value="All Subcategories">
                         All Subcategories
                       </SelectItem>
                       {subcategories.map((subcategory) => (
-                        <SelectItem key={subcategory} value={subcategory} className="text-white focus:bg-[#252b3d] focus:text-[#4FD1C5]">
+                        <SelectItem key={subcategory} value={subcategory}>
                           {subcategory}
                         </SelectItem>
                       ))}
@@ -4662,22 +4662,22 @@ const Courses = () => {
           {isLoading ? (
             <div className="space-y-6">
               {[...Array(3)].map((_, catIndex) => (
-                <div key={catIndex} className="bg-[#1a1f2e] rounded-xl border border-gray-700 p-4 sm:p-5 shadow-lg">
+                <div key={catIndex} className="bg-card rounded-xl border border-border p-4 sm:p-5 shadow-lg">
                   <div className="flex items-center gap-2 mb-4">
-                    <Skeleton className="h-0.5 w-8 bg-gray-700" />
-                    <Skeleton className="h-6 w-48 bg-gray-700" />
-                    <Skeleton className="h-0.5 flex-1 bg-gray-700" />
+                    <Skeleton className="h-0.5 w-8" />
+                    <Skeleton className="h-6 w-48" />
+                    <Skeleton className="h-0.5 flex-1" />
                   </div>
                   <div className="grid gap-2">
                     {[...Array(8)].map((_, courseIndex) => (
-                      <div key={courseIndex} className="flex items-start gap-2 p-2.5 rounded-lg bg-[#252b3d]/30">
-                        <Skeleton className="w-1.5 h-1.5 rounded-full mt-0.5 bg-gray-700" />
-                        <Skeleton className="h-4 flex-1 bg-gray-700" />
+                      <div key={courseIndex} className="flex items-start gap-2 p-2.5 rounded-lg bg-muted/30">
+                        <Skeleton className="w-1.5 h-1.5 rounded-full mt-0.5" />
+                        <Skeleton className="h-4 flex-1" />
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 pt-4 border-t border-gray-700">
-                    <Skeleton className="h-3 w-32 mx-auto bg-gray-700" />
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <Skeleton className="h-3 w-32 mx-auto" />
                   </div>
                 </div>
               ))}
@@ -4690,15 +4690,15 @@ const Courses = () => {
                   {Object.entries(subcategories as Record<string, Course[]>).map(([subcategory, courses]) => (
                     <div
                       key={subcategory}
-                      className="animate-fade-in bg-[#1a1f2e] rounded-xl border border-gray-700 p-4 sm:p-5 shadow-lg hover:border-[#4FD1C5]/50 transition-all duration-300"
+                      className="animate-fade-in bg-card rounded-xl border border-border p-4 sm:p-5 shadow-lg hover:border-primary/50 transition-all duration-300"
                     >
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="h-0.5 w-8 bg-gradient-to-r from-[#4FD1C5] to-[#4FD1C5]/50 rounded-full" />
-                        <h2 className="text-lg sm:text-xl font-bold text-white">
-                          {subcategory}
-                        </h2>
-                        <div className="h-0.5 flex-1 bg-gradient-to-r from-[#4FD1C5]/50 to-transparent rounded-full" />
-                      </div>
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="h-0.5 w-8 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
+                          <h2 className="text-lg sm:text-xl font-bold text-foreground">
+                            {subcategory}
+                          </h2>
+                          <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/50 to-transparent rounded-full" />
+                        </div>
 
                       <div className="grid gap-2">
                         {courses.map((course, index) => {
@@ -4710,29 +4710,29 @@ const Courses = () => {
                           return (
                             <div
                               key={index}
-                              className="group flex items-start gap-2 p-2.5 rounded-lg bg-[#252b3d]/30 hover:bg-[#252b3d]/50 transition-all duration-200 border border-transparent hover:border-[#4FD1C5]/20"
+                              className="group flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 border border-transparent hover:border-primary/20"
                             >
                               <div className="flex-shrink-0 mt-0.5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#4FD1C5] group-hover:scale-125 transition-transform" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform" />
                               </div>
                               <div className="flex-1 flex items-start justify-between gap-2">
-                                <p className="text-xs sm:text-sm leading-snug text-gray-200">
+                                <p className="text-xs sm:text-sm leading-snug text-foreground">
                                   {courseName}
                                 </p>
                                 <div className="flex items-center gap-1.5 shrink-0">
                                   {isBytes && (
-                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-[#4FD1C5]/10 text-[#4FD1C5] border-[#4FD1C5]/20 hover:bg-[#4FD1C5]/20 py-0 h-5">
+                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 py-0 h-5">
                                       <Zap className="h-2.5 w-2.5" />
                                       <span className="text-[10px] font-semibold">Bytes</span>
                                     </Badge>
                                   )}
                                   {isWebinar && (
-                                    <Badge variant="secondary" className="flex items-center gap-0.5 bg-purple-500/10 text-purple-400 border-purple-500/20 hover:bg-purple-500/20 py-0 h-5">
+                                    <Badge variant="secondary" className="flex items-center gap-0.5 py-0 h-5">
                                       <span className="text-[10px] font-semibold">Webinar</span>
                                     </Badge>
                                   )}
                                   {isComingSoon && (
-                                    <Badge variant="outline" className="flex items-center gap-0.5 bg-gray-700/50 text-gray-400 border-gray-600/20 py-0 h-5">
+                                    <Badge variant="outline" className="flex items-center gap-0.5 py-0 h-5">
                                       <span className="text-[10px] font-semibold">Coming Soon</span>
                                     </Badge>
                                   )}
@@ -4743,8 +4743,8 @@ const Courses = () => {
                         })}
                       </div>
 
-                      <div className="mt-4 pt-4 border-t border-gray-700">
-                        <p className="text-xs text-gray-400 text-center">
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <p className="text-xs text-muted-foreground text-center">
                           {courses.length} course{courses.length !== 1 ? 's' : ''} in this subcategory
                         </p>
                       </div>
@@ -4822,7 +4822,7 @@ const Courses = () => {
 
           {/* Footer Note */}
           <div className="mt-16 text-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               * DoD 8140 Aligned Certification
             </p>
           </div>
