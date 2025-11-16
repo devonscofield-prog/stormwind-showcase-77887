@@ -40,7 +40,7 @@ const Index = () => {
       });
     }
   }, [activeTab]);
-  return <div className="min-h-screen relative">
+  return <div className="min-h-screen relative bg-[#0a0f14]">
       {/* Animated Tech Background */}
       <TechBackground />
       
