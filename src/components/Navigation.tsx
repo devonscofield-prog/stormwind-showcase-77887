@@ -11,7 +11,7 @@ export const Navigation = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-teal-500/20 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
@@ -72,7 +72,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 border-t border-gray-800 pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 dark:bg-[#2d2d2d]/95 border-t border-gray-800 dark:border-gray-700 pt-4 animate-fade-in">
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
