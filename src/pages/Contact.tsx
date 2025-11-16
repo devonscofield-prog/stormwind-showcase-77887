@@ -11,7 +11,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Home } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { TechBackground } from "@/components/TechBackground";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -83,8 +82,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1419] relative">
-      <TechBackground />
+    <div className="min-h-screen bg-background">
       <div className="relative z-10">
         <Navigation />
 
