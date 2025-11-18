@@ -185,7 +185,7 @@ const DesktopApps = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <FileText className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Core Office</h4>
@@ -196,7 +196,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <FileText className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Word</h4>
@@ -207,7 +207,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Table className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Excel</h4>
@@ -218,7 +218,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Presentation className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">PowerPoint</h4>
@@ -229,7 +229,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Mail className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Outlook</h4>
@@ -240,7 +240,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Database className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Access & Apps</h4>
@@ -251,7 +251,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Users className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Collaboration</h4>
@@ -262,7 +262,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <FolderKanban className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Project Management</h4>
@@ -273,7 +273,7 @@ const DesktopApps = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <BarChart3 className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Data Science</h4>

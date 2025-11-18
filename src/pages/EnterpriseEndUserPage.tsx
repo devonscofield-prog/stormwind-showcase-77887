@@ -70,7 +70,7 @@ const EnterpriseEndUserPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <FileText className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Microsoft Apps</h4>
@@ -104,7 +104,7 @@ const EnterpriseEndUserPage = () => {
                     </Button>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Sparkles className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">AI Tools</h4>
@@ -130,7 +130,7 @@ const EnterpriseEndUserPage = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Shield className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Security</h4>
