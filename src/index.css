@@ -139,29 +139,14 @@ All colors MUST be HSL.
     background-attachment: fixed;
   }
 
-  /* Text size accessibility */
-  .text-size-large {
+  /* Text size accessibility - applies to ALL text elements */
+  html.text-size-large {
     font-size: 120%;
   }
 
-  .text-size-large h1 {
-    font-size: 1.25em;
-  }
-
-  .text-size-large h2 {
-    font-size: 1.2em;
-  }
-
-  .text-size-large h3 {
-    font-size: 1.15em;
-  }
-
-  .text-size-large p,
-  .text-size-large li,
-  .text-size-large a,
-  .text-size-large button,
-  .text-size-large span {
-    font-size: 1.15em;
+  /* Ensure it cascades to all elements */
+  html.text-size-large * {
+    font-size: inherit;
   }
   
   /* Dot pattern overlay */
