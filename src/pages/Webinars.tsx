@@ -40,7 +40,8 @@ const Webinars = () => {
       webinars: [
         { title: "Azure Fundamentals Crash Course", instructor: "Will Panek", videoId: "4xbfcq9ehc", description: "Get up to speed quickly with Azure fundamentals in this comprehensive crash course." },
         { title: "Kickstart Your Azure Journey with Hands-On Learning", instructor: "Mike Pfeiffer", videoId: "mlatx2hqwl", description: "Begin your Azure learning journey with practical, hands-on exercises and real-world scenarios." },
-        { title: "Delivering Production-Ready Apps on Azure: Best Practices in Action", instructor: "Mike Pfeiffer", videoId: "oa46cxfoq5", description: "Learn best practices for deploying and managing production-ready applications on Azure." }
+        { title: "Delivering Production-Ready Apps on Azure: Best Practices in Action", instructor: "Mike Pfeiffer", videoId: "oa46cxfoq5", description: "Learn best practices for deploying and managing production-ready applications on Azure." },
+        { title: "Creating a Hybrid Network Between an On-Site Network and Azure", instructor: "Will Panek", videoId: "vx34fhiczi", description: "Learn how to create and configure a hybrid network connection between your on-premises infrastructure and Azure cloud services." }
       ]
     },
     copilot: {
