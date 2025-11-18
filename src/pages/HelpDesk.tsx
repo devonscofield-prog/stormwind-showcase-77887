@@ -74,7 +74,7 @@ const HelpDesk = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
               {/* Hardware & Software Support */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Monitor className="w-6 h-6 text-primary" />
@@ -87,7 +87,7 @@ const HelpDesk = () => {
               </div>
 
               {/* Operating Systems */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Target className="w-6 h-6 text-primary" />
@@ -100,7 +100,7 @@ const HelpDesk = () => {
               </div>
 
               {/* Customer Service */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <MessageCircle className="w-6 h-6 text-primary" />
@@ -113,7 +113,7 @@ const HelpDesk = () => {
               </div>
 
               {/* ITSM & Ticketing */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <TrendingUp className="w-6 h-6 text-primary" />

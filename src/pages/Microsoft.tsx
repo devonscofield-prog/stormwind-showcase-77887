@@ -91,7 +91,7 @@ const Microsoft = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
               {/* Azure */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Server className="w-6 h-6 text-primary" />
@@ -104,7 +104,7 @@ const Microsoft = () => {
               </div>
 
               {/* Microsoft 365 */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Users className="w-6 h-6 text-primary" />
@@ -117,7 +117,7 @@ const Microsoft = () => {
               </div>
 
               {/* Windows Server */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Monitor className="w-6 h-6 text-primary" />
@@ -130,7 +130,7 @@ const Microsoft = () => {
               </div>
 
               {/* PowerShell */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <BookOpen className="w-6 h-6 text-primary" />
@@ -143,7 +143,7 @@ const Microsoft = () => {
               </div>
 
               {/* Security */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Shield className="w-6 h-6 text-primary" />
@@ -156,7 +156,7 @@ const Microsoft = () => {
               </div>
 
               {/* SQL Server */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Server className="w-6 h-6 text-primary" />
@@ -169,7 +169,7 @@ const Microsoft = () => {
               </div>
 
               {/* Microsoft 365 Copilot */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Brain className="w-6 h-6 text-primary" />
@@ -182,7 +182,7 @@ const Microsoft = () => {
               </div>
 
               {/* Power Platform */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Lightbulb className="w-6 h-6 text-primary" />

@@ -70,7 +70,7 @@ const Cybersecurity = () => {
             
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-8">
-              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
                 <Shield className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-3">Penetration Testing</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -78,13 +78,13 @@ const Cybersecurity = () => {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
                 <Target className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-3">Security Operations</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">Threat detection, incident response, security monitoring, and SIEM implementation</p>
               </div>
 
-              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
                 <BookOpen className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-3">Security Management</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -92,7 +92,7 @@ const Cybersecurity = () => {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300">
+              <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
                 <Award className="w-10 h-10 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-3">Information Security</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
