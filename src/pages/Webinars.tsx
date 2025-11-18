@@ -63,10 +63,7 @@ const Webinars = () => {
         { title: "Agile Made Practical: Real Techniques for Real Teams", instructor: "Ashley Hunt", videoId: "51n02f5lo8", description: "Learn practical Agile techniques that you can implement immediately with your team." },
         { title: "Lead Smarter and Boost Project Success with Emotional Intelligence", instructor: "Ashley Hunt", videoId: "j5vz0snb5n", description: "Discover how emotional intelligence can transform your project leadership and team success." },
         { title: "Six Step Plan to Earn Your PMP", instructor: "Ashley Hunt", videoId: "1qrwm692ii", description: "Follow this proven six-step plan to successfully prepare for and pass the PMP certification exam." },
-        { title: "Cracking the PMI-ACP Exam", instructor: "Ashley Hunt", videoId: "14hfcmkskc", description: "Master the PMI Agile Certified Practitioner exam with expert strategies and preparation tips." },
-        { title: "Earn Your PMP in 45 Days", instructor: "Ashley Hunt", videoId: "jh91qfhqrd", description: "Fast-track your PMP certification with a proven 45-day study plan and exam strategies." },
-        { title: "Project Leadership for Today's Workforce", instructor: "Ashley Hunt", videoId: "tz2y38n7hl", description: "Develop essential leadership skills to manage modern, diverse project teams effectively." },
-        { title: "How to Get Your Dream Project Management Job", instructor: "Ashley Hunt", videoId: "0vj3v3qaz9", description: "Learn practical strategies for landing your ideal project management position." }
+        { title: "Cracking the PMI-ACP Exam", instructor: "Ashley Hunt", videoId: "14hfcmkskc", description: "Master the PMI Agile Certified Practitioner exam with expert strategies and preparation tips." }
       ]
     },
     networking: {
