@@ -38,6 +38,132 @@ export type Database = {
         }
         Relationships: []
       }
+      chatbot_analytics: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          message_count: number | null
+          session_duration: number | null
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          message_count?: number | null
+          session_duration?: number | null
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          message_count?: number | null
+          session_duration?: number | null
+          session_id?: string
+        }
+        Relationships: []
+      }
+      course_analytics: {
+        Row: {
+          action_type: string
+          course_category: string | null
+          course_name: string
+          created_at: string
+          id: string
+          page_url: string
+          session_id: string
+        }
+        Insert: {
+          action_type: string
+          course_category?: string | null
+          course_name: string
+          created_at?: string
+          id?: string
+          page_url: string
+          session_id: string
+        }
+        Update: {
+          action_type?: string
+          course_category?: string | null
+          course_name?: string
+          created_at?: string
+          id?: string
+          page_url?: string
+          session_id?: string
+        }
+        Relationships: []
+      }
+      form_submissions: {
+        Row: {
+          created_at: string
+          form_type: string
+          id: string
+          page_url: string
+          session_id: string
+          success: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          form_type: string
+          id?: string
+          page_url: string
+          session_id: string
+          success?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          form_type?: string
+          id?: string
+          page_url?: string
+          session_id?: string
+          success?: boolean | null
+        }
+        Relationships: []
+      }
+      interaction_events: {
+        Row: {
+          created_at: string
+          element_class: string | null
+          element_id: string | null
+          event_category: string | null
+          event_label: string | null
+          event_type: string
+          event_value: string | null
+          id: string
+          page_url: string
+          scroll_depth: number | null
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          element_class?: string | null
+          element_id?: string | null
+          event_category?: string | null
+          event_label?: string | null
+          event_type: string
+          event_value?: string | null
+          id?: string
+          page_url: string
+          scroll_depth?: number | null
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          element_class?: string | null
+          element_id?: string | null
+          event_category?: string | null
+          event_label?: string | null
+          event_type?: string
+          event_value?: string | null
+          id?: string
+          page_url?: string
+          scroll_depth?: number | null
+          session_id?: string
+        }
+        Relationships: []
+      }
       knowledge_base: {
         Row: {
           content: string
@@ -56,6 +182,90 @@ export type Database = {
           created_at?: string | null
           id?: string
           source?: string
+        }
+        Relationships: []
+      }
+      page_views: {
+        Row: {
+          browser: string | null
+          created_at: string
+          device_type: string | null
+          id: string
+          os: string | null
+          page_title: string | null
+          referrer: string | null
+          screen_height: number | null
+          screen_width: number | null
+          session_id: string
+          url: string
+          user_agent: string | null
+        }
+        Insert: {
+          browser?: string | null
+          created_at?: string
+          device_type?: string | null
+          id?: string
+          os?: string | null
+          page_title?: string | null
+          referrer?: string | null
+          screen_height?: number | null
+          screen_width?: number | null
+          session_id: string
+          url: string
+          user_agent?: string | null
+        }
+        Update: {
+          browser?: string | null
+          created_at?: string
+          device_type?: string | null
+          id?: string
+          os?: string | null
+          page_title?: string | null
+          referrer?: string | null
+          screen_height?: number | null
+          screen_width?: number | null
+          session_id?: string
+          url?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      user_sessions: {
+        Row: {
+          device_type: string | null
+          ended_at: string | null
+          entry_page: string
+          exit_page: string | null
+          id: string
+          pages_visited: number | null
+          referrer: string | null
+          session_id: string
+          started_at: string
+          total_duration: number | null
+        }
+        Insert: {
+          device_type?: string | null
+          ended_at?: string | null
+          entry_page: string
+          exit_page?: string | null
+          id?: string
+          pages_visited?: number | null
+          referrer?: string | null
+          session_id: string
+          started_at?: string
+          total_duration?: number | null
+        }
+        Update: {
+          device_type?: string | null
+          ended_at?: string | null
+          entry_page?: string
+          exit_page?: string | null
+          id?: string
+          pages_visited?: number | null
+          referrer?: string | null
+          session_id?: string
+          started_at?: string
+          total_duration?: number | null
         }
         Relationships: []
       }

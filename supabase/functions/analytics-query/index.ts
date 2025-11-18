@@ -1,0 +1,206 @@
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const { queryType, startDate, endDate, limit = 100 } = await req.json();
+
+    const start = startDate || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const end = endDate || new Date().toISOString();
+
+    console.log(`Analytics query: ${queryType} from ${start} to ${end}`);
+
+    let result;
+
+    switch (queryType) {
+      case 'overview':
+        // Get overview metrics
+        const [pageViewsData, sessionsData, eventsData] = await Promise.all([
+          supabase
+            .from('page_views')
+            .select('*', { count: 'exact' })
+            .gte('created_at', start)
+            .lte('created_at', end),
+          supabase
+            .from('user_sessions')
+            .select('*')
+            .gte('started_at', start)
+            .lte('started_at', end),
+          supabase
+            .from('interaction_events')
+            .select('*', { count: 'exact' })
+            .gte('created_at', start)
+            .lte('created_at', end)
+        ]);
+
+        const totalPageViews = pageViewsData.count || 0;
+        const sessionsList = sessionsData.data || [];
+        const totalSessions = sessionsList.length;
+        const avgSessionDuration = sessionsList.length > 0
+          ? sessionsList.reduce((acc, s) => acc + (s.total_duration || 0), 0) / sessionsList.length
+          : 0;
+        const avgPagesPerSession = sessionsList.length > 0
+          ? sessionsList.reduce((acc, s) => acc + (s.pages_visited || 0), 0) / sessionsList.length
+          : 0;
+
+        result = {
+          totalPageViews,
+          totalSessions,
+          avgSessionDuration: Math.round(avgSessionDuration),
+          avgPagesPerSession: parseFloat(avgPagesPerSession.toFixed(2)),
+          totalInteractions: eventsData.count || 0
+        };
+        break;
+
+      case 'top_pages':
+        const { data: topPages } = await supabase
+          .from('page_views')
+          .select('url, page_title')
+          .gte('created_at', start)
+          .lte('created_at', end);
+
+        const pageCounts = (topPages || []).reduce((acc: any, page) => {
+          const key = page.url;
+          acc[key] = (acc[key] || 0) + 1;
+          return acc;
+        }, {});
+
+        result = Object.entries(pageCounts)
+          .map(([url, count]) => ({ url, count }))
+          .sort((a: any, b: any) => b.count - a.count)
+          .slice(0, limit);
+        break;
+
+      case 'traffic_sources':
+        const { data: trafficSessions } = await supabase
+          .from('user_sessions')
+          .select('referrer')
+          .gte('started_at', start)
+          .lte('started_at', end);
+
+        const sources = (trafficSessions || []).reduce((acc: any, session) => {
+          const source = session.referrer || 'Direct';
+          acc[source] = (acc[source] || 0) + 1;
+          return acc;
+        }, {});
+
+        result = Object.entries(sources)
+          .map(([source, count]) => ({ source, count }))
+          .sort((a: any, b: any) => b.count - a.count);
+        break;
+
+      case 'device_breakdown':
+        const { data: deviceData } = await supabase
+          .from('page_views')
+          .select('device_type')
+          .gte('created_at', start)
+          .lte('created_at', end);
+
+        const devices = (deviceData || []).reduce((acc: any, item) => {
+          const device = item.device_type || 'Unknown';
+          acc[device] = (acc[device] || 0) + 1;
+          return acc;
+        }, {});
+
+        result = Object.entries(devices)
+          .map(([device, count]) => ({ device, count }));
+        break;
+
+      case 'popular_courses':
+        const { data: courseData } = await supabase
+          .from('course_analytics')
+          .select('course_name, action_type')
+          .gte('created_at', start)
+          .lte('created_at', end);
+
+        const courses = (courseData || []).reduce((acc: any, item) => {
+          if (!acc[item.course_name]) {
+            acc[item.course_name] = { views: 0, clicks: 0 };
+          }
+          if (item.action_type === 'view') acc[item.course_name].views++;
+          if (item.action_type === 'click') acc[item.course_name].clicks++;
+          return acc;
+        }, {});
+
+        result = Object.entries(courses)
+          .map(([course, stats]: [string, any]) => ({
+            course,
+            views: stats.views,
+            clicks: stats.clicks
+          }))
+          .sort((a, b) => b.views - a.views)
+          .slice(0, limit);
+        break;
+
+      case 'page_views_timeline':
+        const { data: timelineData } = await supabase
+          .from('page_views')
+          .select('created_at')
+          .gte('created_at', start)
+          .lte('created_at', end)
+          .order('created_at');
+
+        // Group by day
+        const dailyCounts = (timelineData || []).reduce((acc: any, item) => {
+          const date = new Date(item.created_at).toISOString().split('T')[0];
+          acc[date] = (acc[date] || 0) + 1;
+          return acc;
+        }, {});
+
+        result = Object.entries(dailyCounts)
+          .map(([date, count]) => ({ date, count }))
+          .sort((a: any, b: any) => a.date.localeCompare(b.date));
+        break;
+
+      case 'top_interactions':
+        const { data: interactionData } = await supabase
+          .from('interaction_events')
+          .select('event_type, event_label')
+          .gte('created_at', start)
+          .lte('created_at', end);
+
+        const interactions = (interactionData || []).reduce((acc: any, item) => {
+          const key = `${item.event_type}:${item.event_label || 'unlabeled'}`;
+          acc[key] = (acc[key] || 0) + 1;
+          return acc;
+        }, {});
+
+        result = Object.entries(interactions)
+          .map(([interaction, count]) => ({ interaction, count }))
+          .sort((a: any, b: any) => b.count - a.count)
+          .slice(0, limit);
+        break;
+
+      default:
+        return new Response(
+          JSON.stringify({ error: 'Invalid query type' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+    }
+
+    return new Response(
+      JSON.stringify({ success: true, data: result }),
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    );
+  } catch (error) {
+    console.error('Analytics query error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return new Response(
+      JSON.stringify({ error: errorMessage }),
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    );
+  }
+});
