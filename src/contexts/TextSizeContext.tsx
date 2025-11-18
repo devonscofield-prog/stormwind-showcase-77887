@@ -17,12 +17,12 @@ export function TextSizeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    const root = document.documentElement;
+    const html = document.documentElement;
     
     if (textSize === "large") {
-      root.classList.add("text-size-large");
+      html.classList.add("text-size-large");
     } else {
-      root.classList.remove("text-size-large");
+      html.classList.remove("text-size-large");
     }
     
     localStorage.setItem("text-size", textSize);
