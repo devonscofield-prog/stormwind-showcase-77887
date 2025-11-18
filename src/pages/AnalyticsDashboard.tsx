@@ -98,7 +98,7 @@ export default function AnalyticsDashboard() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container py-12 space-y-8">
+      <div className="container pt-24 pb-12 space-y-8">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div>
