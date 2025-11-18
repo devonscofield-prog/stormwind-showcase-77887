@@ -118,7 +118,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+        <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:scale-105 relative overflow-hidden">
           {/* Success Animation Overlay */}
           {showSuccess && (
             <div className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">

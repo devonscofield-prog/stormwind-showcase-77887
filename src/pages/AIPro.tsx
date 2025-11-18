@@ -77,7 +77,7 @@ const AIPro = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Brain className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">ChatGPT & Prompt Engineering</h4>
@@ -103,7 +103,7 @@ const AIPro = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Sparkles className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Microsoft 365 Copilot</h4>
@@ -129,7 +129,7 @@ const AIPro = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <GraduationCap className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">AI Fundamentals & Certifications</h4>
@@ -158,7 +158,7 @@ const AIPro = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Code className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">AI Coding</h4>

@@ -78,7 +78,7 @@ const BusinessPro = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Zap className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Power Platform</h4>
@@ -89,7 +89,7 @@ const BusinessPro = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <BarChart3 className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Power BI</h4>
@@ -100,7 +100,7 @@ const BusinessPro = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Cloud className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Cloud Data</h4>
@@ -111,7 +111,7 @@ const BusinessPro = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Database className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Data Skills</h4>
