@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
-import { Terminal, Cloud, Sparkles, Briefcase, Network, Shield, MessageSquare } from "lucide-react";
+import { Terminal, Cloud, Sparkles, Briefcase, Network, Shield } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BackToTop from "@/components/BackToTop";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -68,19 +68,12 @@ const Webinars = () => {
         { title: "How to Get Your Dream Project Management Job", instructor: "Ashley Hunt", videoId: "0vj3v3qaz9", description: "Learn practical strategies for landing your ideal project management position." }
       ]
     },
-    chatgpt: {
-      title: "ChatGPT",
-      icon: MessageSquare,
-      color: "#4FD1C5",
-      webinars: [
-        { title: "Solving Network Requirements with ChatGPT", instructor: "Dan Young", videoId: "d01l174wlu", description: "Discover how to leverage ChatGPT to solve complex networking requirements and streamline network design." }
-      ]
-    },
     networking: {
       title: "Networking",
       icon: Network,
       color: "#4FD1C5",
       webinars: [
+        { title: "Solving Network Requirements with ChatGPT", instructor: "Dan Young", videoId: "d01l174wlu", description: "Discover how to leverage ChatGPT to solve complex networking requirements and streamline network design." },
         { title: "Introduction to IPSec Tunnels", instructor: "Dan Young", videoId: "soq6fkq37k", description: "Learn the fundamentals of IPSec tunnels and how to implement secure network connections." },
         { title: "TCP Deep Dive", instructor: "Dan Young", videoId: "7365a0l9hb", description: "Explore the TCP protocol in depth, understanding its mechanisms and troubleshooting techniques." },
         { title: "Low Math IP Subnetting", instructor: "Dan Young", videoId: "4t4nkkkc3z", description: "Master IP subnetting with simplified techniques that minimize complex calculations." },
@@ -124,7 +117,7 @@ const Webinars = () => {
 
         {/* Tabbed Interface */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent h-auto p-0 mb-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 bg-transparent h-auto p-0 mb-8">
             {Object.entries(webinarCategories).map(([key, category]) => {
               const IconComponent = category.icon;
               return (
