@@ -92,8 +92,7 @@ const Webinars = () => {
         { title: "Exploring Four Essential Security Tools in StormWind's Cyber Range", instructor: "Dan Young", videoId: "29v8s2dplf", description: "Discover four essential security tools available in StormWind's Cyber Range environment." },
         { title: "Protecting Against ChatGPT, Automated Login Scripts, and other Cyber Attacks", instructor: "Chris Paul", videoId: "pv58af449v", description: "Learn how to protect your organization against modern cyber threats including AI-powered attacks." },
         { title: "Mastering the CompTIA Security+ Certification", instructor: "Raymond Lacoste", videoId: "u4lstu7i7m", description: "Prepare for the CompTIA Security+ certification with expert guidance and exam preparation strategies." },
-        { title: "Rethinking Password Security in the Age of AI", instructor: "Will Panek", videoId: "inrznua734", description: "Explore modern password security challenges and best practices in an AI-driven landscape." },
-        { title: "AI-Powered Security Awareness Training", instructor: "Chris Paul", videoId: "3ry73stvbc", description: "Discover how AI is transforming security awareness training and protecting organizations from human error." }
+        { title: "Rethinking Password Security in the Age of AI", instructor: "Will Panek", videoId: "inrznua734", description: "Explore modern password security challenges and best practices in an AI-driven landscape." }
       ]
     }
   };
