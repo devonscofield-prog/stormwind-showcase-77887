@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { TextSizeProvider } from "./contexts/TextSizeContext";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -44,10 +45,11 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+      <TextSizeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
         <ScrollToTop />
         <BackToTop />
         <Suspense
@@ -93,6 +95,7 @@ const App = () => (
         </Suspense>
         </BrowserRouter>
       </TooltipProvider>
+      </TextSizeProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

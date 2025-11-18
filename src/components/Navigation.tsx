@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Type } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTextSize } from "@/contexts/TextSizeContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +25,7 @@ export const Navigation = () => {
   const [techOpen, setTechOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { textSize, toggleTextSize } = useTextSize();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
@@ -149,6 +151,16 @@ export const Navigation = () => {
                 Ranges
               </Button>
             </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTextSize}
+              className="text-gray-100 hover:text-teal-400 transition-colors"
+              title="Toggle text size"
+            >
+              <Type className={`h-5 w-5 transition-all ${textSize === "large" ? "scale-125" : "scale-100"}`} />
+              <span className="sr-only">Toggle text size</span>
+            </Button>
             <Button
               variant="ghost"
               size="icon"
@@ -347,6 +359,14 @@ export const Navigation = () => {
                 Ranges
               </Button>
             </Link>
+            <Button
+              variant="ghost"
+              onClick={toggleTextSize}
+              className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+            >
+              <Type className={`h-5 w-5 mr-2 transition-all ${textSize === "large" ? "scale-125" : "scale-100"}`} />
+              Toggle Text Size
+            </Button>
             <Button
               variant="ghost"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
