@@ -72,7 +72,7 @@ const CloudTraining = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
               {/* Microsoft Azure */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Cloud className="w-6 h-6 text-primary" />
@@ -85,7 +85,7 @@ const CloudTraining = () => {
               </div>
 
               {/* AWS */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Server className="w-6 h-6 text-primary" />
@@ -98,7 +98,7 @@ const CloudTraining = () => {
               </div>
 
               {/* Google Cloud */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Layers className="w-6 h-6 text-primary" />
@@ -111,7 +111,7 @@ const CloudTraining = () => {
               </div>
 
               {/* Containerization & IaC */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Container className="w-6 h-6 text-primary" />
@@ -124,7 +124,7 @@ const CloudTraining = () => {
               </div>
 
               {/* Cloud Security */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Shield className="w-6 h-6 text-primary" />
@@ -137,7 +137,7 @@ const CloudTraining = () => {
               </div>
 
               {/* Cloud Databases */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg bg-primary/10">
                     <Database className="w-6 h-6 text-primary" />

@@ -79,7 +79,7 @@ const EnterpriseReporting = () => {
           
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => <div key={index} className="group p-8 rounded-lg border-2 border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg">
+            {features.map((feature, index) => <div key={index} className="group p-8 rounded-lg border-2 border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="mb-4">
                   <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <feature.icon className="w-6 h-6" />
