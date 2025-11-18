@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -78,6 +78,7 @@ const App = () => (
             <Route path="/desktop-apps" element={<DesktopApps />} />
             <Route path="/security-awareness" element={<SecurityAwareness />} />
             <Route path="/bytes" element={<Microlearning />} />
+            <Route path="/microlearning" element={<Navigate to="/bytes" replace />} />
             <Route path="/learning-paths" element={<LearningPaths />} />
             <Route path="/skills-assessments" element={<SkillsAssessments />} />
             <Route path="/live-instructor-led" element={<LiveInstructorLed />} />
