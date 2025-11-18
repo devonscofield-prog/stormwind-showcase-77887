@@ -9,6 +9,8 @@ import BackToTop from "./components/BackToTop";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { TextSizeProvider } from "./contexts/TextSizeContext";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -40,6 +42,7 @@ const Courses = lazy(() => import("./pages/Courses"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Webinars = lazy(() => import("./pages/Webinars"));
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
+const AdminAuth = lazy(() => import("./pages/AdminAuth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -52,7 +55,8 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-        <AnalyticsProvider>
+            <AuthProvider>
+              <AnalyticsProvider>
           <ScrollToTop />
           <BackToTop />
           <Suspense
@@ -92,12 +96,18 @@ const App = () => (
             <Route path="/courses" element={<Courses />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/webinars" element={<Webinars />} />
-            <Route path="/analytics-dashboard" element={<AnalyticsDashboard />} />
+            <Route path="/admin-auth" element={<AdminAuth />} />
+            <Route path="/analytics-dashboard" element={
+              <ProtectedRoute requireAdmin>
+                <AnalyticsDashboard />
+              </ProtectedRoute>
+            } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
         </AnalyticsProvider>
+        </AuthProvider>
           </BrowserRouter>
       </TooltipProvider>
       </TextSizeProvider>
