@@ -118,7 +118,7 @@ const DevOps = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Cloud className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Infrastructure as Code</h4>
@@ -144,7 +144,7 @@ const DevOps = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <GitBranch className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">CI/CD & GitOps</h4>
@@ -191,7 +191,7 @@ const DevOps = () => {
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Cloud className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Cloud Platforms</h4>
@@ -212,7 +212,7 @@ const DevOps = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Container className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Container Orchestration</h4>
@@ -233,7 +233,7 @@ const DevOps = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <GitBranch className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">CI/CD Tools</h4>
@@ -254,7 +254,7 @@ const DevOps = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Code className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Infrastructure as Code</h4>
