@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, ChevronDown, Type } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Type, LogIn, LogOut, Shield } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSize } from "@/contexts/TextSizeContext";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +27,7 @@ export const Navigation = () => {
   const [platformOpen, setPlatformOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { textSize, toggleTextSize } = useTextSize();
+  const { user, isAdmin, signOut } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
@@ -171,6 +173,36 @@ export const Navigation = () => {
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
+            
+            {/* Auth Buttons */}
+            {user ? (
+              <>
+                {isAdmin && (
+                  <Link to="/analytics-dashboard">
+                    <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                      <Shield className="h-4 w-4 mr-2" />
+                      Analytics
+                    </Button>
+                  </Link>
+                )}
+                <Button
+                  variant="ghost"
+                  onClick={signOut}
+                  className="text-gray-100 hover:text-teal-400 transition-colors"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link to="/admin-auth">
+                <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Admin Login
+                </Button>
+              </Link>
+            )}
+            
             <Link to="/contact">
               <Button variant="default">
                 Contact Us
