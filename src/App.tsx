@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { TextSizeProvider } from "./contexts/TextSizeContext";
+import { AnalyticsProvider } from "./components/AnalyticsProvider";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -38,6 +39,7 @@ const HRCompliancePage = lazy(() => import("./pages/HRCompliancePage"));
 const Courses = lazy(() => import("./pages/Courses"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Webinars = lazy(() => import("./pages/Webinars"));
+const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -50,9 +52,10 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-        <ScrollToTop />
-        <BackToTop />
-        <Suspense
+        <AnalyticsProvider>
+          <ScrollToTop />
+          <BackToTop />
+          <Suspense
           fallback={
             <div className="min-h-screen flex items-center justify-center bg-background">
               <div className="animate-pulse text-muted-foreground">Loading...</div>
@@ -93,7 +96,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-        </BrowserRouter>
+        </AnalyticsProvider>
+          </BrowserRouter>
       </TooltipProvider>
       </TextSizeProvider>
     </ThemeProvider>
