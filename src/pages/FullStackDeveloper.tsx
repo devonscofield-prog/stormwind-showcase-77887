@@ -106,7 +106,7 @@ const FullStackDeveloper = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Code className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Frontend Development</h4>

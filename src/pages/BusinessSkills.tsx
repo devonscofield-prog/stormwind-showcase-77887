@@ -69,7 +69,7 @@ const BusinessSkills = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Users className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Management & Leadership</h4>
@@ -80,7 +80,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <HeadphonesIcon className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Customer Service</h4>
@@ -91,7 +91,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Briefcase className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Business Skills</h4>
@@ -102,7 +102,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <TrendingUp className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Sales Skills</h4>
@@ -113,7 +113,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Heart className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Personal Development</h4>
@@ -124,7 +124,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <GraduationCap className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Career Development</h4>
@@ -135,7 +135,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <ShieldCheck className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Ethics & Quality</h4>
@@ -146,7 +146,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Target className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Marketing & Finance</h4>
@@ -157,7 +157,7 @@ const BusinessSkills = () => {
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">
                       <Globe className="w-8 h-8 text-primary" />
                       <h4 className="text-xl font-bold">Remote Work & Wellness</h4>
