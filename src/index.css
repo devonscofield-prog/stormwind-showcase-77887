@@ -139,14 +139,9 @@ All colors MUST be HSL.
     background-attachment: fixed;
   }
 
-  /* Text size accessibility - applies to ALL text elements */
+  /* Text size accessibility - applies to ALL text elements including titles */
   html.text-size-large {
     font-size: 120%;
-  }
-
-  /* Ensure it cascades to all elements */
-  html.text-size-large * {
-    font-size: inherit;
   }
   
   /* Dot pattern overlay */
