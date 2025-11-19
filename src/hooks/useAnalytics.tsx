@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/contexts/AuthContext';
 
 // Generate or retrieve session ID
 const getSessionId = (): string => {
@@ -39,6 +40,7 @@ const getDeviceInfo = () => {
 };
 
 export const useAnalytics = () => {
+  const { isAdmin } = useAuth();
   const sessionId = useRef(getSessionId());
   const sessionStartTime = useRef(Date.now());
   const currentPageStartTime = useRef(Date.now());
@@ -47,6 +49,9 @@ export const useAnalytics = () => {
 
   // Flush buffered events to database
   const flushEvents = useCallback(async () => {
+    // Don't track admin users
+    if (isAdmin) return;
+    
     if (eventBuffer.current.length === 0) return;
 
     const events = [...eventBuffer.current];
@@ -59,10 +64,13 @@ export const useAnalytics = () => {
     } catch (error) {
       console.error('Analytics error:', error);
     }
-  }, []);
+  }, [isAdmin]);
 
   // Buffer event and schedule flush
   const bufferEvent = useCallback((event: any) => {
+    // Don't track admin users
+    if (isAdmin) return;
+    
     eventBuffer.current.push(event);
 
     // Clear existing timeout
@@ -76,7 +84,7 @@ export const useAnalytics = () => {
     } else {
       flushTimeoutRef.current = setTimeout(flushEvents, 2000);
     }
-  }, [flushEvents]);
+  }, [flushEvents, isAdmin]);
 
   // Track page view
   const trackPageView = useCallback((url: string, title: string) => {
@@ -166,6 +174,9 @@ export const useAnalytics = () => {
   // Update session on page unload
   useEffect(() => {
     const handleUnload = () => {
+      // Don't track admin users
+      if (isAdmin) return;
+      
       const sessionDuration = Math.floor((Date.now() - sessionStartTime.current) / 1000);
       
       // Use sendBeacon for reliable sending on page unload
@@ -186,7 +197,7 @@ export const useAnalytics = () => {
 
     window.addEventListener('beforeunload', handleUnload);
     return () => window.removeEventListener('beforeunload', handleUnload);
-  }, []);
+  }, [isAdmin]);
 
   // Flush on unmount
   useEffect(() => {
