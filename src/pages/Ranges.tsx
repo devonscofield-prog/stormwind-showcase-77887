@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
-import { VideoEmbed } from "@/components/VideoEmbed";
+import { VideoCarousel } from "@/components/VideoCarousel";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -157,9 +157,15 @@ const Ranges = () => {
                 Direct access to Azure cloud services. Practice and skill up on cloud technologies directly in Azure with a sandboxed environment.
               </p>
               
-              {/* Embedded Wistia Video */}
+              {/* Video Carousel */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoEmbed videoId="4h1c0m2kaf" title="Azure Range Demo" />
+                <VideoCarousel 
+                  videos={[
+                    { videoId: "4h1c0m2kaf", title: "Azure Range Demo" },
+                    // ADD YOUR ADDITIONAL AZURE VIDEOS HERE
+                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                  ]}
+                />
               </div>
             </div>
 
@@ -217,9 +223,15 @@ const Ranges = () => {
                 Master Microsoft technologies and Windows infrastructure with hands-on experience in enterprise environments.
               </p>
               
-              {/* Embedded Wistia Video */}
+              {/* Video Carousel */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoEmbed videoId="v6zins19bi" title="Microsoft Range Demo" />
+                <VideoCarousel 
+                  videos={[
+                    { videoId: "v6zins19bi", title: "Microsoft Range Demo" },
+                    // ADD YOUR ADDITIONAL MICROSOFT VIDEOS HERE
+                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                  ]}
+                />
               </div>
             </div>
 
@@ -279,9 +291,15 @@ const Ranges = () => {
                 A dynamic networking sandbox with routers, multi-layer switches, and connected hosts. From simple setups to advanced architectures.
               </p>
               
-              {/* Embedded Wistia Video */}
+              {/* Video Carousel */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoEmbed videoId="6i6y01qjp0" title="Network Range Demo" />
+                <VideoCarousel 
+                  videos={[
+                    { videoId: "6i6y01qjp0", title: "Network Range Demo" },
+                    // ADD YOUR ADDITIONAL NETWORK VIDEOS HERE
+                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                  ]}
+                />
               </div>
             </div>
 
@@ -368,9 +386,15 @@ const Ranges = () => {
                 Enhance your cybersecurity skills with a cutting-edge practical training environment designed to keep you ahead of emerging threats.
               </p>
               
-              {/* Embedded Wistia Video */}
+              {/* Video Carousel */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoEmbed videoId="gg8rfkzk3y" title="Cyber Range Demo" />
+                <VideoCarousel 
+                  videos={[
+                    { videoId: "gg8rfkzk3y", title: "Cyber Range Demo" },
+                    // ADD YOUR ADDITIONAL CYBER VIDEOS HERE
+                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                  ]}
+                />
               </div>
             </div>
 
