@@ -131,6 +131,9 @@ export const Navigation = () => {
                   <Link to="/live-instructor-led" className="cursor-pointer">Live Instructor Led</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
+                  <Link to="/training-samples" className="cursor-pointer">Training Samples</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link to="/enterprise-reporting" className="cursor-pointer">Enterprise Reporting</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -325,6 +328,11 @@ export const Navigation = () => {
                 <Link to="/live-instructor-led" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
                     Live Instructor Led
+                  </Button>
+                </Link>
+                <Link to="/training-samples" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    Training Samples
                   </Button>
                 </Link>
                 <Link to="/enterprise-reporting" onClick={() => setMobileMenuOpen(false)}>
