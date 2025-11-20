@@ -43,7 +43,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Webinars = lazy(() => import("./pages/Webinars"));
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
-const TestVideo = lazy(() => import("./pages/TestVideo"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -103,7 +102,6 @@ const App = () => (
                 <AnalyticsDashboard />
               </ProtectedRoute>
             } />
-            <Route path="/test-video" element={<TestVideo />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
