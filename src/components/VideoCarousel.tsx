@@ -70,14 +70,11 @@ export const VideoCarousel = ({ videos }: VideoCarouselProps) => {
         ))}
       </div>
       
-      {/* Video Title and Description */}
+      {/* Video Title */}
       <div className="mt-6 text-center max-w-3xl mx-auto">
-        <h3 className="text-2xl font-bold text-foreground mb-3">
+        <h3 className="text-2xl font-bold text-foreground">
           {videos[current]?.title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed">
-          {videos[current]?.description}
-        </p>
       </div>
     </div>
   );

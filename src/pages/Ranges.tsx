@@ -162,14 +162,14 @@ const Ranges = () => {
                 <VideoCarousel 
                   videos={[
                     { 
-                      videoId: "4h1c0m2kaf", 
-                      title: "Azure Range Overview",
-                      description: "Explore the fundamentals of Azure cloud infrastructure and learn how to navigate the Azure Range environment for hands-on practice."
+                      videoId: "4q4mxty75h", 
+                      title: "Introduction to the Azure Range",
+                      description: ""
                     },
                     { 
-                      videoId: "4q4mxty75h", 
-                      title: "Azure Range Demo",
-                      description: "Watch a comprehensive demonstration of Azure Range capabilities, including virtual networks, security configurations, and resource management."
+                      videoId: "4h1c0m2kaf", 
+                      title: "Getting into the Azure Range",
+                      description: ""
                     },
                   ]}
                 />
@@ -235,19 +235,19 @@ const Ranges = () => {
                 <VideoCarousel 
                   videos={[
                     { 
-                      videoId: "v6zins19bi", 
-                      title: "Microsoft Range Overview",
-                      description: "Get introduced to the Microsoft Range platform and discover how to leverage Microsoft technologies in a secure practice environment."
-                    },
-                    { 
                       videoId: "de8lvdgvlk", 
-                      title: "Active Directory & Identity Management",
-                      description: "Learn to configure and manage Active Directory, user accounts, group policies, and identity security in a realistic Microsoft environment."
+                      title: "Introduction to the Microsoft Range",
+                      description: ""
                     },
                     { 
                       videoId: "jn3uo9cc4f", 
-                      title: "Microsoft 365 & Azure Integration",
-                      description: "Master the integration between Microsoft 365 and Azure services, including security features, compliance tools, and cloud management."
+                      title: "Getting Connected to the Microsoft Range",
+                      description: ""
+                    },
+                    { 
+                      videoId: "jn3uo9cc4f", 
+                      title: "Working in the Microsoft Range",
+                      description: ""
                     },
                   ]}
                 />
@@ -315,24 +315,24 @@ const Ranges = () => {
                 <VideoCarousel 
                   videos={[
                     { 
-                      videoId: "6i6y01qjp0", 
-                      title: "Network Range Overview",
-                      description: "Discover the Network Range platform and learn how to practice networking concepts in a hands-on virtual environment."
-                    },
-                    { 
                       videoId: "tyv2grer44", 
-                      title: "Router & Switch Configuration",
-                      description: "Practice configuring routers and switches, including VLANs, routing protocols, and network segmentation techniques."
+                      title: "Introduction to the Net Range",
+                      description: ""
                     },
                     { 
                       videoId: "8yi6vpj1rr", 
-                      title: "Network Security & Firewalls",
-                      description: "Learn to implement network security measures, configure firewalls, and protect network infrastructure from common threats."
+                      title: "Routing Loop Observed in our Network Range",
+                      description: ""
                     },
                     { 
                       videoId: "0a8bty58en", 
-                      title: "Advanced Network Troubleshooting",
-                      description: "Master advanced troubleshooting techniques for diagnosing and resolving complex network issues in enterprise environments."
+                      title: "IPv6 in the Net Range",
+                      description: ""
+                    },
+                    { 
+                      videoId: "6i6y01qjp0", 
+                      title: "BGP in the Net Range",
+                      description: ""
                     },
                   ]}
                 />
@@ -427,29 +427,29 @@ const Ranges = () => {
                 <VideoCarousel 
                   videos={[
                     { 
-                      videoId: "gg8rfkzk3y", 
-                      title: "Cyber Range Overview",
-                      description: "Enter the world of cybersecurity with our Cyber Range platform, where you'll practice real-world security scenarios in a safe environment."
-                    },
-                    { 
                       videoId: "m8yaitqq20", 
-                      title: "Penetration Testing Fundamentals",
-                      description: "Learn ethical hacking techniques, vulnerability assessment, and penetration testing methodologies used by security professionals."
+                      title: "Intoduction to the Cyber Range",
+                      description: ""
                     },
                     { 
                       videoId: "0gjwpmx8sv", 
-                      title: "Incident Response & Threat Detection",
-                      description: "Develop skills in identifying security incidents, analyzing threats, and implementing effective incident response procedures."
+                      title: "How to Use the Cyber Range",
+                      description: ""
                     },
                     { 
                       videoId: "kfh1pesrss", 
-                      title: "Security Operations Center (SOC)",
-                      description: "Experience life in a Security Operations Center, monitoring systems, analyzing alerts, and defending against cyber attacks."
+                      title: "Accessing the Cyber Range",
+                      description: ""
                     },
                     { 
                       videoId: "v409g441qf", 
-                      title: "Advanced Threat Hunting",
-                      description: "Master proactive threat hunting techniques to identify and neutralize advanced persistent threats before they cause damage."
+                      title: "Understanding the Cyber Range Tools",
+                      description: ""
+                    },
+                    { 
+                      videoId: "gg8rfkzk3y", 
+                      title: "Accessing and Completing Cyber Range Events",
+                      description: ""
                     },
                   ]}
                 />
