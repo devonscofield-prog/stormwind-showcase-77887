@@ -39,6 +39,7 @@ const LiveInstructorLed = lazy(() => import("./pages/LiveInstructorLed"));
 const EnterpriseReporting = lazy(() => import("./pages/EnterpriseReporting"));
 const HRCompliancePage = lazy(() => import("./pages/HRCompliancePage"));
 const Courses = lazy(() => import("./pages/Courses"));
+const TrainingSamples = lazy(() => import("./pages/TrainingSamples"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Webinars = lazy(() => import("./pages/Webinars"));
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
@@ -94,6 +95,7 @@ const App = () => (
             <Route path="/enterprise-reporting" element={<EnterpriseReporting />} />
             <Route path="/hr-compliance" element={<HRCompliancePage />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/training-samples" element={<TrainingSamples />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/admin-auth" element={<AdminAuth />} />
