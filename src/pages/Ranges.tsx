@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
-import { VideoCarousel } from "@/components/VideoCarousel";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
@@ -157,22 +157,9 @@ const Ranges = () => {
                 Direct access to Azure cloud services. Practice and skill up on cloud technologies directly in Azure with a sandboxed environment.
               </p>
               
-              {/* Video Carousel */}
+              {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoCarousel 
-                  videos={[
-                    { 
-                      videoId: "4q4mxty75h", 
-                      title: "Introduction to the Azure Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "4h1c0m2kaf", 
-                      title: "Getting into the Azure Range",
-                      description: ""
-                    },
-                  ]}
-                />
+                <VideoEmbed videoId="4h1c0m2kaf" title="Azure Range Demo" />
               </div>
             </div>
 
@@ -230,27 +217,9 @@ const Ranges = () => {
                 Master Microsoft technologies and Windows infrastructure with hands-on experience in enterprise environments.
               </p>
               
-              {/* Video Carousel */}
+              {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoCarousel 
-                  videos={[
-                    { 
-                      videoId: "de8lvdgvlk", 
-                      title: "Introduction to the Microsoft Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "jn3uo9cc4f", 
-                      title: "Getting Connected to the Microsoft Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "jn3uo9cc4f", 
-                      title: "Working in the Microsoft Range",
-                      description: ""
-                    },
-                  ]}
-                />
+                <VideoEmbed videoId="v6zins19bi" title="Microsoft Range Demo" />
               </div>
             </div>
 
@@ -310,32 +279,9 @@ const Ranges = () => {
                 A dynamic networking sandbox with routers, multi-layer switches, and connected hosts. From simple setups to advanced architectures.
               </p>
               
-              {/* Video Carousel */}
+              {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoCarousel 
-                  videos={[
-                    { 
-                      videoId: "tyv2grer44", 
-                      title: "Introduction to the Net Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "8yi6vpj1rr", 
-                      title: "Routing Loop Observed in our Network Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "0a8bty58en", 
-                      title: "IPv6 in the Net Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "6i6y01qjp0", 
-                      title: "BGP in the Net Range",
-                      description: ""
-                    },
-                  ]}
-                />
+                <VideoEmbed videoId="6i6y01qjp0" title="Network Range Demo" />
               </div>
             </div>
 
@@ -422,37 +368,9 @@ const Ranges = () => {
                 Enhance your cybersecurity skills with a cutting-edge practical training environment designed to keep you ahead of emerging threats.
               </p>
               
-              {/* Video Carousel */}
+              {/* Embedded Wistia Video */}
               <div className="mb-8 max-w-4xl mx-auto">
-                <VideoCarousel 
-                  videos={[
-                    { 
-                      videoId: "m8yaitqq20", 
-                      title: "Intoduction to the Cyber Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "0gjwpmx8sv", 
-                      title: "How to Use the Cyber Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "kfh1pesrss", 
-                      title: "Accessing the Cyber Range",
-                      description: ""
-                    },
-                    { 
-                      videoId: "v409g441qf", 
-                      title: "Understanding the Cyber Range Tools",
-                      description: ""
-                    },
-                    { 
-                      videoId: "gg8rfkzk3y", 
-                      title: "Accessing and Completing Cyber Range Events",
-                      description: ""
-                    },
-                  ]}
-                />
+                <VideoEmbed videoId="gg8rfkzk3y" title="Cyber Range Demo" />
               </div>
             </div>
 
