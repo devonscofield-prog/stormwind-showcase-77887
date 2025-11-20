@@ -12,6 +12,7 @@ import { VideoEmbed } from "@/components/VideoEmbed";
 interface Video {
   videoId: string;
   title: string;
+  description: string;
 }
 
 interface VideoCarouselProps {
@@ -67,6 +68,16 @@ export const VideoCarousel = ({ videos }: VideoCarouselProps) => {
             aria-label={`Go to video ${index + 1}`}
           />
         ))}
+      </div>
+      
+      {/* Video Title and Description */}
+      <div className="mt-6 text-center max-w-3xl mx-auto">
+        <h3 className="text-2xl font-bold text-foreground mb-3">
+          {videos[current]?.title}
+        </h3>
+        <p className="text-muted-foreground leading-relaxed">
+          {videos[current]?.description}
+        </p>
       </div>
     </div>
   );

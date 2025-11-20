@@ -161,8 +161,16 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "4h1c0m2kaf", title: "Azure Range Overview" },
-                    { videoId: "4q4mxty75h", title: "Azure Range Demo" },
+                    { 
+                      videoId: "4h1c0m2kaf", 
+                      title: "Azure Range Overview",
+                      description: "Explore the fundamentals of Azure cloud infrastructure and learn how to navigate the Azure Range environment for hands-on practice."
+                    },
+                    { 
+                      videoId: "4q4mxty75h", 
+                      title: "Azure Range Demo",
+                      description: "Watch a comprehensive demonstration of Azure Range capabilities, including virtual networks, security configurations, and resource management."
+                    },
                   ]}
                 />
               </div>
@@ -226,9 +234,21 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "v6zins19bi", title: "Microsoft Range Overview" },
-                    { videoId: "de8lvdgvlk", title: "Microsoft Range Demo 1" },
-                    { videoId: "jn3uo9cc4f", title: "Microsoft Range Demo 2" },
+                    { 
+                      videoId: "v6zins19bi", 
+                      title: "Microsoft Range Overview",
+                      description: "Get introduced to the Microsoft Range platform and discover how to leverage Microsoft technologies in a secure practice environment."
+                    },
+                    { 
+                      videoId: "de8lvdgvlk", 
+                      title: "Active Directory & Identity Management",
+                      description: "Learn to configure and manage Active Directory, user accounts, group policies, and identity security in a realistic Microsoft environment."
+                    },
+                    { 
+                      videoId: "jn3uo9cc4f", 
+                      title: "Microsoft 365 & Azure Integration",
+                      description: "Master the integration between Microsoft 365 and Azure services, including security features, compliance tools, and cloud management."
+                    },
                   ]}
                 />
               </div>
@@ -294,10 +314,26 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "6i6y01qjp0", title: "Network Range Overview" },
-                    { videoId: "tyv2grer44", title: "Network Range Demo 1" },
-                    { videoId: "8yi6vpj1rr", title: "Network Range Demo 2" },
-                    { videoId: "0a8bty58en", title: "Network Range Demo 3" },
+                    { 
+                      videoId: "6i6y01qjp0", 
+                      title: "Network Range Overview",
+                      description: "Discover the Network Range platform and learn how to practice networking concepts in a hands-on virtual environment."
+                    },
+                    { 
+                      videoId: "tyv2grer44", 
+                      title: "Router & Switch Configuration",
+                      description: "Practice configuring routers and switches, including VLANs, routing protocols, and network segmentation techniques."
+                    },
+                    { 
+                      videoId: "8yi6vpj1rr", 
+                      title: "Network Security & Firewalls",
+                      description: "Learn to implement network security measures, configure firewalls, and protect network infrastructure from common threats."
+                    },
+                    { 
+                      videoId: "0a8bty58en", 
+                      title: "Advanced Network Troubleshooting",
+                      description: "Master advanced troubleshooting techniques for diagnosing and resolving complex network issues in enterprise environments."
+                    },
                   ]}
                 />
               </div>
@@ -390,11 +426,31 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "gg8rfkzk3y", title: "Cyber Range Overview" },
-                    { videoId: "m8yaitqq20", title: "Cyber Range Demo 1" },
-                    { videoId: "0gjwpmx8sv", title: "Cyber Range Demo 2" },
-                    { videoId: "kfh1pesrss", title: "Cyber Range Demo 3" },
-                    { videoId: "v409g441qf", title: "Cyber Range Demo 4" },
+                    { 
+                      videoId: "gg8rfkzk3y", 
+                      title: "Cyber Range Overview",
+                      description: "Enter the world of cybersecurity with our Cyber Range platform, where you'll practice real-world security scenarios in a safe environment."
+                    },
+                    { 
+                      videoId: "m8yaitqq20", 
+                      title: "Penetration Testing Fundamentals",
+                      description: "Learn ethical hacking techniques, vulnerability assessment, and penetration testing methodologies used by security professionals."
+                    },
+                    { 
+                      videoId: "0gjwpmx8sv", 
+                      title: "Incident Response & Threat Detection",
+                      description: "Develop skills in identifying security incidents, analyzing threats, and implementing effective incident response procedures."
+                    },
+                    { 
+                      videoId: "kfh1pesrss", 
+                      title: "Security Operations Center (SOC)",
+                      description: "Experience life in a Security Operations Center, monitoring systems, analyzing alerts, and defending against cyber attacks."
+                    },
+                    { 
+                      videoId: "v409g441qf", 
+                      title: "Advanced Threat Hunting",
+                      description: "Master proactive threat hunting techniques to identify and neutralize advanced persistent threats before they cause damage."
+                    },
                   ]}
                 />
               </div>
