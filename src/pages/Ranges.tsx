@@ -161,9 +161,8 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "4h1c0m2kaf", title: "Azure Range Demo" },
-                    // ADD YOUR ADDITIONAL AZURE VIDEOS HERE
-                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                    { videoId: "4h1c0m2kaf", title: "Azure Range Overview" },
+                    { videoId: "4q4mxty75h", title: "Azure Range Demo" },
                   ]}
                 />
               </div>
@@ -227,9 +226,9 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "v6zins19bi", title: "Microsoft Range Demo" },
-                    // ADD YOUR ADDITIONAL MICROSOFT VIDEOS HERE
-                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                    { videoId: "v6zins19bi", title: "Microsoft Range Overview" },
+                    { videoId: "de8lvdgvlk", title: "Microsoft Range Demo 1" },
+                    { videoId: "jn3uo9cc4f", title: "Microsoft Range Demo 2" },
                   ]}
                 />
               </div>
@@ -295,9 +294,10 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "6i6y01qjp0", title: "Network Range Demo" },
-                    // ADD YOUR ADDITIONAL NETWORK VIDEOS HERE
-                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                    { videoId: "6i6y01qjp0", title: "Network Range Overview" },
+                    { videoId: "tyv2grer44", title: "Network Range Demo 1" },
+                    { videoId: "8yi6vpj1rr", title: "Network Range Demo 2" },
+                    { videoId: "0a8bty58en", title: "Network Range Demo 3" },
                   ]}
                 />
               </div>
@@ -390,9 +390,11 @@ const Ranges = () => {
               <div className="mb-8 max-w-4xl mx-auto">
                 <VideoCarousel 
                   videos={[
-                    { videoId: "gg8rfkzk3y", title: "Cyber Range Demo" },
-                    // ADD YOUR ADDITIONAL CYBER VIDEOS HERE
-                    // { videoId: "YOUR_VIDEO_ID", title: "Your Video Title" },
+                    { videoId: "gg8rfkzk3y", title: "Cyber Range Overview" },
+                    { videoId: "m8yaitqq20", title: "Cyber Range Demo 1" },
+                    { videoId: "0gjwpmx8sv", title: "Cyber Range Demo 2" },
+                    { videoId: "kfh1pesrss", title: "Cyber Range Demo 3" },
+                    { videoId: "v409g441qf", title: "Cyber Range Demo 4" },
                   ]}
                 />
               </div>
