@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { VideoEmbed } from "@/components/VideoEmbed";
+import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Play, ExternalLink, ArrowLeft } from "lucide-react";
-import { Course, Lesson } from "@/lib/trainingSampleData";
+import { ArrowLeft, Clock } from "lucide-react";
+import { VideoEmbed } from "./VideoEmbed";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface CoursePlayerProps {
   course: Course;
@@ -13,158 +14,229 @@ interface CoursePlayerProps {
 }
 
 export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
+  const [selectedVariant, setSelectedVariant] = useState<CourseVariant>(course.variants[0]);
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(
-    course.modules[0]?.lessons[0] || null
+    course.variants[0]?.modules[0]?.lessons[0] || null
   );
 
-  return (
-    <div className="space-y-6 animate-fade-in">
-      {/* Back Button */}
-      <Button variant="ghost" onClick={onBack} className="gap-2">
-        <ArrowLeft className="w-4 h-4" />
-        Back to Courses
-      </Button>
+  // Reset current lesson when variant changes
+  const handleVariantChange = (variantId: string) => {
+    const newVariant = course.variants.find(v => v.id === variantId);
+    if (newVariant) {
+      setSelectedVariant(newVariant);
+      setCurrentLesson(newVariant.modules[0]?.lessons[0] || null);
+    }
+  };
 
-      {/* Video Player */}
-      <div className="glass-card p-4 rounded-xl">
-        {currentLesson ? (
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">{course.title}</h2>
-              <p className="text-sm text-muted-foreground mt-1">{currentLesson.title}</p>
-            </div>
-            <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
-          </div>
-        ) : (
-          <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-            <p className="text-muted-foreground">Select a lesson to begin</p>
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        <Button 
+          variant="ghost" 
+          onClick={onBack}
+          className="mb-6 hover:bg-accent"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Courses
+        </Button>
+
+        {/* Course Title */}
+        <h1 className="text-4xl font-bold mb-6">{course.title}</h1>
+
+        {/* Variant Toggle */}
+        {course.variants.length > 1 && (
+          <div className="mb-6">
+            <Tabs value={selectedVariant.id} onValueChange={handleVariantChange}>
+              <TabsList className="grid w-full max-w-md grid-cols-2">
+                {course.variants.map((variant) => (
+                  <TabsTrigger key={variant.id} value={variant.id}>
+                    {variant.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
           </div>
         )}
-      </div>
 
-      {/* Course Content */}
-      <div className="grid lg:grid-cols-3 gap-6">
-        {/* Left: Overview */}
-        <div className="lg:col-span-1">
-          <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-1">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview" className="space-y-4">
-              <Card className="glass-card">
-                <CardHeader>
-                  <CardTitle className="text-lg">Course Description</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {course.overview.description}
-                  </p>
-                  
-                  {course.overview.examNumber && (
-                    <div>
-                      <h4 className="font-semibold text-sm mb-2">Exam Number</h4>
-                      <p className="text-sm text-primary font-mono">
-                        {course.overview.examNumber}
-                      </p>
+        {/* Video Player */}
+        <div className="mb-8">
+          {currentLesson ? (
+            <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
+          ) : (
+            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+              <p className="text-muted-foreground">Select a lesson to begin</p>
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Course Overview */}
+          <div className="lg:col-span-2 space-y-6">
+            <Tabs defaultValue="overview" className="w-full">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="objectives">Objectives</TabsTrigger>
+                <TabsTrigger value="details">Details</TabsTrigger>
+                <TabsTrigger value="resources">Resources</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="overview" className="space-y-4 mt-6">
+                <Card className="glass-card">
+                  <CardContent className="pt-6">
+                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                      <p className="text-muted-foreground">{selectedVariant.overview.description}</p>
+                      {selectedVariant.overview.examNumber && (
+                        <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                          <p className="text-sm font-medium text-primary">
+                            Exam: {selectedVariant.overview.examNumber}
+                          </p>
+                        </div>
+                      )}
                     </div>
-                  )}
-
-                  {course.overview.objectives && course.overview.objectives.length > 0 && (
-                    <div>
-                      <h4 className="font-semibold text-sm mb-2">Learning Objectives</h4>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              
+              <TabsContent value="objectives" className="mt-6">
+                <Card className="glass-card">
+                  <CardContent className="pt-6">
+                    {selectedVariant.overview.objectives && selectedVariant.overview.objectives.length > 0 ? (
                       <ul className="space-y-2">
-                        {course.overview.objectives.map((objective, index) => (
-                          <li key={index} className="text-sm text-muted-foreground flex gap-2">
-                            <span className="text-primary">•</span>
+                        {selectedVariant.overview.objectives.map((objective, index) => (
+                          <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                            <span className="text-primary mt-1">•</span>
                             <span>{objective}</span>
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  )}
+                    ) : (
+                      <p className="text-muted-foreground">No objectives listed for this variant.</p>
+                    )}
+                  </CardContent>
+                </Card>
+              </TabsContent>
 
-                  {course.overview.links && course.overview.links.length > 0 && (
-                    <div>
-                      <h4 className="font-semibold text-sm mb-2">Supplemental Links</h4>
+              <TabsContent value="details" className="mt-6">
+                <Card className="glass-card">
+                  <CardContent className="pt-6 space-y-4">
+                    {selectedVariant.overview.difficulty && (
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-foreground">Difficulty:</span>
+                        <span className="text-sm text-muted-foreground">{selectedVariant.overview.difficulty}</span>
+                      </div>
+                    )}
+                    {selectedVariant.overview.totalDuration && (
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm font-medium text-foreground">Total Duration:</span>
+                        <span className="text-sm text-muted-foreground">{selectedVariant.overview.totalDuration}</span>
+                      </div>
+                    )}
+                    {selectedVariant.overview.prerequisites && selectedVariant.overview.prerequisites.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-medium text-foreground mb-2">Prerequisites:</h4>
+                        <ul className="space-y-1">
+                          {selectedVariant.overview.prerequisites.map((prereq, index) => (
+                            <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <span className="text-primary mt-1">•</span>
+                              <span>{prereq}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              
+              <TabsContent value="resources" className="mt-6">
+                <Card className="glass-card">
+                  <CardContent className="pt-6">
+                    {selectedVariant.overview.links && selectedVariant.overview.links.length > 0 ? (
                       <div className="space-y-2">
-                        {course.overview.links.map((link, index) => (
-                          <a
+                        {selectedVariant.overview.links.map((link, index) => (
+                          <a 
                             key={index}
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-primary hover:underline flex items-center gap-2"
+                            className="block p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors"
                           >
-                            {link.label}
-                            <ExternalLink className="w-3 h-3" />
+                            <span className="text-sm font-medium text-foreground">{link.label}</span>
                           </a>
                         ))}
                       </div>
-                    </div>
-                  )}
+                    ) : (
+                      <p className="text-muted-foreground">No additional resources available.</p>
+                    )}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
 
-                  {course.showLiveSchedule && (
-                    <Button className="w-full" variant="default">
-                      VIEW LIVE SCHEDULE
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
+            {course.showLiveSchedule && (
+              <Button className="w-full" size="lg">
+                View Live Schedule
+              </Button>
+            )}
+          </div>
 
-        {/* Right: Modules */}
-        <div className="lg:col-span-2">
-          <Card className="glass-card">
-            <CardHeader>
-              <CardTitle className="text-lg">Course Modules</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="single" collapsible defaultValue={course.modules[0]?.id} className="w-full">
-                {course.modules.map((module) => (
-                  <AccordionItem key={module.id} value={module.id}>
-                    <AccordionTrigger className="text-left hover:text-primary transition-colors">
-                      {module.title}
+          {/* Right Column - Course Modules */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-8">
+              <h3 className="text-lg font-semibold mb-4">Course Modules</h3>
+              <Accordion type="single" collapsible className="w-full space-y-2">
+                {selectedVariant.modules.map((module) => (
+                  <AccordionItem key={module.id} value={module.id} className="border rounded-lg px-4">
+                    <AccordionTrigger className="hover:no-underline">
+                      <span className="text-sm font-medium">{module.title}</span>
                     </AccordionTrigger>
                     <AccordionContent>
-                      <div className="space-y-1">
-                        {module.lessons.map((lesson) => {
-                          const isActive = currentLesson?.id === lesson.id;
-                          return (
-                            <button
-                              key={lesson.id}
-                              onClick={() => setCurrentLesson(lesson)}
-                              className={`w-full flex items-start gap-3 p-3 rounded-lg transition-all ${
-                                isActive
-                                  ? "bg-primary/10 text-primary"
-                                  : "hover:bg-muted/50 text-foreground"
-                              }`}
-                            >
-                              <Play className={`w-4 h-4 flex-shrink-0 mt-0.5 ${isActive ? "fill-current" : ""}`} />
-                              <div className="flex-1 text-left">
-                                <div className="text-sm font-medium">
-                                  {lesson.title}
-                                </div>
-                                {lesson.instructor && (
-                                  <div className="text-xs text-muted-foreground mt-1">
-                                    {lesson.instructor}
-                                  </div>
-                                )}
+                      <div className="space-y-2 pt-2">
+                        {module.lessons.map((lesson) => (
+                          <button
+                            key={lesson.id}
+                            onClick={() => setCurrentLesson(lesson)}
+                            className={`w-full text-left p-3 rounded-md transition-all ${
+                              currentLesson?.id === lesson.id
+                                ? 'bg-primary text-primary-foreground'
+                                : 'hover:bg-accent'
+                            }`}
+                          >
+                            <div className="space-y-2">
+                              <p className="text-sm font-medium">{lesson.title}</p>
+                              <div className="flex items-center gap-3 text-xs opacity-90">
+                                <span className="flex items-center gap-1">
+                                  <Clock className="h-3 w-3" />
+                                  {lesson.duration}
+                                </span>
                               </div>
-                              <span className="text-xs text-muted-foreground mt-0.5">
-                                {lesson.duration}
-                              </span>
-                            </button>
-                          );
-                        })}
+                              {lesson.instructor && (
+                                <div className="flex items-center gap-2 mt-2">
+                                  <Avatar className="h-6 w-6">
+                                    <AvatarImage 
+                                      src={instructorPhotos[lesson.instructor]} 
+                                      alt={lesson.instructor}
+                                    />
+                                    <AvatarFallback className="text-xs">
+                                      {lesson.instructor.split(' ').map(n => n[0]).join('')}
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <span className="text-xs">
+                                    {lesson.instructor}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </button>
+                        ))}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>

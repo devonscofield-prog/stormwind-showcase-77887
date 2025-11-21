@@ -44,7 +44,7 @@ const TrainingSamples = () => {
                     No courses available in this category yet.
                   </p>
                 </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                  {filteredCourses.map(course => <CourseCard key={course.id} title={course.title} category={course.category} description={course.overview.description} thumbnail={course.thumbnail} onClick={() => setSelectedCourse(course)} />)}
+                  {filteredCourses.map(course => <CourseCard key={course.id} title={course.title} category={course.category} description={course.variants[0]?.overview.description || ""} thumbnail={course.thumbnail} onClick={() => setSelectedCourse(course)} />)}
                 </div>}
             </TabsContent>)}
         </Tabs>
