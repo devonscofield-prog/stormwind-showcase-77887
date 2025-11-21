@@ -5,6 +5,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 interface CoursePlayerProps {
   course: Course;
@@ -106,7 +107,10 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
               
               {/* Instructor Information */}
               {currentLesson?.instructor && (
-                <div className="mt-6 flex items-center gap-3 not-prose">
+                <Link 
+                  to="/mentoring" 
+                  className="mt-6 flex items-center gap-3 not-prose hover:bg-accent/50 rounded-lg p-3 -m-3 transition-colors cursor-pointer group"
+                >
                   <Avatar className="h-12 w-12">
                     <AvatarImage 
                       src={instructorPhotos[currentLesson.instructor]} 
@@ -118,9 +122,9 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                   </Avatar>
                   <div>
                     <p className="text-sm text-muted-foreground">Instructor</p>
-                    <p className="text-base font-medium text-foreground">{currentLesson.instructor}</p>
+                    <p className="text-base font-medium text-foreground group-hover:text-primary transition-colors">{currentLesson.instructor}</p>
                   </div>
-                </div>
+                </Link>
               )}
               
               {selectedVariant.overview.examNumber && (
