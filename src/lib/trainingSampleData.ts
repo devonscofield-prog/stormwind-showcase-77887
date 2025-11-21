@@ -142,7 +142,7 @@ export const sampleCourses: Course[] = [
         id: "full-course",
         name: "Full Course",
         overview: {
-          description: "Prepare for the CompTIA Security+ certification exam through this comprehensive instructor-led online training course. As an internationally recognized, vendor-neutral certification, Security+ validates your expertise in assessing enterprise security postures and implementing effective security solutions. Master the skills needed to monitor and secure modern hybrid environments spanning cloud, mobile, and IoT infrastructure. Learn to operate within the framework of applicable laws and policies while applying principles of governance, risk, and compliance. Develop proficiency in identifying, analyzing, and responding to security events and incidents in real-world scenarios.",
+          description: "Prepare for the CompTIA Security+ certification exam through this comprehensive instructor-led online training course. Master the skills needed to assess enterprise security postures and implement effective security solutions. Monitor and secure modern hybrid environments spanning cloud, mobile, and IoT infrastructure. Learn to operate within the framework of applicable laws and policies while applying principles of governance, risk, and compliance. Develop proficiency in identifying, analyzing, and responding to security events and incidents in real-world scenarios.",
           examNumber: "SY0-701",
           objectives: [
             "Summarize elements of effective security governance",
