@@ -145,11 +145,12 @@ export const sampleCourses: Course[] = [
           description: "Prepare for the CompTIA Security+ certification exam through this comprehensive instructor-led online training course. As an internationally recognized, vendor-neutral certification, Security+ validates your expertise in assessing enterprise security postures and implementing effective security solutions. Master the skills needed to monitor and secure modern hybrid environments spanning cloud, mobile, and IoT infrastructure. Learn to operate within the framework of applicable laws and policies while applying principles of governance, risk, and compliance. Develop proficiency in identifying, analyzing, and responding to security events and incidents in real-world scenarios.",
           examNumber: "SY0-701",
           objectives: [
-            "Assess the security posture of an enterprise environment",
-            "Recommend and implement appropriate security solutions",
-            "Monitor and secure hybrid environments, including cloud, mobile, and IoT",
-            "Operate with an awareness of applicable laws and policies",
-            "Identify, analyze, and respond to security events and incidents"
+            "Summarize elements of effective security governance",
+            "Identify and analyze various threat vectors and attack surfaces",
+            "Explain the principles and implementation of security controls",
+            "Describe the incident response process and best practices",
+            "Understand hardware, software, and data asset management",
+            "Apply strategies for monitoring, detecting, and responding to security breaches"
           ],
           difficulty: "Intermediate",
           totalDuration: "TBD"
