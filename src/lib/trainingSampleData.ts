@@ -1,3 +1,19 @@
+// Import instructor photos as ES6 modules for production
+import abdelSalemPhoto from "@/assets/abdel-salem.png";
+import ashleyHuntPhoto from "@/assets/ashley-hunt.png";
+import benBurichPhoto from "@/assets/ben-burich.png";
+import chrisPaulPhoto from "@/assets/chris-paul.png";
+import danYoungPhoto from "@/assets/dan-young.png";
+import guilHernandezPhoto from "@/assets/guil-hernandez.png";
+import jasonYatesPhoto from "@/assets/jason-yates.png";
+import mikePfeifferPhoto from "@/assets/mike-pfeiffer.png";
+import raymondLacostePhoto from "@/assets/raymond-lacoste.png";
+import samBurrPhoto from "@/assets/sam-burr.png";
+import shaneSextonPhoto from "@/assets/shane-sexton.png";
+import shaunPellingPhoto from "@/assets/shaun-pelling.png";
+import spikeXavierPhoto from "@/assets/spike-xavier.png";
+import willPanekPhoto from "@/assets/will-panek.png";
+
 export interface Lesson {
   id: string;
   title: string;
@@ -38,20 +54,20 @@ export interface Course {
 
 // Instructor photo mapping - maps instructor names to their photo assets
 export const instructorPhotos: Record<string, string> = {
-  "Abdel Salem": "/src/assets/abdel-salem.png",
-  "Ashley Hunt": "/src/assets/ashley-hunt.png",
-  "Ben Burich": "/src/assets/ben-burich.png",
-  "Chris Paul": "/src/assets/chris-paul.png",
-  "Dan Young": "/src/assets/dan-young.png",
-  "Guil Hernandez": "/src/assets/guil-hernandez.png",
-  "Jason Yates": "/src/assets/jason-yates.png",
-  "Mike Pfeiffer": "/src/assets/mike-pfeiffer.png",
-  "Raymond Lacoste": "/src/assets/raymond-lacoste.png",
-  "Sam Burr": "/src/assets/sam-burr.png",
-  "Shane Sexton": "/src/assets/shane-sexton.png",
-  "Shaun Pelling": "/src/assets/shaun-pelling.png",
-  "Spike Xavier": "/src/assets/spike-xavier.png",
-  "Will Panek": "/src/assets/will-panek.png",
+  "Abdel Salem": abdelSalemPhoto,
+  "Ashley Hunt": ashleyHuntPhoto,
+  "Ben Burich": benBurichPhoto,
+  "Chris Paul": chrisPaulPhoto,
+  "Dan Young": danYoungPhoto,
+  "Guil Hernandez": guilHernandezPhoto,
+  "Jason Yates": jasonYatesPhoto,
+  "Mike Pfeiffer": mikePfeifferPhoto,
+  "Raymond Lacoste": raymondLacostePhoto,
+  "Sam Burr": samBurrPhoto,
+  "Shane Sexton": shaneSextonPhoto,
+  "Shaun Pelling": shaunPellingPhoto,
+  "Spike Xavier": spikeXavierPhoto,
+  "Will Panek": willPanekPhoto,
 };
 
 // Sample courses - replace with your actual data
