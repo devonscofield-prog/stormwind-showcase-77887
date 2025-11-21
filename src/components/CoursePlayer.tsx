@@ -6,6 +6,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 
 interface CoursePlayerProps {
   course: Course;
@@ -57,66 +58,74 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
           </div>
         )}
 
-        {/* Video and Course Samples */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Video Player */}
-          <div className="lg:col-span-2">
-            {currentLesson ? (
-              <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
-            ) : (
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <p className="text-muted-foreground">Select a lesson to begin</p>
+        {/* Video and Course Samples - Resizable */}
+        <div className="mb-8">
+          <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
+            {/* Video Player Panel */}
+            <ResizablePanel defaultSize={65} minSize={40}>
+              <div className="h-full flex items-center justify-center p-4">
+                {currentLesson ? (
+                  <div className="w-full">
+                    <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
+                  </div>
+                ) : (
+                  <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                    <p className="text-muted-foreground">Select a lesson to begin</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </ResizablePanel>
 
-          {/* Course Samples - Scrollable */}
-          <div className="lg:col-span-1">
-            <Card className="glass-card h-full">
-              <CardContent className="pt-6 pb-4 h-full flex flex-col">
-                <h3 className="text-lg font-semibold mb-4">Course Samples</h3>
-                <div className="flex-1 overflow-y-auto pr-2 space-y-2" style={{ maxHeight: 'calc(100vh - 24rem)' }}>
-                  {selectedVariant.modules.flatMap(module => module.lessons).map((lesson) => (
-                    <button
-                      key={lesson.id}
-                      onClick={() => setCurrentLesson(lesson)}
-                      className={`w-full text-left p-3 rounded-lg transition-all ${
-                        currentLesson?.id === lesson.id
-                          ? 'bg-primary text-primary-foreground'
-                          : 'hover:bg-accent border border-border'
-                      }`}
-                    >
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">{lesson.title}</p>
-                        <div className="flex items-center gap-3 text-xs opacity-90">
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {lesson.duration}
-                          </span>
-                        </div>
-                        {lesson.instructor && (
-                          <div className="flex items-center gap-2 mt-2">
-                            <Avatar className="h-6 w-6">
-                              <AvatarImage 
-                                src={instructorPhotos[lesson.instructor]} 
-                                alt={lesson.instructor}
-                              />
-                              <AvatarFallback className="text-xs">
-                                {lesson.instructor.split(' ').map(n => n[0]).join('')}
-                              </AvatarFallback>
-                            </Avatar>
-                            <span className="text-xs">
-                              {lesson.instructor}
+            <ResizableHandle withHandle />
+
+            {/* Course Samples Panel */}
+            <ResizablePanel defaultSize={35} minSize={25}>
+              <Card className="glass-card h-full border-0 rounded-none">
+                <CardContent className="pt-6 pb-4 h-full flex flex-col">
+                  <h3 className="text-lg font-semibold mb-4">Course Samples</h3>
+                  <div className="flex-1 overflow-y-auto pr-2 space-y-2">
+                    {selectedVariant.modules.flatMap(module => module.lessons).map((lesson) => (
+                      <button
+                        key={lesson.id}
+                        onClick={() => setCurrentLesson(lesson)}
+                        className={`w-full text-left p-3 rounded-lg transition-all ${
+                          currentLesson?.id === lesson.id
+                            ? 'bg-primary text-primary-foreground'
+                            : 'hover:bg-accent border border-border'
+                        }`}
+                      >
+                        <div className="space-y-2">
+                          <p className="text-sm font-medium">{lesson.title}</p>
+                          <div className="flex items-center gap-3 text-xs opacity-90">
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {lesson.duration}
                             </span>
                           </div>
-                        )}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                          {lesson.instructor && (
+                            <div className="flex items-center gap-2 mt-2">
+                              <Avatar className="h-6 w-6">
+                                <AvatarImage 
+                                  src={instructorPhotos[lesson.instructor]} 
+                                  alt={lesson.instructor}
+                                />
+                                <AvatarFallback className="text-xs">
+                                  {lesson.instructor.split(' ').map(n => n[0]).join('')}
+                                </AvatarFallback>
+                              </Avatar>
+                              <span className="text-xs">
+                                {lesson.instructor}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </ResizablePanel>
+          </ResizablePanelGroup>
         </div>
 
         {/* Course Overview */}
