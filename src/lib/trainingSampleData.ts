@@ -3,6 +3,7 @@ export interface Lesson {
   title: string;
   duration: string;
   videoId: string;
+  instructor?: string; // Instructor name for the lesson
 }
 
 export interface Module {
@@ -27,6 +28,43 @@ export interface Course {
 }
 
 // Sample courses - replace with your actual data
+// Use this template to add new courses:
+/*
+{
+  id: "course-slug",  // Lowercase with hyphens
+  title: "YOUR COURSE TITLE HERE",
+  category: "Microsoft", // One of: Microsoft, Cloud, Cybersecurity, AI & Machine Learning, Security Awareness, Business Skills
+  overview: {
+    description: "YOUR COURSE DESCRIPTION HERE - Detailed description of what the course covers",
+    examNumber: "EXAM-CODE", // Optional - e.g., "AZ-900", "SY0-701"
+    objectives: [
+      "First learning objective",
+      "Second learning objective",
+      "Third learning objective"
+    ],
+    links: [ // Optional
+      { label: "Link Label", url: "https://example.com" }
+    ]
+  },
+  modules: [
+    {
+      id: "module-1",
+      title: "Module 1 Title or Day 1: Title",
+      lessons: [
+        {
+          id: "lesson-1",
+          title: "Lesson Title Here",
+          duration: "TBD", // Use "TBD" or estimate like "25 min"
+          videoId: "pending_video_1", // Use pending_video_X format for easy replacement
+          instructor: "Instructor Full Name"
+        }
+      ]
+    }
+  ],
+  showLiveSchedule: true // Set to false if no live schedule button needed
+}
+*/
+
 export const sampleCourses: Course[] = [
   {
     id: "sample-microsoft-course",
@@ -55,19 +93,22 @@ export const sampleCourses: Course[] = [
             id: "lesson-1",
             title: "Introduction to Cloud Computing",
             duration: "25 min",
-            videoId: "placeholder_video_1"
+            videoId: "pending_video_1",
+            instructor: "Sample Instructor"
           },
           {
             id: "lesson-2",
             title: "Understanding Azure Services",
             duration: "30 min",
-            videoId: "placeholder_video_2"
+            videoId: "pending_video_2",
+            instructor: "Sample Instructor"
           },
           {
             id: "lesson-3",
             title: "Azure Architecture Components",
             duration: "20 min",
-            videoId: "placeholder_video_3"
+            videoId: "pending_video_3",
+            instructor: "Sample Instructor"
           }
         ]
       },
@@ -79,13 +120,15 @@ export const sampleCourses: Course[] = [
             id: "lesson-4",
             title: "Azure Resource Manager",
             duration: "28 min",
-            videoId: "placeholder_video_4"
+            videoId: "pending_video_4",
+            instructor: "Sample Instructor"
           },
           {
             id: "lesson-5",
             title: "Azure Governance Features",
             duration: "22 min",
-            videoId: "placeholder_video_5"
+            videoId: "pending_video_5",
+            instructor: "Sample Instructor"
           }
         ]
       }
@@ -115,13 +158,15 @@ export const sampleCourses: Course[] = [
             id: "sec-lesson-1",
             title: "Introduction to Security+",
             duration: "18 min",
-            videoId: "placeholder_video_6"
+            videoId: "pending_video_6",
+            instructor: "Sample Instructor"
           },
           {
             id: "sec-lesson-2",
             title: "Security Controls and Frameworks",
             duration: "35 min",
-            videoId: "placeholder_video_7"
+            videoId: "pending_video_7",
+            instructor: "Sample Instructor"
           }
         ]
       }
@@ -151,13 +196,15 @@ export const sampleCourses: Course[] = [
             id: "aws-lesson-1",
             title: "What is Cloud Computing?",
             duration: "15 min",
-            videoId: "placeholder_video_8"
+            videoId: "pending_video_8",
+            instructor: "Sample Instructor"
           },
           {
             id: "aws-lesson-2",
             title: "AWS Global Infrastructure",
             duration: "22 min",
-            videoId: "placeholder_video_9"
+            videoId: "pending_video_9",
+            instructor: "Sample Instructor"
           }
         ]
       }

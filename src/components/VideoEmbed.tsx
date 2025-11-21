@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Play } from "lucide-react";
 
 interface VideoEmbedProps {
   videoId: string;
@@ -8,6 +9,30 @@ interface VideoEmbedProps {
 
 export const VideoEmbed = ({ videoId, title }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const isPlaceholder = videoId.startsWith('pending_video_');
+
+  if (isPlaceholder) {
+    return (
+      <div className="relative bg-muted rounded-lg overflow-hidden">
+        <div style={{
+          padding: "56.25% 0 0 0",
+          position: "relative"
+        }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8">
+            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+              <Play className="w-8 h-8 text-primary" />
+            </div>
+            <div className="text-center">
+              <p className="text-lg font-semibold text-foreground mb-2">Video Coming Soon</p>
+              <p className="text-sm text-muted-foreground">
+                This lesson video will be available shortly
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">

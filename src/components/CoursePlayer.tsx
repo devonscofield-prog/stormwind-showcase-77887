@@ -135,17 +135,24 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                             <button
                               key={lesson.id}
                               onClick={() => setCurrentLesson(lesson)}
-                              className={`w-full flex items-center gap-3 p-3 rounded-lg transition-all ${
+                              className={`w-full flex items-start gap-3 p-3 rounded-lg transition-all ${
                                 isActive
                                   ? "bg-primary/10 text-primary"
                                   : "hover:bg-muted/50 text-foreground"
                               }`}
                             >
-                              <Play className={`w-4 h-4 flex-shrink-0 ${isActive ? "fill-current" : ""}`} />
-                              <span className="flex-1 text-left text-sm font-medium">
-                                {lesson.title}
-                              </span>
-                              <span className="text-xs text-muted-foreground">
+                              <Play className={`w-4 h-4 flex-shrink-0 mt-0.5 ${isActive ? "fill-current" : ""}`} />
+                              <div className="flex-1 text-left">
+                                <div className="text-sm font-medium">
+                                  {lesson.title}
+                                </div>
+                                {lesson.instructor && (
+                                  <div className="text-xs text-muted-foreground mt-1">
+                                    {lesson.instructor}
+                                  </div>
+                                )}
+                              </div>
+                              <span className="text-xs text-muted-foreground mt-0.5">
                                 {lesson.duration}
                               </span>
                             </button>
