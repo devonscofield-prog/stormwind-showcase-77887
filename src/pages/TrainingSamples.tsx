@@ -20,20 +20,27 @@ const TrainingSamples = () => {
   return <div className="min-h-screen pt-20 pb-16">
       <div className="container max-w-7xl mx-auto px-4">
         {/* Hero Section */}
-        <div className="text-center mb-12 space-y-4 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-            <GraduationCap className="w-8 h-8 text-primary" />
+        <div className="text-center mb-12 space-y-4 animate-fade-in relative">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 mb-4 pulse-glow relative group">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent-green opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+            <GraduationCap className="w-10 h-10 text-primary relative z-10 group-hover:scale-110 transition-transform duration-300" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold shine-text">
             Training Samples
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Experience our training platform firsthand with these sample course segments. Explore different modules and get a feel for our comprehensive learning experience.</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Experience our training platform firsthand with these sample course segments. Explore different modules and get a feel for our comprehensive learning experience.
+          </p>
         </div>
 
         {/* Category Tabs */}
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-          <TabsList className="w-full justify-start mb-8 overflow-x-auto flex-wrap h-auto gap-2 bg-transparent">
-            {categories.map(category => <TabsTrigger key={category} value={category} className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <TabsList className="w-full justify-start mb-8 overflow-x-auto flex-wrap h-auto gap-3 bg-muted/30 p-2 rounded-xl backdrop-blur-sm">
+            {categories.map(category => <TabsTrigger 
+                key={category} 
+                value={category} 
+                className="relative px-6 py-3 rounded-lg font-medium transition-all duration-300 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent-green data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground hover:scale-105"
+              >
                 {category}
               </TabsTrigger>)}
           </TabsList>
@@ -43,8 +50,16 @@ const TrainingSamples = () => {
                   <p className="text-muted-foreground">
                     No courses available in this category yet.
                   </p>
-                </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                  {filteredCourses.map(course => <CourseCard key={course.id} title={course.title} category={course.category} description={course.variants[0]?.overview.description || ""} thumbnail={course.thumbnail} onClick={() => setSelectedCourse(course)} />)}
+                </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredCourses.map((course, index) => <CourseCard 
+                      key={course.id} 
+                      title={course.title} 
+                      category={course.category} 
+                      description={course.variants[0]?.overview.description || ""} 
+                      thumbnail={course.thumbnail} 
+                      onClick={() => setSelectedCourse(course)}
+                      className="stagger-item"
+                    />)}
                 </div>}
             </TabsContent>)}
         </Tabs>
