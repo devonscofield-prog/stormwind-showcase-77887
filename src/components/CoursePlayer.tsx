@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { ArrowLeft, Clock } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -44,16 +44,16 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
 
         {/* Variant Toggle */}
         {course.variants.length > 1 && (
-          <div className="mb-6">
-            <Tabs value={selectedVariant.id} onValueChange={handleVariantChange}>
-              <TabsList className="grid w-full max-w-md grid-cols-2">
-                {course.variants.map((variant) => (
-                  <TabsTrigger key={variant.id} value={variant.id}>
-                    {variant.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+          <div className="mb-6 flex gap-2">
+            {course.variants.map((variant) => (
+              <Button
+                key={variant.id}
+                variant={selectedVariant.id === variant.id ? "default" : "outline"}
+                onClick={() => handleVariantChange(variant.id)}
+              >
+                {variant.name}
+              </Button>
+            ))}
           </div>
         )}
 
@@ -71,48 +71,20 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Course Overview */}
           <div className="lg:col-span-2 space-y-6">
-            <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="objectives">Objectives</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="overview" className="space-y-4 mt-6">
-                <Card className="glass-card">
-                  <CardContent className="pt-6">
-                    <div className="prose prose-sm max-w-none dark:prose-invert">
-                      <p className="text-muted-foreground">{selectedVariant.overview.description}</p>
-                      {selectedVariant.overview.examNumber && (
-                        <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-                          <p className="text-sm font-medium text-primary">
-                            Exam: {selectedVariant.overview.examNumber}
-                          </p>
-                        </div>
-                      )}
+            <Card className="glass-card">
+              <CardContent className="pt-6">
+                <div className="prose prose-sm max-w-none dark:prose-invert">
+                  <p className="text-muted-foreground">{selectedVariant.overview.description}</p>
+                  {selectedVariant.overview.examNumber && (
+                    <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                      <p className="text-sm font-medium text-primary">
+                        Exam: {selectedVariant.overview.examNumber}
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="objectives" className="mt-6">
-                <Card className="glass-card">
-                  <CardContent className="pt-6">
-                    {selectedVariant.overview.objectives && selectedVariant.overview.objectives.length > 0 ? (
-                      <ul className="space-y-2">
-                        {selectedVariant.overview.objectives.map((objective, index) => (
-                          <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                            <span className="text-primary mt-1">•</span>
-                            <span>{objective}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-muted-foreground">No objectives listed for this variant.</p>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Right Column - Course Samples */}
