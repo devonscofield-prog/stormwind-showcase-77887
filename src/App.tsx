@@ -96,6 +96,7 @@ const App = () => (
             <Route path="/hr-compliance" element={<HRCompliancePage />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/training-samples" element={<TrainingSamples />} />
+            <Route path="/training-samples/:courseId" element={<TrainingSamples />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/admin-auth" element={<AdminAuth />} />

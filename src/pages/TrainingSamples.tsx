@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CourseCard } from "@/components/CourseCard";
@@ -7,13 +8,19 @@ import { sampleCourses, categories, Course } from "@/lib/trainingSampleData";
 import { GraduationCap } from "lucide-react";
 const TrainingSamples = () => {
   usePageView("Training Samples");
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const { courseId } = useParams();
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All Courses");
+  
+  const selectedCourse = courseId 
+    ? sampleCourses.find(course => course.id === courseId) || null
+    : null;
+    
   const filteredCourses = activeCategory === "All Courses" ? sampleCourses : sampleCourses.filter(course => course.category === activeCategory);
   if (selectedCourse) {
     return <div className="min-h-screen pt-20 pb-16">
         <div className="container max-w-7xl mx-auto px-4">
-          <CoursePlayer course={selectedCourse} onBack={() => setSelectedCourse(null)} />
+          <CoursePlayer course={selectedCourse} onBack={() => navigate("/training-samples")} />
         </div>
       </div>;
   }
@@ -53,11 +60,7 @@ const TrainingSamples = () => {
                 </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredCourses.map((course, index) => <CourseCard 
                       key={course.id} 
-                      title={course.title} 
-                      category={course.category} 
-                      description={course.variants[0]?.overview.description || ""} 
-                      thumbnail={course.thumbnail} 
-                      onClick={() => setSelectedCourse(course)}
+                      course={course}
                       className="stagger-item"
                     />)}
                 </div>}
