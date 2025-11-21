@@ -1,30 +1,33 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Course } from "@/lib/trainingSampleData";
 
 interface CourseCardProps {
-  title: string;
-  category: string;
-  description: string;
-  thumbnail?: string;
-  onClick: () => void;
+  course: Course;
   className?: string;
 }
 
-export const CourseCard = ({ title, category, description, thumbnail, onClick, className }: CourseCardProps) => {
+export const CourseCard = ({ course, className }: CourseCardProps) => {
+  const title = course.title;
+  const category = course.category;
+  const description = course.variants[0]?.overview.description || "";
+  const thumbnail = course.thumbnail;
+  
   return (
-    <Card 
-      className={cn(
-        "group cursor-pointer relative overflow-hidden",
-        "transition-all duration-500 ease-out",
-        "hover:scale-[1.03] hover:-translate-y-2",
-        "glass-card shimmer-effect",
-        "border-2 border-transparent hover:border-primary/20",
-        "hover:shadow-[0_20px_50px_rgba(31,161,129,0.2)]",
-        className
-      )}
-      onClick={onClick}
-    >
+    <Link to={`/training-samples/${course.id}`}>
+      <Card 
+        className={cn(
+          "group cursor-pointer relative overflow-hidden",
+          "transition-all duration-500 ease-out",
+          "hover:scale-[1.03] hover:-translate-y-2",
+          "glass-card shimmer-effect",
+          "border-2 border-transparent hover:border-primary/20",
+          "hover:shadow-[0_20px_50px_rgba(31,161,129,0.2)]",
+          className
+        )}
+      >
       {/* Animated gradient border */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent-green to-primary bg-[length:200%_100%] animate-[gradient-border_3s_ease_infinite] blur-sm" />
@@ -79,5 +82,6 @@ export const CourseCard = ({ title, category, description, thumbnail, onClick, c
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent-green to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </Card>
+    </Link>
   );
 };
