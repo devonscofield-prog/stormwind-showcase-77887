@@ -134,75 +134,51 @@ export const instructorPhotos: Record<string, string> = {
 
 export const sampleCourses: Course[] = [
   {
-    id: "sample-microsoft-course",
-    title: "Microsoft Azure Fundamentals",
-    category: "Microsoft",
+    id: "comptia-security-plus-sy0-701",
+    title: "CompTIA Security+ (SY0-701)",
+    category: "Cybersecurity",
     variants: [
       {
         id: "full-course",
         name: "Full Course",
         overview: {
-          description: "This course provides foundational knowledge of cloud services and how those services are provided with Microsoft Azure. It covers core Azure concepts, Azure architecture, and Azure management and governance.",
-          examNumber: "AZ-900",
+          description: "In this instructor-led, online training course, you will be prepared for the CompTIA Security+ certification exam. The Security+ certification is an international, vendor-neutral certification. The Security+ certification is proof of a person's knowledge and skills required to assess the security posture of an enterprise environment and recommend and implement appropriate security solutions; monitor and secure hybrid environments, including cloud, mobile, and IoT; operate with an awareness of applicable laws and policies, including principles of governance, risk, and compliance; identify, analyze, and respond to security events and incidents.",
+          examNumber: "SY0-701",
           objectives: [
-            "Describe cloud computing concepts",
-            "Describe Azure architecture and services",
-            "Describe Azure management and governance",
-            "Understand Azure pricing and support"
+            "Assess the security posture of an enterprise environment",
+            "Recommend and implement appropriate security solutions",
+            "Monitor and secure hybrid environments, including cloud, mobile, and IoT",
+            "Operate with an awareness of applicable laws and policies",
+            "Identify, analyze, and respond to security events and incidents"
           ],
-          prerequisites: ["Basic understanding of IT concepts", "Familiarity with cloud computing"],
-          difficulty: "Beginner",
-          totalDuration: "8 hours",
-          links: [
-            { label: "Exam Information", url: "#" },
-            { label: "Study Guide", url: "#" }
-          ]
+          difficulty: "Intermediate",
+          totalDuration: "TBD"
         },
         modules: [
           {
-            id: "day-1",
-            title: "Day 1: Cloud Concepts and Azure Fundamentals",
+            id: "module-1",
+            title: "Module 1: Course Introduction and Fundamentals",
             lessons: [
               {
                 id: "lesson-1",
-                title: "Introduction to Cloud Computing",
-                duration: "25 min",
+                title: "Introduction to Course and Exam Objectives",
+                duration: "TBD",
                 videoId: "pending_video_1",
-                instructor: "Sample Instructor"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-2",
-                title: "Understanding Azure Services",
-                duration: "30 min",
+                title: "Various Threat Vectors and Attack Surfaces",
+                duration: "TBD",
                 videoId: "pending_video_2",
-                instructor: "Sample Instructor"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-3",
-                title: "Azure Architecture Components",
-                duration: "20 min",
+                title: "Incident Response Process",
+                duration: "TBD",
                 videoId: "pending_video_3",
-                instructor: "Sample Instructor"
-              }
-            ]
-          },
-          {
-            id: "day-2",
-            title: "Day 2: Azure Management and Governance",
-            lessons: [
-              {
-                id: "lesson-4",
-                title: "Azure Resource Manager",
-                duration: "28 min",
-                videoId: "pending_video_4",
-                instructor: "Sample Instructor"
-              },
-              {
-                id: "lesson-5",
-                title: "Azure Governance Features",
-                duration: "22 min",
-                videoId: "pending_video_5",
-                instructor: "Sample Instructor"
+                instructor: "Raymond Lacoste"
               }
             ]
           }
@@ -212,34 +188,138 @@ export const sampleCourses: Course[] = [
         id: "exam-crash",
         name: "Exam Crash",
         overview: {
-          description: "Fast-track your AZ-900 exam preparation with this focused crash course covering all essential topics and exam objectives.",
-          examNumber: "AZ-900",
+          description: "This microlearning course specifically targets high value targets for the preparation of the CompTIA Security+ 007 certification. Use this to close any gaps in readiness for the exam. If you do not have significant experience with cybersecurity concepts already, we encourage you to take the larger full-scale class. That said, if you are ready and willing, dive in and get ready for this hard-hitting course that will prime you for success on the exam.",
+          examNumber: "SY0-701",
           objectives: [
-            "Master key exam objectives quickly",
-            "Review critical Azure concepts",
-            "Practice with exam-style scenarios"
+            "Master key Security+ exam topics",
+            "Review essential security controls and architecture",
+            "Understand access management and encryption concepts",
+            "Prepare for exam success with focused content"
           ],
-          difficulty: "Intermediate",
-          totalDuration: "4 hours"
+          difficulty: "Advanced",
+          totalDuration: "TBD"
         },
         modules: [
           {
             id: "crash-module-1",
-            title: "Crash Module 1: Core Concepts Review",
+            title: "Module 1: Security Controls",
             lessons: [
               {
                 id: "crash-lesson-1",
-                title: "Cloud Computing Essentials",
-                duration: "15 min",
+                title: "Detective Controls",
+                duration: "TBD",
                 videoId: "pending_video_crash_1",
-                instructor: "Sample Instructor"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-2",
-                title: "Azure Services Overview",
-                duration: "18 min",
+                title: "Preventive Controls",
+                duration: "TBD",
                 videoId: "pending_video_crash_2",
-                instructor: "Sample Instructor"
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-3",
+                title: "Two-Person Integrity Security Controls",
+                duration: "TBD",
+                videoId: "pending_video_crash_3",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-4",
+                title: "Managerial Control",
+                duration: "TBD",
+                videoId: "pending_video_crash_4",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-5",
+                title: "Honeypot",
+                duration: "TBD",
+                videoId: "pending_video_crash_5",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Module 2: Zero Trust and Access Control",
+            lessons: [
+              {
+                id: "crash-lesson-6",
+                title: "Zero Trust Control and Data Plane",
+                duration: "TBD",
+                videoId: "pending_video_crash_6",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-7",
+                title: "Non-Repudiation",
+                duration: "TBD",
+                videoId: "pending_video_crash_7",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-8",
+                title: "Controlling Access to a Secure Facility",
+                duration: "TBD",
+                videoId: "pending_video_crash_8",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-9",
+                title: "Zero Trust Architecture",
+                duration: "TBD",
+                videoId: "pending_video_crash_9",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-10",
+                title: "Application Allow List",
+                duration: "TBD",
+                videoId: "pending_video_crash_10",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          },
+          {
+            id: "crash-module-3",
+            title: "Module 3: System Security and Encryption",
+            lessons: [
+              {
+                id: "crash-lesson-11",
+                title: "Change Management",
+                duration: "TBD",
+                videoId: "pending_video_crash_11",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-12",
+                title: "Backout Plans",
+                duration: "TBD",
+                videoId: "pending_video_crash_12",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-13",
+                title: "Legacy System Security Concerns",
+                duration: "TBD",
+                videoId: "pending_video_crash_13",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-14",
+                title: "Salting",
+                duration: "TBD",
+                videoId: "pending_video_crash_14",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-15",
+                title: "Full Disk Encryption",
+                duration: "TBD",
+                videoId: "pending_video_crash_15",
+                instructor: "Raymond Lacoste"
               }
             ]
           }
