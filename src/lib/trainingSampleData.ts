@@ -189,7 +189,7 @@ export const sampleCourses: Course[] = [
         id: "exam-crash",
         name: "Exam Crash",
         overview: {
-          description: "This microlearning course specifically targets high value targets for the preparation of the CompTIA Security+ 007 certification. Use this to close any gaps in readiness for the exam. If you do not have significant experience with cybersecurity concepts already, we encourage you to take the larger full-scale class. That said, if you are ready and willing, dive in and get ready for this hard-hitting course that will prime you for success on the exam.",
+          description: "This microlearning course specifically targets high value targets for the preparation of the CompTIA Security+ certification. Use this to close any gaps in readiness for the exam. If you do not have significant experience with cybersecurity concepts already, we encourage you to take the larger full-scale class. That said, if you are ready and willing, dive in and get ready for this hard-hitting course that will prime you for success on the exam.",
           examNumber: "SY0-701",
           objectives: [
             "Master key Security+ exam topics",
