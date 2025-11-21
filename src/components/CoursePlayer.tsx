@@ -71,7 +71,7 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
 
           {/* Course Samples */}
           <div className="lg:col-span-1">
-            <Card className="glass-card max-h-[600px] flex flex-col">
+            <Card className="glass-card h-full flex flex-col">
               <CardContent className="pt-6 pb-4 flex flex-col flex-1 min-h-0">
                 <h3 className="text-lg font-semibold mb-4 flex-shrink-0">Course Samples</h3>
                 <div className="flex-1 overflow-y-auto pr-2 space-y-1.5 min-h-0">
