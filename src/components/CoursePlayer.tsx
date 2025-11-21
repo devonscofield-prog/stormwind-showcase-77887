@@ -113,12 +113,6 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                 </Card>
               </TabsContent>
             </Tabs>
-
-            {course.showLiveSchedule && (
-              <Button className="w-full" size="lg">
-                View Live Schedule
-              </Button>
-            )}
           </div>
 
           {/* Right Column - Course Samples */}
