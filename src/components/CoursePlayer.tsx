@@ -74,7 +74,7 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
             <Card className="glass-card">
               <CardContent className="pt-6">
                 <div className="prose prose-sm max-w-none dark:prose-invert">
-                  <p className="text-muted-foreground">{selectedVariant.overview.description}</p>
+                  <p className="text-foreground text-base leading-relaxed">{selectedVariant.overview.description}</p>
                   {selectedVariant.overview.examNumber && (
                     <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
                       <p className="text-sm font-medium text-primary">
