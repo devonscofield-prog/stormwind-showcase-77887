@@ -72,11 +72,9 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
           {/* Left Column - Course Overview */}
           <div className="lg:col-span-2 space-y-6">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="objectives">Objectives</TabsTrigger>
-                <TabsTrigger value="details">Details</TabsTrigger>
-                <TabsTrigger value="resources">Resources</TabsTrigger>
               </TabsList>
               
               <TabsContent value="overview" className="space-y-4 mt-6">
@@ -110,63 +108,6 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                       </ul>
                     ) : (
                       <p className="text-muted-foreground">No objectives listed for this variant.</p>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="details" className="mt-6">
-                <Card className="glass-card">
-                  <CardContent className="pt-6 space-y-4">
-                    {selectedVariant.overview.difficulty && (
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-foreground">Difficulty:</span>
-                        <span className="text-sm text-muted-foreground">{selectedVariant.overview.difficulty}</span>
-                      </div>
-                    )}
-                    {selectedVariant.overview.totalDuration && (
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm font-medium text-foreground">Total Duration:</span>
-                        <span className="text-sm text-muted-foreground">{selectedVariant.overview.totalDuration}</span>
-                      </div>
-                    )}
-                    {selectedVariant.overview.prerequisites && selectedVariant.overview.prerequisites.length > 0 && (
-                      <div>
-                        <h4 className="text-sm font-medium text-foreground mb-2">Prerequisites:</h4>
-                        <ul className="space-y-1">
-                          {selectedVariant.overview.prerequisites.map((prereq, index) => (
-                            <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <span className="text-primary mt-1">•</span>
-                              <span>{prereq}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="resources" className="mt-6">
-                <Card className="glass-card">
-                  <CardContent className="pt-6">
-                    {selectedVariant.overview.links && selectedVariant.overview.links.length > 0 ? (
-                      <div className="space-y-2">
-                        {selectedVariant.overview.links.map((link, index) => (
-                          <a 
-                            key={index}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block p-3 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors"
-                          >
-                            <span className="text-sm font-medium text-foreground">{link.label}</span>
-                          </a>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-muted-foreground">No additional resources available.</p>
                     )}
                   </CardContent>
                 </Card>
