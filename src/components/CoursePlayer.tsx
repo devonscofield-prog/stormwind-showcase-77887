@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Clock } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
@@ -181,60 +180,49 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
             )}
           </div>
 
-          {/* Right Column - Course Modules */}
+          {/* Right Column - Course Samples */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
-              <h3 className="text-lg font-semibold mb-4">Course Modules</h3>
-              <Accordion type="single" collapsible className="w-full space-y-2">
-                {selectedVariant.modules.map((module) => (
-                  <AccordionItem key={module.id} value={module.id} className="border rounded-lg px-4">
-                    <AccordionTrigger className="hover:no-underline">
-                      <span className="text-sm font-medium">{module.title}</span>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="space-y-2 pt-2">
-                        {module.lessons.map((lesson) => (
-                          <button
-                            key={lesson.id}
-                            onClick={() => setCurrentLesson(lesson)}
-                            className={`w-full text-left p-3 rounded-md transition-all ${
-                              currentLesson?.id === lesson.id
-                                ? 'bg-primary text-primary-foreground'
-                                : 'hover:bg-accent'
-                            }`}
-                          >
-                            <div className="space-y-2">
-                              <p className="text-sm font-medium">{lesson.title}</p>
-                              <div className="flex items-center gap-3 text-xs opacity-90">
-                                <span className="flex items-center gap-1">
-                                  <Clock className="h-3 w-3" />
-                                  {lesson.duration}
-                                </span>
-                              </div>
-                              {lesson.instructor && (
-                                <div className="flex items-center gap-2 mt-2">
-                                  <Avatar className="h-6 w-6">
-                                    <AvatarImage 
-                                      src={instructorPhotos[lesson.instructor]} 
-                                      alt={lesson.instructor}
-                                    />
-                                    <AvatarFallback className="text-xs">
-                                      {lesson.instructor.split(' ').map(n => n[0]).join('')}
-                                    </AvatarFallback>
-                                  </Avatar>
-                                  <span className="text-xs">
-                                    {lesson.instructor}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                          </button>
-                        ))}
+              <h3 className="text-lg font-semibold mb-4">Course Samples</h3>
+              <div className="space-y-2">
+                {selectedVariant.modules.flatMap(module => module.lessons).map((lesson) => (
+                  <button
+                    key={lesson.id}
+                    onClick={() => setCurrentLesson(lesson)}
+                    className={`w-full text-left p-3 rounded-lg transition-all ${
+                      currentLesson?.id === lesson.id
+                        ? 'bg-primary text-primary-foreground'
+                        : 'hover:bg-accent border border-border'
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium">{lesson.title}</p>
+                      <div className="flex items-center gap-3 text-xs opacity-90">
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {lesson.duration}
+                        </span>
                       </div>
-                    </AccordionContent>
-                  </AccordionItem>
+                      {lesson.instructor && (
+                        <div className="flex items-center gap-2 mt-2">
+                          <Avatar className="h-6 w-6">
+                            <AvatarImage 
+                              src={instructorPhotos[lesson.instructor]} 
+                              alt={lesson.instructor}
+                            />
+                            <AvatarFallback className="text-xs">
+                              {lesson.instructor.split(' ').map(n => n[0]).join('')}
+                            </AvatarFallback>
+                          </Avatar>
+                          <span className="text-xs">
+                            {lesson.instructor}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </button>
                 ))}
-              </Accordion>
+              </div>
             </div>
           </div>
         </div>
