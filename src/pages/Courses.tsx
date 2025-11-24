@@ -4428,7 +4428,6 @@ const Courses = () => {
         { name: "Administering Microsoft Copilot AI", isComingSoon: true },
       ],
       "Q4 2025 - Other": [
-        { name: "CompTIA Linux+ (XK0-006)", isComingSoon: true },
         { name: "AWS Certified CloudOps Engineer (SOA-C03)", isComingSoon: true },
         { name: "CMMC Program Foundations", isComingSoon: true },
       ],
