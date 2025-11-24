@@ -3470,11 +3470,24 @@ const Courses = () => {
         { name: "GCP DevOps Project" },
         { name: "GCP Digital Cloud Leader" },
       ],
-      "Linux": [
-        { name: "Linux Professional Institute LPIC-1 Exam 101" },
-      ],
       "DevOps Fundamentals": [
         { name: "Modern DevOps in Practice" },
+      ],
+    },
+    "Linux": {
+      "Linux Certifications": [
+        { name: "CompTIA Linux+ (XK0-005)" },
+        { name: "Linux Professional Institute LPIC-1 Exam 101" },
+      ],
+      "Linux Administration": [
+        { name: "Enterprise Linux 8 System Administration" },
+        { name: "Enterprise Linux 7 System Administration I" },
+        { name: "Enterprise Linux Diagnostics and Troubleshooting" },
+        { name: "Enterprise Linux 8 Certified Engineer" },
+      ],
+      "Linux Security": [
+        { name: "Penetration Testing Linux - Reconnaissance" },
+        { name: "Penetration Testing Linux - Exploit" },
       ],
     },
     "Cloud": {
