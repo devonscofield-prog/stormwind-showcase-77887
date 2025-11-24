@@ -44,7 +44,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Webinars = lazy(() => import("./pages/Webinars"));
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
-const EOYPromo = lazy(() => import("./pages/EOYPromo"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -100,7 +99,6 @@ const App = () => (
             <Route path="/training-samples/:courseId" element={<TrainingSamples />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/webinars" element={<Webinars />} />
-            <Route path="/eoypromo" element={<EOYPromo />} />
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/analytics-dashboard" element={
               <ProtectedRoute requireAdmin>
