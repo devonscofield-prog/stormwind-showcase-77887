@@ -3362,6 +3362,7 @@ const Courses = () => {
       "General AI Awareness": [
         { name: "AI Foundations for Users: Classification to Creation" },
         { name: "AI Ethical Use and Responsibility" },
+        { name: "General Artificial Intelligence Awareness", isBytes: true },
       ],
       "Gemini in Google Workspace": [
         { name: "Google Gemini in Docs" },
