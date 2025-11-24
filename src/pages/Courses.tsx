@@ -4337,6 +4337,7 @@ const Courses = () => {
     "Security Awareness": {
       "Security Awareness Fundamentals": [
         { name: "Security Awareness" },
+        { name: "Security Awareness: Onboarding" },
         { name: "Cybersecurity Essentials" },
         { name: "Guarding Your Passwords" },
         { name: "Safe Systems Use" },
