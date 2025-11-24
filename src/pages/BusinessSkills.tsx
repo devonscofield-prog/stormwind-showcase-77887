@@ -50,9 +50,14 @@ const BusinessSkills = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
               Business Skills
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
               Over 2000 high-impact bite-sized courses across 80+ topic areas for all industries and job roles
             </p>
+            <Button asChild size="lg" className="font-semibold">
+              <Link to="/courses?category=Business%20Skills">
+                Explore Courses
+              </Link>
+            </Button>
           </div>
 
           {/* Overview Section */}
