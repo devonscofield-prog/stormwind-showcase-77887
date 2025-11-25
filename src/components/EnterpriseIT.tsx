@@ -3,223 +3,334 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // Animated SVG Icons - Creative Designs
-const LearningPathIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const LearningPathIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `learning-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#fff;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};${color}88;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Connecting nodes representing a learning journey */}
-    <circle cx="12" cy="36" r="4" fill={color} opacity="0.8" />
-    <circle cx="24" cy="24" r="4" fill={color} opacity="0.6">
+    <circle cx="12" cy="36" r="4" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+    </circle>
+    <circle cx="24" cy="24" r="4" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.6">
       <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="36" cy="12" r="4" fill={color} opacity="0.8" />
+    <circle cx="36" cy="12" r="4" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+    </circle>
     
     {/* Animated path connecting nodes */}
-    <path d="M14 34 L22 26" stroke={color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
+    <path d="M14 34 L22 26" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
       <animate attributeName="stroke-dashoffset" values="0;8" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </path>
-    <path d="M26 22 L34 14" stroke={color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
+    <path d="M26 22 L34 14" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
       <animate attributeName="stroke-dashoffset" values="0;8" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </path>
     
     {/* Progress indicator */}
-    <circle cx="24" cy="24" r="8" stroke={color} strokeWidth="1" fill="none" opacity="0.3">
+    <circle cx="24" cy="24" r="8" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1" fill="none" opacity="0.3">
       <animate attributeName="r" values="8;12;8" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.3;0;0.3" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
     </circle>
   </svg>
-);
+  );
+};
 
-const MicrolearningIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const MicrolearningIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `micro-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id={gradientId}>
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#fff;${color}`} dur="1.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={`${color}66`}>
+          <animate attributeName="stop-color" values={`${color}66;${color}ff;${color}66`} dur="1.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </radialGradient>
+    </defs>
     {/* Byte/data particles bursting */}
-    <rect x="20" y="20" width="8" height="8" fill={color} opacity="0.8" />
+    <rect x="20" y="20" width="8" height="8" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8" />
     
     {/* Particles flying outward */}
-    <rect x="10" y="10" width="3" height="3" fill={color}>
+    <rect x="10" y="10" width="3" height="3" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0;1;0" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
       <animate attributeName="x" values="22;10" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
       <animate attributeName="y" values="22;10" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </rect>
-    <rect x="35" y="10" width="3" height="3" fill={color}>
+    <rect x="35" y="10" width="3" height="3" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0;1;0" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
       <animate attributeName="x" values="22;35" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
       <animate attributeName="y" values="22;10" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
     </rect>
-    <rect x="10" y="35" width="3" height="3" fill={color}>
+    <rect x="10" y="35" width="3" height="3" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0;1;0" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
       <animate attributeName="x" values="22;10" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
       <animate attributeName="y" values="22;35" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
     </rect>
-    <rect x="35" y="35" width="3" height="3" fill={color}>
+    <rect x="35" y="35" width="3" height="3" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0;1;0" dur={isHovered ? "6s" : "2s"} begin="0.9s" repeatCount="indefinite" />
       <animate attributeName="x" values="22;35" dur={isHovered ? "6s" : "2s"} begin="0.9s" repeatCount="indefinite" />
       <animate attributeName="y" values="22;35" dur={isHovered ? "6s" : "2s"} begin="0.9s" repeatCount="indefinite" />
     </rect>
   </svg>
-);
+  );
+};
 
-const AILearningIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const AILearningIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `ai-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#a855f7;${color}`} dur="2.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="50%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#ec4899;${color}`} dur="2.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#3b82f6;${color}`} dur="2.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Neural network visualization */}
-    <circle cx="24" cy="10" r="3" fill={color} opacity="0.8" />
-    <circle cx="12" cy="24" r="3" fill={color} opacity="0.6">
+    <circle cx="24" cy="10" r="3" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8" />
+    <circle cx="12" cy="24" r="3" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.6">
       <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "4.5s" : "1.5s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="36" cy="24" r="3" fill={color} opacity="0.6">
+    <circle cx="36" cy="24" r="3" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.6">
       <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "4.5s" : "1.5s"} begin="0.3s" repeatCount="indefinite" />
     </circle>
-    <circle cx="24" cy="38" r="3" fill={color} opacity="0.8" />
+    <circle cx="24" cy="38" r="3" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8" />
     
     {/* Network connections */}
-    <line x1="24" y1="13" x2="14" y2="21" stroke={color} strokeWidth="1.5" opacity="0.4">
+    <line x1="24" y1="13" x2="14" y2="21" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.8;0.4" dur={isHovered ? "4.5s" : "1.5s"} repeatCount="indefinite" />
     </line>
-    <line x1="24" y1="13" x2="34" y2="21" stroke={color} strokeWidth="1.5" opacity="0.4">
+    <line x1="24" y1="13" x2="34" y2="21" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.8;0.4" dur={isHovered ? "4.5s" : "1.5s"} begin="0.3s" repeatCount="indefinite" />
     </line>
-    <line x1="14" y1="27" x2="22" y2="35" stroke={color} strokeWidth="1.5" opacity="0.4">
+    <line x1="14" y1="27" x2="22" y2="35" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.8;0.4" dur={isHovered ? "4.5s" : "1.5s"} begin="0.6s" repeatCount="indefinite" />
     </line>
-    <line x1="34" y1="27" x2="26" y2="35" stroke={color} strokeWidth="1.5" opacity="0.4">
+    <line x1="34" y1="27" x2="26" y2="35" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.8;0.4" dur={isHovered ? "4.5s" : "1.5s"} begin="0.9s" repeatCount="indefinite" />
     </line>
     
     {/* Data pulse */}
-    <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="1" fill="none" opacity="0.2">
+    <circle cx="24" cy="24" r="20" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1" fill="none" opacity="0.2">
       <animate attributeName="r" values="15;25;15" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.4;0;0.4" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
     </circle>
   </svg>
-);
+  );
+};
 
-const RangesIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const RangesIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `ranges-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#10b981;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#3b82f6;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Server racks with blinking indicators */}
-    <rect x="8" y="12" width="12" height="28" rx="1" stroke={color} strokeWidth="2" fill="none" />
-    <rect x="28" y="12" width="12" height="28" rx="1" stroke={color} strokeWidth="2" fill="none" />
+    <rect x="8" y="12" width="12" height="28" rx="1" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
+    <rect x="28" y="12" width="12" height="28" rx="1" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
     
     {/* Blinking server lights */}
-    <circle cx="14" cy="18" r="1.5" fill={color}>
+    <circle cx="14" cy="18" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="14" cy="24" r="1.5" fill={color}>
+    <circle cx="14" cy="24" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0.3;1;0.3" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="14" cy="30" r="1.5" fill={color}>
+    <circle cx="14" cy="30" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "3s" : "1s"} begin="0.3s" repeatCount="indefinite" />
     </circle>
-    <circle cx="34" cy="18" r="1.5" fill={color}>
+    <circle cx="34" cy="18" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0.3;1;0.3" dur={isHovered ? "3s" : "1s"} begin="0.5s" repeatCount="indefinite" />
     </circle>
-    <circle cx="34" cy="24" r="1.5" fill={color}>
+    <circle cx="34" cy="24" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "3s" : "1s"} begin="0.2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="34" cy="30" r="1.5" fill={color}>
+    <circle cx="34" cy="30" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="opacity" values="0.3;1;0.3" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </circle>
     
     {/* Data transfer line */}
-    <line x1="20" y1="26" x2="28" y2="26" stroke={color} strokeWidth="2" strokeDasharray="4,4">
+    <line x1="20" y1="26" x2="28" y2="26" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeDasharray="4,4">
       <animate attributeName="stroke-dashoffset" values="8;0" dur={isHovered ? "3s" : "1s"} repeatCount="indefinite" />
     </line>
   </svg>
-);
+  );
+};
 
-const LiveInstructorIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const LiveInstructorIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `live-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#ef4444;${color}`} dur="3s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#f59e0b;${color}`} dur="3s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Broadcast screen */}
-    <rect x="8" y="12" width="32" height="20" rx="2" stroke={color} strokeWidth="2" fill="none" />
+    <rect x="8" y="12" width="32" height="20" rx="2" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
     
     {/* Instructor figure */}
-    <circle cx="24" cy="20" r="3" fill={color} opacity="0.8" />
-    <path d="M18 26 Q24 29 30 26" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <circle cx="24" cy="20" r="3" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.8" />
+    <path d="M18 26 Q24 29 30 26" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" />
     
     {/* Live broadcast waves */}
-    <circle cx="8" cy="12" r="3" stroke={color} strokeWidth="1.5" fill="none" opacity="0.6">
+    <circle cx="8" cy="12" r="3" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" fill="none" opacity="0.6">
       <animate attributeName="r" values="3;6;3" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.6;0;0.6" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="8" cy="12" r="3" stroke={color} strokeWidth="1.5" fill="none" opacity="0.4">
+    <circle cx="8" cy="12" r="3" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="1.5" fill="none" opacity="0.4">
       <animate attributeName="r" values="3;6;3" dur={isHovered ? "6s" : "2s"} begin="0.5s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.4;0;0.4" dur={isHovered ? "6s" : "2s"} begin="0.5s" repeatCount="indefinite" />
     </circle>
     
     {/* Stand */}
-    <line x1="24" y1="32" x2="24" y2="38" stroke={color} strokeWidth="2" />
-    <line x1="18" y1="38" x2="30" y2="38" stroke={color} strokeWidth="2" />
+    <line x1="24" y1="32" x2="24" y2="38" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" />
+    <line x1="18" y1="38" x2="30" y2="38" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" />
   </svg>
-);
+  );
+};
 
-const MentoringIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const MentoringIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `mentor-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="50%" x2="100%" y2="50%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#8b5cf6;${color}`} dur="3s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#06b6d4;${color}`} dur="3s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Two people connecting */}
-    <circle cx="16" cy="16" r="5" stroke={color} strokeWidth="2" fill="none" />
-    <circle cx="32" cy="16" r="5" stroke={color} strokeWidth="2" fill="none" />
+    <circle cx="16" cy="16" r="5" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
+    <circle cx="32" cy="16" r="5" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
     
     {/* Knowledge transfer visualization */}
-    <circle cx="24" cy="24" r="2" fill={color}>
+    <circle cx="24" cy="24" r="2" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="cx" values="18;30;18" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
     </circle>
-    <circle cx="24" cy="27" r="1.5" fill={color}>
+    <circle cx="24" cy="27" r="1.5" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="cx" values="18;30;18" dur={isHovered ? "9s" : "3s"} begin="0.3s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "9s" : "3s"} begin="0.3s" repeatCount="indefinite" />
     </circle>
-    <circle cx="24" cy="30" r="1" fill={color}>
+    <circle cx="24" cy="30" r="1" fill={isHovered ? `url(#${gradientId})` : color}>
       <animate attributeName="cx" values="18;30;18" dur={isHovered ? "9s" : "3s"} begin="0.6s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="1;0.3;1" dur={isHovered ? "9s" : "3s"} begin="0.6s" repeatCount="indefinite" />
     </circle>
     
     {/* Connecting arc */}
-    <path d="M16 21 Q24 28 32 21" stroke={color} strokeWidth="2" fill="none" opacity="0.3" />
+    <path d="M16 21 Q24 28 32 21" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" opacity="0.3" />
   </svg>
-);
+  );
+};
 
-const AssessmentIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const AssessmentIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `assess-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#22c55e;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#eab308;${color}`} dur="2s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Skill level bars rising */}
-    <rect x="8" y="32" width="6" height="8" fill={color} opacity="0.9" />
-    <rect x="17" y="26" width="6" height="14" fill={color} opacity="0.7">
+    <rect x="8" y="32" width="6" height="8" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.9" />
+    <rect x="17" y="26" width="6" height="14" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.7">
       <animate attributeName="height" values="0;14" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
       <animate attributeName="y" values="40;26" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </rect>
-    <rect x="26" y="20" width="6" height="20" fill={color} opacity="0.5">
+    <rect x="26" y="20" width="6" height="20" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.5">
       <animate attributeName="height" values="0;20" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
       <animate attributeName="y" values="40;20" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
     </rect>
-    <rect x="35" y="14" width="6" height="26" fill={color} opacity="0.3">
+    <rect x="35" y="14" width="6" height="26" fill={isHovered ? `url(#${gradientId})` : color} opacity="0.3">
       <animate attributeName="height" values="0;26" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
       <animate attributeName="y" values="40;14" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
     </rect>
     
     {/* Checkmarks appearing */}
-    <path d="M9 10 L11 12 L15 8" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 10 L11 12 L15 8" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <animate attributeName="opacity" values="0;1;1" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </path>
   </svg>
-);
+  );
+};
 
-const ReportingIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => (
+const ReportingIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+  const gradientId = `report-gradient-${color.replace('#', '')}`;
+  return (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#3b82f6;${color}`} dur="2.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+        <stop offset="100%" stopColor={color}>
+          <animate attributeName="stop-color" values={`${color};#8b5cf6;${color}`} dur="2.5s" repeatCount="indefinite" begin={isHovered ? "0s" : "indefinite"} />
+        </stop>
+      </linearGradient>
+    </defs>
     {/* Document with data flowing */}
-    <rect x="12" y="8" width="24" height="32" rx="2" stroke={color} strokeWidth="2" fill="none" />
+    <rect x="12" y="8" width="24" height="32" rx="2" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" />
     
     {/* Data lines */}
-    <line x1="16" y1="16" x2="32" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.8">
+    <line x1="16" y1="16" x2="32" y2="16" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" opacity="0.8">
       <animate attributeName="opacity" values="0.3;0.8;0.3" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
     </line>
-    <line x1="16" y1="22" x2="28" y2="22" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.6">
+    <line x1="16" y1="22" x2="28" y2="22" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" opacity="0.6">
       <animate attributeName="opacity" values="0.3;0.8;0.3" dur={isHovered ? "6s" : "2s"} begin="0.3s" repeatCount="indefinite" />
     </line>
-    <line x1="16" y1="28" x2="30" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.4">
+    <line x1="16" y1="28" x2="30" y2="28" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" strokeLinecap="round" opacity="0.4">
       <animate attributeName="opacity" values="0.3;0.8;0.3" dur={isHovered ? "6s" : "2s"} begin="0.6s" repeatCount="indefinite" />
     </line>
     
     {/* Analytics icon */}
-    <path d="M16 32 L20 36 L24 33 L28 36 L32 32" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 32 L20 36 L24 33 L28 36 L32 32" stroke={isHovered ? `url(#${gradientId})` : color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <animate attributeName="d" values="M16 32 L20 36 L24 33 L28 36 L32 32;M16 34 L20 32 L24 35 L28 32 L32 34;M16 32 L20 36 L24 33 L28 36 L32 32" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
     </path>
   </svg>
-);
+  );
+};
 interface EnterpriseITProps {
   selectedTechnologies: string[];
   selectedFeatures: string[];
