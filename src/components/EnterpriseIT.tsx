@@ -1,6 +1,119 @@
-import { Brain, Clock, Wrench, CheckCircle2, FileBarChart, Target, UserCheck, Video, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
+// Animated SVG Icons
+const AnimatedCheckIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2" fill="none" opacity="0.3">
+      <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <path d="M14 24L20 30L34 16" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,100;100,100" dur="1.5s" repeatCount="indefinite" />
+      <animate attributeName="stroke-dashoffset" values="0;-100" dur="1.5s" repeatCount="indefinite" />
+    </path>
+  </svg>
+);
+
+const AnimatedClockIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="18" stroke={color} strokeWidth="2" fill="none" />
+    <line x1="24" y1="24" x2="24" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round">
+      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="4s" repeatCount="indefinite" />
+    </line>
+    <line x1="24" y1="24" x2="32" y2="24" stroke={color} strokeWidth="2" strokeLinecap="round">
+      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="8s" repeatCount="indefinite" />
+    </line>
+    <circle cx="24" cy="24" r="2" fill={color} />
+  </svg>
+);
+
+const AnimatedBrainIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 12C16 12 12 14 12 20C12 26 14 28 16 28" stroke={color} strokeWidth="2" strokeLinecap="round">
+      <animate attributeName="d" values="M16 12C16 12 12 14 12 20C12 26 14 28 16 28;M16 12C16 12 10 14 10 20C10 26 14 28 16 28;M16 12C16 12 12 14 12 20C12 26 14 28 16 28" dur="3s" repeatCount="indefinite" />
+    </path>
+    <path d="M32 12C32 12 36 14 36 20C36 26 34 28 32 28" stroke={color} strokeWidth="2" strokeLinecap="round">
+      <animate attributeName="d" values="M32 12C32 12 36 14 36 20C36 26 34 28 32 28;M32 12C32 12 38 14 38 20C38 26 34 28 32 28;M32 12C32 12 36 14 36 20C36 26 34 28 32 28" dur="3s" repeatCount="indefinite" />
+    </path>
+    <circle cx="18" cy="18" r="2" fill={color}>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="30" cy="18" r="2" fill={color}>
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <path d="M20 24 Q24 28 28 24" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+  </svg>
+);
+
+const AnimatedWrenchIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 12L28 16L32 20L36 16L32 12Z" stroke={color} strokeWidth="2" fill="none">
+      <animateTransform attributeName="transform" type="rotate" from="0 32 16" to="15 32 16" dur="1s" repeatCount="indefinite" />
+    </path>
+    <rect x="12" y="28" width="12" height="8" rx="1" stroke={color} strokeWidth="2" fill="none">
+      <animate attributeName="y" values="28;30;28" dur="1s" repeatCount="indefinite" />
+    </rect>
+    <line x1="28" y1="20" x2="20" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const AnimatedVideoIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="14" width="24" height="20" rx="2" stroke={color} strokeWidth="2" fill="none" />
+    <path d="M32 20L40 16V32L32 28Z" stroke={color} strokeWidth="2" fill="none">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+    </path>
+    <circle cx="16" cy="24" r="6" fill={color} opacity="0.3">
+      <animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <polygon points="18,21 18,27 24,24" fill={color} />
+  </svg>
+);
+
+const AnimatedUserCheckIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="16" r="6" stroke={color} strokeWidth="2" fill="none">
+      <animate attributeName="r" values="6;6.5;6" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <path d="M8 36C8 32 12 28 18 28C24 28 28 32 28 36" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <path d="M30 20L34 24L42 16" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,100;100,100" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="stroke-dashoffset" values="0;-100" dur="2s" repeatCount="indefinite" />
+    </path>
+  </svg>
+);
+
+const AnimatedTargetIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="24" cy="24" r="18" stroke={color} strokeWidth="2" fill="none" opacity="0.3" />
+    <circle cx="24" cy="24" r="12" stroke={color} strokeWidth="2" fill="none" opacity="0.5">
+      <animate attributeName="r" values="12;13;12" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="24" cy="24" r="6" stroke={color} strokeWidth="2" fill="none" opacity="0.7" />
+    <circle cx="24" cy="24" r="2" fill={color}>
+      <animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <line x1="24" y1="2" x2="24" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const AnimatedChartIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="28" width="6" height="12" fill={color} opacity="0.6">
+      <animate attributeName="height" values="12;16;12" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="y" values="28;24;28" dur="2s" repeatCount="indefinite" />
+    </rect>
+    <rect x="21" y="20" width="6" height="20" fill={color} opacity="0.7">
+      <animate attributeName="height" values="20;24;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
+      <animate attributeName="y" values="20;16;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
+    </rect>
+    <rect x="32" y="12" width="6" height="28" fill={color} opacity="0.8">
+      <animate attributeName="height" values="28;32;28" dur="2s" begin="0.6s" repeatCount="indefinite" />
+      <animate attributeName="y" values="12;8;12" dur="2s" begin="0.6s" repeatCount="indefinite" />
+    </rect>
+  </svg>
+);
 interface EnterpriseITProps {
   selectedTechnologies: string[];
   selectedFeatures: string[];
@@ -14,27 +127,27 @@ const EnterpriseIT = ({
   toggleFeature
 }: EnterpriseITProps) => {
   const consolidatedFeatures = [{
-    icon: CheckCircle2,
+    icon: AnimatedCheckIcon,
     emoji: "✅",
     title: "Learning Paths",
     description: "Structured paths with guided assessment, targeted training, and readiness validation—personalized and effective.",
     details: "Flexible pathways for every skill level. Begin with an assessment, follow a guided roadmap, and validate your readiness with confidence.",
     additionalInfo: "Access live instructor-led Epic Live sessions and on-demand courses with instant replay for flexible learning anytime, anywhere."
   }, {
-    icon: Clock,
+    icon: AnimatedClockIcon,
     emoji: "⏰",
     title: "Bytes: Microlearning",
     description: "Short sessions (3-5 min), adaptive personalization, sequential skill stacking, and real-world application.",
     details: "Learn in brief, focused sessions designed for retention. Get personalized paths from initial assessments and stack skills progressively for rapid mastery."
   }, {
-    icon: Brain,
+    icon: AnimatedBrainIcon,
     emoji: "🧠",
     title: "AI-Powered Learning",
     description: "StormWind's AI Tutors leverage proprietary knowledge bases—no public internet, no hallucinations or inaccuracies.",
     details: "They support your certification studies, answer on-the-fly questions, provide step-by-step troubleshooting guidance, and integrate perfectly with our hands-on training content.",
     additionalInfo: "Combine AI assistance with 1:1 instructor mentoring for personal guidance from industry-recognized experts."
   }, {
-    icon: Wrench,
+    icon: AnimatedWrenchIcon,
     emoji: "🛠️",
     title: "StormWind Ranges",
     description: "Hands-on cyber, Azure, Microsoft, and networking ranges – real, production-like practice environments.",
@@ -52,23 +165,23 @@ const EnterpriseIT = ({
       text: "Networking Range: VLANs, OSPF, BGP, IPv4/6, and security configurations."
     }]
   }, {
-    icon: Video,
+    icon: AnimatedVideoIcon,
     emoji: "🎓",
     title: "Live Instructor Led Courses",
     description: "The most effective learning possible happens in a live environment with a world class instructor. Many of StormWind's classes run live, allowing you to fully interact in the most engaging online learning experience available anywhere.",
     details: "The short, 2-hour sessions allow you to easily digest the information."
   }, {
-    icon: UserCheck,
+    icon: AnimatedUserCheckIcon,
     emoji: "🤝",
     title: "1:1 Mentoring with Industry Experts",
     description: "Like learning anything new, you are inevitably going to get stuck on something. Unlike traditional eLearning, you aren't on your own. You have access to the instructor from every class to ask questions. This feature is one of the most raved about offerings by our clients."
   }, {
-    icon: Target,
+    icon: AnimatedTargetIcon,
     emoji: "🎯",
     title: "Skills Assessments",
     description: "Test your team's skills on a number of different topics and get real time data on where the gaps are. Get course suggestions based on proficiency and streamline the training process by ensuring everyone is taking courses that fit their skill level."
   }, {
-    icon: FileBarChart,
+    icon: AnimatedChartIcon,
     emoji: "📊",
     title: "Enterprise Reporting and Administration",
     description: "Generate easy to read reports on usage and course completion. Whether you need it for compliance/insurance purposes, or to present to management, we make it simple to get the data you need.",
@@ -264,12 +377,9 @@ const EnterpriseIT = ({
                     className="absolute inset-0 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" 
                     style={{ backgroundColor: color }}
                   />
-                  {/* Icon with animation */}
-                  <div className="relative">
-                    <feature.icon 
-                      className="w-12 h-12 transition-transform duration-300 group-hover:scale-110" 
-                      style={{ color: color }}
-                    />
+                  {/* Animated SVG Icon */}
+                  <div className="relative transition-transform duration-300 group-hover:scale-110">
+                    <feature.icon color={color} />
                   </div>
                 </div>
                 
