@@ -1,117 +1,222 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-// Animated SVG Icons
-const AnimatedCheckIcon = ({ color }: { color: string }) => (
+// Animated SVG Icons - Creative Designs
+const LearningPathIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2" fill="none" opacity="0.3">
-      <animate attributeName="r" values="20;22;20" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite" />
+    {/* Connecting nodes representing a learning journey */}
+    <circle cx="12" cy="36" r="4" fill={color} opacity="0.8" />
+    <circle cx="24" cy="24" r="4" fill={color} opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
     </circle>
-    <path d="M14 24L20 30L34 16" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-      <animate attributeName="stroke-dasharray" values="0,100;100,100" dur="1.5s" repeatCount="indefinite" />
-      <animate attributeName="stroke-dashoffset" values="0;-100" dur="1.5s" repeatCount="indefinite" />
+    <circle cx="36" cy="12" r="4" fill={color} opacity="0.8" />
+    
+    {/* Animated path connecting nodes */}
+    <path d="M14 34 L22 26" stroke={color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;8" dur="1s" repeatCount="indefinite" />
     </path>
+    <path d="M26 22 L34 14" stroke={color} strokeWidth="2" strokeLinecap="round" strokeDasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;8" dur="1s" repeatCount="indefinite" />
+    </path>
+    
+    {/* Progress indicator */}
+    <circle cx="24" cy="24" r="8" stroke={color} strokeWidth="1" fill="none" opacity="0.3">
+      <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite" />
+    </circle>
   </svg>
 );
 
-const AnimatedClockIcon = ({ color }: { color: string }) => (
+const MicrolearningIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="18" stroke={color} strokeWidth="2" fill="none" />
-    <line x1="24" y1="24" x2="24" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round">
-      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="4s" repeatCount="indefinite" />
-    </line>
-    <line x1="24" y1="24" x2="32" y2="24" stroke={color} strokeWidth="2" strokeLinecap="round">
-      <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="8s" repeatCount="indefinite" />
-    </line>
-    <circle cx="24" cy="24" r="2" fill={color} />
-  </svg>
-);
-
-const AnimatedBrainIcon = ({ color }: { color: string }) => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 12C16 12 12 14 12 20C12 26 14 28 16 28" stroke={color} strokeWidth="2" strokeLinecap="round">
-      <animate attributeName="d" values="M16 12C16 12 12 14 12 20C12 26 14 28 16 28;M16 12C16 12 10 14 10 20C10 26 14 28 16 28;M16 12C16 12 12 14 12 20C12 26 14 28 16 28" dur="3s" repeatCount="indefinite" />
-    </path>
-    <path d="M32 12C32 12 36 14 36 20C36 26 34 28 32 28" stroke={color} strokeWidth="2" strokeLinecap="round">
-      <animate attributeName="d" values="M32 12C32 12 36 14 36 20C36 26 34 28 32 28;M32 12C32 12 38 14 38 20C38 26 34 28 32 28;M32 12C32 12 36 14 36 20C36 26 34 28 32 28" dur="3s" repeatCount="indefinite" />
-    </path>
-    <circle cx="18" cy="18" r="2" fill={color}>
-      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="30" cy="18" r="2" fill={color}>
-      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
-    </circle>
-    <path d="M20 24 Q24 28 28 24" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
-  </svg>
-);
-
-const AnimatedWrenchIcon = ({ color }: { color: string }) => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32 12L28 16L32 20L36 16L32 12Z" stroke={color} strokeWidth="2" fill="none">
-      <animateTransform attributeName="transform" type="rotate" from="0 32 16" to="15 32 16" dur="1s" repeatCount="indefinite" />
-    </path>
-    <rect x="12" y="28" width="12" height="8" rx="1" stroke={color} strokeWidth="2" fill="none">
-      <animate attributeName="y" values="28;30;28" dur="1s" repeatCount="indefinite" />
+    {/* Byte/data particles bursting */}
+    <rect x="20" y="20" width="8" height="8" fill={color} opacity="0.8" />
+    
+    {/* Particles flying outward */}
+    <rect x="10" y="10" width="3" height="3" fill={color}>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="x" values="22;10" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="y" values="22;10" dur="2s" repeatCount="indefinite" />
     </rect>
-    <line x1="28" y1="20" x2="20" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <rect x="35" y="10" width="3" height="3" fill={color}>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.3s" repeatCount="indefinite" />
+      <animate attributeName="x" values="22;35" dur="2s" begin="0.3s" repeatCount="indefinite" />
+      <animate attributeName="y" values="22;10" dur="2s" begin="0.3s" repeatCount="indefinite" />
+    </rect>
+    <rect x="10" y="35" width="3" height="3" fill={color}>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.6s" repeatCount="indefinite" />
+      <animate attributeName="x" values="22;10" dur="2s" begin="0.6s" repeatCount="indefinite" />
+      <animate attributeName="y" values="22;35" dur="2s" begin="0.6s" repeatCount="indefinite" />
+    </rect>
+    <rect x="35" y="35" width="3" height="3" fill={color}>
+      <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.9s" repeatCount="indefinite" />
+      <animate attributeName="x" values="22;35" dur="2s" begin="0.9s" repeatCount="indefinite" />
+      <animate attributeName="y" values="22;35" dur="2s" begin="0.9s" repeatCount="indefinite" />
+    </rect>
   </svg>
 );
 
-const AnimatedVideoIcon = ({ color }: { color: string }) => (
+const AILearningIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="14" width="24" height="20" rx="2" stroke={color} strokeWidth="2" fill="none" />
-    <path d="M32 20L40 16V32L32 28Z" stroke={color} strokeWidth="2" fill="none">
-      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-    </path>
-    <circle cx="16" cy="24" r="6" fill={color} opacity="0.3">
-      <animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite" />
+    {/* Neural network visualization */}
+    <circle cx="24" cy="10" r="3" fill={color} opacity="0.8" />
+    <circle cx="12" cy="24" r="3" fill={color} opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" />
     </circle>
-    <polygon points="18,21 18,27 24,24" fill={color} />
+    <circle cx="36" cy="24" r="3" fill={color} opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" begin="0.3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="24" cy="38" r="3" fill={color} opacity="0.8" />
+    
+    {/* Network connections */}
+    <line x1="24" y1="13" x2="14" y2="21" stroke={color} strokeWidth="1.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite" />
+    </line>
+    <line x1="24" y1="13" x2="34" y2="21" stroke={color} strokeWidth="1.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" begin="0.3s" repeatCount="indefinite" />
+    </line>
+    <line x1="14" y1="27" x2="22" y2="35" stroke={color} strokeWidth="1.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" begin="0.6s" repeatCount="indefinite" />
+    </line>
+    <line x1="34" y1="27" x2="26" y2="35" stroke={color} strokeWidth="1.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" begin="0.9s" repeatCount="indefinite" />
+    </line>
+    
+    {/* Data pulse */}
+    <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="1" fill="none" opacity="0.2">
+      <animate attributeName="r" values="15;25;15" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" />
+    </circle>
   </svg>
 );
 
-const AnimatedUserCheckIcon = ({ color }: { color: string }) => (
+const RangesIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="18" cy="16" r="6" stroke={color} strokeWidth="2" fill="none">
-      <animate attributeName="r" values="6;6.5;6" dur="2s" repeatCount="indefinite" />
+    {/* Server racks with blinking indicators */}
+    <rect x="8" y="12" width="12" height="28" rx="1" stroke={color} strokeWidth="2" fill="none" />
+    <rect x="28" y="12" width="12" height="28" rx="1" stroke={color} strokeWidth="2" fill="none" />
+    
+    {/* Blinking server lights */}
+    <circle cx="14" cy="18" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" />
     </circle>
-    <path d="M8 36C8 32 12 28 18 28C24 28 28 32 28 36" stroke={color} strokeWidth="2" strokeLinecap="round" />
-    <path d="M30 20L34 24L42 16" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <animate attributeName="stroke-dasharray" values="0,100;100,100" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="stroke-dashoffset" values="0;-100" dur="2s" repeatCount="indefinite" />
-    </path>
+    <circle cx="14" cy="24" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="14" cy="30" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="34" cy="18" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="34" cy="24" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="34" cy="30" r="1.5" fill={color}>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
+    </circle>
+    
+    {/* Data transfer line */}
+    <line x1="20" y1="26" x2="28" y2="26" stroke={color} strokeWidth="2" strokeDasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite" />
+    </line>
   </svg>
 );
 
-const AnimatedTargetIcon = ({ color }: { color: string }) => (
+const LiveInstructorIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="24" cy="24" r="18" stroke={color} strokeWidth="2" fill="none" opacity="0.3" />
-    <circle cx="24" cy="24" r="12" stroke={color} strokeWidth="2" fill="none" opacity="0.5">
-      <animate attributeName="r" values="12;13;12" dur="2s" repeatCount="indefinite" />
+    {/* Broadcast screen */}
+    <rect x="8" y="12" width="32" height="20" rx="2" stroke={color} strokeWidth="2" fill="none" />
+    
+    {/* Instructor figure */}
+    <circle cx="24" cy="20" r="3" fill={color} opacity="0.8" />
+    <path d="M18 26 Q24 29 30 26" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    
+    {/* Live broadcast waves */}
+    <circle cx="8" cy="12" r="3" stroke={color} strokeWidth="1.5" fill="none" opacity="0.6">
+      <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
     </circle>
-    <circle cx="24" cy="24" r="6" stroke={color} strokeWidth="2" fill="none" opacity="0.7" />
+    <circle cx="8" cy="12" r="3" stroke={color} strokeWidth="1.5" fill="none" opacity="0.4">
+      <animate attributeName="r" values="3;6;3" dur="2s" begin="0.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+    
+    {/* Stand */}
+    <line x1="24" y1="32" x2="24" y2="38" stroke={color} strokeWidth="2" />
+    <line x1="18" y1="38" x2="30" y2="38" stroke={color} strokeWidth="2" />
+  </svg>
+);
+
+const MentoringIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Two people connecting */}
+    <circle cx="16" cy="16" r="5" stroke={color} strokeWidth="2" fill="none" />
+    <circle cx="32" cy="16" r="5" stroke={color} strokeWidth="2" fill="none" />
+    
+    {/* Knowledge transfer visualization */}
     <circle cx="24" cy="24" r="2" fill={color}>
-      <animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite" />
+      <animate attributeName="cx" values="18;30;18" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite" />
     </circle>
-    <line x1="24" y1="2" x2="24" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <circle cx="24" cy="27" r="1.5" fill={color}>
+      <animate attributeName="cx" values="18;30;18" dur="3s" begin="0.3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0.3;1" dur="3s" begin="0.3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="24" cy="30" r="1" fill={color}>
+      <animate attributeName="cx" values="18;30;18" dur="3s" begin="0.6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0.3;1" dur="3s" begin="0.6s" repeatCount="indefinite" />
+    </circle>
+    
+    {/* Connecting arc */}
+    <path d="M16 21 Q24 28 32 21" stroke={color} strokeWidth="2" fill="none" opacity="0.3" />
   </svg>
 );
 
-const AnimatedChartIcon = ({ color }: { color: string }) => (
+const AssessmentIcon = ({ color }: { color: string }) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10" y="28" width="6" height="12" fill={color} opacity="0.6">
-      <animate attributeName="height" values="12;16;12" dur="2s" repeatCount="indefinite" />
-      <animate attributeName="y" values="28;24;28" dur="2s" repeatCount="indefinite" />
+    {/* Skill level bars rising */}
+    <rect x="8" y="32" width="6" height="8" fill={color} opacity="0.9" />
+    <rect x="17" y="26" width="6" height="14" fill={color} opacity="0.7">
+      <animate attributeName="height" values="0;14" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="y" values="40;26" dur="2s" repeatCount="indefinite" />
     </rect>
-    <rect x="21" y="20" width="6" height="20" fill={color} opacity="0.7">
-      <animate attributeName="height" values="20;24;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
-      <animate attributeName="y" values="20;16;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
+    <rect x="26" y="20" width="6" height="20" fill={color} opacity="0.5">
+      <animate attributeName="height" values="0;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
+      <animate attributeName="y" values="40;20" dur="2s" begin="0.3s" repeatCount="indefinite" />
     </rect>
-    <rect x="32" y="12" width="6" height="28" fill={color} opacity="0.8">
-      <animate attributeName="height" values="28;32;28" dur="2s" begin="0.6s" repeatCount="indefinite" />
-      <animate attributeName="y" values="12;8;12" dur="2s" begin="0.6s" repeatCount="indefinite" />
+    <rect x="35" y="14" width="6" height="26" fill={color} opacity="0.3">
+      <animate attributeName="height" values="0;26" dur="2s" begin="0.6s" repeatCount="indefinite" />
+      <animate attributeName="y" values="40;14" dur="2s" begin="0.6s" repeatCount="indefinite" />
     </rect>
+    
+    {/* Checkmarks appearing */}
+    <path d="M9 10 L11 12 L15 8" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <animate attributeName="opacity" values="0;1;1" dur="2s" repeatCount="indefinite" />
+    </path>
+  </svg>
+);
+
+const ReportingIcon = ({ color }: { color: string }) => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Document with data flowing */}
+    <rect x="12" y="8" width="24" height="32" rx="2" stroke={color} strokeWidth="2" fill="none" />
+    
+    {/* Data lines */}
+    <line x1="16" y1="16" x2="32" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.8">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
+    </line>
+    <line x1="16" y1="22" x2="28" y2="22" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="0.3s" repeatCount="indefinite" />
+    </line>
+    <line x1="16" y1="28" x2="30" y2="28" stroke={color} strokeWidth="2" strokeLinecap="round" opacity="0.4">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="0.6s" repeatCount="indefinite" />
+    </line>
+    
+    {/* Analytics icon */}
+    <path d="M16 32 L20 36 L24 33 L28 36 L32 32" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <animate attributeName="d" values="M16 32 L20 36 L24 33 L28 36 L32 32;M16 34 L20 32 L24 35 L28 32 L32 34;M16 32 L20 36 L24 33 L28 36 L32 32" dur="3s" repeatCount="indefinite" />
+    </path>
   </svg>
 );
 interface EnterpriseITProps {
@@ -127,27 +232,27 @@ const EnterpriseIT = ({
   toggleFeature
 }: EnterpriseITProps) => {
   const consolidatedFeatures = [{
-    icon: AnimatedCheckIcon,
+    icon: LearningPathIcon,
     emoji: "✅",
     title: "Learning Paths",
     description: "Structured paths with guided assessment, targeted training, and readiness validation—personalized and effective.",
     details: "Flexible pathways for every skill level. Begin with an assessment, follow a guided roadmap, and validate your readiness with confidence.",
     additionalInfo: "Access live instructor-led Epic Live sessions and on-demand courses with instant replay for flexible learning anytime, anywhere."
   }, {
-    icon: AnimatedClockIcon,
+    icon: MicrolearningIcon,
     emoji: "⏰",
     title: "Bytes: Microlearning",
     description: "Short sessions (3-5 min), adaptive personalization, sequential skill stacking, and real-world application.",
     details: "Learn in brief, focused sessions designed for retention. Get personalized paths from initial assessments and stack skills progressively for rapid mastery."
   }, {
-    icon: AnimatedBrainIcon,
+    icon: AILearningIcon,
     emoji: "🧠",
     title: "AI-Powered Learning",
     description: "StormWind's AI Tutors leverage proprietary knowledge bases—no public internet, no hallucinations or inaccuracies.",
     details: "They support your certification studies, answer on-the-fly questions, provide step-by-step troubleshooting guidance, and integrate perfectly with our hands-on training content.",
     additionalInfo: "Combine AI assistance with 1:1 instructor mentoring for personal guidance from industry-recognized experts."
   }, {
-    icon: AnimatedWrenchIcon,
+    icon: RangesIcon,
     emoji: "🛠️",
     title: "StormWind Ranges",
     description: "Hands-on cyber, Azure, Microsoft, and networking ranges – real, production-like practice environments.",
@@ -165,23 +270,23 @@ const EnterpriseIT = ({
       text: "Networking Range: VLANs, OSPF, BGP, IPv4/6, and security configurations."
     }]
   }, {
-    icon: AnimatedVideoIcon,
+    icon: LiveInstructorIcon,
     emoji: "🎓",
     title: "Live Instructor Led Courses",
     description: "The most effective learning possible happens in a live environment with a world class instructor. Many of StormWind's classes run live, allowing you to fully interact in the most engaging online learning experience available anywhere.",
     details: "The short, 2-hour sessions allow you to easily digest the information."
   }, {
-    icon: AnimatedUserCheckIcon,
+    icon: MentoringIcon,
     emoji: "🤝",
     title: "1:1 Mentoring with Industry Experts",
     description: "Like learning anything new, you are inevitably going to get stuck on something. Unlike traditional eLearning, you aren't on your own. You have access to the instructor from every class to ask questions. This feature is one of the most raved about offerings by our clients."
   }, {
-    icon: AnimatedTargetIcon,
+    icon: AssessmentIcon,
     emoji: "🎯",
     title: "Skills Assessments",
     description: "Test your team's skills on a number of different topics and get real time data on where the gaps are. Get course suggestions based on proficiency and streamline the training process by ensuring everyone is taking courses that fit their skill level."
   }, {
-    icon: AnimatedChartIcon,
+    icon: ReportingIcon,
     emoji: "📊",
     title: "Enterprise Reporting and Administration",
     description: "Generate easy to read reports on usage and course completion. Whether you need it for compliance/insurance purposes, or to present to management, we make it simple to get the data you need.",
