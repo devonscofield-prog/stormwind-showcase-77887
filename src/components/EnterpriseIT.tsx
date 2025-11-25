@@ -151,35 +151,42 @@ const EnterpriseIT = ({
             "Project Management": "/project-management",
             "Help Desk": "/help-desk"
           };
-          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1">
-                {/* Animated SVG Background */}
-                <svg className="absolute inset-0 w-full h-full opacity-5 group-hover:opacity-10 transition-opacity duration-500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id={`grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: 'hsl(var(--primary))', stopOpacity: 1}}>
-                        <animate attributeName="stop-color" values="hsl(var(--primary));hsl(var(--primary-foreground));hsl(var(--primary))" dur="4s" repeatCount="indefinite" />
-                      </stop>
-                      <stop offset="100%" style={{stopColor: 'hsl(var(--primary-foreground))', stopOpacity: 1}}>
-                        <animate attributeName="stop-color" values="hsl(var(--primary-foreground));hsl(var(--primary));hsl(var(--primary-foreground))" dur="4s" repeatCount="indefinite" />
-                      </stop>
-                    </linearGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="80" fill={`url(#grad-${index})`}>
-                    <animate attributeName="r" values="80;85;80" dur="3s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="50" cy="50" r="30" fill="hsl(var(--primary))" opacity="0.2">
-                    <animate attributeName="cx" values="50;150;50" dur="6s" repeatCount="indefinite" />
-                    <animate attributeName="cy" values="50;150;50" dur="5s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="150" cy="150" r="40" fill="hsl(var(--accent))" opacity="0.2">
-                    <animate attributeName="cx" values="150;50;150" dur="7s" repeatCount="indefinite" />
-                    <animate attributeName="cy" values="150;50;150" dur="6s" repeatCount="indefinite" />
-                  </circle>
+          
+          const techColors = [
+            '#60A5FA', '#FB923C', '#A78BFA', '#4ADE80', '#38BDF8',
+            '#FBBF24', '#F472B6', '#6366F1', '#EC4899', '#14B8A6'
+          ];
+          const color = techColors[index % techColors.length];
+          
+          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10">
+                {/* Floating Particles */}
+                <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  {[...Array(5)].map((_, i) => (
+                    <circle 
+                      key={i}
+                      cx={30 + (i * 40)} 
+                      cy={30 + (i * 35)} 
+                      r="1.5" 
+                      fill={color}
+                      opacity="0.4"
+                    >
+                      <animate 
+                        attributeName="cy" 
+                        values={`${30 + (i * 35)};${15 + (i * 35)};${30 + (i * 35)}`} 
+                        dur={`${2 + (i * 0.3)}s`} 
+                        repeatCount="indefinite" 
+                      />
+                    </circle>
+                  ))}
                 </svg>
                 
-                <h4 className="text-base font-bold text-foreground relative z-10 mb-2">{tech.category}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed relative z-10">{tech.items}</p>
+                <h4 
+                  className="text-base font-bold relative z-10 mb-2 transition-colors duration-300" 
+                  style={{ color: color }}
+                >
+                  {tech.category}
+                </h4>
+                <p className="text-xs text-gray-400 leading-relaxed relative z-10">{tech.items}</p>
               </Link>;
         })}
         </div>
@@ -209,70 +216,91 @@ const EnterpriseIT = ({
             "Skills Assessments": "/skills-assessments",
             "Enterprise Reporting and Administration": "/enterprise-reporting"
           };
-          return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1">
-                {/* Animated SVG Background */}
-                <svg className="absolute inset-0 w-full h-full opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id={`feature-grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: 'hsl(var(--primary))', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: 'hsl(var(--accent))', stopOpacity: 1}} />
-                    </linearGradient>
-                  </defs>
-                  
-                  {/* Animated geometric shapes */}
-                  <path d="M 200 50 L 350 200 L 200 350 L 50 200 Z" fill={`url(#feature-grad-${index})`} opacity="0.3">
-                    <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="20s" repeatCount="indefinite" />
-                  </path>
-                  
-                  {/* Floating circles */}
-                  <circle cx="100" cy="100" r="50" fill="hsl(var(--primary))" opacity="0.2">
-                    <animate attributeName="cy" values="100;80;100" dur="4s" repeatCount="indefinite" />
-                    <animate attributeName="r" values="50;55;50" dur="4s" repeatCount="indefinite" />
-                  </circle>
-                  
-                  <circle cx="300" cy="300" r="60" fill="hsl(var(--accent))" opacity="0.2">
-                    <animate attributeName="cy" values="300;320;300" dur="5s" repeatCount="indefinite" />
-                    <animate attributeName="r" values="60;65;60" dur="5s" repeatCount="indefinite" />
-                  </circle>
-                  
-                  {/* Orbiting dots */}
-                  <circle cx="200" cy="200" r="5" fill="hsl(var(--primary))">
-                    <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="8s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite" />
-                  </circle>
+          const featureColors = [
+            '#60A5FA', // blue
+            '#FB923C', // orange
+            '#A78BFA', // purple
+            '#4ADE80', // green
+            '#38BDF8', // cyan
+            '#FBBF24', // yellow
+            '#F472B6', // pink
+            '#6366F1', // indigo
+          ];
+          const color = featureColors[index % featureColors.length];
+          
+          return <Link key={index} to={featureLinks[feature.title]} className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10">
+                {/* Floating Particles Background */}
+                <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                  {/* Animated floating dots */}
+                  {[...Array(8)].map((_, i) => (
+                    <circle 
+                      key={i}
+                      cx={50 + (i * 50)} 
+                      cy={50 + (i * 40)} 
+                      r="2" 
+                      fill={color}
+                      opacity="0.3"
+                    >
+                      <animate 
+                        attributeName="cy" 
+                        values={`${50 + (i * 40)};${30 + (i * 40)};${50 + (i * 40)}`} 
+                        dur={`${3 + (i * 0.5)}s`} 
+                        repeatCount="indefinite" 
+                      />
+                      <animate 
+                        attributeName="opacity" 
+                        values="0.2;0.5;0.2" 
+                        dur={`${3 + (i * 0.5)}s`} 
+                        repeatCount="indefinite" 
+                      />
+                    </circle>
+                  ))}
                 </svg>
                 
-                {/* Icon */}
-                <div className="mb-4 inline-flex p-4 rounded-xl border-2 border-primary/50 bg-primary/5 relative z-10">
-                  <feature.icon className="w-8 h-8 text-primary" />
+                {/* Animated Icon with Glow */}
+                <div className="mb-6 inline-flex relative z-10">
+                  {/* Glow effect */}
+                  <div 
+                    className="absolute inset-0 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" 
+                    style={{ backgroundColor: color }}
+                  />
+                  {/* Icon with animation */}
+                  <div className="relative">
+                    <feature.icon 
+                      className="w-12 h-12 transition-transform duration-300 group-hover:scale-110" 
+                      style={{ color: color }}
+                    />
+                  </div>
                 </div>
                 
-                {/* Title with Emoji */}
-                <h4 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3 relative z-10">
-                  <span>{feature.emoji}</span>
-                  <span>{feature.title}</span>
+                {/* Title with Color */}
+                <h4 
+                  className="text-xl font-bold mb-3 relative z-10 transition-colors duration-300" 
+                  style={{ color: color }}
+                >
+                  {feature.title}
                 </h4>
                 
                 {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed mb-3 relative z-10">
+                <p className="text-sm text-gray-300 leading-relaxed mb-3 relative z-10">
                   {feature.description}
                 </p>
                 
                 {/* Details */}
-                {feature.details && <p className="text-sm text-muted-foreground leading-relaxed mb-3 relative z-10">
+                {feature.details && <p className="text-sm text-gray-400 leading-relaxed mb-3 relative z-10">
                     {feature.details}
                   </p>}
                 
                 {/* Bullets */}
                 {feature.bullets && <ul className="space-y-2 mb-3 relative z-10">
-                    {feature.bullets.map((bullet, idx) => <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                    {feature.bullets.map((bullet, idx) => <li key={idx} className="text-sm text-gray-400 flex items-start gap-2">
                         <span className="flex-shrink-0">{bullet.emoji}</span>
                         <span className="leading-relaxed">{bullet.text}</span>
                       </li>)}
                   </ul>}
                 
                 {/* Additional Info */}
-                {feature.additionalInfo && <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
+                {feature.additionalInfo && <p className="text-sm text-gray-400 leading-relaxed relative z-10">
                     {feature.additionalInfo}
                   </p>}
               </Link>;
