@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Navigation } from "@/components/Navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
 import { VideoEmbed } from "@/components/VideoEmbed";
@@ -242,7 +243,7 @@ const Ranges = () => {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-white mb-6">Platforms & Operating Systems</h3>
                 <div className="space-y-3">
@@ -261,6 +262,133 @@ const Ranges = () => {
                     </div>)}
                 </div>
               </div>
+            </div>
+
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700">
+              <h3 className="text-2xl font-bold text-white mb-6">Learning Tiers</h3>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="tier1" className="border-gray-700">
+                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4FD1C5]">🎓</span>
+                      <span>Tier 1 - Fundamentals (Beginner)</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300">
+                    <p className="mb-3 font-semibold">Basic server roles and core admin skills</p>
+                    <ul className="space-y-2 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Active Directory & Identity Management</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>DNS and DHCP configuration</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>File Storage and Sharing with NTFS permissions</span>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="tier2" className="border-gray-700">
+                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4FD1C5]">🎓</span>
+                      <span>Tier 2 - Role Configuration (Intermediate)</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300">
+                    <p className="mb-3 font-semibold">Service deployment and integration</p>
+                    <ul className="space-y-2 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>IIS Web Hosting with HTTPS</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Network Policy Server configuration</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Virtual Machine Management with Hyper-V</span>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="tier3" className="border-gray-700">
+                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4FD1C5]">🎓</span>
+                      <span>Tier 3 - Administration & Security (Intermediate-Advanced)</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300">
+                    <p className="mb-3 font-semibold">Monitoring, automation, and service hardening</p>
+                    <ul className="space-y-2 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Security and System Monitoring with Event Viewer</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>PowerShell Automation and scripting</span>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="tier4" className="border-gray-700">
+                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4FD1C5]">🎓</span>
+                      <span>Tier 4 - Integrated Scenarios (Advanced)</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300">
+                    <p className="mb-3 font-semibold">Real-world situations combining multiple skills</p>
+                    <ul className="space-y-2 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>New Department Onboarding scenarios</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Service Migration projects</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Security Incident Response</span>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="tier5" className="border-gray-700">
+                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#4FD1C5]">🏆</span>
+                      <span>Tier 5 - Capstone Challenge</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300">
+                    <p className="mb-3 font-semibold">End-to-end project simulating real-world requests</p>
+                    <ul className="space-y-2 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Build and secure complete department infrastructure</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#4FD1C5] mt-1">•</span>
+                        <span>Full documentation and delivery to "client"</span>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
               </div>
             </div>
