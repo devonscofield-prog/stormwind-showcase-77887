@@ -1,5 +1,5 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Award, FlaskConical, Brain, Users, Clock, Video, BookOpen, Server, ExternalLink, Cloud, Shield, Database, Container, Network, Settings, Box, Layers } from "lucide-react";
 import { Navigation } from "@/components/Navigation";

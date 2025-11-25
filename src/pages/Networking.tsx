@@ -1,5 +1,5 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Cpu, Router, Award, BookOpen, Video, ExternalLink, Users, Target, Zap } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
