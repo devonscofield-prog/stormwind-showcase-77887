@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Animated SVG Icons - Creative Designs
 const LearningPathIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
@@ -714,14 +714,79 @@ const EnterpriseIT = ({
           {technologies.map((tech, index) => {
             const TechCard = () => {
               const [isHovered, setIsHovered] = useState(false);
+              const [particles, setParticles] = useState<Array<{
+                id: number;
+                x: number;
+                y: number;
+                opacity: number;
+                size: number;
+              }>>([]);
+              const cardRef = useRef<HTMLAnchorElement>(null);
+              const particleIdRef = useRef(0);
+              
+              useEffect(() => {
+                if (particles.length === 0) return;
+                
+                const interval = setInterval(() => {
+                  setParticles(prev => 
+                    prev
+                      .map(p => ({ ...p, opacity: p.opacity - 0.05 }))
+                      .filter(p => p.opacity > 0)
+                  );
+                }, 50);
+                
+                return () => clearInterval(interval);
+              }, [particles.length]);
+              
+              const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                if (!cardRef.current || !isHovered) return;
+                
+                const rect = cardRef.current.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const newParticle = {
+                  id: particleIdRef.current++,
+                  x,
+                  y,
+                  opacity: 1,
+                  size: Math.random() * 4 + 2,
+                };
+                
+                setParticles(prev => [...prev.slice(-20), newParticle]);
+              };
               
               return (
                 <Link 
+                  ref={cardRef}
                   to={tech.link} 
                   className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
                   onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
+                  onMouseLeave={() => {
+                    setIsHovered(false);
+                    setParticles([]);
+                  }}
+                  onMouseMove={handleMouseMove}
                 >
+                  {/* Particle Trail */}
+                  {particles.map(particle => (
+                    <div
+                      key={particle.id}
+                      className="absolute rounded-full pointer-events-none"
+                      style={{
+                        left: particle.x,
+                        top: particle.y,
+                        width: particle.size,
+                        height: particle.size,
+                        opacity: particle.opacity,
+                        background: `hsl(${(index * 36) % 360}, 80%, 60%)`,
+                        boxShadow: `0 0 ${particle.size * 2}px hsl(${(index * 36) % 360}, 80%, 60%)`,
+                        transform: 'translate(-50%, -50%)',
+                        transition: 'opacity 0.05s linear',
+                      }}
+                    />
+                  ))}
+                  
                   {/* Animated Icon Background */}
                   <div className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500">
                     <tech.Icon isHovered={isHovered} />
