@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,9 +12,9 @@ All colors MUST be HSL.
   :root {
     /* StormWind Studios Brand Colors */
     --background: 210 29% 97%; /* Light Gray #F6F8FA */
-    --background-gradient: linear-gradient(135deg, hsl(210 29% 97%), hsl(210 29% 97%), hsl(166 58% 40% / 0.05));
+    --background-gradient: linear-gradient(135deg, hsl(210 29% 97%), hsl(177 30% 96%), hsl(166 20% 96%));
     --foreground: 0 0% 17%; /* Dark Gray #2B2B2B */
-    
+
     /* Alternating Section Backgrounds */
     --section-cream: 40 40% 96%; /* Light cream */
     --section-green: 166 25% 92%; /* Soft green */
@@ -24,17 +26,17 @@ All colors MUST be HSL.
     --popover-foreground: 0 0% 17%;
 
     /* StormWind Primary Green - Logo Color */
-    --primary: 166 58% 40%;
+    --primary: 166 100% 30%;
     --primary-foreground: 0 0% 100%;
 
     /* Dark Green */
-    --primary-dark: 166 58% 30%;
+    --primary-dark: 166 100% 22%;
 
     /* Light Green Accent */
-    --accent-green: 166 58% 52%;
+    --accent-green: 160 64% 52%;
 
     /* Teal Accent - Logo Color */
-    --accent-teal: 166 58% 40%;
+    --accent-teal: 177 70% 41%;
 
     /* Secondary - Medium Gray */
     --secondary: 0 0% 43%; /* #6E6E6E */
@@ -45,38 +47,41 @@ All colors MUST be HSL.
     --muted-foreground: 0 0% 43%;
 
     /* Accent - Logo Green */
-    --accent: 166 58% 40%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 160 64% 52%;
+    --accent-foreground: 0 0% 17%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 210 29% 90%;
     --input: 210 29% 90%;
-    --ring: 166 58% 40%;
+    --ring: 166 100% 30%;
 
-    --radius: 0.75rem;
+    --radius: 1.625rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(166 58% 40%), hsl(166 58% 30%));
-    --gradient-accent: linear-gradient(135deg, hsl(166 58% 52%), hsl(166 58% 40%));
-    
+    --gradient-primary: linear-gradient(135deg, hsl(166 100% 30%), hsl(166 100% 22%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 64% 52%), hsl(177 70% 41%));
+
     /* Shadows */
     --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-card-hover: 0 10px 15px -3px hsl(166 58% 40% / 0.2), 0 4px 6px -2px hsl(166 58% 40% / 0.1);
-    --shadow-glow: 0 0 20px hsl(166 58% 40% / 0.15);
-    
+    --shadow-card-hover: 0 10px 15px -3px rgba(0, 154, 119, 0.2), 0 4px 6px -2px rgba(0, 154, 119, 0.1);
+    --shadow-glow: 0 0 20px rgba(0, 154, 119, 0.15);
+
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Decorative Elements */
     --gradient-blob-1: radial-gradient(circle at 20% 50%, hsl(166 58% 40% / 0.08) 0%, transparent 50%);
     --gradient-blob-2: radial-gradient(circle at 80% 50%, hsl(166 58% 40% / 0.06) 0%, transparent 50%);
+    --shadow-glow-strong: 0 0 30px rgba(0, 154, 119, 0.3);
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
   }
 
   .dark {
     /* Charcoal background matching reference image */
-    --background: 0 0% 24%; /* #3D3D3D */
+    --background: 0 0% 17%; /* #3D3D3D */
     --foreground: 0 0% 100%;
 
     /* Darker card backgrounds */
@@ -86,34 +91,35 @@ All colors MUST be HSL.
     --popover: 0 0% 20%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 166 58% 40%; /* Logo Green */
+    --primary: 166 100% 30%; /* Logo Green */
     --primary-foreground: 0 0% 100%;
 
-    --primary-dark: 166 58% 30%;
-    --accent-green: 166 58% 52%;
-    --accent-teal: 166 58% 40%;
+    --primary-dark: 166 100% 22%;
+    --accent-green: 160 64% 52%;
+    --accent-teal: 177 70% 41%;
 
-    --secondary: 0 0% 30%;
+    --secondary: 0 0% 43%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 28%;
-    --muted-foreground: 0 0% 70%; /* Light gray for descriptions */
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 92%; /* Light gray for descriptions */
 
-    --accent: 166 58% 40%; /* Logo Green */
-    --accent-foreground: 0 0% 100%;
+    --accent: 160 64% 52%; /* Logo Green */
+    --accent-foreground: 0 0% 17%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
     /* Logo Green borders for cards */
-    --border: 166 50% 35%;
-    --input: 0 0% 28%;
-    --ring: 166 58% 40%;
+    --border: 0 0% 30%;
+    --input: 0 0% 30%;
+    --ring: 166 100% 30%;
 
     /* Dark mode specific gradients and shadows */
     --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     --shadow-card-hover: 0 0 20px hsl(166 58% 40% / 0.4), 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     --shadow-glow: 0 0 20px hsl(166 58% 40% / 0.3);
+    --background-gradient: linear-gradient(135deg, hsl(0 0% 17%), hsl(0 0% 15%), hsl(0 0% 13%));
   }
 }
 
@@ -121,7 +127,7 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -132,7 +138,7 @@ All colors MUST be HSL.
     background-attachment: fixed;
     position: relative;
   }
-  
+
   /* Dark mode solid background */
   .dark body {
     background: hsl(var(--background));
@@ -143,7 +149,7 @@ All colors MUST be HSL.
   html.text-size-large {
     font-size: 120%;
   }
-  
+
   /* Dot pattern overlay */
   body::after {
     content: '';
@@ -169,7 +175,7 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px hsl(166 58% 40% / 0.25));
   }
-  
+
   .text-gradient-accent {
     background: linear-gradient(135deg, hsl(var(--accent-green)), hsl(var(--accent-teal)));
     -webkit-background-clip: text;
@@ -177,7 +183,7 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px hsl(166 58% 52% / 0.25));
   }
-  
+
   .text-gradient-hero {
     background: linear-gradient(135deg, hsl(var(--primary-foreground)), hsl(var(--accent-green)));
     -webkit-background-clip: text;
@@ -663,5 +669,17 @@ All colors MUST be HSL.
     border-radius: 50%;
     background: hsl(166 58% 40% / 0.4);
     animation: ripple 0.6s ease-out;
+  }
+}
+
+/* ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
