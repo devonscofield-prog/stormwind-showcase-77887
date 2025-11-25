@@ -247,11 +247,10 @@ const Ranges = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Learning Tiers</h3>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="tier1" className="border-gray-700">
-                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#4FD1C5]">🎓</span>
-                      <span>Tier 1 - Fundamentals (Beginner)</span>
-                    </div>
+                  <AccordionTrigger className="hover:text-[#4FD1C5]">
+                    <span className="text-white">
+                      <span className="text-[#4FD1C5]">Tier 1</span> - Fundamentals (Beginner)
+                    </span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-300">
                     <p className="mb-3 font-semibold">Basic server roles and core admin skills</p>
@@ -273,11 +272,10 @@ const Ranges = () => {
                 </AccordionItem>
 
                 <AccordionItem value="tier2" className="border-gray-700">
-                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#4FD1C5]">🎓</span>
-                      <span>Tier 2 - Role Configuration (Intermediate)</span>
-                    </div>
+                  <AccordionTrigger className="hover:text-[#4FD1C5]">
+                    <span className="text-white">
+                      <span className="text-[#4FD1C5]">Tier 2</span> - Role Configuration (Intermediate)
+                    </span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-300">
                     <p className="mb-3 font-semibold">Service deployment and integration</p>
@@ -299,11 +297,10 @@ const Ranges = () => {
                 </AccordionItem>
 
                 <AccordionItem value="tier3" className="border-gray-700">
-                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#4FD1C5]">🎓</span>
-                      <span>Tier 3 - Administration & Security (Intermediate-Advanced)</span>
-                    </div>
+                  <AccordionTrigger className="hover:text-[#4FD1C5]">
+                    <span className="text-white">
+                      <span className="text-[#4FD1C5]">Tier 3</span> - Administration & Security (Intermediate-Advanced)
+                    </span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-300">
                     <p className="mb-3 font-semibold">Monitoring, automation, and service hardening</p>
@@ -321,11 +318,10 @@ const Ranges = () => {
                 </AccordionItem>
 
                 <AccordionItem value="tier4" className="border-gray-700">
-                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#4FD1C5]">🎓</span>
-                      <span>Tier 4 - Integrated Scenarios (Advanced)</span>
-                    </div>
+                  <AccordionTrigger className="hover:text-[#4FD1C5]">
+                    <span className="text-white">
+                      <span className="text-[#4FD1C5]">Tier 4</span> - Integrated Scenarios (Advanced)
+                    </span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-300">
                     <p className="mb-3 font-semibold">Real-world situations combining multiple skills</p>
@@ -347,11 +343,10 @@ const Ranges = () => {
                 </AccordionItem>
 
                 <AccordionItem value="tier5" className="border-gray-700">
-                  <AccordionTrigger className="text-white hover:text-[#4FD1C5]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#4FD1C5]">🏆</span>
-                      <span>Tier 5 - Capstone Challenge</span>
-                    </div>
+                  <AccordionTrigger className="hover:text-[#4FD1C5]">
+                    <span className="text-white">
+                      <span className="text-[#4FD1C5]">Tier 5</span> - Capstone Challenge
+                    </span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-300">
                     <p className="mb-3 font-semibold">End-to-end project simulating real-world requests</p>
