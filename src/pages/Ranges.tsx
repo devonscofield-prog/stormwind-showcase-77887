@@ -370,24 +370,32 @@ const Ranges = () => {
               </Accordion>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Platforms & Operating Systems</h3>
-                <div className="space-y-3">
-                  {["Windows Server 2025", "Windows 11", "Hyper-V", "Microsoft SQL"].map(platform => <div key={platform} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{platform}</span>
-                    </div>)}
-                </div>
-              </div>
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Microsoft Technologies</h3>
-                <div className="space-y-3">
-                  {["Windows Active Directory", "DNS Services", "Hyper-V Virtualization", "Group Policy Management", "File and Storage Server", "DHCP Services", "Remote Desktop Services", "Windows Security", "PowerShell Administration", "Windows Deployment Services", "Certificate Services", "Network Policy Server"].map(tech => <div key={tech} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{tech}</span>
-                    </div>)}
-                </div>
+            <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
+              <h3 className="text-2xl font-bold text-white mb-6">Microsoft Technologies</h3>
+              <div className="grid md:grid-cols-3 gap-x-8 gap-y-4">
+                {[
+                  "Windows Server 2025",
+                  "Windows 11", 
+                  "Active Directory Domain Services",
+                  "DNS Services",
+                  "DHCP Services",
+                  "Hyper-V Virtualization",
+                  "Group Policy Management",
+                  "PowerShell Automation",
+                  "Microsoft SQL Server",
+                  "Windows Security Features",
+                  "Remote Desktop Services",
+                  "Failover Clustering",
+                  "File and Storage Server",
+                  "Certificate Services",
+                  "Network Policy Server",
+                  "Windows Deployment Services"
+                ].map(tech => (
+                  <div key={tech} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{tech}</span>
+                  </div>
+                ))}
               </div>
             </div>
               </div>
