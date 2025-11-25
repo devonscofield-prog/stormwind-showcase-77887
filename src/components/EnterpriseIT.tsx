@@ -840,15 +840,82 @@ const EnterpriseIT = ({
             '#6366F1', // indigo
           ];
           const color = featureColors[index % featureColors.length];
-          const [isHovered, setIsHovered] = useState(false);
           
-          return <Link 
-            key={index} 
-            to={featureLinks[feature.title]} 
-            className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
+          const FeatureCard = () => {
+            const [isHovered, setIsHovered] = useState(false);
+            const [particles, setParticles] = useState<Array<{
+              id: number;
+              x: number;
+              y: number;
+              opacity: number;
+              size: number;
+            }>>([]);
+            const cardRef = useRef<HTMLAnchorElement>(null);
+            const particleIdRef = useRef(0);
+            
+            useEffect(() => {
+              if (particles.length === 0) return;
+              
+              const interval = setInterval(() => {
+                setParticles(prev => 
+                  prev
+                    .map(p => ({ ...p, opacity: p.opacity - 0.05 }))
+                    .filter(p => p.opacity > 0)
+                );
+              }, 50);
+              
+              return () => clearInterval(interval);
+            }, [particles.length]);
+            
+            const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              if (!cardRef.current || !isHovered) return;
+              
+              const rect = cardRef.current.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              
+              const newParticle = {
+                id: particleIdRef.current++,
+                x,
+                y,
+                opacity: 1,
+                size: Math.random() * 4 + 2,
+              };
+              
+              setParticles(prev => [...prev.slice(-20), newParticle]);
+            };
+            
+            return (
+              <Link 
+                ref={cardRef}
+                to={featureLinks[feature.title]} 
+                className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => {
+                  setIsHovered(false);
+                  setParticles([]);
+                }}
+                onMouseMove={handleMouseMove}
+              >
+                {/* Particle Trail */}
+                {particles.map(particle => (
+                  <div
+                    key={particle.id}
+                    className="absolute rounded-full pointer-events-none z-20"
+                    style={{
+                      left: particle.x,
+                      top: particle.y,
+                      width: particle.size,
+                      height: particle.size,
+                      opacity: particle.opacity,
+                      background: color,
+                      boxShadow: `0 0 ${particle.size * 2}px ${color}`,
+                      transform: 'translate(-50%, -50%)',
+                      transition: 'opacity 0.05s linear',
+                    }}
+                  />
+                ))}
+                
                 {/* Floating Particles Background */}
                 <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                   {/* Animated floating dots */}
@@ -920,7 +987,11 @@ const EnterpriseIT = ({
                 {feature.additionalInfo && <p className="text-sm text-gray-400 leading-relaxed relative z-10">
                     {feature.additionalInfo}
                   </p>}
-              </Link>;
+              </Link>
+            );
+          };
+          
+          return <FeatureCard key={index} />;
         })}
         </div>
       </div>
