@@ -331,6 +331,267 @@ const ReportingIcon = ({ color, isHovered }: { color: string; isHovered: boolean
   </svg>
   );
 };
+
+// Technology Icons with Animations
+const MicrosoftIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="microsoftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="hsl(217, 89%, 61%)">
+          <animate attributeName="stop-color" values="hsl(217, 89%, 61%); hsl(186, 100%, 69%); hsl(217, 89%, 61%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(186, 100%, 69%)">
+          <animate attributeName="stop-color" values="hsl(186, 100%, 69%); hsl(217, 89%, 61%); hsl(186, 100%, 69%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <rect x="15" y="15" width="25" height="25" fill="url(#microsoftGrad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </rect>
+    <rect x="45" y="15" width="25" height="25" fill="url(#microsoftGrad)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.3s" />
+    </rect>
+    <rect x="15" y="45" width="25" height="25" fill="url(#microsoftGrad)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.6s" />
+    </rect>
+    <rect x="45" y="45" width="25" height="25" fill="url(#microsoftGrad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.9s" />
+    </rect>
+  </svg>
+);
+
+const CloudIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="hsl(217, 89%, 61%)">
+          <animate attributeName="stop-color" values="hsl(217, 89%, 61%); hsl(200, 100%, 50%); hsl(217, 89%, 61%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(200, 100%, 50%)">
+          <animate attributeName="stop-color" values="hsl(200, 100%, 50%); hsl(217, 89%, 61%); hsl(200, 100%, 50%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <path d="M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z" fill="url(#cloudGrad)" opacity="0.9">
+      <animate attributeName="d" values="M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z; M20,50 Q20,35 40,30 T60,35 Q65,35 65,42 Q65,50 55,50 Z; M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z" dur={isHovered ? "12s" : "4s"} repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </path>
+    <circle cx="40" cy="45" r="4" fill="url(#cloudGrad)" opacity="0.6">
+      <animate attributeName="cy" values="45;42;45" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </circle>
+  </svg>
+);
+
+const CybersecurityIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="securityGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="hsl(0, 84%, 60%)">
+          <animate attributeName="stop-color" values="hsl(0, 84%, 60%); hsl(338, 100%, 50%); hsl(0, 84%, 60%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(338, 100%, 50%)">
+          <animate attributeName="stop-color" values="hsl(338, 100%, 50%); hsl(0, 84%, 60%); hsl(338, 100%, 50%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <path d="M40,15 L55,22 L55,38 Q55,55 40,65 Q25,55 25,38 L25,22 Z" fill="url(#securityGrad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </path>
+    <path d="M35,40 L38,43 L45,33" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,20; 20,0; 0,20" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </path>
+  </svg>
+);
+
+const AIIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <radialGradient id="aiGrad">
+        <stop offset="0%" stopColor="hsl(280, 100%, 70%)">
+          <animate attributeName="stop-color" values="hsl(280, 100%, 70%); hsl(200, 100%, 60%); hsl(280, 100%, 70%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(200, 100%, 60%)">
+          <animate attributeName="stop-color" values="hsl(200, 100%, 60%); hsl(280, 100%, 70%); hsl(200, 100%, 60%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </radialGradient>
+    </defs>
+    <circle cx="25" cy="30" r="6" fill="url(#aiGrad)">
+      <animate attributeName="cy" values="30;35;30" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </circle>
+    <circle cx="55" cy="30" r="6" fill="url(#aiGrad)">
+      <animate attributeName="cy" values="30;35;30" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.3s" />
+    </circle>
+    <circle cx="40" cy="50" r="6" fill="url(#aiGrad)">
+      <animate attributeName="cy" values="50;55;50" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.6s" />
+    </circle>
+    <line x1="25" y1="30" x2="40" y2="50" stroke="url(#aiGrad)" strokeWidth="2" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </line>
+    <line x1="55" y1="30" x2="40" y2="50" stroke="url(#aiGrad)" strokeWidth="2" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.5s" />
+    </line>
+  </svg>
+);
+
+const NetworkingIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="networkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="hsl(200, 100%, 50%)">
+          <animate attributeName="stop-color" values="hsl(200, 100%, 50%); hsl(240, 100%, 60%); hsl(200, 100%, 50%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(240, 100%, 60%)">
+          <animate attributeName="stop-color" values="hsl(240, 100%, 60%); hsl(200, 100%, 50%); hsl(240, 100%, 60%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <circle cx="40" cy="25" r="5" fill="url(#networkGrad)">
+      <animate attributeName="r" values="5;6;5" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </circle>
+    <circle cx="25" cy="50" r="5" fill="url(#networkGrad)">
+      <animate attributeName="r" values="5;6;5" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.3s" />
+    </circle>
+    <circle cx="55" cy="50" r="5" fill="url(#networkGrad)">
+      <animate attributeName="r" values="5;6;5" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.6s" />
+    </circle>
+    <line x1="40" y1="25" x2="25" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </line>
+    <line x1="40" y1="25" x2="55" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.4s" />
+    </line>
+    <line x1="25" y1="50" x2="55" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.8s" />
+    </line>
+  </svg>
+);
+
+const FullStackIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="fullstackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="hsl(45, 100%, 51%)">
+          <animate attributeName="stop-color" values="hsl(45, 100%, 51%); hsl(25, 95%, 53%); hsl(45, 100%, 51%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(25, 95%, 53%)">
+          <animate attributeName="stop-color" values="hsl(25, 95%, 53%); hsl(45, 100%, 51%); hsl(25, 95%, 53%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <rect x="20" y="15" width="40" height="8" rx="1" fill="url(#fullstackGrad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </rect>
+    <rect x="20" y="28" width="40" height="8" rx="1" fill="url(#fullstackGrad)" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.3s" />
+    </rect>
+    <rect x="20" y="41" width="40" height="8" rx="1" fill="url(#fullstackGrad)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.6s" />
+    </rect>
+    <rect x="20" y="54" width="40" height="8" rx="1" fill="url(#fullstackGrad)" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.9s" />
+    </rect>
+  </svg>
+);
+
+const DevOpsIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="devopsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="hsl(142, 76%, 36%)">
+          <animate attributeName="stop-color" values="hsl(142, 76%, 36%); hsl(173, 80%, 40%); hsl(142, 76%, 36%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(173, 80%, 40%)">
+          <animate attributeName="stop-color" values="hsl(173, 80%, 40%); hsl(142, 76%, 36%); hsl(173, 80%, 40%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <path d="M40,20 L50,30 L40,40 L30,30 Z" fill="url(#devopsGrad)">
+      <animateTransform attributeName="transform" type="rotate" values="0 40 30; 360 40 30" dur={isHovered ? "12s" : "4s"} repeatCount="indefinite" />
+    </path>
+    <path d="M40,40 L50,50 L40,60 L30,50 Z" fill="url(#devopsGrad)" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" values="0 40 50; -360 40 50" dur={isHovered ? "12s" : "4s"} repeatCount="indefinite" />
+    </path>
+  </svg>
+);
+
+const BusinessProIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="businessGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stopColor="hsl(332, 83%, 59%)">
+          <animate attributeName="stop-color" values="hsl(332, 83%, 59%); hsl(280, 100%, 70%); hsl(332, 83%, 59%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(280, 100%, 70%)">
+          <animate attributeName="stop-color" values="hsl(280, 100%, 70%); hsl(332, 83%, 59%); hsl(280, 100%, 70%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <rect x="20" y="50" width="8" height="18" fill="url(#businessGrad)" opacity="0.9">
+      <animate attributeName="height" values="18;25;18" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+      <animate attributeName="y" values="50;43;50" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </rect>
+    <rect x="36" y="40" width="8" height="28" fill="url(#businessGrad)" opacity="0.7">
+      <animate attributeName="height" values="28;35;28" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.3s" />
+      <animate attributeName="y" values="40;33;40" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.3s" />
+    </rect>
+    <rect x="52" y="30" width="8" height="38" fill="url(#businessGrad)" opacity="0.8">
+      <animate attributeName="height" values="38;45;38" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.6s" />
+      <animate attributeName="y" values="30;23;30" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.6s" />
+    </rect>
+  </svg>
+);
+
+const ProjectManagementIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="pmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="hsl(262, 83%, 58%)">
+          <animate attributeName="stop-color" values="hsl(262, 83%, 58%); hsl(217, 91%, 60%); hsl(262, 83%, 58%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(217, 91%, 60%)">
+          <animate attributeName="stop-color" values="hsl(217, 91%, 60%); hsl(262, 83%, 58%); hsl(217, 91%, 60%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <rect x="15" y="25" width="15" height="6" rx="1" fill="url(#pmGrad)" opacity="0.9">
+      <animate attributeName="width" values="15;20;15" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </rect>
+    <rect x="15" y="36" width="25" height="6" rx="1" fill="url(#pmGrad)" opacity="0.7">
+      <animate attributeName="width" values="25;30;25" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.3s" />
+    </rect>
+    <rect x="15" y="47" width="35" height="6" rx="1" fill="url(#pmGrad)" opacity="0.8">
+      <animate attributeName="width" values="35;40;35" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" begin="0.6s" />
+    </rect>
+    <circle cx="60" cy="40" r="8" stroke="url(#pmGrad)" strokeWidth="2" fill="none">
+      <animate attributeName="r" values="8;10;8" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </circle>
+  </svg>
+);
+
+const HelpDeskIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full">
+    <defs>
+      <linearGradient id="helpdeskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="hsl(168, 76%, 42%)">
+          <animate attributeName="stop-color" values="hsl(168, 76%, 42%); hsl(142, 71%, 45%); hsl(168, 76%, 42%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stopColor="hsl(142, 71%, 45%)">
+          <animate attributeName="stop-color" values="hsl(142, 71%, 45%); hsl(168, 76%, 42%); hsl(142, 71%, 45%)" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+    <path d="M25,30 Q25,20 35,20 L45,20 Q55,20 55,30 L55,40 Q55,50 45,50 L40,50" stroke="url(#helpdeskGrad)" strokeWidth="3" fill="none">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" />
+    </path>
+    <circle cx="40" cy="58" r="3" fill="url(#helpdeskGrad)">
+      <animate attributeName="r" values="3;4;3" dur={isHovered ? "9s" : "3s"} repeatCount="indefinite" />
+    </circle>
+    <path d="M30,50 Q30,55 35,55 L45,55 Q50,55 50,50" stroke="url(#helpdeskGrad)" strokeWidth="2" fill="none">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur={isHovered ? "6s" : "2s"} repeatCount="indefinite" begin="0.3s" />
+    </path>
+  </svg>
+);
+
 interface EnterpriseITProps {
   selectedTechnologies: string[];
   selectedFeatures: string[];
@@ -424,37 +685,19 @@ const EnterpriseIT = ({
     }
   };
   const allFeaturesSelected = consolidatedFeatures.every(f => selectedFeatures.includes(f.title));
-  const technologies = [{
-    category: "Microsoft",
-    items: "Server 2025, M365 Administration, PowerShell, Windows 11, Intune, Endpoint Administration, and more"
-  }, {
-    category: "Cloud",
-    items: "Azure, AWS, Google Cloud, Virtual Desktops, Cloud Security, and more"
-  }, {
-    category: "Cybersecurity",
-    items: "CISSP, Security+, Penetration Testing, SecurityX, and more"
-  }, {
-    category: "AI",
-    items: "ChatGPT, Copilot, AI Awareness, Gemini, AI Ethics, and more"
-  }, {
-    category: "Networking",
-    items: "Cisco CCNA, CCNP, Network+, Wireshark, IPv6, BGP, and more"
-  }, {
-    category: "Full Stack Developer",
-    items: "Python, Javascript, React, .NET, HTML/CSS, AI in Coding, and more"
-  }, {
-    category: "DevOps",
-    items: "Kubernetes, Docker, IAC, CI/CD, CKA, Hashicorp, and more"
-  }, {
-    category: "Business Pro",
-    items: "Power Apps, Power Automate, Power BI, Azure Data, MS Fabric, and more"
-  }, {
-    category: "Project Management",
-    items: "Authorized Training Partner for PMI, PMP, ACP, Project +, CAPM, Lean Six Sigma, and more"
-  }, {
-    category: "Help Desk",
-    items: "CompTIA (Tech+, A+, Net+, Sec+), ITIL v4 Foundations, and more"
-  }];
+  
+  const technologies = [
+    { name: "Microsoft", Icon: MicrosoftIcon, items: "Server 2025, M365 Administration, PowerShell, Windows 11, Intune, Endpoint Administration, and more", link: "/microsoft" },
+    { name: "Cloud", Icon: CloudIcon, items: "Azure, AWS, Google Cloud, Virtual Desktops, Cloud Security, and more", link: "/cloud" },
+    { name: "Cybersecurity", Icon: CybersecurityIcon, items: "CISSP, Security+, Penetration Testing, SecurityX, and more", link: "/cybersecurity" },
+    { name: "AI", Icon: AIIcon, items: "ChatGPT, Copilot, AI Awareness, Gemini, AI Ethics, and more", link: "/ai-pro" },
+    { name: "Networking", Icon: NetworkingIcon, items: "Cisco CCNA, CCNP, Network+, Wireshark, IPv6, BGP, and more", link: "/networking" },
+    { name: "Full Stack Developer", Icon: FullStackIcon, items: "Python, Javascript, React, .NET, HTML/CSS, AI in Coding, and more", link: "/fullstack-developer" },
+    { name: "DevOps", Icon: DevOpsIcon, items: "Kubernetes, Docker, IAC, CI/CD, CKA, Hashicorp, and more", link: "/devops" },
+    { name: "Business Pro", Icon: BusinessProIcon, items: "Power Apps, Power Automate, Power BI, Azure Data, MS Fabric, and more", link: "/business-pro" },
+    { name: "Project Management", Icon: ProjectManagementIcon, items: "Authorized Training Partner for PMI, PMP, ACP, Project +, CAPM, Lean Six Sigma, and more", link: "/project-management" },
+    { name: "Help Desk", Icon: HelpDeskIcon, items: "CompTIA (Tech+, A+, Net+, Sec+), ITIL v4 Foundations, and more", link: "/help-desk" },
+  ];
   return <div className="animate-fade-in">
       <div className="mb-12">
         <h2 className="text-4xl font-bold mb-6 text-foreground leading-tight pb-2">Enterprise IT</h2>
@@ -469,56 +712,31 @@ const EnterpriseIT = ({
         <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Technologies We Train On</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {technologies.map((tech, index) => {
-          const techLinks: Record<string, string> = {
-            "Microsoft": "/microsoft",
-            "Cloud": "/cloud",
-            "Cybersecurity": "/cybersecurity",
-            "AI": "/ai-pro",
-            "Networking": "/networking",
-            "Full Stack Developer": "/fullstack-developer",
-            "DevOps": "/devops",
-            "Business Pro": "/business-pro",
-            "Project Management": "/project-management",
-            "Help Desk": "/help-desk"
-          };
-          
-          const techColors = [
-            '#60A5FA', '#FB923C', '#A78BFA', '#4ADE80', '#38BDF8',
-            '#FBBF24', '#F472B6', '#6366F1', '#EC4899', '#14B8A6'
-          ];
-          const color = techColors[index % techColors.length];
-          
-          return <Link key={index} to={techLinks[tech.category]} className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10">
-                {/* Floating Particles */}
-                <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  {[...Array(5)].map((_, i) => (
-                    <circle 
-                      key={i}
-                      cx={30 + (i * 40)} 
-                      cy={30 + (i * 35)} 
-                      r="1.5" 
-                      fill={color}
-                      opacity="0.4"
-                    >
-                      <animate 
-                        attributeName="cy" 
-                        values={`${30 + (i * 35)};${15 + (i * 35)};${30 + (i * 35)}`} 
-                        dur={`${2 + (i * 0.3)}s`} 
-                        repeatCount="indefinite" 
-                      />
-                    </circle>
-                  ))}
-                </svg>
-                
-                <h4 
-                  className="text-base font-bold relative z-10 mb-2 transition-colors duration-300" 
-                  style={{ color: color }}
+            const TechCard = () => {
+              const [isHovered, setIsHovered] = useState(false);
+              
+              return (
+                <Link 
+                  to={tech.link} 
+                  className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
-                  {tech.category}
-                </h4>
-                <p className="text-xs text-gray-400 leading-relaxed relative z-10">{tech.items}</p>
-              </Link>;
-        })}
+                  {/* Animated Icon Background */}
+                  <div className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                    <tech.Icon isHovered={isHovered} />
+                  </div>
+                  
+                  <h4 className="text-base font-bold relative z-10 mb-2 transition-colors duration-300 text-foreground">
+                    {tech.name}
+                  </h4>
+                  <p className="text-xs text-gray-400 leading-relaxed relative z-10">{tech.items}</p>
+                </Link>
+              );
+            };
+            
+            return <TechCard key={index} />;
+          })}
         </div>
       </div>
 
