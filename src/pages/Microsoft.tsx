@@ -1,5 +1,5 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home, Server, Shield, Users, Award, BookOpen, Video, Clock, Monitor, ExternalLink, Brain, Lightbulb, Target } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
@@ -90,246 +90,109 @@ const Microsoft = () => {
             
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-              {[
-                {
-                  title: "Microsoft Azure",
-                  description: "Master cloud computing with Azure fundamentals, administration, architecture, DevOps, security, networking, and virtual desktop solutions.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="azure-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#60a5fa" : "#3b82f6"} />
-                          <stop offset="100%" stopColor={isHovered ? "#3b82f6" : "#1d4ed8"} />
-                        </linearGradient>
-                      </defs>
-                      <path d="M20,70 L50,20 L80,70 Z" fill="url(#azure-grad)" opacity="0.9">
-                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </path>
-                      <circle cx="50" cy="80" r="8" fill="url(#azure-grad)">
-                        <animate attributeName="r" values="8;10;8" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </circle>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Microsoft 365",
-                  description: "Learn Microsoft 365 administration, Intune endpoint management, Exchange messaging, Teams administration, and SharePoint management.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="m365-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#f472b6" : "#ec4899"} />
-                          <stop offset="100%" stopColor={isHovered ? "#ec4899" : "#be185d"} />
-                        </linearGradient>
-                      </defs>
-                      <rect x="20" y="20" width="25" height="25" fill="url(#m365-grad)" rx="3">
-                        <animateTransform attributeName="transform" type="rotate" from="0 32.5 32.5" to="360 32.5 32.5" dur={isHovered ? "6s" : "4s"} repeatCount="indefinite" />
-                      </rect>
-                      <rect x="55" y="20" width="25" height="25" fill="url(#m365-grad)" rx="3">
-                        <animateTransform attributeName="transform" type="rotate" from="0 67.5 32.5" to="-360 67.5 32.5" dur={isHovered ? "6s" : "4s"} repeatCount="indefinite" />
-                      </rect>
-                      <rect x="20" y="55" width="25" height="25" fill="url(#m365-grad)" rx="3">
-                        <animateTransform attributeName="transform" type="rotate" from="0 32.5 67.5" to="-360 32.5 67.5" dur={isHovered ? "6s" : "4s"} repeatCount="indefinite" />
-                      </rect>
-                      <rect x="55" y="55" width="25" height="25" fill="url(#m365-grad)" rx="3">
-                        <animateTransform attributeName="transform" type="rotate" from="0 67.5 67.5" to="360 67.5 67.5" dur={isHovered ? "6s" : "4s"} repeatCount="indefinite" />
-                      </rect>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Windows Server",
-                  description: "Enterprise Windows 11 administration and Windows Server versions 2016, 2019, 2022, and 2025 with networking and system management.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="server-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#a78bfa" : "#8b5cf6"} />
-                          <stop offset="100%" stopColor={isHovered ? "#8b5cf6" : "#6d28d9"} />
-                        </linearGradient>
-                      </defs>
-                      <rect x="20" y="25" width="60" height="15" fill="url(#server-grad)" rx="2">
-                        <animate attributeName="opacity" values="1;0.6;1" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </rect>
-                      <rect x="20" y="45" width="60" height="15" fill="url(#server-grad)" rx="2">
-                        <animate attributeName="opacity" values="0.6;1;0.6" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </rect>
-                      <rect x="20" y="65" width="60" height="15" fill="url(#server-grad)" rx="2">
-                        <animate attributeName="opacity" values="1;0.6;1" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </rect>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "PowerShell",
-                  description: "PowerShell scripting, automation, tool building, Microsoft 365 integration, and Microsoft Graph PowerShell for administrators.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="powershell-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#34d399" : "#10b981"} />
-                          <stop offset="100%" stopColor={isHovered ? "#10b981" : "#059669"} />
-                        </linearGradient>
-                      </defs>
-                      <path d="M30,70 L50,30 L70,50" stroke="url(#powershell-grad)" strokeWidth="8" fill="none" strokeLinecap="round">
-                        <animate attributeName="stroke-dasharray" values="0,150;150,0" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </path>
-                      <line x1="55" y1="70" x2="75" y2="70" stroke="url(#powershell-grad)" strokeWidth="6" strokeLinecap="round">
-                        <animate attributeName="opacity" values="0;1;0" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </line>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Security & Compliance",
-                  description: "Microsoft security fundamentals, cybersecurity architecture, security operations, identity and access management, and Security Copilot.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="security-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#fbbf24" : "#f59e0b"} />
-                          <stop offset="100%" stopColor={isHovered ? "#f59e0b" : "#d97706"} />
-                        </linearGradient>
-                      </defs>
-                      <path d="M50,20 L70,30 L70,55 Q70,75 50,85 Q30,75 30,55 L30,30 Z" fill="url(#security-grad)">
-                        <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" additive="sum" />
-                      </path>
-                      <circle cx="50" cy="55" r="8" fill="white">
-                        <animate attributeName="r" values="8;10;8" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </circle>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "SQL Server & Databases",
-                  description: "Querying with Transact-SQL, database development, SQL Server Reporting Services (SSRS), and introduction to SQL fundamentals.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="sql-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#fb923c" : "#f97316"} />
-                          <stop offset="100%" stopColor={isHovered ? "#f97316" : "#ea580c"} />
-                        </linearGradient>
-                      </defs>
-                      <ellipse cx="50" cy="30" rx="30" ry="10" fill="url(#sql-grad)">
-                        <animate attributeName="ry" values="10;12;10" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </ellipse>
-                      <ellipse cx="50" cy="50" rx="30" ry="10" fill="url(#sql-grad)">
-                        <animate attributeName="ry" values="10;12;10" dur={isHovered ? "3s" : "2s"} begin="0.5s" repeatCount="indefinite" />
-                      </ellipse>
-                      <ellipse cx="50" cy="70" rx="30" ry="10" fill="url(#sql-grad)">
-                        <animate attributeName="ry" values="10;12;10" dur={isHovered ? "3s" : "2s"} begin="1s" repeatCount="indefinite" />
-                      </ellipse>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Microsoft 365 Copilot",
-                  description: "AI-powered productivity with Microsoft 365 Copilot for Word, PowerPoint, Outlook, Excel, Teams, and Copilot Studio agents.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="copilot-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#c084fc" : "#a855f7"} />
-                          <stop offset="100%" stopColor={isHovered ? "#a855f7" : "#9333ea"} />
-                        </linearGradient>
-                      </defs>
-                      <circle cx="50" cy="50" r="25" fill="url(#copilot-grad)">
-                        <animate attributeName="r" values="25;28;25" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </circle>
-                      <path d="M40,45 L48,55 L62,35" stroke="white" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <animate attributeName="stroke-dasharray" values="0,50;50,0" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </path>
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Power Platform",
-                  description: "Microsoft Power BI data analytics, business intelligence, data visualization, and Power Platform fundamentals certification.",
-                  icon: (isHovered: boolean) => (
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="power-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={isHovered ? "#fde047" : "#facc15"} />
-                          <stop offset="100%" stopColor={isHovered ? "#facc15" : "#eab308"} />
-                        </linearGradient>
-                      </defs>
-                      <polygon points="50,20 65,45 80,50 65,55 50,80 35,55 20,50 35,45" fill="url(#power-grad)">
-                        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur={isHovered ? "6s" : "4s"} repeatCount="indefinite" />
-                      </polygon>
-                      <circle cx="50" cy="50" r="12" fill="white">
-                        <animate attributeName="r" values="12;15;12" dur={isHovered ? "3s" : "2s"} repeatCount="indefinite" />
-                      </circle>
-                    </svg>
-                  ),
-                },
-              ].map((tech, index) => {
-                const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; opacity: number }>>([]);
-                const [isHovered, setIsHovered] = useState(false);
-                const cardRef = useRef<HTMLDivElement>(null);
-                const particleIdRef = useRef(0);
-
-                useEffect(() => {
-                  if (!isHovered) {
-                    setParticles([]);
-                    return;
-                  }
-
-                  const interval = setInterval(() => {
-                    setParticles((prev) => prev.filter((p) => p.opacity > 0).map((p) => ({ ...p, opacity: p.opacity - 0.02 })));
-                  }, 50);
-
-                  return () => clearInterval(interval);
-                }, [isHovered]);
-
-                const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-                  if (!cardRef.current) return;
-                  const rect = cardRef.current.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-
-                  setParticles((prev) => [
-                    ...prev.slice(-20),
-                    { id: particleIdRef.current++, x, y, opacity: 1 },
-                  ]);
-                };
-
-                const colors = ["#3b82f6", "#ec4899", "#8b5cf6", "#10b981", "#f59e0b", "#f97316", "#a855f7", "#facc15"];
-
-                return (
-                  <div
-                    key={index}
-                    ref={cardRef}
-                    className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105 relative overflow-hidden"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    onMouseMove={handleMouseMove}
-                  >
-                    {particles.map((particle) => (
-                      <div
-                        key={particle.id}
-                        className="absolute w-2 h-2 rounded-full pointer-events-none"
-                        style={{
-                          left: particle.x,
-                          top: particle.y,
-                          backgroundColor: colors[index % colors.length],
-                          opacity: particle.opacity,
-                          transform: "translate(-50%, -50%)",
-                        }}
-                      />
-                    ))}
-                    <div className="flex items-center gap-3 mb-4 relative z-10">
-                      <div className="p-3 rounded-lg bg-primary/10 w-16 h-16 flex items-center justify-center">
-                        {tech.icon(isHovered)}
-                      </div>
-                      <h3 className="text-xl font-bold">{tech.title}</h3>
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed relative z-10">
-                      {tech.description}
-                    </p>
+              {/* Azure */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Server className="w-6 h-6 text-primary" />
                   </div>
-                );
-              })}
+                  <h3 className="text-xl font-bold">Microsoft Azure</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Master cloud computing with Azure fundamentals, administration, architecture, DevOps, security, networking, and virtual desktop solutions.
+                </p>
+              </div>
+
+              {/* Microsoft 365 */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">Microsoft 365</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Learn Microsoft 365 administration, Intune endpoint management, Exchange messaging, Teams administration, and SharePoint management.
+                </p>
+              </div>
+
+              {/* Windows Server */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Monitor className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">Windows Server</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Enterprise Windows 11 administration and Windows Server versions 2016, 2019, 2022, and 2025 with networking and system management.
+                </p>
+              </div>
+
+              {/* PowerShell */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <BookOpen className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">PowerShell</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  PowerShell scripting, automation, tool building, Microsoft 365 integration, and Microsoft Graph PowerShell for administrators.
+                </p>
+              </div>
+
+              {/* Security */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Shield className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">Security & Compliance</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Microsoft security fundamentals, cybersecurity architecture, security operations, identity and access management, and Security Copilot.
+                </p>
+              </div>
+
+              {/* SQL Server */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Server className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">SQL Server & Databases</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Querying with Transact-SQL, database development, SQL Server Reporting Services (SSRS), and introduction to SQL fundamentals.
+                </p>
+              </div>
+
+              {/* Microsoft 365 Copilot */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Brain className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">Microsoft 365 Copilot</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  AI-powered productivity with Microsoft 365 Copilot for Word, PowerPoint, Outlook, Excel, Teams, and Copilot Studio agents.
+                </p>
+              </div>
+
+              {/* Power Platform */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <Lightbulb className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">Power Platform</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Microsoft Power BI data analytics, business intelligence, data visualization, and Power Platform fundamentals certification.
+                </p>
+              </div>
             </div>
 
           </div>
