@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Target, Users, BarChart3, CheckCircle2 } from "lucide-react";
+import { Target, Users, BarChart3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageLayout } from "@/components/PageLayout";
+import { FeatureListItem } from "@/components/FeatureListItem";
 
 const SkillsAssessments = () => {
   useEffect(() => {
@@ -130,10 +131,7 @@ const SkillsAssessments = () => {
                       <h4 className="font-semibold mb-3">{category.title}</h4>
                       <div className="space-y-1.5">
                         {category.assessments.slice(0, 4).map(assessment => (
-                          <div key={assessment} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-1" />
-                            <span className="text-xs text-muted-foreground">{assessment}</span>
-                          </div>
+                          <FeatureListItem key={assessment} text={assessment} size="xs" />
                         ))}
                         {category.assessments.length > 4 && (
                           <p className="text-xs text-muted-foreground/60 italic pt-1">

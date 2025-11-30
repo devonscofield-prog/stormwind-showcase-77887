@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Users, Video, Award, Calendar, CheckCircle } from "lucide-react";
+import { Users, Video, Award, Calendar } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+import { FeatureListItem } from "@/components/FeatureListItem";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import ashleyHunt from "@/assets/ashley-hunt.png";
 import spikeXavier from "@/assets/spike-xavier.png";
@@ -56,20 +57,14 @@ const LiveInstructorLed = () => {
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { title: "Expert Instructors", desc: "Industry-certified professionals with real-world experience" },
-                  { title: "Interactive Learning", desc: "Ask questions and get immediate answers in real-time" },
-                  { title: "Flexible Sessions", desc: "Short 2-4 hour sessions fit easily into your schedule" },
-                  { title: "Certification-Aligned", desc: "Structured curriculum designed for exam success" },
-                  { title: "Always Current", desc: "Content updated with latest technologies and best practices" },
-                  { title: "Collaborative Environment", desc: "Learn alongside peers and build your professional network" },
+                  { title: "Expert Instructors", description: "Industry-certified professionals with real-world experience" },
+                  { title: "Interactive Learning", description: "Ask questions and get immediate answers in real-time" },
+                  { title: "Flexible Sessions", description: "Short 2-4 hour sessions fit easily into your schedule" },
+                  { title: "Certification-Aligned", description: "Structured curriculum designed for exam success" },
+                  { title: "Always Current", description: "Content updated with latest technologies and best practices" },
+                  { title: "Collaborative Environment", description: "Learn alongside peers and build your professional network" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold">{item.title}</p>
-                      <p className="text-sm">{item.desc}</p>
-                    </div>
-                  </div>
+                  <FeatureListItem key={i} title={item.title} description={item.description} />
                 ))}
               </div>
             </div>
@@ -104,13 +99,7 @@ const LiveInstructorLed = () => {
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">{course.description}</p>
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-sm">Certification Prep</p>
-                    <p className="text-xs text-muted-foreground">{course.certification} Exam</p>
-                  </div>
-                </div>
+                <FeatureListItem title="Certification Prep" description={`${course.certification} Exam`} size="sm" />
                 <div className="flex items-start gap-3">
                   <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                   <div>
