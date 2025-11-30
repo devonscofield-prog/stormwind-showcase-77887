@@ -304,15 +304,7 @@ All colors MUST be HSL.
     box-shadow: 0 0 30px hsl(166 58% 40% / 0.5), 0 0 60px hsl(166 58% 40% / 0.2);
   }
 
-  /* Grid animation for hero background */
-  @keyframes grid-move {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(50px);
-    }
-  }
+  /* Grid animation for hero background - uses grid-move defined above */
 
   /* Glass Morphism Tab Backgrounds */
   .glass-tab-primary {

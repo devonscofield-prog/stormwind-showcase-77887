@@ -180,18 +180,22 @@ export const useAnalytics = () => {
       const sessionDuration = Math.floor((Date.now() - sessionStartTime.current) / 1000);
       
       // Use sendBeacon for reliable sending on page unload
+      // sendBeacon requires a Blob with proper content-type for JSON
       const data = {
-        type: 'session_update',
-        data: {
-          session_id: sessionId.current,
-          exit_page: window.location.pathname,
-          total_duration: sessionDuration
-        }
+        events: [{
+          type: 'session_update',
+          data: {
+            session_id: sessionId.current,
+            exit_page: window.location.pathname,
+            total_duration: sessionDuration
+          }
+        }]
       };
 
+      const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
       navigator.sendBeacon(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`,
-        JSON.stringify(data)
+        blob
       );
     };
 
