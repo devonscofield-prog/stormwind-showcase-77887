@@ -1,244 +1,94 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, ExternalLink, Brain, Sparkles, GraduationCap, Code, BookOpen } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import danYoung from "@/assets/dan-young.png";
-import guilHernandez from "@/assets/guil-hernandez.png";
+import { Brain, Sparkles, GraduationCap, Code, BookOpen } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 
 const AIPro = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { technologies = [], features = [] } = location.state || {};
 
   useEffect(() => {
     document.title = "AI";
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <PageLayout
+      title="AI Training"
+      description="Understanding the capabilities and potential of AI, like ChatGPT and Copilot, is crucial for staying ahead in the rapidly evolving field. Master AI tools from beginner to advanced levels with comprehensive training covering ChatGPT, prompt engineering, and Microsoft 365 Copilot."
+      breadcrumbs={[{ label: "AI Training" }]}
+      heroActions={
+        <Button size="lg" onClick={() => navigate('/courses?category=AI')} className="gap-2">
+          Explore Courses
+        </Button>
+      }
+    >
+      {/* AI Training Overview Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
+            <div className="mb-8">
+              <h3 className="text-3xl font-bold mb-4">Master AI Tools & Technologies</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                StormWind's AI Training offers comprehensive instruction on leveraging AI tools to enhance productivity and innovation. From ChatGPT fundamentals to Microsoft 365 Copilot integration, our expert-led courses provide hands-on experience with the latest AI technologies.
+              </p>
+            </div>
 
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>AI Training</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              AI Training
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              Understanding the capabilities and potential of AI, like ChatGPT and Copilot, is crucial for staying ahead in the rapidly evolving field. Master AI tools from beginner to advanced levels with comprehensive training covering ChatGPT, prompt engineering, and Microsoft 365 Copilot.
-            </p>
-            <div className="flex justify-center">
-              <Button
-                size="lg"
-                onClick={() => navigate('/courses?category=AI')}
-                className="gap-2"
-              >
-                Explore Courses
-              </Button>
-          </div>
-        </div>
-
-          {/* AI Training Overview Section */}
-          <div id="ai-overview" className="mb-32 animate-fade-in scroll-mt-24">
-            <div className="max-w-6xl mx-auto">
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
-                <div className="mb-8">
-                  <h3 className="text-3xl font-bold mb-4">Master AI Tools & Technologies</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    StormWind's AI Training offers comprehensive instruction on leveraging AI tools to enhance productivity and innovation. From ChatGPT fundamentals to Microsoft 365 Copilot integration, our expert-led courses provide hands-on experience with the latest AI technologies. Learn prompt engineering, AI-assisted coding, and prepare for industry certifications with interactive learning paths designed for all skill levels.
-                  </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {[
+                { icon: Brain, title: "ChatGPT & Prompt Engineering", desc: "Master conversational AI and prompt optimization", items: ["ChatGPT Fundamentals", "Advanced Prompt Engineering", "Productivity Workflows", "Content Creation with AI"] },
+                { icon: Sparkles, title: "Microsoft 365 Copilot", desc: "Integrate AI across Microsoft applications", items: ["Copilot in Word & Excel", "Teams & Outlook Integration", "PowerPoint Automation", "Business Productivity Tips"] },
+                { icon: GraduationCap, title: "AI Fundamentals & Certifications", desc: "Prepare for industry certifications", items: ["Azure AI-900 Certification", "AWS AI Practitioner", "Machine Learning Basics", "Computer Vision & NLP"], note: "Only Included in Enterprise IT License" },
+                { icon: Code, title: "AI Coding", desc: "Leverage AI to accelerate development", items: ["Learn to Code with AI", "Claude Code, Codex & Copilot", "AI-Assisted Debugging", "Prompt Engineering for Devs"], note: "Only Included in Enterprise IT License" },
+              ].map((card, i) => (
+                <div key={i} className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="flex items-center gap-3 mb-3">
+                    <card.icon className="w-8 h-8 text-primary" />
+                    <h4 className="text-xl font-bold">{card.title}</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">{card.desc}</p>
+                  <ul className="space-y-2 text-sm mb-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {card.note && (
+                    <p className="text-xs text-muted-foreground/80 italic border-t border-border pt-3">{card.note}</p>
+                  )}
                 </div>
+              ))}
+            </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Brain className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">ChatGPT & Prompt Engineering</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Master conversational AI and prompt optimization</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">ChatGPT Fundamentals</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Advanced Prompt Engineering</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Productivity Workflows</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Content Creation with AI</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Sparkles className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">Microsoft 365 Copilot</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Integrate AI across Microsoft applications</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Copilot in Word & Excel</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Teams & Outlook Integration</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">PowerPoint Automation</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Business Productivity Tips</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <GraduationCap className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">AI Fundamentals & Certifications</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Prepare for industry certifications</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Azure AI-900 Certification</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">AWS AI Practitioner</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Machine Learning Basics</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Computer Vision & NLP</span>
-                      </li>
-                    </ul>
-                    <p className="text-xs text-muted-foreground/80 italic border-t border-border pt-3">
-                      Only Included in Enterprise IT License
-                    </p>
-                  </div>
-
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Code className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">AI Coding</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Leverage AI to accelerate development</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Learn to Code with AI</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Claude Code, Codex & Copilot</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">AI-Assisted Debugging</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Prompt Engineering for Devs</span>
-                      </li>
-                    </ul>
-                    <p className="text-xs text-muted-foreground/80 italic border-t border-border pt-3">
-                      Only Included in Enterprise IT License
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
-                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <BookOpen className="w-6 h-6 text-primary" />
-                    Interactive Learning Features
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Expert-led training from industry professionals</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">1:1 mentoring sessions available</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Bytes format for flexible pacing</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Hands-on practical exercises</span>
-                      </li>
-                    </ul>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Real-world use case scenarios</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Certification preparation materials</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">On-demand access to all content</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Progress tracking and assessments</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <BookOpen className="w-6 h-6 text-primary" />
+                Interactive Learning Features
+              </h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                <ul className="space-y-2 text-sm">
+                  {["Expert-led training from industry professionals", "1:1 mentoring sessions available", "Bytes format for flexible pacing", "Hands-on practical exercises"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="space-y-2 text-sm">
+                  {["Real-world use case scenarios", "Certification preparation materials", "On-demand access to all content", "Progress tracking and assessments"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
-
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 
