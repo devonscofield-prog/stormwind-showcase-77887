@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -9,16 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Home } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { PageLayout } from "@/components/PageLayout";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -31,7 +21,6 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 const Contact = () => {
-  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const { toast } = useToast();
@@ -82,177 +71,153 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="relative z-10">
-        <Navigation />
+    <PageLayout
+      title="Contact Us"
+      description="Request pricing information or get in touch with your learning director"
+      breadcrumbs={[{ label: "Contact Us" }]}
+      containerSize="narrow"
+      heroClassName="mb-12"
+    >
+      <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto mb-8">
+        <p className="text-sm text-muted-foreground">
+          <strong className="text-foreground">Note:</strong> If you've already been working with a StormWind learning director, 
+          please reach out to them directly. This form is for new inquiries.
+        </p>
+      </div>
 
-        <div className="container mx-auto px-4 pt-32 pb-16 max-w-2xl">
-        {/* Breadcrumb Navigation */}
-        <Breadcrumb className="mb-8">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/" className="flex items-center gap-2">
-                  <Home className="w-4 h-4" />
-                  Home
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Contact Us</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground mb-4">
-            Request pricing information or get in touch with your learning director
-          </p>
-          <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto">
-            <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Note:</strong> If you've already been working with a StormWind learning director, 
-              please reach out to them directly. This form is for new inquiries.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:scale-105 relative overflow-hidden">
-          {/* Success Animation Overlay */}
-          {showSuccess && (
-            <div className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
-              <div className="text-center animate-scale-in">
-                <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 border-2 border-primary animate-pulse">
-                  <svg 
-                    className="w-10 h-10 text-primary" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M5 13l4 4L19 7" 
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
-                <p className="text-muted-foreground max-w-md">
-                  Your request has been received. A learning director will contact you soon.
-                </p>
+      <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:scale-105 relative overflow-hidden">
+        {/* Success Animation Overlay */}
+        {showSuccess && (
+          <div className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
+            <div className="text-center animate-scale-in">
+              <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 border-2 border-primary animate-pulse">
+                <svg 
+                  className="w-10 h-10 text-primary" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M5 13l4 4L19 7" 
+                  />
+                </svg>
               </div>
+              <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
+              <p className="text-muted-foreground max-w-md">
+                Your request has been received. A learning director will contact you soon.
+              </p>
             </div>
-          )}
-          
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Name *</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="Your name" 
-                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          </div>
+        )}
+        
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Name *</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder="Your name" 
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Email *</FormLabel>
-                    <FormControl>
-                      <Input 
-                        type="email" 
-                        placeholder="your.email@company.com" 
-                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Email *</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="email" 
+                      placeholder="your.email@company.com" 
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="company"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Company</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="Your company name" 
-                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Company</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder="Your company name" 
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Phone</FormLabel>
-                    <FormControl>
-                      <Input 
-                        type="tel" 
-                        placeholder="Your phone number" 
-                        className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Phone</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="tel" 
+                      placeholder="Your phone number" 
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white">Message *</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="Tell us about your training needs, pricing inquiry, or any questions you have..."
-                        className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Message *</FormLabel>
+                  <FormControl>
+                    <Textarea 
+                      placeholder="Tell us about your training needs, pricing inquiry, or any questions you have..."
+                      className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <Button 
-                type="submit" 
-                className="w-full bg-[#4FD1C5] hover:bg-[#3db8ac] text-white font-semibold transition-all duration-300" 
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Form>
-        </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-[#4FD1C5] hover:bg-[#3db8ac] text-white font-semibold transition-all duration-300" 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
+          </form>
+        </Form>
       </div>
-      </div>
-    </div>
+    </PageLayout>
   );
 };
 

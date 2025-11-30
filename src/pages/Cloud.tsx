@@ -1,16 +1,8 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, Award, FlaskConical, Brain, Users, Clock, Video, BookOpen, Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Award, FlaskConical, Brain, Users, Clock, Video, BookOpen, Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import benBurich from "@/assets/ben-burich.png";
 import abdelSalem from "@/assets/abdel-salem.png";
@@ -106,147 +98,120 @@ const CloudTraining = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Cloud Training</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              Cloud Training
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              Master cloud technologies with comprehensive training in Azure, AWS, and Google Cloud Platform. Build expertise in cloud architecture, administration, security, and deployment.
+    <PageLayout
+      title="Cloud Training"
+      description="Master cloud technologies with comprehensive training in Azure, AWS, and Google Cloud Platform. Build expertise in cloud architecture, administration, security, and deployment."
+      breadcrumbs={[{ label: "Cloud Training" }]}
+      heroActions={
+        <div className="flex justify-center gap-4">
+          <Button size="lg" onClick={() => navigate('/courses?category=Cloud')} className="gap-2">
+            Explore Courses
+          </Button>
+          <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
+            Explore Ranges
+          </Button>
+        </div>
+      }
+    >
+      {/* Cloud Technologies Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
+          {/* Microsoft Azure */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Cloud className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Microsoft Azure</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions on Microsoft's cloud platform.
             </p>
-            <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses?category=Cloud')} className="gap-2">
-                Explore Courses
-              </Button>
-              <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
-                Explore Ranges
-              </Button>
-            </div>
           </div>
 
-          {/* Cloud Technologies Section */}
-          <div className="mb-32 animate-fade-in">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
-              {/* Microsoft Azure */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Cloud className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Microsoft Azure</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions on Microsoft's cloud platform.
-                </p>
+          {/* AWS */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Server className="w-6 h-6 text-primary" />
               </div>
-
-              {/* AWS */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Server className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Amazon Web Services</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  AWS fundamentals, solutions architecture, SysOps administration, and cloud practitioner certification training.
-                </p>
-              </div>
-
-              {/* Google Cloud */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Layers className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Google Cloud Platform</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  GCP fundamentals, cloud architecture, infrastructure deployment, and Google Cloud certification preparation.
-                </p>
-              </div>
-
-              {/* Containerization & IaC */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Container className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Containerization & IaC</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Docker containers, Kubernetes orchestration, Terraform, CI/CD pipelines, and infrastructure automation best practices.
-                </p>
-              </div>
-
-              {/* Cloud Security */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Shield className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Cloud Security</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Cloud security architecture, identity management, compliance, threat protection, and security operations.
-                </p>
-              </div>
-
-              {/* Cloud Databases */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Database className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Cloud Databases</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Azure SQL, AWS RDS, Cloud SQL, database migration, management, and optimization across cloud platforms.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold">Amazon Web Services</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              AWS fundamentals, solutions architecture, SysOps administration, and cloud practitioner certification training.
+            </p>
           </div>
 
-          {/* Featured Courses Section */}
-          <div className="mb-16 animate-fade-in">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Master cloud technologies with our comprehensive training courses
-              </p>
+          {/* Google Cloud */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Layers className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Google Cloud Platform</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              GCP fundamentals, cloud architecture, infrastructure deployment, and Google Cloud certification preparation.
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {featuredCourses.map((course, index) => (
-                <InstructorCourseCard key={index} {...course} />
-              ))}
+          {/* Containerization & IaC */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Container className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Containerization & IaC</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Docker containers, Kubernetes orchestration, Terraform, CI/CD pipelines, and infrastructure automation best practices.
+            </p>
+          </div>
+
+          {/* Cloud Security */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Cloud Security</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Cloud security architecture, identity management, compliance, threat protection, and security operations.
+            </p>
+          </div>
+
+          {/* Cloud Databases */}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Database className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Cloud Databases</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Azure SQL, AWS RDS, Cloud SQL, database migration, management, and optimization across cloud platforms.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Featured Courses Section */}
+      <div className="mb-16 animate-fade-in">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Master cloud technologies with our comprehensive training courses
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {featuredCourses.map((course, index) => (
+            <InstructorCourseCard key={index} {...course} />
+          ))}
+        </div>
+      </div>
+    </PageLayout>
   );
 };
 

@@ -1,16 +1,8 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, Award, BookOpen, Video, Clock, Users, Monitor, Router, Target, MessageCircle, TrendingUp, Brain } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Award, BookOpen, Video, Clock, Users, Monitor, Router, Target, MessageCircle, TrendingUp, Brain } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import spikeXavier from "@/assets/spike-xavier.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -102,124 +94,92 @@ const HelpDesk = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Help Desk Training</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              Help Desk Training
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              Build essential IT support skills with comprehensive training in hardware, software, networking, and customer service excellence
+    <PageLayout
+      title="Help Desk Training"
+      description="Build essential IT support skills with comprehensive training in hardware, software, networking, and customer service excellence"
+      breadcrumbs={[{ label: "Help Desk Training" }]}
+      heroActions={
+        <div className="flex justify-center gap-4">
+          <Button size="lg" onClick={() => navigate('/courses?category=Help Desk')} className="gap-2">
+            Explore Courses
+          </Button>
+          <Button size="lg" asChild className="gap-2">
+            <a href="/ranges" target="_blank" rel="noopener noreferrer">
+              Explore Ranges
+            </a>
+          </Button>
+        </div>
+      }
+    >
+      {/* Help Desk Technologies Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Monitor className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Hardware & Software Support</h3>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              PC hardware troubleshooting, mobile devices, printers, peripherals, software installation, and system maintenance.
             </p>
-            <div className="flex justify-center gap-4">
-              <Button size="lg" onClick={() => navigate('/courses?category=Help Desk')} className="gap-2">
-                Explore Courses
-              </Button>
-              <Button size="lg" asChild className="gap-2">
-                <a href="/ranges" target="_blank" rel="noopener noreferrer">
-                  Explore Ranges
-                </a>
-              </Button>
-            </div>
           </div>
 
-          {/* Help Desk Technologies Section */}
-          <div className="mb-32 animate-fade-in">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-              {/* Hardware & Software Support */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Monitor className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Hardware & Software Support</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  PC hardware troubleshooting, mobile devices, printers, peripherals, software installation, and system maintenance.
-                </p>
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <Target className="w-6 h-6 text-primary" />
               </div>
-
-              {/* Operating Systems */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Target className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Operating Systems</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Windows and Linux administration, configuration, updates, and troubleshooting for desktop support environments.
-                </p>
-              </div>
-
-              {/* Customer Service */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <MessageCircle className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">Customer Service</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Communication skills, problem-solving techniques, conflict resolution, and professional customer interaction best practices.
-                </p>
-              </div>
-
-              {/* ITSM & Ticketing */}
-              <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <TrendingUp className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">ITSM & Ticketing</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  ITIL frameworks, ticketing systems, incident management, service desk operations, and IT service delivery processes.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold">Operating Systems</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Windows and Linux administration, configuration, updates, and troubleshooting for desktop support environments.
+            </p>
           </div>
 
-          {/* Featured Courses Section */}
-          <div className="mb-32 animate-fade-in">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Launch your IT support career with industry-recognized certifications and expert instruction
-              </p>
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <MessageCircle className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Customer Service</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Communication skills, problem-solving techniques, conflict resolution, and professional customer interaction best practices.
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {featuredCourses.map((course, index) => (
-                <InstructorCourseCard key={index} {...course} />
-              ))}
+          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 rounded-lg bg-primary/10">
+                <TrendingUp className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">ITSM & Ticketing</h3>
             </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              ITIL frameworks, ticketing systems, incident management, service desk operations, and IT service delivery processes.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Featured Courses Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Launch your IT support career with industry-recognized certifications and expert instruction
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {featuredCourses.map((course, index) => (
+            <InstructorCourseCard key={index} {...course} />
+          ))}
+        </div>
+      </div>
+    </PageLayout>
   );
 };
 

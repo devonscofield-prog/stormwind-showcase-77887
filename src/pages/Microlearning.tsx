@@ -1,16 +1,8 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, Zap, BookOpen, Clock, Target, Users } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Zap, BookOpen, Clock, Target, Users } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
 import danYoung from "@/assets/dan-young.png";
@@ -112,92 +104,60 @@ const Microlearning = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Bytes: Microlearning</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              Bytes: Microlearning
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              Learn faster with bite-sized, focused lessons designed for busy professionals. Our Bytes approach delivers targeted knowledge in short, digestible segments that fit seamlessly into your schedule. Each module is optimized for maximum retention and immediate application.
-            </p>
-            <Button
-              onClick={() => navigate("/courses")}
-              variant="default"
-              size="lg"
-            >
-              <BookOpen className="w-5 h-5 mr-2" />
-              Explore Courses
-            </Button>
-          </div>
-
-          {/* What is Bytes Section */}
-          <div className="mb-32 animate-fade-in">
-            <div className="max-w-4xl mx-auto">
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <Zap className="w-8 h-8 text-primary" />
-                  <h2 className="text-3xl font-bold">What is Bytes?</h2>
-                </div>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Bytes is a modern educational approach that breaks down complex topics into small, focused learning units. Each lesson typically takes 3-10 minutes to complete, making it perfect for:
-                  </p>
-                  <ul className="space-y-2 ml-6 list-disc">
-                    <li>Learning on the go during breaks or commutes</li>
-                    <li>Just-in-time training when you need specific skills</li>
-                    <li>Better knowledge retention through focused content</li>
-                    <li>Flexible learning that adapts to your schedule</li>
-                    <li>Quick skill refreshers and knowledge updates</li>
-                  </ul>
-                  <p className="mt-6">
-                    Our Bytes courses feature immediate feedback, real-world scenarios, and hands-on labs to ensure you gain practical, applicable skills efficiently.
-                  </p>
-                </div>
-              </div>
+    <PageLayout
+      title="Bytes: Microlearning"
+      description="Learn faster with bite-sized, focused lessons designed for busy professionals. Our Bytes approach delivers targeted knowledge in short, digestible segments that fit seamlessly into your schedule. Each module is optimized for maximum retention and immediate application."
+      breadcrumbs={[{ label: "Bytes: Microlearning" }]}
+      heroActions={
+        <Button onClick={() => navigate("/courses")} variant="default" size="lg">
+          <BookOpen className="w-5 h-5 mr-2" />
+          Explore Courses
+        </Button>
+      }
+    >
+      {/* What is Bytes Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <Zap className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl font-bold">What is Bytes?</h2>
             </div>
-          </div>
-
-          {/* Featured Courses Section */}
-          <div className="mb-32 animate-fade-in">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Bytes Courses</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Quick, focused training designed for maximum impact in minimum time
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Bytes is a modern educational approach that breaks down complex topics into small, focused learning units. Each lesson typically takes 3-10 minutes to complete, making it perfect for:
               </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {featuredCourses.map((course, index) => (
-                <InstructorCourseCard key={index} {...course} />
-              ))}
+              <ul className="space-y-2 ml-6 list-disc">
+                <li>Learning on the go during breaks or commutes</li>
+                <li>Just-in-time training when you need specific skills</li>
+                <li>Better knowledge retention through focused content</li>
+                <li>Flexible learning that adapts to your schedule</li>
+                <li>Quick skill refreshers and knowledge updates</li>
+              </ul>
+              <p className="mt-6">
+                Our Bytes courses feature immediate feedback, real-world scenarios, and hands-on labs to ensure you gain practical, applicable skills efficiently.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Featured Courses Section */}
+      <div className="mb-32 animate-fade-in">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">Featured Bytes Courses</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Quick, focused training designed for maximum impact in minimum time
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {featuredCourses.map((course, index) => (
+            <InstructorCourseCard key={index} {...course} />
+          ))}
+        </div>
+      </div>
+    </PageLayout>
   );
 };
 
