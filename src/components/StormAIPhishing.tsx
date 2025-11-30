@@ -1,11 +1,9 @@
-import FeatureCard from "./FeatureCard";
-import { Brain, Settings, FileText, Mail, GraduationCap, Target, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import AnimatedFeatureCard, { AnimatedIconProps } from "./AnimatedFeatureCard";
 
 // Animated SVG Icons
-const AIPersonalizedIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const AIPersonalizedIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `ai-personalized-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +34,7 @@ const AIPersonalizedIcon = ({ color, isHovered }: { color: string; isHovered: bo
   );
 };
 
-const TurnKeyIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const TurnKeyIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `turnkey-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +60,7 @@ const TurnKeyIcon = ({ color, isHovered }: { color: string; isHovered: boolean }
   );
 };
 
-const ReportingIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const ReportingIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `reporting-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +90,7 @@ const ReportingIcon = ({ color, isHovered }: { color: string; isHovered: boolean
   );
 };
 
-const EmailIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const EmailIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `email-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +114,7 @@ const EmailIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) 
   );
 };
 
-const SecurityTrainingIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const SecurityTrainingIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `security-training-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,7 +137,7 @@ const SecurityTrainingIcon = ({ color, isHovered }: { color: string; isHovered: 
   );
 };
 
-const AttackVectorsIcon = ({ color, isHovered }: { color: string; isHovered: boolean }) => {
+const AttackVectorsIcon = ({ color, isHovered }: AnimatedIconProps) => {
   const gradientId = `attack-gradient-${color.replace('#', '')}`;
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -181,8 +179,7 @@ interface StormAIPhishingProps {
   toggleFeature: (title: string) => void;
 }
 
-const StormAIPhishing = ({ selectedFeatures, toggleFeature }: StormAIPhishingProps) => {
-  const isSelected = selectedFeatures.includes("StormAI Phishing");
+const StormAIPhishing = ({ }: StormAIPhishingProps) => {
   const features = [
     {
       icon: AIPersonalizedIcon,
@@ -239,108 +236,19 @@ const StormAIPhishing = ({ selectedFeatures, toggleFeature }: StormAIPhishingPro
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {features.map((feature, index) => {
-          const FeatureCard = () => {
-            const [isHovered, setIsHovered] = useState(false);
-            const [particles, setParticles] = useState<Array<{
-              id: number;
-              x: number;
-              y: number;
-              opacity: number;
-              size: number;
-            }>>([]);
-            const cardRef = useRef<HTMLAnchorElement>(null);
-            const particleIdRef = useRef(0);
-            const color = featureColors[index];
-            
-            useEffect(() => {
-              if (particles.length === 0) return;
-              
-              const interval = setInterval(() => {
-                setParticles(prev => 
-                  prev
-                    .map(p => ({ ...p, opacity: p.opacity - 0.05 }))
-                    .filter(p => p.opacity > 0)
-                );
-              }, 50);
-              
-              return () => clearInterval(interval);
-            }, [particles.length]);
-            
-            const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              if (!cardRef.current || !isHovered) return;
-              
-              const rect = cardRef.current.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              
-              const newParticle = {
-                id: particleIdRef.current++,
-                x,
-                y,
-                opacity: 1,
-                size: Math.random() * 4 + 2,
-              };
-              
-              setParticles(prev => [...prev.slice(-20), newParticle]);
-            };
-            
-            return (
-              <Link
-                ref={cardRef}
-                to="/phishing"
-                className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => {
-                  setIsHovered(false);
-                  setParticles([]);
-                }}
-                onMouseMove={handleMouseMove}
-              >
-                {/* Particle Trail */}
-                {particles.map(particle => (
-                  <div
-                    key={particle.id}
-                    className="absolute rounded-full pointer-events-none z-20"
-                    style={{
-                      left: particle.x,
-                      top: particle.y,
-                      width: particle.size,
-                      height: particle.size,
-                      opacity: particle.opacity,
-                      background: color,
-                      boxShadow: `0 0 ${particle.size * 2}px ${color}`,
-                      transform: 'translate(-50%, -50%)',
-                      transition: 'opacity 0.05s linear',
-                    }}
-                  />
-                ))}
-
-                {/* Animated Icon with Glow */}
-                <div className="mb-6 inline-flex relative z-10">
-                  <div 
-                    className="absolute inset-0 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" 
-                    style={{ backgroundColor: color }}
-                  />
-                  <div className="relative transition-transform duration-300 group-hover:scale-110">
-                    <feature.icon color={color} isHovered={isHovered} />
-                  </div>
-                </div>
-                
-                <h4 
-                  className="text-xl font-bold mb-3 relative z-10 transition-colors duration-300" 
-                  style={{ color: color }}
-                >
-                  {feature.title}
-                </h4>
-                
-                <p className="text-sm text-gray-300 leading-relaxed relative z-10">
-                  {feature.description}
-                </p>
-              </Link>
-            );
-          };
+          const color = featureColors[index];
+          const IconComponent = feature.icon;
           
-          return <FeatureCard key={index} />;
+          return (
+            <AnimatedFeatureCard
+              key={index}
+              to="/phishing"
+              color={color}
+              icon={<IconComponent color={color} isHovered={false} />}
+              title={feature.title}
+              description={feature.description}
+            />
+          );
         })}
       </div>
     </div>
