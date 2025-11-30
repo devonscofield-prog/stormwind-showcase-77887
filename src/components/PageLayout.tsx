@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ComponentType } from "react";
 import { Link } from "react-router-dom";
 import { Home, LucideIcon } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
@@ -18,7 +18,7 @@ export interface BreadcrumbItemConfig {
 
 export interface PageLayoutProps {
   /** Page title displayed in hero section */
-  title: string;
+  title?: string;
   /** Page description displayed below title */
   description?: string;
   /** Breadcrumb items - last item is always the current page */
@@ -43,6 +43,10 @@ export interface PageLayoutProps {
   hideHero?: boolean;
   /** Custom content wrapper className */
   contentClassName?: string;
+  /** Custom background component (e.g., TechBackground) */
+  BackgroundComponent?: ComponentType;
+  /** Custom breadcrumb text color class for dark themes */
+  breadcrumbClassName?: string;
 }
 
 const containerSizes = {
@@ -72,11 +76,13 @@ export const PageLayout = ({
   heroClassName,
   hideHero = false,
   contentClassName,
+  BackgroundComponent,
+  breadcrumbClassName,
 }: PageLayoutProps) => {
   const bgClass = backgroundClassName || backgroundVariants[backgroundVariant];
 
-  return (
-    <div className={`min-h-screen ${bgClass}`}>
+  const content = (
+    <>
       <Navigation />
 
       <div className={`container mx-auto px-4 pt-32 pb-16 ${containerSizes[containerSize]}`}>
@@ -85,7 +91,7 @@ export const PageLayout = ({
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/" className="flex items-center gap-2">
+                <Link to="/" className={`flex items-center gap-2 ${breadcrumbClassName || ""}`}>
                   <Home className="w-4 h-4" />
                   Home
                 </Link>
@@ -93,13 +99,13 @@ export const PageLayout = ({
             </BreadcrumbItem>
             {breadcrumbs.map((item, index) => (
               <span key={item.label} className="contents">
-                <BreadcrumbSeparator />
+                <BreadcrumbSeparator className={breadcrumbClassName} />
                 <BreadcrumbItem>
                   {index === breadcrumbs.length - 1 ? (
-                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                    <BreadcrumbPage className={breadcrumbClassName}>{item.label}</BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink asChild>
-                      <Link to={item.href || "#"}>{item.label}</Link>
+                      <Link to={item.href || "#"} className={breadcrumbClassName}>{item.label}</Link>
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
@@ -109,7 +115,7 @@ export const PageLayout = ({
         </Breadcrumb>
 
         {/* Hero Section */}
-        {!hideHero && (
+        {!hideHero && title && (
           <div
             className={`mb-20 animate-fade-in ${
               heroAlign === "center" ? "text-center" : "text-left"
@@ -143,6 +149,24 @@ export const PageLayout = ({
         {/* Main Content */}
         <div className={contentClassName}>{children}</div>
       </div>
+    </>
+  );
+
+  // If a background component is provided, render with special wrapper structure
+  if (BackgroundComponent) {
+    return (
+      <div className={`min-h-screen ${bgClass} relative`}>
+        <BackgroundComponent />
+        <div className="relative z-10">
+          {content}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`min-h-screen ${bgClass}`}>
+      {content}
     </div>
   );
 };
