@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import { LucideIcon, CheckCircle2 } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
+import { FeatureListItem } from "@/components/FeatureListItem";
 import { cn } from "@/lib/utils";
 
 interface TechCardBaseProps {
@@ -178,10 +179,7 @@ export const TechCard = (props: TechCardProps) => {
         <h3 className="text-2xl font-bold text-white mb-6">{title}</h3>
         <div className={cn("grid gap-4", columnClasses[cols])}>
           {props.items.map((item) => (
-            <div key={item} className="flex items-start gap-2">
-              <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-              <span className="text-gray-300">{item}</span>
-            </div>
+            <FeatureListItem key={item} text={item} colorVariant="teal" size="sm" />
           ))}
         </div>
         {children}
