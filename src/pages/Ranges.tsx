@@ -1,16 +1,48 @@
 import { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ProgressiveImage } from "@/components/ProgressiveImage";
 import { TechBackground } from "@/components/TechBackground";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { PageLayout } from "@/components/PageLayout";
+import { TechCard } from "@/components/TechCard";
 import azureRangeImage from "@/assets/azure-range.jpg";
 import microsoftRangeImage from "@/assets/microsoft-range.jpg";
 import networkRangeImage from "@/assets/network-range.jpg";
 import cyberRangeImage from "@/assets/cyber-range.jpg";
-import { CheckCircle2, Cloud, Server, Network, Shield, Database, GitBranch, Box, Boxes } from "lucide-react";
+import { Cloud, Server, Network, Shield, Database, GitBranch, Box, Boxes } from "lucide-react";
+
+const azureTechnologies = [
+  "Azure Portal & Azure CLI", "Azure Resource Manager (ARM) & Bicep", "Azure Virtual Machines (VMs)",
+  "Azure Storage (Blob, File, Table, Queue)", "Azure Virtual Networks (VNet)", "Azure Load Balancer",
+  "Azure Monitor & Log Analytics", "Azure Backup & Site Recovery", "Azure App Services",
+  "Azure Networking (NSGs, Private Link, Peering)", "Azure Kubernetes Service (AKS)", "Azure Automation & Runbooks",
+  "Azure Security Center (Defender for Cloud)", "Azure Key Vault", "Azure Policies",
+  "Azure Virtual Desktop (AVD)", "Azure Infrastructure as Code (IaC)"
+];
+
+const microsoftTechnologies = [
+  "Windows Server 2025", "Windows 11 Enterprise", "Active Directory Domain Services",
+  "Group Policy Management", "DNS & DHCP Services", "IIS Web Services",
+  "Hyper-V Virtualization", "PowerShell Automation", "Windows Admin Center",
+  "Microsoft Defender", "Certificate Services", "File & Storage Services",
+  "Remote Desktop Services", "Windows Deployment Services", "Failover Clustering", "Storage Spaces Direct"
+];
+
+const networkTechnologies = [
+  "Cisco IOS Configuration", "VLAN & Trunking", "Spanning Tree Protocol",
+  "OSPF Routing", "BGP Routing", "EIGRP Routing",
+  "ACL Configuration", "NAT/PAT", "VPN Technologies",
+  "Network Monitoring", "Wireshark Analysis", "IPv4 & IPv6",
+  "QoS Implementation", "Network Automation", "SDN Concepts", "Wireless Technologies"
+];
+
+const cyberTechnologies = [
+  "Splunk SIEM", "Wireshark", "Nmap",
+  "Metasploit", "Burp Suite", "OpenVAS",
+  "Kali Linux", "OWASP Tools", "Snort IDS",
+  "Forensic Tools", "Malware Analysis", "Threat Intelligence",
+  "Security Automation", "Cloud Security", "Container Security", "Zero Trust Architecture"
+];
 
 const Ranges = () => {
   const [activeTab, setActiveTab] = useState("azure");
@@ -18,6 +50,11 @@ const Ranges = () => {
   useEffect(() => {
     document.title = "Ranges";
   }, []);
+
+  const scrollToTabs = (tab: string) => {
+    setActiveTab(tab);
+    document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <PageLayout
@@ -29,73 +66,38 @@ const Ranges = () => {
     >
       {/* Range Cards Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-        {/* Azure Range */}
-        <Card 
-          className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            setActiveTab("azure");
-            document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        >
-          <ProgressiveImage src={azureRangeImage} alt="Azure Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-white mb-3">Azure Range</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Master Azure cloud services with hands-on labs for compute, storage, networking, and security
-            </p>
-          </div>
-        </Card>
-
-        {/* Microsoft Range */}
-        <Card 
-          className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            setActiveTab("microsoft");
-            document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        >
-          <ProgressiveImage src={microsoftRangeImage} alt="Microsoft Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-white mb-3">Microsoft Range</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Practice with Windows Server, Active Directory, and enterprise Microsoft technologies
-            </p>
-          </div>
-        </Card>
-
-        {/* Network Range */}
-        <Card 
-          className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            setActiveTab("network");
-            document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        >
-          <ProgressiveImage src={networkRangeImage} alt="Network Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-white mb-3">Network Range</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Build and troubleshoot networks with routers, switches, and real-world scenarios
-            </p>
-          </div>
-        </Card>
-
-        {/* Cyber Range */}
-        <Card 
-          className="bg-[#1a1f2e] border-gray-700 overflow-hidden hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            setActiveTab("cyber");
-            document.getElementById("range-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        >
-          <ProgressiveImage src={cyberRangeImage} alt="Cyber Range" className="w-full h-48 object-cover" blurAmount={25} transitionDuration={600} />
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-white mb-3">Cyber Range</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Develop security skills in a real world environment using applications like Splunk, Wireshark, OpenVAS, and Nmap
-            </p>
-          </div>
-        </Card>
+        <TechCard
+          variant="image"
+          imageSrc={azureRangeImage}
+          imageAlt="Azure Range"
+          title="Azure Range"
+          description="Master Azure cloud services with hands-on labs for compute, storage, networking, and security"
+          onClick={() => scrollToTabs("azure")}
+        />
+        <TechCard
+          variant="image"
+          imageSrc={microsoftRangeImage}
+          imageAlt="Microsoft Range"
+          title="Microsoft Range"
+          description="Practice with Windows Server, Active Directory, and enterprise Microsoft technologies"
+          onClick={() => scrollToTabs("microsoft")}
+        />
+        <TechCard
+          variant="image"
+          imageSrc={networkRangeImage}
+          imageAlt="Network Range"
+          title="Network Range"
+          description="Build and troubleshoot networks with routers, switches, and real-world scenarios"
+          onClick={() => scrollToTabs("network")}
+        />
+        <TechCard
+          variant="image"
+          imageSrc={cyberRangeImage}
+          imageAlt="Cyber Range"
+          title="Cyber Range"
+          description="Develop security skills in a real world environment using applications like Splunk, Wireshark, OpenVAS, and Nmap"
+          onClick={() => scrollToTabs("cyber")}
+        />
       </div>
 
       {/* Tabbed Range Details */}
@@ -131,51 +133,20 @@ const Ranges = () => {
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                   Direct access to Azure cloud services. Practice and skill up on cloud technologies directly in Azure with a sandboxed environment.
                 </p>
-                
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="4h1c0m2kaf" title="Azure Range Demo" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <Database className="w-12 h-12 text-[#4FD1C5] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-3">Azure Storage Sandbox</h3>
-                  <p className="text-gray-400 text-sm">Work with blobs, shared access signatures, and tools for uploading, securing, and managing data.</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <GitBranch className="w-12 h-12 text-[#4FD1C5] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-3">Azure Networking Sandbox</h3>
-                  <p className="text-gray-400 text-sm">Manage virtual networks, peering, public IPs, and troubleshooting connectivity.</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <Server className="w-12 h-12 text-[#4FD1C5] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-3">Azure Compute Sandbox</h3>
-                  <p className="text-gray-400 text-sm">Manage and configure virtual machines, extensions, and automation tools like cloud-init and scripts.</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <Shield className="w-12 h-12 text-[#4FD1C5] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-3">Azure Firewall Sandbox</h3>
-                  <p className="text-gray-400 text-sm">This sandbox provides a complete hub-and-spoke lab for testing Azure Firewall, transitive routing, and secure remote access end to end.</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <Box className="w-12 h-12 text-[#4FD1C5] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-3">Azure Base Sandbox</h3>
-                  <p className="text-gray-400 text-sm">Empty Resource Group for testing new ideas or building from the ground up.</p>
-                </div>
+                <TechCard variant="icon" icon={Database} title="Azure Storage Sandbox" description="Work with blobs, shared access signatures, and tools for uploading, securing, and managing data." />
+                <TechCard variant="icon" icon={GitBranch} title="Azure Networking Sandbox" description="Manage virtual networks, peering, public IPs, and troubleshooting connectivity." />
+                <TechCard variant="icon" icon={Server} title="Azure Compute Sandbox" description="Manage and configure virtual machines, extensions, and automation tools like cloud-init and scripts." />
+                <TechCard variant="icon" icon={Shield} title="Azure Firewall Sandbox" description="This sandbox provides a complete hub-and-spoke lab for testing Azure Firewall, transitive routing, and secure remote access end to end." />
+                <TechCard variant="icon" icon={Box} title="Azure Base Sandbox" description="Empty Resource Group for testing new ideas or building from the ground up." />
               </div>
 
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Azure Services & Technologies</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {["Azure Portal & Azure CLI", "Azure Resource Manager (ARM) & Bicep", "Azure Virtual Machines (VMs)", "Azure Storage (Blob, File, Table, Queue)", "Azure Virtual Networks (VNet)", "Azure Load Balancer", "Azure Monitor & Log Analytics", "Azure Backup & Site Recovery", "Azure App Services", "Azure Networking (NSGs, Private Link, Peering)", "Azure Kubernetes Service (AKS)", "Azure Automation & Runbooks", "Azure Security Center (Defender for Cloud)", "Azure Key Vault", "Azure Policies", "Azure Virtual Desktop (AVD)", "Azure Infrastructure as Code (IaC)"].map(tech => (
-                    <div key={tech} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TechCard variant="techlist" title="Azure Services & Technologies" items={azureTechnologies} />
             </div>
           </div>
         </TabsContent>
@@ -192,29 +163,16 @@ const Ranges = () => {
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                   Master Microsoft technologies and Windows infrastructure with hands-on experience in enterprise environments.
                 </p>
-                
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="v6zins19bi" title="Microsoft Range Demo" />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Enterprise Operating Systems</h3>
-                  <p className="text-gray-400">Work with the latest Windows Server 2025 and Windows 11 in a production-like environment</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Active Directory</h3>
-                  <p className="text-gray-400">Master domain services, user management, and organizational structure in a full AD environment</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Virtualization</h3>
-                  <p className="text-gray-400">Deploy and manage virtual machines with Hyper-V, including nested virtualization scenarios</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Microsoft Security</h3>
-                  <p className="text-gray-400">Implement and test security policies, encryption, and compliance measures across Windows infrastructure</p>
-                </div>
+                <TechCard variant="feature" title="Enterprise Operating Systems" description="Work with the latest Windows Server 2025 and Windows 11 in a production-like environment" />
+                <TechCard variant="feature" title="Active Directory" description="Master domain services, user management, and organizational structure in a full AD environment" />
+                <TechCard variant="feature" title="Virtualization" description="Deploy and manage virtual machines with Hyper-V, including nested virtualization scenarios" />
+                <TechCard variant="feature" title="Microsoft Security" description="Implement and test security policies, encryption, and compliance measures across Windows infrastructure" />
               </div>
 
               <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 mb-8">
@@ -229,18 +187,9 @@ const Ranges = () => {
                     <AccordionContent className="text-gray-300">
                       <p className="mb-3 font-semibold">Basic server roles and core admin skills</p>
                       <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Active Directory & Identity Management</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>DNS and DHCP configuration</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>File Storage and Sharing with NTFS permissions</span>
-                        </li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Active Directory & Identity Management</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>DNS and DHCP configuration</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>File Storage and Sharing with NTFS permissions</span></li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -254,18 +203,9 @@ const Ranges = () => {
                     <AccordionContent className="text-gray-300">
                       <p className="mb-3 font-semibold">Service deployment and integration</p>
                       <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>IIS Web Hosting with HTTPS</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Network Policy Server configuration</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Virtual Machine Management with Hyper-V</span>
-                        </li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>IIS Web Hosting with HTTPS</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Network Policy Server configuration</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Virtual Machine Management with Hyper-V</span></li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -279,18 +219,9 @@ const Ranges = () => {
                     <AccordionContent className="text-gray-300">
                       <p className="mb-3 font-semibold">Security & enterprise policies</p>
                       <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Group Policy design and deployment</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Windows Defender and advanced security</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Backup and disaster recovery strategies</span>
-                        </li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Group Policy design and deployment</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Windows Defender and advanced security</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Backup and disaster recovery strategies</span></li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -304,35 +235,16 @@ const Ranges = () => {
                     <AccordionContent className="text-gray-300">
                       <p className="mb-3 font-semibold">Scripting & infrastructure automation</p>
                       <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>PowerShell scripting and automation</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>Desired State Configuration (DSC)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#4FD1C5] mt-1">•</span>
-                          <span>CI/CD integration with Windows environments</span>
-                        </li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>PowerShell scripting and automation</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Desired State Configuration (DSC)</span></li>
+                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>CI/CD integration with Windows environments</span></li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
               </div>
 
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Microsoft Technologies</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {["Windows Server 2025", "Windows 11 Enterprise", "Active Directory Domain Services", "Group Policy Management", "DNS & DHCP Services", "IIS Web Services", "Hyper-V Virtualization", "PowerShell Automation", "Windows Admin Center", "Microsoft Defender", "Certificate Services", "File & Storage Services", "Remote Desktop Services", "Windows Deployment Services", "Failover Clustering", "Storage Spaces Direct"].map(tech => (
-                    <div key={tech} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TechCard variant="techlist" title="Microsoft Technologies" items={microsoftTechnologies} />
             </div>
           </div>
         </TabsContent>
@@ -349,42 +261,19 @@ const Ranges = () => {
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                   Build, configure, and troubleshoot enterprise networks with real networking equipment and scenarios.
                 </p>
-                
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="mj6i88dyhv" title="Network Range Demo" />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Cisco Infrastructure</h3>
-                  <p className="text-gray-400">Configure routers, switches, and network devices using IOS commands in real-world scenarios</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Network Protocols</h3>
-                  <p className="text-gray-400">Master TCP/IP, routing protocols (OSPF, BGP, EIGRP), and switching technologies</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Network Security</h3>
-                  <p className="text-gray-400">Implement ACLs, VPNs, firewalls, and security best practices for network protection</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Troubleshooting</h3>
-                  <p className="text-gray-400">Diagnose and resolve network issues using industry-standard tools and methodologies</p>
-                </div>
+                <TechCard variant="feature" title="Cisco Infrastructure" description="Configure routers, switches, and network devices using IOS commands in real-world scenarios" />
+                <TechCard variant="feature" title="Network Protocols" description="Master TCP/IP, routing protocols (OSPF, BGP, EIGRP), and switching technologies" />
+                <TechCard variant="feature" title="Network Security" description="Implement ACLs, VPNs, firewalls, and security best practices for network protection" />
+                <TechCard variant="feature" title="Troubleshooting" description="Diagnose and resolve network issues using industry-standard tools and methodologies" />
               </div>
 
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Network Technologies</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {["Cisco IOS Configuration", "VLAN & Trunking", "Spanning Tree Protocol", "OSPF Routing", "BGP Routing", "EIGRP Routing", "ACL Configuration", "NAT/PAT", "VPN Technologies", "Network Monitoring", "Wireshark Analysis", "IPv4 & IPv6", "QoS Implementation", "Network Automation", "SDN Concepts", "Wireless Technologies"].map(tech => (
-                    <div key={tech} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TechCard variant="techlist" title="Network Technologies" items={networkTechnologies} />
             </div>
           </div>
         </TabsContent>
@@ -401,42 +290,19 @@ const Ranges = () => {
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
                   Develop offensive and defensive security skills in a safe, isolated environment with real-world attack scenarios.
                 </p>
-                
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="2f53dv64e9" title="Cyber Range Demo" />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Penetration Testing</h3>
-                  <p className="text-gray-400">Practice ethical hacking techniques using tools like Metasploit, Nmap, and Burp Suite</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">SIEM & Log Analysis</h3>
-                  <p className="text-gray-400">Monitor and analyze security events using Splunk and other SIEM platforms</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Incident Response</h3>
-                  <p className="text-gray-400">Develop skills to detect, contain, and remediate security incidents effectively</p>
-                </div>
-                <div className="bg-[#1a1f2e] p-6 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                  <h3 className="text-xl font-semibold text-white mb-3">Vulnerability Assessment</h3>
-                  <p className="text-gray-400">Identify and assess security weaknesses using OpenVAS and vulnerability scanners</p>
-                </div>
+                <TechCard variant="feature" title="Penetration Testing" description="Practice ethical hacking techniques using tools like Metasploit, Nmap, and Burp Suite" />
+                <TechCard variant="feature" title="SIEM & Log Analysis" description="Monitor and analyze security events using Splunk and other SIEM platforms" />
+                <TechCard variant="feature" title="Incident Response" description="Develop skills to detect, contain, and remediate security incidents effectively" />
+                <TechCard variant="feature" title="Vulnerability Assessment" description="Identify and assess security weaknesses using OpenVAS and vulnerability scanners" />
               </div>
 
-              <div className="bg-[#1a1f2e] p-8 rounded-lg border border-gray-700 hover:border-[#4FD1C5] hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-white mb-6">Security Tools & Technologies</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {["Splunk SIEM", "Wireshark", "Nmap", "Metasploit", "Burp Suite", "OpenVAS", "Kali Linux", "OWASP Tools", "Snort IDS", "Forensic Tools", "Malware Analysis", "Threat Intelligence", "Security Automation", "Cloud Security", "Container Security", "Zero Trust Architecture"].map(tech => (
-                    <div key={tech} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-[#4FD1C5] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TechCard variant="techlist" title="Security Tools & Technologies" items={cyberTechnologies} />
             </div>
           </div>
         </TabsContent>
