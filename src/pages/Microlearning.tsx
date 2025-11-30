@@ -1,7 +1,7 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, Zap, BookOpen, Video, Users, ExternalLink, Clock, Target } from "lucide-react";
+import { Home, Zap, BookOpen, Clock, Target, Users } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import {
   Breadcrumb,
@@ -11,6 +11,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
 import danYoung from "@/assets/dan-young.png";
 import samBurr from "@/assets/sam-burr.png";
@@ -28,6 +29,87 @@ const Microlearning = () => {
   useEffect(() => {
     document.title = "Microlearning";
   }, []);
+
+  const featuredCourses = [
+    {
+      title: "PowerShell Foundations",
+      instructorName: "Mike Pfeiffer",
+      instructorImage: mikePfeiffer,
+      level: "Beginner" as const,
+      titleIcon: Zap,
+      description: "Master PowerShell fundamentals with bite-sized lessons covering cmdlets, scripting, automation, and system administration. Perfect for IT professionals looking to automate tasks and improve efficiency.",
+      features: [
+        { icon: Clock, title: "Quick Lessons", description: "5-10 minute focused modules" },
+        { icon: Target, title: "Hands-On Practice", description: "Practical exercises included" },
+        { icon: Users, title: "Expert Instruction", description: "Learn from industry veterans" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "ChatGPT for IT Professionals",
+      instructorName: "Dan Young",
+      instructorImage: danYoung,
+      level: "Beginner" as const,
+      titleIcon: Zap,
+      description: "Discover how to leverage ChatGPT and AI tools to enhance your IT workflows. Learn prompt engineering, automation techniques, and practical applications for troubleshooting and documentation.",
+      features: [
+        { icon: Clock, title: "Bite-Sized Modules", description: "Learn at your own pace" },
+        { icon: Target, title: "Real-World Examples", description: "Practical IT scenarios" },
+        { icon: BookOpen, title: "AI Best Practices", description: "Industry-standard techniques" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Intune for Microsoft Enterprises",
+      instructorName: "Sam Burr",
+      instructorImage: samBurr,
+      level: "Intermediate" as const,
+      titleIcon: Zap,
+      description: "Master Microsoft Intune for modern device management. Learn to deploy, secure, and manage devices and applications across your enterprise with cloud-based mobile device management.",
+      features: [
+        { icon: Clock, title: "Bytes Format", description: "Short, focused lessons" },
+        { icon: Target, title: "Hands-On Labs", description: "Practice in real environments" },
+        { icon: Users, title: "Enterprise Focus", description: "Real-world scenarios" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "AI for Project Managers",
+      instructorName: "Ashley Hunt",
+      instructorImage: ashleyHunt,
+      level: "Beginner" as const,
+      titleIcon: Zap,
+      description: "Transform your project management with AI tools. Learn how to leverage artificial intelligence for planning, risk assessment, resource allocation, and stakeholder communication.",
+      features: [
+        { icon: Clock, title: "Quick Learning", description: "Get started fast" },
+        { icon: Target, title: "Practical Tools", description: "AI applications for PMs" },
+        { icon: BookOpen, title: "Real Scenarios", description: "Project management use cases" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "NIST Cybersecurity Framework 2.0 Overview",
+      instructorName: "Chris Paul",
+      instructorImage: chrisPaul,
+      level: "Intermediate" as const,
+      titleIcon: Zap,
+      description: "Understand the latest NIST Cybersecurity Framework with focused lessons on the six core functions: Identify, Protect, Detect, Respond, Recover, and Govern. Essential for security professionals.",
+      features: [
+        { icon: Clock, title: "Efficient Learning", description: "Framework in digestible chunks" },
+        { icon: Target, title: "Compliance Focus", description: "Meet security standards" },
+        { icon: BookOpen, title: "Current Standards", description: "Latest 2.0 framework" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "BGP Routing Fundamentals for IPv4",
+      instructorName: "Dan Young",
+      instructorImage: danYoung,
+      level: "Intermediate" as const,
+      titleIcon: Zap,
+      description: "Master Border Gateway Protocol (BGP) routing fundamentals with concise lessons on path selection, peering relationships, route filtering, and best practices for enterprise networks.",
+      features: [
+        { icon: Clock, title: "Focused Content", description: "Core BGP concepts" },
+        { icon: Target, title: "Network Labs", description: "Hands-on routing exercises" },
+        { icon: Users, title: "Expert Guidance", description: "Learn from network professionals" },
+      ] as CourseFeature[],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -108,269 +190,9 @@ const Microlearning = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* PowerShell Foundations */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={mikePfeiffer} alt="Mike Pfeiffer" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">PowerShell Foundations</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Mike Pfeiffer</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master PowerShell fundamentals with bite-sized lessons covering cmdlets, scripting, automation, and system administration. Perfect for IT professionals looking to automate tasks and improve efficiency.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Quick Lessons</p>
-                      <p className="text-xs text-muted-foreground">5-10 minute focused modules</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Practice</p>
-                      <p className="text-xs text-muted-foreground">Practical exercises included</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Expert Instruction</p>
-                      <p className="text-xs text-muted-foreground">Learn from industry veterans</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* ChatGPT for IT Professionals */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">ChatGPT for IT Professionals</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Dan Young</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Discover how to leverage ChatGPT and AI tools to enhance your IT workflows. Learn prompt engineering, automation techniques, and practical applications for troubleshooting and documentation.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bite-Sized Modules</p>
-                      <p className="text-xs text-muted-foreground">Learn at your own pace</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Real-World Examples</p>
-                      <p className="text-xs text-muted-foreground">Practical IT scenarios</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Best Practices</p>
-                      <p className="text-xs text-muted-foreground">Industry-standard techniques</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Intune for Microsoft Enterprises */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={samBurr} alt="Sam Burr" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Intune for Microsoft Enterprises</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Sam Burr</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master Microsoft Intune for modern device management. Learn to deploy, secure, and manage devices and applications across your enterprise with cloud-based mobile device management.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes Format</p>
-                      <p className="text-xs text-muted-foreground">Short, focused lessons</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Practice in real environments</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Enterprise Focus</p>
-                      <p className="text-xs text-muted-foreground">Real-world scenarios</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* AI for Project Managers */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={ashleyHunt} alt="Ashley Hunt" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">AI for Project Managers</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Ashley Hunt</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Transform your project management with AI tools. Learn how to leverage artificial intelligence for planning, risk assessment, resource allocation, and stakeholder communication.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Quick Learning</p>
-                      <p className="text-xs text-muted-foreground">Get started fast</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Practical Tools</p>
-                      <p className="text-xs text-muted-foreground">AI applications for PMs</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Real Scenarios</p>
-                      <p className="text-xs text-muted-foreground">Project management use cases</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* NIST Cybersecurity Framework 2.0 Overview */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={chrisPaul} alt="Chris Paul" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">NIST Cybersecurity Framework 2.0 Overview</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Chris Paul</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Understand the latest NIST Cybersecurity Framework with focused lessons on the six core functions: Identify, Protect, Detect, Respond, Recover, and Govern. Essential for security professionals.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Efficient Learning</p>
-                      <p className="text-xs text-muted-foreground">Framework in digestible chunks</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Compliance Focus</p>
-                      <p className="text-xs text-muted-foreground">Meet security standards</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Current Standards</p>
-                      <p className="text-xs text-muted-foreground">Latest 2.0 framework</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* BGP Routing Fundamentals for IPv4 */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">BGP Routing Fundamentals for IPv4</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Dan Young</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  BGP is a particularly challenging protocol to support in a production network. This course focuses on real-world considerations to build a foundation for BGP success with bite-sized lessons on design rules and behaviors.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes</p>
-                      <p className="text-xs text-muted-foreground">Focused, digestible content</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Real-world BGP configurations</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">1:1 Instructor Mentoring</p>
-                      <p className="text-xs text-muted-foreground">Expert support for complex topics</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {featuredCourses.map((course, index) => (
+                <InstructorCourseCard key={index} {...course} />
+              ))}
             </div>
           </div>
         </div>

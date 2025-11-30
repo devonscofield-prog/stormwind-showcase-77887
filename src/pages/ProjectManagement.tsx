@@ -1,12 +1,13 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, ExternalLink, Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
+import { Home, Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { VideoEmbed } from "@/components/VideoEmbed";
-import projectManagementImage from "@/assets/project-management-logo.png";
+import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
+
 const ProjectManagement = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,10 +15,40 @@ const ProjectManagement = () => {
     technologies = [],
     features = []
   } = location.state || {};
+
   useEffect(() => {
     document.title = "Project Management";
   }, []);
-  return <div className="min-h-screen bg-background">
+
+  const featuredCourses = [
+    {
+      title: "PMP® Certification",
+      instructorName: "J. Ashley Hunt",
+      instructorImage: ashleyHuntImage,
+      level: "Advanced" as const,
+      description: "Comprehensive preparation for the globally recognized Project Management Professional certification. Master the PMBOK Guide and earn 35 contact hours required for PMP® exam eligibility.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Interactive EPIC LIVE training" },
+        { icon: Bot, title: "AI Tutor", description: "24/7 AI-powered assistance" },
+        { icon: ClipboardCheck, title: "Practice Exams", description: "Comprehensive exam preparation" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "PMI-ACP® Certification",
+      instructorName: "J. Ashley Hunt",
+      instructorImage: ashleyHuntImage,
+      level: "Intermediate" as const,
+      description: "Master agile methodologies and practices for modern project management. Earn 21 contact hours and prepare for the PMI Agile Certified Practitioner certification exam.",
+      features: [
+        { icon: Users, title: "Instructor Mentoring", description: "1:1 expert guidance" },
+        { icon: Bot, title: "AI Tutor", description: "24/7 AI-powered assistance" },
+        { icon: ClipboardCheck, title: "Practice Exams", description: "Comprehensive exam preparation" },
+      ] as CourseFeature[],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -53,7 +84,6 @@ const ProjectManagement = () => {
               </Button>
             </div>
           </div>
-
 
           {/* Featured Instructor Section with Video and Testimonials */}
           <div className="mb-32 rounded-lg bg-card border border-border overflow-hidden animate-fade-in">
@@ -127,105 +157,9 @@ const ProjectManagement = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {/* PMP Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">PMP® Certification</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: J. Ashley Hunt</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Advanced
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Comprehensive preparation for the globally recognized Project Management Professional certification. Master the PMBOK Guide and earn 35 contact hours required for PMP® exam eligibility.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions Available</p>
-                      <p className="text-xs text-muted-foreground">Interactive EPIC LIVE training</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Bot className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">24/7 AI-powered assistance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <ClipboardCheck className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Practice Exams</p>
-                      <p className="text-xs text-muted-foreground">Comprehensive exam preparation</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* ACP Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={ashleyHuntImage} alt="Ashley Hunt" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">PMI-ACP® Certification</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: J. Ashley Hunt</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Intermediate
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master agile methodologies and practices for modern project management. Earn 21 contact hours and prepare for the PMI Agile Certified Practitioner certification exam.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Instructor Mentoring</p>
-                      <p className="text-xs text-muted-foreground">1:1 expert guidance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Bot className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">24/7 AI-powered assistance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <ClipboardCheck className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Practice Exams</p>
-                      <p className="text-xs text-muted-foreground">Comprehensive exam preparation</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {featuredCourses.map((course, index) => (
+                <InstructorCourseCard key={index} {...course} />
+              ))}
             </div>
           </div>
 
@@ -303,25 +237,25 @@ const ProjectManagement = () => {
                   <div className="rounded-lg bg-card/50 border border-border p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <Users className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">Leadership & Agile</h4>
+                      <h4 className="text-xl font-bold">Leadership</h4>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-4">Modern methodologies</p>
+                    <p className="text-sm text-muted-foreground mb-4">Essential soft skills</p>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Cross-Cultural Teams</span>
+                        <span className="text-muted-foreground">Team Leadership</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Agile & Scrum</span>
+                        <span className="text-muted-foreground">Stakeholder Management</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Lean Six Sigma</span>
+                        <span className="text-muted-foreground">Communication Skills</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Kanban Boards</span>
+                        <span className="text-muted-foreground">Conflict Resolution</span>
                       </li>
                     </ul>
                   </div>
@@ -330,184 +264,30 @@ const ProjectManagement = () => {
                 <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
                   <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
                     <Target className="w-6 h-6 text-primary" />
-                    What's Included in Your Training
+                    PDU Categories for CCR
                   </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">EPIC LIVE Classes with Calendar Access</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">24/7 Instant Replay HD Recordings</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">PMP® Certification Practice Exam</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">1:1 Mentoring with Expert Instructor</span>
-                      </li>
-                    </ul>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Downloadable Student Guides</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Exam Prep 'Eleventh Hour' Sessions</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Exam Day Guidance and Tips</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Downloadable Project Templates</span>
-                      </li>
-                    </ul>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <p className="font-semibold text-sm mb-2">Technical Project Management</p>
+                      <p className="text-xs text-muted-foreground">Skills directly related to project management</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm mb-2">Leadership</p>
+                      <p className="text-xs text-muted-foreground">Interpersonal skills to lead teams effectively</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm mb-2">Strategic & Business</p>
+                      <p className="text-xs text-muted-foreground">Business acumen and organizational strategy</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Course Categories Detail */}
-          <div className="space-y-24">
-
-            {/* Technical Courses */}
-            <section className="animate-fade-in scroll-mt-24">
-              <div className="mb-8">
-                <h2 className="text-4xl font-bold mb-4">Technical Project Management</h2>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Practical skills and tools for executing successful projects
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-card border border-border p-8">
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[{
-                  title: "Project Fundamentals for the Accidental Project Manager",
-                  pdu: "8 Technical PDU"
-                }, {
-                  title: "Practical Project Management with Microsoft Project",
-                  pdu: "8.5 PDU"
-                }, {
-                  title: "Initiating a Project",
-                  pdu: "4 Technical PDU"
-                }, {
-                  title: "Planning for Risk Management",
-                  pdu: "4 Technical PDU"
-                }, {
-                  title: "Balancing Time, Cost, and Scope",
-                  pdu: "4 Technical PDU"
-                }, {
-                  title: "Managing a Project Team",
-                  pdu: "4 Technical PDU"
-                }, {
-                  title: "Microsoft Project 2019",
-                  pdu: "8.5 Technical PDU"
-                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium mb-1">{course.title}</p>
-                        <p className="text-sm text-primary">{course.pdu}</p>
-                      </div>
-                    </div>)}
-                </div>
-              </div>
-            </section>
-
-            {/* Leadership Courses */}
-            <section className="animate-fade-in scroll-mt-24">
-              <div className="mb-8">
-                <h2 className="text-4xl font-bold mb-4">Leadership Development</h2>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Essential leadership skills for project managers leading diverse teams
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-card border border-border p-8">
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[{
-                  title: "Leading a Cross-Cultural Virtual Team",
-                  pdu: "2 Leadership PDU"
-                }, {
-                  title: "Building a Communications Management Plan that Works",
-                  pdu: "2 Leadership PDU"
-                }, {
-                  title: "Motivating a Team of Individuals",
-                  pdu: "2 Leadership PDU"
-                }, {
-                  title: "Negotiating for More",
-                  pdu: "2 Leadership PDU"
-                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium mb-1">{course.title}</p>
-                        <p className="text-sm text-primary">{course.pdu}</p>
-                      </div>
-                    </div>)}
-                </div>
-              </div>
-            </section>
-
-            {/* Agile & Methodologies */}
-            <section className="animate-fade-in scroll-mt-24">
-              <div className="mb-8">
-                <h2 className="text-4xl font-bold mb-4">Agile & Modern Methodologies</h2>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Master agile frameworks and lean principles for adaptive project delivery
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-card border border-border p-8">
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[{
-                  title: "Transitioning to Agile Project Management",
-                  pdu: "4 PDU"
-                }, {
-                  title: "Building Successful Scrum Team",
-                  pdu: "8 PDU"
-                }, {
-                  title: "Working with Kanban Boards",
-                  pdu: "4 PDU"
-                }, {
-                  title: "Lean Six Sigma Yellow Belt",
-                  pdu: "16 PDU"
-                }, {
-                  title: "Lean Six Sigma Green Belt",
-                  pdu: "16 PDU"
-                }].map((course, index) => <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-background">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium mb-1">{course.title}</p>
-                        <p className="text-sm text-primary">{course.pdu}</p>
-                      </div>
-                    </div>)}
-                </div>
-              </div>
-            </section>
-
-            {/* PMI Talent Triangle */}
-            <section className="animate-fade-in scroll-mt-24">
-              <div className="rounded-lg bg-card border border-border p-8">
-                <h2 className="text-3xl font-bold mb-4">PMI Talent Triangle™</h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Leadership and business intelligence skills are imperative to support long-range strategic objectives that contribute to success. The ideal skill set is a combination of technical, leadership, and strategic and business management competency—known as the PMI Talent Triangle™.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  In order to fulfill the CCR, PMP's must attain a minimum of <span className="font-semibold text-primary">8 PDU in each of the skill areas</span>, and a total of <span className="font-semibold text-primary">30 PDU</span>, during the 3-year certification term.
-                </p>
-              </div>
-            </section>
-
-          </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default ProjectManagement;

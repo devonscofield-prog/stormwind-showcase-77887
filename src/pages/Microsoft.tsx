@@ -1,7 +1,7 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, Server, Shield, Users, Award, BookOpen, Video, Clock, Monitor, ExternalLink, Brain, Lightbulb, Target } from "lucide-react";
+import { Home, Server, Shield, Users, Award, BookOpen, Video, Clock, Monitor, Brain, Lightbulb, Target } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import {
   Breadcrumb,
@@ -11,10 +11,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
-import microsoftRangeImage from "@/assets/microsoft-range.jpg";
+
 const Microsoft = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,29 +23,87 @@ const Microsoft = () => {
     technologies = [],
     features = []
   } = location.state || {};
+
   useEffect(() => {
     document.title = "Microsoft";
   }, []);
-  const categories = [{
-    id: "microsoft-overview",
-    icon: Server,
-    title: "Microsoft Training Overview",
-    description: "Comprehensive Microsoft training from fundamentals to enterprise solutions",
-    color: "text-blue-500"
-  }, {
-    id: "key-technologies",
-    icon: Monitor,
-    title: "Key Technologies",
-    description: "Master essential Microsoft technologies and platforms",
-    color: "text-primary"
-  }, {
-    id: "microsoft-range",
-    icon: Shield,
-    title: "Microsoft Range",
-    description: "Hands-on practice in a production-like Microsoft environment",
-    color: "text-green-500"
-  }];
-  return <div className="min-h-screen bg-background">
+
+  const featuredCourses = [
+    {
+      title: "MS-102: Microsoft 365 Administrator",
+      instructorName: "Spike Xavier",
+      instructorImage: spikeXavier,
+      level: "Advanced" as const,
+      description: "Master Microsoft 365 administration with comprehensive training in identity and access management, security, compliance, Microsoft 365 services, and enterprise deployment. Prepare for the MS-102 certification exam.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
+        { icon: Clock, title: "24 Hours of Training", description: "Advanced level certification" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "MD-102: Endpoint Administrator",
+      instructorName: "Will Panek",
+      instructorImage: willPanek,
+      level: "Intermediate" as const,
+      description: "Learn to deploy, configure, secure, manage, and monitor devices and client applications in an enterprise environment. Master Windows 11, Intune, Microsoft Endpoint Configuration Manager, and endpoint security.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
+        { icon: Clock, title: "18 Hours of Training", description: "Comprehensive endpoint management" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Windows Server 2025 Administration",
+      instructorName: "Mike Pfeiffer",
+      instructorImage: mikePfeiffer,
+      level: "Advanced" as const,
+      titleIcon: Server,
+      description: "Master the latest Windows Server 2025 administration with comprehensive training in server deployment, configuration, management, and security. Learn enterprise-grade infrastructure management.",
+      features: [
+        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
+        { icon: Video, title: "Live Sessions", description: "Interactive expert-led training" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "AZ-900: Azure Fundamentals",
+      instructorName: "Will Panek",
+      instructorImage: willPanek,
+      level: "Beginner" as const,
+      description: "Build foundational knowledge of cloud concepts and Azure services. Perfect for those new to cloud computing or preparing for more advanced Azure certifications.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
+        { icon: BookOpen, title: "Certification Study Plan", description: "Structured path to Azure certification" },
+        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "AZ-104: Azure Administrator",
+      instructorName: "Spike Xavier",
+      instructorImage: spikeXavier,
+      level: "Intermediate" as const,
+      description: "Master Azure administration with comprehensive training in managing Azure subscriptions, storage, virtual networks, and monitoring. Prepare for the AZ-104 certification exam.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
+        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
+        { icon: Target, title: "Practice Exams", description: "Test your knowledge" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "SC-900: Security Fundamentals",
+      instructorName: "Will Panek",
+      instructorImage: willPanek,
+      level: "Beginner" as const,
+      titleIcon: Shield,
+      description: "Learn Microsoft security, compliance, and identity fundamentals. Understand security concepts, Microsoft security solutions, and identity and access management across Microsoft services.",
+      features: [
+        { icon: BookOpen, title: "Certification Study Plan", description: "Structured learning path" },
+        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
+        { icon: Clock, title: "On-Demand Available", description: "Learn at your own pace" },
+      ] as CourseFeature[],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -84,11 +143,8 @@ const Microsoft = () => {
             </div>
           </div>
 
-
           {/* Microsoft Technologies Section */}
           <div className="mb-32 animate-fade-in">
-            
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
               {/* Azure */}
               <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
@@ -194,7 +250,6 @@ const Microsoft = () => {
                 </p>
               </div>
             </div>
-
           </div>
 
           {/* Featured Courses Section */}
@@ -207,277 +262,15 @@ const Microsoft = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* MS-102 Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={spikeXavier} alt="Spike Xavier" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">MS-102: Microsoft 365 Administrator</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Spike Xavier</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Advanced</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master Microsoft 365 administration with comprehensive training in identity and access management, security, compliance, Microsoft 365 services, and enterprise deployment. Prepare for the MS-102 certification exam.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions Available</p>
-                      <p className="text-xs text-muted-foreground">Interactive learning with expert guidance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">24 Hours of Training</p>
-                      <p className="text-xs text-muted-foreground">Advanced level certification</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* MD-102 Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={willPanek} alt="Will Panek" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">MD-102: Endpoint Administrator</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Will Panek</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Intermediate</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Learn to deploy, configure, secure, manage, and monitor devices and client applications in an enterprise environment. Master Windows 11, Intune, Microsoft Endpoint Configuration Manager, and endpoint security.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions Available</p>
-                      <p className="text-xs text-muted-foreground">Expert-led training sessions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">18 Hours of Training</p>
-                      <p className="text-xs text-muted-foreground">Comprehensive endpoint management</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Windows Server 2025 Administration Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={mikePfeiffer} alt="Mike Pfeiffer" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Server className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Windows Server 2025 Administration</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Mike Pfeiffer</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Advanced</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master the latest Windows Server 2025 administration with comprehensive training in server deployment, configuration, management, and security. Learn enterprise-grade infrastructure management.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Brain className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">Get instant help from AI assistant</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions</p>
-                      <p className="text-xs text-muted-foreground">Interactive expert-led training</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* AZ-900 Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={willPanek} alt="Will Panek" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">AZ-900: Azure Fundamentals</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Will Panek</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Beginner</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Begin your cloud journey with Azure fundamentals. Learn cloud concepts, core Azure services, security, privacy, compliance, and Azure pricing. Perfect for anyone starting with Microsoft Azure.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Brain className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">24/7 AI learning support</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions</p>
-                      <p className="text-xs text-muted-foreground">Expert-led interactive sessions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Certification Study Plans</p>
-                      <p className="text-xs text-muted-foreground">Structured learning path</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* AZ-104 Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={spikeXavier} alt="Spike Xavier" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">AZ-104: Azure Administrator</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Spike Xavier</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Intermediate</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master Azure administration with comprehensive training in managing identities, governance, storage, compute, and virtual networks. Prepare for the AZ-104 certification exam.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Brain className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">Smart learning assistance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Monitor className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Labs</p>
-                      <p className="text-xs text-muted-foreground">Hands-on Azure practice</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Certification Study Plan</p>
-                      <p className="text-xs text-muted-foreground">Coming soon</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* PowerShell Administration Featured Card */}
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={mikePfeiffer} alt="Mike Pfeiffer" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <BookOpen className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">PowerShell Administration</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Mike Pfeiffer</p>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Beginner</span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  PowerShell is a powerful tool for any Windows Administrator. This series of courses will teach you how to use PowerShell from the basics all the way to automating common administrative functions.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Lightbulb className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes</p>
-                      <p className="text-xs text-muted-foreground">Bite-sized learning modules</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Pre and Post Test</p>
-                      <p className="text-xs text-muted-foreground">Measure your progress</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Learning Path</p>
-                      <p className="text-xs text-muted-foreground">Structured learning journey</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {featuredCourses.map((course, index) => (
+                <InstructorCourseCard key={index} {...course} />
+              ))}
             </div>
           </div>
-
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Microsoft;

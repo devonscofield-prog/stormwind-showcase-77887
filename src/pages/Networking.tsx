@@ -1,7 +1,7 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, Cpu, Router, Award, BookOpen, Video, ExternalLink, Users, Target, Zap } from "lucide-react";
+import { Home, Cpu, Router, Award, BookOpen, Video, Users, Target, Zap } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import {
   Breadcrumb,
@@ -11,8 +11,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import danYoung from "@/assets/dan-young.png";
+
 const Networking = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,23 +22,78 @@ const Networking = () => {
     technologies = [],
     features = []
   } = location.state || {};
+
   useEffect(() => {
     document.title = "Networking";
   }, []);
-  const categories = [{
-    id: "network-training-overview",
-    icon: BookOpen,
-    title: "Network Training Overview",
-    description: "Comprehensive networking training from foundation to advanced",
-    color: "text-blue-500"
-  }, {
-    id: "network-range",
-    icon: Router,
-    title: "Network Range",
-    description: "Hands-on labs in real-world network environments",
-    color: "text-primary"
-  }];
-  return <div className="min-h-screen bg-background">
+
+  const featuredCourses = [
+    {
+      title: "CompTIA Network+",
+      instructorName: "Raymond Lacoste",
+      instructorImage: raymondLacoste,
+      level: "Intermediate" as const,
+      description: "A vendor-neutral networking certification that validates the essential knowledge and skills needed to confidently design, configure, manage, and troubleshoot wired and wireless networks. Covers network infrastructure, operations, security, and troubleshooting.",
+      features: [
+        { icon: BookOpen, title: "Certification Study Plan", description: "Streamlined path to certification success" },
+        { icon: Router, title: "Exam Crash Course", description: "Intensive preparation included in study plan" },
+        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Cisco CCNA",
+      instructorName: "Raymond Lacoste",
+      instructorImage: raymondLacoste,
+      level: "Intermediate" as const,
+      description: "Comprehensive Cisco networking certification covering network fundamentals, IP connectivity and services, security fundamentals, automation, and programmability. Master the skills to install, configure, operate, and troubleshoot enterprise networks.",
+      features: [
+        { icon: BookOpen, title: "Certification Study Plan", description: "Structured approach to CCNA mastery" },
+        { icon: Router, title: "Exam Crash Course", description: "Final preparation included in study plan" },
+        { icon: Video, title: "Live Sessions Available", description: "Engage directly with expert instructors" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Cisco CCNP Enterprise: ENARSI",
+      instructorName: "Raymond Lacoste",
+      instructorImage: raymondLacoste,
+      level: "Advanced" as const,
+      description: "Advanced routing and services implementation course covering Layer 3 technologies, VPN services, infrastructure security, and infrastructure services. Master enterprise-level network troubleshooting and optimization.",
+      features: [
+        { icon: Router, title: "Hands-On Labs", description: "Practice in real network environments" },
+        { icon: Cpu, title: "AI Tutor", description: "Get instant help and guidance" },
+        { icon: Users, title: "1:1 Instructor Mentoring", description: "Direct access to expert instructors" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Modern Networking with IPv6",
+      instructorName: "Dan Young",
+      instructorImage: danYoung,
+      level: "Intermediate" as const,
+      titleIcon: Target,
+      description: "An intense, practical-focused course on IPv6. Covers key skills to deploy an IPv6 infrastructure. CCNA or Network+ level knowledge will be helpful to get the most out of this course. Extensive hands-on available in the Net Range.",
+      features: [
+        { icon: Router, title: "Hands-On Labs", description: "Practice in the Net Range environment" },
+        { icon: Users, title: "1:1 Mentoring", description: "Expert guidance when you need it" },
+        { icon: Zap, title: "Bytes", description: "Quick learning modules for key concepts" },
+      ] as CourseFeature[],
+    },
+    {
+      title: "Wireshark Packet Analysis",
+      instructorName: "Dan Young",
+      instructorImage: danYoung,
+      level: "Intermediate" as const,
+      titleIcon: Target,
+      description: "Master network protocol analysis with Wireshark. Learn to capture, filter, and analyze network traffic for troubleshooting, security analysis, and performance optimization. Essential skills for any network professional.",
+      features: [
+        { icon: Video, title: "Live Sessions Available", description: "Interactive packet analysis training" },
+        { icon: Router, title: "Hands-On Labs", description: "Real traffic analysis exercises" },
+        { icon: Users, title: "1:1 Mentoring Available", description: "Expert guidance on complex analysis" },
+      ] as CourseFeature[],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -74,12 +131,10 @@ const Networking = () => {
                 Explore Ranges
               </Button>
             </div>
-        </div>
+          </div>
 
           {/* Networking Technologies Section */}
           <div className="mb-32 animate-fade-in">
-            
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
               {/* Routing & Switching */}
               <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
@@ -133,10 +188,9 @@ const Networking = () => {
                 </p>
               </div>
             </div>
-
           </div>
 
-        {/* Featured Courses Section */}
+          {/* Featured Courses Section */}
           <div className="mb-32 animate-fade-in">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Featured Courses</h2>
@@ -146,305 +200,15 @@ const Networking = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* Network+ Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">CompTIA Network+</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Raymond Lacoste</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Intermediate
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  A vendor-neutral networking certification that validates the essential knowledge and skills needed to confidently design, configure, manage, and troubleshoot wired and wireless networks. Covers network infrastructure, operations, security, and troubleshooting.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Certification Study Plan</p>
-                      <p className="text-xs text-muted-foreground">Streamlined path to certification success</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Exam Crash Course</p>
-                      <p className="text-xs text-muted-foreground">Intensive preparation included in study plan</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions Available</p>
-                      <p className="text-xs text-muted-foreground">Interactive learning with expert guidance</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CCNA Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Cisco CCNA</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Raymond Lacoste</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Intermediate
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Comprehensive Cisco networking certification covering network fundamentals, IP connectivity and services, security fundamentals, automation, and programmability. Master the skills to install, configure, operate, and troubleshoot enterprise networks.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Certification Study Plan</p>
-                      <p className="text-xs text-muted-foreground">Structured approach to CCNA mastery</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Exam Crash Course</p>
-                      <p className="text-xs text-muted-foreground">Final preparation included in study plan</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Video className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Live Sessions Available</p>
-                      <p className="text-xs text-muted-foreground">Engage directly with expert instructors</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CCNP Enterprise: ENARSI Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={raymondLacoste} alt="Raymond Lacoste" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Cisco CCNP Enterprise: ENARSI</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Raymond Lacoste</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Advanced
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Advanced routing and services implementation course covering Layer 3 technologies, VPN services, infrastructure security, and infrastructure services. Master enterprise-level network troubleshooting and optimization.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Practice in real network environments</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Cpu className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">AI Tutor</p>
-                      <p className="text-xs text-muted-foreground">Get instant help and guidance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">1:1 Instructor Mentoring</p>
-                      <p className="text-xs text-muted-foreground">Direct access to expert instructors</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modern Networking with IPv6 Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Target className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Modern Networking with IPv6</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Dan Young</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Intermediate
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  An intense, practical-focused course on IPv6. Covers key skills to deploy an IPv6 infrastructure. CCNA or Network+ level knowledge will be helpful to get the most out of this course. Extensive hands-on available in the Net Range.
-                </p>
-
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Practice in the Net Range environment</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">1:1 Mentoring</p>
-                      <p className="text-xs text-muted-foreground">Expert guidance when you need it</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes</p>
-                      <p className="text-xs text-muted-foreground">Bite-sized, focused lessons</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* BGP Routing Fundamentals Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Router className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">BGP Routing Fundamentals for IPv4</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Dan Young</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 text-sm mb-4">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    Advanced
-                  </span>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  BGP is a particularly challenging protocol to support in a production network. It behaves differently, has strict design rules and behaviors that must be fully understood. This course focuses on real-world considerations to build a foundation for BGP success.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes</p>
-                      <p className="text-xs text-muted-foreground">Focused, digestible content</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Real-world BGP configurations</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">1:1 Instructor Mentoring</p>
-                      <p className="text-xs text-muted-foreground">Expert support for complex topics</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Wireshark for IT Professionals Featured Card */}
-              <div className="flex flex-col rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8 hover:border-primary/40 transition-all duration-300 hover:shadow-xl">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="flex-shrink-0">
-                    <img src={danYoung} alt="Dan Young" className="w-16 h-16 rounded-full object-cover border-2 border-primary/20" loading="lazy" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Target className="w-6 h-6 text-primary" />
-                      <h3 className="text-2xl font-bold">Wireshark for IT Professionals</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Instructor: Dan Young</p>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Master network protocol analysis and troubleshooting with Wireshark. Learn to capture, analyze, and interpret network traffic to diagnose and resolve complex networking issues efficiently.
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <Router className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Hands-On Labs</p>
-                      <p className="text-xs text-muted-foreground">Practice packet analysis</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Pretest and Posttest</p>
-                      <p className="text-xs text-muted-foreground">Measure your progress</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-sm">Bytes</p>
-                      <p className="text-xs text-muted-foreground">Efficient, targeted instruction</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {featuredCourses.map((course, index) => (
+                <InstructorCourseCard key={index} {...course} />
+              ))}
             </div>
           </div>
-
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Networking;
