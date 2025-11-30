@@ -12,6 +12,16 @@ import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
+// Create QueryClient outside component to prevent recreation on each render
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000, // 1 minute
+      gcTime: 5 * 60 * 1000, // 5 minutes (formerly cacheTime)
+    },
+  },
+});
+
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
 const Ranges = lazy(() => import("./pages/Ranges"));
@@ -45,8 +55,6 @@ const Webinars = lazy(() => import("./pages/Webinars"));
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

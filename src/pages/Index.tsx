@@ -41,8 +41,8 @@ const Index = () => {
     }
   }, [activeTab]);
   return <div className="min-h-screen relative">
-      {/* Floating Blobs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Floating Blobs - GPU accelerated */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
         {/* Large blob - top-right */}
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 blur-[60px] bg-gradient-to-br from-primary to-transparent animate-float-slow"></div>
         
@@ -51,12 +51,6 @@ const Index = () => {
         
         {/* Small blob - bottom-right */}
         <div className="absolute bottom-20 -right-16 w-64 h-64 rounded-full opacity-20 blur-[40px] bg-gradient-to-br from-accent-green to-transparent animate-float-fast" style={{animationDelay: '4s'}}></div>
-        
-        {/* Medium blob - center-bottom */}
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full opacity-15 blur-[55px] bg-gradient-to-br from-primary to-transparent animate-float-slow" style={{animationDelay: '1s'}}></div>
-        
-        {/* Small accent - top-left */}
-        <div className="absolute top-1/3 -left-12 w-48 h-48 rounded-full opacity-10 blur-[35px] bg-gradient-to-br from-accent-teal to-transparent animate-float-medium" style={{animationDelay: '3s'}}></div>
       </div>
       
       <Navigation />

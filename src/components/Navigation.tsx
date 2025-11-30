@@ -34,9 +34,11 @@ export const Navigation = () => {
           <img 
             src={stormwindLogo} 
             alt="StormWind Studios" 
-            className="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
+            className="h-12 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
             onClick={() => navigate('/')}
-            loading="lazy"
+            width={150}
+            height={48}
+            fetchPriority="high"
           />
           
           {/* Desktop Navigation */}
