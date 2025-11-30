@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef, ReactNode, ComponentType } from "react";
 import { Link } from "react-router-dom";
 
 interface Particle {
@@ -9,10 +9,15 @@ interface Particle {
   size: number;
 }
 
+export interface AnimatedIconProps {
+  color: string;
+  isHovered: boolean;
+}
+
 interface AnimatedFeatureCardProps {
   to: string;
   color: string;
-  icon: ReactNode;
+  icon: ReactNode | ComponentType<AnimatedIconProps>;
   title: string;
   description: string;
   className?: string;
@@ -63,6 +68,15 @@ const AnimatedFeatureCard = ({
     setParticles((prev) => [...prev.slice(-20), newParticle]);
   };
 
+  // Render icon - supports both ReactNode and Component with isHovered prop
+  const renderIcon = () => {
+    if (typeof icon === 'function') {
+      const IconComponent = icon as ComponentType<AnimatedIconProps>;
+      return <IconComponent color={color} isHovered={isHovered} />;
+    }
+    return icon;
+  };
+
   return (
     <Link
       ref={cardRef}
@@ -101,7 +115,7 @@ const AnimatedFeatureCard = ({
           style={{ backgroundColor: color }}
         />
         <div className="relative transition-transform duration-300 group-hover:scale-110">
-          {icon}
+          {renderIcon()}
         </div>
       </div>
 
@@ -118,11 +132,6 @@ const AnimatedFeatureCard = ({
     </Link>
   );
 };
-
-export interface AnimatedIconProps {
-  color: string;
-  isHovered: boolean;
-}
 
 export { AnimatedFeatureCard };
 export default AnimatedFeatureCard;
