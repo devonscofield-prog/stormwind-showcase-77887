@@ -71,45 +71,43 @@ export const TechBackground = () => {
       return () => window.removeEventListener("resize", handleResize);
     }
 
-    // Terminal commands - reduced set for performance
+    // Terminal commands - optimized set
     const commands = [
       "$ ping 192.168.1.1",
       "$ netstat -an",
-      "$ nmap -sV 10.0.0.0/24",
       "$ ssh admin@server",
       "$ docker ps -a",
-      "$ kubectl get pods",
     ];
 
     const rect = canvas.getBoundingClientRect();
     
-    // Initialize terminal lines - reduced count
+    // Initialize terminal lines - heavily reduced for performance
     const terminals: Terminal[] = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 4; i++) {
       terminals.push({
         text: commands[Math.floor(Math.random() * commands.length)],
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        speed: 0.15 + Math.random() * 0.3,
-        opacity: 0.4 + Math.random() * 0.3,
+        speed: 0.2 + Math.random() * 0.25,
+        opacity: 0.3 + Math.random() * 0.2,
       });
     }
 
-    // Initialize neural network nodes - reduced count
+    // Initialize neural network nodes - optimized count
     const nodes: Node[] = [];
-    const nodeCount = 15; // Reduced from 30
+    const nodeCount = 10; // Further reduced for better performance
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: 2 + Math.random() * 2,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: 2 + Math.random() * 1.5,
       });
     }
 
     let lastTime = 0;
-    const targetFPS = 30; // Limit to 30fps for better performance
+    const targetFPS = 24; // Reduced to 24fps for smoother performance
     const frameInterval = 1000 / targetFPS;
 
     const animate = (timestamp: number) => {
@@ -157,21 +155,24 @@ export const TechBackground = () => {
         ctx.fill();
       });
 
-      // Draw connections - simplified
-      ctx.strokeStyle = "rgba(79, 209, 197, 0.1)";
-      ctx.lineWidth = 1;
+      // Draw connections - optimized with distance culling
+      ctx.strokeStyle = "rgba(79, 209, 197, 0.08)";
+      ctx.lineWidth = 0.8;
+      const maxConnections = 3; // Limit connections per node
       for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
+        let connectionCount = 0;
+        for (let j = i + 1; j < nodes.length && connectionCount < maxConnections; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const distSq = dx * dx + dy * dy;
 
-          // Use squared distance to avoid sqrt
-          if (distSq < 22500) { // 150^2
+          // Reduced connection distance and use squared distance
+          if (distSq < 16900) { // 130^2 - shorter distance
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.stroke();
+            connectionCount++;
           }
         }
       }
