@@ -20,6 +20,7 @@ export const TechBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -32,6 +33,22 @@ export const TechBackground = () => {
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  // Viewport visibility detection
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(canvas);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -64,8 +81,8 @@ export const TechBackground = () => {
     };
     window.addEventListener("resize", handleResize);
 
-    // If user prefers reduced motion, just show static background
-    if (prefersReducedMotion) {
+    // If user prefers reduced motion or not visible, just show static background
+    if (prefersReducedMotion || !isVisible) {
       ctx.fillStyle = "rgba(79, 209, 197, 0.02)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       return () => window.removeEventListener("resize", handleResize);
@@ -191,7 +208,7 @@ export const TechBackground = () => {
         clearTimeout(resizeTimeout);
       }
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, isVisible]);
 
   return (
     <canvas
