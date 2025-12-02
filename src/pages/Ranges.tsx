@@ -262,7 +262,7 @@ const Ranges = () => {
                   Build, configure, and troubleshoot enterprise networks with real networking equipment and scenarios.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="mj6i88dyhv" title="Network Range Demo" />
+                  <VideoEmbed videoId="6i6y01qjp0" title="Network Range Demo" />
                 </div>
               </div>
 
@@ -291,7 +291,7 @@ const Ranges = () => {
                   Develop offensive and defensive security skills in a safe, isolated environment with real-world attack scenarios.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="2f53dv64e9" title="Cyber Range Demo" />
+                  <VideoEmbed videoId="gg8rfkzk3y" title="Cyber Range Demo" />
                 </div>
               </div>
 
