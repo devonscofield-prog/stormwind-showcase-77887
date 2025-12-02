@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ReactNode, ComponentType } from "react";
+import { useState, useRef, ReactNode, ComponentType, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 interface Particle {
@@ -35,23 +35,15 @@ const AnimatedFeatureCard = ({
   const [particles, setParticles] = useState<Particle[]>([]);
   const cardRef = useRef<HTMLAnchorElement>(null);
   const particleIdRef = useRef(0);
+  const lastParticleTime = useRef(0);
 
-  useEffect(() => {
-    if (particles.length === 0) return;
-
-    const interval = setInterval(() => {
-      setParticles((prev) =>
-        prev
-          .map((p) => ({ ...p, opacity: p.opacity - 0.05 }))
-          .filter((p) => p.opacity > 0)
-      );
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [particles.length]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  // Throttled mouse move handler - only create particles every 100ms
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!cardRef.current || !isHovered) return;
+    
+    const now = Date.now();
+    if (now - lastParticleTime.current < 100) return;
+    lastParticleTime.current = now;
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -61,12 +53,24 @@ const AnimatedFeatureCard = ({
       id: particleIdRef.current++,
       x,
       y,
-      opacity: 1,
-      size: Math.random() * 4 + 2,
+      opacity: 0.8,
+      size: Math.random() * 3 + 2,
     };
 
-    setParticles((prev) => [...prev.slice(-20), newParticle]);
-  };
+    setParticles((prev) => {
+      // Keep only last 8 particles and fade them
+      const updated = prev
+        .map((p) => ({ ...p, opacity: p.opacity - 0.15 }))
+        .filter((p) => p.opacity > 0)
+        .slice(-8);
+      return [...updated, newParticle];
+    });
+  }, [isHovered]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+    setParticles([]);
+  }, []);
 
   // Render icon - supports both ReactNode and Component with isHovered prop
   const renderIcon = () => {
@@ -81,15 +85,12 @@ const AnimatedFeatureCard = ({
     <Link
       ref={cardRef}
       to={to}
-      className={`glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10 ${className}`}
+      className={`glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-transform duration-200 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10 ${className}`}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setParticles([]);
-      }}
+      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
-      {/* Particle Trail */}
+      {/* Particle Trail - simplified */}
       {particles.map((particle) => (
         <div
           key={particle.id}
@@ -101,9 +102,7 @@ const AnimatedFeatureCard = ({
             height: particle.size,
             opacity: particle.opacity,
             background: color,
-            boxShadow: `0 0 ${particle.size * 2}px ${color}`,
             transform: "translate(-50%, -50%)",
-            transition: "opacity 0.05s linear",
           }}
         />
       ))}
@@ -111,16 +110,16 @@ const AnimatedFeatureCard = ({
       {/* Animated Icon with Glow */}
       <div className="mb-6 inline-flex relative z-10">
         <div
-          className="absolute inset-0 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"
+          className="absolute inset-0 blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-200"
           style={{ backgroundColor: color }}
         />
-        <div className="relative transition-transform duration-300 group-hover:scale-110">
+        <div className="relative transition-transform duration-200 group-hover:scale-110">
           {renderIcon()}
         </div>
       </div>
 
       <h4
-        className="text-xl font-bold mb-3 relative z-10 transition-colors duration-300"
+        className="text-xl font-bold mb-3 relative z-10"
         style={{ color: color }}
       >
         {title}
