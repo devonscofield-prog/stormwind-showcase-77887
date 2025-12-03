@@ -1206,7 +1206,7 @@ export const sampleCourses: Course[] = [
   {
     id: "general-ai-awareness",
     title: "General Artificial Intelligence Awareness",
-    category: "AI & Machine Learning",
+    category: "AI",
     isByte: true,
     variants: [
       {
