@@ -1,8 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { BookOpen, Clock, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Course } from "@/lib/trainingSampleData";
+import { CourseThumbnail } from "./CourseThumbnail";
+import { getCategoryTheme, getTotalLessons, getVariantCount } from "@/lib/courseThemes";
 
 interface CourseCardProps {
   course: Course;
@@ -10,78 +13,124 @@ interface CourseCardProps {
 }
 
 export const CourseCard = ({ course, className }: CourseCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   const title = course.title;
   const category = course.category;
   const description = course.variants[0]?.overview.description || "";
   const thumbnail = course.thumbnail;
+  const theme = getCategoryTheme(category);
+  
+  const totalLessons = getTotalLessons(course);
+  const variantCount = getVariantCount(course);
+  const difficulty = course.variants[0]?.overview.difficulty;
   
   return (
     <Link to={`/training-samples/${course.id}`}>
       <Card 
         className={cn(
-          "group cursor-pointer relative overflow-hidden",
+          "group cursor-pointer relative overflow-hidden h-full",
           "transition-all duration-500 ease-out",
-          "hover:scale-[1.03] hover:-translate-y-2",
-          "glass-card shimmer-effect",
-          "border-2 border-transparent hover:border-primary/20",
-          "hover:shadow-[0_20px_50px_rgba(31,161,129,0.2)]",
+          "hover:scale-[1.02] hover:-translate-y-1",
+          "bg-card/50 backdrop-blur-sm",
+          "border border-border/50 hover:border-primary/30",
+          "hover:shadow-xl hover:shadow-primary/10",
           className
         )}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent-green to-primary bg-[length:200%_100%] animate-[gradient-border_3s_ease_infinite] blur-sm" />
-      </div>
-      
-      {/* Card content wrapper */}
-      <div className="relative bg-card rounded-lg overflow-hidden">
-        {/* Thumbnail with parallax effect */}
-        <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-accent-green/10 overflow-hidden">
-          {thumbnail ? (
-            <img 
-              src={thumbnail} 
-              alt={title} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="relative">
-                <Play className="w-16 h-16 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(31,161,129,0.6)]" />
-                <Sparkles className="w-6 h-6 text-accent-green/60 absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-pulse" />
-              </div>
+        {/* Glow effect on hover */}
+        <div className={cn(
+          "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+          "bg-gradient-to-r from-primary/20 via-transparent to-primary/20 blur-sm"
+        )} />
+        
+        <div className="relative bg-card rounded-xl overflow-hidden h-full flex flex-col">
+          {/* Thumbnail */}
+          <CourseThumbnail 
+            category={category}
+            title={title}
+            thumbnail={thumbnail}
+            isHovered={isHovered}
+          />
+
+          {/* Content */}
+          <CardContent className="flex-1 flex flex-col p-4 pt-3">
+            {/* Category & Stats Row */}
+            <div className="flex items-center justify-between gap-2 mb-3">
+              {/* Category Badge */}
+              <span className={cn(
+                "px-2.5 py-1 text-xs font-semibold rounded-full",
+                "bg-gradient-to-r border transition-all duration-300",
+                theme.iconBg,
+                "border-current/20",
+                theme.accentColor
+              )}>
+                {category}
+              </span>
+              
+              {/* Difficulty Badge */}
+              {difficulty && (
+                <span className={cn(
+                  "px-2 py-0.5 text-xs font-medium rounded-full",
+                  difficulty === "Beginner" && "bg-green-500/10 text-green-400",
+                  difficulty === "Intermediate" && "bg-yellow-500/10 text-yellow-400",
+                  difficulty === "Advanced" && "bg-red-500/10 text-red-400"
+                )}>
+                  {difficulty}
+                </span>
+              )}
             </div>
-          )}
-          
-          {/* Gradient overlay with enhanced hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-          
-          {/* Corner accent */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl" />
+            
+            {/* Title */}
+            <h3 className={cn(
+              "text-lg font-bold mb-2 line-clamp-2",
+              "transition-colors duration-300",
+              "text-foreground group-hover:text-primary"
+            )}>
+              {title}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1">
+              {description}
+            </p>
+
+            {/* Stats Row */}
+            <div className="flex items-center gap-4 pt-3 border-t border-border/50">
+              {/* Lessons count */}
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>{totalLessons} lessons</span>
+              </div>
+              
+              {/* Variants count */}
+              {variantCount > 1 && (
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>{variantCount} variants</span>
+                </div>
+              )}
+              
+              {/* Duration if available */}
+              {course.variants[0]?.overview.totalDuration && course.variants[0].overview.totalDuration !== "TBD" && (
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground ml-auto">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>{course.variants[0].overview.totalDuration}</span>
+                </div>
+              )}
+            </div>
+          </CardContent>
+
+          {/* Bottom accent line */}
+          <div className={cn(
+            "absolute bottom-0 left-0 right-0 h-0.5",
+            "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+            theme.gradient
+          )} />
         </div>
-
-        <CardHeader className="relative z-10">
-          {/* Category badge with gradient */}
-          <div className="inline-flex items-center gap-1.5 mb-2">
-            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary/10 to-accent-green/10 text-primary border border-primary/20 group-hover:border-primary/40 transition-colors">
-              {category}
-            </span>
-          </div>
-          
-          {/* Title with enhanced hover effect */}
-          <CardTitle className="text-lg line-clamp-2 transition-all duration-300 group-hover:text-primary group-hover:drop-shadow-[0_0_10px_rgba(31,161,129,0.3)]">
-            {title}
-          </CardTitle>
-          
-          {/* Description */}
-          <CardDescription className="line-clamp-2 transition-colors duration-300 group-hover:text-muted-foreground/90">
-            {description}
-          </CardDescription>
-        </CardHeader>
-
-        {/* Bottom glow effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent-green to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      </div>
-    </Card>
+      </Card>
     </Link>
   );
 };
