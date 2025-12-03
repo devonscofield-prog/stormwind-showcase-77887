@@ -379,19 +379,19 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                               )}
                             >
                               <AccordionTrigger className="px-3 py-3 hover:no-underline transition-all text-left group/trigger">
-                                <div className="flex items-center gap-3 text-sm w-full">
+                                <div className="flex items-start gap-3 text-sm w-full">
                                   <span className={cn(
-                                    "flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold transition-all duration-200",
+                                    "flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold transition-all duration-200 shrink-0",
                                     hasCurrentLesson 
                                       ? "bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-md" 
                                       : "bg-gradient-to-br from-muted to-muted/80 text-muted-foreground group-hover/trigger:from-primary/20 group-hover/trigger:to-primary/10 group-hover/trigger:text-primary"
                                   )}>
                                     {moduleIndex + 1}
                                   </span>
-                                  <span className="font-semibold line-clamp-2 text-foreground flex-1 group-hover/trigger:text-primary transition-colors">
+                                  <span className="font-semibold text-foreground flex-1 group-hover/trigger:text-primary transition-colors leading-snug">
                                     {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
                                   </span>
-                                  <span className="text-[10px] text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">
+                                  <span className="text-[10px] text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full shrink-0 mt-0.5">
                                     {module.lessons.length}
                                   </span>
                                 </div>
