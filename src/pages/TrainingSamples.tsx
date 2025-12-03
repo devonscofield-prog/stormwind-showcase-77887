@@ -27,6 +27,7 @@ import { cn } from "@/lib/utils";
 // Category icons mapping
 const categoryIcons: Record<string, React.ElementType> = {
   "All Courses": Layers,
+  "Bytes": Sparkles,
   "Cybersecurity": Shield,
   "Cloud": Cloud,
   "Microsoft": Server,
@@ -58,6 +59,8 @@ const TrainingSamples = () => {
     
   const filteredVariants = activeCategory === "All Courses" 
     ? flattenedCourses 
+    : activeCategory === "Bytes"
+    ? flattenedCourses.filter(v => v.isByte)
     : flattenedCourses.filter(v => v.category === activeCategory);
 
   // Calculate total lessons from all variants
@@ -172,6 +175,8 @@ const TrainingSamples = () => {
                 const IconComponent = categoryIcons[category] || Layers;
                 const count = category === "All Courses" 
                   ? flattenedCourses.length 
+                  : category === "Bytes"
+                  ? flattenedCourses.filter(v => v.isByte).length
                   : flattenedCourses.filter(v => v.category === category).length;
                 
                 return (
