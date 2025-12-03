@@ -35,6 +35,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Networking": Network,
   "ITIL": FolderKanban,
   "Security Awareness": Lock,
+  "Project Management": FolderKanban,
 };
 
 const TrainingSamples = () => {
