@@ -1,12 +1,13 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Play, CheckCircle2, ChevronDown, BookOpen, Layers } from "lucide-react";
+import { ArrowLeft, Play, CheckCircle2, ChevronDown, BookOpen, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Progress } from "@/components/ui/progress";
 import {
   Accordion,
   AccordionContent,
@@ -100,6 +101,13 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
     return { totalLessons: lessons.length, currentLessonIndex: index + 1, allLessons: lessons };
   }, [selectedVariant, currentLesson]);
 
+  // Calculate progress percentage
+  const progressPercentage = useMemo(() => {
+    if (totalLessons === 0) return 0;
+    const completedCount = viewedLessons.size + (currentLesson ? 1 : 0);
+    return Math.round((completedCount / totalLessons) * 100);
+  }, [viewedLessons.size, totalLessons, currentLesson]);
+
   // Get default open modules (all modules open by default)
   const defaultOpenModules = useMemo(() => {
     return selectedVariant.modules.map(m => m.id);
@@ -122,6 +130,35 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
     setCurrentLesson(lesson);
   };
 
+  // Navigation handlers
+  const goToPreviousLesson = () => {
+    const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
+    if (currentIndex > 0) {
+      handleLessonSelect(allLessons[currentIndex - 1]);
+    }
+  };
+
+  const goToNextLesson = () => {
+    const currentIndex = allLessons.findIndex(l => l.id === currentLesson?.id);
+    if (currentIndex < allLessons.length - 1) {
+      handleLessonSelect(allLessons[currentIndex + 1]);
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && e.altKey) {
+        goToPreviousLesson();
+      } else if (e.key === 'ArrowRight' && e.altKey) {
+        goToNextLesson();
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentLesson, allLessons]);
+
   // Get lesson status
   const getLessonStatus = (lesson: Lesson): 'current' | 'viewed' | 'pending' => {
     if (currentLesson?.id === lesson.id) return 'current';
@@ -129,11 +166,14 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
     return 'pending';
   };
 
+  const canGoPrevious = currentLessonIndex > 1;
+  const canGoNext = currentLessonIndex < totalLessons;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4">
           <Button 
             variant="ghost" 
             onClick={onBack}
@@ -164,6 +204,20 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mb-6 p-4 rounded-xl bg-card/50 backdrop-blur border border-border/50">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2 text-sm">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              <span className="text-foreground font-medium">{progressPercentage}% Complete</span>
+            </div>
+            <span className="text-xs text-muted-foreground">
+              {viewedLessons.size + (currentLesson ? 1 : 0)} of {totalLessons} lessons
+            </span>
+          </div>
+          <Progress value={progressPercentage} className="h-2" />
         </div>
 
         {/* Course Title with Breadcrumb */}
@@ -200,6 +254,33 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
               </div>
             </div>
 
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-between gap-4">
+              <Button
+                variant="outline"
+                onClick={goToPreviousLesson}
+                disabled={!canGoPrevious}
+                className="flex items-center gap-2"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Previous
+              </Button>
+              
+              <span className="text-sm text-muted-foreground">
+                Lesson {currentLessonIndex} of {totalLessons}
+              </span>
+              
+              <Button
+                variant="outline"
+                onClick={goToNextLesson}
+                disabled={!canGoNext}
+                className="flex items-center gap-2"
+              >
+                Next
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+
             {/* Current Lesson Info */}
             {currentLesson && (
               <Card className="bg-card/50 backdrop-blur border-border/50">
@@ -209,6 +290,8 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
                         <BookOpen className="h-3 w-3" />
                         <span>Lesson {currentLessonIndex} of {totalLessons}</span>
+                        <span className="text-primary/60">•</span>
+                        <span className="text-primary text-[10px]">Alt + ← / →</span>
                       </div>
                       <h2 className="text-xl font-semibold text-foreground">{currentLesson.title}</h2>
                     </div>
@@ -285,81 +368,106 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                   </span>
                 </div>
 
+                {/* Module progress mini-bar */}
+                <div className="mb-4">
+                  <Progress value={progressPercentage} className="h-1" />
+                </div>
+
                 {/* Collapsible Modules */}
-                <div className="max-h-[calc(100vh-300px)] overflow-y-auto pr-1 -mr-1">
+                <div className="max-h-[calc(100vh-350px)] overflow-y-auto pr-1 -mr-1">
                   <Accordion 
                     type="multiple" 
                     defaultValue={defaultOpenModules}
                     className="space-y-2"
                   >
-                    {selectedVariant.modules.map((module, moduleIndex) => (
-                      <AccordionItem 
-                        key={module.id} 
-                        value={module.id}
-                        className="border border-border/50 rounded-lg overflow-hidden bg-muted/30"
-                      >
-                        <AccordionTrigger className="px-3 py-2 hover:no-underline hover:bg-accent/50 transition-colors text-left">
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-xs font-bold">
-                              {moduleIndex + 1}
-                            </span>
-                            <span className="font-medium line-clamp-2 text-foreground">
-                              {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
-                            </span>
-                          </div>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-1">
-                          <div className="space-y-0.5 px-1">
-                            {module.lessons.map((lesson) => {
-                              const status = getLessonStatus(lesson);
-                              return (
-                                <button
-                                  key={lesson.id}
-                                  onClick={() => handleLessonSelect(lesson)}
-                                  className={cn(
-                                    "w-full text-left p-2.5 rounded-md transition-all duration-200 group",
-                                    "flex items-start gap-2",
-                                    status === 'current' 
-                                      ? "bg-primary text-primary-foreground shadow-md" 
-                                      : "hover:bg-accent/70"
-                                  )}
-                                >
-                                  {/* Status Icon */}
-                                  <div className={cn(
-                                    "flex-shrink-0 mt-0.5",
-                                    status === 'current' && "text-primary-foreground",
-                                    status === 'viewed' && "text-green-500",
-                                    status === 'pending' && "text-muted-foreground"
-                                  )}>
-                                    {status === 'current' && (
-                                      <Play className="h-4 w-4 fill-current" />
-                                    )}
-                                    {status === 'viewed' && (
-                                      <CheckCircle2 className="h-4 w-4" />
-                                    )}
-                                    {status === 'pending' && (
-                                      <div className="w-4 h-4 rounded-full border-2 border-current opacity-50" />
-                                    )}
-                                  </div>
-
-                                  {/* Lesson Info */}
-                                  <div className="flex-1 min-w-0">
-                                    <p className={cn(
-                                      "text-sm font-medium line-clamp-2",
+                    {selectedVariant.modules.map((module, moduleIndex) => {
+                      // Calculate module completion
+                      const moduleViewedCount = module.lessons.filter(l => 
+                        viewedLessons.has(l.id) || currentLesson?.id === l.id
+                      ).length;
+                      const moduleProgress = Math.round((moduleViewedCount / module.lessons.length) * 100);
+                      
+                      return (
+                        <AccordionItem 
+                          key={module.id} 
+                          value={module.id}
+                          className="border border-border/50 rounded-lg overflow-hidden bg-muted/30"
+                        >
+                          <AccordionTrigger className="px-3 py-2 hover:no-underline hover:bg-accent/50 transition-colors text-left">
+                            <div className="flex items-center gap-2 text-sm w-full">
+                              <span className={cn(
+                                "flex items-center justify-center w-6 h-6 rounded-md text-xs font-bold transition-colors",
+                                moduleProgress === 100 
+                                  ? "bg-green-500/20 text-green-500" 
+                                  : "bg-primary/10 text-primary"
+                              )}>
+                                {moduleProgress === 100 ? (
+                                  <CheckCircle2 className="w-4 h-4" />
+                                ) : (
+                                  moduleIndex + 1
+                                )}
+                              </span>
+                              <span className="font-medium line-clamp-2 text-foreground flex-1">
+                                {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
+                              </span>
+                              <span className="text-[10px] text-muted-foreground">
+                                {moduleViewedCount}/{module.lessons.length}
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-1">
+                            <div className="space-y-0.5 px-1">
+                              {module.lessons.map((lesson) => {
+                                const status = getLessonStatus(lesson);
+                                return (
+                                  <button
+                                    key={lesson.id}
+                                    onClick={() => handleLessonSelect(lesson)}
+                                    className={cn(
+                                      "w-full text-left p-2.5 rounded-md transition-all duration-200 group",
+                                      "flex items-start gap-2",
                                       status === 'current' 
-                                        ? "text-primary-foreground" 
-                                        : "text-foreground group-hover:text-foreground"
+                                        ? "bg-primary text-primary-foreground shadow-md" 
+                                        : "hover:bg-accent/70"
+                                    )}
+                                  >
+                                    {/* Status Icon */}
+                                    <div className={cn(
+                                      "flex-shrink-0 mt-0.5",
+                                      status === 'current' && "text-primary-foreground",
+                                      status === 'viewed' && "text-green-500",
+                                      status === 'pending' && "text-muted-foreground"
                                     )}>
-                                      {lesson.title}
-                                    </p>
-                                  </div>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
+                                      {status === 'current' && (
+                                        <Play className="h-4 w-4 fill-current" />
+                                      )}
+                                      {status === 'viewed' && (
+                                        <CheckCircle2 className="h-4 w-4" />
+                                      )}
+                                      {status === 'pending' && (
+                                        <div className="w-4 h-4 rounded-full border-2 border-current opacity-50" />
+                                      )}
+                                    </div>
+
+                                    {/* Lesson Info */}
+                                    <div className="flex-1 min-w-0">
+                                      <p className={cn(
+                                        "text-sm font-medium line-clamp-2",
+                                        status === 'current' 
+                                          ? "text-primary-foreground" 
+                                          : "text-foreground group-hover:text-foreground"
+                                      )}>
+                                        {lesson.title}
+                                      </p>
+                                    </div>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      );
+                    })}
                   </Accordion>
                 </div>
               </CardContent>
