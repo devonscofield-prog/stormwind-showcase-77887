@@ -219,20 +219,6 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                   </span>
                 </div>
 
-                {/* Progress Bar */}
-                <div className="mb-4">
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                    <span>Progress</span>
-                    <span>{viewedLessons.size + (currentLesson ? 1 : 0)} / {totalLessons}</span>
-                  </div>
-                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-500"
-                      style={{ width: `${((viewedLessons.size + (currentLesson ? 1 : 0)) / totalLessons) * 100}%` }}
-                    />
-                  </div>
-                </div>
-
                 {/* Collapsible Modules */}
                 <div className="max-h-[calc(100vh-300px)] overflow-y-auto pr-1 -mr-1">
                   <Accordion 
