@@ -160,9 +160,22 @@ serve(async (req) => {
           return acc;
         }, {});
 
-        result = Object.entries(dailyCounts)
-          .map(([date, count]) => ({ date, count }))
-          .sort((a: any, b: any) => a.date.localeCompare(b.date));
+        // Generate complete date range with zeros for missing days
+        const startDay = new Date(start);
+        startDay.setUTCHours(0, 0, 0, 0);
+        const endDay = new Date(end);
+        endDay.setUTCHours(0, 0, 0, 0);
+        const allDates: { date: string; count: number }[] = [];
+        
+        for (let d = new Date(startDay); d <= endDay; d.setUTCDate(d.getUTCDate() + 1)) {
+          const dateStr = d.toISOString().split('T')[0];
+          allDates.push({
+            date: dateStr,
+            count: dailyCounts[dateStr] || 0
+          });
+        }
+
+        result = allDates;
         break;
 
       case 'top_interactions':
@@ -311,13 +324,24 @@ serve(async (req) => {
           return acc;
         }, {});
 
-        result = Object.entries(dailyVideoStats)
-          .map(([date, stats]: [string, any]) => ({
-            date,
+        // Generate complete date range with zeros for missing days
+        const videoStartDay = new Date(start);
+        videoStartDay.setUTCHours(0, 0, 0, 0);
+        const videoEndDay = new Date(end);
+        videoEndDay.setUTCHours(0, 0, 0, 0);
+        const allVideoDates: { date: string; plays: number; watch_time: number }[] = [];
+        
+        for (let d = new Date(videoStartDay); d <= videoEndDay; d.setUTCDate(d.getUTCDate() + 1)) {
+          const dateStr = d.toISOString().split('T')[0];
+          const stats = dailyVideoStats[dateStr] || { plays: 0, watch_time: 0 };
+          allVideoDates.push({
+            date: dateStr,
             plays: stats.plays,
             watch_time: stats.watch_time
-          }))
-          .sort((a, b) => a.date.localeCompare(b.date));
+          });
+        }
+
+        result = allVideoDates;
         break;
 
       default:
