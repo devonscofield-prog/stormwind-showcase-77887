@@ -364,14 +364,14 @@ export const sampleCourses: Course[] = [
                 title: "OSI Model Application Layer",
                 duration: "9:17",
                 videoId: "q6srxsj3eh",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               },
               {
                 id: "crash-lesson-2",
                 title: "Linking Devices to the OSI Model",
                 duration: "7:42",
                 videoId: "aajm0cfkb4",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               }
             ]
           },
@@ -384,28 +384,28 @@ export const sampleCourses: Course[] = [
                 title: "Deploying Cloud Computing",
                 duration: "11:24",
                 videoId: "uq6lz33vbe",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               },
               {
                 id: "crash-lesson-4",
                 title: "Dedicated Data Center to Cloud Connections",
                 duration: "8:56",
                 videoId: "um0xkx7stb",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               },
               {
                 id: "crash-lesson-5",
                 title: "Cloud Concepts",
                 duration: "10:33",
                 videoId: "z4c1ea57dy",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               },
               {
                 id: "crash-lesson-6",
                 title: "Integrating On-Prem and Cloud",
                 duration: "12:08",
                 videoId: "cng5zt1xo4",
-                instructor: "Raymond Lacoste"
+                instructor: "Dan Young"
               }
             ]
           }

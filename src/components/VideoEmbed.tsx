@@ -13,17 +13,17 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
-  const [showVideo, setShowVideo] = useState(!thumbnail); // Start with video hidden if custom thumbnail exists
+  const [showVideo, setShowVideo] = useState(false); // Always start with video hidden, require click to play
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const isPlaceholder = videoId.startsWith('pending_video_');
 
-  // Reset state when videoId changes
+  // Reset state when videoId changes - always require click to play
   useEffect(() => {
     setVideoLoaded(false);
     setHasError(false);
-    setShowVideo(!thumbnail);
+    setShowVideo(false);
     setShouldAutoplay(false);
-  }, [videoId, retryKey, thumbnail]);
+  }, [videoId, retryKey]);
 
   // Timeout fallback - if video doesn't load within 15 seconds, show error
   useEffect(() => {
@@ -101,19 +101,23 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
     );
   }
 
-  // Show custom thumbnail with play button if thumbnail is provided and video not yet triggered
-  if (thumbnail && !showVideo) {
+  // Show play button overlay before video is started (custom thumbnail or default dark background)
+  if (!showVideo) {
     return (
       <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">
         <div style={{
           padding: "56.25% 0 0 0",
           position: "relative"
         }}>
-          <img 
-            src={thumbnail} 
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          {thumbnail ? (
+            <img 
+              src={thumbnail} 
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1a1f2e] to-[#0f1219]" />
+          )}
           <button
             onClick={handlePlayClick}
             className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors cursor-pointer group"
