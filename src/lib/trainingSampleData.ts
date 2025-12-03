@@ -1196,6 +1196,57 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "general-ai-awareness",
+    title: "General Artificial Intelligence Awareness",
+    category: "AI & Machine Learning",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This course provides a comprehensive introduction to Generative AI, covering text generation and image creation in ChatGPT, understanding the GPT model architecture, and the risks associated with generative AI technologies. Perfect for professionals seeking foundational knowledge in AI awareness."
+        },
+        modules: [
+          {
+            id: "gen-ai-module-1",
+            title: "General AI Awareness",
+            lessons: [
+              {
+                id: "gen-ai-lesson-1",
+                title: "A Look at GenAI Text in ChatGPT",
+                duration: "TBD",
+                videoId: "9wmxh6jy6k",
+                instructor: "Dan Young"
+              },
+              {
+                id: "gen-ai-lesson-2",
+                title: "A Look at GenAI Image Creation in ChatGPT",
+                duration: "TBD",
+                videoId: "50rlb9jdvv",
+                instructor: "Dan Young"
+              },
+              {
+                id: "gen-ai-lesson-3",
+                title: "The GPT Model",
+                duration: "TBD",
+                videoId: "lffhv46w6l",
+                instructor: "Dan Young"
+              },
+              {
+                id: "gen-ai-lesson-4",
+                title: "Risks of Generative AI",
+                duration: "TBD",
+                videoId: "w4yclzo84c",
+                instructor: "Dan Young"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
