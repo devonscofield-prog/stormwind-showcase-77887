@@ -1311,3 +1311,48 @@ export const categories = [
   "Security Awareness",
   "ITIL"
 ];
+
+// Flattened course variant for individual cards
+export interface FlattenedCourseVariant {
+  id: string; // Combined: courseId-variantId
+  courseId: string;
+  variantId: string;
+  title: string;
+  variantName: string; // "Full Course" or "Exam Crash"
+  category: string;
+  description: string;
+  thumbnail?: string;
+  firstVideoId?: string;
+  instructor?: string;
+  lessonCount: number;
+  showLiveSchedule?: boolean;
+}
+
+// Helper to flatten courses into individual variant cards
+export const flattenCourses = (courses: Course[]): FlattenedCourseVariant[] => {
+  const flattened: FlattenedCourseVariant[] = [];
+  
+  for (const course of courses) {
+    for (const variant of course.variants) {
+      const firstLesson = variant.modules[0]?.lessons[0];
+      const lessonCount = variant.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
+      
+      flattened.push({
+        id: `${course.id}-${variant.id}`,
+        courseId: course.id,
+        variantId: variant.id,
+        title: course.title,
+        variantName: variant.name,
+        category: course.category,
+        description: variant.overview.description,
+        thumbnail: course.thumbnail,
+        firstVideoId: firstLesson?.videoId,
+        instructor: firstLesson?.instructor,
+        lessonCount,
+        showLiveSchedule: course.showLiveSchedule
+      });
+    }
+  }
+  
+  return flattened;
+};
