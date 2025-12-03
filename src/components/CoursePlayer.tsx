@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Play, CheckCircle2, ChevronDown, BookOpen, Layers, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Play, ChevronDown, BookOpen, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -160,12 +160,6 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentLesson, allLessons]);
 
-  // Get lesson status
-  const getLessonStatus = (lesson: Lesson): 'current' | 'viewed' | 'pending' => {
-    if (currentLesson?.id === lesson.id) return 'current';
-    if (viewedLessons.has(lesson.id)) return 'viewed';
-    return 'pending';
-  };
 
   const canGoPrevious = currentLessonIndex > 1;
   const canGoNext = currentLessonIndex < totalLessons;
@@ -365,12 +359,6 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                     className="space-y-2"
                   >
                     {selectedVariant.modules.map((module, moduleIndex) => {
-                      // Calculate module completion
-                      const moduleViewedCount = module.lessons.filter(l => 
-                        viewedLessons.has(l.id) || currentLesson?.id === l.id
-                      ).length;
-                      const moduleProgress = Math.round((moduleViewedCount / module.lessons.length) * 100);
-                      
                       return (
                         <AccordionItem 
                           key={module.id} 
@@ -379,30 +367,21 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                         >
                           <AccordionTrigger className="px-3 py-2 hover:no-underline hover:bg-accent/50 transition-colors text-left">
                             <div className="flex items-center gap-2 text-sm w-full">
-                              <span className={cn(
-                                "flex items-center justify-center w-6 h-6 rounded-md text-xs font-bold transition-colors",
-                                moduleProgress === 100 
-                                  ? "bg-green-500/20 text-green-500" 
-                                  : "bg-primary/10 text-primary"
-                              )}>
-                                {moduleProgress === 100 ? (
-                                  <CheckCircle2 className="w-4 h-4" />
-                                ) : (
-                                  moduleIndex + 1
-                                )}
+                              <span className="flex items-center justify-center w-6 h-6 rounded-md text-xs font-bold bg-primary/10 text-primary">
+                                {moduleIndex + 1}
                               </span>
                               <span className="font-medium line-clamp-2 text-foreground flex-1">
                                 {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
                               </span>
                               <span className="text-[10px] text-muted-foreground">
-                                {moduleViewedCount}/{module.lessons.length}
+                                {module.lessons.length} lessons
                               </span>
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="pb-1">
                             <div className="space-y-0.5 px-1">
                               {module.lessons.map((lesson) => {
-                                const status = getLessonStatus(lesson);
+                                const isCurrent = currentLesson?.id === lesson.id;
                                 return (
                                   <button
                                     key={lesson.id}
@@ -410,27 +389,17 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                                     className={cn(
                                       "w-full text-left p-2.5 rounded-md transition-all duration-200 group",
                                       "flex items-start gap-2",
-                                      status === 'current' 
+                                      isCurrent 
                                         ? "bg-primary text-primary-foreground shadow-md" 
                                         : "hover:bg-accent/70"
                                     )}
                                   >
-                                    {/* Status Icon */}
+                                    {/* Play Icon for current */}
                                     <div className={cn(
                                       "flex-shrink-0 mt-0.5",
-                                      status === 'current' && "text-primary-foreground",
-                                      status === 'viewed' && "text-green-500",
-                                      status === 'pending' && "text-muted-foreground"
+                                      isCurrent ? "text-primary-foreground" : "text-muted-foreground"
                                     )}>
-                                      {status === 'current' && (
-                                        <Play className="h-4 w-4 fill-current" />
-                                      )}
-                                      {status === 'viewed' && (
-                                        <CheckCircle2 className="h-4 w-4" />
-                                      )}
-                                      {status === 'pending' && (
-                                        <div className="w-4 h-4 rounded-full border-2 border-current opacity-50" />
-                                      )}
+                                      <Play className={cn("h-4 w-4", isCurrent && "fill-current")} />
                                     </div>
 
                                     {/* Lesson Info */}
