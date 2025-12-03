@@ -598,14 +598,14 @@ export const sampleCourses: Course[] = [
                 title: "Course Introduction, On Site Networking",
                 duration: "TBD",
                 videoId: "9ub2edeojj",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-lesson-2",
                 title: "Core Azure Architectural Components, Core Products Available in Azure",
                 duration: "TBD",
                 videoId: "8mgexvkkcv",
-                instructor: "TBD"
+                instructor: "Will Panek"
               }
             ]
           }
@@ -629,28 +629,28 @@ export const sampleCourses: Course[] = [
                 title: "Cloud Service Models",
                 duration: "TBD",
                 videoId: "szhioulxir",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-crash-lesson-2",
                 title: "Cloud Computing Benefits and Virtualization",
                 duration: "TBD",
                 videoId: "7fh4cmoqev",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-crash-lesson-3",
                 title: "Cloud Computing Requirements and Cost Efficiency",
                 duration: "TBD",
                 videoId: "shpsswxxfi",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-crash-lesson-4",
                 title: "The Shared Responsibility Model",
                 duration: "TBD",
                 videoId: "wglirpur6d",
-                instructor: "TBD"
+                instructor: "Will Panek"
               }
             ]
           },
@@ -663,21 +663,21 @@ export const sampleCourses: Course[] = [
                 title: "Cloud Hosting Models",
                 duration: "TBD",
                 videoId: "4f7gl8dyk0",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-crash-lesson-6",
                 title: "CapEx and OpEx Cost Considerations",
                 duration: "TBD",
                 videoId: "wx8qnjgisp",
-                instructor: "TBD"
+                instructor: "Will Panek"
               },
               {
                 id: "az900-crash-lesson-7",
                 title: "Cloud Hosting Model Advantages",
                 duration: "TBD",
                 videoId: "f66flu1piq",
-                instructor: "TBD"
+                instructor: "Will Panek"
               }
             ]
           }
