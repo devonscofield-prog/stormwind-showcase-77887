@@ -445,21 +445,21 @@ export const sampleCourses: Course[] = [
                 title: "Introduction to CCNA Course and Exam Objectives",
                 duration: "TBD",
                 videoId: "6dtxlj3bl4",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-lesson-2",
                 title: "Configuring and Verifying VLANs",
                 duration: "TBD",
                 videoId: "ldx3jpw526",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-lesson-3",
                 title: "OSPFv2 Packets and States",
                 duration: "TBD",
                 videoId: "wpmbw9io1r",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               }
             ]
           }
@@ -491,14 +491,14 @@ export const sampleCourses: Course[] = [
                 title: "Power over Ethernet Modes",
                 duration: "TBD",
                 videoId: "be2q7uadwe",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-2",
                 title: "PoE Power Classification Override",
                 duration: "TBD",
                 videoId: "mvf20m5fok",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               }
             ]
           },
@@ -511,28 +511,28 @@ export const sampleCourses: Course[] = [
                 title: "Creating VLANs",
                 duration: "TBD",
                 videoId: "y52zp3y09k",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-4",
                 title: "Router on a Trunk Configuration",
                 duration: "TBD",
                 videoId: "euz0ik3zy1",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-5",
                 title: "Reading the Routing Table",
                 duration: "TBD",
                 videoId: "umc7q3wnsm",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-6",
                 title: "Configuring IPv6 Static Default Route",
                 duration: "TBD",
                 videoId: "f7vk0ffk72",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               }
             ]
           },
@@ -545,28 +545,28 @@ export const sampleCourses: Course[] = [
                 title: "Mitigating Threats",
                 duration: "TBD",
                 videoId: "o3a5zgspuk",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-8",
                 title: "Security Best Practices",
                 duration: "TBD",
                 videoId: "igq60cf5im",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-9",
                 title: "IPSec Overview",
                 duration: "TBD",
                 videoId: "d1qqopp2y7",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "ccna-crash-lesson-10",
                 title: "OSPF Network Types",
                 duration: "TBD",
                 videoId: "utha2wf4z0",
-                instructor: "Spike Xavier"
+                instructor: "Raymond Lacoste"
               }
             ]
           }
