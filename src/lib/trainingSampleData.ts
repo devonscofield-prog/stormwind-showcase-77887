@@ -955,6 +955,43 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "md-102",
+    title: "MD-102: Endpoint Administrator",
+    category: "Microsoft",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This instructor led online training course prepares students for MD-102 exam, which aligns to the MDAA (Modern Desktop Administrator Associate) certification. This course includes a deep dive into deploying windows, managing identity and compliance, managing applications, implementation and managing endpoints via Microsoft Intune, Windows Autopilot, and Microsoft Defender, and more."
+        },
+        modules: [
+          {
+            id: "md102-module-1",
+            title: "MD-102 Full Course",
+            lessons: [
+              {
+                id: "md102-lesson-1",
+                title: "Microsoft Deployment Toolkit",
+                duration: "TBD",
+                videoId: "y9jez71xaz",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "md102-lesson-2",
+                title: "Create and Manage Group Policy Objects",
+                duration: "TBD",
+                videoId: "pvo5nlpo9b",
+                instructor: "Spike Xavier"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
