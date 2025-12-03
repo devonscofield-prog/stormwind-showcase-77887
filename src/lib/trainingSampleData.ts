@@ -940,14 +940,14 @@ export const sampleCourses: Course[] = [
                 title: "Entra ID Connect",
                 duration: "TBD",
                 videoId: "5n6n0hzil7",
-                instructor: "Will Panek"
+                instructor: "Spike Xavier"
               },
               {
                 id: "ms102-lesson-2",
                 title: "Implement and Manage Secure Access",
                 duration: "TBD",
                 videoId: "i34i8alcid",
-                instructor: "Will Panek"
+                instructor: "Spike Xavier"
               }
             ]
           }
