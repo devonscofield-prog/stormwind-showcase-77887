@@ -8,20 +8,7 @@ import { TechBackground } from "@/components/TechBackground";
 import { Navigation } from "@/components/Navigation";
 import { VariantCard } from "@/components/VariantCard";
 import { sampleCourses, categories, flattenCourses } from "@/lib/trainingSampleData";
-import { 
-  GraduationCap, 
-  BookOpen, 
-  Sparkles, 
-  Clock,
-  Shield,
-  Cloud,
-  Server,
-  Brain,
-  Network,
-  FolderKanban,
-  Layers,
-  Lock
-} from "lucide-react";
+import { GraduationCap, BookOpen, Sparkles, Clock, Shield, Cloud, Server, Brain, Network, FolderKanban, Layers, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Category icons mapping
@@ -35,34 +22,28 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Networking": Network,
   "ITIL": FolderKanban,
   "Security Awareness": Lock,
-  "Project Management": FolderKanban,
+  "Project Management": FolderKanban
 };
-
 const TrainingSamples = () => {
   usePageView("Training Samples");
-  const { courseId, variantId } = useParams();
+  const {
+    courseId,
+    variantId
+  } = useParams();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All Courses");
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // Flatten courses for display
   const flattenedCourses = useMemo(() => flattenCourses(sampleCourses), []);
-  
+
   // Simulate initial loading
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
-  
-  const selectedCourse = courseId 
-    ? sampleCourses.find(course => course.id === courseId) || null
-    : null;
-    
-  const filteredVariants = activeCategory === "All Courses" 
-    ? flattenedCourses 
-    : activeCategory === "Bytes"
-    ? flattenedCourses.filter(v => v.isByte)
-    : flattenedCourses.filter(v => v.categories.includes(activeCategory));
+  const selectedCourse = courseId ? sampleCourses.find(course => course.id === courseId) || null : null;
+  const filteredVariants = activeCategory === "All Courses" ? flattenedCourses : activeCategory === "Bytes" ? flattenedCourses.filter(v => v.isByte) : flattenedCourses.filter(v => v.categories.includes(activeCategory));
 
   // Calculate total lessons from all variants
   const totalLessons = flattenedCourses.reduce((acc, v) => acc + v.lessonCount, 0);
@@ -92,30 +73,17 @@ const TrainingSamples = () => {
 
   // Course player view
   if (showPlayer && selectedCourse) {
-    return (
-      <div className={cn(
-        "min-h-screen pt-20 pb-16 transition-all duration-300 relative bg-[#0f1419]",
-        isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"
-      )}>
+    return <div className={cn("min-h-screen pt-20 pb-16 transition-all duration-300 relative bg-[#0f1419]", isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0")}>
         <Navigation />
         <TechBackground />
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
-          <CoursePlayer 
-            course={selectedCourse}
-            initialVariantId={variantId}
-            onBack={() => navigate("/training-samples")} 
-          />
+          <CoursePlayer course={selectedCourse} initialVariantId={variantId} onBack={() => navigate("/training-samples")} />
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Course catalog view
-  return (
-    <div className={cn(
-      "min-h-screen pt-20 pb-16 overflow-hidden transition-all duration-300 relative bg-[#0f1419]",
-      isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0"
-    )}>
+  return <div className={cn("min-h-screen pt-20 pb-16 overflow-hidden transition-all duration-300 relative bg-[#0f1419]", isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0")}>
       <Navigation />
       <TechBackground />
       <div className="container max-w-7xl mx-auto px-4 relative z-10">
@@ -139,71 +107,24 @@ const TrainingSamples = () => {
           </p>
 
           {/* Enhanced stats row */}
-          <div className="flex items-center justify-center gap-6 md:gap-10 pt-6">
-            <div className="group flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-2xl font-bold text-foreground">{flattenedCourses.length}</span>
-              </div>
-              <span className="text-xs text-muted-foreground">Samples</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-2xl font-bold text-foreground">{categories.length - 1}</span>
-              </div>
-              <span className="text-xs text-muted-foreground">Categories</span>
-            </div>
-            <div className="group flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-2xl font-bold text-foreground">{totalLessons}</span>
-              </div>
-              <span className="text-xs text-muted-foreground">Lessons</span>
-            </div>
-          </div>
+          
         </div>
 
         {/* Category Tabs */}
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
           <div className="relative mb-10">
-            <TabsList className={cn(
-              "w-full justify-start overflow-x-auto flex-nowrap h-auto gap-2 p-2",
-              "bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl",
-              "scrollbar-hide shadow-lg shadow-background/50"
-            )}>
+            <TabsList className={cn("w-full justify-start overflow-x-auto flex-nowrap h-auto gap-2 p-2", "bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl", "scrollbar-hide shadow-lg shadow-background/50")}>
               {categories.map(category => {
-                const IconComponent = categoryIcons[category] || Layers;
-                const count = category === "All Courses" 
-                  ? flattenedCourses.length 
-                  : category === "Bytes"
-                  ? flattenedCourses.filter(v => v.isByte).length
-                  : flattenedCourses.filter(v => v.categories.includes(category)).length;
-                
-                return (
-                  <TabsTrigger 
-                    key={category} 
-                    value={category}
-                    className={cn(
-                      "relative px-4 md:px-5 py-2.5 rounded-xl font-medium whitespace-nowrap",
-                      "transition-all duration-300 flex items-center gap-2",
-                      "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
-                      "data-[state=active]:shadow-lg data-[state=active]:shadow-primary/25",
-                      "data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground",
-                      "hover:scale-105 active:scale-95"
-                    )}
-                  >
+              const IconComponent = categoryIcons[category] || Layers;
+              const count = category === "All Courses" ? flattenedCourses.length : category === "Bytes" ? flattenedCourses.filter(v => v.isByte).length : flattenedCourses.filter(v => v.categories.includes(category)).length;
+              return <TabsTrigger key={category} value={category} className={cn("relative px-4 md:px-5 py-2.5 rounded-xl font-medium whitespace-nowrap", "transition-all duration-300 flex items-center gap-2", "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground", "data-[state=active]:shadow-lg data-[state=active]:shadow-primary/25", "data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground", "hover:scale-105 active:scale-95")}>
                     <IconComponent className="w-4 h-4" />
                     <span className="hidden sm:inline">{category}</span>
-                    <span className={cn(
-                      "ml-1 px-2 py-0.5 text-xs rounded-full font-bold",
-                      "bg-background/20"
-                    )}>
+                    <span className={cn("ml-1 px-2 py-0.5 text-xs rounded-full font-bold", "bg-background/20")}>
                       {count}
                     </span>
-                  </TabsTrigger>
-                );
-              })}
+                  </TabsTrigger>;
+            })}
             </TabsList>
             
             {/* Scroll fade indicators */}
@@ -211,22 +132,17 @@ const TrainingSamples = () => {
             <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none rounded-r-2xl" />
           </div>
 
-          {categories.map(category => (
-            <TabsContent key={category} value={category} className="mt-0 animate-fade-in">
-              {isLoading ? (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {Array.from({ length: 6 }).map((_, index) => (
-                    <div
-                      key={index}
-                      className="animate-scale-in"
-                      style={{ animationDelay: `${index * 75}ms`, animationFillMode: 'both' }}
-                    >
+          {categories.map(category => <TabsContent key={category} value={category} className="mt-0 animate-fade-in">
+              {isLoading ? <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {Array.from({
+              length: 6
+            }).map((_, index) => <div key={index} className="animate-scale-in" style={{
+              animationDelay: `${index * 75}ms`,
+              animationFillMode: 'both'
+            }}>
                       <CourseCardSkeleton />
-                    </div>
-                  ))}
-                </div>
-              ) : filteredVariants.length === 0 ? (
-                <div className="text-center py-20 px-4">
+                    </div>)}
+                </div> : filteredVariants.length === 0 ? <div className="text-center py-20 px-4">
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted/50 flex items-center justify-center border border-border/50">
                     <BookOpen className="w-10 h-10 text-muted-foreground/50" />
                   </div>
@@ -237,26 +153,17 @@ const TrainingSamples = () => {
                     We're working on adding courses to this category. 
                     Check back soon or explore other categories.
                   </p>
-                </div>
-              ) : (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredVariants.map((variant, index) => (
-                    <div
-                      key={variant.id}
-                      className="animate-scale-in"
-                      style={{ animationDelay: `${index * 75}ms`, animationFillMode: 'both' }}
-                    >
+                </div> : <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredVariants.map((variant, index) => <div key={variant.id} className="animate-scale-in" style={{
+              animationDelay: `${index * 75}ms`,
+              animationFillMode: 'both'
+            }}>
                       <VariantCard variant={variant} />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </TabsContent>
-          ))}
+                    </div>)}
+                </div>}
+            </TabsContent>)}
         </Tabs>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default TrainingSamples;
