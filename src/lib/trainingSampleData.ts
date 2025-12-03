@@ -787,6 +787,136 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "cissp",
+    title: "Certified Information Systems Security Professional (CISSP)",
+    category: "Cybersecurity",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "In this engaging and comprehensive online training course, you receive in-depth instruction covering the 8 CISSP domains. Expertise in these domains is critical in today's information technology world. The CISSP domains include Security and Risk Management, Asset Security, Security Engineering, Communications and Network Security, Identity and Access Management, Security Assessment and Testing, Security Operations, and Software Development Security.",
+          difficulty: "Advanced"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: CISSP Foundations",
+            lessons: [
+              {
+                id: "cissp-lesson-1",
+                title: "Intro to CISSP Course and Exam",
+                duration: "TBD",
+                videoId: "r12t4jofgp",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-lesson-2",
+                title: "Understand and Apply Threat Modeling Concepts and Methodologies",
+                duration: "TBD",
+                videoId: "8b5qfbzlw9",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-lesson-3",
+                title: "Conduct Incident Management",
+                duration: "TBD",
+                videoId: "x5oni070dk",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "exam-crash",
+        name: "Exam Crash",
+        overview: {
+          description: "Rapid exam preparation covering key CISSP exam objectives with focused practice questions and concept reviews.",
+          difficulty: "Advanced"
+        },
+        modules: [
+          {
+            id: "crash-module-1",
+            title: "Ethics & Code of Conduct",
+            lessons: [
+              {
+                id: "cissp-crash-lesson-1",
+                title: "Question: Being Ethical as a CISSP",
+                duration: "TBD",
+                videoId: "38r02y1j1r",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-2",
+                title: "ISC2 Code of Ethics",
+                duration: "TBD",
+                videoId: "99ovbyd6nk",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-3",
+                title: "Question: Applying ISC2 Code of Ethics",
+                duration: "TBD",
+                videoId: "vi7pye1uuk",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-4",
+                title: "Question: What is the Ethical Thing To Do?",
+                duration: "TBD",
+                videoId: "xlhxcqiw66",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Security Concepts & Governance",
+            lessons: [
+              {
+                id: "cissp-crash-lesson-5",
+                title: "Question: Security Concept Violations",
+                duration: "TBD",
+                videoId: "bxwzzxfxw7",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-6",
+                title: "Question: Applying Security Concepts",
+                duration: "TBD",
+                videoId: "i9xl387dpy",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-7",
+                title: "Understanding Security Concepts",
+                duration: "TBD",
+                videoId: "bmygtxprph",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-8",
+                title: "Question: Aligning your Information Security Program",
+                duration: "TBD",
+                videoId: "6adpxlfx04",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "cissp-crash-lesson-9",
+                title: "Question: Applying Security Governance Principles",
+                duration: "TBD",
+                videoId: "huct1d46u7",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
