@@ -1138,6 +1138,64 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "microsoft-365-copilot",
+    title: "Using Microsoft 365 Copilot",
+    category: "Microsoft",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "Microsoft Copilot Chat delivers the power of generative AI across Microsoft 365 through a single conversational canvas. From one prompt field, learners can ask questions, create content, and retrieve insights that draw on both web data and—when licensed—secure organizational files and messages. The course centers on the two primary Copilot Chat surfaces: the standalone Microsoft 365 Chat experience (available in the browser, desktop, and mobile apps) and the in‑app Copilot Chat pane that appears in Teams, Outlook, and other Office applications. Each surface offers unique context, controls, and best‑fit tasks that can transform everyday workflows."
+        },
+        modules: [
+          {
+            id: "copilot-module-1",
+            title: "Using Microsoft 365 Copilot",
+            lessons: [
+              {
+                id: "copilot-lesson-1",
+                title: "Launching Microsoft 365 Copilot",
+                duration: "TBD",
+                videoId: "6wyw8s4zba",
+                instructor: "Dan Young"
+              },
+              {
+                id: "copilot-lesson-2",
+                title: "Understanding Generative AI (GenAI) in Copilot",
+                duration: "TBD",
+                videoId: "g4qda6i3bo",
+                instructor: "Dan Young"
+              },
+              {
+                id: "copilot-lesson-3",
+                title: "Learning Copilot through Everyday Interactions",
+                duration: "TBD",
+                videoId: "50de3xe376",
+                instructor: "Dan Young"
+              },
+              {
+                id: "copilot-lesson-4",
+                title: "Benefits of Using Generative AI for Personal Interests",
+                duration: "TBD",
+                videoId: "acld9nu5in",
+                instructor: "Dan Young"
+              },
+              {
+                id: "copilot-lesson-5",
+                title: "Copilot as an Expert",
+                duration: "TBD",
+                videoId: "blycxfk9zq",
+                instructor: "Dan Young"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
