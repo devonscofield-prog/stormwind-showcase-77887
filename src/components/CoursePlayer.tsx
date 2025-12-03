@@ -33,14 +33,10 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
     return { totalLessons: lessons.length, currentLessonIndex: index + 1, allLessons: lessons };
   }, [selectedVariant, currentLesson]);
 
-  // Get default open modules (the one containing current lesson)
+  // Get default open modules (all modules open by default)
   const defaultOpenModules = useMemo(() => {
-    if (!currentLesson) return [selectedVariant.modules[0]?.id];
-    const moduleWithCurrentLesson = selectedVariant.modules.find(m => 
-      m.lessons.some(l => l.id === currentLesson.id)
-    );
-    return moduleWithCurrentLesson ? [moduleWithCurrentLesson.id] : [];
-  }, [currentLesson, selectedVariant]);
+    return selectedVariant.modules.map(m => m.id);
+  }, [selectedVariant]);
 
   // Handle variant change
   const handleVariantChange = (variantId: string) => {
