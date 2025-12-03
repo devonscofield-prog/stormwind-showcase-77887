@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CourseCard } from "@/components/CourseCard";
+import { CourseCardSkeleton } from "@/components/CourseCardSkeleton";
 import { CoursePlayer } from "@/components/CoursePlayer";
 import { TechBackground } from "@/components/TechBackground";
 import { sampleCourses, categories } from "@/lib/trainingSampleData";
@@ -39,6 +40,13 @@ const TrainingSamples = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All Courses");
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Simulate initial loading
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
   
   const selectedCourse = courseId 
     ? sampleCourses.find(course => course.id === courseId) || null
@@ -194,7 +202,19 @@ const TrainingSamples = () => {
 
           {categories.map(category => (
             <TabsContent key={category} value={category} className="mt-0 animate-fade-in">
-              {filteredCourses.length === 0 ? (
+              {isLoading ? (
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className="animate-scale-in"
+                      style={{ animationDelay: `${index * 75}ms`, animationFillMode: 'both' }}
+                    >
+                      <CourseCardSkeleton />
+                    </div>
+                  ))}
+                </div>
+              ) : filteredCourses.length === 0 ? (
                 <div className="text-center py-20 px-4">
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted/50 flex items-center justify-center border border-border/50">
                     <BookOpen className="w-10 h-10 text-muted-foreground/50" />
