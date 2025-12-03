@@ -168,22 +168,28 @@ export default function AnalyticsDashboard() {
     setLoading(true);
     
     const daysAgo = dateRange === '7d' ? 7 : dateRange === '30d' ? 30 : 90;
-    const startDate = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000).toISOString();
-    const endDate = new Date().toISOString();
+    const startDate = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
+    startDate.setUTCHours(0, 0, 0, 0);
+    
+    const endDate = new Date();
+    endDate.setUTCHours(23, 59, 59, 999);
 
     try {
+      const start = startDate.toISOString();
+      const end = endDate.toISOString();
+      
       const queries = [
-        { queryType: 'overview', startDate, endDate },
-        { queryType: 'top_pages', startDate, endDate, limit: 10 },
-        { queryType: 'traffic_sources', startDate, endDate },
-        { queryType: 'device_breakdown', startDate, endDate },
-        { queryType: 'popular_courses', startDate, endDate, limit: 10 },
-        { queryType: 'page_views_timeline', startDate, endDate },
-        { queryType: 'top_interactions', startDate, endDate, limit: 10 },
-        { queryType: 'video_analytics_overview', startDate, endDate },
-        { queryType: 'most_watched_videos', startDate, endDate, limit: 10 },
-        { queryType: 'video_completions_by_course', startDate, endDate, limit: 10 },
-        { queryType: 'video_watch_timeline', startDate, endDate }
+        { queryType: 'overview', startDate: start, endDate: end },
+        { queryType: 'top_pages', startDate: start, endDate: end, limit: 10 },
+        { queryType: 'traffic_sources', startDate: start, endDate: end },
+        { queryType: 'device_breakdown', startDate: start, endDate: end },
+        { queryType: 'popular_courses', startDate: start, endDate: end, limit: 10 },
+        { queryType: 'page_views_timeline', startDate: start, endDate: end },
+        { queryType: 'top_interactions', startDate: start, endDate: end, limit: 10 },
+        { queryType: 'video_analytics_overview', startDate: start, endDate: end },
+        { queryType: 'most_watched_videos', startDate: start, endDate: end, limit: 10 },
+        { queryType: 'video_completions_by_course', startDate: start, endDate: end, limit: 10 },
+        { queryType: 'video_watch_timeline', startDate: start, endDate: end }
       ];
 
       const results = await Promise.all(

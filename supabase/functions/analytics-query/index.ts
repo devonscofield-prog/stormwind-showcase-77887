@@ -149,13 +149,16 @@ serve(async (req) => {
         break;
 
       case 'page_views_timeline':
-        const { data: timelineData } = await supabase
+        console.log(`page_views_timeline: Querying from ${start} to ${end}`);
+        const { data: timelineData, error: timelineError } = await supabase
           .from('page_views')
           .select('created_at')
           .gte('created_at', start)
           .lte('created_at', end)
           .order('created_at')
           .limit(50000);
+        
+        console.log(`page_views_timeline: Query returned ${timelineData?.length || 0} records, error: ${timelineError?.message || 'none'}`);
 
         // Group by day
         const dailyCounts = (timelineData || []).reduce((acc: any, item) => {
