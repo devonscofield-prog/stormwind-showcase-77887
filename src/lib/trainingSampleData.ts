@@ -54,6 +54,7 @@ export interface Course {
   thumbnail?: string;
   variants: CourseVariant[]; // Array of variants (Full Course, Exam Crash, etc.)
   showLiveSchedule?: boolean;
+  isByte?: boolean; // Marks course as a Bytes/microlearning course
 }
 
 // Instructor photo mapping - maps instructor names to their photo assets
@@ -1041,6 +1042,7 @@ export const sampleCourses: Course[] = [
     id: "ai-for-project-managers",
     title: "AI for Project Managers",
     category: "Project Management",
+    isByte: true,
     variants: [
       {
         id: "full-course",
@@ -1143,6 +1145,7 @@ export const sampleCourses: Course[] = [
     id: "microsoft-365-copilot",
     title: "Using Microsoft 365 Copilot",
     category: "Microsoft",
+    isByte: true,
     variants: [
       {
         id: "full-course",
@@ -1201,6 +1204,7 @@ export const sampleCourses: Course[] = [
     id: "general-ai-awareness",
     title: "General Artificial Intelligence Awareness",
     category: "AI & Machine Learning",
+    isByte: true,
     variants: [
       {
         id: "full-course",
@@ -1252,6 +1256,7 @@ export const sampleCourses: Course[] = [
     id: "security-awareness-onboarding",
     title: "Security Awareness: Onboarding",
     category: "Security Awareness",
+    isByte: true,
     variants: [
       {
         id: "full-course",
@@ -1326,6 +1331,7 @@ export interface FlattenedCourseVariant {
   instructor?: string;
   lessonCount: number;
   showLiveSchedule?: boolean;
+  isByte?: boolean;
 }
 
 // Helper to flatten courses into individual variant cards
@@ -1349,7 +1355,8 @@ export const flattenCourses = (courses: Course[]): FlattenedCourseVariant[] => {
         firstVideoId: firstLesson?.videoId,
         instructor: firstLesson?.instructor,
         lessonCount,
-        showLiveSchedule: course.showLiveSchedule
+        showLiveSchedule: course.showLiveSchedule,
+        isByte: course.isByte
       });
     }
   }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Play, User, Zap } from "lucide-react";
+import { BookOpen, Play, User, Zap, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { FlattenedCourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
@@ -54,17 +54,33 @@ export const VariantCard = ({ variant, className }: VariantCardProps) => {
             />
             
             {/* Variant Badge - top left */}
-            <div className={cn(
-              "absolute top-3 left-3 px-3 py-1.5 rounded-full text-xs font-bold",
-              "backdrop-blur-md shadow-lg",
-              isExamCrash 
-                ? "bg-amber-500/90 text-amber-950" 
-                : "bg-primary/90 text-primary-foreground"
-            )}>
-              <div className="flex items-center gap-1.5">
-                {isExamCrash && <Zap className="w-3 h-3" />}
-                {variant.variantName}
+            <div className="absolute top-3 left-3 flex items-center gap-2">
+              <div className={cn(
+                "px-3 py-1.5 rounded-full text-xs font-bold",
+                "backdrop-blur-md shadow-lg",
+                isExamCrash 
+                  ? "bg-amber-500/90 text-amber-950" 
+                  : "bg-primary/90 text-primary-foreground"
+              )}>
+                <div className="flex items-center gap-1.5">
+                  {isExamCrash && <Zap className="w-3 h-3" />}
+                  {variant.variantName}
+                </div>
               </div>
+              
+              {/* Bytes Badge */}
+              {variant.isByte && (
+                <div className={cn(
+                  "px-2.5 py-1.5 rounded-full text-xs font-bold",
+                  "backdrop-blur-md shadow-lg",
+                  "bg-violet-500/90 text-white"
+                )}>
+                  <div className="flex items-center gap-1">
+                    <Sparkles className="w-3 h-3" />
+                    Bytes
+                  </div>
+                </div>
+              )}
             </div>
             
             {/* Preview Course Button - appears on hover */}
