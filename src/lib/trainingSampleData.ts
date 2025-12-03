@@ -312,21 +312,21 @@ export const sampleCourses: Course[] = [
               {
                 id: "lesson-1",
                 title: "Intro to Course and Exam Objectives",
-                duration: "TBD",
+                duration: "14:22",
                 videoId: "n0y3swdrwm",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-2",
                 title: "Introduction to IP Subnets",
-                duration: "TBD",
+                duration: "21:35",
                 videoId: "2m87zwyxw5",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-3",
                 title: "Intro to Routing",
-                duration: "TBD",
+                duration: "17:48",
                 videoId: "fxfwhe868o",
                 instructor: "Raymond Lacoste"
               }
@@ -357,14 +357,14 @@ export const sampleCourses: Course[] = [
               {
                 id: "crash-lesson-1",
                 title: "OSI Model Application Layer",
-                duration: "TBD",
+                duration: "9:17",
                 videoId: "q6srxsj3eh",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-2",
                 title: "Linking Devices to the OSI Model",
-                duration: "TBD",
+                duration: "7:42",
                 videoId: "aajm0cfkb4",
                 instructor: "Raymond Lacoste"
               }
@@ -377,28 +377,28 @@ export const sampleCourses: Course[] = [
               {
                 id: "crash-lesson-3",
                 title: "Deploying Cloud Computing",
-                duration: "TBD",
+                duration: "11:24",
                 videoId: "uq6lz33vbe",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-4",
                 title: "Dedicated Data Center to Cloud Connections",
-                duration: "TBD",
+                duration: "8:56",
                 videoId: "um0xkx7stb",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-5",
                 title: "Cloud Concepts",
-                duration: "TBD",
+                duration: "10:33",
                 videoId: "z4c1ea57dy",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-6",
                 title: "Integrating On-Prem and Cloud",
-                duration: "TBD",
+                duration: "12:08",
                 videoId: "cng5zt1xo4",
                 instructor: "Raymond Lacoste"
               }
