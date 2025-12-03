@@ -6,23 +6,26 @@ import { Button } from "@/components/ui/button";
 interface VideoEmbedProps {
   videoId: string;
   title: string;
+  thumbnail?: string; // Custom thumbnail override
 }
 
-export const VideoEmbed = ({ videoId, title }: VideoEmbedProps) => {
+export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
+  const [showVideo, setShowVideo] = useState(!thumbnail); // Start with video hidden if custom thumbnail exists
   const isPlaceholder = videoId.startsWith('pending_video_');
 
   // Reset state when videoId changes
   useEffect(() => {
     setVideoLoaded(false);
     setHasError(false);
-  }, [videoId, retryKey]);
+    setShowVideo(!thumbnail);
+  }, [videoId, retryKey, thumbnail]);
 
   // Timeout fallback - if video doesn't load within 15 seconds, show error
   useEffect(() => {
-    if (isPlaceholder || videoLoaded || hasError) return;
+    if (isPlaceholder || videoLoaded || hasError || !showVideo) return;
 
     const timeout = setTimeout(() => {
       if (!videoLoaded) {
@@ -31,10 +34,14 @@ export const VideoEmbed = ({ videoId, title }: VideoEmbedProps) => {
     }, 15000);
 
     return () => clearTimeout(timeout);
-  }, [videoId, videoLoaded, hasError, isPlaceholder, retryKey]);
+  }, [videoId, videoLoaded, hasError, isPlaceholder, retryKey, showVideo]);
 
   const handleRetry = () => {
     setRetryKey(prev => prev + 1);
+  };
+
+  const handlePlayClick = () => {
+    setShowVideo(true);
   };
 
   if (isPlaceholder) {
@@ -86,6 +93,33 @@ export const VideoEmbed = ({ videoId, title }: VideoEmbedProps) => {
               </Button>
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show custom thumbnail with play button if thumbnail is provided and video not yet triggered
+  if (thumbnail && !showVideo) {
+    return (
+      <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">
+        <div style={{
+          padding: "56.25% 0 0 0",
+          position: "relative"
+        }}>
+          <img 
+            src={thumbnail} 
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <button
+            onClick={handlePlayClick}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors cursor-pointer group"
+            aria-label={`Play ${title}`}
+          >
+            <div className="w-20 h-20 rounded-full bg-primary/90 group-hover:bg-primary flex items-center justify-center transition-all group-hover:scale-110 shadow-lg">
+              <Play className="w-10 h-10 text-primary-foreground ml-1" fill="currentColor" />
+            </div>
+          </button>
         </div>
       </div>
     );

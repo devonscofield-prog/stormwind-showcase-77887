@@ -14,12 +14,16 @@ import shaunPellingPhoto from "@/assets/shaun-pelling.png";
 import spikeXavierPhoto from "@/assets/spike-xavier.png";
 import willPanekPhoto from "@/assets/will-panek.png";
 
+// Import custom video thumbnails
+import networkPlusIntroThumbnail from "@/assets/network-plus-intro-thumbnail.png";
+
 export interface Lesson {
   id: string;
   title: string;
   duration: string;
   videoId: string;
   instructor?: string; // Instructor name for the lesson
+  thumbnail?: string; // Custom thumbnail override for video
 }
 
 export interface Module {
@@ -314,7 +318,8 @@ export const sampleCourses: Course[] = [
                 title: "Intro to Course and Exam Objectives",
                 duration: "14:22",
                 videoId: "n0y3swdrwm",
-                instructor: "Raymond Lacoste"
+                instructor: "Raymond Lacoste",
+                thumbnail: networkPlusIntroThumbnail
               },
               {
                 id: "lesson-2",
