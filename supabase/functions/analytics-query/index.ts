@@ -150,18 +150,40 @@ serve(async (req) => {
 
       case 'page_views_timeline':
         console.log(`page_views_timeline: Querying from ${start} to ${end}`);
-        const { data: timelineData, error: timelineError } = await supabase
-          .from('page_views')
-          .select('created_at')
-          .gte('created_at', start)
-          .lte('created_at', end)
-          .order('created_at')
-          .limit(50000);
         
-        console.log(`page_views_timeline: Query returned ${timelineData?.length || 0} records, error: ${timelineError?.message || 'none'}`);
+        // Fetch all records using pagination (PostgREST limits to 1000 per request)
+        let allTimelineData: any[] = [];
+        let pageOffset = 0;
+        const pageSize = 1000;
+        let hasMore = true;
+        
+        while (hasMore) {
+          const { data: pageData, error: pageError } = await supabase
+            .from('page_views')
+            .select('created_at')
+            .gte('created_at', start)
+            .lte('created_at', end)
+            .order('created_at')
+            .range(pageOffset, pageOffset + pageSize - 1);
+          
+          if (pageError) {
+            console.log(`page_views_timeline: Page error at offset ${pageOffset}: ${pageError.message}`);
+            break;
+          }
+          
+          if (pageData && pageData.length > 0) {
+            allTimelineData = allTimelineData.concat(pageData);
+            pageOffset += pageSize;
+            hasMore = pageData.length === pageSize;
+          } else {
+            hasMore = false;
+          }
+        }
+        
+        console.log(`page_views_timeline: Total records fetched: ${allTimelineData.length}`);
 
         // Group by day
-        const dailyCounts = (timelineData || []).reduce((acc: any, item) => {
+        const dailyCounts = allTimelineData.reduce((acc: any, item) => {
           const date = new Date(item.created_at).toISOString().split('T')[0];
           acc[date] = (acc[date] || 0) + 1;
           return acc;
