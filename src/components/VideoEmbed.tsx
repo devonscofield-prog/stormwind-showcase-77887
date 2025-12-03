@@ -14,6 +14,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   const [hasError, setHasError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   const [showVideo, setShowVideo] = useState(!thumbnail); // Start with video hidden if custom thumbnail exists
+  const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const isPlaceholder = videoId.startsWith('pending_video_');
 
   // Reset state when videoId changes
@@ -21,6 +22,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
     setVideoLoaded(false);
     setHasError(false);
     setShowVideo(!thumbnail);
+    setShouldAutoplay(false);
   }, [videoId, retryKey, thumbnail]);
 
   // Timeout fallback - if video doesn't load within 15 seconds, show error
@@ -41,6 +43,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   };
 
   const handlePlayClick = () => {
+    setShouldAutoplay(true);
     setShowVideo(true);
   };
 
@@ -138,7 +141,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
         )}
         <iframe 
           key={retryKey}
-          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false`}
+          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false${shouldAutoplay ? '&autoPlay=true' : ''}`}
           title={title}
           allow="autoplay; fullscreen" 
           allowFullScreen 
