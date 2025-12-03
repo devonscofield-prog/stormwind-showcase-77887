@@ -574,6 +574,117 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "az-900-microsoft-azure-fundamentals",
+    title: "AZ-900: Microsoft Azure Fundamentals",
+    category: "Cloud",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "In this online training course, students will learn foundational level knowledge on cloud concepts; core Azure services; security, privacy, compliance, and trust; and Azure pricing and support.",
+          difficulty: "Beginner",
+          examNumber: "AZ-900"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: Azure Fundamentals",
+            lessons: [
+              {
+                id: "az900-lesson-1",
+                title: "Course Introduction, On Site Networking",
+                duration: "TBD",
+                videoId: "9ub2edeojj",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-lesson-2",
+                title: "Core Azure Architectural Components, Core Products Available in Azure",
+                duration: "TBD",
+                videoId: "8mgexvkkcv",
+                instructor: "TBD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "exam-crash",
+        name: "Exam Crash",
+        overview: {
+          description: "Rapid exam preparation covering all key AZ-900 exam objectives with focused, efficient content delivery.",
+          difficulty: "Beginner",
+          examNumber: "AZ-900"
+        },
+        modules: [
+          {
+            id: "crash-module-1",
+            title: "Cloud Concepts",
+            lessons: [
+              {
+                id: "az900-crash-lesson-1",
+                title: "Cloud Service Models",
+                duration: "TBD",
+                videoId: "szhioulxir",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-crash-lesson-2",
+                title: "Cloud Computing Benefits and Virtualization",
+                duration: "TBD",
+                videoId: "7fh4cmoqev",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-crash-lesson-3",
+                title: "Cloud Computing Requirements and Cost Efficiency",
+                duration: "TBD",
+                videoId: "shpsswxxfi",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-crash-lesson-4",
+                title: "The Shared Responsibility Model",
+                duration: "TBD",
+                videoId: "wglirpur6d",
+                instructor: "TBD"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Cloud Hosting & Cost",
+            lessons: [
+              {
+                id: "az900-crash-lesson-5",
+                title: "Cloud Hosting Models",
+                duration: "TBD",
+                videoId: "4f7gl8dyk0",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-crash-lesson-6",
+                title: "CapEx and OpEx Cost Considerations",
+                duration: "TBD",
+                videoId: "wx8qnjgisp",
+                instructor: "TBD"
+              },
+              {
+                id: "az900-crash-lesson-7",
+                title: "Cloud Hosting Model Advantages",
+                duration: "TBD",
+                videoId: "f66flu1piq",
+                instructor: "TBD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
