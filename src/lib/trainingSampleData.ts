@@ -992,6 +992,50 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "pmp-exam-prep",
+    title: "PMP Official Exam Prep",
+    category: "Project Management",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "The Project Management Professional (PMP)® Certification Prep live online training course provides Project Managers with the knowledge and skills needed to master the Project Management Institute's (PMI)® best practices and attain the Project Management Professional (PMP)® certification. The PMP® credential is the most widely accepted professional certifications in the world and its framework has set the standard for the project management profession for the past 30 years. As Authorized Training Providers (ATP) our Project Management Professional (PMP)® Certification Prep course contains the official content designed to prepare you for the exam based on the most up-to-date exam content outline."
+        },
+        modules: [
+          {
+            id: "pmp-module-1",
+            title: "PMP Full Course",
+            lessons: [
+              {
+                id: "pmp-lesson-1",
+                title: "PMP Introduction",
+                duration: "TBD",
+                videoId: "p6jjzhthsh",
+                instructor: "Ashley Hunt"
+              },
+              {
+                id: "pmp-lesson-2",
+                title: "Risk",
+                duration: "TBD",
+                videoId: "lxr7pmtmxl",
+                instructor: "Ashley Hunt"
+              },
+              {
+                id: "pmp-lesson-3",
+                title: "Leadership Skills",
+                duration: "TBD",
+                videoId: "3x1jqbueph",
+                instructor: "Ashley Hunt"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
