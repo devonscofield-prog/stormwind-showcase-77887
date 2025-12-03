@@ -1058,35 +1058,35 @@ export const sampleCourses: Course[] = [
                 title: "What is AI in Project Management",
                 duration: "TBD",
                 videoId: "x40snbays8",
-                instructor: "TBD"
+                instructor: "Ashley Hunt"
               },
               {
                 id: "ai-pm-lesson-2",
                 title: "How AI is Changing Project Management Practices",
                 duration: "TBD",
                 videoId: "iacz4pf8qx",
-                instructor: "TBD"
+                instructor: "Ashley Hunt"
               },
               {
                 id: "ai-pm-lesson-3",
                 title: "The Role of AI in Risk Management",
                 duration: "TBD",
                 videoId: "7f8evgv7kw",
-                instructor: "TBD"
+                instructor: "Ashley Hunt"
               },
               {
                 id: "ai-pm-lesson-4",
                 title: "AI-Powered Scheduling and Forecasting",
                 duration: "TBD",
                 videoId: "6s5u3409ij",
-                instructor: "TBD"
+                instructor: "Ashley Hunt"
               },
               {
                 id: "ai-pm-lesson-5",
                 title: "Automating Routine Project Management Tasks",
                 duration: "TBD",
                 videoId: "c7383nrbsg",
-                instructor: "TBD"
+                instructor: "Ashley Hunt"
               }
             ]
           }
