@@ -282,6 +282,132 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "comptia-network-plus-n10-009",
+    title: "CompTIA Network+ (N10-009)",
+    category: "Networking",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "The CompTIA® Network+ course builds on your existing user-level knowledge and experience with personal computer operating systems and networks by presenting the fundamental skills and concepts you will use on the job in any type of networking career. If your job duties include network troubleshooting, operation or maintenance, or if you are preparing for any type of network-related career, this course provides the background knowledge and skills you will need to be successful.",
+          examNumber: "N10-009",
+          objectives: [
+            "Understand network architecture and design concepts",
+            "Configure and manage IP subnets and routing",
+            "Implement network security best practices",
+            "Troubleshoot common network connectivity issues",
+            "Deploy and manage cloud and virtualization technologies"
+          ],
+          difficulty: "Intermediate",
+          totalDuration: "TBD"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: Networking Fundamentals",
+            lessons: [
+              {
+                id: "lesson-1",
+                title: "Intro to Course and Exam Objectives",
+                duration: "TBD",
+                videoId: "n0y3swdrwm",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "lesson-2",
+                title: "Introduction to IP Subnets",
+                duration: "TBD",
+                videoId: "2m87zwyxw5",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "lesson-3",
+                title: "Intro to Routing",
+                duration: "TBD",
+                videoId: "fxfwhe868o",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "exam-crash",
+        name: "Exam Crash",
+        overview: {
+          description: "This focused exam prep course targets the key concepts and high-value topics for the CompTIA Network+ certification. Perfect for those with networking experience who want to quickly review essential material before sitting for the exam.",
+          examNumber: "N10-009",
+          objectives: [
+            "Master OSI model layers and their functions",
+            "Understand cloud computing deployment models",
+            "Review network device roles and configurations",
+            "Prepare for exam success with targeted content"
+          ],
+          difficulty: "Advanced",
+          totalDuration: "TBD"
+        },
+        modules: [
+          {
+            id: "crash-module-1",
+            title: "Module 1: OSI Model and Network Devices",
+            lessons: [
+              {
+                id: "crash-lesson-1",
+                title: "OSI Model Application Layer",
+                duration: "TBD",
+                videoId: "q6srxsj3eh",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-2",
+                title: "Linking Devices to the OSI Model",
+                duration: "TBD",
+                videoId: "aajm0cfkb4",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Module 2: Cloud Computing",
+            lessons: [
+              {
+                id: "crash-lesson-3",
+                title: "Deploying Cloud Computing",
+                duration: "TBD",
+                videoId: "uq6lz33vbe",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-4",
+                title: "Dedicated Data Center to Cloud Connections",
+                duration: "TBD",
+                videoId: "um0xkx7stb",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-5",
+                title: "Cloud Concepts",
+                duration: "TBD",
+                videoId: "z4c1ea57dy",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "crash-lesson-6",
+                title: "Integrating On-Prem and Cloud",
+                duration: "TBD",
+                videoId: "cng5zt1xo4",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
@@ -290,6 +416,7 @@ export const categories = [
   "Microsoft",
   "Cloud",
   "Cybersecurity",
+  "Networking",
   "AI & Machine Learning",
   "Security Awareness",
   "Business Skills"
