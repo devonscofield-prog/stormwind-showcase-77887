@@ -24,7 +24,6 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
   
   const totalLessons = getTotalLessons(course);
   const variantCount = getVariantCount(course);
-  const difficulty = course.variants[0]?.overview.difficulty;
   
   // Get first instructor from first lesson
   const firstInstructor = course.variants[0]?.modules[0]?.lessons[0]?.instructor;
@@ -100,8 +99,8 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
 
           {/* Content */}
           <CardContent className="flex-1 flex flex-col p-4 pt-3">
-            {/* Category & Difficulty Row */}
-            <div className="flex items-center justify-between gap-2 mb-3">
+            {/* Category Row */}
+            <div className="flex items-center gap-2 mb-3">
               {/* Category Badge */}
               <span className={cn(
                 "px-2.5 py-1 text-xs font-semibold rounded-full",
@@ -112,18 +111,6 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
               )}>
                 {category}
               </span>
-              
-              {/* Difficulty Badge */}
-              {difficulty && (
-                <span className={cn(
-                  "px-2 py-0.5 text-xs font-medium rounded-full",
-                  difficulty === "Beginner" && "bg-green-500/10 text-green-400",
-                  difficulty === "Intermediate" && "bg-yellow-500/10 text-yellow-400",
-                  difficulty === "Advanced" && "bg-red-500/10 text-red-400"
-                )}>
-                  {difficulty}
-                </span>
-              )}
             </div>
             
             {/* Title */}
