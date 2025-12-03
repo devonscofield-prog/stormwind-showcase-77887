@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 // Category icons mapping
 const categoryIcons: Record<string, React.ElementType> = {
-  "All Courses": Layers,
+  "All Samples": Layers,
   "Bytes": Sparkles,
   "Cybersecurity": Shield,
   "Cloud": Cloud,
@@ -31,7 +31,7 @@ const TrainingSamples = () => {
     variantId
   } = useParams();
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState("All Courses");
+  const [activeCategory, setActiveCategory] = useState("All Samples");
   const [isLoading, setIsLoading] = useState(true);
 
   // Flatten courses for display
@@ -43,7 +43,7 @@ const TrainingSamples = () => {
     return () => clearTimeout(timer);
   }, []);
   const selectedCourse = courseId ? sampleCourses.find(course => course.id === courseId) || null : null;
-  const filteredVariants = activeCategory === "All Courses" ? flattenedCourses : activeCategory === "Bytes" ? flattenedCourses.filter(v => v.isByte) : flattenedCourses.filter(v => v.categories.includes(activeCategory));
+  const filteredVariants = activeCategory === "All Samples" ? flattenedCourses : activeCategory === "Bytes" ? flattenedCourses.filter(v => v.isByte) : flattenedCourses.filter(v => v.categories.includes(activeCategory));
 
   // Calculate total lessons from all variants
   const totalLessons = flattenedCourses.reduce((acc, v) => acc + v.lessonCount, 0);
@@ -116,7 +116,7 @@ const TrainingSamples = () => {
             <TabsList className={cn("w-full justify-start overflow-x-auto flex-nowrap h-auto gap-2 p-2", "bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl", "scrollbar-hide shadow-lg shadow-background/50")}>
               {categories.map(category => {
               const IconComponent = categoryIcons[category] || Layers;
-              const count = category === "All Courses" ? flattenedCourses.length : category === "Bytes" ? flattenedCourses.filter(v => v.isByte).length : flattenedCourses.filter(v => v.categories.includes(category)).length;
+              const count = category === "All Samples" ? flattenedCourses.length : category === "Bytes" ? flattenedCourses.filter(v => v.isByte).length : flattenedCourses.filter(v => v.categories.includes(category)).length;
               return <TabsTrigger key={category} value={category} className={cn("relative px-4 md:px-5 py-2.5 rounded-xl font-medium whitespace-nowrap", "transition-all duration-300 flex items-center gap-2", "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground", "data-[state=active]:shadow-lg data-[state=active]:shadow-primary/25", "data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground", "hover:scale-105 active:scale-95")}>
                     <IconComponent className="w-4 h-4" />
                     <span className="hidden sm:inline">{category}</span>
