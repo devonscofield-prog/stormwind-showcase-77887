@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Clock, Play, CheckCircle2, ChevronDown, BookOpen, Layers } from "lucide-react";
+import { ArrowLeft, Play, CheckCircle2, ChevronDown, BookOpen, Layers } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -290,15 +290,6 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
                                     )}>
                                       {lesson.title}
                                     </p>
-                                    <div className={cn(
-                                      "flex items-center gap-1.5 mt-1 text-xs",
-                                      status === 'current' 
-                                        ? "text-primary-foreground/80" 
-                                        : "text-muted-foreground"
-                                    )}>
-                                      <Clock className="h-3 w-3" />
-                                      <span>{lesson.duration}</span>
-                                    </div>
                                   </div>
                                 </button>
                               );
