@@ -7,7 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Progress } from "@/components/ui/progress";
+
 import {
   Accordion,
   AccordionContent,
@@ -108,12 +108,6 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
     return { totalLessons: lessons.length, currentLessonIndex: index + 1, allLessons: lessons };
   }, [selectedVariant, currentLesson]);
 
-  // Calculate progress percentage
-  const progressPercentage = useMemo(() => {
-    if (totalLessons === 0) return 0;
-    const completedCount = viewedLessons.size + (currentLesson ? 1 : 0);
-    return Math.round((completedCount / totalLessons) * 100);
-  }, [viewedLessons.size, totalLessons, currentLesson]);
 
   // Get default open modules (all modules open by default)
   const defaultOpenModules = useMemo(() => {
@@ -213,19 +207,6 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
           )}
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-6 p-4 rounded-xl bg-card/50 backdrop-blur border border-border/50">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2 text-sm">
-              <CheckCircle2 className="w-4 h-4 text-primary" />
-              <span className="text-foreground font-medium">{progressPercentage}% Complete</span>
-            </div>
-            <span className="text-xs text-muted-foreground">
-              {viewedLessons.size + (currentLesson ? 1 : 0)} of {totalLessons} lessons
-            </span>
-          </div>
-          <Progress value={progressPercentage} className="h-2" />
-        </div>
 
         {/* Course Title with Breadcrumb */}
         <div className="mb-6">
@@ -375,10 +356,6 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                   </span>
                 </div>
 
-                {/* Module progress mini-bar */}
-                <div className="mb-4">
-                  <Progress value={progressPercentage} className="h-1" />
-                </div>
 
                 {/* Collapsible Modules */}
                 <div className="max-h-[calc(100vh-350px)] overflow-y-auto pr-1 -mr-1">
