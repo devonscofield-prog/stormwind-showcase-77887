@@ -1,11 +1,81 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
-import { Download, TrendingUp, Users, Eye, Clock, MousePointer, PlayCircle, CheckCircle, Timer, BarChart3 } from 'lucide-react';
+import { Download, TrendingUp, Users, Eye, Clock, MousePointer, PlayCircle, CheckCircle, Timer, BarChart3, Calendar } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+type TimelineGranularity = 'daily' | 'weekly' | 'monthly';
+
+// Aggregate timeline data by granularity
+const aggregateTimeline = (data: any[], granularity: TimelineGranularity): any[] => {
+  if (!data?.length || granularity === 'daily') return data;
+
+  const aggregated: { [key: string]: { count: number; label: string } } = {};
+
+  data.forEach(item => {
+    const date = new Date(item.date);
+    let key: string;
+    let label: string;
+
+    if (granularity === 'weekly') {
+      // Get the start of the week (Sunday)
+      const weekStart = new Date(date);
+      weekStart.setDate(date.getDate() - date.getDay());
+      key = weekStart.toISOString().split('T')[0];
+      label = `Week of ${weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+    } else {
+      // Monthly
+      key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+      label = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+
+    if (!aggregated[key]) {
+      aggregated[key] = { count: 0, label };
+    }
+    aggregated[key].count += item.count || 0;
+  });
+
+  return Object.entries(aggregated)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, data]) => ({ date, count: data.count, label: data.label }));
+};
+
+// Aggregate video timeline data by granularity
+const aggregateVideoTimeline = (data: any[], granularity: TimelineGranularity): any[] => {
+  if (!data?.length || granularity === 'daily') return data;
+
+  const aggregated: { [key: string]: { plays: number; watch_time: number; label: string } } = {};
+
+  data.forEach(item => {
+    const date = new Date(item.date);
+    let key: string;
+    let label: string;
+
+    if (granularity === 'weekly') {
+      const weekStart = new Date(date);
+      weekStart.setDate(date.getDate() - date.getDay());
+      key = weekStart.toISOString().split('T')[0];
+      label = `Week of ${weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+    } else {
+      key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+      label = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+
+    if (!aggregated[key]) {
+      aggregated[key] = { plays: 0, watch_time: 0, label };
+    }
+    aggregated[key].plays += item.plays || 0;
+    aggregated[key].watch_time += item.watch_time || 0;
+  });
+
+  return Object.entries(aggregated)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, data]) => ({ date, plays: data.plays, watch_time: data.watch_time, label: data.label }));
+};
 
 // Distinct, accessible chart colors
 const CHART_COLORS = [
@@ -69,6 +139,7 @@ const EmptyState = ({ message }: { message: string }) => (
 
 export default function AnalyticsDashboard() {
   const [dateRange, setDateRange] = useState<'7d' | '30d' | '90d'>('30d');
+  const [timelineGranularity, setTimelineGranularity] = useState<TimelineGranularity>('daily');
   const [overview, setOverview] = useState<any>(null);
   const [topPages, setTopPages] = useState<any[]>([]);
   const [trafficSources, setTrafficSources] = useState<any[]>([]);
@@ -81,6 +152,17 @@ export default function AnalyticsDashboard() {
   const [videoCompletionsByCourse, setVideoCompletionsByCourse] = useState<any[]>([]);
   const [videoTimeline, setVideoTimeline] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Aggregated timeline data based on granularity
+  const aggregatedTimeline = useMemo(() => 
+    aggregateTimeline(timeline, timelineGranularity), 
+    [timeline, timelineGranularity]
+  );
+
+  const aggregatedVideoTimeline = useMemo(() => 
+    aggregateVideoTimeline(videoTimeline, timelineGranularity), 
+    [videoTimeline, timelineGranularity]
+  );
 
   const fetchAnalytics = async () => {
     setLoading(true);
@@ -280,21 +362,40 @@ export default function AnalyticsDashboard() {
           <TabsContent value="pages" className="space-y-6">
             {/* Page Views Timeline */}
             <Card>
-              <CardHeader>
-                <CardTitle>Page Views Over Time</CardTitle>
-                <CardDescription>Daily page view trends</CardDescription>
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <CardTitle>Page Views Over Time</CardTitle>
+                  <CardDescription>
+                    {timelineGranularity === 'daily' ? 'Daily' : timelineGranularity === 'weekly' ? 'Weekly' : 'Monthly'} page view trends
+                  </CardDescription>
+                </div>
+                <Select value={timelineGranularity} onValueChange={(v) => setTimelineGranularity(v as TimelineGranularity)}>
+                  <SelectTrigger className="w-[140px]">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="daily">Daily</SelectItem>
+                    <SelectItem value="weekly">Weekly</SelectItem>
+                    <SelectItem value="monthly">Monthly</SelectItem>
+                  </SelectContent>
+                </Select>
               </CardHeader>
               <CardContent>
-                {timeline.length === 0 ? (
+                {aggregatedTimeline.length === 0 ? (
                   <EmptyState message="No page view data yet" />
                 ) : (
                   <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={timeline}>
+                    <LineChart data={aggregatedTimeline}>
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis 
                         dataKey="date" 
                         tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
-                        tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        tickFormatter={(value, index) => {
+                          const item = aggregatedTimeline[index];
+                          if (item?.label) return item.label;
+                          return new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        }}
                       />
                       <YAxis tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
                       <Tooltip content={<CustomTooltip />} />
@@ -546,31 +647,51 @@ export default function AnalyticsDashboard() {
 
             {/* Video Watch Timeline */}
             <Card>
-              <CardHeader>
-                <CardTitle>Video Watch Activity</CardTitle>
-                <CardDescription>Daily video plays and watch time</CardDescription>
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <CardTitle>Video Watch Activity</CardTitle>
+                  <CardDescription>
+                    {timelineGranularity === 'daily' ? 'Daily' : timelineGranularity === 'weekly' ? 'Weekly' : 'Monthly'} video plays and watch time
+                  </CardDescription>
+                </div>
+                <Select value={timelineGranularity} onValueChange={(v) => setTimelineGranularity(v as TimelineGranularity)}>
+                  <SelectTrigger className="w-[140px]">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="daily">Daily</SelectItem>
+                    <SelectItem value="weekly">Weekly</SelectItem>
+                    <SelectItem value="monthly">Monthly</SelectItem>
+                  </SelectContent>
+                </Select>
               </CardHeader>
               <CardContent>
-                {videoTimeline.length === 0 ? (
+                {aggregatedVideoTimeline.length === 0 ? (
                   <EmptyState message="No video watch data yet" />
                 ) : (
                   <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={videoTimeline}>
+                    <LineChart data={aggregatedVideoTimeline}>
                       <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                       <XAxis 
                         dataKey="date"
                         tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
-                        tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        tickFormatter={(value, index) => {
+                          const item = aggregatedVideoTimeline[index];
+                          if (item?.label) return item.label;
+                          return new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                        }}
                       />
                       <YAxis yAxisId="left" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
                       <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
                       <Tooltip 
                         content={({ active, payload, label }) => {
                           if (!active || !payload?.length) return null;
+                          const item = aggregatedVideoTimeline.find(d => d.date === label);
                           return (
                             <div className="bg-popover border border-border rounded-lg p-3 shadow-lg">
                               <p className="font-medium text-foreground mb-2">
-                                {new Date(label).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                {item?.label || new Date(label).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                               </p>
                               {payload.map((entry: any, index: number) => (
                                 <p key={index} className="text-sm" style={{ color: entry.color }}>
