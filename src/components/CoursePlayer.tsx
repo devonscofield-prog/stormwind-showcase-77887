@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Play, CheckCircle2, ChevronDown, BookOpen, Layers } from "lucide-react";
@@ -19,12 +19,79 @@ interface CoursePlayerProps {
   onBack: () => void;
 }
 
+interface CourseProgress {
+  currentLessonId: string | null;
+  viewedLessonIds: string[];
+}
+
+const getStorageKey = (courseId: string, variantId: string) => 
+  `course-progress-${courseId}-${variantId}`;
+
+const loadProgress = (courseId: string, variantId: string): CourseProgress | null => {
+  try {
+    const stored = localStorage.getItem(getStorageKey(courseId, variantId));
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+};
+
+const saveProgress = (courseId: string, variantId: string, progress: CourseProgress) => {
+  try {
+    localStorage.setItem(getStorageKey(courseId, variantId), JSON.stringify(progress));
+  } catch {
+    // localStorage might be full or disabled
+  }
+};
+
 export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
-  const [selectedVariant, setSelectedVariant] = useState<CourseVariant>(course.variants[0]);
-  const [currentLesson, setCurrentLesson] = useState<Lesson | null>(
-    course.variants[0]?.modules[0]?.lessons[0] || null
-  );
+  const [selectedVariant, setSelectedVariant] = useState<CourseVariant>(() => course.variants[0]);
+  const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
   const [viewedLessons, setViewedLessons] = useState<Set<string>>(new Set());
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Find lesson by ID across all modules
+  const findLessonById = useCallback((variant: CourseVariant, lessonId: string): Lesson | null => {
+    for (const module of variant.modules) {
+      const lesson = module.lessons.find(l => l.id === lessonId);
+      if (lesson) return lesson;
+    }
+    return null;
+  }, []);
+
+  // Initialize progress from localStorage
+  useEffect(() => {
+    const savedProgress = loadProgress(course.id, selectedVariant.id);
+    
+    if (savedProgress) {
+      // Restore current lesson
+      if (savedProgress.currentLessonId) {
+        const lesson = findLessonById(selectedVariant, savedProgress.currentLessonId);
+        setCurrentLesson(lesson || selectedVariant.modules[0]?.lessons[0] || null);
+      } else {
+        setCurrentLesson(selectedVariant.modules[0]?.lessons[0] || null);
+      }
+      
+      // Restore viewed lessons
+      setViewedLessons(new Set(savedProgress.viewedLessonIds));
+    } else {
+      // No saved progress, start fresh
+      setCurrentLesson(selectedVariant.modules[0]?.lessons[0] || null);
+      setViewedLessons(new Set());
+    }
+    
+    setIsInitialized(true);
+  }, [course.id, selectedVariant, findLessonById]);
+
+  // Save progress to localStorage whenever it changes
+  useEffect(() => {
+    if (!isInitialized) return;
+    
+    saveProgress(course.id, selectedVariant.id, {
+      currentLessonId: currentLesson?.id || null,
+      viewedLessonIds: Array.from(viewedLessons)
+    });
+  }, [course.id, selectedVariant.id, currentLesson, viewedLessons, isInitialized]);
 
   // Calculate total lessons and current position
   const { totalLessons, currentLessonIndex, allLessons } = useMemo(() => {
@@ -38,13 +105,12 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
     return selectedVariant.modules.map(m => m.id);
   }, [selectedVariant]);
 
-  // Handle variant change
+  // Handle variant change - progress will be loaded from localStorage via useEffect
   const handleVariantChange = (variantId: string) => {
     const newVariant = course.variants.find(v => v.id === variantId);
     if (newVariant) {
+      setIsInitialized(false);
       setSelectedVariant(newVariant);
-      setCurrentLesson(newVariant.modules[0]?.lessons[0] || null);
-      setViewedLessons(new Set());
     }
   };
 
