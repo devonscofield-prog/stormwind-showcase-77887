@@ -4,6 +4,7 @@ import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CourseCard } from "@/components/CourseCard";
 import { CoursePlayer } from "@/components/CoursePlayer";
+import { TechBackground } from "@/components/TechBackground";
 import { sampleCourses, categories } from "@/lib/trainingSampleData";
 import { 
   GraduationCap, 
@@ -77,10 +78,11 @@ const TrainingSamples = () => {
   if (showPlayer && selectedCourse) {
     return (
       <div className={cn(
-        "min-h-screen pt-20 pb-16 transition-all duration-300",
+        "min-h-screen pt-20 pb-16 transition-all duration-300 relative",
         isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"
       )}>
-        <div className="container max-w-7xl mx-auto px-4">
+        <TechBackground />
+        <div className="container max-w-7xl mx-auto px-4 relative z-10">
           <CoursePlayer 
             course={selectedCourse} 
             onBack={() => navigate("/training-samples")} 
@@ -93,10 +95,11 @@ const TrainingSamples = () => {
   // Course catalog view
   return (
     <div className={cn(
-      "min-h-screen pt-20 pb-16 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden transition-all duration-300",
+      "min-h-screen pt-20 pb-16 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden transition-all duration-300 relative",
       isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0"
     )}>
-      <div className="container max-w-7xl mx-auto px-4">
+      <TechBackground />
+      <div className="container max-w-7xl mx-auto px-4 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6 animate-fade-in relative">
           {/* Decorative floating particles */}
