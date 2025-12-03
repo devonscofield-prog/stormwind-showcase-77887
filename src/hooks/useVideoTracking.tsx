@@ -66,26 +66,27 @@ export const useVideoTracking = (
 
     try {
       const apiKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest?apikey=${apiKey}`;
+      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
       const payload = JSON.stringify({
         events: [{ type: 'video_watch', data: trackingData }]
       });
 
-      // Use Blob with correct content-type for sendBeacon
-      const blob = new Blob([payload], { type: 'application/json' });
-      
-      if (navigator.sendBeacon) {
-        const success = navigator.sendBeacon(url, blob);
-        console.log('[VideoTracking] sendBeacon result:', success);
-      } else {
-        // Fallback to fetch for older browsers
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: payload,
-          keepalive: true
-        }).catch(err => console.error('[VideoTracking] Fetch error:', err));
-      }
+      // Use fetch with keepalive for reliable delivery with proper headers
+      fetch(url, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'apikey': apiKey
+        },
+        body: payload,
+        keepalive: true
+      })
+        .then(res => {
+          console.log('[VideoTracking] fetch response status:', res.status);
+          return res.json();
+        })
+        .then(data => console.log('[VideoTracking] Server response:', data))
+        .catch(err => console.error('[VideoTracking] Fetch error:', err));
 
       // Update tracking state
       lastReportedTime.current = currentWatchTime;
@@ -207,14 +208,21 @@ export const useVideoTracking = (
         console.log('[VideoTracking] Page unload, sending final data:', trackingData);
 
         const apiKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-        const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest?apikey=${apiKey}`;
+        const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
         const payload = JSON.stringify({
           events: [{ type: 'video_watch', data: trackingData }]
         });
 
-        // Use Blob with correct content-type
-        const blob = new Blob([payload], { type: 'application/json' });
-        navigator.sendBeacon?.(url, blob);
+        // Use fetch with keepalive for page unload
+        fetch(url, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'apikey': apiKey
+          },
+          body: payload,
+          keepalive: true
+        }).catch(() => {});
       }
     };
 
