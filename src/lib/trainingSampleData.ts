@@ -1247,6 +1247,57 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "security-awareness-onboarding",
+    title: "Security Awareness: Onboarding",
+    category: "Cybersecurity",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This essential security awareness course is designed for new employees and covers the fundamentals of cybersecurity in the workplace. Learn why security matters, how to report incidents quickly, recognize social engineering attacks, and protect your physical and digital workspace."
+        },
+        modules: [
+          {
+            id: "sec-onboard-module-1",
+            title: "Security Awareness Onboarding",
+            lessons: [
+              {
+                id: "sec-onboard-lesson-1",
+                title: "Why Security Matters and Your Role",
+                duration: "TBD",
+                videoId: "nwaydbofyy",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "sec-onboard-lesson-2",
+                title: "Report it Fast",
+                duration: "TBD",
+                videoId: "o3143tgjfe",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "sec-onboard-lesson-3",
+                title: "Social Engineering",
+                duration: "TBD",
+                videoId: "j0incvh0yw",
+                instructor: "Raymond Lacoste"
+              },
+              {
+                id: "sec-onboard-lesson-4",
+                title: "Protect Your Workspace",
+                duration: "TBD",
+                videoId: "i9s8r85fq0",
+                instructor: "Raymond Lacoste"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
