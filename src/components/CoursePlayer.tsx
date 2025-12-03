@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Course, Lesson, CourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft, Clock, Play, CheckCircle2, ChevronDown, BookOpen, Layers } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface CoursePlayerProps {
   course: Course;
@@ -17,118 +24,305 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(
     course.variants[0]?.modules[0]?.lessons[0] || null
   );
+  const [viewedLessons, setViewedLessons] = useState<Set<string>>(new Set());
 
-  // Reset current lesson when variant changes
+  // Calculate total lessons and current position
+  const { totalLessons, currentLessonIndex, allLessons } = useMemo(() => {
+    const lessons = selectedVariant.modules.flatMap(m => m.lessons);
+    const index = currentLesson ? lessons.findIndex(l => l.id === currentLesson.id) : 0;
+    return { totalLessons: lessons.length, currentLessonIndex: index + 1, allLessons: lessons };
+  }, [selectedVariant, currentLesson]);
+
+  // Get default open modules (the one containing current lesson)
+  const defaultOpenModules = useMemo(() => {
+    if (!currentLesson) return [selectedVariant.modules[0]?.id];
+    const moduleWithCurrentLesson = selectedVariant.modules.find(m => 
+      m.lessons.some(l => l.id === currentLesson.id)
+    );
+    return moduleWithCurrentLesson ? [moduleWithCurrentLesson.id] : [];
+  }, [currentLesson, selectedVariant]);
+
+  // Handle variant change
   const handleVariantChange = (variantId: string) => {
     const newVariant = course.variants.find(v => v.id === variantId);
     if (newVariant) {
       setSelectedVariant(newVariant);
       setCurrentLesson(newVariant.modules[0]?.lessons[0] || null);
+      setViewedLessons(new Set());
     }
   };
 
+  // Handle lesson selection
+  const handleLessonSelect = (lesson: Lesson) => {
+    if (currentLesson) {
+      setViewedLessons(prev => new Set(prev).add(currentLesson.id));
+    }
+    setCurrentLesson(lesson);
+  };
+
+  // Get lesson status
+  const getLessonStatus = (lesson: Lesson): 'current' | 'viewed' | 'pending' => {
+    if (currentLesson?.id === lesson.id) return 'current';
+    if (viewedLessons.has(lesson.id)) return 'viewed';
+    return 'pending';
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <Button 
-          variant="ghost" 
-          onClick={onBack}
-          className="mb-6 hover:bg-accent"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Courses
-        </Button>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <div className="container mx-auto px-4 py-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={onBack}
+            className="hover:bg-accent gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Courses
+          </Button>
+          
+          {/* Variant Toggle */}
+          {course.variants.length > 1 && (
+            <div className="flex gap-2 bg-muted/50 p-1 rounded-lg">
+              {course.variants.map((variant) => (
+                <Button
+                  key={variant.id}
+                  variant={selectedVariant.id === variant.id ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => handleVariantChange(variant.id)}
+                  className={cn(
+                    "transition-all duration-200",
+                    selectedVariant.id === variant.id 
+                      ? "bg-primary text-primary-foreground shadow-lg" 
+                      : "hover:bg-accent"
+                  )}
+                >
+                  {variant.name}
+                </Button>
+              ))}
+            </div>
+          )}
+        </div>
 
-        {/* Course Title */}
-        <h1 className="text-4xl font-bold mb-6">{course.title}</h1>
-
-        {/* Variant Toggle */}
-        {course.variants.length > 1 && (
-          <div className="mb-6 flex gap-2">
-            {course.variants.map((variant) => (
-              <Button
-                key={variant.id}
-                variant={selectedVariant.id === variant.id ? "default" : "outline"}
-                onClick={() => handleVariantChange(variant.id)}
-              >
-                {variant.name}
-              </Button>
-            ))}
+        {/* Course Title with Breadcrumb */}
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+            <span>{course.category}</span>
+            <ChevronDown className="h-3 w-3 rotate-[-90deg]" />
+            <span>{selectedVariant.name}</span>
           </div>
-        )}
+          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            {course.title}
+          </h1>
+        </div>
 
-        {/* Video and Course Samples */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Video Player */}
-          <div className="lg:col-span-2">
-            {currentLesson ? (
-              <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
-            ) : (
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <p className="text-muted-foreground">Select a lesson to begin</p>
+        {/* Main Content Grid - Video + Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Video Player - 3/4 width */}
+          <div className="lg:col-span-3 space-y-4">
+            {/* Video Container with Glow Effect */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                {currentLesson ? (
+                  <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
+                ) : (
+                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
+                    <p className="text-muted-foreground">Select a lesson to begin</p>
+                  </div>
+                )}
               </div>
+            </div>
+
+            {/* Current Lesson Info */}
+            {currentLesson && (
+              <Card className="bg-card/50 backdrop-blur border-border/50">
+                <CardContent className="pt-4 pb-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                        <BookOpen className="h-3 w-3" />
+                        <span>Lesson {currentLessonIndex} of {totalLessons}</span>
+                      </div>
+                      <h2 className="text-xl font-semibold text-foreground">{currentLesson.title}</h2>
+                    </div>
+                    
+                    {/* Instructor Info */}
+                    {currentLesson.instructor && (
+                      <Link 
+                        to="/mentoring" 
+                        className="flex items-center gap-3 hover:bg-accent/50 rounded-lg p-2 -m-2 transition-colors group"
+                      >
+                        <Avatar className="h-10 w-10 ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all">
+                          <AvatarImage 
+                            src={instructorPhotos[currentLesson.instructor]} 
+                            alt={currentLesson.instructor}
+                          />
+                          <AvatarFallback className="bg-primary/10 text-primary text-xs">
+                            {currentLesson.instructor.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="text-right">
+                          <p className="text-xs text-muted-foreground">Instructor</p>
+                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                            {currentLesson.instructor}
+                          </p>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
             )}
+
+            {/* Course Overview */}
+            <Card className="bg-card/50 backdrop-blur border-border/50">
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Layers className="h-5 w-5 text-primary" />
+                  Course Overview
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {selectedVariant.overview.description}
+                </p>
+                
+                {selectedVariant.overview.difficulty && (
+                  <div className="mt-4 flex items-center gap-2">
+                    <span className={cn(
+                      "px-3 py-1 rounded-full text-xs font-medium",
+                      selectedVariant.overview.difficulty === "Beginner" && "bg-green-500/10 text-green-500",
+                      selectedVariant.overview.difficulty === "Intermediate" && "bg-yellow-500/10 text-yellow-500",
+                      selectedVariant.overview.difficulty === "Advanced" && "bg-red-500/10 text-red-500"
+                    )}>
+                      {selectedVariant.overview.difficulty}
+                    </span>
+                    {selectedVariant.overview.examNumber && (
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                        Exam: {selectedVariant.overview.examNumber}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Course Samples */}
+          {/* Sidebar - Table of Contents */}
           <div className="lg:col-span-1">
-            <Card className="glass-card max-h-[500px] flex flex-col">
-              <CardContent className="pt-6 pb-4 flex flex-col flex-1 min-h-0">
-                <h3 className="text-lg font-semibold mb-4 flex-shrink-0">Course Samples</h3>
-                <div className="flex-1 overflow-y-auto pr-2 space-y-1.5 min-h-0">
-                  {selectedVariant.modules.flatMap(module => module.lessons).map((lesson) => (
-                    <button
-                      key={lesson.id}
-                      onClick={() => setCurrentLesson(lesson)}
-                      className={`w-full text-left p-2 rounded-lg transition-all ${
-                        currentLesson?.id === lesson.id
-                          ? 'bg-primary text-primary-foreground'
-                          : 'hover:bg-accent border border-border'
-                      }`}
-                    >
-                      <p className="text-sm font-medium line-clamp-2">{lesson.title}</p>
-                      <div className="flex items-center gap-2 text-xs opacity-80 mt-1">
-                        <Clock className="h-3 w-3" />
-                        <span>{lesson.duration}</span>
-                      </div>
-                    </button>
-                  ))}
+            <Card className="bg-card/80 backdrop-blur border-border/50 sticky top-4">
+              <CardContent className="pt-4 pb-2">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/50">
+                  <h3 className="font-semibold text-foreground">Course Content</h3>
+                  <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
+                    {totalLessons} lessons
+                  </span>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="mb-4">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+                    <span>Progress</span>
+                    <span>{viewedLessons.size + (currentLesson ? 1 : 0)} / {totalLessons}</span>
+                  </div>
+                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-500"
+                      style={{ width: `${((viewedLessons.size + (currentLesson ? 1 : 0)) / totalLessons) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Collapsible Modules */}
+                <div className="max-h-[calc(100vh-300px)] overflow-y-auto pr-1 -mr-1">
+                  <Accordion 
+                    type="multiple" 
+                    defaultValue={defaultOpenModules}
+                    className="space-y-2"
+                  >
+                    {selectedVariant.modules.map((module, moduleIndex) => (
+                      <AccordionItem 
+                        key={module.id} 
+                        value={module.id}
+                        className="border border-border/50 rounded-lg overflow-hidden bg-muted/30"
+                      >
+                        <AccordionTrigger className="px-3 py-2 hover:no-underline hover:bg-accent/50 transition-colors text-left">
+                          <div className="flex items-center gap-2 text-sm">
+                            <span className="flex items-center justify-center w-6 h-6 rounded-md bg-primary/10 text-primary text-xs font-bold">
+                              {moduleIndex + 1}
+                            </span>
+                            <span className="font-medium line-clamp-2 text-foreground">
+                              {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
+                            </span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-1">
+                          <div className="space-y-0.5 px-1">
+                            {module.lessons.map((lesson) => {
+                              const status = getLessonStatus(lesson);
+                              return (
+                                <button
+                                  key={lesson.id}
+                                  onClick={() => handleLessonSelect(lesson)}
+                                  className={cn(
+                                    "w-full text-left p-2.5 rounded-md transition-all duration-200 group",
+                                    "flex items-start gap-2",
+                                    status === 'current' 
+                                      ? "bg-primary text-primary-foreground shadow-md" 
+                                      : "hover:bg-accent/70"
+                                  )}
+                                >
+                                  {/* Status Icon */}
+                                  <div className={cn(
+                                    "flex-shrink-0 mt-0.5",
+                                    status === 'current' && "text-primary-foreground",
+                                    status === 'viewed' && "text-green-500",
+                                    status === 'pending' && "text-muted-foreground"
+                                  )}>
+                                    {status === 'current' && (
+                                      <Play className="h-4 w-4 fill-current" />
+                                    )}
+                                    {status === 'viewed' && (
+                                      <CheckCircle2 className="h-4 w-4" />
+                                    )}
+                                    {status === 'pending' && (
+                                      <div className="w-4 h-4 rounded-full border-2 border-current opacity-50" />
+                                    )}
+                                  </div>
+
+                                  {/* Lesson Info */}
+                                  <div className="flex-1 min-w-0">
+                                    <p className={cn(
+                                      "text-sm font-medium line-clamp-2",
+                                      status === 'current' 
+                                        ? "text-primary-foreground" 
+                                        : "text-foreground group-hover:text-foreground"
+                                    )}>
+                                      {lesson.title}
+                                    </p>
+                                    <div className={cn(
+                                      "flex items-center gap-1.5 mt-1 text-xs",
+                                      status === 'current' 
+                                        ? "text-primary-foreground/80" 
+                                        : "text-muted-foreground"
+                                    )}>
+                                      <Clock className="h-3 w-3" />
+                                      <span>{lesson.duration}</span>
+                                    </div>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
-
-        {/* Course Overview */}
-        <Card className="glass-card">
-          <CardContent className="pt-6">
-            <div className="prose prose-sm max-w-none dark:prose-invert">
-              <p className="text-foreground text-base leading-relaxed">{selectedVariant.overview.description}</p>
-              
-              {/* Instructor Information */}
-              {currentLesson?.instructor && (
-                <Link 
-                  to="/mentoring" 
-                  className="mt-6 flex items-center gap-3 not-prose hover:bg-accent/50 rounded-lg p-3 -m-3 transition-colors cursor-pointer group"
-                >
-                  <Avatar className="h-12 w-12">
-                    <AvatarImage 
-                      src={instructorPhotos[currentLesson.instructor]} 
-                      alt={currentLesson.instructor}
-                    />
-                    <AvatarFallback>
-                      {currentLesson.instructor.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Instructor</p>
-                    <p className="text-base font-medium text-foreground group-hover:text-primary transition-colors">{currentLesson.instructor}</p>
-                  </div>
-                </Link>
-              )}
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
