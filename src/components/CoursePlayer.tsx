@@ -125,7 +125,11 @@ export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 {currentLesson ? (
-                  <VideoEmbed videoId={currentLesson.videoId} title={currentLesson.title} />
+                  <VideoEmbed 
+                    videoId={currentLesson.videoId} 
+                    title={currentLesson.title} 
+                    thumbnail={currentLesson.thumbnail}
+                  />
                 ) : (
                   <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
                     <p className="text-muted-foreground">Select a lesson to begin</p>
