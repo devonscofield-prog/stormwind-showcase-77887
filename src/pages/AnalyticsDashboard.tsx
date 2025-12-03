@@ -5,9 +5,67 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
-import { Download, TrendingUp, Users, Eye, Clock, MousePointer, PlayCircle, CheckCircle, Timer } from 'lucide-react';
+import { Download, TrendingUp, Users, Eye, Clock, MousePointer, PlayCircle, CheckCircle, Timer, BarChart3 } from 'lucide-react';
 
-const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))', 'hsl(var(--chart-1))', 'hsl(var(--chart-2))'];
+// Distinct, accessible chart colors
+const CHART_COLORS = [
+  'hsl(var(--chart-1))',
+  'hsl(var(--chart-2))',
+  'hsl(var(--chart-3))',
+  'hsl(var(--chart-4))',
+  'hsl(var(--chart-5))',
+  'hsl(var(--chart-6))',
+];
+
+// Format seconds to readable time
+const formatTime = (seconds: number): string => {
+  if (!seconds || seconds === 0) return '0s';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.round(seconds % 60);
+  if (mins === 0) return `${secs}s`;
+  return `${mins}m ${secs}s`;
+};
+
+// Format number with locale separators
+const formatNumber = (num: number): string => {
+  return (num || 0).toLocaleString();
+};
+
+// Truncate URL to just the path
+const truncateUrl = (url: string): string => {
+  if (!url) return 'Unknown';
+  try {
+    const parsed = new URL(url, 'https://example.com');
+    const path = parsed.pathname === '/' ? 'Home' : parsed.pathname;
+    return path.length > 30 ? path.substring(0, 30) + '...' : path;
+  } catch {
+    return url.length > 30 ? url.substring(0, 30) + '...' : url;
+  }
+};
+
+// Custom tooltip for better readability
+const CustomTooltip = ({ active, payload, label, valueFormatter }: any) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="bg-popover border border-border rounded-lg p-3 shadow-lg">
+      <p className="font-medium text-foreground mb-2">{label}</p>
+      {payload.map((entry: any, index: number) => (
+        <p key={index} className="text-sm" style={{ color: entry.color }}>
+          {entry.name}: {valueFormatter ? valueFormatter(entry.value) : formatNumber(entry.value)}
+        </p>
+      ))}
+    </div>
+  );
+};
+
+// Empty state component
+const EmptyState = ({ message }: { message: string }) => (
+  <div className="flex flex-col items-center justify-center py-12 text-center">
+    <BarChart3 className="w-12 h-12 text-muted-foreground/50 mb-3" />
+    <p className="text-muted-foreground">{message}</p>
+    <p className="text-sm text-muted-foreground/70 mt-1">Data will appear here once tracking is active</p>
+  </div>
+);
 
 export default function AnalyticsDashboard() {
   const [dateRange, setDateRange] = useState<'7d' | '30d' | '90d'>('30d');
@@ -95,12 +153,26 @@ export default function AnalyticsDashboard() {
     a.click();
   };
 
+  // Process top pages data for display
+  const processedTopPages = topPages.map(p => ({
+    ...p,
+    displayUrl: truncateUrl(p.url)
+  }));
+
+  // Process traffic sources for pie chart
+  const processedTrafficSources = trafficSources.map(s => ({
+    ...s,
+    source: s.source || 'Direct'
+  }));
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
         <div className="container py-12">
-          <div className="text-center">Loading analytics...</div>
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-pulse text-muted-foreground">Loading analytics...</div>
+          </div>
         </div>
       </div>
     );
@@ -112,12 +184,12 @@ export default function AnalyticsDashboard() {
       
       <div className="container pt-24 pb-12 space-y-8">
         {/* Header */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-4xl font-bold text-foreground">Analytics Dashboard</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-foreground">Analytics Dashboard</h1>
             <p className="text-muted-foreground mt-2">Comprehensive insights into your website performance</p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Tabs value={dateRange} onValueChange={(v) => setDateRange(v as any)}>
               <TabsList>
                 <TabsTrigger value="7d">7 Days</TabsTrigger>
@@ -133,7 +205,7 @@ export default function AnalyticsDashboard() {
         </div>
 
         {/* Overview Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">Total Page Views</CardTitle>
@@ -141,7 +213,7 @@ export default function AnalyticsDashboard() {
             <CardContent>
               <div className="flex items-center gap-2">
                 <Eye className="w-5 h-5 text-primary" />
-                <div className="text-2xl font-bold">{overview?.totalPageViews?.toLocaleString() || 0}</div>
+                <div className="text-xl sm:text-2xl font-bold">{formatNumber(overview?.totalPageViews)}</div>
               </div>
             </CardContent>
           </Card>
@@ -153,43 +225,43 @@ export default function AnalyticsDashboard() {
             <CardContent>
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-primary" />
-                <div className="text-2xl font-bold">{overview?.totalSessions?.toLocaleString() || 0}</div>
+                <div className="text-xl sm:text-2xl font-bold">{formatNumber(overview?.totalSessions)}</div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Avg Session Duration</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Avg Session</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-primary" />
-                <div className="text-2xl font-bold">{overview?.avgSessionDuration || 0}s</div>
+                <div className="text-xl sm:text-2xl font-bold">{formatTime(overview?.avgSessionDuration)}</div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Pages Per Session</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Pages/Session</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-primary" />
-                <div className="text-2xl font-bold">{overview?.avgPagesPerSession || 0}</div>
+                <div className="text-xl sm:text-2xl font-bold">{overview?.avgPagesPerSession || 0}</div>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="col-span-2 md:col-span-1">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Interactions</CardTitle>
+              <CardTitle className="text-sm font-medium text-muted-foreground">Interactions</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-2">
                 <MousePointer className="w-5 h-5 text-primary" />
-                <div className="text-2xl font-bold">{overview?.totalInteractions?.toLocaleString() || 0}</div>
+                <div className="text-xl sm:text-2xl font-bold">{formatNumber(overview?.totalInteractions)}</div>
               </div>
             </CardContent>
           </Card>
@@ -197,7 +269,7 @@ export default function AnalyticsDashboard() {
 
         {/* Charts Section */}
         <Tabs defaultValue="pages" className="space-y-6">
-          <TabsList>
+          <TabsList className="flex-wrap h-auto gap-1">
             <TabsTrigger value="pages">Page Performance</TabsTrigger>
             <TabsTrigger value="traffic">Traffic</TabsTrigger>
             <TabsTrigger value="courses">Courses</TabsTrigger>
@@ -213,16 +285,32 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Daily page view trends</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={timeline}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="count" stroke="hsl(var(--primary))" name="Page Views" />
-                  </LineChart>
-                </ResponsiveContainer>
+                {timeline.length === 0 ? (
+                  <EmptyState message="No page view data yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={timeline}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis 
+                        dataKey="date" 
+                        tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+                        tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      />
+                      <YAxis tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend />
+                      <Line 
+                        type="monotone" 
+                        dataKey="count" 
+                        stroke="hsl(var(--chart-1))" 
+                        strokeWidth={2}
+                        dot={{ fill: 'hsl(var(--chart-1))', r: 4 }}
+                        name="Page Views" 
+                        isAnimationActive={false}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
 
@@ -233,15 +321,24 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Most visited pages</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={400}>
-                  <BarChart data={topPages} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
-                    <YAxis dataKey="url" type="category" width={150} />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="hsl(var(--primary))" />
-                  </BarChart>
-                </ResponsiveContainer>
+                {processedTopPages.length === 0 ? (
+                  <EmptyState message="No page data yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={processedTopPages} layout="vertical" margin={{ left: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis type="number" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <YAxis 
+                        dataKey="displayUrl" 
+                        type="category" 
+                        width={180} 
+                        tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Bar dataKey="count" fill="hsl(var(--chart-1))" radius={[0, 4, 4, 0]} name="Views" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
@@ -255,25 +352,36 @@ export default function AnalyticsDashboard() {
                   <CardDescription>Where your visitors come from</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart>
-                      <Pie
-                        data={trafficSources}
-                        dataKey="count"
-                        nameKey="source"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        label
-                      >
-                        {trafficSources.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
+                  {processedTrafficSources.length === 0 ? (
+                    <EmptyState message="No traffic source data yet" />
+                  ) : (
+                    <ResponsiveContainer width="100%" height={300}>
+                      <PieChart>
+                        <Pie
+                          data={processedTrafficSources}
+                          dataKey="count"
+                          nameKey="source"
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={80}
+                          innerRadius={40}
+                          paddingAngle={2}
+                          label={({ source, percent }) => `${source} (${(percent * 100).toFixed(0)}%)`}
+                          labelLine={{ stroke: 'hsl(var(--muted-foreground))', strokeWidth: 1 }}
+                        >
+                          {processedTrafficSources.map((_, index) => (
+                            <Cell 
+                              key={`cell-${index}`} 
+                              fill={CHART_COLORS[index % CHART_COLORS.length]}
+                              stroke="hsl(var(--background))"
+                              strokeWidth={2}
+                            />
+                          ))}
+                        </Pie>
+                        <Tooltip content={<CustomTooltip />} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  )}
                 </CardContent>
               </Card>
 
@@ -284,25 +392,36 @@ export default function AnalyticsDashboard() {
                   <CardDescription>Devices used by visitors</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart>
-                      <Pie
-                        data={deviceBreakdown}
-                        dataKey="count"
-                        nameKey="device"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        label
-                      >
-                        {deviceBreakdown.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
+                  {deviceBreakdown.length === 0 ? (
+                    <EmptyState message="No device data yet" />
+                  ) : (
+                    <ResponsiveContainer width="100%" height={300}>
+                      <PieChart>
+                        <Pie
+                          data={deviceBreakdown}
+                          dataKey="count"
+                          nameKey="device"
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={80}
+                          innerRadius={40}
+                          paddingAngle={2}
+                          label={({ device, percent }) => `${device || 'Unknown'} (${(percent * 100).toFixed(0)}%)`}
+                          labelLine={{ stroke: 'hsl(var(--muted-foreground))', strokeWidth: 1 }}
+                        >
+                          {deviceBreakdown.map((_, index) => (
+                            <Cell 
+                              key={`cell-${index}`} 
+                              fill={CHART_COLORS[index % CHART_COLORS.length]}
+                              stroke="hsl(var(--background))"
+                              strokeWidth={2}
+                            />
+                          ))}
+                        </Pie>
+                        <Tooltip content={<CustomTooltip />} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -315,17 +434,28 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Most viewed and clicked courses</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={400}>
-                  <BarChart data={popularCourses}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="course" angle={-45} textAnchor="end" height={100} />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="views" fill="hsl(var(--primary))" name="Views" />
-                    <Bar dataKey="clicks" fill="hsl(var(--secondary))" name="Clicks" />
-                  </BarChart>
-                </ResponsiveContainer>
+                {popularCourses.length === 0 ? (
+                  <EmptyState message="No course analytics yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={popularCourses} margin={{ bottom: 80 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis 
+                        dataKey="course" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={100}
+                        tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                        interval={0}
+                      />
+                      <YAxis tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend wrapperStyle={{ paddingTop: 20 }} />
+                      <Bar dataKey="views" fill="hsl(var(--chart-1))" name="Views" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="clicks" fill="hsl(var(--chart-2))" name="Clicks" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
@@ -337,15 +467,24 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Most common user interactions</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={400}>
-                  <BarChart data={topInteractions} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
-                    <YAxis dataKey="interaction" type="category" width={200} />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="hsl(var(--primary))" />
-                  </BarChart>
-                </ResponsiveContainer>
+                {topInteractions.length === 0 ? (
+                  <EmptyState message="No interaction data yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={topInteractions} layout="vertical" margin={{ left: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis type="number" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <YAxis 
+                        dataKey="interaction" 
+                        type="category" 
+                        width={200}
+                        tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Bar dataKey="count" fill="hsl(var(--chart-1))" radius={[0, 4, 4, 0]} name="Count" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
@@ -353,7 +492,7 @@ export default function AnalyticsDashboard() {
           {/* Video Analytics Tab */}
           <TabsContent value="videos" className="space-y-6">
             {/* Video Overview Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">Total Watch Time</CardTitle>
@@ -361,10 +500,8 @@ export default function AnalyticsDashboard() {
                 <CardContent>
                   <div className="flex items-center gap-2">
                     <Timer className="w-5 h-5 text-primary" />
-                    <div className="text-2xl font-bold">
-                      {videoOverview?.totalWatchTime 
-                        ? `${Math.floor(videoOverview.totalWatchTime / 60)}m ${videoOverview.totalWatchTime % 60}s`
-                        : '0m 0s'}
+                    <div className="text-xl sm:text-2xl font-bold">
+                      {formatTime(videoOverview?.totalWatchTime || 0)}
                     </div>
                   </div>
                 </CardContent>
@@ -377,7 +514,7 @@ export default function AnalyticsDashboard() {
                 <CardContent>
                   <div className="flex items-center gap-2">
                     <PlayCircle className="w-5 h-5 text-primary" />
-                    <div className="text-2xl font-bold">{videoOverview?.totalPlays?.toLocaleString() || 0}</div>
+                    <div className="text-xl sm:text-2xl font-bold">{formatNumber(videoOverview?.totalPlays)}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -389,19 +526,19 @@ export default function AnalyticsDashboard() {
                 <CardContent>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-primary" />
-                    <div className="text-2xl font-bold">{videoOverview?.totalCompletions?.toLocaleString() || 0}</div>
+                    <div className="text-xl sm:text-2xl font-bold">{formatNumber(videoOverview?.totalCompletions)}</div>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">Avg Completion Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Avg Completion</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-primary" />
-                    <div className="text-2xl font-bold">{videoOverview?.avgCompletionRate || 0}%</div>
+                    <div className="text-xl sm:text-2xl font-bold">{videoOverview?.avgCompletionRate || 0}%</div>
                   </div>
                 </CardContent>
               </Card>
@@ -414,18 +551,58 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Daily video plays and watch time</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={videoTimeline}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis yAxisId="left" />
-                    <YAxis yAxisId="right" orientation="right" />
-                    <Tooltip />
-                    <Legend />
-                    <Line yAxisId="left" type="monotone" dataKey="plays" stroke="hsl(var(--primary))" name="Plays" />
-                    <Line yAxisId="right" type="monotone" dataKey="watch_time" stroke="hsl(var(--secondary))" name="Watch Time (s)" />
-                  </LineChart>
-                </ResponsiveContainer>
+                {videoTimeline.length === 0 ? (
+                  <EmptyState message="No video watch data yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={videoTimeline}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis 
+                        dataKey="date"
+                        tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+                        tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      />
+                      <YAxis yAxisId="left" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
+                      <Tooltip 
+                        content={({ active, payload, label }) => {
+                          if (!active || !payload?.length) return null;
+                          return (
+                            <div className="bg-popover border border-border rounded-lg p-3 shadow-lg">
+                              <p className="font-medium text-foreground mb-2">
+                                {new Date(label).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                              </p>
+                              {payload.map((entry: any, index: number) => (
+                                <p key={index} className="text-sm" style={{ color: entry.color }}>
+                                  {entry.name}: {entry.name.includes('Time') ? formatTime(entry.value) : formatNumber(entry.value)}
+                                </p>
+                              ))}
+                            </div>
+                          );
+                        }}
+                      />
+                      <Legend />
+                      <Line 
+                        yAxisId="left" 
+                        type="monotone" 
+                        dataKey="plays" 
+                        stroke="hsl(var(--chart-1))" 
+                        strokeWidth={2}
+                        name="Plays"
+                        isAnimationActive={false}
+                      />
+                      <Line 
+                        yAxisId="right" 
+                        type="monotone" 
+                        dataKey="watch_time" 
+                        stroke="hsl(var(--chart-2))" 
+                        strokeWidth={2}
+                        name="Watch Time (s)"
+                        isAnimationActive={false}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
 
@@ -438,7 +615,7 @@ export default function AnalyticsDashboard() {
               <CardContent>
                 <div className="space-y-4">
                   {mostWatchedVideos.length === 0 ? (
-                    <p className="text-muted-foreground text-center py-8">No video watch data yet</p>
+                    <EmptyState message="No video watch data yet" />
                   ) : (
                     mostWatchedVideos.map((video, index) => (
                       <div key={video.video_id} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50">
@@ -446,14 +623,16 @@ export default function AnalyticsDashboard() {
                           {index + 1}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium truncate">{video.lesson_title}</p>
+                          <p className="font-medium truncate">{video.lesson_title || 'Unknown Video'}</p>
                           <p className="text-sm text-muted-foreground truncate">
                             {video.course_name} {video.variant_name && `• ${video.variant_name}`}
                           </p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium">{Math.floor(video.total_watch_time / 60)}m {video.total_watch_time % 60}s</p>
-                          <p className="text-sm text-muted-foreground">{video.total_plays} plays • {video.avg_percentage}% avg</p>
+                          <p className="font-medium">{formatTime(video.total_watch_time)}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {formatNumber(video.total_plays)} plays • {video.avg_percentage || 0}% avg
+                          </p>
                         </div>
                       </div>
                     ))
@@ -469,17 +648,46 @@ export default function AnalyticsDashboard() {
                 <CardDescription>Video completion rates per course</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={400}>
-                  <BarChart data={videoCompletionsByCourse}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="course" angle={-45} textAnchor="end" height={100} />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="completion_rate" fill="hsl(var(--primary))" name="Completion %" />
-                    <Bar dataKey="avg_percentage" fill="hsl(var(--secondary))" name="Avg Watch %" />
-                  </BarChart>
-                </ResponsiveContainer>
+                {videoCompletionsByCourse.length === 0 ? (
+                  <EmptyState message="No completion data yet" />
+                ) : (
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={videoCompletionsByCourse} margin={{ bottom: 80 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis 
+                        dataKey="course" 
+                        angle={-45} 
+                        textAnchor="end" 
+                        height={100}
+                        tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }}
+                        interval={0}
+                      />
+                      <YAxis 
+                        tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+                        domain={[0, 100]}
+                        tickFormatter={(value) => `${value}%`}
+                      />
+                      <Tooltip 
+                        content={({ active, payload, label }) => {
+                          if (!active || !payload?.length) return null;
+                          return (
+                            <div className="bg-popover border border-border rounded-lg p-3 shadow-lg">
+                              <p className="font-medium text-foreground mb-2">{label}</p>
+                              {payload.map((entry: any, index: number) => (
+                                <p key={index} className="text-sm" style={{ color: entry.color }}>
+                                  {entry.name}: {entry.value}%
+                                </p>
+                              ))}
+                            </div>
+                          );
+                        }}
+                      />
+                      <Legend wrapperStyle={{ paddingTop: 20 }} />
+                      <Bar dataKey="completion_rate" fill="hsl(var(--chart-1))" name="Completion %" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="avg_percentage" fill="hsl(var(--chart-2))" name="Avg Watch %" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
