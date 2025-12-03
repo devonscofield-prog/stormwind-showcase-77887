@@ -1094,6 +1094,50 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "comptia-a-plus-core1",
+    title: "CompTIA A+ Core 1 (220-1201) v15",
+    category: "Help Desk",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "The CompTIA A+ Core 1 (220-1201) V15 course focuses on the equipment side of modern support work. Covering key areas such as Mobile Devices, Networking, Hardware, Virtualization & Cloud Computing, and Hardware/Network Troubleshooting, the course equips learners with a broad set of skills. Participants gain insights into devices like laptops, mobile phones, and IoT equipment, understand how to network and configure components, explore virtual and cloud environments, and apply troubleshooting methodologies to maintain effective operations. Mastery of these domains prepares you for the 90-question Core 1 exam, where a passing score (675/900) fulfills one of two requirements for achieving full CompTIA A+ certification."
+        },
+        modules: [
+          {
+            id: "aplus-core1-module-1",
+            title: "CompTIA A+ Core 1 Full Course",
+            lessons: [
+              {
+                id: "aplus-core1-lesson-1",
+                title: "Course Introduction",
+                duration: "TBD",
+                videoId: "a4te1iac74",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "aplus-core1-lesson-2",
+                title: "Explain Common Network Configuration Concepts",
+                duration: "TBD",
+                videoId: "oy6chvhbyk",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "aplus-core1-lesson-3",
+                title: "Compare and Contrast Storage Devices",
+                duration: "TBD",
+                videoId: "i4718ujuar",
+                instructor: "Spike Xavier"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
