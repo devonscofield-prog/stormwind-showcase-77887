@@ -58,6 +58,14 @@ All colors MUST be HSL.
 
     --radius: 1.625rem;
 
+    /* Chart Colors - distinct, accessible colors for data visualization */
+    --chart-1: 166 100% 30%; /* Primary green */
+    --chart-2: 200 95% 45%; /* Blue */
+    --chart-3: 280 70% 50%; /* Purple */
+    --chart-4: 35 95% 55%; /* Orange */
+    --chart-5: 340 75% 55%; /* Pink */
+    --chart-6: 45 100% 50%; /* Yellow/Gold */
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(166 100% 30%), hsl(166 100% 22%));
     --gradient-accent: linear-gradient(135deg, hsl(160 64% 52%), hsl(177 70% 41%));
@@ -113,6 +121,14 @@ All colors MUST be HSL.
     --border: 0 0% 30%;
     --input: 0 0% 30%;
     --ring: 166 100% 30%;
+
+    /* Chart Colors for dark mode - slightly brighter for visibility */
+    --chart-1: 166 90% 45%; /* Brighter green */
+    --chart-2: 200 90% 55%; /* Brighter blue */
+    --chart-3: 280 65% 60%; /* Brighter purple */
+    --chart-4: 35 90% 60%; /* Brighter orange */
+    --chart-5: 340 70% 60%; /* Brighter pink */
+    --chart-6: 45 95% 55%; /* Brighter gold */
 
     /* Dark mode specific gradients and shadows */
     --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
