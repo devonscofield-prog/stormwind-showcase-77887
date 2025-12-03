@@ -16,6 +16,25 @@ interface Terminal {
   opacity: number;
 }
 
+interface DataPacket {
+  x: number;
+  y: number;
+  targetX: number;
+  targetY: number;
+  progress: number;
+  speed: number;
+  color: string;
+}
+
+interface PulseCircle {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  opacity: number;
+  speed: number;
+}
+
 export const TechBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
@@ -88,43 +107,92 @@ export const TechBackground = () => {
       return () => window.removeEventListener("resize", handleResize);
     }
 
-    // Terminal commands - optimized set
+    // Terminal commands - expanded set
     const commands = [
       "$ ping 192.168.1.1",
       "$ netstat -an",
       "$ ssh admin@server",
       "$ docker ps -a",
+      "$ kubectl get pods",
+      "$ git push origin main",
+      "$ npm run build",
+      "$ systemctl status",
+      "$ nmap -sV target",
+      "$ curl -X GET api/",
     ];
 
     const rect = canvas.getBoundingClientRect();
     
-    // Initialize terminal lines - heavily reduced for performance
+    // Initialize terminal lines - more terminals
     const terminals: Terminal[] = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 8; i++) {
       terminals.push({
         text: commands[Math.floor(Math.random() * commands.length)],
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        speed: 0.2 + Math.random() * 0.25,
-        opacity: 0.3 + Math.random() * 0.2,
+        speed: 0.15 + Math.random() * 0.3,
+        opacity: 0.2 + Math.random() * 0.25,
       });
     }
 
-    // Initialize neural network nodes - optimized count
+    // Initialize neural network nodes - more nodes
     const nodes: Node[] = [];
-    const nodeCount = 10; // Further reduced for better performance
+    const nodeCount = 18;
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * rect.width,
         y: Math.random() * rect.height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        size: 2 + Math.random() * 1.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: 2 + Math.random() * 2,
       });
     }
 
+    // Initialize data packets
+    const dataPackets: DataPacket[] = [];
+    const createPacket = () => {
+      const startNode = nodes[Math.floor(Math.random() * nodes.length)];
+      const endNode = nodes[Math.floor(Math.random() * nodes.length)];
+      if (startNode !== endNode) {
+        dataPackets.push({
+          x: startNode.x,
+          y: startNode.y,
+          targetX: endNode.x,
+          targetY: endNode.y,
+          progress: 0,
+          speed: 0.008 + Math.random() * 0.012,
+          color: Math.random() > 0.5 ? "rgba(79, 209, 197, 0.8)" : "rgba(99, 229, 217, 0.8)",
+        });
+      }
+    };
+    
+    // Create initial packets
+    for (let i = 0; i < 5; i++) {
+      createPacket();
+    }
+
+    // Initialize pulse circles
+    const pulseCircles: PulseCircle[] = [];
+    const createPulse = () => {
+      pulseCircles.push({
+        x: Math.random() * rect.width,
+        y: Math.random() * rect.height,
+        radius: 0,
+        maxRadius: 60 + Math.random() * 40,
+        opacity: 0.3,
+        speed: 0.5 + Math.random() * 0.5,
+      });
+    };
+    
+    // Create initial pulses
+    for (let i = 0; i < 3; i++) {
+      createPulse();
+    }
+
     let lastTime = 0;
-    const targetFPS = 24; // Reduced to 24fps for smoother performance
+    let packetTimer = 0;
+    let pulseTimer = 0;
+    const targetFPS = 30;
     const frameInterval = 1000 / targetFPS;
 
     const animate = (timestamp: number) => {
@@ -136,14 +204,46 @@ export const TechBackground = () => {
       }
       
       lastTime = timestamp - (deltaTime % frameInterval);
+      packetTimer += deltaTime;
+      pulseTimer += deltaTime;
+
+      // Create new packets periodically
+      if (packetTimer > 2000) {
+        createPacket();
+        packetTimer = 0;
+      }
+
+      // Create new pulses periodically
+      if (pulseTimer > 3000) {
+        createPulse();
+        pulseTimer = 0;
+      }
 
       const currentRect = canvas.getBoundingClientRect();
       
       // Clear canvas
       ctx.clearRect(0, 0, currentRect.width, currentRect.height);
 
+      // Draw pulse circles
+      for (let i = pulseCircles.length - 1; i >= 0; i--) {
+        const pulse = pulseCircles[i];
+        pulse.radius += pulse.speed;
+        pulse.opacity = 0.3 * (1 - pulse.radius / pulse.maxRadius);
+        
+        if (pulse.radius >= pulse.maxRadius) {
+          pulseCircles.splice(i, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(pulse.x, pulse.y, pulse.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(79, 209, 197, ${pulse.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
       // Draw terminal text
-      ctx.font = "12px monospace";
+      ctx.font = "11px monospace";
       terminals.forEach((terminal) => {
         ctx.fillStyle = `rgba(79, 209, 197, ${terminal.opacity})`;
         ctx.fillText(terminal.text, terminal.x, terminal.y);
@@ -165,17 +265,25 @@ export const TechBackground = () => {
         if (node.x < 0 || node.x > currentRect.width) node.vx *= -1;
         if (node.y < 0 || node.y > currentRect.height) node.vy *= -1;
 
-        // Simplified node drawing - no gradient for performance
-        ctx.fillStyle = "rgba(79, 209, 197, 0.8)";
+        // Draw node glow
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.size * 3);
+        gradient.addColorStop(0, "rgba(79, 209, 197, 0.6)");
+        gradient.addColorStop(1, "rgba(79, 209, 197, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size * 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw node core
+        ctx.fillStyle = "rgba(79, 209, 197, 0.9)";
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      // Draw connections - optimized with distance culling
-      ctx.strokeStyle = "rgba(79, 209, 197, 0.08)";
-      ctx.lineWidth = 0.8;
-      const maxConnections = 3; // Limit connections per node
+      // Draw connections
+      ctx.lineWidth = 0.6;
+      const maxConnections = 3;
       for (let i = 0; i < nodes.length; i++) {
         let connectionCount = 0;
         for (let j = i + 1; j < nodes.length && connectionCount < maxConnections; j++) {
@@ -183,8 +291,10 @@ export const TechBackground = () => {
           const dy = nodes[i].y - nodes[j].y;
           const distSq = dx * dx + dy * dy;
 
-          // Reduced connection distance and use squared distance
-          if (distSq < 16900) { // 130^2 - shorter distance
+          if (distSq < 22500) { // 150^2
+            const dist = Math.sqrt(distSq);
+            const opacity = 0.15 * (1 - dist / 150);
+            ctx.strokeStyle = `rgba(79, 209, 197, ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -193,6 +303,49 @@ export const TechBackground = () => {
           }
         }
       }
+
+      // Draw and update data packets
+      for (let i = dataPackets.length - 1; i >= 0; i--) {
+        const packet = dataPackets[i];
+        packet.progress += packet.speed;
+        
+        if (packet.progress >= 1) {
+          dataPackets.splice(i, 1);
+          continue;
+        }
+
+        // Interpolate position
+        const x = packet.x + (packet.targetX - packet.x) * packet.progress;
+        const y = packet.y + (packet.targetY - packet.y) * packet.progress;
+
+        // Draw packet trail
+        const trailLength = 5;
+        for (let t = 0; t < trailLength; t++) {
+          const trailProgress = Math.max(0, packet.progress - t * 0.02);
+          const tx = packet.x + (packet.targetX - packet.x) * trailProgress;
+          const ty = packet.y + (packet.targetY - packet.y) * trailProgress;
+          const trailOpacity = 0.6 * (1 - t / trailLength);
+          ctx.fillStyle = `rgba(79, 209, 197, ${trailOpacity})`;
+          ctx.beginPath();
+          ctx.arc(tx, ty, 2 - t * 0.3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw packet
+        ctx.fillStyle = packet.color;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Draw scanning line effect (subtle)
+      const scanY = (timestamp * 0.02) % currentRect.height;
+      const scanGradient = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
+      scanGradient.addColorStop(0, "rgba(79, 209, 197, 0)");
+      scanGradient.addColorStop(0.5, "rgba(79, 209, 197, 0.03)");
+      scanGradient.addColorStop(1, "rgba(79, 209, 197, 0)");
+      ctx.fillStyle = scanGradient;
+      ctx.fillRect(0, scanY - 30, currentRect.width, 60);
 
       animationRef.current = requestAnimationFrame(animate);
     };
