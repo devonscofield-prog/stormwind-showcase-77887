@@ -689,7 +689,7 @@ export const sampleCourses: Course[] = [
   {
     id: "itil-v4-foundations",
     title: "ITIL v4 Foundations",
-    category: "Business Skills",
+    category: "ITIL",
     variants: [
       {
         id: "full-course",
@@ -708,14 +708,14 @@ export const sampleCourses: Course[] = [
                 title: "Introduction to ITILv4 Course Exam Objectives",
                 duration: "TBD",
                 videoId: "gopoykr5s9",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "itil-lesson-2",
                 title: "The 4 Dimensions of Service Management",
                 duration: "TBD",
                 videoId: "mcnypfbqd6",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               }
             ]
           }
@@ -738,21 +738,21 @@ export const sampleCourses: Course[] = [
                 title: "What is a Service",
                 duration: "TBD",
                 videoId: "cxvk76vj4k",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "itil-crash-lesson-2",
                 title: "What is Value",
                 duration: "TBD",
                 videoId: "taue9kg3fp",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "itil-crash-lesson-3",
                 title: "Outcomes and Outputs",
                 duration: "TBD",
                 videoId: "ls6un55g7b",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               }
             ]
           },
@@ -765,21 +765,21 @@ export const sampleCourses: Course[] = [
                 title: "Utility and Warranty",
                 duration: "TBD",
                 videoId: "qcewvx9xq0",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "itil-crash-lesson-5",
                 title: "The Service Consumer",
                 duration: "TBD",
                 videoId: "ebgv1ae49r",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               },
               {
                 id: "itil-crash-lesson-6",
                 title: "Organization",
                 duration: "TBD",
                 videoId: "xtgf20bhm5",
-                instructor: "TBD"
+                instructor: "Raymond Lacoste"
               }
             ]
           }
@@ -798,5 +798,6 @@ export const categories = [
   "Networking",
   "AI & Machine Learning",
   "Security Awareness",
+  "ITIL",
   "Business Skills"
 ];
