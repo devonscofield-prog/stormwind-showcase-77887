@@ -685,6 +685,108 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "itil-v4-foundations",
+    title: "ITIL v4 Foundations",
+    category: "Business Skills",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This exciting and dynamic online training course provides IT leaders, practitioners, support staff and staff interfacing with the organization's digital and information systems functions with a practical understanding of the key concepts, common language, principles and practices that enables successful management of modern IT-enabled services.",
+          difficulty: "Beginner"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: ITIL Fundamentals",
+            lessons: [
+              {
+                id: "itil-lesson-1",
+                title: "Introduction to ITILv4 Course Exam Objectives",
+                duration: "TBD",
+                videoId: "gopoykr5s9",
+                instructor: "TBD"
+              },
+              {
+                id: "itil-lesson-2",
+                title: "The 4 Dimensions of Service Management",
+                duration: "TBD",
+                videoId: "mcnypfbqd6",
+                instructor: "TBD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "exam-crash",
+        name: "Exam Crash",
+        overview: {
+          description: "Rapid exam preparation covering all key ITIL v4 Foundations exam objectives with focused, efficient content delivery.",
+          difficulty: "Beginner"
+        },
+        modules: [
+          {
+            id: "crash-module-1",
+            title: "Service Concepts",
+            lessons: [
+              {
+                id: "itil-crash-lesson-1",
+                title: "What is a Service",
+                duration: "TBD",
+                videoId: "cxvk76vj4k",
+                instructor: "TBD"
+              },
+              {
+                id: "itil-crash-lesson-2",
+                title: "What is Value",
+                duration: "TBD",
+                videoId: "taue9kg3fp",
+                instructor: "TBD"
+              },
+              {
+                id: "itil-crash-lesson-3",
+                title: "Outcomes and Outputs",
+                duration: "TBD",
+                videoId: "ls6un55g7b",
+                instructor: "TBD"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Service Components",
+            lessons: [
+              {
+                id: "itil-crash-lesson-4",
+                title: "Utility and Warranty",
+                duration: "TBD",
+                videoId: "qcewvx9xq0",
+                instructor: "TBD"
+              },
+              {
+                id: "itil-crash-lesson-5",
+                title: "The Service Consumer",
+                duration: "TBD",
+                videoId: "ebgv1ae49r",
+                instructor: "TBD"
+              },
+              {
+                id: "itil-crash-lesson-6",
+                title: "Organization",
+                duration: "TBD",
+                videoId: "xtgf20bhm5",
+                instructor: "TBD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
