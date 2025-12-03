@@ -31,7 +31,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Cybersecurity": Shield,
   "Cloud": Cloud,
   "Microsoft": Server,
-  "AI & Machine Learning": Brain,
+  "AI": Brain,
   "Networking": Network,
   "ITIL": FolderKanban,
   "Security Awareness": Lock,

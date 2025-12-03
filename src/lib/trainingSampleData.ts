@@ -1043,7 +1043,7 @@ export const sampleCourses: Course[] = [
     id: "ai-for-project-managers",
     title: "AI for Project Managers",
     category: "Project Management",
-    categories: ["Project Management", "AI & Machine Learning"],
+    categories: ["Project Management", "AI"],
     isByte: true,
     variants: [
       {
@@ -1147,6 +1147,7 @@ export const sampleCourses: Course[] = [
     id: "microsoft-365-copilot",
     title: "Using Microsoft 365 Copilot",
     category: "Microsoft",
+    categories: ["Microsoft", "AI"],
     isByte: true,
     variants: [
       {
@@ -1315,7 +1316,7 @@ export const categories = [
   "Cloud",
   "Cybersecurity",
   "Networking",
-  "AI & Machine Learning",
+  "AI",
   "Security Awareness",
   "ITIL",
   "Project Management"
