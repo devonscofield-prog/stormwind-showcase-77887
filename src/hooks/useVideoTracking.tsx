@@ -1,5 +1,4 @@
 import { useRef, useEffect, useCallback } from 'react';
-import { supabase } from '@/integrations/supabase/client';
 
 interface VideoTrackingMetadata {
   courseId?: string;
@@ -9,23 +8,6 @@ interface VideoTrackingMetadata {
   lessonId?: string;
   lessonTitle?: string;
   instructor?: string;
-}
-
-interface WistiaPlayer {
-  bind: (event: string, callback: (...args: any[]) => void) => void;
-  unbind: (event: string, callback: (...args: any[]) => void) => void;
-  duration: () => number;
-  percentWatched: () => number;
-  time: () => number;
-}
-
-declare global {
-  interface Window {
-    _wq: any[];
-    Wistia?: {
-      api: (id: string) => WistiaPlayer | undefined;
-    };
-  }
 }
 
 // Get or create session ID
@@ -45,24 +27,24 @@ export const useVideoTracking = (
 ) => {
   const playStartTime = useRef<number | null>(null);
   const accumulatedWatchTime = useRef<number>(0);
-  const maxPercentageWatched = useRef<number>(0);
-  const videoDuration = useRef<number>(0);
+  const lastReportedTime = useRef<number>(0);
   const isNewPlay = useRef<boolean>(true);
-  const hasReported = useRef<boolean>(false);
-  const playerRef = useRef<WistiaPlayer | null>(null);
+  const hasTrackedPlay = useRef<boolean>(false);
 
   // Send tracking data to backend
-  const sendTrackingData = useCallback(async (completed: boolean = false) => {
-    // Calculate watch time since last play
-    let watchTimeThisSession = 0;
+  const sendTrackingData = useCallback((completed: boolean = false, forceReport: boolean = false) => {
+    // Calculate watch time since play started
+    let currentWatchTime = accumulatedWatchTime.current;
     if (playStartTime.current !== null) {
-      watchTimeThisSession = Math.floor((Date.now() - playStartTime.current) / 1000);
-      accumulatedWatchTime.current += watchTimeThisSession;
-      playStartTime.current = null;
+      currentWatchTime += Math.floor((Date.now() - playStartTime.current) / 1000);
     }
 
-    // Only send if we have meaningful data
-    if (accumulatedWatchTime.current === 0 && !completed) return;
+    // Only send if we have new watch time to report
+    const newWatchTime = currentWatchTime - lastReportedTime.current;
+    if (newWatchTime <= 0 && !completed && !forceReport) {
+      console.log('[VideoTracking] No new watch time to report');
+      return;
+    }
 
     const trackingData = {
       session_id: getSessionId(),
@@ -74,134 +56,136 @@ export const useVideoTracking = (
       lesson_id: metadata.lessonId,
       lesson_title: metadata.lessonTitle,
       instructor: metadata.instructor,
-      watch_time_seconds: accumulatedWatchTime.current,
-      video_duration_seconds: videoDuration.current || undefined,
-      percentage_watched: maxPercentageWatched.current,
+      watch_time_seconds: newWatchTime > 0 ? newWatchTime : currentWatchTime,
+      percentage_watched: 0, // We don't have this without Wistia API
       completed,
       is_new_play: isNewPlay.current
     };
 
+    console.log('[VideoTracking] Sending tracking data:', trackingData);
+
     try {
-      // Use sendBeacon for reliability on page unload
       const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
       const payload = JSON.stringify({
         events: [{ type: 'video_watch', data: trackingData }]
       });
 
+      // Use Blob with correct content-type for sendBeacon
+      const blob = new Blob([payload], { type: 'application/json' });
+      
       if (navigator.sendBeacon) {
-        navigator.sendBeacon(url, payload);
+        const success = navigator.sendBeacon(url, blob);
+        console.log('[VideoTracking] sendBeacon result:', success);
       } else {
-        // Fallback to fetch
-        await supabase.functions.invoke('analytics-ingest', {
-          body: { events: [{ type: 'video_watch', data: trackingData }] }
-        });
+        // Fallback to fetch for older browsers
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true
+        }).catch(err => console.error('[VideoTracking] Fetch error:', err));
       }
 
-      // Reset for next tracking period
+      // Update tracking state
+      lastReportedTime.current = currentWatchTime;
       isNewPlay.current = false;
-      hasReported.current = true;
+      
     } catch (error) {
-      console.error('Error sending video tracking data:', error);
+      console.error('[VideoTracking] Error sending tracking data:', error);
     }
   }, [videoId, metadata]);
 
-  // Load Wistia E-v1.js for event binding
+  // Track when video starts playing
+  useEffect(() => {
+    if (isPlaying && !videoId.startsWith('pending_video_')) {
+      // Video started playing
+      if (playStartTime.current === null) {
+        playStartTime.current = Date.now();
+        console.log('[VideoTracking] Play started for video:', videoId);
+        
+        // Track initial play if this is a new video
+        if (!hasTrackedPlay.current) {
+          hasTrackedPlay.current = true;
+          // Send initial play event after a short delay
+          setTimeout(() => sendTrackingData(false, true), 2000);
+        }
+      }
+    } else {
+      // Video stopped playing
+      if (playStartTime.current !== null) {
+        const watchTime = Math.floor((Date.now() - playStartTime.current) / 1000);
+        accumulatedWatchTime.current += watchTime;
+        playStartTime.current = null;
+        console.log('[VideoTracking] Play stopped, accumulated time:', accumulatedWatchTime.current);
+        
+        // Send tracking data when video stops
+        sendTrackingData(false);
+      }
+    }
+  }, [isPlaying, videoId, sendTrackingData]);
+
+  // Periodic tracking while video is playing (every 30 seconds)
   useEffect(() => {
     if (!isPlaying || videoId.startsWith('pending_video_')) return;
 
-    // Load Wistia E-v1.js if not already loaded
-    if (!document.getElementById('wistia-e-v1')) {
-      const script = document.createElement('script');
-      script.id = 'wistia-e-v1';
-      script.src = 'https://fast.wistia.com/assets/external/E-v1.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    const interval = setInterval(() => {
+      console.log('[VideoTracking] Periodic check - sending accumulated time');
+      sendTrackingData(false);
+    }, 30000);
 
-    // Initialize _wq if not present
-    window._wq = window._wq || [];
-
-    // Bind to Wistia player events
-    const bindToPlayer = () => {
-      window._wq.push({
-        id: videoId,
-        onReady: (video: WistiaPlayer) => {
-          playerRef.current = video;
-          videoDuration.current = video.duration();
-
-          // Track play event
-          video.bind('play', () => {
-            playStartTime.current = Date.now();
-          });
-
-          // Track pause event
-          video.bind('pause', () => {
-            if (playStartTime.current !== null) {
-              const watchTime = Math.floor((Date.now() - playStartTime.current) / 1000);
-              accumulatedWatchTime.current += watchTime;
-              playStartTime.current = null;
-            }
-            maxPercentageWatched.current = Math.max(
-              maxPercentageWatched.current,
-              Math.round(video.percentWatched() * 100)
-            );
-            sendTrackingData(false);
-          });
-
-          // Track video end
-          video.bind('end', () => {
-            if (playStartTime.current !== null) {
-              const watchTime = Math.floor((Date.now() - playStartTime.current) / 1000);
-              accumulatedWatchTime.current += watchTime;
-              playStartTime.current = null;
-            }
-            maxPercentageWatched.current = 100;
-            sendTrackingData(true);
-          });
-
-          // Track percentage watched periodically
-          video.bind('secondchange', () => {
-            const currentPercent = Math.round(video.percentWatched() * 100);
-            maxPercentageWatched.current = Math.max(maxPercentageWatched.current, currentPercent);
-          });
-        }
-      });
-    };
-
-    // Small delay to ensure iframe is loaded
-    const timeout = setTimeout(bindToPlayer, 1000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [videoId, isPlaying, sendTrackingData]);
+    return () => clearInterval(interval);
+  }, [isPlaying, videoId, sendTrackingData]);
 
   // Reset tracking state when video changes
   useEffect(() => {
     // Send any pending data before reset
-    if (accumulatedWatchTime.current > 0 && !hasReported.current) {
+    if (accumulatedWatchTime.current > 0 || playStartTime.current !== null) {
+      console.log('[VideoTracking] Video changed, sending final data for previous video');
       sendTrackingData(false);
     }
 
     // Reset for new video
     playStartTime.current = null;
     accumulatedWatchTime.current = 0;
-    maxPercentageWatched.current = 0;
-    videoDuration.current = 0;
+    lastReportedTime.current = 0;
     isNewPlay.current = true;
-    hasReported.current = false;
-    playerRef.current = null;
+    hasTrackedPlay.current = false;
+    
+    console.log('[VideoTracking] Reset state for new video:', videoId);
   }, [videoId]);
+
+  // Handle visibility change (user switches tabs)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden && playStartTime.current !== null) {
+        console.log('[VideoTracking] Page hidden, sending tracking data');
+        const watchTime = Math.floor((Date.now() - playStartTime.current) / 1000);
+        accumulatedWatchTime.current += watchTime;
+        playStartTime.current = null;
+        sendTrackingData(false);
+      } else if (!document.hidden && isPlaying) {
+        // Resume tracking when page becomes visible
+        playStartTime.current = Date.now();
+        console.log('[VideoTracking] Page visible, resuming tracking');
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [isPlaying, sendTrackingData]);
 
   // Send data on page unload
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (accumulatedWatchTime.current > 0 || playStartTime.current !== null) {
         // Calculate final watch time
+        let finalWatchTime = accumulatedWatchTime.current;
         if (playStartTime.current !== null) {
-          const watchTime = Math.floor((Date.now() - playStartTime.current) / 1000);
-          accumulatedWatchTime.current += watchTime;
+          finalWatchTime += Math.floor((Date.now() - playStartTime.current) / 1000);
         }
+
+        const newWatchTime = finalWatchTime - lastReportedTime.current;
+        if (newWatchTime <= 0) return;
 
         const trackingData = {
           session_id: getSessionId(),
@@ -213,19 +197,22 @@ export const useVideoTracking = (
           lesson_id: metadata.lessonId,
           lesson_title: metadata.lessonTitle,
           instructor: metadata.instructor,
-          watch_time_seconds: accumulatedWatchTime.current,
-          video_duration_seconds: videoDuration.current || undefined,
-          percentage_watched: maxPercentageWatched.current,
-          completed: maxPercentageWatched.current >= 95,
+          watch_time_seconds: newWatchTime,
+          percentage_watched: 0,
+          completed: false,
           is_new_play: false
         };
+
+        console.log('[VideoTracking] Page unload, sending final data:', trackingData);
 
         const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
         const payload = JSON.stringify({
           events: [{ type: 'video_watch', data: trackingData }]
         });
 
-        navigator.sendBeacon?.(url, payload);
+        // Use Blob with correct content-type
+        const blob = new Blob([payload], { type: 'application/json' });
+        navigator.sendBeacon?.(url, blob);
       }
     };
 
@@ -235,6 +222,6 @@ export const useVideoTracking = (
 
   return {
     accumulatedWatchTime: accumulatedWatchTime.current,
-    maxPercentageWatched: maxPercentageWatched.current
+    lastReportedTime: lastReportedTime.current
   };
 };
