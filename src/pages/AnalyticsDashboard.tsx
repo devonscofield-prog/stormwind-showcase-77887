@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
-import { Download, TrendingUp, Users, Eye, Clock, MousePointer } from 'lucide-react';
+import { Download, TrendingUp, Users, Eye, Clock, MousePointer, PlayCircle, CheckCircle, Timer } from 'lucide-react';
 
-const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))'];
+const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))', 'hsl(var(--chart-1))', 'hsl(var(--chart-2))'];
 
 export default function AnalyticsDashboard() {
   const [dateRange, setDateRange] = useState<'7d' | '30d' | '90d'>('30d');
@@ -18,6 +18,10 @@ export default function AnalyticsDashboard() {
   const [popularCourses, setPopularCourses] = useState<any[]>([]);
   const [timeline, setTimeline] = useState<any[]>([]);
   const [topInteractions, setTopInteractions] = useState<any[]>([]);
+  const [videoOverview, setVideoOverview] = useState<any>(null);
+  const [mostWatchedVideos, setMostWatchedVideos] = useState<any[]>([]);
+  const [videoCompletionsByCourse, setVideoCompletionsByCourse] = useState<any[]>([]);
+  const [videoTimeline, setVideoTimeline] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchAnalytics = async () => {
@@ -35,7 +39,11 @@ export default function AnalyticsDashboard() {
         { queryType: 'device_breakdown', startDate, endDate },
         { queryType: 'popular_courses', startDate, endDate, limit: 10 },
         { queryType: 'page_views_timeline', startDate, endDate },
-        { queryType: 'top_interactions', startDate, endDate, limit: 10 }
+        { queryType: 'top_interactions', startDate, endDate, limit: 10 },
+        { queryType: 'video_analytics_overview', startDate, endDate },
+        { queryType: 'most_watched_videos', startDate, endDate, limit: 10 },
+        { queryType: 'video_completions_by_course', startDate, endDate, limit: 10 },
+        { queryType: 'video_watch_timeline', startDate, endDate }
       ];
 
       const results = await Promise.all(
@@ -51,6 +59,10 @@ export default function AnalyticsDashboard() {
       setPopularCourses(results[4].data?.data || []);
       setTimeline(results[5].data?.data || []);
       setTopInteractions(results[6].data?.data || []);
+      setVideoOverview(results[7].data?.data || {});
+      setMostWatchedVideos(results[8].data?.data || []);
+      setVideoCompletionsByCourse(results[9].data?.data || []);
+      setVideoTimeline(results[10].data?.data || []);
     } catch (error) {
       console.error('Error fetching analytics:', error);
     } finally {
@@ -190,6 +202,7 @@ export default function AnalyticsDashboard() {
             <TabsTrigger value="traffic">Traffic</TabsTrigger>
             <TabsTrigger value="courses">Courses</TabsTrigger>
             <TabsTrigger value="interactions">Interactions</TabsTrigger>
+            <TabsTrigger value="videos">Video Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="pages" className="space-y-6">
@@ -331,6 +344,140 @@ export default function AnalyticsDashboard() {
                     <YAxis dataKey="interaction" type="category" width={200} />
                     <Tooltip />
                     <Bar dataKey="count" fill="hsl(var(--primary))" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Video Analytics Tab */}
+          <TabsContent value="videos" className="space-y-6">
+            {/* Video Overview Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Total Watch Time</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    <Timer className="w-5 h-5 text-primary" />
+                    <div className="text-2xl font-bold">
+                      {videoOverview?.totalWatchTime 
+                        ? `${Math.floor(videoOverview.totalWatchTime / 60)}m ${videoOverview.totalWatchTime % 60}s`
+                        : '0m 0s'}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Total Plays</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    <PlayCircle className="w-5 h-5 text-primary" />
+                    <div className="text-2xl font-bold">{videoOverview?.totalPlays?.toLocaleString() || 0}</div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Completions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <div className="text-2xl font-bold">{videoOverview?.totalCompletions?.toLocaleString() || 0}</div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">Avg Completion Rate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-primary" />
+                    <div className="text-2xl font-bold">{videoOverview?.avgCompletionRate || 0}%</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Video Watch Timeline */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Video Watch Activity</CardTitle>
+                <CardDescription>Daily video plays and watch time</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={videoTimeline}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="date" />
+                    <YAxis yAxisId="left" />
+                    <YAxis yAxisId="right" orientation="right" />
+                    <Tooltip />
+                    <Legend />
+                    <Line yAxisId="left" type="monotone" dataKey="plays" stroke="hsl(var(--primary))" name="Plays" />
+                    <Line yAxisId="right" type="monotone" dataKey="watch_time" stroke="hsl(var(--secondary))" name="Watch Time (s)" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+
+            {/* Most Watched Videos */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Most Watched Videos</CardTitle>
+                <CardDescription>Videos ranked by total watch time</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {mostWatchedVideos.length === 0 ? (
+                    <p className="text-muted-foreground text-center py-8">No video watch data yet</p>
+                  ) : (
+                    mostWatchedVideos.map((video, index) => (
+                      <div key={video.video_id} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm">
+                          {index + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium truncate">{video.lesson_title}</p>
+                          <p className="text-sm text-muted-foreground truncate">
+                            {video.course_name} {video.variant_name && `• ${video.variant_name}`}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-medium">{Math.floor(video.total_watch_time / 60)}m {video.total_watch_time % 60}s</p>
+                          <p className="text-sm text-muted-foreground">{video.total_plays} plays • {video.avg_percentage}% avg</p>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Completion Rates by Course */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Completion Rates by Course</CardTitle>
+                <CardDescription>Video completion rates per course</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ResponsiveContainer width="100%" height={400}>
+                  <BarChart data={videoCompletionsByCourse}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="course" angle={-45} textAnchor="end" height={100} />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="completion_rate" fill="hsl(var(--primary))" name="Completion %" />
+                    <Bar dataKey="avg_percentage" fill="hsl(var(--secondary))" name="Avg Watch %" />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>

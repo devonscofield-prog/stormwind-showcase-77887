@@ -91,6 +91,67 @@ serve(async (req) => {
               .eq('session_id', data.session_id);
             break;
 
+          case 'video_watch':
+            // Handle video watch analytics - aggregate by session + video
+            console.log(`Processing video_watch event for video: ${data.video_id}`);
+            
+            const { data: existingVideo } = await supabase
+              .from('video_analytics')
+              .select('*')
+              .eq('session_id', data.session_id)
+              .eq('video_id', data.video_id)
+              .maybeSingle();
+
+            if (existingVideo) {
+              // Update existing record - aggregate watch time
+              const { error: updateError } = await supabase
+                .from('video_analytics')
+                .update({
+                  watch_time_seconds: existingVideo.watch_time_seconds + (data.watch_time_seconds || 0),
+                  percentage_watched: Math.max(
+                    Number(existingVideo.percentage_watched) || 0, 
+                    data.percentage_watched || 0
+                  ),
+                  completed: existingVideo.completed || data.completed,
+                  play_count: existingVideo.play_count + (data.is_new_play ? 1 : 0),
+                  updated_at: new Date().toISOString()
+                })
+                .eq('id', existingVideo.id);
+              
+              if (updateError) {
+                console.error('Error updating video analytics:', updateError);
+              } else {
+                console.log(`Updated video analytics for ${data.video_id}`);
+              }
+            } else {
+              // Insert new record
+              const { error: insertError } = await supabase
+                .from('video_analytics')
+                .insert({
+                  session_id: data.session_id,
+                  video_id: data.video_id,
+                  course_id: data.course_id,
+                  course_name: data.course_name,
+                  variant_id: data.variant_id,
+                  variant_name: data.variant_name,
+                  lesson_id: data.lesson_id,
+                  lesson_title: data.lesson_title,
+                  instructor: data.instructor,
+                  watch_time_seconds: data.watch_time_seconds || 0,
+                  video_duration_seconds: data.video_duration_seconds,
+                  percentage_watched: data.percentage_watched || 0,
+                  completed: data.completed || false,
+                  play_count: 1
+                });
+              
+              if (insertError) {
+                console.error('Error inserting video analytics:', insertError);
+              } else {
+                console.log(`Inserted video analytics for ${data.video_id}`);
+              }
+            }
+            break;
+
           default:
             console.log(`Unknown event type: ${type}`);
         }

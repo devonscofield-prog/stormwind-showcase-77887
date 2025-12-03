@@ -222,11 +222,20 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
-                {currentLesson ? (
+              {currentLesson ? (
                   <VideoEmbed 
                     videoId={currentLesson.videoId} 
                     title={currentLesson.title} 
                     thumbnail={currentLesson.thumbnail}
+                    trackingMetadata={{
+                      courseId: course.id,
+                      courseName: course.title,
+                      variantId: selectedVariant.id,
+                      variantName: selectedVariant.name,
+                      lessonId: currentLesson.id,
+                      lessonTitle: currentLesson.title,
+                      instructor: currentLesson.instructor
+                    }}
                   />
                 ) : (
                   <div className="aspect-video bg-muted rounded-lg flex items-center justify-center border border-border">
