@@ -180,21 +180,21 @@ export const sampleCourses: Course[] = [
                 id: "lesson-1",
                 title: "Introduction to Course and Exam Objectives",
                 duration: "TBD",
-                videoId: "pending_video_1",
+                videoId: "c43a2u67d8",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-2",
                 title: "Various Threat Vectors and Attack Surfaces",
                 duration: "TBD",
-                videoId: "pending_video_2",
+                videoId: "fyljxhtehs",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-3",
                 title: "Incident Response Process",
                 duration: "TBD",
-                videoId: "pending_video_3",
+                videoId: "10recvrzo3",
                 instructor: "Raymond Lacoste"
               }
             ]
@@ -225,35 +225,35 @@ export const sampleCourses: Course[] = [
                 id: "crash-lesson-1",
                 title: "Detective Controls",
                 duration: "TBD",
-                videoId: "pending_video_crash_1",
+                videoId: "tmq97i7ymn",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-2",
                 title: "Preventive Controls",
                 duration: "TBD",
-                videoId: "pending_video_crash_2",
+                videoId: "1bjiojo11b",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-3",
                 title: "Two-Person Integrity Security Controls",
                 duration: "TBD",
-                videoId: "pending_video_crash_3",
+                videoId: "wm8k9e51bg",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-4",
                 title: "Managerial Control",
                 duration: "TBD",
-                videoId: "pending_video_crash_4",
+                videoId: "faz0bxn6m7",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-5",
                 title: "Honeypot",
                 duration: "TBD",
-                videoId: "pending_video_crash_5",
+                videoId: "3jv74vyghs",
                 instructor: "Raymond Lacoste"
               }
             ]
@@ -266,76 +266,14 @@ export const sampleCourses: Course[] = [
                 id: "crash-lesson-6",
                 title: "Zero Trust Control and Data Plane",
                 duration: "TBD",
-                videoId: "pending_video_crash_6",
+                videoId: "5yvda4btom",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-7",
                 title: "Non-Repudiation",
                 duration: "TBD",
-                videoId: "pending_video_crash_7",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-8",
-                title: "Controlling Access to a Secure Facility",
-                duration: "TBD",
-                videoId: "pending_video_crash_8",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-9",
-                title: "Zero Trust Architecture",
-                duration: "TBD",
-                videoId: "pending_video_crash_9",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-10",
-                title: "Application Allow List",
-                duration: "TBD",
-                videoId: "pending_video_crash_10",
-                instructor: "Raymond Lacoste"
-              }
-            ]
-          },
-          {
-            id: "crash-module-3",
-            title: "Module 3: System Security and Encryption",
-            lessons: [
-              {
-                id: "crash-lesson-11",
-                title: "Change Management",
-                duration: "TBD",
-                videoId: "pending_video_crash_11",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-12",
-                title: "Backout Plans",
-                duration: "TBD",
-                videoId: "pending_video_crash_12",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-13",
-                title: "Legacy System Security Concerns",
-                duration: "TBD",
-                videoId: "pending_video_crash_13",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-14",
-                title: "Salting",
-                duration: "TBD",
-                videoId: "pending_video_crash_14",
-                instructor: "Raymond Lacoste"
-              },
-              {
-                id: "crash-lesson-15",
-                title: "Full Disk Encryption",
-                duration: "TBD",
-                videoId: "pending_video_crash_15",
+                videoId: "kg5b7iu2gy",
                 instructor: "Raymond Lacoste"
               }
             ]
