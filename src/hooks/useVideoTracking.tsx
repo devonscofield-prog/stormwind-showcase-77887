@@ -65,7 +65,8 @@ export const useVideoTracking = (
     console.log('[VideoTracking] Sending tracking data:', trackingData);
 
     try {
-      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
+      const apiKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest?apikey=${apiKey}`;
       const payload = JSON.stringify({
         events: [{ type: 'video_watch', data: trackingData }]
       });
@@ -205,7 +206,8 @@ export const useVideoTracking = (
 
         console.log('[VideoTracking] Page unload, sending final data:', trackingData);
 
-        const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest`;
+        const apiKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+        const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/analytics-ingest?apikey=${apiKey}`;
         const payload = JSON.stringify({
           events: [{ type: 'video_watch', data: trackingData }]
         });
