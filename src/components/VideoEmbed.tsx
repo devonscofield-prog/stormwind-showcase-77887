@@ -15,7 +15,51 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   const [retryKey, setRetryKey] = useState(0);
   const [showVideo, setShowVideo] = useState(false); // Always start with video hidden, require click to play
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
+  const [wistiaThumbnail, setWistiaThumbnail] = useState<string | null>(null);
+  const [thumbnailLoading, setThumbnailLoading] = useState(true);
   const isPlaceholder = videoId.startsWith('pending_video_');
+
+  // Fetch Wistia thumbnail when videoId changes using JSONP
+  useEffect(() => {
+    if (isPlaceholder || thumbnail) {
+      setThumbnailLoading(false);
+      return;
+    }
+
+    setThumbnailLoading(true);
+    setWistiaThumbnail(null);
+
+    // Use JSONP to fetch Wistia media data (bypasses CORS)
+    const callbackName = `wistiaCallback_${videoId.replace(/[^a-zA-Z0-9]/g, '')}`;
+    
+    (window as any)[callbackName] = (data: any) => {
+      if (data?.thumbnail_url) {
+        // Get higher resolution by removing size constraints
+        const highResThumbnail = data.thumbnail_url.replace(/\?.*$/, '');
+        setWistiaThumbnail(highResThumbnail);
+      }
+      setThumbnailLoading(false);
+      delete (window as any)[callbackName];
+      // Remove the script tag
+      const script = document.getElementById(`wistia-script-${videoId}`);
+      if (script) script.remove();
+    };
+
+    const script = document.createElement('script');
+    script.id = `wistia-script-${videoId}`;
+    script.src = `https://fast.wistia.com/oembed?url=https://fast.wistia.com/medias/${videoId}&format=jsonp&callback=${callbackName}`;
+    script.onerror = () => {
+      setThumbnailLoading(false);
+      delete (window as any)[callbackName];
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      delete (window as any)[callbackName];
+      const existingScript = document.getElementById(`wistia-script-${videoId}`);
+      if (existingScript) existingScript.remove();
+    };
+  }, [videoId, isPlaceholder, thumbnail]);
 
   // Reset state when videoId changes - always require click to play
   useEffect(() => {
@@ -46,6 +90,9 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
     setShouldAutoplay(true);
     setShowVideo(true);
   };
+
+  // Get the thumbnail to display (custom > wistia > none)
+  const displayThumbnail = thumbnail || wistiaThumbnail;
 
   if (isPlaceholder) {
     return (
@@ -101,7 +148,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
     );
   }
 
-  // Show play button overlay before video is started (custom thumbnail or default dark background)
+  // Show play button overlay before video is started
   if (!showVideo) {
     return (
       <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">
@@ -109,9 +156,11 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
           padding: "56.25% 0 0 0",
           position: "relative"
         }}>
-          {thumbnail ? (
+          {thumbnailLoading ? (
+            <Skeleton className="absolute inset-0 rounded-none" />
+          ) : displayThumbnail ? (
             <img 
-              src={thumbnail} 
+              src={displayThumbnail} 
               alt={title}
               className="absolute inset-0 w-full h-full object-cover"
             />
