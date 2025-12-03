@@ -70,7 +70,8 @@ serve(async (req) => {
           .from('page_views')
           .select('url, page_title')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         const pageCounts = (topPages || []).reduce((acc: any, page) => {
           const key = page.url;
@@ -89,7 +90,8 @@ serve(async (req) => {
           .from('user_sessions')
           .select('referrer')
           .gte('started_at', start)
-          .lte('started_at', end);
+          .lte('started_at', end)
+          .limit(50000);
 
         const sources = (trafficSessions || []).reduce((acc: any, session) => {
           const source = session.referrer || 'Direct';
@@ -107,7 +109,8 @@ serve(async (req) => {
           .from('page_views')
           .select('device_type')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         const devices = (deviceData || []).reduce((acc: any, item) => {
           const device = item.device_type || 'Unknown';
@@ -151,7 +154,8 @@ serve(async (req) => {
           .select('created_at')
           .gte('created_at', start)
           .lte('created_at', end)
-          .order('created_at');
+          .order('created_at')
+          .limit(50000);
 
         // Group by day
         const dailyCounts = (timelineData || []).reduce((acc: any, item) => {
@@ -183,7 +187,8 @@ serve(async (req) => {
           .from('interaction_events')
           .select('event_type, event_label')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         const interactions = (interactionData || []).reduce((acc: any, item) => {
           const key = `${item.event_type}:${item.event_label || 'unlabeled'}`;
@@ -203,7 +208,8 @@ serve(async (req) => {
           .from('video_analytics')
           .select('*')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         const videoList = videoOverviewData || [];
         const totalWatchTime = videoList.reduce((acc, v) => acc + (v.watch_time_seconds || 0), 0);
@@ -229,7 +235,8 @@ serve(async (req) => {
           .from('video_analytics')
           .select('*')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         // Aggregate by video_id
         const videoStats = (watchedVideosData || []).reduce((acc: any, item) => {
@@ -278,7 +285,8 @@ serve(async (req) => {
           .from('video_analytics')
           .select('course_name, completed, percentage_watched')
           .gte('created_at', start)
-          .lte('created_at', end);
+          .lte('created_at', end)
+          .limit(50000);
 
         const courseCompletions = (courseCompletionsData || []).reduce((acc: any, item) => {
           const courseName = item.course_name || 'Unknown';
@@ -311,7 +319,8 @@ serve(async (req) => {
           .select('created_at, watch_time_seconds')
           .gte('created_at', start)
           .lte('created_at', end)
-          .order('created_at');
+          .order('created_at')
+          .limit(50000);
 
         // Group by day
         const dailyVideoStats = (videoTimelineData || []).reduce((acc: any, item) => {
