@@ -146,6 +146,11 @@ export const Navigation = () => {
                 Courses
               </Button>
             </Link>
+            <Link to="/training-samples">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                Training Samples
+              </Button>
+            </Link>
             <Link to="/webinars">
               <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Webinars
@@ -351,6 +356,14 @@ export const Navigation = () => {
                 className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
               >
                 Courses
+              </Button>
+            </Link>
+            <Link to="/training-samples" onClick={() => setMobileMenuOpen(false)}>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+              >
+                Training Samples
               </Button>
             </Link>
             <Link to="/webinars" onClick={() => setMobileMenuOpen(false)}>
