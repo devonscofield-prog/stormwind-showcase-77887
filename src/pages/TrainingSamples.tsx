@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -50,10 +50,36 @@ const TrainingSamples = () => {
     return acc + course.variants[0].modules.reduce((m, mod) => m + mod.lessons.length, 0);
   }, 0);
 
+  // Transition state for smooth view changes
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(!!selectedCourse);
+
+  // Handle view transitions
+  useEffect(() => {
+    if (selectedCourse && !showPlayer) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setShowPlayer(true);
+        setIsTransitioning(false);
+      }, 150);
+      return () => clearTimeout(timer);
+    } else if (!selectedCourse && showPlayer) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setShowPlayer(false);
+        setIsTransitioning(false);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedCourse, showPlayer]);
+
   // Course player view
-  if (selectedCourse) {
+  if (showPlayer && selectedCourse) {
     return (
-      <div className="min-h-screen pt-20 pb-16">
+      <div className={cn(
+        "min-h-screen pt-20 pb-16 transition-all duration-300",
+        isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"
+      )}>
         <div className="container max-w-7xl mx-auto px-4">
           <CoursePlayer 
             course={selectedCourse} 
@@ -66,7 +92,10 @@ const TrainingSamples = () => {
 
   // Course catalog view
   return (
-    <div className="min-h-screen pt-20 pb-16 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden">
+    <div className={cn(
+      "min-h-screen pt-20 pb-16 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden transition-all duration-300",
+      isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0"
+    )}>
       <div className="container max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6 animate-fade-in relative">
