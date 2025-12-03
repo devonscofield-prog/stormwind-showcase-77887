@@ -1315,7 +1315,8 @@ export const categories = [
   "Networking",
   "AI & Machine Learning",
   "Security Awareness",
-  "ITIL"
+  "ITIL",
+  "Project Management"
 ];
 
 // Flattened course variant for individual cards
