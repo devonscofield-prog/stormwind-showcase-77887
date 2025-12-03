@@ -25,8 +25,10 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
   const totalLessons = getTotalLessons(course);
   const variantCount = getVariantCount(course);
   
-  // Get first instructor from first lesson
-  const firstInstructor = course.variants[0]?.modules[0]?.lessons[0]?.instructor;
+  // Get first instructor and video from first lesson
+  const firstLesson = course.variants[0]?.modules[0]?.lessons[0];
+  const firstInstructor = firstLesson?.instructor;
+  const firstVideoId = firstLesson?.videoId;
   const instructorPhoto = firstInstructor ? instructorPhotos[firstInstructor] : null;
   
   // Get variant names
@@ -60,7 +62,9 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
               category={category}
               title={title}
               thumbnail={thumbnail}
+              videoId={firstVideoId}
               isHovered={isHovered}
+              showPlayIcon={false}
             />
             
             {/* Preview Course Button - appears on hover */}
