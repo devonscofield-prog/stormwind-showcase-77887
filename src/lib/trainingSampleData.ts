@@ -977,14 +977,14 @@ export const sampleCourses: Course[] = [
                 title: "Microsoft Deployment Toolkit",
                 duration: "TBD",
                 videoId: "y9jez71xaz",
-                instructor: "Spike Xavier"
+                instructor: "Will Panek"
               },
               {
                 id: "md102-lesson-2",
                 title: "Create and Manage Group Policy Objects",
                 duration: "TBD",
                 videoId: "pvo5nlpo9b",
-                instructor: "Spike Xavier"
+                instructor: "Will Panek"
               }
             ]
           }
