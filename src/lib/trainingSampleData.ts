@@ -51,6 +51,7 @@ export interface Course {
   id: string;
   title: string;
   category: string;
+  categories?: string[]; // Optional array for multi-category courses
   thumbnail?: string;
   variants: CourseVariant[]; // Array of variants (Full Course, Exam Crash, etc.)
   showLiveSchedule?: boolean;
@@ -1042,6 +1043,7 @@ export const sampleCourses: Course[] = [
     id: "ai-for-project-managers",
     title: "AI for Project Managers",
     category: "Project Management",
+    categories: ["Project Management", "AI & Machine Learning"],
     isByte: true,
     variants: [
       {
@@ -1327,6 +1329,7 @@ export interface FlattenedCourseVariant {
   title: string;
   variantName: string; // "Full Course" or "Exam Crash"
   category: string;
+  categories: string[]; // All categories this course belongs to
   description: string;
   thumbnail?: string;
   firstVideoId?: string;
@@ -1344,6 +1347,8 @@ export const flattenCourses = (courses: Course[]): FlattenedCourseVariant[] => {
     for (const variant of course.variants) {
       const firstLesson = variant.modules[0]?.lessons[0];
       const lessonCount = variant.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
+      // Build categories array: use explicit categories or fall back to single category
+      const categories = course.categories || [course.category];
       
       flattened.push({
         id: `${course.id}-${variant.id}`,
@@ -1352,6 +1357,7 @@ export const flattenCourses = (courses: Course[]): FlattenedCourseVariant[] => {
         title: course.title,
         variantName: variant.name,
         category: course.category,
+        categories,
         description: variant.overview.description,
         thumbnail: course.thumbnail,
         firstVideoId: firstLesson?.videoId,

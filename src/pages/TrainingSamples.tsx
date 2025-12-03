@@ -62,7 +62,7 @@ const TrainingSamples = () => {
     ? flattenedCourses 
     : activeCategory === "Bytes"
     ? flattenedCourses.filter(v => v.isByte)
-    : flattenedCourses.filter(v => v.category === activeCategory);
+    : flattenedCourses.filter(v => v.categories.includes(activeCategory));
 
   // Calculate total lessons from all variants
   const totalLessons = flattenedCourses.reduce((acc, v) => acc + v.lessonCount, 0);
@@ -178,7 +178,7 @@ const TrainingSamples = () => {
                   ? flattenedCourses.length 
                   : category === "Bytes"
                   ? flattenedCourses.filter(v => v.isByte).length
-                  : flattenedCourses.filter(v => v.category === category).length;
+                  : flattenedCourses.filter(v => v.categories.includes(category)).length;
                 
                 return (
                   <TabsTrigger 
