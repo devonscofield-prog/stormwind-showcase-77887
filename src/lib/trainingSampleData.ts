@@ -1310,7 +1310,7 @@ export const sampleCourses: Course[] = [
 ];
 
 export const categories = [
-  "All Courses",
+  "All Samples",
   "Bytes",
   "Microsoft",
   "Cloud",
