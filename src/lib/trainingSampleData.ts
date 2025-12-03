@@ -1251,7 +1251,7 @@ export const sampleCourses: Course[] = [
   {
     id: "security-awareness-onboarding",
     title: "Security Awareness: Onboarding",
-    category: "Cybersecurity",
+    category: "Security Awareness",
     variants: [
       {
         id: "full-course",

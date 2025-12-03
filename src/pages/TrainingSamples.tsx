@@ -17,7 +17,8 @@ import {
   Brain,
   Network,
   FolderKanban,
-  Layers
+  Layers,
+  Lock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   "AI & Machine Learning": Brain,
   "Networking": Network,
   "ITIL": FolderKanban,
+  "Security Awareness": Lock,
 };
 
 const TrainingSamples = () => {
@@ -78,7 +80,7 @@ const TrainingSamples = () => {
   if (showPlayer && selectedCourse) {
     return (
       <div className={cn(
-        "min-h-screen pt-20 pb-16 transition-all duration-300 relative",
+        "min-h-screen pt-20 pb-16 transition-all duration-300 relative bg-background",
         isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"
       )}>
         <TechBackground />
@@ -95,7 +97,7 @@ const TrainingSamples = () => {
   // Course catalog view
   return (
     <div className={cn(
-      "min-h-screen pt-20 pb-16 bg-gradient-to-b from-background via-background to-muted/20 overflow-hidden transition-all duration-300 relative",
+      "min-h-screen pt-20 pb-16 overflow-hidden transition-all duration-300 relative bg-background",
       isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0"
     )}>
       <TechBackground />
