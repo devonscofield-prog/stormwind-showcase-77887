@@ -51,7 +51,7 @@ const HRCompliancePage = lazy(() => import("./pages/HRCompliancePage"));
 const Courses = lazy(() => import("./pages/Courses"));
 const TrainingSamples = lazy(() => import("./pages/TrainingSamples"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Webinars = lazy(() => import("./pages/Webinars"));
+
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -107,7 +107,7 @@ const App = () => (
             <Route path="/training-samples/:courseId" element={<TrainingSamples />} />
             <Route path="/training-samples/:courseId/:variantId" element={<TrainingSamples />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/webinars" element={<Webinars />} />
+            
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/analytics-dashboard" element={
               <ProtectedRoute requireAdmin>
