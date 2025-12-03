@@ -629,28 +629,28 @@ export const sampleCourses: Course[] = [
                 title: "Cloud Service Models",
                 duration: "TBD",
                 videoId: "szhioulxir",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               },
               {
                 id: "az900-crash-lesson-2",
                 title: "Cloud Computing Benefits and Virtualization",
                 duration: "TBD",
                 videoId: "7fh4cmoqev",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               },
               {
                 id: "az900-crash-lesson-3",
                 title: "Cloud Computing Requirements and Cost Efficiency",
                 duration: "TBD",
                 videoId: "shpsswxxfi",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               },
               {
                 id: "az900-crash-lesson-4",
                 title: "The Shared Responsibility Model",
                 duration: "TBD",
                 videoId: "wglirpur6d",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               }
             ]
           },
@@ -663,21 +663,21 @@ export const sampleCourses: Course[] = [
                 title: "Cloud Hosting Models",
                 duration: "TBD",
                 videoId: "4f7gl8dyk0",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               },
               {
                 id: "az900-crash-lesson-6",
                 title: "CapEx and OpEx Cost Considerations",
                 duration: "TBD",
                 videoId: "wx8qnjgisp",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               },
               {
                 id: "az900-crash-lesson-7",
                 title: "Cloud Hosting Model Advantages",
                 duration: "TBD",
                 videoId: "f66flu1piq",
-                instructor: "Will Panek"
+                instructor: "Mike Pfeiffer"
               }
             ]
           }
