@@ -798,6 +798,5 @@ export const categories = [
   "Networking",
   "AI & Machine Learning",
   "Security Awareness",
-  "ITIL",
-  "Business Skills"
+  "ITIL"
 ];
