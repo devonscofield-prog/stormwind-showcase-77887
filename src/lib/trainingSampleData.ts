@@ -413,6 +413,167 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "cisco-ccna-200-301",
+    title: "Cisco CCNA (200-301)",
+    category: "Networking",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "The Implementing and Administering Cisco Solutions (CCNA) course is the first step into Cisco networking. The goal of this online training course is to provide students with skills like network fundamentals and access, IP connectivity and services, security fundamentals, and more! Students who have attended the CCNA online training course will gain competency with Cisco IOS-based devices. Crucial elements of this course include the coverage of IPv4 subnetting, IPv6, ACLs, VLANs, as well as static and dynamic routing which are all needed for success at all levels of Cisco certification.",
+          examNumber: "200-301",
+          objectives: [
+            "Understand network fundamentals and access concepts",
+            "Configure and verify IP connectivity and services",
+            "Implement security fundamentals for network infrastructure",
+            "Master IPv4 subnetting and IPv6 addressing",
+            "Configure VLANs, ACLs, and routing protocols"
+          ],
+          difficulty: "Intermediate",
+          totalDuration: "TBD"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: CCNA Fundamentals",
+            lessons: [
+              {
+                id: "ccna-lesson-1",
+                title: "Introduction to CCNA Course and Exam Objectives",
+                duration: "TBD",
+                videoId: "6dtxlj3bl4",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-lesson-2",
+                title: "Configuring and Verifying VLANs",
+                duration: "TBD",
+                videoId: "ldx3jpw526",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-lesson-3",
+                title: "OSPFv2 Packets and States",
+                duration: "TBD",
+                videoId: "wpmbw9io1r",
+                instructor: "Spike Xavier"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "exam-crash",
+        name: "Exam Crash",
+        overview: {
+          description: "This focused exam prep course targets the key concepts and high-value topics for the Cisco CCNA certification. Perfect for those with networking experience who want to quickly review essential material before sitting for the exam.",
+          examNumber: "200-301",
+          objectives: [
+            "Master PoE configurations and modes",
+            "Configure VLANs and trunking",
+            "Understand routing tables and static routes",
+            "Implement security best practices",
+            "Review OSPF network types and configurations"
+          ],
+          difficulty: "Advanced",
+          totalDuration: "TBD"
+        },
+        modules: [
+          {
+            id: "crash-module-1",
+            title: "Module 1: Power over Ethernet",
+            lessons: [
+              {
+                id: "ccna-crash-lesson-1",
+                title: "Power over Ethernet Modes",
+                duration: "TBD",
+                videoId: "be2q7uadwe",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-2",
+                title: "PoE Power Classification Override",
+                duration: "TBD",
+                videoId: "mvf20m5fok",
+                instructor: "Spike Xavier"
+              }
+            ]
+          },
+          {
+            id: "crash-module-2",
+            title: "Module 2: VLANs and Routing",
+            lessons: [
+              {
+                id: "ccna-crash-lesson-3",
+                title: "Creating VLANs",
+                duration: "TBD",
+                videoId: "y52zp3y09k",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-4",
+                title: "Router on a Trunk Configuration",
+                duration: "TBD",
+                videoId: "euz0ik3zy1",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-5",
+                title: "Reading the Routing Table",
+                duration: "TBD",
+                videoId: "umc7q3wnsm",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-6",
+                title: "Configuring IPv6 Static Default Route",
+                duration: "TBD",
+                videoId: "f7vk0ffk72",
+                instructor: "Spike Xavier"
+              }
+            ]
+          },
+          {
+            id: "crash-module-3",
+            title: "Module 3: Security and OSPF",
+            lessons: [
+              {
+                id: "ccna-crash-lesson-7",
+                title: "Mitigating Threats",
+                duration: "TBD",
+                videoId: "o3a5zgspuk",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-8",
+                title: "Security Best Practices",
+                duration: "TBD",
+                videoId: "igq60cf5im",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-9",
+                title: "IPSec Overview",
+                duration: "TBD",
+                videoId: "d1qqopp2y7",
+                instructor: "Spike Xavier"
+              },
+              {
+                id: "ccna-crash-lesson-10",
+                title: "OSPF Network Types",
+                duration: "TBD",
+                videoId: "utha2wf4z0",
+                instructor: "Spike Xavier"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
