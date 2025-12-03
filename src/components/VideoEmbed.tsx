@@ -2,14 +2,26 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Play, AlertCircle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useVideoTracking } from "@/hooks/useVideoTracking";
+
+interface VideoTrackingMetadata {
+  courseId?: string;
+  courseName?: string;
+  variantId?: string;
+  variantName?: string;
+  lessonId?: string;
+  lessonTitle?: string;
+  instructor?: string;
+}
 
 interface VideoEmbedProps {
   videoId: string;
   title: string;
   thumbnail?: string; // Custom thumbnail override
+  trackingMetadata?: VideoTrackingMetadata;
 }
 
-export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
+export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
@@ -18,6 +30,9 @@ export const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
   const [wistiaThumbnail, setWistiaThumbnail] = useState<string | null>(null);
   const [thumbnailLoading, setThumbnailLoading] = useState(true);
   const isPlaceholder = videoId.startsWith('pending_video_');
+
+  // Video tracking
+  useVideoTracking(videoId, showVideo, trackingMetadata || {});
 
   // Fetch Wistia thumbnail when videoId changes using JSONP
   useEffect(() => {

@@ -314,6 +314,66 @@ export type Database = {
         }
         Relationships: []
       }
+      video_analytics: {
+        Row: {
+          completed: boolean | null
+          course_id: string | null
+          course_name: string | null
+          created_at: string | null
+          id: string
+          instructor: string | null
+          lesson_id: string | null
+          lesson_title: string | null
+          percentage_watched: number | null
+          play_count: number | null
+          session_id: string
+          updated_at: string | null
+          variant_id: string | null
+          variant_name: string | null
+          video_duration_seconds: number | null
+          video_id: string
+          watch_time_seconds: number | null
+        }
+        Insert: {
+          completed?: boolean | null
+          course_id?: string | null
+          course_name?: string | null
+          created_at?: string | null
+          id?: string
+          instructor?: string | null
+          lesson_id?: string | null
+          lesson_title?: string | null
+          percentage_watched?: number | null
+          play_count?: number | null
+          session_id: string
+          updated_at?: string | null
+          variant_id?: string | null
+          variant_name?: string | null
+          video_duration_seconds?: number | null
+          video_id: string
+          watch_time_seconds?: number | null
+        }
+        Update: {
+          completed?: boolean | null
+          course_id?: string | null
+          course_name?: string | null
+          created_at?: string | null
+          id?: string
+          instructor?: string | null
+          lesson_id?: string | null
+          lesson_title?: string | null
+          percentage_watched?: number | null
+          play_count?: number | null
+          session_id?: string
+          updated_at?: string | null
+          variant_id?: string | null
+          variant_name?: string | null
+          video_duration_seconds?: number | null
+          video_id?: string
+          watch_time_seconds?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
