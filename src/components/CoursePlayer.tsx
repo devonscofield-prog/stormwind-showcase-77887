@@ -341,16 +341,16 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
           {/* Sidebar - Table of Contents */}
           <div className="lg:col-span-1">
             <div className="sticky top-4">
-              {/* Sidebar Container with Enhanced Glow */}
-              <div className="relative group/sidebar">
+              {/* Sidebar Container with Enhanced Glow and Entrance Animation */}
+              <div className="relative group/sidebar animate-fade-in" style={{ animationDelay: '150ms', animationFillMode: 'backwards' }}>
                 <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 via-primary/5 to-transparent rounded-xl blur-sm opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-500" />
                 <Card className="relative bg-gradient-to-b from-card/95 to-card/80 backdrop-blur-xl border-border/50 shadow-xl">
                   <CardContent className="pt-5 pb-3">
                     {/* Header with Gradient Accent */}
-                    <div className="relative mb-5 pb-4">
+                    <div className="relative mb-5 pb-4 animate-fade-in" style={{ animationDelay: '250ms', animationFillMode: 'backwards' }}>
                       <div className="flex items-center justify-between">
                         <h3 className="font-bold text-foreground tracking-tight text-lg">Course Content</h3>
-                        <span className="text-xs font-medium bg-gradient-to-r from-primary/20 to-primary/10 text-primary px-3 py-1.5 rounded-full border border-primary/20">
+                        <span className="text-xs font-medium bg-gradient-to-r from-primary/20 to-primary/10 text-primary px-3 py-1.5 rounded-full border border-primary/20 animate-scale-in" style={{ animationDelay: '350ms', animationFillMode: 'backwards' }}>
                           {totalLessons} lessons
                         </span>
                       </div>
@@ -372,11 +372,12 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
                               key={module.id} 
                               value={module.id}
                               className={cn(
-                                "border rounded-xl overflow-hidden transition-all duration-300",
+                                "border rounded-xl overflow-hidden transition-all duration-300 animate-fade-in",
                                 hasCurrentLesson 
                                   ? "border-primary/30 bg-gradient-to-r from-primary/5 to-transparent shadow-sm" 
                                   : "border-border/40 bg-muted/20 hover:border-border/60 hover:bg-muted/30"
                               )}
+                              style={{ animationDelay: `${400 + moduleIndex * 75}ms`, animationFillMode: 'backwards' }}
                             >
                               <AccordionTrigger className="px-3 py-3 hover:no-underline transition-all text-left group/trigger">
                                 <div className="flex items-start gap-3 text-sm w-full">
