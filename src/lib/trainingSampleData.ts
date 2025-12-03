@@ -179,21 +179,21 @@ export const sampleCourses: Course[] = [
               {
                 id: "lesson-1",
                 title: "Introduction to Course and Exam Objectives",
-                duration: "TBD",
+                duration: "12:34",
                 videoId: "c43a2u67d8",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-2",
                 title: "Various Threat Vectors and Attack Surfaces",
-                duration: "TBD",
+                duration: "18:22",
                 videoId: "fyljxhtehs",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "lesson-3",
                 title: "Incident Response Process",
-                duration: "TBD",
+                duration: "15:47",
                 videoId: "10recvrzo3",
                 instructor: "Raymond Lacoste"
               }
@@ -224,35 +224,35 @@ export const sampleCourses: Course[] = [
               {
                 id: "crash-lesson-1",
                 title: "Detective Controls",
-                duration: "TBD",
+                duration: "8:15",
                 videoId: "tmq97i7ymn",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-2",
                 title: "Preventive Controls",
-                duration: "TBD",
+                duration: "7:42",
                 videoId: "1bjiojo11b",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-3",
                 title: "Two-Person Integrity Security Controls",
-                duration: "TBD",
+                duration: "6:28",
                 videoId: "wm8k9e51bg",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-4",
                 title: "Managerial Control",
-                duration: "TBD",
+                duration: "5:53",
                 videoId: "faz0bxn6m7",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-5",
                 title: "Honeypot",
-                duration: "TBD",
+                duration: "4:36",
                 videoId: "3jv74vyghs",
                 instructor: "Raymond Lacoste"
               }
@@ -265,14 +265,14 @@ export const sampleCourses: Course[] = [
               {
                 id: "crash-lesson-6",
                 title: "Zero Trust Control and Data Plane",
-                duration: "TBD",
+                duration: "9:14",
                 videoId: "5yvda4btom",
                 instructor: "Raymond Lacoste"
               },
               {
                 id: "crash-lesson-7",
                 title: "Non-Repudiation",
-                duration: "TBD",
+                duration: "6:51",
                 videoId: "kg5b7iu2gy",
                 instructor: "Raymond Lacoste"
               }
