@@ -917,6 +917,44 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "ms-102",
+    title: "MS-102: Microsoft 365 Administrator",
+    category: "Microsoft",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This instructor led online training course aligns to the MS-102 exam and the Microsoft 365 Certified Administrator Expert certification. This training course includes a deep dive into deploying and implementing Microsoft 365 services, managing user identity and roles, managing access and authentication, and planning Office 365 workloads and applications.",
+          difficulty: "Advanced"
+        },
+        modules: [
+          {
+            id: "module-1",
+            title: "Module 1: Identity and Access Management",
+            lessons: [
+              {
+                id: "ms102-lesson-1",
+                title: "Entra ID Connect",
+                duration: "TBD",
+                videoId: "5n6n0hzil7",
+                instructor: "Will Panek"
+              },
+              {
+                id: "ms102-lesson-2",
+                title: "Implement and Manage Secure Access",
+                duration: "TBD",
+                videoId: "i34i8alcid",
+                instructor: "Will Panek"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
