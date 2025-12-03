@@ -340,91 +340,122 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
 
           {/* Sidebar - Table of Contents */}
           <div className="lg:col-span-1">
-            <Card className="bg-card/80 backdrop-blur border-border/50 sticky top-4">
-              <CardContent className="pt-4 pb-2">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/50">
-                  <h3 className="font-semibold text-foreground">Course Content</h3>
-                  <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                    {totalLessons} lessons
-                  </span>
-                </div>
+            <div className="sticky top-4">
+              {/* Sidebar Container with Enhanced Glow */}
+              <div className="relative group/sidebar">
+                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 via-primary/5 to-transparent rounded-xl blur-sm opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-500" />
+                <Card className="relative bg-gradient-to-b from-card/95 to-card/80 backdrop-blur-xl border-border/50 shadow-xl">
+                  <CardContent className="pt-5 pb-3">
+                    {/* Header with Gradient Accent */}
+                    <div className="relative mb-5 pb-4">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-bold text-foreground tracking-tight text-lg">Course Content</h3>
+                        <span className="text-xs font-medium bg-gradient-to-r from-primary/20 to-primary/10 text-primary px-3 py-1.5 rounded-full border border-primary/20">
+                          {totalLessons} lessons
+                        </span>
+                      </div>
+                      {/* Gradient underline */}
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                    </div>
 
+                    {/* Collapsible Modules with Custom Scrollbar */}
+                    <div className="max-h-[calc(100vh-350px)] overflow-y-auto pr-2 -mr-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40">
+                      <Accordion 
+                        type="multiple" 
+                        defaultValue={defaultOpenModules}
+                        className="space-y-2.5"
+                      >
+                        {selectedVariant.modules.map((module, moduleIndex) => {
+                          const hasCurrentLesson = module.lessons.some(l => l.id === currentLesson?.id);
+                          return (
+                            <AccordionItem 
+                              key={module.id} 
+                              value={module.id}
+                              className={cn(
+                                "border rounded-xl overflow-hidden transition-all duration-300",
+                                hasCurrentLesson 
+                                  ? "border-primary/30 bg-gradient-to-r from-primary/5 to-transparent shadow-sm" 
+                                  : "border-border/40 bg-muted/20 hover:border-border/60 hover:bg-muted/30"
+                              )}
+                            >
+                              <AccordionTrigger className="px-3 py-3 hover:no-underline transition-all text-left group/trigger">
+                                <div className="flex items-center gap-3 text-sm w-full">
+                                  <span className={cn(
+                                    "flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold transition-all duration-200",
+                                    hasCurrentLesson 
+                                      ? "bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-md" 
+                                      : "bg-gradient-to-br from-muted to-muted/80 text-muted-foreground group-hover/trigger:from-primary/20 group-hover/trigger:to-primary/10 group-hover/trigger:text-primary"
+                                  )}>
+                                    {moduleIndex + 1}
+                                  </span>
+                                  <span className="font-semibold line-clamp-2 text-foreground flex-1 group-hover/trigger:text-primary transition-colors">
+                                    {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
+                                  </span>
+                                  <span className="text-[10px] text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">
+                                    {module.lessons.length}
+                                  </span>
+                                </div>
+                              </AccordionTrigger>
+                              <AccordionContent className="pb-2">
+                                <div className="space-y-1 px-2 pt-1">
+                                  {module.lessons.map((lesson, lessonIndex) => {
+                                    const isCurrent = currentLesson?.id === lesson.id;
+                                    return (
+                                      <button
+                                        key={lesson.id}
+                                        onClick={() => handleLessonSelect(lesson)}
+                                        className={cn(
+                                          "w-full text-left p-3 rounded-lg transition-all duration-200 group/lesson",
+                                          "flex items-start gap-3 relative overflow-hidden",
+                                          isCurrent 
+                                            ? "bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg shadow-primary/25" 
+                                            : "hover:bg-accent/60 hover:shadow-sm"
+                                        )}
+                                      >
+                                        {/* Left accent bar for current lesson */}
+                                        {isCurrent && (
+                                          <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-foreground/30 rounded-full" />
+                                        )}
+                                        
+                                        {/* Lesson Number/Play Icon */}
+                                        <div className={cn(
+                                          "flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center text-xs font-medium transition-all",
+                                          isCurrent 
+                                            ? "bg-primary-foreground/20 text-primary-foreground" 
+                                            : "bg-muted text-muted-foreground group-hover/lesson:bg-primary/10 group-hover/lesson:text-primary"
+                                        )}>
+                                          {isCurrent ? (
+                                            <Play className="h-3.5 w-3.5 fill-current" />
+                                          ) : (
+                                            <span>{lessonIndex + 1}</span>
+                                          )}
+                                        </div>
 
-                {/* Collapsible Modules */}
-                <div className="max-h-[calc(100vh-350px)] overflow-y-auto pr-1 -mr-1">
-                  <Accordion 
-                    type="multiple" 
-                    defaultValue={defaultOpenModules}
-                    className="space-y-2"
-                  >
-                    {selectedVariant.modules.map((module, moduleIndex) => {
-                      return (
-                        <AccordionItem 
-                          key={module.id} 
-                          value={module.id}
-                          className="border border-border/50 rounded-lg overflow-hidden bg-muted/30"
-                        >
-                          <AccordionTrigger className="px-3 py-2 hover:no-underline hover:bg-accent/50 transition-colors text-left">
-                            <div className="flex items-center gap-2 text-sm w-full">
-                              <span className="flex items-center justify-center w-6 h-6 rounded-md text-xs font-bold bg-primary/10 text-primary">
-                                {moduleIndex + 1}
-                              </span>
-                              <span className="font-medium line-clamp-2 text-foreground flex-1">
-                                {module.title.replace(/^Module \d+:\s*/i, '').replace(/^Day \d+:\s*/i, '')}
-                              </span>
-                              <span className="text-[10px] text-muted-foreground">
-                                {module.lessons.length} lessons
-                              </span>
-                            </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-1">
-                            <div className="space-y-0.5 px-1">
-                              {module.lessons.map((lesson) => {
-                                const isCurrent = currentLesson?.id === lesson.id;
-                                return (
-                                  <button
-                                    key={lesson.id}
-                                    onClick={() => handleLessonSelect(lesson)}
-                                    className={cn(
-                                      "w-full text-left p-2.5 rounded-md transition-all duration-200 group",
-                                      "flex items-start gap-2",
-                                      isCurrent 
-                                        ? "bg-primary text-primary-foreground shadow-md" 
-                                        : "hover:bg-accent/70"
-                                    )}
-                                  >
-                                    {/* Play Icon for current */}
-                                    <div className={cn(
-                                      "flex-shrink-0 mt-0.5",
-                                      isCurrent ? "text-primary-foreground" : "text-muted-foreground"
-                                    )}>
-                                      <Play className={cn("h-4 w-4", isCurrent && "fill-current")} />
-                                    </div>
-
-                                    {/* Lesson Info */}
-                                    <div className="flex-1 min-w-0">
-                                      <p className={cn(
-                                        "text-sm font-medium line-clamp-2",
-                                        status === 'current' 
-                                          ? "text-primary-foreground" 
-                                          : "text-foreground group-hover:text-foreground"
-                                      )}>
-                                        {lesson.title}
-                                      </p>
-                                    </div>
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-              </CardContent>
-            </Card>
+                                        {/* Lesson Info */}
+                                        <div className="flex-1 min-w-0">
+                                          <p className={cn(
+                                            "text-sm font-medium line-clamp-2 transition-colors",
+                                            isCurrent 
+                                              ? "text-primary-foreground" 
+                                              : "text-foreground/80 group-hover/lesson:text-foreground"
+                                          )}>
+                                            {lesson.title}
+                                          </p>
+                                        </div>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          );
+                        })}
+                      </Accordion>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>
