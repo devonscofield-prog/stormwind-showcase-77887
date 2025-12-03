@@ -1,11 +1,14 @@
 import { cn } from "@/lib/utils";
-import { getCategoryTheme, CategoryTheme } from "@/lib/courseThemes";
+import { getCategoryTheme } from "@/lib/courseThemes";
 import { Play } from "lucide-react";
+import { useWistiaThumbnail } from "@/hooks/useWistiaThumbnail";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CourseThumbnailProps {
   category: string;
   title: string;
   thumbnail?: string;
+  videoId?: string;
   className?: string;
   showPlayIcon?: boolean;
   isHovered?: boolean;
@@ -15,19 +18,40 @@ export const CourseThumbnail = ({
   category, 
   title, 
   thumbnail, 
+  videoId,
   className,
   showPlayIcon = true,
   isHovered = false
 }: CourseThumbnailProps) => {
   const theme = getCategoryTheme(category);
   const CategoryIcon = theme.icon;
+  
+  // Fetch Wistia thumbnail if videoId provided and no custom thumbnail
+  const { thumbnail: wistiaThumbnail, isLoading } = useWistiaThumbnail(
+    !thumbnail ? videoId : undefined
+  );
+  
+  // Use custom thumbnail, then Wistia thumbnail, then fall back to generated
+  const effectiveThumbnail = thumbnail || wistiaThumbnail;
 
-  // If custom thumbnail exists, use it
-  if (thumbnail) {
+  // Show loading skeleton while fetching Wistia thumbnail
+  if (isLoading && videoId) {
+    return (
+      <div className={cn("relative aspect-video overflow-hidden", className)}>
+        <Skeleton className="w-full h-full" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Skeleton className="w-16 h-16 rounded-full" />
+        </div>
+      </div>
+    );
+  }
+
+  // If we have a thumbnail (custom or from Wistia), use it
+  if (effectiveThumbnail) {
     return (
       <div className={cn("relative aspect-video overflow-hidden", className)}>
         <img 
-          src={thumbnail} 
+          src={effectiveThumbnail} 
           alt={title} 
           className={cn(
             "w-full h-full object-cover transition-transform duration-700",
@@ -36,6 +60,24 @@ export const CourseThumbnail = ({
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-70" />
+        
+        {/* Play button on hover */}
+        {showPlayIcon && (
+          <div className={cn(
+            "absolute inset-0 flex items-center justify-center",
+            "transition-all duration-300",
+            isHovered ? "opacity-100" : "opacity-0"
+          )}>
+            <div className={cn(
+              "w-16 h-16 rounded-full flex items-center justify-center",
+              "bg-white/20 backdrop-blur-sm border border-white/30",
+              "transition-all duration-300",
+              isHovered && "scale-100"
+            )}>
+              <Play className="w-8 h-8 text-white fill-white/80 ml-1" />
+            </div>
+          </div>
+        )}
       </div>
     );
   }
