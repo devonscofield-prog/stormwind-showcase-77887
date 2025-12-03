@@ -17,6 +17,7 @@ import {
 
 interface CoursePlayerProps {
   course: Course;
+  initialVariantId?: string;
   onBack: () => void;
 }
 
@@ -45,8 +46,14 @@ const saveProgress = (courseId: string, variantId: string, progress: CourseProgr
   }
 };
 
-export const CoursePlayer = ({ course, onBack }: CoursePlayerProps) => {
-  const [selectedVariant, setSelectedVariant] = useState<CourseVariant>(() => course.variants[0]);
+export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerProps) => {
+  const [selectedVariant, setSelectedVariant] = useState<CourseVariant>(() => {
+    if (initialVariantId) {
+      const variant = course.variants.find(v => v.id === initialVariantId);
+      if (variant) return variant;
+    }
+    return course.variants[0];
+  });
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
   const [viewedLessons, setViewedLessons] = useState<Set<string>>(new Set());
   const [isInitialized, setIsInitialized] = useState(false);

@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CourseCard } from "@/components/CourseCard";
 import { CourseCardSkeleton } from "@/components/CourseCardSkeleton";
 import { CoursePlayer } from "@/components/CoursePlayer";
 import { TechBackground } from "@/components/TechBackground";
 import { Navigation } from "@/components/Navigation";
-import { sampleCourses, categories } from "@/lib/trainingSampleData";
+import { VariantCard } from "@/components/VariantCard";
+import { sampleCourses, categories, flattenCourses } from "@/lib/trainingSampleData";
 import { 
   GraduationCap, 
   BookOpen, 
@@ -38,10 +38,13 @@ const categoryIcons: Record<string, React.ElementType> = {
 
 const TrainingSamples = () => {
   usePageView("Training Samples");
-  const { courseId } = useParams();
+  const { courseId, variantId } = useParams();
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All Courses");
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Flatten courses for display
+  const flattenedCourses = useMemo(() => flattenCourses(sampleCourses), []);
   
   // Simulate initial loading
   useEffect(() => {
@@ -53,14 +56,12 @@ const TrainingSamples = () => {
     ? sampleCourses.find(course => course.id === courseId) || null
     : null;
     
-  const filteredCourses = activeCategory === "All Courses" 
-    ? sampleCourses 
-    : sampleCourses.filter(course => course.category === activeCategory);
+  const filteredVariants = activeCategory === "All Courses" 
+    ? flattenedCourses 
+    : flattenedCourses.filter(v => v.category === activeCategory);
 
-  // Calculate total hours (rough estimate)
-  const totalLessons = sampleCourses.reduce((acc, course) => {
-    return acc + course.variants[0].modules.reduce((m, mod) => m + mod.lessons.length, 0);
-  }, 0);
+  // Calculate total lessons from all variants
+  const totalLessons = flattenedCourses.reduce((acc, v) => acc + v.lessonCount, 0);
 
   // Transition state for smooth view changes
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -96,7 +97,8 @@ const TrainingSamples = () => {
         <TechBackground />
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
           <CoursePlayer 
-            course={selectedCourse} 
+            course={selectedCourse}
+            initialVariantId={variantId}
             onBack={() => navigate("/training-samples")} 
           />
         </div>
@@ -137,9 +139,9 @@ const TrainingSamples = () => {
             <div className="group flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-2xl font-bold text-foreground">{sampleCourses.length}</span>
+                <span className="text-2xl font-bold text-foreground">{flattenedCourses.length}</span>
               </div>
-              <span className="text-xs text-muted-foreground">Courses</span>
+              <span className="text-xs text-muted-foreground">Samples</span>
             </div>
             <div className="group flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <div className="flex items-center gap-2">
@@ -169,8 +171,8 @@ const TrainingSamples = () => {
               {categories.map(category => {
                 const IconComponent = categoryIcons[category] || Layers;
                 const count = category === "All Courses" 
-                  ? sampleCourses.length 
-                  : sampleCourses.filter(c => c.category === category).length;
+                  ? flattenedCourses.length 
+                  : flattenedCourses.filter(v => v.category === category).length;
                 
                 return (
                   <TabsTrigger 
@@ -217,7 +219,7 @@ const TrainingSamples = () => {
                     </div>
                   ))}
                 </div>
-              ) : filteredCourses.length === 0 ? (
+              ) : filteredVariants.length === 0 ? (
                 <div className="text-center py-20 px-4">
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted/50 flex items-center justify-center border border-border/50">
                     <BookOpen className="w-10 h-10 text-muted-foreground/50" />
@@ -232,13 +234,13 @@ const TrainingSamples = () => {
                 </div>
               ) : (
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredCourses.map((course, index) => (
+                  {filteredVariants.map((variant, index) => (
                     <div
-                      key={course.id}
+                      key={variant.id}
                       className="animate-scale-in"
                       style={{ animationDelay: `${index * 75}ms`, animationFillMode: 'both' }}
                     >
-                      <CourseCard course={course} />
+                      <VariantCard variant={variant} />
                     </div>
                   ))}
                 </div>
