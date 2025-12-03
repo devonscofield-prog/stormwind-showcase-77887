@@ -1036,6 +1036,64 @@ export const sampleCourses: Course[] = [
       }
     ],
     showLiveSchedule: true
+  },
+  {
+    id: "ai-for-project-managers",
+    title: "AI for Project Managers",
+    category: "Project Management",
+    variants: [
+      {
+        id: "full-course",
+        name: "Full Course",
+        overview: {
+          description: "This StormWind Bytes course explores how AI revolutionizes project management, focusing on practical applications across knowledge areas. You'll learn how AI technologies enhance risk management, scheduling, resource allocation, and stakeholder engagement while automating routine tasks. The course covers essential concepts including predictive analytics, machine learning for cost control, and AI-driven decision-making frameworks. This course is ideal for project managers, PMO leaders, and professionals seeking to leverage AI capabilities to improve project outcomes while developing the skills needed for the future of project management."
+        },
+        modules: [
+          {
+            id: "ai-pm-module-1",
+            title: "AI for Project Managers",
+            lessons: [
+              {
+                id: "ai-pm-lesson-1",
+                title: "What is AI in Project Management",
+                duration: "TBD",
+                videoId: "x40snbays8",
+                instructor: "TBD"
+              },
+              {
+                id: "ai-pm-lesson-2",
+                title: "How AI is Changing Project Management Practices",
+                duration: "TBD",
+                videoId: "iacz4pf8qx",
+                instructor: "TBD"
+              },
+              {
+                id: "ai-pm-lesson-3",
+                title: "The Role of AI in Risk Management",
+                duration: "TBD",
+                videoId: "7f8evgv7kw",
+                instructor: "TBD"
+              },
+              {
+                id: "ai-pm-lesson-4",
+                title: "AI-Powered Scheduling and Forecasting",
+                duration: "TBD",
+                videoId: "6s5u3409ij",
+                instructor: "TBD"
+              },
+              {
+                id: "ai-pm-lesson-5",
+                title: "Automating Routine Project Management Tasks",
+                duration: "TBD",
+                videoId: "c7383nrbsg",
+                instructor: "TBD"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    showLiveSchedule: true
   }
 ];
 
