@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+import aiLearningDashboard from "@/assets/ai-learning-dashboard.png";
 
 const AILearning = () => {
   useEffect(() => {
@@ -39,6 +40,20 @@ const AILearning = () => {
       titleIcon={Bot}
       backgroundVariant="gradient"
     >
+      {/* Dashboard Screenshot */}
+      <div className="mb-16 animate-fade-in max-w-4xl mx-auto">
+        <div className="relative rounded-xl overflow-hidden border border-border shadow-2xl">
+          <img 
+            src={aiLearningDashboard} 
+            alt="StormAI Tutor interface showing real-time Q&A and course content navigation" 
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+        </div>
+        <p className="text-center text-muted-foreground mt-4 text-sm">
+          Get instant answers and video references while learning with StormAI Tutor
+        </p>
+      </div>
       {/* Why Students Love Storm AI */}
       <section className="mb-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
