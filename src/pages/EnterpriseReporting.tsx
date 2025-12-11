@@ -48,7 +48,7 @@ const EnterpriseReporting = () => {
       breadcrumbs={[{ label: "Enterprise Reporting" }]}
     >
       {/* Dashboard Screenshot */}
-      <div className="mb-16 animate-fade-in">
+      <div className="mb-16 animate-fade-in max-w-4xl mx-auto">
         <div className="relative rounded-xl overflow-hidden border border-border shadow-2xl">
           <img 
             src={enterpriseDashboard} 
