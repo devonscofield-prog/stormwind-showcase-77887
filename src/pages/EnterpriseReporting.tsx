@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Users, BarChart3, Calendar, TrendingUp, ClipboardCheck, UserPlus } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+import enterpriseDashboard from "@/assets/enterprise-reporting-dashboard.png";
 
 const EnterpriseReporting = () => {
   useEffect(() => {
@@ -46,6 +47,21 @@ const EnterpriseReporting = () => {
       description="Empower your team with our comprehensive SaaS platform, offering full control over user management and license allocation. Tailor the learning experience to your team's unique needs and drive measurable outcomes. As a manager, you'll have the tools to monitor progress, align training with organizational goals, and maximize your team's potential."
       breadcrumbs={[{ label: "Enterprise Reporting" }]}
     >
+      {/* Dashboard Screenshot */}
+      <div className="mb-16 animate-fade-in">
+        <div className="relative rounded-xl overflow-hidden border border-border shadow-2xl">
+          <img 
+            src={enterpriseDashboard} 
+            alt="Enterprise Reporting Dashboard showing license management, team activity metrics, and student information" 
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+        </div>
+        <p className="text-center text-muted-foreground mt-4 text-sm">
+          Comprehensive dashboard for managing licenses, tracking team activity, and monitoring student progress
+        </p>
+      </div>
+
       {/* Features Grid */}
       <div className="mb-32 animate-fade-in">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
