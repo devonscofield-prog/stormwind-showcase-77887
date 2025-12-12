@@ -28,12 +28,14 @@ import slide1 from "@/assets/phishing-page-1.jpg";
 import slide2 from "@/assets/phishing-page-2.jpg";
 import slide3 from "@/assets/phishing-page-3.jpg";
 import slide4 from "@/assets/phishing-page-4.jpg";
+import slide5 from "@/assets/phishing-page-5.jpg";
 
 const slides = [
   { src: slide1, alt: "Tailored Simulations" },
   { src: slide2, alt: "Types of Simulations" },
   { src: slide3, alt: "Immediate Feedback" },
   { src: slide4, alt: "Training Topics" },
+  { src: slide5, alt: "Reporting & Analytics" },
 ];
 
 const Phishing = () => {
