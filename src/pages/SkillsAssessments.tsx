@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Target, Users, BarChart3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import { PageLayout } from "@/components/PageLayout";
 import { FeatureListItem } from "@/components/FeatureListItem";
 
@@ -46,25 +47,12 @@ const SkillsAssessments = () => {
     >
       {/* Video Section */}
       {/* Video Section */}
-      <section className="mb-16 w-full flex justify-center px-4">
-        <div className="w-full max-w-3xl">
-          <div className="relative rounded-xl overflow-hidden border border-border/50 shadow-lg bg-card">
-            <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-              <iframe
-                src="https://fast.wistia.net/embed/iframe/n9ptgxgz8x?seo=true&videoFoam=true"
-                title="Skills Assessments Overview"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%"
-                }}
-              />
-            </div>
-          </div>
+      <section className="mb-16 w-full px-4">
+        <div className="max-w-3xl mx-auto">
+          <VideoEmbed 
+            videoId="n9ptgxgz8x" 
+            title="Skills Assessments Overview" 
+          />
         </div>
       </section>
 
