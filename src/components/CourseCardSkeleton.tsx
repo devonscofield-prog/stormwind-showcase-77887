@@ -6,8 +6,8 @@ export const CourseCardSkeleton = ({ className }: { className?: string }) => {
   return (
     <Card className={cn(
       "overflow-hidden h-full",
-      "bg-card/50 backdrop-blur-sm",
-      "border border-border/50",
+      "bg-card/80",
+      "border-0 shadow-lg",
       className
     )}>
       <div className="relative bg-card rounded-xl overflow-hidden h-full flex flex-col">

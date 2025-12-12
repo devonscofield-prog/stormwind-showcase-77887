@@ -62,6 +62,9 @@ export default {
   			'card-hover': 'var(--shadow-card-hover)',
   			glow: 'var(--shadow-glow)'
   		},
+  		transitionTimingFunction: {
+  			'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)'
+  		},
   		transitionProperty: {
   			smooth: 'var(--transition-smooth)'
   		},
@@ -105,6 +108,14 @@ export default {
   				'100%': {
   					transform: 'scale(1)',
   					opacity: '1'
+  				}
+  			},
+  			'shimmer': {
+  				'0%': {
+  					transform: 'translateX(-100%)'
+  				},
+  				'100%': {
+  					transform: 'translateX(100%)'
   				}
   			},
   			'gradient': {
