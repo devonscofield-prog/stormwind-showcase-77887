@@ -240,6 +240,20 @@ All colors MUST be HSL.
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
   }
 
+  /* Section spacing - generous breathing room */
+  .section-spacing {
+    @apply py-24 lg:py-32;
+  }
+
+  .section-spacing-sm {
+    @apply py-16 lg:py-24;
+  }
+
+  /* Professional hover transition timing */
+  .transition-smooth {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   /* Glassmorphism */
   .glass-card {
     background: rgba(26, 31, 46, 0.4);
