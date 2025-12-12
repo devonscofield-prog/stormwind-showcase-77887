@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactNode } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,14 +11,10 @@ interface MenuItemProps {
   description?: string;
 }
 
-interface MenuGroupProps {
-  title: string;
-  items: MenuItemProps[];
-}
-
 interface MegaMenuProps {
   trigger: string;
-  groups: MenuGroupProps[];
+  items: MenuItemProps[];
+  columns?: 2 | 3;
   className?: string;
 }
 
@@ -43,20 +39,7 @@ const MenuItem = ({ label, to, icon: Icon, description }: MenuItemProps) => (
   </Link>
 );
 
-const MenuGroup = ({ title, items }: MenuGroupProps) => (
-  <div className="flex flex-col">
-    <h4 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-      {title}
-    </h4>
-    <div className="flex flex-col gap-0.5">
-      {items.map((item) => (
-        <MenuItem key={item.to} {...item} />
-      ))}
-    </div>
-  </div>
-);
-
-export const MegaMenu = ({ trigger, groups, className }: MegaMenuProps) => {
+export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -82,8 +65,8 @@ export const MegaMenu = ({ trigger, groups, className }: MegaMenuProps) => {
     };
   }, []);
 
-  // Calculate grid columns based on number of groups
-  const gridCols = groups.length === 2 ? "grid-cols-2" : "grid-cols-3";
+  const gridCols = columns === 2 ? "grid-cols-2" : "grid-cols-3";
+  const minWidth = columns === 2 ? "min-w-[500px]" : "min-w-[700px]";
 
   return (
     <div
@@ -121,13 +104,13 @@ export const MegaMenu = ({ trigger, groups, className }: MegaMenuProps) => {
         <div
           className={cn(
             "rounded-xl border border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl shadow-black/20",
-            "p-6",
-            "min-w-[600px]"
+            "p-4",
+            minWidth
           )}
         >
-          <div className={cn("grid gap-8", gridCols)}>
-            {groups.map((group) => (
-              <MenuGroup key={group.title} {...group} />
+          <div className={cn("grid gap-1", gridCols)}>
+            {items.map((item) => (
+              <MenuItem key={item.to} {...item} />
             ))}
           </div>
         </div>
