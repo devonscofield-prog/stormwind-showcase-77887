@@ -2,13 +2,14 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { CourseCardSkeleton } from "@/components/CourseCardSkeleton";
 import { CoursePlayer } from "@/components/CoursePlayer";
 import { TechBackground } from "@/components/TechBackground";
 import { Navigation } from "@/components/Navigation";
 import { VariantCard } from "@/components/VariantCard";
 import { sampleCourses, categories, flattenCourses } from "@/lib/trainingSampleData";
-import { GraduationCap, BookOpen, Sparkles, Clock, Shield, Cloud, Server, Brain, Network, FolderKanban, Layers, Lock } from "lucide-react";
+import { GraduationCap, BookOpen, Sparkles, Clock, Shield, Cloud, Server, Brain, Network, FolderKanban, Layers, Lock, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Category icons mapping
@@ -105,6 +106,17 @@ const TrainingSamples = () => {
             Experience our training platform firsthand with these sample course segments. 
             Explore different modules and get a feel for our comprehensive learning experience.
           </p>
+
+          {/* Live Calendar Button */}
+          <Button 
+            asChild 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer">
+              <Calendar className="w-4 h-4 mr-2" />
+              Live Calendar
+            </a>
+          </Button>
 
           {/* Enhanced stats row */}
           
