@@ -1,23 +1,79 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, ChevronDown, Type, Calendar } from "lucide-react";
+import { 
+  Menu, X, Moon, Sun, ChevronDown, Type, Calendar,
+  // Topic Icons
+  Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones, 
+  AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck,
+  // Platform Feature Icons
+  UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSize } from "@/contexts/TextSizeContext";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { MegaMenu } from "@/components/MegaMenu";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import stormwindLogo from "@/assets/stormwind-logo.png";
+
+// Topics menu data organized into logical groups
+const topicsMenuGroups = [
+  {
+    title: "Core Technologies",
+    items: [
+      { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Microsoft certifications" },
+      { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure & GCP" },
+      { label: "Networking", to: "/networking", icon: Network, description: "Network fundamentals" },
+      { label: "DevOps", to: "/devops", icon: GitBranch, description: "CI/CD & automation" },
+      { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "Frontend & backend" },
+    ],
+  },
+  {
+    title: "Specialized Training",
+    items: [
+      { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Security certifications" },
+      { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "Artificial intelligence" },
+      { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "End-user security" },
+      { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "IT support training" },
+      { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Productivity software" },
+    ],
+  },
+  {
+    title: "Business & Enterprise",
+    items: [
+      { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Soft skills training" },
+      { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP & Agile" },
+      { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "Phishing simulations" },
+      { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Employee training" },
+      { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Compliance training" },
+    ],
+  },
+];
+
+// Platform features menu data
+const platformMenuGroups = [
+  {
+    title: "Learning Tools",
+    items: [
+      { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
+      { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
+      { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
+      { label: "Learning Paths", to: "/learning-paths", icon: Map, description: "Structured curricula" },
+    ],
+  },
+  {
+    title: "Assessment & Reporting",
+    items: [
+      { label: "Skills Assessments", to: "/skills-assessments", icon: Target, description: "Measure competency" },
+      { label: "Live Instructor Led", to: "/live-instructor-led", icon: Video, description: "Virtual classrooms" },
+      { label: "Training Samples", to: "/training-samples", icon: GraduationCap, description: "Preview courses" },
+      { label: "Enterprise Reporting", to: "/enterprise-reporting", icon: BarChart3, description: "Analytics dashboard" },
+    ],
+  },
+];
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -28,7 +84,7 @@ export const Navigation = () => {
   const { textSize, toggleTextSize } = useTextSize();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 dark:bg-[#2d2d2d]/95 backdrop-blur-sm border-b border-teal-500/20 dark:border-[#20B2AA]/30 shadow-[0_4px_20px_-4px_rgba(20,184,166,0.15)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/5">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
@@ -42,104 +98,12 @@ export const Navigation = () => {
           />
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 flex-shrink-0 ml-auto">
-            {/* Technologies Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
-                  Topics
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-background border-border">
-                <DropdownMenuLabel>Topics We Train On</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/microsoft" className="cursor-pointer">Microsoft</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/cloud" className="cursor-pointer">Cloud</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/cybersecurity" className="cursor-pointer">Cybersecurity</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/networking" className="cursor-pointer">Networking</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/devops" className="cursor-pointer">DevOps</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/fullstack-developer" className="cursor-pointer">Full Stack Developer</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/help-desk" className="cursor-pointer">Help Desk</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/desktop-apps" className="cursor-pointer">Desktop Apps</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/ai-pro" className="cursor-pointer">AI</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/security-awareness" className="cursor-pointer">Security Awareness</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/business-skills" className="cursor-pointer">Business Skills</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/project-management" className="cursor-pointer">Project Management</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/phishing" className="cursor-pointer">StormAI Phishing</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/enterprise-end-user" className="cursor-pointer">Enterprise End User</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/hr-compliance" className="cursor-pointer">HR Compliance</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <nav className="hidden md:flex items-center gap-2 flex-shrink-0 ml-auto">
+            {/* Topics Mega Menu */}
+            <MegaMenu trigger="Topics" groups={topicsMenuGroups} />
 
-            {/* Platform Features Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
-                  Platform Features
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-background border-border">
-                <DropdownMenuLabel>Platform Features</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/mentoring" className="cursor-pointer">Mentoring</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/ai-learning" className="cursor-pointer">StormAI Tutor</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/bytes" className="cursor-pointer">Microlearning (Bytes)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/learning-paths" className="cursor-pointer">Learning Paths</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/skills-assessments" className="cursor-pointer">Skills Assessments</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/live-instructor-led" className="cursor-pointer">Live Instructor Led</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/training-samples" className="cursor-pointer">Training Samples</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/enterprise-reporting" className="cursor-pointer">Enterprise Reporting</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Platform Features Mega Menu */}
+            <MegaMenu trigger="Platform Features" groups={platformMenuGroups} />
 
             <Link to="/courses">
               <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
