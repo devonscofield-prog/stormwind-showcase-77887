@@ -1,8 +1,22 @@
 import { useEffect } from "react";
-import { Target, Users, BarChart3 } from "lucide-react";
+import { Target, Users, BarChart3, ExternalLink, CheckCircle2, Play } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { PageLayout } from "@/components/PageLayout";
-import { FeatureListItem } from "@/components/FeatureListItem";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Navigation } from "@/components/Navigation";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  ReferenceLine,
+  Cell,
+  LabelList,
+} from "recharts";
 
 const SkillsAssessments = () => {
   useEffect(() => {
@@ -36,125 +50,358 @@ const SkillsAssessments = () => {
     }
   ];
 
-  return (
-    <PageLayout
-      title="Skills Assessments"
-      description="Identify and address your team's training needs with comprehensive Skills Assessments that evaluate proficiency and develop personalized learning plans"
-      breadcrumbs={[{ label: "Skills Assessments" }]}
-      containerSize="wide"
-      heroClassName="mb-16"
-    >
-      {/* Main Section */}
-      <section className="mb-20">
-        <div className="flex items-center gap-3 mb-8">
-          <Target className="w-8 h-8 text-primary" />
-          <h2 className="text-3xl font-bold">Streamline Your Training Process</h2>
+  const teamSkillData = [
+    { name: "Help Desk", score: 66.5 },
+    { name: "Security", score: 50 },
+    { name: "Cloud", score: 41.25 },
+    { name: "Networking", score: 58 },
+    { name: "M365 Admin", score: 72 },
+  ];
+
+  const individualData = [
+    {
+      name: "Amanda",
+      skills: [
+        { category: "Help Desk", score: 42 },
+        { category: "Security", score: 91 },
+        { category: "Cloud", score: 21 },
+        { category: "Networking", score: 55 },
+        { category: "M365 Admin", score: 78 },
+      ]
+    },
+    {
+      name: "John",
+      skills: [
+        { category: "Help Desk", score: 79 },
+        { category: "Security", score: 50 },
+        { category: "Cloud", score: 11 },
+        { category: "Networking", score: 68 },
+        { category: "M365 Admin", score: 82 },
+      ]
+    },
+    {
+      name: "Steven",
+      skills: [
+        { category: "Help Desk", score: 48 },
+        { category: "Security", score: 30 },
+        { category: "Cloud", score: 89 },
+        { category: "Networking", score: 45 },
+        { category: "M365 Admin", score: 62 },
+      ]
+    },
+    {
+      name: "Ellen",
+      skills: [
+        { category: "Help Desk", score: 95 },
+        { category: "Security", score: 29 },
+        { category: "Cloud", score: 43 },
+        { category: "Networking", score: 64 },
+        { category: "M365 Admin", score: 66 },
+      ]
+    },
+  ];
+
+  const getScoreColor = (score: number) => {
+    if (score >= 90) return "hsl(142, 76%, 36%)"; // Green
+    if (score >= 60) return "hsl(48, 96%, 53%)"; // Yellow
+    return "hsl(0, 84%, 60%)"; // Red
+  };
+
+  const getProficiencyLevel = (score: number) => {
+    if (score >= 90) return "Highly Proficient";
+    if (score >= 60) return "Proficient";
+    return "Needs Upgrading";
+  };
+
+  const getBadgeClasses = (score: number) => {
+    if (score >= 90) return "bg-green-500/20 text-green-600";
+    if (score >= 60) return "bg-yellow-500/20 text-yellow-600";
+    return "bg-red-500/20 text-red-600";
+  };
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
+          <p className="font-semibold">{label}</p>
+          <p className="text-muted-foreground">Score: {payload[0].value.toFixed(1)}%</p>
         </div>
+      );
+    }
+    return null;
+  };
 
-        <Card className="mb-8">
-          <CardContent className="p-8">
-            <div className="space-y-6">
-              <p className="text-lg leading-relaxed">
-                StormWind's Skills Assessments can determine the areas where your team needs improvement and create 
-                individualized learning plans to increase overall proficiency. This process makes identifying a training 
-                path more convenient than ever, ensuring students spend time in classes appropriate for their skill level.
-              </p>
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <div className="container mx-auto px-4 pt-32 pb-16">
+        <div className="max-w-6xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-12 animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent mb-6">
+              Skills Assessments
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Identify and address your team's training needs with comprehensive Skills Assessments that evaluate proficiency and develop personalized learning plans
+            </p>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg" className="gap-2">
+                  <Play className="w-5 h-5" />
+                  Watch Demo Video
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl">
+                <DialogHeader>
+                  <DialogTitle>Skills Assessments Demo</DialogTitle>
+                </DialogHeader>
+                <div className="aspect-video">
+                  <iframe
+                    src="https://fast.wistia.net/embed/iframe/n9ptgxgz8x?seo=true"
+                    title="Skills Assessments Demo"
+                    className="w-full h-full rounded-lg"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="flex items-start gap-3">
-                  <Target className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Streamline Training</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Ensure students spend time in classes appropriate for their skill level
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Individual Insights</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Understand where each team member's skill level is at
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <BarChart3 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Team-Wide Analysis</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Gain insights into your team's collective skill levels
-                    </p>
-                  </div>
-                </div>
+          {/* Tabs */}
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-8">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="team-skills">Team Skills</TabsTrigger>
+              <TabsTrigger value="individual-reports">Individual Reports</TabsTrigger>
+            </TabsList>
+
+            {/* Tab 1: Overview */}
+            <TabsContent value="overview">
+              <div className="flex items-center gap-3 mb-8">
+                <Target className="w-8 h-8 text-primary" />
+                <h2 className="text-3xl font-bold">Streamline Your Training Process</h2>
               </div>
 
-              <div className="bg-accent/30 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">How It Works</h3>
-                <div className="space-y-4">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Take the Assessment</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Select from over 100 specialized skills assessments covering cloud, networking, security, development, and enterprise technologies
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Get Personalized Results</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Receive detailed analysis of strengths and areas for improvement with specific knowledge gaps and skill level benchmarks
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Follow Custom Learning Path</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Based on assessment results, you'll be directed to the most appropriate training resources for your skill level
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Card>
+                <CardContent className="p-8">
+                  <div className="space-y-6">
+                    <p className="text-lg leading-relaxed">
+                      StormWind's Skills Assessments can determine the areas where your team needs improvement and create 
+                      individualized learning plans to increase overall proficiency. This process makes identifying a training 
+                      path more convenient than ever, ensuring students spend time in classes appropriate for their skill level.
+                    </p>
 
-              <div className="pt-4">
-                <h3 className="font-semibold text-lg mb-4">Assessment Categories</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {assessmentCategories.map(category => (
-                    <div key={category.title} className="p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all">
-                      <h4 className="font-semibold mb-3">{category.title}</h4>
-                      <div className="space-y-1.5">
-                        {category.assessments.slice(0, 4).map(assessment => (
-                          <FeatureListItem key={assessment} text={assessment} size="xs" />
-                        ))}
-                        {category.assessments.length > 4 && (
-                          <p className="text-xs text-muted-foreground/60 italic pt-1">
-                            +{category.assessments.length - 4} more
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="flex items-start gap-3">
+                        <Target className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Streamline Training</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Ensure students spend time in classes appropriate for their skill level
                           </p>
-                        )}
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Users className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Individual Insights</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Understand where each team member's skill level is at
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <BarChart3 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Team-Wide Analysis</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Gain insights into your team's collective skill levels
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+
+                    <div className="bg-accent/30 rounded-lg p-6">
+                      <h3 className="font-semibold text-lg mb-3">How It Works</h3>
+                      <div className="space-y-4">
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
+                          <div>
+                            <h4 className="font-semibold mb-1">Take the Assessment</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Select from over 100 specialized skills assessments covering cloud, networking, security, development, and enterprise technologies
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
+                          <div>
+                            <h4 className="font-semibold mb-1">Get Personalized Results</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Receive detailed analysis of strengths and areas for improvement with specific knowledge gaps and skill level benchmarks
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
+                          <div>
+                            <h4 className="font-semibold mb-1">Follow Custom Learning Path</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Based on assessment results, you'll be directed to the most appropriate training resources for your skill level
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4">
+                      <h3 className="font-semibold text-lg mb-4">Assessment Categories</h3>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {assessmentCategories.map(category => (
+                          <div key={category.title} className="p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all">
+                            <h4 className="font-semibold mb-3">{category.title}</h4>
+                            <div className="space-y-1.5">
+                              {category.assessments.slice(0, 4).map(assessment => (
+                                <div key={assessment} className="flex items-start gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                  <span className="text-xs text-muted-foreground">{assessment}</span>
+                                </div>
+                              ))}
+                              {category.assessments.length > 4 && (
+                                <p className="text-xs text-muted-foreground/60 italic pt-1">
+                                  +{category.assessments.length - 4} more
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-accent/50 rounded-lg p-6 mt-6">
+                      <h3 className="font-semibold text-lg mb-2">Ready to Assess Your Team's Skills?</h3>
+                      <p className="text-muted-foreground mb-4">
+                        Start identifying training needs and developing personalized learning paths today with over 100 specialized assessments
+                      </p>
+                      <Button asChild>
+                        <a href="https://app.stormwindstudios.com/skillsassessment" target="_blank" rel="noopener noreferrer" className="gap-2">
+                          Explore Skill Assessments
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Tab 2: Team Skills */}
+            <TabsContent value="team-skills">
+              <div className="flex items-center gap-3 mb-8">
+                <BarChart3 className="w-8 h-8 text-primary" />
+                <h2 className="text-3xl font-bold">Team Skill Levels</h2>
               </div>
 
-              <div className="bg-accent/50 rounded-lg p-6 mt-6">
-                <h3 className="font-semibold text-lg mb-2">Ready to Assess Your Team's Skills?</h3>
-                <p className="text-muted-foreground mb-4">
-                  Start identifying training needs and developing personalized learning paths today with over 100 specialized assessments
-                </p>
+              <Card>
+                <CardContent className="p-8">
+                  <p className="text-muted-foreground mb-6">
+                    Overall team performance across all skill categories
+                  </p>
+
+                  <ResponsiveContainer width="100%" height={450}>
+                    <BarChart data={teamSkillData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                      <XAxis 
+                        dataKey="name" 
+                        tick={{ fill: "hsl(var(--foreground))" }}
+                        axisLine={{ stroke: "hsl(var(--border))" }}
+                      />
+                      <YAxis 
+                        domain={[0, 100]} 
+                        tick={{ fill: "hsl(var(--foreground))" }}
+                        axisLine={{ stroke: "hsl(var(--border))" }}
+                        label={{ value: "Score (%)", angle: -90, position: "insideLeft", fill: "hsl(var(--foreground))" }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <ReferenceLine y={60} stroke="hsl(48, 96%, 53%)" strokeDasharray="5 5" label={{ value: "Proficient (60%)", position: "right", fill: "hsl(48, 96%, 53%)" }} />
+                      <ReferenceLine y={90} stroke="hsl(142, 76%, 36%)" strokeDasharray="5 5" label={{ value: "Highly Proficient (90%)", position: "right", fill: "hsl(142, 76%, 36%)" }} />
+                      <Bar dataKey="score" radius={[8, 8, 0, 0]}>
+                        {teamSkillData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getScoreColor(entry.score)} />
+                        ))}
+                        <LabelList dataKey="score" position="top" formatter={(value: number) => `${value.toFixed(1)}%`} fill="hsl(var(--foreground))" />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+
+                  <div className="grid grid-cols-3 gap-4 mt-8">
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-accent/30">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(0, 84%, 60%)" }} />
+                      <div>
+                        <p className="font-semibold text-sm">Needs Upgrading</p>
+                        <p className="text-xs text-muted-foreground">Below 60%</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-accent/30">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(48, 96%, 53%)" }} />
+                      <div>
+                        <p className="font-semibold text-sm">Proficient</p>
+                        <p className="text-xs text-muted-foreground">60% - 89%</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-accent/30">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(142, 76%, 36%)" }} />
+                      <div>
+                        <p className="font-semibold text-sm">Highly Proficient</p>
+                        <p className="text-xs text-muted-foreground">90% and above</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Tab 3: Individual Reports */}
+            <TabsContent value="individual-reports">
+              <div className="flex items-center gap-3 mb-8">
+                <Users className="w-8 h-8 text-primary" />
+                <h2 className="text-3xl font-bold">Individual Skill Reports</h2>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-    </PageLayout>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {individualData.map((person) => (
+                  <Card key={person.name}>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-4">{person.name}</h3>
+                      <div className="space-y-3">
+                        {person.skills.map((skill) => (
+                          <div key={skill.category} className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div 
+                                className="w-2.5 h-2.5 rounded-full" 
+                                style={{ backgroundColor: getScoreColor(skill.score) }} 
+                              />
+                              <span className="text-sm">{skill.category}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm font-medium">{skill.score}%</span>
+                              <span className={`text-xs px-2 py-0.5 rounded ${getBadgeClasses(skill.score)}`}>
+                                {getProficiencyLevel(skill.score)}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </div>
   );
 };
 
