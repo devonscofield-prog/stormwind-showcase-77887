@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, ChevronDown, Type } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Type, Calendar } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSize } from "@/contexts/TextSizeContext";
 import {
@@ -151,6 +151,12 @@ export const Navigation = () => {
                 Training Samples
               </Button>
             </Link>
+            <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+                <Calendar className="w-4 h-4 mr-2" />
+                Live Calendar
+              </Button>
+            </a>
             <Link to="/ranges">
               <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
                 Ranges
@@ -361,6 +367,15 @@ export const Navigation = () => {
                 Training Samples
               </Button>
             </Link>
+            <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                Live Calendar
+              </Button>
+            </a>
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
