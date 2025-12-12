@@ -11,6 +11,11 @@ interface MenuItemProps {
   description?: string;
 }
 
+interface MenuItemComponentProps extends MenuItemProps {
+  index: number;
+  isVisible: boolean;
+}
+
 interface MegaMenuProps {
   trigger: string;
   items: MenuItemProps[];
@@ -18,10 +23,15 @@ interface MegaMenuProps {
   className?: string;
 }
 
-const MenuItem = ({ label, to, icon: Icon, description }: MenuItemProps) => (
+const MenuItem = ({ label, to, icon: Icon, description, index, isVisible }: MenuItemComponentProps) => (
   <Link
     to={to}
     className="group flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5"
+    style={{
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
+      transition: `opacity 0.2s ease-out ${index * 30}ms, transform 0.2s ease-out ${index * 30}ms`,
+    }}
   >
     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
       <Icon className="h-4 w-4" />
@@ -109,8 +119,8 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
           )}
         >
           <div className={cn("grid gap-1", gridCols)}>
-            {items.map((item) => (
-              <MenuItem key={item.to} {...item} />
+            {items.map((item, index) => (
+              <MenuItem key={item.to} {...item} index={index} isVisible={isOpen} />
             ))}
           </div>
         </div>
