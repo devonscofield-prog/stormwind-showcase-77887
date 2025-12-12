@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Target, Users, BarChart3 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { VideoEmbed } from "@/components/VideoEmbed";
 import { PageLayout } from "@/components/PageLayout";
 import { FeatureListItem } from "@/components/FeatureListItem";
 
@@ -45,17 +44,6 @@ const SkillsAssessments = () => {
       containerSize="wide"
       heroClassName="mb-16"
     >
-      {/* Video Section */}
-      {/* Video Section */}
-      <section className="mb-16 w-full px-4">
-        <div className="max-w-3xl mx-auto">
-          <VideoEmbed 
-            videoId="n9ptgxgz8x" 
-            title="Skills Assessments Overview" 
-          />
-        </div>
-      </section>
-
       {/* Main Section */}
       <section className="mb-20">
         <div className="flex items-center gap-3 mb-8">
