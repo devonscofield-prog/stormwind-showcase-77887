@@ -154,15 +154,36 @@ All colors MUST be HSL.
     position: relative;
   }
 
-  /* Dark mode solid background */
+  /* Dark mode with radial spotlight gradient at top */
   .dark body {
-    background: hsl(var(--background));
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 50% 0%, hsl(var(--accent-teal) / 0.05) 0%, transparent 40%),
+      hsl(var(--background));
     background-attachment: fixed;
   }
 
   /* Text size accessibility - applies to ALL text elements including titles */
   html.text-size-large {
     font-size: 120%;
+  }
+
+  /* Typography - Punchier headers with tracking-tight */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  h1 {
+    line-height: 1.1;
+  }
+
+  h2 {
+    line-height: 1.15;
+  }
+
+  h3 {
+    line-height: 1.2;
   }
 
   /* Dot pattern overlay */
@@ -783,7 +804,32 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom Scrollbar Styling */
+/* Global Custom Scrollbar - thin, trackless, brand green */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+}
+
+/* Custom Scrollbar Utility Classes */
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
