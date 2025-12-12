@@ -46,6 +46,14 @@ const EnterpriseReporting = () => {
       fullscreenApi.scrollTo(carouselApi.selectedScrollSnap(), true);
     }
   }, [isFullscreen, fullscreenApi, carouselApi]);
+
+  useEffect(() => {
+    if (!fullscreenApi) return;
+    
+    fullscreenApi.on("select", () => {
+      setCurrent(fullscreenApi.selectedScrollSnap());
+    });
+  }, [fullscreenApi]);
   const features = [{
     icon: Users,
     title: "Manage Licenses",
