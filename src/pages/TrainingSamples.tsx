@@ -108,14 +108,8 @@ const TrainingSamples = () => {
           </p>
 
           {/* Live Calendar Button */}
-          <Button 
-            asChild 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
-          >
-            <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer">
-              <Calendar className="w-4 h-4 mr-2" />
-              Live Calendar
-            </a>
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            
           </Button>
 
           {/* Enhanced stats row */}
