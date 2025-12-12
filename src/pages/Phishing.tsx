@@ -2,9 +2,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { trainingLinks } from "@/lib/trainingLinks";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -38,8 +39,10 @@ const slides = [
 const Phishing = () => {
   const navigate = useNavigate();
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [fullscreenApi, setFullscreenApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     document.title = "StormAI Phishing";
@@ -55,6 +58,20 @@ const Phishing = () => {
       setCurrent(carouselApi.selectedScrollSnap() + 1);
     });
   }, [carouselApi]);
+
+  useEffect(() => {
+    if (!fullscreenApi) return;
+
+    fullscreenApi.on("select", () => {
+      setCurrent(fullscreenApi.selectedScrollSnap() + 1);
+    });
+  }, [fullscreenApi]);
+
+  useEffect(() => {
+    if (isFullscreen && fullscreenApi) {
+      fullscreenApi.scrollTo(current - 1);
+    }
+  }, [isFullscreen, fullscreenApi]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -92,9 +109,20 @@ const Phishing = () => {
 
           {/* Product Overview Slideshow */}
           <section className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <Shield className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl font-bold">Product Overview</h2>
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <Shield className="w-8 h-8 text-primary" />
+                <h2 className="text-3xl font-bold">Product Overview</h2>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsFullscreen(true)}
+                className="gap-2"
+              >
+                <Maximize2 className="w-4 h-4" />
+                Fullscreen
+              </Button>
             </div>
             
             <Card className="overflow-hidden">
@@ -468,6 +496,58 @@ const Phishing = () => {
           </section>
         </div>
       </main>
+
+      {/* Fullscreen Slideshow Dialog */}
+      <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
+        <DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-0 border-none bg-black/95">
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsFullscreen(false)}
+              className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+            >
+              <X className="w-6 h-6" />
+            </Button>
+            
+            <Carousel setApi={setFullscreenApi} className="w-full max-w-6xl">
+              <CarouselContent>
+                {slides.map((slide, index) => (
+                  <CarouselItem key={index}>
+                    <div className="flex items-center justify-center p-4">
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4 bg-white/10 hover:bg-white/20 text-white border-none" />
+              <CarouselNext className="right-4 bg-white/10 hover:bg-white/20 text-white border-none" />
+            </Carousel>
+            
+            {/* Slide indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => fullscreenApi?.scrollTo(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    current === index + 1 ? "bg-primary" : "bg-white/30"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <p className="text-white/70 mt-4 text-sm">
+              {current} / {slides.length}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
