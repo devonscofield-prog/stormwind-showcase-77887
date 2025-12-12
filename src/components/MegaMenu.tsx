@@ -26,7 +26,7 @@ interface MegaMenuProps {
 const MenuItem = ({ label, to, icon: Icon, description, index, isVisible }: MenuItemComponentProps) => (
   <Link
     to={to}
-    className="group flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5"
+    className="group flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5 hover:scale-[1.02]"
     style={{
       opacity: isVisible ? 1 : 0,
       transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
