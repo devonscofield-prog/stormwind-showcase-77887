@@ -41,9 +41,8 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
           "group cursor-pointer relative overflow-hidden h-full",
           "transition-all duration-500 ease-out",
           "hover:scale-[1.02] hover:-translate-y-2",
-          "bg-card/50 backdrop-blur-sm",
-          "border border-border/50 hover:border-primary/40",
-          "hover:shadow-2xl hover:shadow-primary/15",
+          "bg-card/80",
+          "border-0 shadow-lg hover:shadow-2xl hover:shadow-primary/20",
           className
         )}
         onMouseEnter={() => setIsHovered(true)}
@@ -52,20 +51,28 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
         {/* Glow effect on hover */}
         <div className={cn(
           "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-          "bg-gradient-to-r from-primary/30 via-transparent to-primary/30 blur-sm"
+          "bg-gradient-to-r from-primary/20 via-transparent to-accent-teal/20 blur-sm"
         )} />
         
         <div className="relative bg-card rounded-xl overflow-hidden h-full flex flex-col">
-          {/* Thumbnail with enhanced play button */}
-          <div className="relative">
-            <CourseThumbnail 
-              category={category}
-              title={title}
-              thumbnail={thumbnail}
-              videoId={firstVideoId}
-              isHovered={isHovered}
-              showPlayIcon={false}
-            />
+          {/* Thumbnail with zoom effect */}
+          <div className="relative overflow-hidden">
+            <div className={cn(
+              "transition-transform duration-500 ease-out",
+              isHovered && "scale-105"
+            )}>
+              <CourseThumbnail 
+                category={category}
+                title={title}
+                thumbnail={thumbnail}
+                videoId={firstVideoId}
+                isHovered={isHovered}
+                showPlayIcon={false}
+              />
+            </div>
+            
+            {/* Gradient overlay for smooth transition to content */}
+            <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent pointer-events-none" />
             
             {/* Preview Course Button - appears on hover */}
             <div className={cn(
@@ -84,14 +91,24 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
                 Preview Course
               </div>
             </div>
+          </div>
 
-            {/* Instructor avatar preview */}
+          {/* Glassmorphism Content Overlay */}
+          <CardContent className={cn(
+            "relative flex-1 flex flex-col p-4 pt-5 -mt-4",
+            "backdrop-blur-xl bg-card/70",
+            "border-t border-white/10",
+            "before:absolute before:inset-x-0 before:top-0 before:h-px",
+            "before:bg-gradient-to-r before:from-transparent before:via-primary/30 before:to-transparent"
+          )}>
+            {/* Instructor Avatar - overlapping the divider */}
             {instructorPhoto && (
-              <div className={cn(
-                "absolute bottom-3 right-3 transition-all duration-300",
-                isHovered ? "opacity-0 scale-90" : "opacity-100 scale-100"
-              )}>
-                <Avatar className="h-10 w-10 ring-2 ring-background shadow-lg">
+              <div className="absolute -top-5 right-4">
+                <Avatar className={cn(
+                  "h-10 w-10 ring-2 ring-card shadow-lg",
+                  "transition-all duration-300",
+                  isHovered && "ring-primary/50 shadow-primary/20"
+                )}>
                   <AvatarImage src={instructorPhoto} alt={firstInstructor} />
                   <AvatarFallback className="bg-primary/10 text-primary text-xs">
                     <User className="w-4 h-4" />
@@ -99,27 +116,22 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
                 </Avatar>
               </div>
             )}
-          </div>
-
-          {/* Content */}
-          <CardContent className="flex-1 flex flex-col p-4 pt-3">
-            {/* Category Row */}
-            <div className="flex items-center gap-2 mb-3">
-              {/* Category Badge */}
+            
+            {/* Category Badge */}
+            <div className="flex items-center gap-2 mb-2">
               <span className={cn(
-                "px-2.5 py-1 text-xs font-semibold rounded-full",
-                "bg-gradient-to-r border transition-all duration-300",
+                "px-2 py-0.5 text-[10px] font-semibold rounded-full uppercase tracking-wider",
+                "bg-gradient-to-r border-0 transition-all duration-300",
                 theme.iconBg,
-                "border-current/20",
                 theme.accentColor
               )}>
                 {category}
               </span>
             </div>
             
-            {/* Title */}
+            {/* Title - larger and bolder */}
             <h3 className={cn(
-              "text-lg font-bold mb-2 line-clamp-2",
+              "text-xl font-bold mb-2 line-clamp-2 leading-tight",
               "transition-colors duration-300",
               "text-foreground group-hover:text-primary"
             )}>
@@ -127,7 +139,7 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
             </h3>
             
             {/* Description */}
-            <p className="text-sm text-muted-foreground line-clamp-2 mb-3 flex-1">
+            <p className="text-sm text-muted-foreground/80 line-clamp-2 mb-3 flex-1">
               {description}
             </p>
 
@@ -138,9 +150,9 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
                   <span
                     key={name}
                     className={cn(
-                      "px-2 py-0.5 text-xs rounded-md",
-                      "bg-muted/50 text-muted-foreground",
-                      "border border-border/50"
+                      "px-2 py-0.5 text-[10px] rounded-md uppercase tracking-wider",
+                      "bg-white/5 text-muted-foreground/70",
+                      "border border-white/10"
                     )}
                   >
                     {name}
@@ -149,30 +161,24 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
               </div>
             )}
 
-            {/* Instructor Info */}
+            {/* Instructor Name */}
             {firstInstructor && (
-              <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src={instructorPhoto || undefined} alt={firstInstructor} />
-                  <AvatarFallback className="bg-primary/10 text-primary text-[10px]">
-                    {firstInstructor.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
+              <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground/70">
                 <span className="truncate">{firstInstructor}</span>
               </div>
             )}
 
             {/* Stats Row */}
-            <div className="flex items-center gap-4 pt-3 border-t border-border/50">
+            <div className="flex items-center gap-4 pt-3 border-t border-white/5">
               {/* Lessons count */}
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{totalLessons} lessons</span>
               </div>
               
               {/* Variants count */}
               {variantCount > 1 && (
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
                   <Layers className="w-3.5 h-3.5" />
                   <span>{variantCount} variants</span>
                 </div>
@@ -182,7 +188,7 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
 
           {/* Bottom accent line */}
           <div className={cn(
-            "absolute bottom-0 left-0 right-0 h-1",
+            "absolute bottom-0 left-0 right-0 h-0.5",
             "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
             theme.gradient
           )} />
