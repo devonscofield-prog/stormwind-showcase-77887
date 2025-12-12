@@ -1,8 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink } from "lucide-react";
+import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { trainingLinks } from "@/lib/trainingLinks";
 import {
@@ -13,13 +13,48 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+
+// Import slide images
+import slide1 from "@/assets/phishing-page-1.jpg";
+import slide2 from "@/assets/phishing-page-2.jpg";
+import slide3 from "@/assets/phishing-page-3.jpg";
+import slide4 from "@/assets/phishing-page-4.jpg";
+
+const slides = [
+  { src: slide1, alt: "Tailored Simulations" },
+  { src: slide2, alt: "Types of Simulations" },
+  { src: slide3, alt: "Immediate Feedback" },
+  { src: slide4, alt: "Training Topics" },
+];
 
 const Phishing = () => {
   const navigate = useNavigate();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     document.title = "StormAI Phishing";
   }, []);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    setCount(carouselApi.scrollSnapList().length);
+    setCurrent(carouselApi.selectedScrollSnap() + 1);
+
+    carouselApi.on("select", () => {
+      setCurrent(carouselApi.selectedScrollSnap() + 1);
+    });
+  }, [carouselApi]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -54,6 +89,50 @@ const Phishing = () => {
               AI-driven phishing simulations that mirror real-world hacker techniques, with zero manual management required.
             </p>
           </div>
+
+          {/* Product Overview Slideshow */}
+          <section className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <Shield className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl font-bold">Product Overview</h2>
+            </div>
+            
+            <Card className="overflow-hidden">
+              <CardContent className="p-0">
+                <Carousel setApi={setCarouselApi} className="w-full">
+                  <CarouselContent>
+                    {slides.map((slide, index) => (
+                      <CarouselItem key={index}>
+                        <div className="relative">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-4" />
+                  <CarouselNext className="right-4" />
+                </Carousel>
+                
+                {/* Slide indicators */}
+                <div className="flex justify-center gap-2 py-4 bg-muted/50">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => carouselApi?.scrollTo(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        current === index + 1 ? "bg-primary" : "bg-muted-foreground/30"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
 
           {/* Key Features Section */}
           <section className="mb-20">
