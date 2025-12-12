@@ -19,60 +19,35 @@ import {
 } from "@/components/ui/collapsible";
 import stormwindLogo from "@/assets/stormwind-logo.png";
 
-// Topics menu data organized into logical groups
-const topicsMenuGroups = [
-  {
-    title: "Core Technologies",
-    items: [
-      { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Microsoft certifications" },
-      { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure & GCP" },
-      { label: "Networking", to: "/networking", icon: Network, description: "Network fundamentals" },
-      { label: "DevOps", to: "/devops", icon: GitBranch, description: "CI/CD & automation" },
-      { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "Frontend & backend" },
-    ],
-  },
-  {
-    title: "Specialized Training",
-    items: [
-      { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Security certifications" },
-      { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "Artificial intelligence" },
-      { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "End-user security" },
-      { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "IT support training" },
-      { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Productivity software" },
-    ],
-  },
-  {
-    title: "Business & Enterprise",
-    items: [
-      { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Soft skills training" },
-      { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP & Agile" },
-      { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "Phishing simulations" },
-      { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Employee training" },
-      { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Compliance training" },
-    ],
-  },
+// Topics menu items - flat array sorted logically (core tech → specialized → business)
+const topicsMenuItems = [
+  { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Microsoft certifications" },
+  { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure & GCP" },
+  { label: "Networking", to: "/networking", icon: Network, description: "Network fundamentals" },
+  { label: "DevOps", to: "/devops", icon: GitBranch, description: "CI/CD & automation" },
+  { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "Frontend & backend" },
+  { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Security certifications" },
+  { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "Artificial intelligence" },
+  { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "End-user security" },
+  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "IT support training" },
+  { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Productivity software" },
+  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Soft skills training" },
+  { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP & Agile" },
+  { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "Phishing simulations" },
+  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Employee training" },
+  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Compliance training" },
 ];
 
-// Platform features menu data
-const platformMenuGroups = [
-  {
-    title: "Learning Tools",
-    items: [
-      { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
-      { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
-      { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
-      { label: "Learning Paths", to: "/learning-paths", icon: Map, description: "Structured curricula" },
-    ],
-  },
-  {
-    title: "Assessment & Reporting",
-    items: [
-      { label: "Skills Assessments", to: "/skills-assessments", icon: Target, description: "Measure competency" },
-      { label: "Live Instructor Led", to: "/live-instructor-led", icon: Video, description: "Virtual classrooms" },
-      { label: "Training Samples", to: "/training-samples", icon: GraduationCap, description: "Preview courses" },
-      { label: "Enterprise Reporting", to: "/enterprise-reporting", icon: BarChart3, description: "Analytics dashboard" },
-    ],
-  },
+// Platform features menu items - flat array sorted logically
+const platformMenuItems = [
+  { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
+  { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
+  { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
+  { label: "Learning Paths", to: "/learning-paths", icon: Map, description: "Structured curricula" },
+  { label: "Skills Assessments", to: "/skills-assessments", icon: Target, description: "Measure competency" },
+  { label: "Live Instructor Led", to: "/live-instructor-led", icon: Video, description: "Virtual classrooms" },
+  { label: "Training Samples", to: "/training-samples", icon: GraduationCap, description: "Preview courses" },
+  { label: "Enterprise Reporting", to: "/enterprise-reporting", icon: BarChart3, description: "Analytics dashboard" },
 ];
 
 export const Navigation = () => {
@@ -100,10 +75,10 @@ export const Navigation = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 flex-shrink-0 ml-auto">
             {/* Topics Mega Menu */}
-            <MegaMenu trigger="Topics" groups={topicsMenuGroups} />
+            <MegaMenu trigger="Topics" items={topicsMenuItems} columns={3} />
 
             {/* Platform Features Mega Menu */}
-            <MegaMenu trigger="Platform Features" groups={platformMenuGroups} />
+            <MegaMenu trigger="Platform Features" items={platformMenuItems} columns={2} />
 
             <Link to="/courses">
               <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
