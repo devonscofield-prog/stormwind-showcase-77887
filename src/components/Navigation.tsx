@@ -156,82 +156,15 @@ export const Navigation = () => {
                   <ChevronDown className={`h-4 w-4 transition-transform ${techOpen ? 'rotate-180' : ''}`} />
                 </Button>
               </CollapsibleTrigger>
-              <CollapsibleContent className="pl-4 mt-2 space-y-2">
-                <Link to="/microsoft" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Microsoft
-                  </Button>
-                </Link>
-                <Link to="/cloud" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Cloud
-                  </Button>
-                </Link>
-                <Link to="/cybersecurity" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Cybersecurity
-                  </Button>
-                </Link>
-                <Link to="/networking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Networking
-                  </Button>
-                </Link>
-                <Link to="/devops" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    DevOps
-                  </Button>
-                </Link>
-                <Link to="/fullstack-developer" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Full Stack Developer
-                  </Button>
-                </Link>
-                <Link to="/help-desk" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Help Desk
-                  </Button>
-                </Link>
-                <Link to="/desktop-apps" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Desktop Apps
-                  </Button>
-                </Link>
-                <Link to="/ai-pro" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    AI
-                  </Button>
-                </Link>
-                <Link to="/security-awareness" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Security Awareness
-                  </Button>
-                </Link>
-                <Link to="/business-skills" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Business Skills
-                  </Button>
-                </Link>
-                <Link to="/project-management" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Project Management
-                  </Button>
-                </Link>
-                <Link to="/phishing" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    StormAI Phishing
-                  </Button>
-                </Link>
-                <Link to="/enterprise-end-user" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Enterprise End User
-                  </Button>
-                </Link>
-                <Link to="/hr-compliance" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    HR Compliance
-                  </Button>
-                </Link>
+              <CollapsibleContent className="pl-4 mt-2 space-y-1">
+                {topicsMenuItems.map((item) => (
+                  <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                      <item.icon className="w-4 h-4 mr-2 text-primary" />
+                      {item.label}
+                    </Button>
+                  </Link>
+                ))}
               </CollapsibleContent>
             </Collapsible>
 
@@ -246,47 +179,15 @@ export const Navigation = () => {
                   <ChevronDown className={`h-4 w-4 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
                 </Button>
               </CollapsibleTrigger>
-              <CollapsibleContent className="pl-4 mt-2 space-y-2">
-                <Link to="/mentoring" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Mentoring
-                  </Button>
-                </Link>
-                <Link to="/ai-learning" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    StormAI Tutor
-                  </Button>
-                </Link>
-                <Link to="/bytes" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Microlearning (Bytes)
-                  </Button>
-                </Link>
-                <Link to="/learning-paths" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Learning Paths
-                  </Button>
-                </Link>
-                <Link to="/skills-assessments" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Skills Assessments
-                  </Button>
-                </Link>
-                <Link to="/live-instructor-led" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Live Instructor Led
-                  </Button>
-                </Link>
-                <Link to="/training-samples" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Training Samples
-                  </Button>
-                </Link>
-                <Link to="/enterprise-reporting" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
-                    Enterprise Reporting
-                  </Button>
-                </Link>
+              <CollapsibleContent className="pl-4 mt-2 space-y-1">
+                {platformMenuItems.map((item) => (
+                  <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                      <item.icon className="w-4 h-4 mr-2 text-primary" />
+                      {item.label}
+                    </Button>
+                  </Link>
+                ))}
               </CollapsibleContent>
             </Collapsible>
 
