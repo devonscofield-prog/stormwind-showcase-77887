@@ -147,6 +147,30 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
+  /* Global smooth transitions for all interactive elements */
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  [tabindex]:not([tabindex="-1"]),
+  .transition,
+  [class*="hover:"],
+  [class*="focus:"] {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+
+  /* Ensure cards, badges, and other UI elements get smooth transitions */
+  [class*="card"],
+  [class*="badge"],
+  [class*="btn"],
+  [class*="tab"],
+  [class*="menu"] {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   body {
     @apply text-foreground;
     background: var(--background-gradient);
