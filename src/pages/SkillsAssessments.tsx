@@ -44,6 +44,21 @@ const SkillsAssessments = () => {
       containerSize="wide"
       heroClassName="mb-16"
     >
+      {/* Video Section */}
+      <section className="mb-16">
+        <div className="relative rounded-xl overflow-hidden border border-border/50 shadow-lg bg-card">
+          <div className="aspect-video">
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/n9ptgxgz8x?seo=true&videoFoam=true"
+              title="Skills Assessments Overview"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Main Section */}
       <section className="mb-20">
         <div className="flex items-center gap-3 mb-8">
