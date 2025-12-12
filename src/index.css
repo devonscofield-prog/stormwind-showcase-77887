@@ -169,21 +169,33 @@ All colors MUST be HSL.
   }
 
   /* Typography - Punchier headers with tracking-tight */
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6,
+  .text-4xl, .text-3xl, .text-2xl, .text-xl, .text-lg {
     letter-spacing: -0.02em;
-    line-height: 1.15;
   }
 
-  h1 {
+  h1, .text-4xl, .text-5xl, .text-6xl {
     line-height: 1.1;
   }
 
-  h2 {
+  h2, .text-3xl {
     line-height: 1.15;
   }
 
-  h3 {
+  h3, h4, .text-2xl, .text-xl {
     line-height: 1.2;
+  }
+
+  h5, h6, .text-lg {
+    line-height: 1.25;
+  }
+
+  /* Card and section title utilities */
+  .card-title,
+  .section-title,
+  [class*="font-bold"],
+  [class*="font-semibold"] {
+    letter-spacing: -0.02em;
   }
 
   /* Dot pattern overlay */
