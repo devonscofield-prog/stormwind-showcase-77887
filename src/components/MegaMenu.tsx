@@ -33,7 +33,7 @@ const MenuItem = ({ label, to, icon: Icon, description, index, isVisible }: Menu
       transition: `opacity 0.2s ease-out ${index * 30}ms, transform 0.2s ease-out ${index * 30}ms`,
     }}
   >
-    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-200 group-hover:bg-primary/20 group-hover:shadow-[0_0_12px_hsl(var(--primary)/0.4)]">
       <Icon className="h-4 w-4" />
     </div>
     <div className="flex flex-col">
