@@ -524,8 +524,8 @@ const Phishing = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-4 bg-white/10 hover:bg-white/20 text-white border-none" />
-              <CarouselNext className="right-4 bg-white/10 hover:bg-white/20 text-white border-none" />
+              <CarouselPrevious className="-left-4 md:-left-12 h-12 w-12 bg-white/20 hover:bg-white/40 text-white border-white/30" />
+              <CarouselNext className="-right-4 md:-right-12 h-12 w-12 bg-white/20 hover:bg-white/40 text-white border-white/30" />
             </Carousel>
             
             {/* Slide indicators */}
