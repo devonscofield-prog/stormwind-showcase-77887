@@ -118,52 +118,49 @@ const Microsoft = () => {
           <BentoCard
             icon={Server}
             title="Microsoft Azure"
-            description="Master cloud computing with Azure fundamentals, administration, architecture, DevOps, security, networking, and virtual desktop solutions."
-            colSpan={2}
+            description="Cloud computing with Azure fundamentals, administration, architecture, and DevOps."
           />
 
           <BentoCard
             icon={Users}
             title="Microsoft 365"
-            description="Learn Microsoft 365 administration, Intune endpoint management, Exchange messaging, Teams administration, and SharePoint management."
+            description="M365 administration, Intune, Exchange, Teams, and SharePoint management."
           />
 
           <BentoCard
             icon={Monitor}
             title="Windows Server"
-            description="Enterprise Windows 11 administration and Windows Server versions 2016, 2019, 2022, and 2025 with networking and system management."
+            description="Windows Server 2016-2025 administration and system management."
           />
 
           <BentoCard
             icon={BookOpen}
             title="PowerShell"
-            description="PowerShell scripting, automation, tool building, Microsoft 365 integration, and Microsoft Graph PowerShell for administrators."
+            description="Scripting, automation, and Microsoft Graph PowerShell."
           />
 
           <BentoCard
             icon={Shield}
             title="Security & Compliance"
-            description="Microsoft security fundamentals, cybersecurity architecture, security operations, identity and access management, and Security Copilot."
-            rowSpan={2}
+            description="Security fundamentals, identity management, and Security Copilot."
           />
 
           <BentoCard
             icon={Server}
             title="SQL Server & Databases"
-            description="Querying with Transact-SQL, database development, SQL Server Reporting Services (SSRS), and introduction to SQL fundamentals."
+            description="Transact-SQL, database development, and SSRS reporting."
           />
 
           <BentoCard
             icon={Brain}
             title="Microsoft 365 Copilot"
-            description="AI-powered productivity with Microsoft 365 Copilot for Word, PowerPoint, Outlook, Excel, Teams, and Copilot Studio agents."
-            colSpan={2}
+            description="AI productivity with Copilot for Word, Excel, Teams, and more."
           />
 
           <BentoCard
             icon={Lightbulb}
             title="Power Platform"
-            description="Microsoft Power BI data analytics, business intelligence, data visualization, and Power Platform fundamentals certification."
+            description="Power BI analytics, data visualization, and Power Platform."
           />
         </BentoGrid>
       </div>
