@@ -1,36 +1,14 @@
 import { useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import aiLearningDashboard from "@/assets/ai-learning-dashboard.png";
 
 const AILearning = () => {
   useEffect(() => {
     document.title = "AI-Powered Learning";
   }, []);
-
-  const features = [
-    {
-      icon: MessageSquare,
-      title: "Real-Time Q&A",
-      description: "Get instant answers to your questions while taking a course, right when you need them."
-    },
-    {
-      icon: Lightbulb,
-      title: "Module Summaries",
-      description: "Quickly understand key concepts with AI-generated summaries of course modules."
-    },
-    {
-      icon: Brain,
-      title: "Troubleshooting Help",
-      description: "Stuck on a problem? Get personalized guidance to overcome learning obstacles."
-    },
-    {
-      icon: Clock,
-      title: "24/7 Availability",
-      description: "Access your AI tutor anytime, anywhere, on any device for on-demand learning support."
-    }
-  ];
 
   return (
     <PageLayout
@@ -54,23 +32,31 @@ const AILearning = () => {
           Get instant answers and video references while learning with StormAI Tutor
         </p>
       </div>
+
       {/* Why Students Love Storm AI */}
       <section className="mb-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="mb-4 p-3 rounded-lg bg-primary/10 w-fit group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <BentoGrid columns={4} className="mb-8">
+          <BentoCard
+            icon={MessageSquare}
+            title="Real-Time Q&A"
+            description="Get instant answers to your questions while taking a course."
+          />
+          <BentoCard
+            icon={Lightbulb}
+            title="Module Summaries"
+            description="Quickly understand key concepts with AI-generated summaries."
+          />
+          <BentoCard
+            icon={Brain}
+            title="Troubleshooting Help"
+            description="Get personalized guidance to overcome learning obstacles."
+          />
+          <BentoCard
+            icon={Clock}
+            title="24/7 Availability"
+            description="Access your AI tutor anytime, anywhere, on any device."
+          />
+        </BentoGrid>
 
         <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
           <div className="flex items-start gap-4">

@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Cpu, Router, BookOpen, Video, Users, Target, Zap } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import danYoung from "@/assets/dan-young.png";
 
@@ -102,55 +104,31 @@ const Networking = () => {
     >
       {/* Networking Technologies Section */}
       <div className="mb-32 animate-fade-in">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Router className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Routing & Switching</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Advanced routing protocols including BGP, OSPF, EIGRP, and layer 2/3 switching technologies for enterprise networks.
-            </p>
-          </div>
+        <BentoGrid columns={4} className="max-w-7xl mx-auto mb-12">
+          <BentoCard
+            icon={Router}
+            title="Routing & Switching"
+            description="BGP, OSPF, EIGRP, and layer 2/3 switching for enterprise networks."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Network Security</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Firewalls, VPNs, network access control, intrusion detection systems, and security best practices for network infrastructure.
-            </p>
-          </div>
+          <BentoCard
+            icon={Target}
+            title="Network Security"
+            description="Firewalls, VPNs, NAC, IDS, and security best practices."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">IPv6 & Modern Networking</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              IPv6 deployment, addressing, routing, and transition mechanisms for next-generation network infrastructure.
-            </p>
-          </div>
+          <BentoCard
+            icon={Zap}
+            title="IPv6 & Modern Networking"
+            description="IPv6 deployment, addressing, and transition mechanisms."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Network Analysis</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Wireshark packet analysis, network monitoring tools, performance optimization, and troubleshooting methodologies.
-            </p>
-          </div>
-        </div>
+          <BentoCard
+            icon={Target}
+            title="Network Analysis"
+            description="Wireshark packet analysis, monitoring, and troubleshooting."
+          />
+        </BentoGrid>
       </div>
 
       {/* Featured Courses Section */}
