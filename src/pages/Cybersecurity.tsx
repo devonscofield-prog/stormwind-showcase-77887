@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Shield, Target, Users, Award, BookOpen, Video, Brain, Monitor, Clock } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import chrisPaul from "@/assets/chris-paul.png";
 import shaneSexton from "@/assets/shane-sexton.png";
@@ -114,37 +116,31 @@ const Cybersecurity = () => {
     >
       {/* Technologies We Cover Section */}
       <div className="mb-32 animate-fade-in">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-8">
-          <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
-            <Shield className="w-10 h-10 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-3">Penetration Testing</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Identify and mitigate security risks to computer systems, ethical hacking methodologies, vulnerability assessments, and exploitation techniques
-            </p>
-          </div>
+        <BentoGrid columns={4} className="max-w-7xl mx-auto mb-8">
+          <BentoCard
+            icon={Shield}
+            title="Penetration Testing"
+            description="Ethical hacking, vulnerability assessments, and exploitation techniques."
+          />
 
-          <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
-            <Target className="w-10 h-10 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-3">Security Operations</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">Threat detection, incident response, security monitoring, and SIEM implementation</p>
-          </div>
+          <BentoCard
+            icon={Target}
+            title="Security Operations"
+            description="Threat detection, incident response, and SIEM implementation."
+          />
 
-          <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
-            <BookOpen className="w-10 h-10 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-3">Security Management</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Security governance, policy development, risk assessment, program management, and security leadership
-            </p>
-          </div>
+          <BentoCard
+            icon={BookOpen}
+            title="Security Management"
+            description="Governance, policy development, and risk assessment."
+          />
 
-          <div className="p-6 rounded-lg bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:scale-105">
-            <Award className="w-10 h-10 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-3">Information Security</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Data protection, encryption, access controls, security architecture, and safeguarding information assets
-            </p>
-          </div>
-        </div>
+          <BentoCard
+            icon={Award}
+            title="Information Security"
+            description="Data protection, encryption, and access controls."
+          />
+        </BentoGrid>
       </div>
 
       {/* Featured Courses Section */}

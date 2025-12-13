@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Video, Clock, Users, Monitor, Router, Target, MessageCircle, TrendingUp, Brain } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import spikeXavier from "@/assets/spike-xavier.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import jasonYates from "@/assets/jason-yates.png";
@@ -113,55 +115,31 @@ const HelpDesk = () => {
     >
       {/* Help Desk Technologies Section */}
       <div className="mb-32 animate-fade-in">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Monitor className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Hardware & Software Support</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              PC hardware troubleshooting, mobile devices, printers, peripherals, software installation, and system maintenance.
-            </p>
-          </div>
+        <BentoGrid columns={4} className="max-w-7xl mx-auto mb-12">
+          <BentoCard
+            icon={Monitor}
+            title="Hardware & Software Support"
+            description="PC troubleshooting, mobile devices, printers, and system maintenance."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Target className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Operating Systems</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Windows and Linux administration, configuration, updates, and troubleshooting for desktop support environments.
-            </p>
-          </div>
+          <BentoCard
+            icon={Target}
+            title="Operating Systems"
+            description="Windows and Linux administration, configuration, and troubleshooting."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <MessageCircle className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Customer Service</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Communication skills, problem-solving techniques, conflict resolution, and professional customer interaction best practices.
-            </p>
-          </div>
+          <BentoCard
+            icon={MessageCircle}
+            title="Customer Service"
+            description="Communication skills, problem-solving, and conflict resolution."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <TrendingUp className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">ITSM & Ticketing</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              ITIL frameworks, ticketing systems, incident management, service desk operations, and IT service delivery processes.
-            </p>
-          </div>
-        </div>
+          <BentoCard
+            icon={TrendingUp}
+            title="ITSM & Ticketing"
+            description="ITIL frameworks, ticketing systems, and incident management."
+          />
+        </BentoGrid>
       </div>
 
       {/* Featured Courses Section */}
