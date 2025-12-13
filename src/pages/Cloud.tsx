@@ -121,40 +121,37 @@ const CloudTraining = () => {
           <BentoCard
             icon={Cloud}
             title="Microsoft Azure"
-            description="Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions on Microsoft's cloud platform."
-            colSpan={2}
+            description="Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions."
           />
 
           <BentoCard
             icon={Server}
             title="Amazon Web Services"
-            description="AWS fundamentals, solutions architecture, SysOps administration, and cloud practitioner certification training."
-            rowSpan={2}
+            description="AWS fundamentals, solutions architecture, and cloud practitioner training."
           />
 
           <BentoCard
             icon={Layers}
             title="Google Cloud Platform"
-            description="GCP fundamentals, cloud architecture, infrastructure deployment, and Google Cloud certification preparation."
+            description="GCP fundamentals, cloud architecture, and certification preparation."
           />
 
           <BentoCard
             icon={Container}
             title="Containerization & IaC"
-            description="Docker containers, Kubernetes orchestration, Terraform, CI/CD pipelines, and infrastructure automation best practices."
+            description="Docker, Kubernetes, Terraform, and CI/CD automation."
           />
 
           <BentoCard
             icon={Shield}
             title="Cloud Security"
-            description="Cloud security architecture, identity management, compliance, threat protection, and security operations."
+            description="Security architecture, identity management, and compliance."
           />
 
           <BentoCard
             icon={Database}
             title="Cloud Databases"
-            description="Azure SQL, AWS RDS, Cloud SQL, database migration, management, and optimization across cloud platforms."
-            colSpan={2}
+            description="Azure SQL, AWS RDS, Cloud SQL, and database migration."
           />
         </BentoGrid>
       </div>
