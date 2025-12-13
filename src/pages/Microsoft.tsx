@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Server, Shield, Users, BookOpen, Video, Clock, Monitor, Brain, Lightbulb, Target } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
@@ -112,103 +114,58 @@ const Microsoft = () => {
     >
       {/* Microsoft Technologies Section */}
       <div className="mb-32 animate-fade-in">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Server className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Microsoft Azure</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Master cloud computing with Azure fundamentals, administration, architecture, DevOps, security, networking, and virtual desktop solutions.
-            </p>
-          </div>
+        <BentoGrid columns={4} className="max-w-7xl mx-auto mb-12">
+          <BentoCard
+            icon={Server}
+            title="Microsoft Azure"
+            description="Master cloud computing with Azure fundamentals, administration, architecture, DevOps, security, networking, and virtual desktop solutions."
+            colSpan={2}
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Users className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Microsoft 365</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Learn Microsoft 365 administration, Intune endpoint management, Exchange messaging, Teams administration, and SharePoint management.
-            </p>
-          </div>
+          <BentoCard
+            icon={Users}
+            title="Microsoft 365"
+            description="Learn Microsoft 365 administration, Intune endpoint management, Exchange messaging, Teams administration, and SharePoint management."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Monitor className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Windows Server</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Enterprise Windows 11 administration and Windows Server versions 2016, 2019, 2022, and 2025 with networking and system management.
-            </p>
-          </div>
+          <BentoCard
+            icon={Monitor}
+            title="Windows Server"
+            description="Enterprise Windows 11 administration and Windows Server versions 2016, 2019, 2022, and 2025 with networking and system management."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <BookOpen className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">PowerShell</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              PowerShell scripting, automation, tool building, Microsoft 365 integration, and Microsoft Graph PowerShell for administrators.
-            </p>
-          </div>
+          <BentoCard
+            icon={BookOpen}
+            title="PowerShell"
+            description="PowerShell scripting, automation, tool building, Microsoft 365 integration, and Microsoft Graph PowerShell for administrators."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Security & Compliance</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Microsoft security fundamentals, cybersecurity architecture, security operations, identity and access management, and Security Copilot.
-            </p>
-          </div>
+          <BentoCard
+            icon={Shield}
+            title="Security & Compliance"
+            description="Microsoft security fundamentals, cybersecurity architecture, security operations, identity and access management, and Security Copilot."
+            rowSpan={2}
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Server className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">SQL Server & Databases</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Querying with Transact-SQL, database development, SQL Server Reporting Services (SSRS), and introduction to SQL fundamentals.
-            </p>
-          </div>
+          <BentoCard
+            icon={Server}
+            title="SQL Server & Databases"
+            description="Querying with Transact-SQL, database development, SQL Server Reporting Services (SSRS), and introduction to SQL fundamentals."
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Brain className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Microsoft 365 Copilot</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              AI-powered productivity with Microsoft 365 Copilot for Word, PowerPoint, Outlook, Excel, Teams, and Copilot Studio agents.
-            </p>
-          </div>
+          <BentoCard
+            icon={Brain}
+            title="Microsoft 365 Copilot"
+            description="AI-powered productivity with Microsoft 365 Copilot for Word, PowerPoint, Outlook, Excel, Teams, and Copilot Studio agents."
+            colSpan={2}
+          />
 
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Lightbulb className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Power Platform</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Microsoft Power BI data analytics, business intelligence, data visualization, and Power Platform fundamentals certification.
-            </p>
-          </div>
-        </div>
+          <BentoCard
+            icon={Lightbulb}
+            title="Power Platform"
+            description="Microsoft Power BI data analytics, business intelligence, data visualization, and Power Platform fundamentals certification."
+          />
+        </BentoGrid>
       </div>
 
       {/* Featured Courses Section */}

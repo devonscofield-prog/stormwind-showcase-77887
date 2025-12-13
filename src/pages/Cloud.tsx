@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Award, FlaskConical, Brain, Users, Clock, Video, BookOpen, Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 import benBurich from "@/assets/ben-burich.png";
 import abdelSalem from "@/assets/abdel-salem.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -115,85 +117,46 @@ const CloudTraining = () => {
     >
       {/* Cloud Technologies Section */}
       <div className="mb-32 animate-fade-in">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
-          {/* Microsoft Azure */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Cloud className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Microsoft Azure</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions on Microsoft's cloud platform.
-            </p>
-          </div>
+        <BentoGrid columns={3} className="max-w-7xl mx-auto mb-12">
+          <BentoCard
+            icon={Cloud}
+            title="Microsoft Azure"
+            description="Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions on Microsoft's cloud platform."
+            colSpan={2}
+          />
 
-          {/* AWS */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Server className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Amazon Web Services</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              AWS fundamentals, solutions architecture, SysOps administration, and cloud practitioner certification training.
-            </p>
-          </div>
+          <BentoCard
+            icon={Server}
+            title="Amazon Web Services"
+            description="AWS fundamentals, solutions architecture, SysOps administration, and cloud practitioner certification training."
+            rowSpan={2}
+          />
 
-          {/* Google Cloud */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Layers className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Google Cloud Platform</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              GCP fundamentals, cloud architecture, infrastructure deployment, and Google Cloud certification preparation.
-            </p>
-          </div>
+          <BentoCard
+            icon={Layers}
+            title="Google Cloud Platform"
+            description="GCP fundamentals, cloud architecture, infrastructure deployment, and Google Cloud certification preparation."
+          />
 
-          {/* Containerization & IaC */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Container className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Containerization & IaC</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Docker containers, Kubernetes orchestration, Terraform, CI/CD pipelines, and infrastructure automation best practices.
-            </p>
-          </div>
+          <BentoCard
+            icon={Container}
+            title="Containerization & IaC"
+            description="Docker containers, Kubernetes orchestration, Terraform, CI/CD pipelines, and infrastructure automation best practices."
+          />
 
-          {/* Cloud Security */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Cloud Security</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Cloud security architecture, identity management, compliance, threat protection, and security operations.
-            </p>
-          </div>
+          <BentoCard
+            icon={Shield}
+            title="Cloud Security"
+            description="Cloud security architecture, identity management, compliance, threat protection, and security operations."
+          />
 
-          {/* Cloud Databases */}
-          <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 rounded-lg bg-primary/10">
-                <Database className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold">Cloud Databases</h3>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Azure SQL, AWS RDS, Cloud SQL, database migration, management, and optimization across cloud platforms.
-            </p>
-          </div>
-        </div>
+          <BentoCard
+            icon={Database}
+            title="Cloud Databases"
+            description="Azure SQL, AWS RDS, Cloud SQL, database migration, management, and optimization across cloud platforms."
+            colSpan={2}
+          />
+        </BentoGrid>
       </div>
 
       {/* Featured Courses Section */}
