@@ -28,12 +28,33 @@ const microsoftTechnologies = [
   "Remote Desktop Services", "Windows Deployment Services", "Failover Clustering", "Storage Spaces Direct"
 ];
 
+// Network Range - Platforms & Software
+const networkPlatforms = [
+  "Cisco IOS", "Cisco Catalyst 9300", "Cisco Nexus 9500", 
+  "Nmap", "PowerDNS", "Windows Server 2019"
+];
+
+// Network Range - Technologies
 const networkTechnologies = [
-  "Cisco IOS Configuration", "VLAN & Trunking", "Spanning Tree Protocol",
-  "OSPF Routing", "BGP Routing", "EIGRP Routing",
-  "ACL Configuration", "NAT/PAT", "VPN Technologies",
-  "Network Monitoring", "Wireshark Analysis", "IPv4 & IPv6",
-  "QoS Implementation", "Network Automation", "SDN Concepts", "Wireless Technologies"
+  // Switching
+  "VLANs", "Private VLANs", "Trunking", "QoS",
+  // Routing
+  "OSPF", "EIGRP", "BGP", "Static Routing", "Summarization", 
+  "Redistribution", "Route Filtering", "Policy-Based Routing",
+  // Infrastructure Protocols
+  "DNS", "DHCP", "SSH", "GRE Tunnels", "NTP",
+  // Security
+  "IPsec Tunnels", "ACLs", "VACLs", "Port Security",
+  // IPv6
+  "IPv6", "OSPFv3", "6in4 Tunnels", "6to4 Tunnels", "6over4 Tunnels", 
+  "DHCPv6-PD", "IPv6 ACLs"
+];
+
+// Network Range - Class Alignment
+const networkCertifications = [
+  "CompTIA Network+ N10-009", "Cisco CCNA", 
+  "Cisco CCNP ENCOR", "Cisco CCNP ENARSI", 
+  "Modern Networking with IPv6"
 ];
 
 const cyberTechnologies = [
@@ -354,7 +375,7 @@ const Ranges = () => {
                   Network Range
                 </h2>
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
-                  Build, configure, and troubleshoot enterprise networks with real networking equipment and scenarios.
+                  A dynamic networking sandbox built for both simple setups and advanced architectures, featuring multiple routers, multi-layer switches, and a variety of connected hosts and servers. Over 70 lab activities are available.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="6i6y01qjp0" title="Network Range Demo" />
@@ -362,10 +383,15 @@ const Ranges = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <TechCard variant="feature" title="Cisco Infrastructure" description="Configure routers, switches, and network devices using IOS commands in real-world scenarios" />
-                <TechCard variant="feature" title="Network Protocols" description="Master TCP/IP, routing protocols (OSPF, BGP, EIGRP), and switching technologies" />
-                <TechCard variant="feature" title="Network Security" description="Implement ACLs, VPNs, firewalls, and security best practices for network protection" />
-                <TechCard variant="feature" title="Troubleshooting" description="Diagnose and resolve network issues using industry-standard tools and methodologies" />
+                <TechCard variant="feature" title="Cisco Infrastructure" description="Configure enterprise routers and switches including Cisco Catalyst 9300 and Nexus 9500 using IOS commands." />
+                <TechCard variant="feature" title="Routing Protocols" description="Master OSPF, EIGRP, BGP, static routing, redistribution, route filtering, and policy-based routing." />
+                <TechCard variant="feature" title="Switching & Security" description="Implement VLANs, Private VLANs, trunking, ACLs, VACLs, Port Security, and IPsec tunnels." />
+                <TechCard variant="feature" title="IPv6 Technologies" description="Deploy IPv6 with OSPFv3, BGP, 6in4/6to4/6over4 tunnels, DHCPv6-PD, and IPv6 ACLs." />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <TechCard variant="techlist" title="Platforms & Software" items={networkPlatforms} />
+                <TechCard variant="techlist" title="Class Alignment" items={networkCertifications} />
               </div>
 
               <TechCard variant="techlist" title="Network Technologies" items={networkTechnologies} />
