@@ -21,11 +21,10 @@ const azureTechnologies = [
 ];
 
 const microsoftTechnologies = [
-  "Windows Server 2025", "Windows 11 Enterprise", "Active Directory Domain Services",
-  "Group Policy Management", "DNS & DHCP Services", "IIS Web Services",
-  "Hyper-V Virtualization", "PowerShell Automation", "Windows Admin Center",
-  "Microsoft Defender", "Certificate Services", "File & Storage Services",
-  "Remote Desktop Services", "Windows Deployment Services", "Failover Clustering", "Storage Spaces Direct"
+  "Windows Server 2025", "Windows 11", "Active Directory Domain Services",
+  "DNS Services", "DHCP Services", "Hyper-V Virtualization",
+  "Group Policy Management", "PowerShell Automation", "Microsoft SQL Server",
+  "Windows Security Features", "Remote Desktop Services", "Failover Clustering"
 ];
 
 // Network Range - Platforms & Software
