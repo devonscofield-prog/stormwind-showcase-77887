@@ -59,7 +59,7 @@ export const Navigation = () => {
   const { textSize, toggleTextSize } = useTextSize();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border/50 dark:border-white/10 shadow-md shadow-black/10 dark:shadow-black/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border dark:border-white/15 shadow-lg shadow-black/[0.08] dark:shadow-black/20">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
