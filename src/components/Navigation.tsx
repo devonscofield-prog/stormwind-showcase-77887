@@ -65,7 +65,7 @@ export const Navigation = () => {
           <img 
             src={stormwindLogo} 
             alt="StormWind Studios" 
-            className="h-12 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
+            className="h-12 w-auto object-contain cursor-pointer hover:scale-105 hover:brightness-110 transition-all duration-200 flex-shrink-0" 
             onClick={() => navigate('/')}
             width={150}
             height={48}
