@@ -147,12 +147,10 @@ const Ranges = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
                 <TechCard variant="icon" icon={Database} title="Azure Storage Sandbox" description="Work with blobs, shared access signatures, and tools for uploading, securing, and managing data." />
                 <TechCard variant="icon" icon={GitBranch} title="Azure Networking Sandbox" description="Manage virtual networks, peering, public IPs, and troubleshooting connectivity." />
                 <TechCard variant="icon" icon={Server} title="Azure Compute Sandbox" description="Manage and configure virtual machines, extensions, and automation tools like cloud-init and scripts." />
-                <TechCard variant="icon" icon={Shield} title="Azure Firewall Sandbox" description="This sandbox provides a complete hub-and-spoke lab for testing Azure Firewall, transitive routing, and secure remote access end to end." />
-                <TechCard variant="icon" icon={Box} title="Azure Base Sandbox" description="Empty Resource Group for testing new ideas or building from the ground up." />
               </div>
 
               <TechCard variant="techlist" title="Azure Services & Technologies" items={azureTechnologies} />
