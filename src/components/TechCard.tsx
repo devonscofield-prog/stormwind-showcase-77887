@@ -138,9 +138,9 @@ const GlassCard = ({
       ref={cardRef}
       className={cn(
         "relative overflow-hidden rounded-2xl p-6",
-        "bg-black/40 backdrop-blur-xl",
+        "bg-card/80 dark:bg-black/40 backdrop-blur-xl",
         "border border-transparent",
-        isHovered ? "border-primary/50 shadow-lg shadow-primary/10" : "border-white/10",
+        isHovered ? "border-primary/50 shadow-lg shadow-primary/10" : "border-border dark:border-white/10",
         "transition-all duration-300 ease-out",
         onClick && "cursor-pointer",
         className
@@ -157,7 +157,7 @@ const GlassCard = ({
           <Icon 
             className={cn(
               "w-40 h-40 transition-all duration-500",
-              isHovered ? "text-primary/15 scale-110" : "text-white/5"
+              isHovered ? "text-primary/15 scale-110" : "text-primary/5 dark:text-white/5"
             )} 
           />
         </div>
@@ -208,12 +208,12 @@ export const TechCard = (props: TechCardProps) => {
         <div className="p-6">
           <h3 className={cn(
             "text-xl font-bold mb-3 tracking-tight transition-colors duration-300",
-            tiltEffect.isHovered ? "text-white" : "text-white/90"
+            tiltEffect.isHovered ? "text-foreground" : "text-foreground/90 dark:text-white/90"
           )}>{title}</h3>
           {props.description && (
             <p className={cn(
               "text-sm leading-relaxed transition-colors duration-300",
-              tiltEffect.isHovered ? "text-white/80" : "text-white/60"
+              tiltEffect.isHovered ? "text-muted-foreground" : "text-muted-foreground/80 dark:text-white/60"
             )}>{props.description}</p>
           )}
           {children}
@@ -238,7 +238,7 @@ export const TechCard = (props: TechCardProps) => {
         {/* Small icon top-left */}
         <div className={cn(
           "inline-flex p-3 rounded-xl mb-4 transition-all duration-300",
-          tiltEffect.isHovered ? "bg-primary/20" : "bg-white/5"
+          tiltEffect.isHovered ? "bg-primary/20" : "bg-muted dark:bg-white/5"
         )}>
           <IconComponent className={cn(
             "w-6 h-6 transition-colors duration-300",
@@ -248,12 +248,12 @@ export const TechCard = (props: TechCardProps) => {
 
         <h3 className={cn(
           "text-xl font-bold mb-3 tracking-tight transition-colors duration-300",
-          tiltEffect.isHovered ? "text-white" : "text-white/90"
+          tiltEffect.isHovered ? "text-foreground" : "text-foreground/90 dark:text-white/90"
         )}>{title}</h3>
         {props.description && (
           <p className={cn(
             "text-sm leading-relaxed transition-colors duration-300",
-            tiltEffect.isHovered ? "text-white/80" : "text-white/60"
+            tiltEffect.isHovered ? "text-muted-foreground" : "text-muted-foreground/80 dark:text-white/60"
           )}>{props.description}</p>
         )}
         {children}
@@ -276,7 +276,7 @@ export const TechCard = (props: TechCardProps) => {
         {IconComponent && (
           <div className={cn(
             "inline-flex p-3 rounded-xl mb-4 transition-all duration-300",
-            tiltEffect.isHovered ? "bg-primary/20" : "bg-white/5"
+            tiltEffect.isHovered ? "bg-primary/20" : "bg-muted dark:bg-white/5"
           )}>
             <IconComponent className={cn(
               "w-6 h-6 transition-colors duration-300",
@@ -287,12 +287,12 @@ export const TechCard = (props: TechCardProps) => {
 
         <h3 className={cn(
           "text-xl font-bold mb-3 tracking-tight transition-colors duration-300",
-          tiltEffect.isHovered ? "text-white" : "text-white/90"
+          tiltEffect.isHovered ? "text-foreground" : "text-foreground/90 dark:text-white/90"
         )}>{title}</h3>
         {props.description && (
           <p className={cn(
             "text-sm leading-relaxed transition-colors duration-300",
-            tiltEffect.isHovered ? "text-white/80" : "text-white/60"
+            tiltEffect.isHovered ? "text-muted-foreground" : "text-muted-foreground/80 dark:text-white/60"
           )}>{props.description}</p>
         )}
         {children}
@@ -316,7 +316,7 @@ export const TechCard = (props: TechCardProps) => {
         {IconComponent && (
           <div className={cn(
             "inline-flex p-3 rounded-xl mb-4 transition-all duration-300",
-            tiltEffect.isHovered ? "bg-primary/20" : "bg-white/5"
+            tiltEffect.isHovered ? "bg-primary/20" : "bg-muted dark:bg-white/5"
           )}>
             <IconComponent className={cn(
               "w-6 h-6 transition-colors duration-300",
@@ -327,7 +327,7 @@ export const TechCard = (props: TechCardProps) => {
 
         <h3 className={cn(
           "text-2xl font-bold mb-6 tracking-tight transition-colors duration-300",
-          tiltEffect.isHovered ? "text-white" : "text-white/90"
+          tiltEffect.isHovered ? "text-foreground" : "text-foreground/90 dark:text-white/90"
         )}>{title}</h3>
         <div className={cn("grid gap-4", columnClasses[cols])}>
           {props.items.map((item) => (
@@ -352,19 +352,19 @@ export const TechCard = (props: TechCardProps) => {
         <div className="p-6">
           <h3 className={cn(
             "text-xl font-bold mb-2 tracking-tight transition-colors duration-300",
-            tiltEffect.isHovered ? "text-primary" : "text-white/90"
+            tiltEffect.isHovered ? "text-primary" : "text-foreground/90 dark:text-white/90"
           )}>
             {title}
           </h3>
           {props.instructor && (
-            <p className="text-white/60 text-sm mb-3">
+            <p className="text-muted-foreground dark:text-white/60 text-sm mb-3">
               Instructor: <span className="text-primary font-semibold">{props.instructor}</span>
             </p>
           )}
           {props.description && (
             <p className={cn(
               "text-sm leading-relaxed transition-colors duration-300",
-              tiltEffect.isHovered ? "text-white/80" : "text-white/60"
+              tiltEffect.isHovered ? "text-muted-foreground" : "text-muted-foreground/80 dark:text-white/60"
             )}>{props.description}</p>
           )}
           {children}

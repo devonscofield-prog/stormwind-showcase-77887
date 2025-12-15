@@ -114,8 +114,8 @@ const AnimatedFeatureCard = ({
       ref={cardRef}
       to={to}
       className={`group relative overflow-hidden rounded-xl p-6 cursor-pointer block
-        bg-black/40 backdrop-blur-xl
-        border border-white/10 hover:border-teal-500/50
+        bg-card/80 dark:bg-black/40 backdrop-blur-xl
+        border border-border dark:border-white/10 hover:border-teal-500/50
         transition-all duration-300 ease-out
         ${className}`}
       style={tiltStyle}

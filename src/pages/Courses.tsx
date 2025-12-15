@@ -4845,7 +4845,7 @@ const Courses = () => {
                             handlePageChange(currentPage - 1);
                           }
                         }}
-                        className={currentPage === 1 ? 'pointer-events-none opacity-50 text-white border-2 border-border bg-background/20' : 'text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10'}
+                        className={currentPage === 1 ? 'pointer-events-none opacity-50 text-foreground dark:text-white border-2 border-border bg-background/20' : 'text-foreground dark:text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10'}
                       />
                     </PaginationItem>
                     
@@ -4870,7 +4870,7 @@ const Courses = () => {
                               handlePageChange(pageNum);
                             }}
                             isActive={currentPage === pageNum}
-                            className={currentPage === pageNum ? "text-white bg-primary border-2 border-primary" : "text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10"}
+                            className={currentPage === pageNum ? "text-white bg-primary border-2 border-primary" : "text-foreground dark:text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10"}
                           >
                             {pageNum}
                           </PaginationLink>
@@ -4887,7 +4887,7 @@ const Courses = () => {
                             handlePageChange(currentPage + 1);
                           }
                         }}
-                        className={currentPage === totalPages ? 'pointer-events-none opacity-50 text-white border-2 border-border bg-background/20' : 'text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10'}
+                        className={currentPage === totalPages ? 'pointer-events-none opacity-50 text-foreground dark:text-white border-2 border-border bg-background/20' : 'text-foreground dark:text-white border-2 border-primary/30 bg-background/20 hover:border-primary hover:bg-primary/10'}
                       />
                     </PaginationItem>
                   </PaginationContent>
