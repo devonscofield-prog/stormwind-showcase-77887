@@ -88,7 +88,7 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
       <Button
         variant="ghost"
         className={cn(
-          "text-gray-100 hover:text-primary transition-colors gap-1",
+          "text-foreground hover:text-primary transition-colors gap-1",
           isOpen && "text-primary",
           className
         )}

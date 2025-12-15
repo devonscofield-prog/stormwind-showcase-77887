@@ -81,23 +81,23 @@ export const Navigation = () => {
             <MegaMenu trigger="Platform Features" items={platformMenuItems} columns={2} />
 
             <Link to="/courses">
-              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
                 Courses
               </Button>
             </Link>
             <Link to="/training-samples">
-              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
                 Training Samples
               </Button>
             </Link>
             <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer">
-              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
                 <Calendar className="w-4 h-4 mr-2" />
                 Live Calendar
               </Button>
             </a>
             <Link to="/ranges">
-              <Button variant="ghost" className="text-gray-100 hover:text-teal-400 transition-colors">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
                 Ranges
               </Button>
             </Link>
@@ -105,7 +105,7 @@ export const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={toggleTextSize}
-              className="text-gray-100 hover:text-teal-400 transition-colors"
+              className="text-foreground hover:text-primary transition-colors"
               title="Toggle text size"
             >
               <Type className={`h-5 w-5 transition-all ${textSize === "large" ? "scale-125" : "scale-100"}`} />
@@ -115,7 +115,7 @@ export const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-gray-100 hover:text-teal-400 transition-colors"
+              className="text-foreground hover:text-primary transition-colors"
             >
               <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -144,13 +144,13 @@ export const Navigation = () => {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-gray-900/80 dark:bg-[#2d2d2d]/95 border-t border-gray-800 dark:border-gray-700 pt-4 animate-fade-in">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card/95 dark:bg-[#2d2d2d]/95 border-t border-border pt-4 animate-fade-in">
             {/* Technologies Collapsible */}
             <Collapsible open={techOpen} onOpenChange={setTechOpen}>
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                  className="w-full justify-between text-foreground hover:text-primary hover:bg-muted transition-colors"
                 >
                   Topics
                   <ChevronDown className={`h-4 w-4 transition-transform ${techOpen ? 'rotate-180' : ''}`} />
@@ -159,7 +159,7 @@ export const Navigation = () => {
               <CollapsibleContent className="pl-4 mt-2 space-y-1">
                 {topicsMenuItems.map((item) => (
                   <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted">
                       <item.icon className="w-4 h-4 mr-2 text-primary" />
                       {item.label}
                     </Button>
@@ -173,7 +173,7 @@ export const Navigation = () => {
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="w-full justify-between text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                  className="w-full justify-between text-foreground hover:text-primary hover:bg-muted transition-colors"
                 >
                   Platform Features
                   <ChevronDown className={`h-4 w-4 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
@@ -182,7 +182,7 @@ export const Navigation = () => {
               <CollapsibleContent className="pl-4 mt-2 space-y-1">
                 {platformMenuItems.map((item) => (
                   <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50">
+                    <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted">
                       <item.icon className="w-4 h-4 mr-2 text-primary" />
                       {item.label}
                     </Button>
@@ -194,7 +194,7 @@ export const Navigation = () => {
             <Link to="/courses" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 Courses
               </Button>
@@ -202,7 +202,7 @@ export const Navigation = () => {
             <Link to="/training-samples" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 Training Samples
               </Button>
@@ -210,7 +210,7 @@ export const Navigation = () => {
             <a href="https://stormwindstudios.com/calendar" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Live Calendar
@@ -219,7 +219,7 @@ export const Navigation = () => {
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="ghost" 
-                className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 Ranges
               </Button>
@@ -227,7 +227,7 @@ export const Navigation = () => {
             <Button
               variant="ghost"
               onClick={toggleTextSize}
-              className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+              className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
             >
               <Type className={`h-5 w-5 mr-2 transition-all ${textSize === "large" ? "scale-125" : "scale-100"}`} />
               Toggle Text Size
@@ -235,7 +235,7 @@ export const Navigation = () => {
             <Button
               variant="ghost"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-full justify-start text-gray-100 hover:text-teal-400 hover:bg-gray-800/50 transition-colors"
+              className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
             >
               <Sun className="h-5 w-5 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
