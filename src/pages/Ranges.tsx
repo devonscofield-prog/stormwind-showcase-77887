@@ -181,15 +181,33 @@ const Ranges = () => {
                   <AccordionItem value="tier1" className="border-gray-700">
                     <AccordionTrigger className="hover:text-[#4FD1C5]">
                       <span className="text-white">
-                        <span className="text-[#4FD1C5]">Tier 1</span> - Fundamentals (Beginner)
+                        <span className="text-[#4FD1C5]">Tier 1</span> – Fundamentals (Beginner)
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-300">
-                      <p className="mb-3 font-semibold">Basic server roles and core admin skills</p>
-                      <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Active Directory & Identity Management</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>DNS and DHCP configuration</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>File Storage and Sharing with NTFS permissions</span></li>
+                      <p className="mb-3 font-semibold">Objective: Learn basic server roles and core admin skills</p>
+                      <ul className="space-y-3 pl-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Active Directory & Identity Management</span>
+                            <p className="text-sm mt-1">Create users/groups in ADUC, organize into OUs, apply GPO for password policy</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">DNS and DHCP</span>
+                            <p className="text-sm mt-1">Create forward/reverse lookup zones, add A/PTR/CNAME records, configure DHCP scope</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">File Storage and Sharing</span>
+                            <p className="text-sm mt-1">Create shared folders, apply NTFS permissions</p>
+                          </div>
+                        </li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -197,15 +215,33 @@ const Ranges = () => {
                   <AccordionItem value="tier2" className="border-gray-700">
                     <AccordionTrigger className="hover:text-[#4FD1C5]">
                       <span className="text-white">
-                        <span className="text-[#4FD1C5]">Tier 2</span> - Role Configuration (Intermediate)
+                        <span className="text-[#4FD1C5]">Tier 2</span> – Role Configuration (Intermediate)
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-300">
-                      <p className="mb-3 font-semibold">Service deployment and integration</p>
-                      <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>IIS Web Hosting with HTTPS</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Network Policy Server configuration</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Virtual Machine Management with Hyper-V</span></li>
+                      <p className="mb-3 font-semibold">Objective: Expand into service deployment and integration</p>
+                      <ul className="space-y-3 pl-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">IIS Web Hosting</span>
+                            <p className="text-sm mt-1">Install IIS, host HTML page, enable directory browsing, secure with HTTPS</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Network Policy</span>
+                            <p className="text-sm mt-1">Install/configure Network Policy Server, create access policies, restrict by AD group</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Virtual Machine Management</span>
+                            <p className="text-sm mt-1">Create VMs in Hyper-V, join to domain, configure virtual switch</p>
+                          </div>
+                        </li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -213,15 +249,26 @@ const Ranges = () => {
                   <AccordionItem value="tier3" className="border-gray-700">
                     <AccordionTrigger className="hover:text-[#4FD1C5]">
                       <span className="text-white">
-                        <span className="text-[#4FD1C5]">Tier 3</span> - Administration & Security (Intermediate-Advanced)
+                        <span className="text-[#4FD1C5]">Tier 3</span> – Administration & Security (Intermediate-Advanced)
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-300">
-                      <p className="mb-3 font-semibold">Security & enterprise policies</p>
-                      <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Group Policy design and deployment</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Windows Defender and advanced security</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Backup and disaster recovery strategies</span></li>
+                      <p className="mb-3 font-semibold">Objective: Perform monitoring, automation, and service hardening</p>
+                      <ul className="space-y-3 pl-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Security and System Monitoring</span>
+                            <p className="text-sm mt-1">Configure Event Viewer for failed logons, use Performance Monitor for CPU/memory</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Automation and PowerShell</span>
+                            <p className="text-sm mt-1">Bulk-create AD users from CSV, create scheduled backup scripts</p>
+                          </div>
+                        </li>
                       </ul>
                     </AccordionContent>
                   </AccordionItem>
@@ -229,16 +276,55 @@ const Ranges = () => {
                   <AccordionItem value="tier4" className="border-gray-700">
                     <AccordionTrigger className="hover:text-[#4FD1C5]">
                       <span className="text-white">
-                        <span className="text-[#4FD1C5]">Tier 4</span> - DevOps & Automation (Advanced)
+                        <span className="text-[#4FD1C5]">Tier 4</span> – Integrated Scenarios (Advanced)
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-300">
-                      <p className="mb-3 font-semibold">Scripting & infrastructure automation</p>
-                      <ul className="space-y-2 pl-4">
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>PowerShell scripting and automation</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Desired State Configuration (DSC)</span></li>
-                        <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>CI/CD integration with Windows environments</span></li>
+                      <p className="mb-3 font-semibold">Objective: Combine multiple skills in realistic situations</p>
+                      <ul className="space-y-3 pl-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">New Department Onboarding</span>
+                            <p className="text-sm mt-1">Create OUs/users/groups, deploy shared folder, configure DHCP reservations</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Service Migration</span>
+                            <p className="text-sm mt-1">Deploy new IIS web server on Server 2025, update DNS records</p>
+                          </div>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-[#4FD1C5] mt-1">•</span>
+                          <div>
+                            <span className="font-medium text-white">Security Incident Response</span>
+                            <p className="text-sm mt-1">Generate/view suspicious login activity, disable account, reset password</p>
+                          </div>
+                        </li>
                       </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="tier5" className="border-gray-700">
+                    <AccordionTrigger className="hover:text-[#4FD1C5]">
+                      <span className="text-white">
+                        <span className="text-[#4FD1C5]">Tier 5</span> – Capstone Challenge
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-300">
+                      <p className="mb-3 font-semibold">Objective: End-to-end project simulating a real-world request from management</p>
+                      <div className="pl-4">
+                        <p className="font-medium text-white mb-2">Final Capstone – Build and Secure a Department Infrastructure</p>
+                        <ul className="space-y-2">
+                          <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Provision new Windows Server VM in Hyper-V</span></li>
+                          <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Configure as file server with SMB shares and quotas</span></li>
+                          <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Set up DNS entries and DHCP reservations</span></li>
+                          <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Apply GPOs, configure firewall rules, monitor activity</span></li>
+                          <li className="flex items-start gap-2"><span className="text-[#4FD1C5] mt-1">•</span><span>Document all steps and deliver working environment</span></li>
+                        </ul>
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
