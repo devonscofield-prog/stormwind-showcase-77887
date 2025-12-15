@@ -37,11 +37,20 @@ const networkTechnologies = [
 ];
 
 const cyberTechnologies = [
-  "Splunk SIEM", "Wireshark", "Nmap",
-  "Metasploit", "Burp Suite", "OpenVAS",
-  "Kali Linux", "OWASP Tools", "Snort IDS",
-  "Forensic Tools", "Malware Analysis", "Threat Intelligence",
-  "Security Automation", "Cloud Security", "Container Security", "Zero Trust Architecture"
+  "Splunk SIEM", "Wireshark", "Nmap", "OpenVAS"
+];
+
+const cyberCoreSkills = [
+  "Security Incident and Event Management",
+  "Vulnerability Assessments", 
+  "Network and Packet Analysis",
+  "Incident Detection"
+];
+
+const cyberComingSoon = [
+  "Web Application Security",
+  "Detecting Malicious PowerShell",
+  "Secure Authentication"
 ];
 
 const Ranges = () => {
@@ -371,10 +380,10 @@ const Ranges = () => {
               <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 flex items-center justify-center gap-3">
                   <Shield className="w-12 h-12 text-[#4FD1C5]" />
-                  Cyber Range
+                  Defensive Cyber Range
                 </h2>
                 <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
-                  Develop offensive and defensive security skills in a safe, isolated environment with real-world attack scenarios.
+                  Enhance your cybersecurity skills with StormWind's Defensive Cyber Range, a cutting-edge practical training environment designed to keep you ahead of emerging threats through dynamic capture-the-flag challenges.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
                   <VideoEmbed videoId="gg8rfkzk3y" title="Cyber Range Demo" />
@@ -382,13 +391,18 @@ const Ranges = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <TechCard variant="feature" title="Penetration Testing" description="Practice ethical hacking techniques using tools like Metasploit, Nmap, and Burp Suite" />
-                <TechCard variant="feature" title="SIEM & Log Analysis" description="Monitor and analyze security events using Splunk and other SIEM platforms" />
-                <TechCard variant="feature" title="Incident Response" description="Develop skills to detect, contain, and remediate security incidents effectively" />
-                <TechCard variant="feature" title="Vulnerability Assessment" description="Identify and assess security weaknesses using OpenVAS and vulnerability scanners" />
+                <TechCard variant="feature" title="Expert Guidance" description="Elevate your knowledge with guidance from seasoned security professionals, equipping you with the latest insights and solutions." />
+                <TechCard variant="feature" title="Learn Defense Tools" description="Master top-tier defense tools through experiential learning with Nmap, OpenVAS, Wireshark, and Splunk." />
+                <TechCard variant="feature" title="Real World Application" description="Sharpen your abilities by facing and overcoming real-world challenges through realistic capture-the-flag scenarios." />
+                <TechCard variant="feature" title="Vulnerability Assessment" description="Learn to identify and assess security weaknesses using OpenVAS and vulnerability scanning techniques." />
               </div>
 
-              <TechCard variant="techlist" title="Security Tools & Technologies" items={cyberTechnologies} />
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <TechCard variant="techlist" title="Core Skills Learned" items={cyberCoreSkills} />
+                <TechCard variant="techlist" title="Coming Soon" items={cyberComingSoon} />
+              </div>
+
+              <TechCard variant="techlist" title="Defense Tools" items={cyberTechnologies} />
             </div>
           </div>
         </TabsContent>
