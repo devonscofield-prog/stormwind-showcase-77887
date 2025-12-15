@@ -45,7 +45,7 @@ const DevOps = () => {
                 {["Docker & Docker Swarm", "Kubernetes Certifications", "Helm & Kustomize", "Service Mesh (Istio)"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -60,7 +60,7 @@ const DevOps = () => {
                 {["Terraform & Terraform Cloud", "Ansible Automation", "HashiCorp Vault & Consul", "AWS, Azure, GCP"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -75,7 +75,7 @@ const DevOps = () => {
                 {["GitOps with ArgoCD & FluxCD", "GitHub Actions", "Jenkins Pipelines", "Version Control with Git"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>

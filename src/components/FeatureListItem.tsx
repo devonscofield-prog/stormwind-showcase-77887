@@ -72,7 +72,7 @@ export const FeatureListItem = ({
     return (
       <div className={cn("flex items-start", sizes.gap, className)}>
         <CheckCircle2 className={cn(sizes.icon, iconColor, "flex-shrink-0")} />
-        <span className={cn(sizes.text, colorVariant === "teal" ? "text-gray-300" : "text-muted-foreground")}>
+        <span className={cn(sizes.text, colorVariant === "teal" ? "text-foreground dark:text-gray-300" : "text-muted-foreground")}>
           {props.text}
         </span>
       </div>

@@ -44,7 +44,7 @@ const FullStackDeveloper = () => {
                 {["React, Vue.js, Angular", "HTML5, CSS3, JavaScript/TypeScript", "Tailwind CSS, Bootstrap, Material UI", "Responsive & Mobile Design"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -59,7 +59,7 @@ const FullStackDeveloper = () => {
                 {["Node.js, Python, Java, C#", "RESTful APIs & GraphQL", "MongoDB, MySQL, PostgreSQL", "Authentication & Authorization"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -74,7 +74,7 @@ const FullStackDeveloper = () => {
                 {["AI-Assisted Code Generation", "Prompt Engineering for Developers", "AI Debugging & Code Review", "Claude Code, Codex, and Copilot"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span className="text-white/60">{item}</span>
+                    <span className="text-muted-foreground dark:text-white/60">{item}</span>
                   </li>
                 ))}
               </ul>

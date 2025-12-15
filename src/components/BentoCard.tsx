@@ -71,11 +71,11 @@ export const BentoCard = ({
       className={cn(
         // Base styles
         "relative overflow-hidden rounded-2xl p-6",
-        // Dark glass aesthetic
-        "bg-black/40 backdrop-blur-xl",
+        // Glass aesthetic - theme aware
+        "bg-card/80 dark:bg-black/40 backdrop-blur-xl",
         // Border with hover glow
         "border border-transparent",
-        isHovered ? "border-primary/50 shadow-lg shadow-primary/10" : "border-white/10",
+        isHovered ? "border-primary/50 shadow-lg shadow-primary/10" : "border-border dark:border-white/10",
         // Smooth transitions
         "transition-all duration-300 ease-out",
         // Cursor
@@ -98,7 +98,7 @@ export const BentoCard = ({
           <Icon 
             className={cn(
               "w-40 h-40 transition-all duration-500",
-              isHovered ? "text-primary/15 scale-110" : "text-white/5"
+              isHovered ? "text-primary/15 scale-110" : "text-primary/5 dark:text-white/5"
             )} 
           />
         </div>
@@ -110,7 +110,7 @@ export const BentoCard = ({
         {Icon && (
           <div className={cn(
             "inline-flex p-3 rounded-xl mb-4 transition-all duration-300",
-            isHovered ? "bg-primary/20" : "bg-white/5"
+            isHovered ? "bg-primary/20" : "bg-muted dark:bg-white/5"
           )}>
             <Icon className={cn(
               "w-6 h-6 transition-colors duration-300",
@@ -122,7 +122,7 @@ export const BentoCard = ({
         {/* Title */}
         <h3 className={cn(
           "text-xl font-bold mb-3 tracking-tight transition-colors duration-300",
-          isHovered ? "text-white" : "text-white/90"
+          isHovered ? "text-foreground" : "text-foreground/90 dark:text-white/90"
         )}>
           {title}
         </h3>
@@ -131,7 +131,7 @@ export const BentoCard = ({
         {description && (
           <p className={cn(
             "text-sm leading-relaxed transition-colors duration-300",
-            isHovered ? "text-white/80" : "text-white/60"
+            isHovered ? "text-muted-foreground" : "text-muted-foreground/80 dark:text-white/60"
           )}>
             {description}
           </p>
