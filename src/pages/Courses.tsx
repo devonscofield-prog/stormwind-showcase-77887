@@ -3161,7 +3161,7 @@ const Courses = () => {
         { name: "Microsoft 365 Copilot: Word", isBytes: true },
         { name: "Microsoft 365 Copilot: PowerPoint", isBytes: true },
         { name: "Microsoft 365 Copilot: Outlook", isBytes: true },
-        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true, isBytes: true },
+        { name: "Microsoft 365 Copilot: Excel", isBytes: true },
         { name: "Microsoft 365 Copilot: Teams", isComingSoon: true, isBytes: true },
         { name: "Building Agents in Copilot Studio", isComingSoon: true, isBytes: true },
         { name: "Microsoft 365 Copilot" },
@@ -3218,7 +3218,7 @@ const Courses = () => {
         { name: "Microsoft 365 Copilot: Word", isBytes: true },
         { name: "Microsoft 365 Copilot: Outlook", isBytes: true },
         { name: "Microsoft 365 Copilot: PowerPoint", isBytes: true },
-        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true, isBytes: true },
+        { name: "Microsoft 365 Copilot: Excel", isBytes: true },
         { name: "Microsoft 365 Copilot: Teams", isComingSoon: true, isBytes: true },
         { name: "Microsoft 365 Copilot: OneDrive", isComingSoon: true },
         { name: "Microsoft 365 Copilot: SharePoint", isComingSoon: true },
@@ -3339,7 +3339,7 @@ const Courses = () => {
         { name: "Microsoft 365 Copilot: Word", isBytes: true },
         { name: "Microsoft 365 Copilot: Outlook", isBytes: true },
         { name: "Microsoft 365 Copilot: PowerPoint", isBytes: true },
-        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true, isBytes: true },
+        { name: "Microsoft 365 Copilot: Excel", isBytes: true },
         { name: "Microsoft 365 Copilot: Teams", isComingSoon: true, isBytes: true },
         { name: "Microsoft 365 Copilot: OneDrive", isComingSoon: true },
         { name: "Microsoft 365 Copilot: SharePoint", isComingSoon: true },
@@ -3502,6 +3502,7 @@ const Courses = () => {
         { name: "AWS Certified Security Specialty (SCS-C02)" },
         { name: "AWS Certified Data Analytics Specialty" },
         { name: "AWS Certified Database Specialty" },
+        { name: "AWS Certified CloudOps Engineer (SOA-C03)" },
       ],
       "Microsoft Azure": [
         { name: "AZ-900: Microsoft Azure Fundamentals" },
@@ -4415,7 +4416,7 @@ const Courses = () => {
         { name: "Microsoft 365 Copilot: Word", isBytes: true },
         { name: "Microsoft 365 Copilot: Outlook", isBytes: true },
         { name: "Microsoft 365 Copilot: PowerPoint", isBytes: true },
-        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true, isBytes: true },
+        { name: "Microsoft 365 Copilot: Excel", isBytes: true },
         { name: "Microsoft 365 Copilot: Teams", isComingSoon: true, isBytes: true },
         { name: "Building Agents in Copilot Studio", isComingSoon: true, isBytes: true },
         { name: "PowerShell Foundations [Applied Skills]", isBytes: true },
@@ -4434,7 +4435,7 @@ const Courses = () => {
       "Q4 2025 - Microsoft Copilot": [
         { name: "Manager Readiness for Microsoft 365 Copilot", isComingSoon: true },
         { name: "Microsoft 365 Copilot: Prompting Practices", isComingSoon: true },
-        { name: "Microsoft 365 Copilot: Excel", isComingSoon: true },
+        
         { name: "Microsoft 365 Copilot: Teams", isComingSoon: true },
         { name: "Microsoft 365 Copilot: OneDrive", isComingSoon: true },
         { name: "Microsoft 365 Copilot: SharePoint", isComingSoon: true },
@@ -4443,7 +4444,6 @@ const Courses = () => {
         { name: "Administering Microsoft Copilot AI", isComingSoon: true },
       ],
       "Q4 2025 - Other": [
-        { name: "AWS Certified CloudOps Engineer (SOA-C03)", isComingSoon: true },
         { name: "CMMC Program Foundations", isComingSoon: true },
       ],
       "Q1 2026 - Microsoft": [
