@@ -44,6 +44,7 @@ const DesktopApps = lazy(() => import("./pages/DesktopApps"));
 const SecurityAwareness = lazy(() => import("./pages/SecurityAwareness"));
 const Microlearning = lazy(() => import("./pages/Microlearning"));
 const LearningPaths = lazy(() => import("./pages/LearningPaths"));
+const CertificationPrep = lazy(() => import("./pages/CertificationPrep"));
 const SkillsAssessments = lazy(() => import("./pages/SkillsAssessments"));
 const LiveInstructorLed = lazy(() => import("./pages/LiveInstructorLed"));
 const EnterpriseReporting = lazy(() => import("./pages/EnterpriseReporting"));
@@ -98,6 +99,7 @@ const App = () => (
             <Route path="/bytes" element={<Microlearning />} />
             <Route path="/microlearning" element={<Navigate to="/bytes" replace />} />
             <Route path="/learning-paths" element={<LearningPaths />} />
+            <Route path="/certification-prep" element={<CertificationPrep />} />
             <Route path="/skills-assessments" element={<SkillsAssessments />} />
             <Route path="/live-instructor-led" element={<LiveInstructorLed />} />
             <Route path="/enterprise-reporting" element={<EnterpriseReporting />} />
