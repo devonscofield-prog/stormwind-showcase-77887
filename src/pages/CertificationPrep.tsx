@@ -3,84 +3,69 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Award,
-  FileQuestion,
-  Presentation,
-  BookOpen,
-  Book,
-  Layers,
-  UserCheck,
-  Bot,
-  ChevronRight,
-  Target,
-  Zap,
-  CheckCircle2,
-  ExternalLink,
-} from "lucide-react";
+import { Award, FileQuestion, Presentation, BookOpen, Book, Layers, UserCheck, Bot, ChevronRight, Target, Zap, CheckCircle2, ExternalLink } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";
-
 const CertificationPrep = () => {
   useEffect(() => {
     document.title = "Certification Prep | StormWind Studios";
   }, []);
-
-  const certifications = [
-    { name: "CompTIA Security+ (SY0-701)", url: "https://app.stormwindstudios.com/certifications/comptia-security-sy0-701" },
-    { name: "CompTIA Network+ (N10-009)", url: "https://app.stormwindstudios.com/certifications/comptia-network-n10-009" },
-    { name: "CompTIA A+ Core 1 (220-1101)", url: "https://app.stormwindstudios.com/certifications/comptia-a-core-1-220-1101" },
-    { name: "CompTIA A+ Core 2 (220-1102)", url: "https://app.stormwindstudios.com/certifications/comptia-a-core-2-220-1102" },
-    { name: "Microsoft Azure Fundamentals (AZ-900)", url: "https://app.stormwindstudios.com/certifications/microsoft-azure-fundamentals-az-900" },
-    { name: "Microsoft 365 Fundamentals (MS-900)", url: "https://app.stormwindstudios.com/certifications/microsoft-365-fundamentals-ms-900" },
-    { name: "Cisco CCNA (200-301)", url: "https://app.stormwindstudios.com/certifications/cisco-ccna-200-301" },
-    { name: "ITIL 4 Foundation", url: "https://app.stormwindstudios.com/certifications/itil-4-foundation" },
-  ];
-
-  const prepResources = [
-    {
-      icon: FileQuestion,
-      title: "Practice Exams",
-      description: "Unlimited attempts with detailed explanations for every question. Simulate real exam conditions and track your progress over time.",
-    },
-    {
-      icon: Presentation,
-      title: "Downloadable Class Slides",
-      description: "Visual learning materials available for offline study. Reference key concepts anytime, anywhere.",
-    },
-    {
-      icon: BookOpen,
-      title: "Study Guides",
-      description: "Comprehensive written guides covering all exam objectives. Structured content to ensure complete topic coverage.",
-    },
-    {
-      icon: Book,
-      title: "Textbooks",
-      description: "In-depth reference materials authored by industry experts. Deep-dive into complex topics at your own pace.",
-    },
-    {
-      icon: Layers,
-      title: "Flash Cards",
-      description: "Quick review cards for key concepts and terminology. Perfect for reinforcing knowledge during short study sessions.",
-    },
-    {
-      icon: UserCheck,
-      title: "1:1 Mentoring",
-      description: "Direct access to industry experts who guide your certification journey. Get personalized advice and insider tips.",
-    },
-    {
-      icon: Bot,
-      title: "AI Tutors",
-      description: "24/7 AI-powered study assistance. Get instant answers to your questions and explanations tailored to your learning style.",
-    },
-  ];
-
-  return (
-    <PageLayout
-      title="Certification Prep"
-      description="Comprehensive resources and study plans to help you pass your IT certification exams with confidence"
-      breadcrumbs={[{ label: "Certification Prep" }]}
-      containerSize="wide"
-    >
+  const certifications = [{
+    name: "CompTIA Security+ (SY0-701)",
+    url: "https://app.stormwindstudios.com/certifications/comptia-security-sy0-701"
+  }, {
+    name: "CompTIA Network+ (N10-009)",
+    url: "https://app.stormwindstudios.com/certifications/comptia-network-n10-009"
+  }, {
+    name: "CompTIA A+ Core 1 (220-1101)",
+    url: "https://app.stormwindstudios.com/certifications/comptia-a-core-1-220-1101"
+  }, {
+    name: "CompTIA A+ Core 2 (220-1102)",
+    url: "https://app.stormwindstudios.com/certifications/comptia-a-core-2-220-1102"
+  }, {
+    name: "Microsoft Azure Fundamentals (AZ-900)",
+    url: "https://app.stormwindstudios.com/certifications/microsoft-azure-fundamentals-az-900"
+  }, {
+    name: "Microsoft 365 Fundamentals (MS-900)",
+    url: "https://app.stormwindstudios.com/certifications/microsoft-365-fundamentals-ms-900"
+  }, {
+    name: "Cisco CCNA (200-301)",
+    url: "https://app.stormwindstudios.com/certifications/cisco-ccna-200-301"
+  }, {
+    name: "ITIL 4 Foundation",
+    url: "https://app.stormwindstudios.com/certifications/itil-4-foundation"
+  }];
+  const prepResources = [{
+    icon: FileQuestion,
+    title: "Practice Exams",
+    description: "Unlimited attempts with detailed explanations for every question. Simulate real exam conditions and track your progress over time."
+  }, {
+    icon: Presentation,
+    title: "Downloadable Class Slides",
+    description: "Visual learning materials available for offline study. Reference key concepts anytime, anywhere."
+  }, {
+    icon: BookOpen,
+    title: "Study Guides",
+    description: "Comprehensive written guides covering all exam objectives. Structured content to ensure complete topic coverage."
+  }, {
+    icon: Book,
+    title: "Textbooks",
+    description: "In-depth reference materials authored by industry experts. Deep-dive into complex topics at your own pace."
+  }, {
+    icon: Layers,
+    title: "Flash Cards",
+    description: "Quick review cards for key concepts and terminology. Perfect for reinforcing knowledge during short study sessions."
+  }, {
+    icon: UserCheck,
+    title: "1:1 Mentoring",
+    description: "Direct access to industry experts who guide your certification journey. Get personalized advice and insider tips."
+  }, {
+    icon: Bot,
+    title: "AI Tutors",
+    description: "24/7 AI-powered study assistance. Get instant answers to your questions and explanations tailored to your learning style."
+  }];
+  return <PageLayout title="Certification Prep" description="Comprehensive resources and study plans to help you pass your IT certification exams with confidence" breadcrumbs={[{
+    label: "Certification Prep"
+  }]} containerSize="wide">
       <div className="space-y-16 animate-fade-in">
         {/* Certification Study Plans Section */}
         <section>
@@ -159,18 +144,10 @@ const CertificationPrep = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Popular Certification Study Plans</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {certifications.map((cert) => (
-                <a
-                  key={cert.name}
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-200"
-                >
+              {certifications.map(cert => <a key={cert.name} href={cert.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-200">
                   <span className="text-sm font-medium group-hover:text-primary transition-colors">{cert.name}</span>
                   <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
         </section>
@@ -185,11 +162,7 @@ const CertificationPrep = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {prepResources.map((resource) => (
-              <Card 
-                key={resource.title}
-                className="bg-card/80 dark:bg-black/40 backdrop-blur-xl border-border/50 hover:border-primary/50 transition-all duration-200 group"
-              >
+            {prepResources.map(resource => <Card key={resource.title} className="bg-card/80 dark:bg-black/40 backdrop-blur-xl border-border/50 hover:border-primary/50 transition-all duration-200 group">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -201,35 +174,13 @@ const CertificationPrep = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="text-center py-12 px-8 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/5 border border-primary/20">
-          <h2 className="text-2xl font-bold tracking-tight mb-4">Ready to Get Certified?</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Start your certification journey today with our comprehensive study plans and resources.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg">
-              <a href="https://app.stormwindstudios.com/certifications" target="_blank" rel="noopener noreferrer">
-                Browse All Certifications
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link to="/contact">
-                Contact Your Learning Director
-                <ChevronRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </section>
+        
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default CertificationPrep;
