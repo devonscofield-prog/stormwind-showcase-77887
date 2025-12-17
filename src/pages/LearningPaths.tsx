@@ -7,7 +7,7 @@ import {
   Route,
   Target,
   ChevronRight,
-  ExternalLink,
+  
   Award,
 } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";
@@ -114,27 +114,6 @@ const LearningPaths = () => {
           </Button>
         </section>
 
-        {/* CTA Section */}
-        <section className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight mb-4">Ready to Start Your Journey?</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Explore our learning paths or work with your Learning Director to create a custom path for your team.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg">
-              <a href="https://app.stormwindstudios.com/learning-paths" target="_blank" rel="noopener noreferrer">
-                Browse All Learning Paths
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link to="/contact">
-                Contact Your Learning Director
-                <ChevronRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
-        </section>
       </div>
     </PageLayout>
   );
