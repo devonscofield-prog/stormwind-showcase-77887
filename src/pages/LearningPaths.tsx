@@ -17,15 +17,13 @@ const LearningPaths = () => {
     document.title = "Learning Paths | StormWind Studios";
   }, []);
 
-  const preMadePaths = [
-    { name: "Help Desk Technician", url: "https://app.stormwindstudios.com/learning-paths/help-desk-technician" },
-    { name: "Network Administrator", url: "https://app.stormwindstudios.com/learning-paths/network-administrator" },
-    { name: "Systems Administrator", url: "https://app.stormwindstudios.com/learning-paths/systems-administrator" },
-    { name: "Cloud Administrator", url: "https://app.stormwindstudios.com/learning-paths/cloud-administrator" },
-    { name: "Security Analyst", url: "https://app.stormwindstudios.com/learning-paths/security-analyst" },
-    { name: "DevOps Engineer", url: "https://app.stormwindstudios.com/learning-paths/devops-engineer" },
-    { name: "Full Stack Developer", url: "https://app.stormwindstudios.com/learning-paths/full-stack-developer" },
-    { name: "Project Manager", url: "https://app.stormwindstudios.com/learning-paths/project-manager" },
+  const learningPaths = [
+    "Azure Career Specialization",
+    "Help Desk Professional",
+    "Cisco Network Professional",
+    "Cybersecurity Manager",
+    "Project Manager Professional",
+    "Maximizing Productivity with ChatGPT",
   ];
 
   return (
@@ -86,18 +84,14 @@ const LearningPaths = () => {
           {/* Popular Learning Paths */}
           <div>
             <h3 className="text-xl font-semibold mb-6">Popular Learning Paths</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {preMadePaths.map((path) => (
-                <a
-                  key={path.name}
-                  href={path.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-200"
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {learningPaths.map((path) => (
+                <div
+                  key={path}
+                  className="p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50"
                 >
-                  <span className="text-sm font-medium group-hover:text-primary transition-colors">{path.name}</span>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
+                  <span className="text-sm font-medium">{path}</span>
+                </div>
               ))}
             </div>
           </div>
