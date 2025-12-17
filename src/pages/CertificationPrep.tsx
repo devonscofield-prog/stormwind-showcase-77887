@@ -3,37 +3,22 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Award, FileQuestion, Presentation, BookOpen, Book, Layers, UserCheck, Bot, ChevronRight, Target, Zap, CheckCircle2, ExternalLink } from "lucide-react";
+import { Award, FileQuestion, Presentation, BookOpen, Book, Layers, UserCheck, Bot, ChevronRight, Target, Zap, CheckCircle2 } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";
 const CertificationPrep = () => {
   useEffect(() => {
     document.title = "Certification Prep | StormWind Studios";
   }, []);
-  const certifications = [{
-    name: "CompTIA Security+ (SY0-701)",
-    url: "https://app.stormwindstudios.com/certifications/comptia-security-sy0-701"
-  }, {
-    name: "CompTIA Network+ (N10-009)",
-    url: "https://app.stormwindstudios.com/certifications/comptia-network-n10-009"
-  }, {
-    name: "CompTIA A+ Core 1 (220-1101)",
-    url: "https://app.stormwindstudios.com/certifications/comptia-a-core-1-220-1101"
-  }, {
-    name: "CompTIA A+ Core 2 (220-1102)",
-    url: "https://app.stormwindstudios.com/certifications/comptia-a-core-2-220-1102"
-  }, {
-    name: "Microsoft Azure Fundamentals (AZ-900)",
-    url: "https://app.stormwindstudios.com/certifications/microsoft-azure-fundamentals-az-900"
-  }, {
-    name: "Microsoft 365 Fundamentals (MS-900)",
-    url: "https://app.stormwindstudios.com/certifications/microsoft-365-fundamentals-ms-900"
-  }, {
-    name: "Cisco CCNA (200-301)",
-    url: "https://app.stormwindstudios.com/certifications/cisco-ccna-200-301"
-  }, {
-    name: "ITIL 4 Foundation",
-    url: "https://app.stormwindstudios.com/certifications/itil-4-foundation"
-  }];
+  const certifications = [
+    "CompTIA Security+ (SY0-701)",
+    "CompTIA Network+ (N10-009)",
+    "CompTIA A+ Core 1 (220-1101)",
+    "CompTIA A+ Core 2 (220-1102)",
+    "Microsoft Azure Fundamentals (AZ-900)",
+    "Microsoft 365 Fundamentals (MS-900)",
+    "Cisco CCNA (200-301)",
+    "ITIL 4 Foundation"
+  ];
   const prepResources = [{
     icon: FileQuestion,
     title: "Practice Exams",
@@ -144,10 +129,11 @@ const CertificationPrep = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Popular Certification Study Plans</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {certifications.map(cert => <a key={cert.name} href={cert.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-200">
-                  <span className="text-sm font-medium group-hover:text-primary transition-colors">{cert.name}</span>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>)}
+              {certifications.map(cert => (
+                <div key={cert} className="p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50">
+                  <span className="text-sm font-medium">{cert}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
