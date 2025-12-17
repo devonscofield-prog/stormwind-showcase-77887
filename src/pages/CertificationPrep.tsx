@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Award, FileQuestion, Presentation, BookOpen, Book, Layers, UserCheck, Bot, ChevronRight, Target, Zap, CheckCircle2 } from "lucide-react";
+import { Award, FileQuestion, Presentation, BookOpen, Book, Layers, Bot, ChevronRight, Target, Zap, CheckCircle2 } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";
 const CertificationPrep = () => {
   useEffect(() => {
@@ -39,10 +39,6 @@ const CertificationPrep = () => {
     icon: Layers,
     title: "Flash Cards",
     description: "Quick review cards for key concepts and terminology. Perfect for reinforcing knowledge during short study sessions."
-  }, {
-    icon: UserCheck,
-    title: "1:1 Mentoring",
-    description: "Direct access to industry experts who guide your certification journey. Get personalized advice and insider tips."
   }, {
     icon: Bot,
     title: "AI Tutors",
