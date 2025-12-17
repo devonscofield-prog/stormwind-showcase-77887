@@ -7,7 +7,7 @@ import {
   Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones, 
   AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck,
   // Platform Feature Icons
-  UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap
+  UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap, Award
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSize } from "@/contexts/TextSizeContext";
@@ -44,6 +44,7 @@ const platformMenuItems = [
   { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
   { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
   { label: "Learning Paths", to: "/learning-paths", icon: Map, description: "Structured curricula" },
+  { label: "Certification Prep", to: "/certification-prep", icon: Award, description: "Exam prep resources" },
   { label: "Skills Assessments", to: "/skills-assessments", icon: Target, description: "Measure competency" },
   { label: "Live Instructor Led", to: "/live-instructor-led", icon: Video, description: "Virtual classrooms" },
   { label: "Training Samples", to: "/training-samples", icon: GraduationCap, description: "Preview courses" },
