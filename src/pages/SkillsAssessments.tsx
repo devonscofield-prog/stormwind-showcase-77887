@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Navigation } from "@/components/Navigation";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import {
   BarChart,
   Bar,
@@ -156,12 +157,13 @@ const SkillsAssessments = () => {
                   <DialogTitle>Skills Assessments Demo</DialogTitle>
                 </DialogHeader>
                 <div className="aspect-video">
-                  <iframe
-                    src="https://fast.wistia.net/embed/iframe/n9ptgxgz8x?seo=true"
+                  <VideoEmbed 
+                    videoId="n9ptgxgz8x" 
                     title="Skills Assessments Demo"
-                    className="w-full h-full rounded-lg"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
+                    trackingMetadata={{
+                      courseName: "Skills Assessments",
+                      lessonTitle: "Skills Assessments Demo Video"
+                    }}
                   />
                 </div>
               </DialogContent>
