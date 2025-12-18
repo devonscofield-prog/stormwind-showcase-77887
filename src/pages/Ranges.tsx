@@ -163,7 +163,15 @@ const Ranges = () => {
                   Direct access to Azure cloud services. Practice and skill up on cloud technologies directly in Azure with a sandboxed environment.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="4h1c0m2kaf" title="Azure Range Demo" />
+                  <VideoEmbed 
+                    videoId="4h1c0m2kaf" 
+                    title="Azure Range Demo" 
+                    trackingMetadata={{
+                      courseName: "StormWind Ranges",
+                      variantName: "Azure Range",
+                      lessonTitle: "Azure Range Demo Video"
+                    }}
+                  />
                 </div>
               </div>
 
@@ -193,7 +201,15 @@ const Ranges = () => {
                   Master Microsoft technologies and Windows infrastructure with hands-on experience in enterprise environments.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="v6zins19bi" title="Microsoft Range Demo" />
+                  <VideoEmbed 
+                    videoId="v6zins19bi" 
+                    title="Microsoft Range Demo" 
+                    trackingMetadata={{
+                      courseName: "StormWind Ranges",
+                      variantName: "Microsoft Range",
+                      lessonTitle: "Microsoft Range Demo Video"
+                    }}
+                  />
                 </div>
               </div>
 
@@ -377,7 +393,15 @@ const Ranges = () => {
                   A dynamic networking sandbox built for both simple setups and advanced architectures, featuring multiple routers, multi-layer switches, and a variety of connected hosts and servers. Over 70 lab activities are available.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="6i6y01qjp0" title="Network Range Demo" />
+                  <VideoEmbed 
+                    videoId="6i6y01qjp0" 
+                    title="Network Range Demo" 
+                    trackingMetadata={{
+                      courseName: "StormWind Ranges",
+                      variantName: "Network Range",
+                      lessonTitle: "Network Range Demo Video"
+                    }}
+                  />
                 </div>
               </div>
 
@@ -411,7 +435,15 @@ const Ranges = () => {
                   Enhance your cybersecurity skills with StormWind's Defensive Cyber Range, a cutting-edge practical training environment designed to keep you ahead of emerging threats through dynamic capture-the-flag challenges.
                 </p>
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <VideoEmbed videoId="gg8rfkzk3y" title="Cyber Range Demo" />
+                  <VideoEmbed 
+                    videoId="gg8rfkzk3y" 
+                    title="Cyber Range Demo" 
+                    trackingMetadata={{
+                      courseName: "StormWind Ranges",
+                      variantName: "Cyber Range",
+                      lessonTitle: "Cyber Range Demo Video"
+                    }}
+                  />
                 </div>
               </div>
 
