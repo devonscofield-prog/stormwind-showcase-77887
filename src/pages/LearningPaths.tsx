@@ -7,7 +7,6 @@ import {
   Route,
   Target,
   ChevronRight,
-  
   Award,
 } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";

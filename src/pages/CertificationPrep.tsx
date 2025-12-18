@@ -159,9 +159,6 @@ const CertificationPrep = () => {
               </Card>)}
           </div>
         </section>
-
-        {/* CTA Section */}
-        
       </div>
     </PageLayout>;
 };
