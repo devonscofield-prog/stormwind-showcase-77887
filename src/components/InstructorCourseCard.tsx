@@ -13,7 +13,7 @@ export interface InstructorCourseCardProps {
   instructorImage: string;
   level: "Beginner" | "Intermediate" | "Advanced";
   description: string;
-  features: CourseFeature[];
+  features?: CourseFeature[];
   titleIcon?: LucideIcon;
   className?: string;
 }
@@ -66,23 +66,6 @@ export const InstructorCourseCard = ({
       {/* Description */}
       <p className="text-muted-foreground mb-6 leading-relaxed">{description}</p>
 
-      {/* Features List */}
-      <div className="space-y-3 mb-6">
-        {features.map((feature, index) => {
-          const FeatureIcon = feature.icon;
-          return (
-            <div key={index} className="flex items-start gap-3">
-              <FeatureIcon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-sm">{feature.title}</p>
-                <p className="text-xs text-muted-foreground">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 };
