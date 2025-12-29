@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Award, FlaskConical, Brain, Users, Clock, Video, BookOpen, Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
+import { Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 import benBurich from "@/assets/ben-burich.png";
@@ -31,11 +31,6 @@ const CloudTraining = () => {
       instructorImage: willPanek,
       level: "Beginner" as const,
       description: "Build foundational knowledge of cloud concepts and Azure services with Azure Fundamentals certification.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
-        { icon: BookOpen, title: "Certification Study Plan", description: "Structured path to Azure certification" },
-        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
-      ] as CourseFeature[],
     },
     {
       title: "AZ-104",
@@ -43,11 +38,6 @@ const CloudTraining = () => {
       instructorImage: spikeXavier,
       level: "Intermediate" as const,
       description: "Master Azure administration including managing subscriptions, storage, virtual networks, and monitoring.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
-        { icon: BookOpen, title: "Certification Study Plan (coming soon)", description: "Structured path to Azure certification" },
-        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
-      ] as CourseFeature[],
     },
     {
       title: "AZ-305",
@@ -55,11 +45,6 @@ const CloudTraining = () => {
       instructorImage: benBurich,
       level: "Advanced" as const,
       description: "Design Microsoft Azure infrastructure solutions with advanced architecture patterns and best practices.",
-      features: [
-        { icon: FlaskConical, title: "Labs Available", description: "Hands-on practice environment" },
-        { icon: Award, title: "Practice Exams", description: "Test your knowledge" },
-        { icon: Clock, title: "On-Demand Available", description: "Learn at your own pace" },
-      ] as CourseFeature[],
     },
     {
       title: "AZ-140",
@@ -67,11 +52,6 @@ const CloudTraining = () => {
       instructorImage: abdelSalem,
       level: "Intermediate" as const,
       description: "Configure and operate Microsoft Azure Virtual Desktop environments with expert guidance.",
-      features: [
-        { icon: Award, title: "Practice Exams", description: "Test your knowledge" },
-        { icon: Users, title: "1:1 Mentoring", description: "Personalized guidance from experts" },
-        { icon: Clock, title: "On-Demand Available", description: "Learn at your own pace" },
-      ] as CourseFeature[],
     },
     {
       title: "AWS Cloud Practitioner",
@@ -79,11 +59,6 @@ const CloudTraining = () => {
       instructorImage: raymondLacoste,
       level: "Beginner" as const,
       description: "Start your AWS journey with comprehensive cloud fundamentals covering core services, security, and architecture.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Real-time interaction with instructors" },
-        { icon: Award, title: "Practice Exams", description: "Test your knowledge" },
-        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
-      ] as CourseFeature[],
     },
     {
       title: "AWS Architect Associate",
@@ -91,11 +66,6 @@ const CloudTraining = () => {
       instructorImage: raymondLacoste,
       level: "Intermediate" as const,
       description: "Design and deploy scalable, fault-tolerant systems on AWS with advanced architecture patterns.",
-      features: [
-        { icon: FlaskConical, title: "Labs Available", description: "Hands-on practice environment" },
-        { icon: Award, title: "Practice Exams", description: "Test your knowledge" },
-        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
-      ] as CourseFeature[],
     },
   ];
 

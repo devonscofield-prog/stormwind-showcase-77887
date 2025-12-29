@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Zap, BookOpen, Clock, Target, Users } from "lucide-react";
+import { Zap, BookOpen } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
 import danYoung from "@/assets/dan-young.png";
 import samBurr from "@/assets/sam-burr.png";
@@ -30,11 +30,6 @@ const Microlearning = () => {
       level: "Beginner" as const,
       titleIcon: Zap,
       description: "Master PowerShell fundamentals with bite-sized lessons covering cmdlets, scripting, automation, and system administration. Perfect for IT professionals looking to automate tasks and improve efficiency.",
-      features: [
-        { icon: Clock, title: "Quick Lessons", description: "5-10 minute focused modules" },
-        { icon: Target, title: "Hands-On Practice", description: "Practical exercises included" },
-        { icon: Users, title: "Expert Instruction", description: "Learn from industry veterans" },
-      ] as CourseFeature[],
     },
     {
       title: "ChatGPT for IT Professionals",
@@ -43,11 +38,6 @@ const Microlearning = () => {
       level: "Beginner" as const,
       titleIcon: Zap,
       description: "Discover how to leverage ChatGPT and AI tools to enhance your IT workflows. Learn prompt engineering, automation techniques, and practical applications for troubleshooting and documentation.",
-      features: [
-        { icon: Clock, title: "Bite-Sized Modules", description: "Learn at your own pace" },
-        { icon: Target, title: "Real-World Examples", description: "Practical IT scenarios" },
-        { icon: BookOpen, title: "AI Best Practices", description: "Industry-standard techniques" },
-      ] as CourseFeature[],
     },
     {
       title: "Intune for Microsoft Enterprises",
@@ -56,11 +46,6 @@ const Microlearning = () => {
       level: "Intermediate" as const,
       titleIcon: Zap,
       description: "Master Microsoft Intune for modern device management. Learn to deploy, secure, and manage devices and applications across your enterprise with cloud-based mobile device management.",
-      features: [
-        { icon: Clock, title: "Bytes Format", description: "Short, focused lessons" },
-        { icon: Target, title: "Hands-On Labs", description: "Practice in real environments" },
-        { icon: Users, title: "Enterprise Focus", description: "Real-world scenarios" },
-      ] as CourseFeature[],
     },
     {
       title: "AI for Project Managers",
@@ -69,11 +54,6 @@ const Microlearning = () => {
       level: "Beginner" as const,
       titleIcon: Zap,
       description: "Transform your project management with AI tools. Learn how to leverage artificial intelligence for planning, risk assessment, resource allocation, and stakeholder communication.",
-      features: [
-        { icon: Clock, title: "Quick Learning", description: "Get started fast" },
-        { icon: Target, title: "Practical Tools", description: "AI applications for PMs" },
-        { icon: BookOpen, title: "Real Scenarios", description: "Project management use cases" },
-      ] as CourseFeature[],
     },
     {
       title: "NIST Cybersecurity Framework 2.0 Overview",
@@ -82,11 +62,6 @@ const Microlearning = () => {
       level: "Intermediate" as const,
       titleIcon: Zap,
       description: "Understand the latest NIST Cybersecurity Framework with focused lessons on the six core functions: Identify, Protect, Detect, Respond, Recover, and Govern. Essential for security professionals.",
-      features: [
-        { icon: Clock, title: "Efficient Learning", description: "Framework in digestible chunks" },
-        { icon: Target, title: "Compliance Focus", description: "Meet security standards" },
-        { icon: BookOpen, title: "Current Standards", description: "Latest 2.0 framework" },
-      ] as CourseFeature[],
     },
     {
       title: "BGP Routing Fundamentals for IPv4",
@@ -95,11 +70,6 @@ const Microlearning = () => {
       level: "Intermediate" as const,
       titleIcon: Zap,
       description: "Master Border Gateway Protocol (BGP) routing fundamentals with concise lessons on path selection, peering relationships, route filtering, and best practices for enterprise networks.",
-      features: [
-        { icon: Clock, title: "Focused Content", description: "Core BGP concepts" },
-        { icon: Target, title: "Network Labs", description: "Hands-on routing exercises" },
-        { icon: Users, title: "Expert Guidance", description: "Learn from network professionals" },
-      ] as CourseFeature[],
     },
   ];
 
