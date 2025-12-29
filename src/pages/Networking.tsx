@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Cpu, Router, BookOpen, Video, Users, Target, Zap } from "lucide-react";
+import { Router, Target, Zap } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -28,11 +28,6 @@ const Networking = () => {
       instructorImage: raymondLacoste,
       level: "Intermediate" as const,
       description: "A vendor-neutral networking certification that validates the essential knowledge and skills needed to confidently design, configure, manage, and troubleshoot wired and wireless networks. Covers network infrastructure, operations, security, and troubleshooting.",
-      features: [
-        { icon: BookOpen, title: "Certification Study Plan", description: "Streamlined path to certification success" },
-        { icon: Router, title: "Exam Crash Course", description: "Intensive preparation included in study plan" },
-        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
-      ] as CourseFeature[],
     },
     {
       title: "Cisco CCNA",
@@ -40,11 +35,6 @@ const Networking = () => {
       instructorImage: raymondLacoste,
       level: "Intermediate" as const,
       description: "Comprehensive Cisco networking certification covering network fundamentals, IP connectivity and services, security fundamentals, automation, and programmability. Master the skills to install, configure, operate, and troubleshoot enterprise networks.",
-      features: [
-        { icon: BookOpen, title: "Certification Study Plan", description: "Structured approach to CCNA mastery" },
-        { icon: Router, title: "Exam Crash Course", description: "Final preparation included in study plan" },
-        { icon: Video, title: "Live Sessions Available", description: "Engage directly with expert instructors" },
-      ] as CourseFeature[],
     },
     {
       title: "Cisco CCNP Enterprise: ENCOR",
@@ -52,11 +42,6 @@ const Networking = () => {
       instructorImage: raymondLacoste,
       level: "Advanced" as const,
       description: "Master enterprise networking including dual-stack architecture, virtualization, infrastructure, network assurance, security, and automation. This core exam is required for CCNP Enterprise certification and covers the foundational enterprise technologies.",
-      features: [
-        { icon: BookOpen, title: "Certification Study Plan", description: "Structured path to CCNP Enterprise core exam" },
-        { icon: Router, title: "Hands-On Labs", description: "Practice in the Net Range environment" },
-        { icon: Users, title: "1:1 Instructor Mentoring", description: "Direct access to expert instructors" },
-      ] as CourseFeature[],
     },
     {
       title: "Cisco CCNP Enterprise: ENARSI",
@@ -64,11 +49,6 @@ const Networking = () => {
       instructorImage: raymondLacoste,
       level: "Advanced" as const,
       description: "Advanced routing and services implementation course covering Layer 3 technologies, VPN services, infrastructure security, and infrastructure services. Master enterprise-level network troubleshooting and optimization.",
-      features: [
-        { icon: Router, title: "Hands-On Labs", description: "Practice in real network environments" },
-        { icon: Cpu, title: "AI Tutor", description: "Get instant help and guidance" },
-        { icon: Users, title: "1:1 Instructor Mentoring", description: "Direct access to expert instructors" },
-      ] as CourseFeature[],
     },
     {
       title: "Modern Networking with IPv6",
@@ -77,11 +57,6 @@ const Networking = () => {
       level: "Intermediate" as const,
       titleIcon: Target,
       description: "An intense, practical-focused course on IPv6. Covers key skills to deploy an IPv6 infrastructure. CCNA or Network+ level knowledge will be helpful to get the most out of this course. Extensive hands-on available in the Net Range.",
-      features: [
-        { icon: Router, title: "Hands-On Labs", description: "Practice in the Net Range environment" },
-        { icon: Users, title: "1:1 Mentoring", description: "Expert guidance when you need it" },
-        { icon: Zap, title: "Bytes", description: "Quick learning modules for key concepts" },
-      ] as CourseFeature[],
     },
     {
       title: "Wireshark Packet Analysis",
@@ -90,11 +65,6 @@ const Networking = () => {
       level: "Intermediate" as const,
       titleIcon: Target,
       description: "Master network protocol analysis with Wireshark. Learn to capture, filter, and analyze network traffic for troubleshooting, security analysis, and performance optimization. Essential skills for any network professional.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Interactive packet analysis training" },
-        { icon: Router, title: "Hands-On Labs", description: "Real traffic analysis exercises" },
-        { icon: Users, title: "1:1 Mentoring Available", description: "Expert guidance on complex analysis" },
-      ] as CourseFeature[],
     },
   ];
 

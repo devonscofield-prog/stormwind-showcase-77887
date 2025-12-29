@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Shield, Target, Users, Award, BookOpen, Video, Brain, Monitor, Clock } from "lucide-react";
+import { Shield, Target, Award, BookOpen } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
@@ -29,11 +29,6 @@ const Cybersecurity = () => {
       instructorImage: raymondLacoste,
       level: "Intermediate" as const,
       description: "An international, vendor-neutral certification proving your knowledge and skills to assess security posture, implement solutions, and monitor hybrid environments including cloud, mobile, and IoT. Covers governance, risk, compliance, and incident response.",
-      features: [
-        { icon: Monitor, title: "Labs", description: "Practice security concepts in real environments" },
-        { icon: BookOpen, title: "Practice Exams", description: "Test your knowledge before certification" },
-        { icon: Target, title: "Certification Study Plans", description: "Structured learning path" },
-      ] as CourseFeature[],
     },
     {
       title: "CISSP",
@@ -41,11 +36,6 @@ const Cybersecurity = () => {
       instructorImage: raymondLacoste,
       level: "Advanced" as const,
       description: "Comprehensive training covering all 8 CISSP domains critical for architecting, designing, and managing secure IT solutions. Enhance your organization's security posture with expertise in Security and Risk Management, Asset Security, Security Engineering, and more.",
-      features: [
-        { icon: BookOpen, title: "Practice Exams", description: "Test your knowledge before certification" },
-        { icon: Target, title: "Certification Study Plans", description: "Structured learning path" },
-        { icon: Brain, title: "AI Tutor", description: "Get personalized assistance and guidance" },
-      ] as CourseFeature[],
     },
     {
       title: "CompTIA CySA+",
@@ -53,11 +43,6 @@ const Cybersecurity = () => {
       instructorImage: chrisPaul,
       level: "Intermediate" as const,
       description: "Master cybersecurity analytics and threat detection with comprehensive training in security operations, vulnerability management, incident response, and security monitoring. Prepare for the CompTIA CySA+ CS0-003 certification exam.",
-      features: [
-        { icon: Monitor, title: "Labs", description: "Hands-on security analytics practice" },
-        { icon: Brain, title: "AI Tutor", description: "24/7 AI learning support" },
-        { icon: Users, title: "1:1 Mentoring", description: "Expert guidance and support" },
-      ] as CourseFeature[],
     },
     {
       title: "CompTIA SecurityX",
@@ -65,10 +50,6 @@ const Cybersecurity = () => {
       instructorImage: shaneSexton,
       level: "Advanced" as const,
       description: "Advanced security certification for experienced professionals. Master security architecture, governance, risk management, and enterprise security operations. Prepare for the CompTIA SecurityX CAS-005 certification exam.",
-      features: [
-        { icon: BookOpen, title: "Practice Exams", description: "Comprehensive exam preparation" },
-        { icon: Clock, title: "On-Demand Sessions", description: "Learn at your own pace" },
-      ] as CourseFeature[],
     },
     {
       title: "CompTIA PenTest+",
@@ -77,11 +58,6 @@ const Cybersecurity = () => {
       level: "Advanced" as const,
       titleIcon: Shield,
       description: "Master penetration testing and vulnerability assessment with comprehensive training in planning, scoping, information gathering, vulnerability identification, exploitation, and reporting. Prepare for the CompTIA PenTest+ PT0-003 certification.",
-      features: [
-        { icon: Target, title: "Cyber Range Access", description: "Practice in realistic environments" },
-        { icon: BookOpen, title: "Practice Exams", description: "Test your penetration testing knowledge" },
-        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
-      ] as CourseFeature[],
     },
     {
       title: "Certified Ethical Hacker (CEH)",
@@ -90,11 +66,6 @@ const Cybersecurity = () => {
       level: "Intermediate" as const,
       titleIcon: Shield,
       description: "Master ethical hacking techniques with comprehensive training in reconnaissance, scanning, enumeration, vulnerability analysis, and exploitation. Prepare for the EC-Council CEH v12 certification.",
-      features: [
-        { icon: Target, title: "Cyber Range Access", description: "Hands-on hacking lab environment" },
-        { icon: Brain, title: "AI Tutor", description: "AI-powered learning assistance" },
-        { icon: Clock, title: "On-Demand Available", description: "Learn at your own pace" },
-      ] as CourseFeature[],
     },
   ];
 

@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Server, Shield, Users, BookOpen, Video, Clock, Monitor, Brain, Lightbulb, Target } from "lucide-react";
+import { Server, Shield, Users, BookOpen, Monitor, Brain, Lightbulb } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 import willPanek from "@/assets/will-panek.png";
@@ -29,10 +29,6 @@ const Microsoft = () => {
       instructorImage: spikeXavier,
       level: "Advanced" as const,
       description: "Master Microsoft 365 administration with comprehensive training in identity and access management, security, compliance, Microsoft 365 services, and enterprise deployment. Prepare for the MS-102 certification exam.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
-        { icon: Clock, title: "24 Hours of Training", description: "Advanced level certification" },
-      ] as CourseFeature[],
     },
     {
       title: "MD-102: Endpoint Administrator",
@@ -40,10 +36,6 @@ const Microsoft = () => {
       instructorImage: willPanek,
       level: "Intermediate" as const,
       description: "Learn to deploy, configure, secure, manage, and monitor devices and client applications in an enterprise environment. Master Windows 11, Intune, Microsoft Endpoint Configuration Manager, and endpoint security.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
-        { icon: Clock, title: "18 Hours of Training", description: "Comprehensive endpoint management" },
-      ] as CourseFeature[],
     },
     {
       title: "Windows Server 2025 Administration",
@@ -52,10 +44,6 @@ const Microsoft = () => {
       level: "Advanced" as const,
       titleIcon: Server,
       description: "Master the latest Windows Server 2025 administration with comprehensive training in server deployment, configuration, management, and security. Learn enterprise-grade infrastructure management.",
-      features: [
-        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
-        { icon: Video, title: "Live Sessions", description: "Interactive expert-led training" },
-      ] as CourseFeature[],
     },
     {
       title: "AZ-900: Azure Fundamentals",
@@ -63,11 +51,6 @@ const Microsoft = () => {
       instructorImage: willPanek,
       level: "Beginner" as const,
       description: "Build foundational knowledge of cloud concepts and Azure services. Perfect for those new to cloud computing or preparing for more advanced Azure certifications.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Interactive learning with expert guidance" },
-        { icon: BookOpen, title: "Certification Study Plan", description: "Structured path to Azure certification" },
-        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
-      ] as CourseFeature[],
     },
     {
       title: "AZ-104: Azure Administrator",
@@ -75,11 +58,6 @@ const Microsoft = () => {
       instructorImage: spikeXavier,
       level: "Intermediate" as const,
       description: "Master Azure administration with comprehensive training in managing Azure subscriptions, storage, virtual networks, and monitoring. Prepare for the AZ-104 certification exam.",
-      features: [
-        { icon: Video, title: "Live Sessions Available", description: "Expert-led training sessions" },
-        { icon: Server, title: "Hands-On Labs", description: "Practice with real Azure scenarios" },
-        { icon: Target, title: "Practice Exams", description: "Test your knowledge" },
-      ] as CourseFeature[],
     },
     {
       title: "SC-900: Security Fundamentals",
@@ -88,11 +66,6 @@ const Microsoft = () => {
       level: "Beginner" as const,
       titleIcon: Shield,
       description: "Learn Microsoft security, compliance, and identity fundamentals. Understand security concepts, Microsoft security solutions, and identity and access management across Microsoft services.",
-      features: [
-        { icon: BookOpen, title: "Certification Study Plan", description: "Structured learning path" },
-        { icon: Brain, title: "AI Tutor", description: "Get instant help from AI assistant" },
-        { icon: Clock, title: "On-Demand Available", description: "Learn at your own pace" },
-      ] as CourseFeature[],
     },
   ];
 
