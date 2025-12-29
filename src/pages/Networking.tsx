@@ -47,6 +47,18 @@ const Networking = () => {
       ] as CourseFeature[],
     },
     {
+      title: "Cisco CCNP Enterprise: ENCOR",
+      instructorName: "Raymond Lacoste",
+      instructorImage: raymondLacoste,
+      level: "Advanced" as const,
+      description: "Master enterprise networking including dual-stack architecture, virtualization, infrastructure, network assurance, security, and automation. This core exam is required for CCNP Enterprise certification and covers the foundational enterprise technologies.",
+      features: [
+        { icon: BookOpen, title: "Certification Study Plan", description: "Structured path to CCNP Enterprise core exam" },
+        { icon: Router, title: "Hands-On Labs", description: "Practice in the Net Range environment" },
+        { icon: Users, title: "1:1 Instructor Mentoring", description: "Direct access to expert instructors" },
+      ] as CourseFeature[],
+    },
+    {
       title: "Cisco CCNP Enterprise: ENARSI",
       instructorName: "Raymond Lacoste",
       instructorImage: raymondLacoste,
