@@ -12,12 +12,12 @@ const CertificationPrep = () => {
   const certifications = [
     "CompTIA Security+ (SY0-701)",
     "CompTIA Network+ (N10-009)",
-    "CompTIA A+ Core 1 (220-1101)",
-    "CompTIA A+ Core 2 (220-1102)",
     "Microsoft Azure Fundamentals (AZ-900)",
-    "Microsoft 365 Fundamentals (MS-900)",
+    "AZ-104: Microsoft Azure Administrator",
     "Cisco CCNA (200-301)",
-    "ITIL 4 Foundation"
+    "ITIL 4 Foundation",
+    "Certified Information Systems Security Professional (CISSP)",
+    "Ethical Hacking v13"
   ];
   const prepResources = [{
     icon: FileQuestion,
