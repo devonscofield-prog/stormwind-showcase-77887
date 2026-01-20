@@ -27,7 +27,7 @@ const Index = lazy(() => import("./pages/Index"));
 const Ranges = lazy(() => import("./pages/Ranges"));
 const Phishing = lazy(() => import("./pages/Phishing"));
 const Mentoring = lazy(() => import("./pages/Mentoring"));
-const BusinessPro = lazy(() => import("./pages/BusinessPro"));
+const DataSciencePro = lazy(() => import("./pages/DataSciencePro"));
 const BusinessSkills = lazy(() => import("./pages/BusinessSkills"));
 const ProjectManagement = lazy(() => import("./pages/ProjectManagement"));
 const AIPro = lazy(() => import("./pages/AIPro"));
@@ -81,7 +81,8 @@ const App = () => (
             <Route path="/ranges" element={<Ranges />} />
             <Route path="/phishing" element={<Phishing />} />
             <Route path="/mentoring" element={<Mentoring />} />
-            <Route path="/business-pro" element={<BusinessPro />} />
+            <Route path="/data-science-pro" element={<DataSciencePro />} />
+            <Route path="/business-pro" element={<Navigate to="/data-science-pro" replace />} />
             <Route path="/business-skills" element={<BusinessSkills />} />
             <Route path="/project-management" element={<ProjectManagement />} />
             <Route path="/ai-pro" element={<AIPro />} />

@@ -7,7 +7,7 @@ export const trainingLinks: Record<string, string> = {
   "Networking": "/networking",
   "Full Stack Developer": "/fullstack-developer",
   "DevOps": "/devops",
-  "Business Pro": "/business-pro",
+  "Data Science Pro": "/data-science-pro",
   "Project Management": "/project-management",
   "Help Desk": "/help-desk",
   
