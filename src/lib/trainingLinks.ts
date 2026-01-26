@@ -35,4 +35,7 @@ export const trainingLinks: Record<string, string> = {
   
   // Courses
   "Course Catalog": "/courses",
+  
+  // Features
+  "Personalized Learning Experience": "/personalized-learning",
 };
