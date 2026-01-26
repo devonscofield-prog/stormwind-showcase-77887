@@ -7,7 +7,7 @@ import {
   Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones, 
   AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck,
   // Platform Feature Icons
-  UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap, Award
+  UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap, Award, Sparkles
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useTextSize } from "@/contexts/TextSizeContext";
@@ -40,6 +40,7 @@ const topicsMenuItems = [
 
 // Platform features menu items - flat array sorted logically
 const platformMenuItems = [
+  { label: "Personalized Learning", to: "/personalized-learning", icon: Sparkles, description: "Tailored experience" },
   { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
   { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
   { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
