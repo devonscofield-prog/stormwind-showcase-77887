@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Play, AlertCircle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,22 +17,100 @@ interface VideoTrackingMetadata {
 interface VideoEmbedProps {
   videoId: string;
   title: string;
-  thumbnail?: string; // Custom thumbnail override
+  thumbnail?: string;
   trackingMetadata?: VideoTrackingMetadata;
+}
+
+// Declare the wistia-player custom element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+        'media-id'?: string;
+        aspect?: string;
+        'controls-visible-on-load'?: string;
+        autoplay?: string;
+      }, HTMLElement>;
+    }
+  }
 }
 
 export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
-  const [showVideo, setShowVideo] = useState(false); // Always start with video hidden, require click to play
+  const [showVideo, setShowVideo] = useState(false);
   const [shouldAutoplay, setShouldAutoplay] = useState(false);
   const [wistiaThumbnail, setWistiaThumbnail] = useState<string | null>(null);
   const [thumbnailLoading, setThumbnailLoading] = useState(true);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const isPlaceholder = videoId.startsWith('pending_video_');
 
   // Video tracking
   useVideoTracking(videoId, showVideo, trackingMetadata || {});
+
+  // Load Wistia player script once
+  useEffect(() => {
+    if (document.getElementById('wistia-player-script')) {
+      setScriptLoaded(true);
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'wistia-player-script';
+    script.src = 'https://fast.wistia.com/player.js';
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    script.onerror = () => setHasError(true);
+    document.head.appendChild(script);
+
+    return () => {
+      // Don't remove the script on cleanup - it should persist
+    };
+  }, []);
+
+  // Load video-specific embed script when showing video
+  useEffect(() => {
+    if (!showVideo || isPlaceholder || !scriptLoaded) return;
+
+    const scriptId = `wistia-embed-${videoId}`;
+    if (document.getElementById(scriptId)) return;
+
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.src = `https://fast.wistia.com/embed/${videoId}.js`;
+    script.async = true;
+    script.type = 'module';
+    document.head.appendChild(script);
+  }, [videoId, showVideo, isPlaceholder, scriptLoaded]);
+
+  // Handle player ready state
+  useEffect(() => {
+    if (!showVideo || !scriptLoaded) return;
+
+    const checkPlayer = () => {
+      const player = containerRef.current?.querySelector('wistia-player');
+      if (player) {
+        setVideoLoaded(true);
+      }
+    };
+
+    // Check immediately and then poll briefly
+    checkPlayer();
+    const interval = setInterval(checkPlayer, 100);
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      if (!videoLoaded) {
+        setVideoLoaded(true); // Assume loaded after timeout
+      }
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [showVideo, scriptLoaded, videoLoaded]);
 
   // Fetch Wistia thumbnail when videoId changes using JSONP
   useEffect(() => {
@@ -44,24 +122,21 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     setThumbnailLoading(true);
     setWistiaThumbnail(null);
 
-    // Use JSONP to fetch Wistia media data (bypasses CORS)
     const callbackName = `wistiaCallback_${videoId.replace(/[^a-zA-Z0-9]/g, '')}`;
     
     (window as any)[callbackName] = (data: any) => {
       if (data?.thumbnail_url) {
-        // Get higher resolution by removing size constraints
         const highResThumbnail = data.thumbnail_url.replace(/\?.*$/, '');
         setWistiaThumbnail(highResThumbnail);
       }
       setThumbnailLoading(false);
       delete (window as any)[callbackName];
-      // Remove the script tag
-      const script = document.getElementById(`wistia-script-${videoId}`);
+      const script = document.getElementById(`wistia-thumb-script-${videoId}`);
       if (script) script.remove();
     };
 
     const script = document.createElement('script');
-    script.id = `wistia-script-${videoId}`;
+    script.id = `wistia-thumb-script-${videoId}`;
     script.src = `https://fast.wistia.com/oembed?url=https://fast.wistia.com/medias/${videoId}&format=jsonp&callback=${callbackName}`;
     script.onerror = () => {
       setThumbnailLoading(false);
@@ -71,12 +146,12 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
 
     return () => {
       delete (window as any)[callbackName];
-      const existingScript = document.getElementById(`wistia-script-${videoId}`);
+      const existingScript = document.getElementById(`wistia-thumb-script-${videoId}`);
       if (existingScript) existingScript.remove();
     };
   }, [videoId, isPlaceholder, thumbnail]);
 
-  // Reset state when videoId changes - always require click to play
+  // Reset state when videoId changes
   useEffect(() => {
     setVideoLoaded(false);
     setHasError(false);
@@ -84,7 +159,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     setShouldAutoplay(false);
   }, [videoId, retryKey]);
 
-  // Timeout fallback - if video doesn't load within 15 seconds, show error
+  // Timeout fallback for error state
   useEffect(() => {
     if (isPlaceholder || videoLoaded || hasError || !showVideo) return;
 
@@ -106,16 +181,12 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     setShowVideo(true);
   };
 
-  // Get the thumbnail to display (custom > wistia > none)
   const displayThumbnail = thumbnail || wistiaThumbnail;
 
   if (isPlaceholder) {
     return (
       <div className="relative bg-muted rounded-lg overflow-hidden">
-        <div style={{
-          padding: "56.25% 0 0 0",
-          position: "relative"
-        }}>
+        <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8">
             <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
               <Play className="w-8 h-8 text-primary" />
@@ -135,10 +206,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
   if (hasError) {
     return (
       <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden border border-gray-700">
-        <div style={{
-          padding: "56.25% 0 0 0",
-          position: "relative"
-        }}>
+        <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8">
             <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
               <AlertCircle className="w-8 h-8 text-red-400" />
@@ -167,10 +235,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
   if (!showVideo) {
     return (
       <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">
-        <div style={{
-          padding: "56.25% 0 0 0",
-          position: "relative"
-        }}>
+        <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
           {thumbnailLoading ? (
             <Skeleton className="absolute inset-0 rounded-none" />
           ) : displayThumbnail ? (
@@ -197,24 +262,14 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
   }
 
   return (
-    <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden">
-      <div style={{
-        padding: "56.25% 0 0 0",
-        position: "relative"
-      }}>
+    <div className="relative bg-[#1a1f2e] rounded-lg overflow-hidden" ref={containerRef}>
+      <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
         {!videoLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-[#1a1f2e]">
             <Skeleton className="absolute inset-0 rounded-none" />
           </div>
         )}
-        <iframe 
-          key={retryKey}
-          src={`https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false${shouldAutoplay ? '&autoPlay=true' : ''}`}
-          title={title}
-          allow="autoplay; fullscreen" 
-          allowFullScreen 
-          onLoad={() => setVideoLoaded(true)}
-          onError={() => setHasError(true)}
+        <div 
           style={{
             position: "absolute",
             top: 0,
@@ -223,8 +278,15 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
             height: "100%",
             opacity: videoLoaded ? 1 : 0,
             transition: "opacity 0.3s ease-in-out"
-          }} 
-        />
+          }}
+        >
+          <wistia-player
+            media-id={videoId}
+            aspect="1.7777777777777777"
+            controls-visible-on-load="false"
+            autoplay={shouldAutoplay ? "true" : undefined}
+          />
+        </div>
       </div>
     </div>
   );
