@@ -1,61 +1,81 @@
 
 
-## Plan: Create "Personalized Learning Experience" Page
+## Plan: Make Wistia Video Controls Disappear Faster
 
-### Overview
-Create a new page that showcases the personalized learning experience with an embedded Wistia video (ID: `axic12xcaf`).
+### The Issue
+The Wistia player's playbar (green navigation/controls bar) at the bottom of the video stays visible too long during fullscreen mode before auto-hiding.
 
-### Files to Create/Modify
+### Available Solutions
 
-#### 1. Create `src/pages/PersonalizedLearning.tsx` (New File)
-A new page following the existing Linear-style aesthetic using:
-- `PageLayout` component for consistent navigation, breadcrumbs, and hero section
-- `VideoEmbed` component to embed the Wistia video (ID: `axic12xcaf`)
-- Appropriate icon (e.g., `UserCheck`, `Sparkles`, or `GraduationCap`)
-- Gradient background variant for visual consistency
+#### Option 1: Switch to Wistia JavaScript API (Recommended)
+Switch from the iframe embed to Wistia's standard inline embed, which gives access to the JavaScript Player API for finer control over player behavior.
 
-**Page Structure:**
-```text
-┌─────────────────────────────────────────┐
-│  Navigation                             │
-├─────────────────────────────────────────┤
-│  Breadcrumb: Home > Personalized...     │
-├─────────────────────────────────────────┤
-│  Hero: Title + Description + Icon       │
-├─────────────────────────────────────────┤
-│  ┌─────────────────────────────────┐    │
-│  │                                 │    │
-│  │     Wistia Video Embed          │    │
-│  │     (axic12xcaf)                │    │
-│  │                                 │    │
-│  └─────────────────────────────────┘    │
-│  Caption text below video               │
-└─────────────────────────────────────────┘
-```
+**What changes:**
+- Replace the iframe with Wistia's native `<wistia-player>` web component
+- Load Wistia's player script (`fast.wistia.com/player.js`)
+- Use CSS to style the player controls and potentially hide them faster
+
+**Benefits:**
+- Access to the full Wistia JavaScript API
+- Can programmatically control when controls appear/disappear
+- Better integration with React lifecycle
 
 ---
 
-#### 2. Update `src/App.tsx`
-- Add lazy import for `PersonalizedLearning`
-- Add route: `/personalized-learning`
+#### Option 2: Minimize Playbar Visibility
+Add Wistia parameters to reduce the playbar footprint:
+
+**Parameters to add:**
+- `playbar=false` - Removes the playbar entirely (users would need to click to pause/play)
+- `smallPlayButton=true` - Uses a smaller play button
+- `settingsControl=false` - Hides settings gear
+- `volumeControl=false` - Hides volume control
+
+**Tradeoff:** Removes useful controls, which may hurt user experience.
 
 ---
 
-#### 3. Update `src/lib/trainingLinks.ts`
-- Add link mapping: `"Personalized Learning Experience": "/personalized-learning"`
+#### Option 3: Use Popover Embed Style
+Use `popoverContent=html5` or `popoverContent=link` for a popover-style fullscreen that has different control behavior.
 
 ---
+
+### Recommended Approach: Option 1
+
+Switch to the Wistia JavaScript API embed for better control. This involves:
+
+1. **Update `src/components/VideoEmbed.tsx`:**
+   - Replace the iframe with Wistia's native `<wistia-player>` web component
+   - Add script loading for the Wistia player
+   - Configure player options including `controlsVisibleOnLoad: false`
+
+2. **Add CSS styling** to potentially customize the playbar opacity transition timing
 
 ### Technical Details
 
-**Video Embedding:**
-- Use the existing `VideoEmbed` component instead of raw Wistia embed code
-- Pass `videoId="axic12xcaf"` and appropriate title
-- Include `trackingMetadata` for analytics consistency
+**Current iframe approach (line 212):**
+```
+https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false
+```
 
-**Styling:**
-- Use `backgroundVariant="gradient"` for the page
-- Center the video with `max-w-4xl mx-auto`
-- Add rounded corners and shadow to the video container
-- Include descriptive caption below the video
+**New web component approach:**
+```jsx
+<wistia-player 
+  media-id={videoId}
+  aspect="1.7777777777777777"
+  controlsVisibleOnLoad="false"
+/>
+```
+
+**Required scripts (loaded dynamically):**
+```html
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/${videoId}.js" async type="module"></script>
+```
+
+### Important Note
+Wistia's auto-hide timing is controlled by their player internally. Even with the JavaScript API, there's no official `autoHideDelay` parameter. The best we can do is:
+1. Start with controls hidden (`controlsVisibleOnLoad: false`) ✅ Already done
+2. Use the native web component for slightly better default behavior
+3. Consider removing some controls to reduce visual clutter
 
