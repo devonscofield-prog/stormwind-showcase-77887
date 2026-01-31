@@ -1,81 +1,141 @@
 
 
-## Plan: Make Wistia Video Controls Disappear Faster
+## Plan: Enhance Personalized Learning Experience Page
 
-### The Issue
-The Wistia player's playbar (green navigation/controls bar) at the bottom of the video stays visible too long during fullscreen mode before auto-hiding.
+### Overview
+Add comprehensive content from the PDF to the Personalized Learning Experience page, matching the aesthetic of other Platform Feature pages (like AILearning, EnterpriseReporting, and Phishing).
 
-### Available Solutions
+### Content from PDF to Add
 
-#### Option 1: Switch to Wistia JavaScript API (Recommended)
-Switch from the iframe embed to Wistia's standard inline embed, which gives access to the JavaScript Player API for finer control over player behavior.
+The PDF reveals **7 powerful tools** that make up the Personalized Learning Experience:
 
-**What changes:**
-- Replace the iframe with Wistia's native `<wistia-player>` web component
-- Load Wistia's player script (`fast.wistia.com/player.js`)
-- Use CSS to style the player controls and potentially hide them faster
+| Tool | Description |
+|------|-------------|
+| **Study Notes** | Instant notes capturing key points, so learners stay focused |
+| **Realtime Exam** | See practice questions as instructors mention them, reinforcing learning |
+| **Topic Guide** | A complete map of every video lets learners jump to specific topics |
+| **Fast Track** | Save hours skipping over material you already know |
+| **StormAI Examiner** | Generate unlimited practice tests on the fly for any topic |
+| **Flashcards** | Built-in flashcards for quick review, all downloadable |
+| **Highlights** | Search any keyword to see exactly where topics appear across the course |
 
-**Benefits:**
-- Access to the full Wistia JavaScript API
-- Can programmatically control when controls appear/disappear
-- Better integration with React lifecycle
-
----
-
-#### Option 2: Minimize Playbar Visibility
-Add Wistia parameters to reduce the playbar footprint:
-
-**Parameters to add:**
-- `playbar=false` - Removes the playbar entirely (users would need to click to pause/play)
-- `smallPlayButton=true` - Uses a smaller play button
-- `settingsControl=false` - Hides settings gear
-- `volumeControl=false` - Hides volume control
-
-**Tradeoff:** Removes useful controls, which may hurt user experience.
+**Key messaging:**
+- "Seven tools. One personalized experience."
+- "Skill up faster while saving up to 80% of your time!"
+- Personalization setup: experience level + goals + custom highlights
 
 ---
 
-#### Option 3: Use Popover Embed Style
-Use `popoverContent=html5` or `popoverContent=link` for a popover-style fullscreen that has different control behavior.
+### Page Structure
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  Navigation + Breadcrumb                                    │
+├─────────────────────────────────────────────────────────────┤
+│  Hero: Title + Description + Sparkles Icon                  │
+├─────────────────────────────────────────────────────────────┤
+│  Video Embed (existing - KEEP AS IS)                        │
+│  Caption: "Watch the full product walkthrough"              │
+├─────────────────────────────────────────────────────────────┤
+│  Section: "Seven Tools. One Personalized Experience."       │
+│  ┌─────────┬─────────┬─────────┬─────────┐                  │
+│  │ Study   │ Realtime│ Topic   │ Fast    │                  │
+│  │ Notes   │ Exam    │ Guide   │ Track   │                  │
+│  ├─────────┼─────────┼─────────┼─────────┤                  │
+│  │ StormAI │ Flash   │ High-   │ (empty) │                  │
+│  │ Examiner│ cards   │ lights  │         │                  │
+│  └─────────┴─────────┴─────────┴─────────┘                  │
+├─────────────────────────────────────────────────────────────┤
+│  Highlight Card: "Save up to 80% of your time"              │
+├─────────────────────────────────────────────────────────────┤
+│  Section: "Personalize Your Experience"                     │
+│  3-step flow showing the setup process:                     │
+│  1. Choose Experience Level                                 │
+│  2. Set Your Goals                                          │
+│  3. Create Custom Highlights                                │
+├─────────────────────────────────────────────────────────────┤
+│  Section: "Tool Categories"                                 │
+│  Three category cards:                                      │
+│  - Enhanced Study (Study Notes + Realtime Exam)             │
+│  - Targeted Learning (Topic Guide + Fast Track)             │
+│  - Practice & Review (StormAI Examiner + Flashcards)        │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-### Recommended Approach: Option 1
+### Files to Modify
 
-Switch to the Wistia JavaScript API embed for better control. This involves:
+#### 1. `src/pages/PersonalizedLearning.tsx`
 
-1. **Update `src/components/VideoEmbed.tsx`:**
-   - Replace the iframe with Wistia's native `<wistia-player>` web component
-   - Add script loading for the Wistia player
-   - Configure player options including `controlsVisibleOnLoad: false`
+**Keep existing:**
+- Video embed with ID `axic12xcaf` (unchanged)
+- PageLayout wrapper with Sparkles icon
+- usePageView analytics hook
 
-2. **Add CSS styling** to potentially customize the playbar opacity transition timing
+**Add new content:**
+
+1. **Update description** to match PDF messaging:
+   - "StormWind's Personalized Learning Experience adapts to each learner, delivering seven powerful tools that maximize ROI on every training hour. Skill up faster while saving up to 80% of your time!"
+
+2. **Section: Seven Tools Grid** (using BentoGrid + BentoCard):
+   - 7 cards in a responsive grid (4 columns on desktop)
+   - Each card with appropriate icon, title, and description
+   - Icons to use:
+     - Study Notes: `FileText`
+     - Realtime Exam: `Clock` or `Timer`
+     - Topic Guide: `LayoutGrid` or `Map`
+     - Fast Track: `FastForward` or `Zap`
+     - StormAI Examiner: `Brain` or `Bot`
+     - Flashcards: `Layers` or `Copy`
+     - Highlights: `Search` or `Highlighter`
+
+3. **Highlight Card** (gradient background):
+   - "Save up to 80% of your time!"
+   - Emphasize the ROI/efficiency message
+
+4. **Section: Personalize Your Experience** (3-step flow):
+   - Step 1: "Choose Your Experience" - First time watching vs. already know material
+   - Step 2: "Set Your Goals" - Certification, real-world prep, or specific topics
+   - Step 3: "Create Custom Highlights" - Enter topics for StormAI to mark on timeline
+
+5. **Section: Tool Categories** (3 gradient cards):
+   - "Enhanced Study" - Study Notes + Realtime Exam
+   - "Targeted Learning" - Topic Guide + Fast Track
+   - "Practice & Review" - StormAI Examiner + Flashcards + Highlights
+
+---
 
 ### Technical Details
 
-**Current iframe approach (line 212):**
-```
-https://fast.wistia.net/embed/iframe/${videoId}?seo=true&videoFoam=true&controlsVisibleOnLoad=false
+**Imports to add:**
+```typescript
+import { 
+  FileText, 
+  Timer, 
+  LayoutGrid, 
+  FastForward, 
+  Brain, 
+  Layers, 
+  Search,
+  Zap,
+  Target,
+  GraduationCap,
+  Lightbulb
+} from "lucide-react";
+import { BentoGrid } from "@/components/BentoGrid";
+import { BentoCard } from "@/components/BentoCard";
 ```
 
-**New web component approach:**
-```jsx
-<wistia-player 
-  media-id={videoId}
-  aspect="1.7777777777777777"
-  controlsVisibleOnLoad="false"
-/>
-```
+**Styling patterns to follow:**
+- Use `BentoGrid columns={4}` for the 7 tools section (matching AILearning page)
+- Use gradient cards (`bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10`) for highlight sections
+- Use numbered step indicators (`w-8 h-8 rounded-full bg-primary text-primary-foreground`) for the 3-step flow (matching Phishing page)
+- Add `animate-fade-in` for entrance animations
+- Section headers with icon + title pattern
 
-**Required scripts (loaded dynamically):**
-```html
-<script src="https://fast.wistia.com/player.js" async></script>
-<script src="https://fast.wistia.com/embed/${videoId}.js" async type="module"></script>
-```
-
-### Important Note
-Wistia's auto-hide timing is controlled by their player internally. Even with the JavaScript API, there's no official `autoHideDelay` parameter. The best we can do is:
-1. Start with controls hidden (`controlsVisibleOnLoad: false`) ✅ Already done
-2. Use the native web component for slightly better default behavior
-3. Consider removing some controls to reduce visual clutter
+**Responsive behavior:**
+- 7 tools: 1 column mobile, 2 columns tablet, 4 columns desktop
+- 3-step flow: Stacked on mobile, horizontal on desktop
+- Tool categories: 1 column mobile, 3 columns desktop
 
