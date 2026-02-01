@@ -1,181 +1,141 @@
 
 
-## Plan: Add Course Links to Course Catalog
+## Plan: Add Eye-Catching "New AI Feature" Banner to Homepage
 
 ### Overview
-Add clickable links to all courses in the Course Catalog page, enabling users to click on any course and be directed to the corresponding StormWind Studios course page.
+Add a prominent, attention-grabbing section to the main page that directs users to the Personalized Learning Experience page. This will be positioned strategically between the Hero and the tabbed content section to maximize visibility.
 
-### Scope Analysis
+### Design Approach
 
-**PDF Content:**
-- The PDF contains a mapping of course names to their corresponding URLs on `stormwindstudios.com`
-- Only the first 50 pages were parsed (~3,400 lines of content)
-- Pattern: Course links follow the format `https://stormwindstudios.com/courses/[course-slug]/`
+The banner will follow a "Linear-style" aesthetic with extra flair to make it stand out as something special:
 
-**Current Implementation:**
-- Courses are stored as strings or objects (`{ name: string; isBytes?: boolean; isComingSoon?: boolean; isWebinar?: boolean }`)
-- The Courses.tsx file is ~5,000 lines with extensive course data
-- Courses are displayed as text without links
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│     ✨ NEW                                                                  │
+│                                                                             │
+│     ██████  ███████ ██████  ███████  ██████  ███    ██  █████  ██           │
+│     Personalized AI Learning Experience                                     │
+│                                                                             │
+│     Seven powerful tools that adapt to YOU. Skill up faster while           │
+│     saving up to 80% of your time.                                          │
+│                                                                             │
+│                    [ Discover Now →  ]                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
-### Implementation Strategy
+### Visual Design Elements
 
-Due to the large volume of courses (potentially thousands), this needs to be done in **phases** to ensure accuracy:
+1. **Animated "NEW" Badge**: Pulsing/glowing badge with sparkle effects
+2. **Gradient Border**: Animated gradient border that shifts colors (teal to green)
+3. **Background Effects**: Subtle aurora/glow effect behind the content
+4. **Icon Animation**: Sparkles icon with continuous animation
+5. **CTA Button**: Magnetic effect button (matching Hero pattern) with hover glow
+6. **Glass morphism**: Backdrop blur with semi-transparent background
 
----
+### Component Structure
 
-### Phase 1: Create URL Generation Utility
-
-Create a utility function that converts course names to StormWind URL slugs:
+Create a new component `AIFeatureBanner.tsx` that includes:
 
 ```typescript
-// src/lib/courseUrlUtils.ts
-
-/**
- * Converts a course name to a StormWind Studios URL
- * Pattern: lowercase, replace spaces/special chars with hyphens
- * Example: "CompTIA Security+ (SY0-701)" → "comptia-security-sy0-701"
- */
-export const getCourseUrl = (courseName: string): string => {
-  const slug = courseName
-    .toLowerCase()
-    .replace(/[&]/g, 'and')
-    .replace(/[+]/g, '')
-    .replace(/[()]/g, '')
-    .replace(/[:;,.']/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-  
-  return `https://stormwindstudios.com/courses/${slug}/`;
-};
+// Key visual features:
+- Animated gradient border using CSS animation
+- "NEW" badge with pulse animation
+- Sparkles icon with glow effect
+- Glass morphism card styling
+- Magnetic CTA button (reusing Hero pattern)
+- Link to /personalized-learning
 ```
 
----
+### Technical Implementation
 
-### Phase 2: Update Course Data Type
-
-Extend the Course type to support optional URLs:
+#### 1. Create `src/components/AIFeatureBanner.tsx`
 
 ```typescript
-type Course = string | { 
-  name: string; 
-  isBytes?: boolean; 
-  isComingSoon?: boolean; 
-  isWebinar?: boolean;
-  url?: string;  // Optional explicit URL override
-};
+import { Link } from "react-router-dom";
+import { Sparkles, ArrowRight, Zap } from "lucide-react";
+
+// Features:
+- Animated gradient border (keyframe animation)
+- Pulsing "NEW" badge
+- Sparkles icon with glow
+- Magnetic button effect (from Hero)
+- Tool preview icons
+- Link to /personalized-learning
 ```
 
----
+**Styling Details:**
+- Background: `bg-gradient-to-br from-primary/10 via-background to-primary/5` with `backdrop-blur-xl`
+- Border: Animated gradient using pseudo-element with rotating colors
+- Badge: `bg-primary text-primary-foreground` with `animate-pulse`
+- Card: `rounded-2xl` with `shadow-2xl shadow-primary/20`
+- Text: Large heading with glow effect (matching Hero style)
 
-### Phase 3: Update Course Display Component
+#### 2. Update `src/pages/Index.tsx`
 
-Modify the course rendering to make courses clickable:
+- Import the new `AIFeatureBanner` component
+- Place it between the Hero section and the tabbed content section
+- Add appropriate spacing (`py-12` or similar)
 
-```tsx
-// Current (line ~4880-4917 in Courses.tsx)
-<p className="text-xs sm:text-sm leading-snug text-foreground">
-  {courseName}
-</p>
+### Placement on Page
 
-// New: Wrap in anchor tag
-<a 
-  href={courseUrl} 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="text-xs sm:text-sm leading-snug text-foreground hover:text-primary transition-colors underline-offset-2 hover:underline"
->
-  {courseName}
-</a>
+```text
+┌──────────────────────────────────────┐
+│              NAVIGATION              │
+├──────────────────────────────────────┤
+│                                      │
+│               HERO                   │
+│   "Empowering the Future of..."      │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│      ✨ AI FEATURE BANNER ✨         │  <-- NEW SECTION
+│      (Links to /personalized-...)    │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│           TABBED CONTENT             │
+│   Enterprise IT | PM | Phishing...   │
+│                                      │
+└──────────────────────────────────────┘
 ```
 
----
+### Copy/Messaging Options
 
-### Phase 4: Create Override Mapping for Special Cases
+**Badge Text:**
+- "NEW" or "NEW AI FEATURE" or "INCREDIBLE NEW FEATURE"
 
-For courses where the auto-generated URL doesn't match, create an explicit mapping file:
+**Headline:**
+- "Personalized AI Learning Experience"
+- "Meet Your AI-Powered Learning Assistant"
+- "Introducing: Seven Tools. One Personalized Experience."
 
-```typescript
-// src/lib/courseUrlOverrides.ts
+**Subtext:**
+- "StormWind's newest innovation adapts to each learner, delivering seven powerful tools that maximize ROI on every training hour. Skill up faster while saving up to 80% of your time!"
 
-export const courseUrlOverrides: Record<string, string> = {
-  // Special cases where auto-generation doesn't work
-  "CompTIA A+ Core 1 (220-1201)": "https://stormwindstudios.com/courses/comptia-a-core-1-220-1201-v15/",
-  "CompTIA A+ Core 2 (220-1202)": "https://stormwindstudios.com/courses/comptia-a-core-2-220-1202-v15/",
-  // ... more overrides as needed
-};
-```
+**CTA Button:**
+- "Discover Now" or "Experience It" or "Learn More"
 
----
+### Animation Details
 
-### Phase 5: Verification Process
+1. **Border Animation**: Rotating gradient using `@keyframes` (360deg rotation over 4-6 seconds)
+2. **Badge Pulse**: `animate-pulse` from Tailwind
+3. **Icon Glow**: Box-shadow with primary color, pulsing
+4. **Entrance Animation**: `animate-fade-in` when scrolled into view
+5. **Button Magnetic Effect**: Reuse the `MagneticButton` component pattern from Hero
 
-Since accuracy is critical, the implementation will include:
+### Files to Create/Modify
 
-1. **Batch Processing**: Process courses in batches of ~100-200 to verify URL generation
-2. **Cross-Reference**: Compare generated URLs against PDF-provided URLs
-3. **Manual Override File**: Store exceptions where auto-generation fails
-4. **Testing**: Use the browser tool to verify random samples of course links work correctly
+| File | Action |
+|------|--------|
+| `src/components/AIFeatureBanner.tsx` | Create new component |
+| `src/pages/Index.tsx` | Import and add banner between Hero and tabs |
 
----
+### Mobile Responsiveness
 
-### Technical Details
-
-**Files to Create:**
-- `src/lib/courseUrlUtils.ts` - URL generation utility
-- `src/lib/courseUrlOverrides.ts` - Manual overrides for special cases
-
-**Files to Modify:**
-- `src/pages/Courses.tsx` - Update course rendering to include links
-
-**URL Generation Logic:**
-Based on PDF analysis, StormWind URLs follow this pattern:
-- All lowercase
-- Spaces become hyphens
-- Special characters removed or converted:
-  - `+` → removed
-  - `&` → "and"
-  - Parentheses → removed
-  - Colons, commas, periods → removed
-  - Multiple hyphens → single hyphen
-
-**Example Transformations:**
-| Course Name | Generated URL |
-|-------------|---------------|
-| "CompTIA Security+ (SY0-701)" | `/courses/comptia-security-sy0-701/` |
-| "Excel 365 Advanced" | `/courses/excel-365-advanced/` |
-| "ChatGPT for IT Professionals" | `/courses/chatgpt-for-it-professionals/` |
-| "A Guide to Healthy Communication" | `/courses/a-guide-to-healthy-communication/` |
-
----
-
-### Risk Mitigation
-
-1. **External Links Open in New Tab**: All course links will use `target="_blank"` to preserve user's place in the catalog
-
-2. **Fallback Behavior**: If a URL doesn't work, users can still see the course name and search for it manually
-
-3. **Progressive Enhancement**: The catalog remains fully functional even if JavaScript fails
-
----
-
-### Implementation Order
-
-1. Create `courseUrlUtils.ts` with URL generation function
-2. Create `courseUrlOverrides.ts` with known special cases from PDF
-3. Update `Courses.tsx` to:
-   - Import the utility functions
-   - Generate URLs for each course
-   - Wrap course names in anchor tags
-4. Test a sample of courses to verify links work
-5. Iterate on the override file as needed for edge cases
-
----
-
-### Expected Outcome
-
-- All courses in the catalog will be clickable links
-- Links open in new tabs to `stormwindstudios.com/courses/[slug]/`
-- Consistent hover styling indicates clickability
-- Special cases are handled through the override mapping
+- Full width on mobile with reduced padding
+- Stacked layout on small screens
+- Smaller font sizes on mobile (`text-3xl md:text-4xl lg:text-5xl`)
+- Touch-friendly CTA button size
 
