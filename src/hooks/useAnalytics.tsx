@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
+import { getShareAttribution } from '@/hooks/useShareTracking';
 
 // Generate or retrieve session ID
 const getSessionId = (): string => {
@@ -89,7 +90,8 @@ export const useAnalytics = () => {
   // Track page view
   const trackPageView = useCallback((url: string, title: string) => {
     const { deviceType, browser, os } = getDeviceInfo();
-    
+    const { shareRef, shareClient, shareCompany } = getShareAttribution();
+
     bufferEvent({
       type: 'page_view',
       data: {
@@ -102,7 +104,10 @@ export const useAnalytics = () => {
         browser,
         os,
         screen_width: window.screen.width,
-        screen_height: window.screen.height
+        screen_height: window.screen.height,
+        share_ref: shareRef,
+        share_client: shareClient,
+        share_company: shareCompany,
       }
     });
 
@@ -117,6 +122,7 @@ export const useAnalytics = () => {
     eventValue?: string,
     metadata?: any
   ) => {
+    const { shareRef, shareClient, shareCompany } = getShareAttribution();
     bufferEvent({
       type: 'interaction',
       data: {
@@ -126,6 +132,9 @@ export const useAnalytics = () => {
         event_label: eventLabel,
         event_value: eventValue,
         page_url: window.location.pathname,
+        share_ref: shareRef,
+        share_client: shareClient,
+        share_company: shareCompany,
         ...metadata
       }
     });

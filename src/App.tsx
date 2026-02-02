@@ -56,6 +56,8 @@ const PersonalizedLearning = lazy(() => import("./pages/PersonalizedLearning"));
 
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
+const SharedLinkRedirect = lazy(() => import("./pages/SharedLinkRedirect"));
+const MySharedLinks = lazy(() => import("./pages/MySharedLinks"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
@@ -113,6 +115,8 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/personalized-learning" element={<PersonalizedLearning />} />
             
+            <Route path="/s/:shortCode" element={<SharedLinkRedirect />} />
+            <Route path="/my-shared-links" element={<MySharedLinks />} />
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/analytics-dashboard" element={
               <ProtectedRoute requireAdmin>
