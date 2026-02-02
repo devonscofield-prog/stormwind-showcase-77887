@@ -58,10 +58,10 @@ const PersonalizedLearningBanner = () => {
             style={tiltStyle}
             className="relative overflow-hidden rounded-2xl"
           >
-            {/* Animated shimmer border */}
+            {/* Animated shimmer border - pointer-events-none to allow clicks through */}
             <div
               className={cn(
-                "absolute inset-0 rounded-2xl p-[2px] transition-opacity duration-300",
+                "absolute inset-0 rounded-2xl transition-opacity duration-300 pointer-events-none",
                 isHovered ? "opacity-100" : "opacity-70"
               )}
               style={{
@@ -69,86 +69,86 @@ const PersonalizedLearningBanner = () => {
                 backgroundSize: "300% 100%",
                 animation: "shimmer-border 3s ease infinite",
               }}
+            />
+
+            {/* Inner content container - has padding for border effect */}
+            <div
+              className={cn(
+                "relative m-[2px] rounded-[14px] bg-gradient-to-br from-card/95 via-background to-card/90 backdrop-blur-xl",
+                "p-6 md:p-8 lg:p-10"
+              )}
             >
-              {/* Inner content container */}
+              {/* Glow effect overlay */}
               <div
                 className={cn(
-                  "h-full w-full rounded-[14px] bg-gradient-to-br from-card/95 via-background to-card/90 backdrop-blur-xl",
-                  "p-6 md:p-8 lg:p-10"
+                  "absolute inset-0 rounded-[14px] transition-all duration-500 pointer-events-none",
+                  isHovered ? "opacity-100" : "opacity-0"
                 )}
-              >
-                {/* Glow effect overlay */}
-                <div
-                  className={cn(
-                    "absolute inset-0 rounded-[14px] transition-all duration-500 pointer-events-none",
-                    isHovered ? "opacity-100" : "opacity-0"
-                  )}
-                  style={{
-                    boxShadow: "0 0 60px hsl(166 100% 30% / 0.3), inset 0 0 30px hsl(166 100% 30% / 0.05)",
-                  }}
-                />
+                style={{
+                  boxShadow: "0 0 60px hsl(166 100% 30% / 0.3), inset 0 0 30px hsl(166 100% 30% / 0.05)",
+                }}
+              />
 
-                {/* Content Layout */}
-                <div className="relative flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-                  {/* Icon with pulsing glow */}
-                  <div className="relative flex-shrink-0">
-                    <div
-                      className={cn(
-                        "absolute inset-0 rounded-full blur-xl transition-opacity duration-500",
-                        isHovered ? "opacity-60" : "opacity-30"
-                      )}
-                      style={{ background: "hsl(166 100% 30% / 0.5)" }}
-                    />
-                    <div
-                      className={cn(
-                        "relative w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center",
-                        "bg-primary/10 border border-primary/20"
-                      )}
-                      style={{
-                        animation: "glow-pulse 2s ease-in-out infinite",
-                      }}
-                    >
-                      <Sparkles
-                        className={cn(
-                          "w-8 h-8 md:w-10 md:h-10 text-primary transition-transform duration-300",
-                          isHovered && "scale-110"
-                        )}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Text Content */}
-                  <div className="flex-1 text-center sm:text-left">
-                    <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
-                      <Badge className="bg-primary text-primary-foreground uppercase tracking-wider text-[10px] font-bold px-2.5 py-0.5 animate-pulse">
-                        New
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground mb-2">
-                      Personalized Learning Experience
-                    </h3>
-                    <p className="text-sm md:text-base text-muted-foreground max-w-lg">
-                      Seven AI-powered tools. One customized journey. 
-                      <span className="font-semibold text-primary"> Save up to 80%</span> of your training time.
-                    </p>
-                  </div>
-
-                  {/* CTA */}
+              {/* Content Layout */}
+              <div className="relative flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                {/* Icon with pulsing glow */}
+                <div className="relative flex-shrink-0">
                   <div
                     className={cn(
-                      "flex items-center gap-2 text-primary font-semibold text-sm md:text-base",
-                      "transition-all duration-300 flex-shrink-0",
-                      "sm:self-center"
+                      "absolute inset-0 rounded-full blur-xl transition-opacity duration-500 pointer-events-none",
+                      isHovered ? "opacity-60" : "opacity-30"
                     )}
+                    style={{ background: "hsl(166 100% 30% / 0.5)" }}
+                  />
+                  <div
+                    className={cn(
+                      "relative w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center",
+                      "bg-primary/10 border border-primary/20"
+                    )}
+                    style={{
+                      animation: "glow-pulse 2s ease-in-out infinite",
+                    }}
                   >
-                    <span className="whitespace-nowrap">Explore Now</span>
-                    <ArrowRight
+                    <Sparkles
                       className={cn(
-                        "w-4 h-4 md:w-5 md:h-5 transition-transform duration-300",
-                        isHovered && "translate-x-1"
+                        "w-8 h-8 md:w-10 md:h-10 text-primary transition-transform duration-300",
+                        isHovered && "scale-110"
                       )}
                     />
                   </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
+                    <Badge className="bg-primary text-primary-foreground uppercase tracking-wider text-[10px] font-bold px-2.5 py-0.5 animate-pulse">
+                      New
+                    </Badge>
+                  </div>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground mb-2">
+                    Personalized Learning Experience
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground max-w-lg">
+                    Seven AI-powered tools. One customized journey. 
+                    <span className="font-semibold text-primary"> Save up to 80%</span> of your training time.
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <div
+                  className={cn(
+                    "flex items-center gap-2 text-primary font-semibold text-sm md:text-base",
+                    "transition-all duration-300 flex-shrink-0",
+                    "sm:self-center"
+                  )}
+                >
+                  <span className="whitespace-nowrap">Explore Now</span>
+                  <ArrowRight
+                    className={cn(
+                      "w-4 h-4 md:w-5 md:h-5 transition-transform duration-300",
+                      isHovered && "translate-x-1"
+                    )}
+                  />
                 </div>
               </div>
             </div>
