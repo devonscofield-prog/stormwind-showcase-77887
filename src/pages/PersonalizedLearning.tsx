@@ -4,8 +4,8 @@ import {
   ClipboardCheck, 
   Map, 
   FastForward, 
-  Brain, 
-  RectangleHorizontal, 
+  Bot, 
+  Image, 
   Highlighter,
   Zap,
   Target,
@@ -39,12 +39,12 @@ const tools = [
     description: "Save hours by skipping over material you already know and focus on what matters."
   },
   {
-    icon: Brain,
+    icon: Bot,
     title: "StormAI Examiner",
     description: "Generate unlimited practice tests on the fly for any topic you're studying."
   },
   {
-    icon: RectangleHorizontal,
+    icon: Image,
     title: "Flashcards",
     description: "Built-in flashcards for quick review, all downloadable for offline study sessions."
   },
