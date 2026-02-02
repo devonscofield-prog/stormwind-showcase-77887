@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Layers, Play, User } from "lucide-react";
+import { BookOpen, Layers, Play, User, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Course, instructorPhotos } from "@/lib/trainingSampleData";
 import { CourseThumbnail } from "./CourseThumbnail";
 import { getCategoryTheme, getTotalLessons, getVariantCount } from "@/lib/courseThemes";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { ShareDialog } from "./ShareDialog";
 
 interface CourseCardProps {
   course: Course;
@@ -169,20 +170,38 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
             )}
 
             {/* Stats Row */}
-            <div className="flex items-center gap-4 pt-3 border-t border-white/5">
-              {/* Lessons count */}
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>{totalLessons} lessons</span>
-              </div>
-              
-              {/* Variants count */}
-              {variantCount > 1 && (
+            <div className="flex items-center justify-between pt-3 border-t border-white/5">
+              <div className="flex items-center gap-4">
+                {/* Lessons count */}
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>{variantCount} variants</span>
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>{totalLessons} lessons</span>
                 </div>
-              )}
+
+                {/* Variants count */}
+                {variantCount > 1 && (
+                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>{variantCount} variants</span>
+                  </div>
+                )}
+              </div>
+              <ShareDialog
+                courseId={course.id}
+                courseTitle={course.title}
+                trigger={
+                  <button
+                    onClick={(e) => e.preventDefault()}
+                    className={cn(
+                      "p-1.5 rounded-md transition-all duration-200",
+                      "text-muted-foreground/60 hover:text-primary hover:bg-primary/10"
+                    )}
+                    title="Share this course"
+                  >
+                    <Share2 className="w-3.5 h-3.5" />
+                  </button>
+                }
+              />
             </div>
           </CardContent>
 

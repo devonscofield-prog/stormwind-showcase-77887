@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { 
-  Menu, X, Moon, Sun, ChevronDown, Type, Calendar,
+import {
+  Menu, X, Moon, Sun, ChevronDown, Type, Calendar, Share2,
   // Topic Icons
-  Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones, 
+  Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones,
   AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck,
   // Platform Feature Icons
   UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap, Award, Sparkles
@@ -101,6 +101,12 @@ export const Navigation = () => {
             <Link to="/ranges">
               <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
                 Ranges
+              </Button>
+            </Link>
+            <Link to="/my-shared-links">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
+                <Share2 className="w-4 h-4 mr-2" />
+                Shared Links
               </Button>
             </Link>
             <Button
@@ -219,11 +225,20 @@ export const Navigation = () => {
               </Button>
             </a>
             <Link to="/ranges" onClick={() => setMobileMenuOpen(false)}>
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 Ranges
+              </Button>
+            </Link>
+            <Link to="/my-shared-links" onClick={() => setMobileMenuOpen(false)}>
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                Shared Links
               </Button>
             </Link>
             <Button
