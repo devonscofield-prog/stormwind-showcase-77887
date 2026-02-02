@@ -7,7 +7,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { ShareDialog } from "./ShareDialog";
 
 import {
   Accordion,
@@ -179,37 +178,27 @@ export const CoursePlayer = ({ course, initialVariantId, onBack }: CoursePlayerP
             Back to Courses
           </Button>
           
-          <div className="flex items-center gap-3">
-            {/* Share Button */}
-            <ShareDialog
-              courseId={course.id}
-              courseTitle={course.title}
-              variantId={selectedVariant.id}
-              variantName={selectedVariant.name}
-            />
-
-            {/* Variant Toggle */}
-            {course.variants.length > 1 && (
-              <div className="flex gap-2 bg-muted/50 p-1 rounded-lg">
-                {course.variants.map((variant) => (
-                  <Button
-                    key={variant.id}
-                    variant={selectedVariant.id === variant.id ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => handleVariantChange(variant.id)}
-                    className={cn(
-                      "transition-all duration-200",
-                      selectedVariant.id === variant.id
-                        ? "bg-primary text-primary-foreground shadow-lg"
-                        : "hover:bg-accent"
-                    )}
-                  >
-                    {variant.name}
-                  </Button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Variant Toggle */}
+          {course.variants.length > 1 && (
+            <div className="flex gap-2 bg-muted/50 p-1 rounded-lg">
+              {course.variants.map((variant) => (
+                <Button
+                  key={variant.id}
+                  variant={selectedVariant.id === variant.id ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => handleVariantChange(variant.id)}
+                  className={cn(
+                    "transition-all duration-200",
+                    selectedVariant.id === variant.id 
+                      ? "bg-primary text-primary-foreground shadow-lg" 
+                      : "hover:bg-accent"
+                  )}
+                >
+                  {variant.name}
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
 
 

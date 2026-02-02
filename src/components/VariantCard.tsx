@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Play, User, Zap, Sparkles, Share2 } from "lucide-react";
+import { BookOpen, Play, User, Zap, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { FlattenedCourseVariant, instructorPhotos } from "@/lib/trainingSampleData";
 import { CourseThumbnail } from "./CourseThumbnail";
 import { getCategoryTheme } from "@/lib/courseThemes";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { ShareDialog } from "./ShareDialog";
 
 interface VariantCardProps {
   variant: FlattenedCourseVariant;
@@ -161,29 +160,11 @@ export const VariantCard = ({ variant, className }: VariantCardProps) => {
             )}
 
             {/* Stats Row */}
-            <div className="flex items-center justify-between pt-3 border-t border-border/50">
+            <div className="flex items-center gap-4 pt-3 border-t border-border/50">
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{variant.lessonCount} lessons</span>
               </div>
-              <ShareDialog
-                courseId={variant.courseId}
-                courseTitle={variant.title}
-                variantId={variant.variantId}
-                variantName={variant.variantName}
-                trigger={
-                  <button
-                    onClick={(e) => e.preventDefault()}
-                    className={cn(
-                      "p-1.5 rounded-md transition-all duration-200",
-                      "text-muted-foreground hover:text-primary hover:bg-primary/10"
-                    )}
-                    title="Share this course"
-                  >
-                    <Share2 className="w-3.5 h-3.5" />
-                  </button>
-                }
-              />
             </div>
           </CardContent>
 
