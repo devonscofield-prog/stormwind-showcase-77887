@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import Hero from "@/components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
+import PersonalizedLearningBanner from "@/components/PersonalizedLearningBanner";
 
 // Lazy load heavy tab components
 const EnterpriseIT = lazy(() => import("@/components/EnterpriseIT"));
@@ -65,6 +66,9 @@ const Index = () => {
       <div className="pt-20 relative z-10">
         <Hero onTabChange={setActiveTab} />
       </div>
+
+      {/* Personalized Learning Banner - Featured Callout */}
+      <PersonalizedLearningBanner />
 
       {/* Tabbed Content Section - removed backdrop-blur for performance */}
       <section id="content-section" className="py-24 lg:py-32 scroll-mt-20 relative z-10 bg-gradient-to-br from-background via-background to-primary/5 rounded-t-3xl shadow-xl -mt-8">
