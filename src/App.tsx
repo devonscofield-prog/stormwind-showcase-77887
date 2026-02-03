@@ -52,7 +52,7 @@ const HRCompliancePage = lazy(() => import("./pages/HRCompliancePage"));
 const Courses = lazy(() => import("./pages/Courses"));
 const TrainingSamples = lazy(() => import("./pages/TrainingSamples"));
 const Contact = lazy(() => import("./pages/Contact"));
-const PersonalizedLearning = lazy(() => import("./pages/PersonalizedLearning"));
+const StormAILearning = lazy(() => import("./pages/PersonalizedLearning"));
 
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
@@ -111,7 +111,8 @@ const App = () => (
             <Route path="/training-samples/:courseId" element={<TrainingSamples />} />
             <Route path="/training-samples/:courseId/:variantId" element={<TrainingSamples />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/personalized-learning" element={<PersonalizedLearning />} />
+            <Route path="/stormai-learning" element={<StormAILearning />} />
+            <Route path="/personalized-learning" element={<Navigate to="/stormai-learning" replace />} />
             
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/analytics-dashboard" element={

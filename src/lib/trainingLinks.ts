@@ -37,5 +37,5 @@ export const trainingLinks: Record<string, string> = {
   "Course Catalog": "/courses",
   
   // Features
-  "StormAI Learning": "/personalized-learning",
+  "StormAI Learning": "/stormai-learning",
 };

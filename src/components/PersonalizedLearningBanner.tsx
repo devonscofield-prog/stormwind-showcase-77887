@@ -49,7 +49,7 @@ const PersonalizedLearningBanner = () => {
       aria-label="StormAI Learning Feature"
     >
       <div className="container mx-auto max-w-4xl">
-        <Link to="/personalized-learning" className="block group">
+        <Link to="/stormai-learning" className="block group">
           <div
             ref={cardRef}
             onMouseEnter={() => setIsHovered(true)}
