@@ -6,6 +6,7 @@
  * 
  * Last updated: 2026-02-03
  * Source: stormwind_courses PDF documentation (pages 1-50, courses A-I)
+ * Note: PDF only contains first 50 pages - remaining courses (J-Z) have limited verified URLs
  */
 
 export const verifiedCourseUrls: Record<string, string> = {
@@ -204,12 +205,28 @@ export const verifiedCourseUrls: Record<string, string> = {
   "Ethics Essentials": "https://stormwindstudios.com/courses/ethics-essentials/",
   "Ethics for Employees: Benefits Of Workplace Ethics": "https://stormwindstudios.com/courses/ethics-for-employees-benefits-of-workplace-ethics/",
 
-  // G courses
+  // G courses (from PDF pages 43-44)
+  "Google Classroom Foundations": "https://stormwindstudios.com/courses/google-classroom-foundations/",
+  "Google Docs Beginner": "https://stormwindstudios.com/courses/google-docs-beginner/",
+  "Google Drive Beginner": "https://stormwindstudios.com/courses/google-drive-beginner/",
+  "Google Forms Beginner": "https://stormwindstudios.com/courses/google-forms-beginner/",
+  "Google Kubernetes Engine (GKE)": "https://stormwindstudios.com/courses/google-kubernetes-engine-gke/",
+  "Google Meets Foundations": "https://stormwindstudios.com/courses/google-meets-foundations/",
+  "Google Sheets Beginner": "https://stormwindstudios.com/courses/google-sheets-beginner/",
+  "Google Slides Foundations": "https://stormwindstudios.com/courses/google-slides-foundations/",
+  "Google Workspace Administration": "https://stormwindstudios.com/courses/google-workspace-administration/",
+  "Grafana Loki": "https://stormwindstudios.com/courses/grafana-loki/",
+  "Grant Writing For Beginners": "https://stormwindstudios.com/courses/grant-writing-for-beginners/",
+  "GraphQL Crash Course": "https://stormwindstudios.com/courses/graphql-crash-course/",
+  "Grief at Work: Coping Strategies": "https://stormwindstudios.com/courses/grief-at-work-coping-strategies/",
+  "Grief at Work: Supporting Your Employees": "https://stormwindstudios.com/courses/grief-at-work-supporting-your-employees/",
+  "Grief at Work: The Loss Of A Coworker": "https://stormwindstudios.com/courses/grief-at-work-the-loss-of-a-coworker/",
+  "Guarding Against Email Attachments": "https://stormwindstudios.com/courses/guarding-against-email-attachments/",
   "Guarding Your Email Account": "https://stormwindstudios.com/courses/guarding-your-email-account/",
   "Guarding Your Passwords": "https://stormwindstudios.com/courses/guarding-your-passwords/",
   "Guiding Strategies for IT Security": "https://stormwindstudios.com/courses/guiding-strategies-for-it-security/",
 
-  // H courses
+  // H courses (from PDF pages 44-45)
   "Handling Anger From Your Employees": "https://stormwindstudios.com/courses/handling-anger-from-your-employees/",
   "Handling Angry Customers: Assessing The Situation": "https://stormwindstudios.com/courses/handling-angry-customers-assessing-the-situation/",
   "Handling Angry Customers: Ending An Interaction Safely": "https://stormwindstudios.com/courses/handling-angry-customers-ending-an-interaction-safely/",
@@ -222,7 +239,7 @@ export const verifiedCourseUrls: Record<string, string> = {
   "Having Great Conversations (Part 1 of 4): The Conversational Mindset": "https://stormwindstudios.com/courses/having-great-conversations-part-1-of-4-the-conversational-mindset/",
   "Having Great Conversations (Part 2 of 4): Mastering Small Talk": "https://stormwindstudios.com/courses/having-great-conversations-part-2-of-4-mastering-small-talk/",
 
-  // I courses
+  // I courses (from PDF pages 48-50)
   "I Respectfully Disagree: The Disagreement Divide": "https://stormwindstudios.com/courses/i-respectfully-disagree-the-disagreement-divide/",
   "I Respectfully Disagree: The Problem, The Solution And The Tortoise": "https://stormwindstudios.com/courses/i-respectfully-disagree-the-problem-the-solution-and-the-tortoise/",
   "I Respectfully Disagree: Top 10 Tips For Individuals, Leaders And Politics": "https://stormwindstudios.com/courses/i-respectfully-disagree-top-10-tips-for-individuals-leaders-and-politics/",
