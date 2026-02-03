@@ -1,15 +1,16 @@
 import { 
   Sparkles, 
   FileText, 
-  ClipboardCheck, 
-  Map, 
+  Timer, 
+  LayoutGrid, 
   FastForward, 
-  Bot, 
-  Image, 
-  Highlighter,
+  Brain, 
+  Layers, 
+  Search,
   Zap,
   Target,
-  GraduationCap
+  GraduationCap,
+  Highlighter
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
@@ -24,12 +25,12 @@ const tools = [
     description: "Instant notes capturing key points, so learners stay focused on learning instead of note-taking."
   },
   {
-    icon: ClipboardCheck,
+    icon: Timer,
     title: "Realtime Exam",
     description: "See practice questions as instructors mention them, reinforcing learning in the moment."
   },
   {
-    icon: Map,
+    icon: LayoutGrid,
     title: "Topic Guide",
     description: "A complete map of every video lets learners jump directly to specific topics they need."
   },
@@ -39,17 +40,17 @@ const tools = [
     description: "Save hours by skipping over material you already know and focus on what matters."
   },
   {
-    icon: Bot,
+    icon: Brain,
     title: "StormAI Examiner",
     description: "Generate unlimited practice tests on the fly for any topic you're studying."
   },
   {
-    icon: Image,
+    icon: Layers,
     title: "Flashcards",
     description: "Built-in flashcards for quick review, all downloadable for offline study sessions."
   },
   {
-    icon: Highlighter,
+    icon: Search,
     title: "Highlights",
     description: "Search any keyword to see exactly where topics appear across the entire course."
   }
