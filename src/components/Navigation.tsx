@@ -40,7 +40,7 @@ const topicsMenuItems = [
 
 // Platform features menu items - flat array sorted logically
 const platformMenuItems = [
-  { label: "Personalized Learning", to: "/personalized-learning", icon: Sparkles, description: "Tailored experience" },
+  { label: "StormAI Learning", to: "/personalized-learning", icon: Sparkles, description: "Personalized experience" },
   { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
   { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
   { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },

@@ -96,13 +96,13 @@ const toolCategories = [
 ];
 
 const PersonalizedLearning = () => {
-  usePageView("Personalized Learning Experience");
+  usePageView("StormAI Learning");
 
   return (
     <PageLayout
-      title="Personalized Learning Experience"
-      description="StormWind's Personalized Learning Experience adapts to each learner, delivering seven powerful tools that maximize ROI on every training hour. Skill up faster while saving up to 80% of your time!"
-      breadcrumbs={[{ label: "Personalized Learning Experience" }]}
+      title="StormAI Learning"
+      description="StormAI Learning adapts to each learner, delivering seven powerful tools that maximize ROI on every training hour. Skill up faster while saving up to 80% of your time!"
+      breadcrumbs={[{ label: "StormAI Learning" }]}
       titleIcon={Sparkles}
       backgroundVariant="gradient"
     >
@@ -111,11 +111,11 @@ const PersonalizedLearning = () => {
         <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
           <VideoEmbed
             videoId="axic12xcaf"
-            title="Personalized Learning Experience"
+            title="StormAI Learning"
             trackingMetadata={{
-              courseName: "Personalized Learning Experience",
+              courseName: "StormAI Learning",
               variantName: "Overview",
-              lessonTitle: "Introduction to Personalized Learning",
+              lessonTitle: "Introduction to StormAI Learning",
             }}
           />
         </div>
