@@ -46,7 +46,7 @@ const PersonalizedLearningBanner = () => {
         "relative py-12 md:py-16 px-6 z-10 transition-all duration-700",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       )}
-      aria-label="Personalized Learning Experience Feature"
+      aria-label="StormAI Learning Feature"
     >
       <div className="container mx-auto max-w-4xl">
         <Link to="/personalized-learning" className="block group">
@@ -126,7 +126,7 @@ const PersonalizedLearningBanner = () => {
                     </Badge>
                   </div>
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground mb-2">
-                    Personalized Learning Experience
+                    StormAI Learning
                   </h3>
                   <p className="text-sm md:text-base text-muted-foreground max-w-lg">
                     Seven AI-powered tools. One customized journey. 
