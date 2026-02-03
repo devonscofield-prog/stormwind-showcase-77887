@@ -1,204 +1,184 @@
 
-
-## Plan: Add Prominent "Personalized Learning Experience" Feature Callout to Homepage
+## Plan: Cross-Reference and Validate All Course Links
 
 ### Overview
-Create an eye-catching, unmissable feature callout on the homepage that directs users to the Personalized Learning Experience page. This will be positioned prominently to ensure it's one of the first things visitors see.
+Audit every course link in the Course Catalog against the PDF mapping to ensure 100% accuracy. For courses without verified URLs, links will be disabled.
 
-### Design Concept: "Floating Feature Banner"
+### Scope of Work
 
-A premium, attention-grabbing component positioned between the Hero section and the tabbed content. The design will feature:
+**Current State:**
+- ~5,000 lines of courses in `Courses.tsx` (potentially 2,000+ individual courses)
+- ~150 manual URL overrides in `courseUrlOverrides.ts`
+- Auto-generation function that converts course names to URL slugs
 
-- **Animated shimmer/glow border** that pulses with the brand's teal/green accent colors
-- **Sparkles icon** with pulsing animation to match the Personalized Learning page branding
-- **Glassmorphism design** with backdrop blur for the Linear-style aesthetic
-- **Magnetic hover effect** (similar to Hero CTA buttons) for interactivity
-- **"NEW" badge** to emphasize innovation
-- **Staggered fade-in animation** for dramatic entrance
-
----
-
-### Visual Layout
-
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│                        HERO SECTION                              │
-│              "Empowering the Future of Learning"                 │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│  ✨ NEW FEATURE CALLOUT                                          │
-│  ╔═══════════════════════════════════════════════════════════╗  │
-│  ║  ┌──────┐                                                  ║  │
-│  ║  │ ✨   │  Personalized Learning Experience                ║  │
-│  ║  │ icon │  Seven AI-powered tools. One customized journey. ║  │
-│  ║  └──────┘  Save up to 80% of your training time.           ║  │
-│  ║                                                            ║  │
-│  ║                    [ Explore Now → ]                       ║  │
-│  ╚═══════════════════════════════════════════════════════════╝  │
-│  ↑ Animated glow border + shimmer effect                         │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                     TABBED CONTENT SECTION                       │
-│           Enterprise IT | Project Management | etc.              │
-└─────────────────────────────────────────────────────────────────┘
-```
+**PDF Data (First 50 Pages):**
+- Contains course-to-URL mappings for hundreds of courses
+- Some entries show explicit URLs, others show only "Link" placeholder
+- Only first 50 pages were parsed (~3,400 lines) - document likely has more pages
 
 ---
 
-### Implementation Details
+### Implementation Strategy
 
-#### 1. Create New Component: `PersonalizedLearningBanner.tsx`
+#### Phase 1: Build Complete URL Mapping from PDF
 
-A dedicated, reusable banner component with:
+Extract all explicit URL mappings from the PDF. Examples found:
 
-**Structure:**
-```tsx
-<section className="relative py-12 px-6">
-  <Link to="/personalized-learning">
-    {/* Animated glow border container */}
-    <div className="animated-glow-border">
-      {/* "NEW" badge */}
-      <span className="badge">NEW</span>
-      
-      {/* Icon with pulse animation */}
-      <Sparkles className="animate-pulse" />
-      
-      {/* Content */}
-      <h3>Personalized Learning Experience</h3>
-      <p>Seven AI-powered tools. One customized journey. 
-         Save up to 80% of your training time.</p>
-      
-      {/* CTA */}
-      <span>Explore Now <ArrowRight /></span>
-    </div>
-  </Link>
-</section>
+| Course Name (PDF) | URL |
+|-------------------|-----|
+| `Accelerating Front End Development With Chatgpt` | `https://stormwindstudios.com/courses/accelerating-front-end-development-with-chatgpt/` |
+| `CompTIA A Core 1 220 1201 V15` | `https://stormwindstudios.com/courses/comptia-a-core-1-220-1201-v15/` |
+| `Certified Kubernetes Administrator Cka` | `https://stormwindstudios.com/courses/certified-kubernetes-administrator-cka/` |
+
+**Key findings from PDF analysis:**
+- URL slugs use lowercase with hyphens
+- Numbers are preserved (e.g., `220-1201`)
+- Version numbers are included (e.g., `-v15`)
+- Special characters removed
+
+#### Phase 2: Create Safe URL Lookup Utility
+
+Modify the URL generation system to:
+1. Only return URLs for courses with **verified mappings**
+2. Return `null` for courses without verified URLs
+3. Remove guesswork from the slug generation
+
+**New Utility Function:**
+```typescript
+// Returns URL if verified, null if unknown
+export const getVerifiedCourseUrl = (courseName: string): string | null => {
+  // Check exact match in verified mappings
+  if (verifiedCourseUrls[courseName]) {
+    return verifiedCourseUrls[courseName];
+  }
+  
+  // Check normalized match
+  const normalized = normalizeName(courseName);
+  if (verifiedCourseUrls[normalized]) {
+    return verifiedCourseUrls[normalized];
+  }
+  
+  // No verified URL - don't guess
+  return null;
+};
 ```
 
-**Key Features:**
-- `Link` wrapper for navigation (supports open in new tab)
-- Animated gradient border using CSS `@keyframes` for shimmer effect
-- 3D tilt effect on hover (matching AnimatedFeatureCard)
-- Scale-up animation on hover
-- Sparkles icon with pulsing glow
-- ArrowRight icon that slides on hover
-- Responsive design (stacks vertically on mobile)
+#### Phase 3: Update Course Rendering
 
----
-
-#### 2. CSS Animations (in component or index.css)
-
-**Shimmer Border Animation:**
-```css
-@keyframes shimmer-border {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animated-border::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    hsl(166 100% 30%),
-    hsl(177 70% 41%),
-    hsl(160 64% 52%),
-    hsl(177 70% 41%),
-    hsl(166 100% 30%)
-  );
-  background-size: 300% 100%;
-  animation: shimmer-border 3s ease infinite;
-  z-index: -1;
-}
-```
-
-**Glow Pulse Animation:**
-```css
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px hsl(166 100% 30% / 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px hsl(166 100% 30% / 0.5);
-  }
-}
-```
-
----
-
-#### 3. Update `src/pages/Index.tsx`
-
-**Changes:**
-1. Import the new banner component
-2. Place it between the Hero section and the tabbed content section
-3. Add entrance animation with slight delay after Hero content loads
+Modify `Courses.tsx` to handle nullable URLs:
 
 ```tsx
-// After Hero, before Tabs section
-<PersonalizedLearningBanner />
+// Current
+const courseUrl = getCourseUrl(courseName);
+return (
+  <a href={courseUrl} target="_blank" ...>
+    {courseName}
+  </a>
+);
+
+// New
+const courseUrl = getVerifiedCourseUrl(courseName);
+return courseUrl ? (
+  <a href={courseUrl} target="_blank" ...>
+    {courseName}
+  </a>
+) : (
+  <span className="text-foreground">
+    {courseName}
+  </span>
+);
+```
+
+#### Phase 4: Build Verified URL Database
+
+Create a comprehensive mapping file from the PDF data. This will be a phased process:
+
+**Batch 1: Courses A-C** (~300 courses verified)
+**Batch 2: Courses D-H** (~300 courses verified)  
+**Batch 3: Courses I-M** (~300 courses verified)
+**Batch 4: Courses N-R** (~300 courses verified)
+**Batch 5: Courses S-Z** (~300 courses verified)
+
+Each batch will:
+1. Match PDF course names to catalog course names
+2. Handle variations in naming (e.g., colons, parentheses)
+3. Add verified mappings to the overrides file
+
+---
+
+### Technical Details
+
+**Files to Modify:**
+
+| File | Changes |
+|------|---------|
+| `src/lib/courseUrlUtils.ts` | Add `getVerifiedCourseUrl()` function that returns `null` for unverified courses |
+| `src/lib/courseUrlOverrides.ts` | Expand from ~150 to ~1,500+ verified mappings |
+| `src/pages/Courses.tsx` | Update to handle nullable URLs - show plain text for unverified courses |
+
+**Name Normalization Rules:**
+- Convert to lowercase
+- Remove colons, semicolons, periods, apostrophes
+- Replace `&` with `and`
+- Remove `+` symbols
+- Remove parentheses
+- Collapse multiple spaces/hyphens
+
+**Example Mappings from PDF:**
+
+```typescript
+export const courseUrlOverrides: Record<string, string> = {
+  // Existing mappings...
+  
+  // New verified mappings from PDF
+  "Accelerating Front End Development With ChatGPT": "https://stormwindstudios.com/courses/accelerating-front-end-development-with-chatgpt/",
+  "Access 2019 Advanced": "https://stormwindstudios.com/courses/access-2019-advanced/",
+  "Access 2019 Beginner": "https://stormwindstudios.com/courses/access-2019-beginner/",
+  "Access 365 Advanced": "https://stormwindstudios.com/courses/access-365-advanced/",
+  "Account Management: Establishing Lasting Partnerships": "https://stormwindstudios.com/courses/account-management-establishing-lasting-partnerships/",
+  // ... hundreds more
+};
 ```
 
 ---
 
-### Component Styling Specifications
+### Quality Assurance
 
-| Element | Specification |
-|---------|--------------|
-| **Container** | `max-w-4xl mx-auto`, rounded-2xl, glassmorphism background |
-| **Background** | `bg-gradient-to-br from-primary/5 via-background to-primary/10` with backdrop-blur-xl |
-| **Border** | Animated gradient border (shimmer effect) |
-| **"NEW" Badge** | `bg-primary text-primary-foreground`, uppercase, tracking-wider |
-| **Icon** | Sparkles, `w-10 h-10`, primary color with pulsing glow |
-| **Title** | `text-2xl md:text-3xl font-bold`, tracking-tight |
-| **Description** | `text-muted-foreground`, max 2 lines |
-| **CTA** | `text-primary font-semibold`, ArrowRight icon with hover translate-x |
-| **Hover** | Scale 1.02, intensified glow, 3D tilt effect |
+**Verification Process:**
+1. For each course in catalog, check against PDF mapping
+2. If exact match found → use PDF URL
+3. If normalized match found → use PDF URL  
+4. If no match → disable link (render as plain text)
 
----
-
-### Responsive Behavior
-
-| Breakpoint | Layout |
-|------------|--------|
-| **Mobile** (<640px) | Stacked layout, icon above text, full-width CTA button |
-| **Tablet** (640-1024px) | Horizontal layout, icon left, text center, CTA right |
-| **Desktop** (>1024px) | Same as tablet with larger padding and text sizes |
+**Testing:**
+- Sample 50 random courses to verify links work
+- Check for 404s by testing against live site
+- Ensure all PDF URLs are captured correctly
 
 ---
 
-### Files to Create/Modify
+### Expected Outcome
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `src/components/PersonalizedLearningBanner.tsx` | **Create** | New banner component |
-| `src/pages/Index.tsx` | **Modify** | Import and place banner between Hero and Tabs |
-
----
-
-### Accessibility Considerations
-
-- Use semantic `<section>` with appropriate ARIA label
-- Ensure sufficient color contrast for all text
-- Banner is wrapped in a `Link` component for proper navigation
-- Focus states visible and clear
-- Respects `prefers-reduced-motion` for animations
+| Metric | Before | After |
+|--------|--------|-------|
+| Courses with links | ~2000 (all) | Only verified (~1500+) |
+| Incorrect links | Unknown | 0 |
+| Missing links | 0 | ~500 (unverified courses show as plain text) |
 
 ---
 
-### Expected Result
+### Implementation Order
 
-When users land on the homepage, they will see:
-1. Hero section with typing animation
-2. **Immediately below:** A prominent, glowing banner showcasing the Personalized Learning Experience feature
-3. The banner will have animated borders and a "NEW" badge making it impossible to miss
-4. Clicking anywhere on the banner navigates to `/personalized-learning`
-5. Tabbed content section follows below
+1. **Update `courseUrlUtils.ts`** - Add verification layer
+2. **Update `Courses.tsx`** - Handle null URLs gracefully  
+3. **Expand `courseUrlOverrides.ts`** - Add all verified mappings from PDF in batches
+4. **Test** - Verify random sample of courses link correctly
 
+---
+
+### Important Notes
+
+- The PDF only contains first 50 pages, so some courses may not have verified URLs
+- Courses without verified URLs will display as plain text (no link)
+- This approach prioritizes accuracy over completeness
+- Future PDFs can be used to add more verified mappings
