@@ -5,7 +5,7 @@ import {
   Menu, X, Moon, Sun, ChevronDown, Type, Calendar,
   // Topic Icons
   Monitor, Cloud, Shield, Network, GitBranch, Code2, Headphones, 
-  AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck,
+  AppWindow, Brain, Lock, Briefcase, ClipboardList, Fish, Users, FileCheck, Database,
   // Platform Feature Icons
   UserCheck, Bot, Zap, Map, Target, Video, BarChart3, GraduationCap, Award, Sparkles
 } from "lucide-react";
@@ -21,21 +21,22 @@ import stormwindLogo from "@/assets/stormwind-logo.png";
 
 // Topics menu items - flat array sorted logically (core tech → specialized → business)
 const topicsMenuItems = [
-  { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Microsoft certifications" },
-  { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure & GCP" },
-  { label: "Networking", to: "/networking", icon: Network, description: "Network fundamentals" },
-  { label: "DevOps", to: "/devops", icon: GitBranch, description: "CI/CD & automation" },
-  { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "Frontend & backend" },
-  { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Security certifications" },
-  { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "Artificial intelligence" },
-  { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "End-user security" },
-  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "IT support training" },
-  { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Productivity software" },
-  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Soft skills training" },
-  { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP & Agile" },
-  { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "Phishing simulations" },
-  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Employee training" },
-  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Compliance training" },
+  { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Azure, M365, Windows Server" },
+  { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure, GCP certifications" },
+  { label: "Networking", to: "/networking", icon: Network, description: "Network+, CCNA, CCNP" },
+  { label: "DevOps", to: "/devops", icon: GitBranch, description: "Docker, Kubernetes, Terraform" },
+  { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "React, Node.js, Python, APIs" },
+  { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Sec+, CISM, CISSP" },
+  { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "ChatGPT, Copilot, ML fundamentals" },
+  { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data" },
+  { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "Phishing, social engineering" },
+  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, ITIL, troubleshooting" },
+  { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Excel, Word, Outlook, Teams" },
+  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Leadership, communication" },
+  { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile" },
+  { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "AI-driven phishing tests" },
+  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Onboarding, productivity" },
+  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Workplace safety, ethics" },
 ];
 
 // Platform features menu items - flat array sorted logically
