@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, Zap, Search, ExternalLink } from "lucide-react";
+import { Home, Zap, Search } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getVerifiedCourseUrl } from "@/lib/courseUrlUtils";
+
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -4883,50 +4883,7 @@ const Courses = () => {
                           const isBytes = typeof course === 'object' && course.isBytes;
                           const isComingSoon = typeof course === 'object' && course.isComingSoon;
                           const isWebinar = typeof course === 'object' && course.isWebinar;
-                          const courseUrl = getVerifiedCourseUrl(courseName);
                           
-                          // Render as link only if URL is verified
-                          if (courseUrl) {
-                            return (
-                              <a
-                                key={index}
-                                href={courseUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-200 border border-transparent hover:border-primary/20 cursor-pointer"
-                              >
-                                <div className="flex-shrink-0 mt-0.5">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform" />
-                                </div>
-                                <div className="flex-1 flex items-start justify-between gap-2">
-                                  <span className="text-xs sm:text-sm leading-snug text-foreground group-hover:text-primary transition-colors underline-offset-2 group-hover:underline">
-                                    {courseName}
-                                  </span>
-                                  <div className="flex items-center gap-1.5 shrink-0">
-                                    {isBytes && (
-                                      <Badge variant="secondary" className="flex items-center gap-0.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 py-0 h-5">
-                                        <Zap className="h-2.5 w-2.5" />
-                                        <span className="text-[10px] font-semibold">Bytes</span>
-                                      </Badge>
-                                    )}
-                                    {isWebinar && (
-                                      <Badge variant="secondary" className="flex items-center gap-0.5 py-0 h-5">
-                                        <span className="text-[10px] font-semibold">Webinar</span>
-                                      </Badge>
-                                    )}
-                                    {isComingSoon && (
-                                      <Badge variant="outline" className="flex items-center gap-0.5 py-0 h-5">
-                                        <span className="text-[10px] font-semibold">Coming Soon</span>
-                                      </Badge>
-                                    )}
-                                    <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
-                                  </div>
-                                </div>
-                              </a>
-                            );
-                          }
-                          
-                          // Render as plain text for unverified courses
                           return (
                             <div
                               key={index}
