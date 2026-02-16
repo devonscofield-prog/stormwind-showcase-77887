@@ -1,36 +1,20 @@
 
+## Remove All External Links from Course Catalog
 
-## Add Data Science Pro to Topics and Improve Descriptions
-
-### Changes to `src/components/Navigation.tsx`
-
-**1. Add Data Science Pro** to the `topicsMenuItems` array with the `Database` icon from lucide-react (or similar data-oriented icon like `BarChart2`).
-
-**2. Update all topic descriptions** to be more specific and informative:
-
-| Topic | Current Description | New Description |
-|-------|-------------------|-----------------|
-| Microsoft | Microsoft certifications | Azure, M365, Windows Server |
-| Cloud | AWS, Azure & GCP | AWS, Azure, GCP certifications |
-| Networking | Network fundamentals | Network+, CCNA, CCNP |
-| DevOps | CI/CD & automation | Docker, Kubernetes, Terraform |
-| Full Stack Dev | Frontend & backend | React, Node.js, Python, APIs |
-| Cybersecurity | Security certifications | Sec+, CISM, CISSP |
-| AI & ML | Artificial intelligence | ChatGPT, Copilot, ML fundamentals |
-| Security Awareness | End-user security | Phishing, social engineering |
-| Help Desk | IT support training | A+, ITIL, troubleshooting |
-| Desktop Apps | Productivity software | Excel, Word, Outlook, Teams |
-| Business Skills | Soft skills training | Leadership, communication |
-| Project Management | PMP & Agile | PMP, CAPM, Scrum, Agile |
-| StormAI Phishing | Phishing simulations | AI-driven phishing tests |
-| Enterprise End User | Employee training | Onboarding, productivity |
-| HR Compliance | Compliance training | Workplace safety, ethics |
-| **Data Science Pro** (new) | -- | SQL Server, Power BI, Azure Data |
+### What Changes
+All courses on the Course Catalog page will be rendered as plain text items -- no clickable links to external sites. This eliminates the 404 errors caused by broken/unverified URLs.
 
 ### Technical Details
 
-- Import a data-oriented icon (e.g., `Database` from lucide-react) for the new Data Science Pro entry
-- Insert Data Science Pro after "AI & ML" in the array to maintain logical grouping (core tech together)
-- Route: `/data-science-pro` (existing page)
-- Only one file modified: `src/components/Navigation.tsx`
+**File: `src/pages/Courses.tsx`**
 
+1. **Remove unused imports** (lines 4, 7):
+   - Remove `ExternalLink` from lucide-react import
+   - Remove `getVerifiedCourseUrl` import from `@/lib/courseUrlUtils`
+
+2. **Simplify the course rendering logic** (lines 4881-4962):
+   - Remove the `courseUrl` variable and the `if (courseUrl)` branch that renders courses as `<a>` tags with external links
+   - Keep only the plain text rendering (the current "unverified" path), which displays each course as a styled `<div>` with a bullet point, course name, and optional Bytes/Webinar/Coming Soon badges
+   - All courses will use the same consistent, non-clickable styling
+
+This is a straightforward change -- the "unverified course" rendering block (lines 4930-4962) already has the exact styling needed. We just remove the link variant above it.
