@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef, MouseEvent } from "react";
+import { Link } from "react-router-dom";
 import { TechBackground } from "./TechBackground";
+import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 interface HeroProps {
   onTabChange: (tab: string) => void;
@@ -140,8 +142,15 @@ const Hero = ({
           opacity: isVisible && typedText.length > 30 ? 1 : 0,
           transform: isVisible && typedText.length > 30 ? 'translateY(0)' : 'translateY(20px)'
         }}>
-            
-            
+            <Button asChild variant="hero" size="lg" className="text-base px-8 py-3 h-auto">
+              <Link to="/courses">Explore Courses</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="text-base px-8 py-3 h-auto border-accent-teal text-white hover:bg-accent-teal/10 hover:text-white">
+              <Link to="/training-samples">Try Training Samples</Link>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="text-base px-8 py-3 h-auto text-white/80 hover:text-white hover:bg-white/10">
+              <Link to="/contact">Contact Us</Link>
+            </Button>
           </div>
         </div>
       </div>

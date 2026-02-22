@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import { Shield, Mail, Users, Briefcase, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Shield, Mail, Users, Briefcase, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
@@ -14,6 +16,22 @@ const SecurityAwareness = () => {
       title="Security Awareness Training"
       description="A great security awareness training program can make all the difference in your cybersecurity posture. Vigilance and appropriate behavior towards threats begins with a thorough understanding of attacks launched by cybercriminals and hackers."
       breadcrumbs={[{ label: "Security Awareness Training" }]}
+      heroActions={
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
+      }
     >
       {/* Overview Section */}
       <div className="mb-32 animate-fade-in">

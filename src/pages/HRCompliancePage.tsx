@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
-import { Shield, Briefcase, Lock, Scale, BookOpen } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Shield, Briefcase, Lock, Scale, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 
 const HRCompliancePage = () => {
@@ -14,6 +15,22 @@ const HRCompliancePage = () => {
       title="HR Compliance Training"
       description="Transform your workplace with comprehensive compliance training. Ensure your organization not only meets regulatory standards, but thrives with a culture of integrity and resilience."
       breadcrumbs={[{ label: "HR Compliance" }]}
+      heroActions={
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
+      }
     >
           {/* Overview Section */}
           <div id="compliance-overview" className="mb-32 animate-fade-in scroll-mt-24">

@@ -2,6 +2,7 @@ import { ReactNode, ComponentType, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Home, LucideIcon } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -165,6 +166,7 @@ export const PageLayout = ({
         <BackgroundComponent />
         <div className="relative z-10">
           {content}
+          <Footer />
         </div>
       </div>
     );
@@ -173,6 +175,7 @@ export const PageLayout = ({
   return (
     <div className={`min-h-screen ${bgClass}`}>
       {content}
+      <Footer />
     </div>
   );
 };

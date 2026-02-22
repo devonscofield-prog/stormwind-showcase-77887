@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, BarChart3, Cloud, Database, LineChart } from "lucide-react";
+import { ExternalLink, BarChart3, Cloud, Database, LineChart, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 
 const DataSciencePro = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.title = "Data Science Pro";
   }, []);
@@ -17,9 +15,20 @@ const DataSciencePro = () => {
       description="Professional data science and analytics training covering Power BI, Cloud Data, SQL Server, Microsoft Fabric, and Power Platform"
       breadcrumbs={[{ label: "Data Science Pro" }]}
       heroActions={
-        <Button size="lg" onClick={() => navigate('/courses?category=Data%20Science%20Pro')} className="gap-2">
-          Explore Courses
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
       }
     >
       {/* Overview Section */}

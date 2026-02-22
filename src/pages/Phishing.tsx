@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Maximize2, X } from "lucide-react";
+import { Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Maximize2, X, BookOpen, FlaskConical } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { PageLayout } from "@/components/PageLayout";
 import {
@@ -65,6 +66,22 @@ const Phishing = () => {
       title="StormAI Phishing"
       description="AI-driven phishing simulations that mirror real-world hacker techniques, with zero manual management required."
       breadcrumbs={[{ label: "StormAI Phishing" }]}
+      heroActions={
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
+      }
     >
           {/* Product Overview Slideshow */}
           <section className="mb-20">

@@ -103,8 +103,7 @@ const TrainingSamples = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Experience our training platform firsthand with these sample course segments. 
-            Explore different modules and get a feel for our comprehensive learning experience.
+            Experience our training platform firsthand. Sample real lessons for free — no signup required. Explore different modules and see exactly how we deliver world-class IT training.
           </p>
 
           {/* Live Calendar Button */}

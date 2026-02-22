@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
 import PersonalizedLearningBanner from "@/components/PersonalizedLearningBanner";
+import { BookOpen, Users, Play, Shield } from "lucide-react";
 
 // Lazy load heavy tab components
 const EnterpriseIT = lazy(() => import("@/components/EnterpriseIT"));
@@ -69,6 +70,30 @@ const Index = () => {
 
       {/* Personalized Learning Banner - Featured Callout */}
       <PersonalizedLearningBanner />
+
+      {/* Trust Signals / Social Proof */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: BookOpen, label: "500+ Courses", subtitle: "Comprehensive IT curriculum" },
+              { icon: Users, label: "Expert Instructors", subtitle: "Industry-certified trainers" },
+              { icon: Play, label: "Live & On-Demand", subtitle: "Learn on your schedule" },
+              { icon: Shield, label: "Enterprise-Ready", subtitle: "Scalable team training" },
+            ].map(({ icon: Icon, label, subtitle }) => (
+              <div key={label} className="flex flex-col items-center text-center gap-3">
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10">
+                  <Icon className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-foreground">{label}</p>
+                  <p className="text-sm text-muted-foreground">{subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Tabbed Content Section - removed backdrop-blur for performance */}
       <section id="content-section" className="py-24 lg:py-32 scroll-mt-20 relative z-10 bg-gradient-to-br from-background via-background to-primary/5 rounded-t-3xl shadow-xl -mt-8">

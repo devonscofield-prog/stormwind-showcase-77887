@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import { Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Bot, MessageSquare, Lightbulb, Clock, Brain, Zap, Video, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
@@ -17,6 +19,22 @@ const AILearning = () => {
       breadcrumbs={[{ label: "StormAI Tutor" }]}
       titleIcon={Bot}
       backgroundVariant="gradient"
+      heroActions={
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
+      }
     >
       {/* Dashboard Screenshot */}
       <div className="mb-16 animate-fade-in max-w-4xl mx-auto">

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -49,7 +49,7 @@ const Contact = () => {
       
       toast({
         title: "Message sent!",
-        description: "Your request has been sent to the learning director. They will contact you soon.",
+        description: "A learning director will reach out within 1 business day. Check your email for a confirmation.",
       });
       
       form.reset();
@@ -80,7 +80,10 @@ const Contact = () => {
     >
       <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto mb-8">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-foreground">Note:</strong> If you've already been working with a StormWind learning director, 
+          Fill out the form below and a dedicated learning director will reach out within 1 business day to help you find the right training solution for your team.
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          <strong className="text-foreground">Note:</strong> If you've already been working with a StormWind learning director,
           please reach out to them directly. This form is for new inquiries.
         </p>
       </div>
@@ -107,7 +110,13 @@ const Contact = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h3>
               <p className="text-muted-foreground max-w-md">
-                Your request has been received. A learning director will contact you soon.
+                A learning director will reach out within 1 business day.
+              </p>
+              <p className="text-muted-foreground max-w-md mt-1">
+                Check your email for a confirmation.
+              </p>
+              <p className="text-xs text-muted-foreground max-w-md mt-3">
+                You can safely close this page.
               </p>
             </div>
           </div>
@@ -120,7 +129,8 @@ const Contact = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Name *</FormLabel>
+                  <FormLabel className="text-white">Full Name *</FormLabel>
+                  <FormDescription>Your first and last name</FormDescription>
                   <FormControl>
                     <Input
                       placeholder="Your name"
@@ -160,11 +170,12 @@ const Contact = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-white">Company</FormLabel>
+                  <FormDescription>Optional — helps us tailor our recommendations</FormDescription>
                   <FormControl>
-                    <Input 
-                      placeholder="Your company name" 
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                      {...field} 
+                    <Input
+                      placeholder="Your company name"
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -177,13 +188,14 @@ const Contact = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Phone</FormLabel>
+                  <FormLabel className="text-white">Phone Number</FormLabel>
+                  <FormDescription>Optional — we'll reach out via email by default</FormDescription>
                   <FormControl>
-                    <Input 
-                      type="tel" 
-                      placeholder="Your phone number" 
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                      {...field} 
+                    <Input
+                      type="tel"
+                      placeholder="Your phone number"
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -199,7 +211,7 @@ const Contact = () => {
                   <FormLabel className="text-white">Message *</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us about your training needs, pricing inquiry, or any questions you have..."
+                      placeholder="Tell us about your training needs (e.g., team size, certifications of interest, timeline...)"
                       className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
                       aria-required="true"
                       {...field}

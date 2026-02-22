@@ -1,14 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, Database, Sparkles, BookOpen } from "lucide-react";
+import { Code, Database, Sparkles, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 
 const FullStackDeveloper = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.title = "Full Stack Developer";
   }, []);
@@ -19,9 +17,20 @@ const FullStackDeveloper = () => {
       description="The perfect solution for your team's developers to learn how to build secure and effective applications. With over 1500 hours of training from industry experts, extensive coverage of coding languages and frameworks, and interactive development experiences."
       breadcrumbs={[{ label: "Full Stack Developer" }]}
       heroActions={
-        <Button size="lg" onClick={() => navigate('/courses?category=Full Stack Developer')} className="gap-2">
-          Explore Courses
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
       }
     >
       {/* Full Stack Developer Overview Section */}

@@ -1,13 +1,12 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
+import { Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target, FlaskConical } from "lucide-react";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
 import { PageLayout } from "@/components/PageLayout";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
 
 const ProjectManagement = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const {
     technologies = [],
@@ -47,9 +46,18 @@ const ProjectManagement = () => {
       description="PMP® certification and continuing certification requirement (CCR) support with powerful EPIC LIVE classes and 24-7 Instant Replay recordings"
       breadcrumbs={[{ label: "Project Management" }]}
       heroActions={
-        <div className="flex justify-center">
-          <Button size="lg" onClick={() => navigate('/courses?category=Project Management')} className="gap-2">
-            Explore Courses
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
           </Button>
         </div>
       }

@@ -1,7 +1,7 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Server, Cloud, Shield, Database, Container, Layers } from "lucide-react";
+import { Server, Cloud, Shield, Database, Container, Layers, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { InstructorCourseCard } from "@/components/InstructorCourseCard";
 import { BentoGrid } from "@/components/BentoGrid";
@@ -13,7 +13,6 @@ import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 
 const CloudTraining = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const {
     technologies = [],
@@ -75,12 +74,18 @@ const CloudTraining = () => {
       description="Master cloud technologies with comprehensive training in Azure, AWS, and Google Cloud Platform. Build expertise in cloud architecture, administration, security, and deployment."
       breadcrumbs={[{ label: "Cloud Training" }]}
       heroActions={
-        <div className="flex justify-center gap-4">
-          <Button size="lg" onClick={() => navigate('/courses?category=Cloud')} className="gap-2">
-            Explore Courses
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
           </Button>
-          <Button size="lg" onClick={() => navigate('/ranges')} className="gap-2">
-            Explore Ranges
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
           </Button>
         </div>
       }

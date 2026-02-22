@@ -3,6 +3,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import { Home } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 
 import {
   Breadcrumb,
@@ -270,6 +271,14 @@ const Courses = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          ) : totalCourses === 0 && searchQuery.trim() ? (
+            <div className="text-center py-12 text-muted-foreground">
+              <p className="text-lg font-medium mb-2">No courses found matching your search.</p>
+              <p className="mb-4">Try a broader search term, or browse all courses below.</p>
+              <Button variant="outline" onClick={() => setSearchQuery("")}>
+                Clear Search
+              </Button>
             </div>
           ) : (
             <>

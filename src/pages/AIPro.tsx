@@ -1,14 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Brain, Sparkles, GraduationCap, Code, BookOpen } from "lucide-react";
+import { Brain, Sparkles, GraduationCap, Code, BookOpen, FlaskConical } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { BentoGrid } from "@/components/BentoGrid";
 import { BentoCard } from "@/components/BentoCard";
 
 const AIPro = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.title = "AI";
   }, []);
@@ -19,9 +17,20 @@ const AIPro = () => {
       description="Understanding the capabilities and potential of AI, like ChatGPT and Copilot, is crucial for staying ahead in the rapidly evolving field. Master AI tools from beginner to advanced levels with comprehensive training covering ChatGPT, prompt engineering, and Microsoft 365 Copilot."
       breadcrumbs={[{ label: "AI Training" }]}
       heroActions={
-        <Button size="lg" onClick={() => navigate('/courses?category=AI')} className="gap-2">
-          Explore Courses
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg">
+            <Link to="/courses">
+              <BookOpen className="mr-2 h-5 w-5" />
+              Explore Courses
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/training-samples">
+              <FlaskConical className="mr-2 h-5 w-5" />
+              Try Training Samples
+            </Link>
+          </Button>
+        </div>
       }
     >
       {/* AI Training Overview Section */}
