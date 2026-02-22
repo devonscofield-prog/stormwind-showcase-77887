@@ -27,12 +27,15 @@ import {
 } from "lucide-react";
 import FeatureListItem from "@/components/FeatureListItem";
 
-// 3D Tilt Hook
+// 3D Tilt Hook — only applies on devices with hover capability (not touch)
+const supportsHover = typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches;
+
 const useTiltEffect = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!supportsHover) return;
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -45,6 +48,7 @@ const useTiltEffect = () => {
   };
 
   const handleMouseLeave = () => {
+    if (!supportsHover) return;
     setTransform("");
   };
 

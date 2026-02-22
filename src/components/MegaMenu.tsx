@@ -104,7 +104,7 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
   }, []);
 
   const gridCols = columns === 2 ? "grid-cols-2" : "grid-cols-3";
-  const minWidth = columns === 2 ? "min-w-[500px]" : "min-w-[700px]";
+  const menuWidth = columns === 2 ? "w-[500px] max-w-[90vw]" : "w-[700px] max-w-[90vw]";
 
   return (
     <div
@@ -148,7 +148,7 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
           className={cn(
             "rounded-xl border border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl shadow-black/20",
             "p-4",
-            minWidth
+            menuWidth
           )}
         >
           <div className={cn("grid gap-1", gridCols)}>

@@ -133,17 +133,17 @@ export const PageLayout = ({
                 <div className="p-3 rounded-2xl bg-primary/10 backdrop-blur-sm">
                   <TitleIcon className="w-10 h-10 text-primary" />
                 </div>
-                <h1 className="text-6xl md:text-7xl font-bold text-foreground leading-tight pb-2">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight pb-2">
                   {title}
                 </h1>
               </div>
             ) : (
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
                 {title}
               </h1>
             )}
             {description && (
-              <p className={`text-xl text-muted-foreground leading-relaxed mb-8 ${
+              <p className={`text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 ${
                 heroAlign === "center" ? "max-w-4xl mx-auto" : "max-w-4xl"
               }`}>
                 {description}

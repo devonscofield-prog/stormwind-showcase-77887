@@ -131,7 +131,7 @@ const Ranges = () => {
 
       {/* Tabbed Range Details */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" id="range-tabs">
-        <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
+        <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-2 md:grid-cols-4 mb-12 bg-[#1a1f2e] p-1 h-auto gap-1">
           <TabsTrigger value="azure" className="data-[state=active]:bg-[#4FD1C5] data-[state=active]:text-white data-[state=inactive]:text-gray-400 hover:bg-[#2B3440] hover:text-white transition-all duration-200 flex items-center gap-2 py-3">
             <Cloud className="w-4 h-4" />
             Azure Range

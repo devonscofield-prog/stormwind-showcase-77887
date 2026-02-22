@@ -110,7 +110,7 @@ const Hero = ({
       <div className="relative z-10 container mx-auto px-6 py-24 lg:py-32 text-center">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Enhanced heading with tighter tracking */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight pb-2 relative min-h-[1.2em]">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight pb-2 relative min-h-[1.2em]">
             <span className="relative inline-block">
               {/* Glow layer */}
               <span className="absolute inset-0 text-transparent bg-clip-text blur-2xl opacity-60" style={{

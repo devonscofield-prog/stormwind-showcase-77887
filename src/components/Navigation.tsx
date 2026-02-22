@@ -63,12 +63,12 @@ export const Navigation = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border dark:border-white/15 shadow-lg shadow-black/[0.08] dark:shadow-black/20">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
             src={stormwindLogo} 
             alt="StormWind Studios" 
-            className="h-12 w-auto object-contain cursor-pointer hover:scale-105 hover:brightness-110 transition-all duration-200 flex-shrink-0" 
+            className="h-10 sm:h-12 w-auto object-contain cursor-pointer hover:scale-105 hover:brightness-110 transition-all duration-200 flex-shrink-0" 
             onClick={() => navigate('/')}
             width={150}
             height={48}

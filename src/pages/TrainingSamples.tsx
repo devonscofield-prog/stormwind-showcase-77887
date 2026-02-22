@@ -122,7 +122,7 @@ const TrainingSamples = () => {
               {categories.map(category => {
               const IconComponent = categoryIcons[category] || Layers;
               const count = category === "All Samples" ? flattenedCourses.length : category === "Bytes" ? flattenedCourses.filter(v => v.isByte).length : flattenedCourses.filter(v => v.categories.includes(category)).length;
-              return <TabsTrigger key={category} value={category} className={cn("relative px-4 md:px-5 py-2.5 rounded-xl font-medium whitespace-nowrap", "transition-all duration-300 flex items-center gap-2", "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground", "data-[state=active]:shadow-lg data-[state=active]:shadow-primary/25", "data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground", "hover:scale-105 active:scale-95")}>
+              return <TabsTrigger key={category} value={category} className={cn("relative px-4 md:px-5 py-2.5 rounded-xl font-medium whitespace-nowrap min-h-[44px] min-w-[44px]", "transition-all duration-300 flex items-center gap-2", "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground", "data-[state=active]:shadow-lg data-[state=active]:shadow-primary/25", "data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:text-muted-foreground", "hover:scale-105 active:scale-95")}>
                     <IconComponent className="w-4 h-4" />
                     <span className="hidden sm:inline">{category}</span>
                     <span className={cn("ml-1 px-2 py-0.5 text-xs rounded-full font-bold", "bg-background/20")}>
