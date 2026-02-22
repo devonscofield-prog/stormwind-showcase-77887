@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from "react";
+import { memo, ReactNode, useRef, useState } from "react";
 import { LucideIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { ProgressiveImage } from "@/components/ProgressiveImage";
@@ -179,7 +179,7 @@ const GlassCard = ({
   );
 };
 
-export const TechCard = (props: TechCardProps) => {
+export const TechCard = memo((props: TechCardProps) => {
   const {
     title,
     className,
@@ -374,6 +374,6 @@ export const TechCard = (props: TechCardProps) => {
   }
 
   return null;
-};
+});
 
 export default TechCard;

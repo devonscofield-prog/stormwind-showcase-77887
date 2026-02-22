@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
@@ -12,16 +11,6 @@ import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
-
-// Create QueryClient outside component to prevent recreation on each render
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000, // 1 minute
-      gcTime: 5 * 60 * 1000, // 5 minutes (formerly cacheTime)
-    },
-  },
-});
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -60,8 +49,7 @@ const AdminAuth = lazy(() => import("./pages/AdminAuth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ErrorBoundary>
+  <ErrorBoundary>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
       <TextSizeProvider>
         <TooltipProvider>
@@ -133,7 +121,6 @@ const App = () => (
       </TextSizeProvider>
     </ThemeProvider>
     </ErrorBoundary>
-  </QueryClientProvider>
 );
 
 export default App;

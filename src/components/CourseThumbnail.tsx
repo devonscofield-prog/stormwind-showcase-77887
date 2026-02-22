@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { cn } from "@/lib/utils";
 import { getCategoryTheme } from "@/lib/courseThemes";
 import { Play } from "lucide-react";
@@ -14,10 +15,10 @@ interface CourseThumbnailProps {
   isHovered?: boolean;
 }
 
-export const CourseThumbnail = ({ 
-  category, 
-  title, 
-  thumbnail, 
+export const CourseThumbnail = memo(({
+  category,
+  title,
+  thumbnail,
   videoId,
   className,
   showPlayIcon = true,
@@ -164,4 +165,4 @@ export const CourseThumbnail = ({
       )} />
     </div>
   );
-};
+});

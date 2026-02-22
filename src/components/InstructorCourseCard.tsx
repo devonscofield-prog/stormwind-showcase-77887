@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { LucideIcon, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +19,7 @@ export interface InstructorCourseCardProps {
   className?: string;
 }
 
-export const InstructorCourseCard = ({
+export const InstructorCourseCard = memo(({
   title,
   instructorName,
   instructorImage,
@@ -68,6 +69,6 @@ export const InstructorCourseCard = ({
 
     </div>
   );
-};
+});
 
 export default InstructorCourseCard;

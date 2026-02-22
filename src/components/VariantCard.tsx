@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Play, User, Zap, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ interface VariantCardProps {
   className?: string;
 }
 
-export const VariantCard = ({ variant, className }: VariantCardProps) => {
+export const VariantCard = memo(({ variant, className }: VariantCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const theme = getCategoryTheme(variant.category);
@@ -178,4 +178,4 @@ export const VariantCard = ({ variant, className }: VariantCardProps) => {
       </Card>
     </Link>
   );
-};
+});

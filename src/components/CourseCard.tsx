@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Layers, Play, User } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ interface CourseCardProps {
   className?: string;
 }
 
-export const CourseCard = ({ course, className }: CourseCardProps) => {
+export const CourseCard = memo(({ course, className }: CourseCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const title = course.title;
@@ -196,4 +196,4 @@ export const CourseCard = ({ course, className }: CourseCardProps) => {
       </Card>
     </Link>
   );
-};
+});
