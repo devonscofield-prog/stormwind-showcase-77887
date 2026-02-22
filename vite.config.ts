@@ -54,8 +54,6 @@ export default defineConfig(({ mode }) => ({
             "@radix-ui/react-toast",
             "@radix-ui/react-tooltip",
           ],
-          // Data fetching
-          "vendor-query": ["@tanstack/react-query"],
           // Forms
           "vendor-forms": ["react-hook-form", "@hookform/resolvers", "zod"],
           // Charts (large)
