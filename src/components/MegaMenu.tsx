@@ -23,9 +23,15 @@ interface MegaMenuProps {
   className?: string;
 }
 
-const MenuItem = ({ label, to, icon: Icon, description, index, isVisible }: MenuItemComponentProps) => (
+interface MenuItemInternalProps extends MenuItemComponentProps {
+  onItemClick: () => void;
+}
+
+const MenuItem = ({ label, to, icon: Icon, description, index, isVisible, onItemClick }: MenuItemInternalProps) => (
   <Link
     to={to}
+    role="menuitem"
+    onClick={onItemClick}
     className="group flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5 hover:scale-[1.02]"
     style={{
       opacity: isVisible ? 1 : 0,
@@ -67,6 +73,28 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
     }, 150);
   };
 
+  const handleButtonKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setIsOpen((prev) => !prev);
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  const handleMenuKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      // Return focus to the trigger button
+      const button = menuRef.current?.querySelector("button");
+      button?.focus();
+    }
+  };
+
+  const handleItemClick = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -87,6 +115,9 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
     >
       <Button
         variant="ghost"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onKeyDown={handleButtonKeyDown}
         className={cn(
           "text-foreground hover:text-primary transition-colors gap-1",
           isOpen && "text-primary",
@@ -110,8 +141,10 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
           "transition-all duration-200 ease-out",
           isOpen && "opacity-100 visible translate-y-0"
         )}
+        onKeyDown={handleMenuKeyDown}
       >
         <div
+          role="menu"
           className={cn(
             "rounded-xl border border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl shadow-black/20",
             "p-4",
@@ -120,7 +153,7 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
         >
           <div className={cn("grid gap-1", gridCols)}>
             {items.map((item, index) => (
-              <MenuItem key={item.to} {...item} index={index} isVisible={isOpen} />
+              <MenuItem key={item.to} {...item} index={index} isVisible={isOpen} onItemClick={handleItemClick} />
             ))}
           </div>
         </div>

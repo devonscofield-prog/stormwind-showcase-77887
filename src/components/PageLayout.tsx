@@ -1,4 +1,4 @@
-import { ReactNode, ComponentType } from "react";
+import { ReactNode, ComponentType, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Home, LucideIcon } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
@@ -79,6 +79,12 @@ export const PageLayout = ({
   BackgroundComponent,
   breadcrumbClassName,
 }: PageLayoutProps) => {
+  useEffect(() => {
+    if (title) {
+      document.title = `${title} | StormWind Studios`;
+    }
+  }, [title]);
+
   const bgClass = backgroundClassName || backgroundVariants[backgroundVariant];
 
   const content = (

@@ -136,6 +136,11 @@ All colors MUST be HSL.
     --shadow-glow: 0 0 20px hsl(166 58% 40% / 0.3);
     --background-gradient: linear-gradient(135deg, hsl(0 0% 17%), hsl(0 0% 15%), hsl(0 0% 13%));
   }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
 }
 
 @layer base {

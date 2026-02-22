@@ -3,177 +3,189 @@
   <!-- Homepage -->
   <url>
     <loc>https://info.stormwind.com/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
   <!-- Technology/Training Pages -->
   <url>
     <loc>https://info.stormwind.com/microsoft</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/cloud</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/cybersecurity</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/ai-pro</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/networking</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/fullstack-developer</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/devops</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://info.stormwind.com/business-pro</loc>
-    <lastmod>2025-11-18</lastmod>
+    <loc>https://info.stormwind.com/data-science-pro</loc>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/project-management</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/help-desk</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
   <!-- Features/Tools Pages -->
   <url>
     <loc>https://info.stormwind.com/ranges</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/phishing</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/bytes</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/learning-paths</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/ai-learning</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/skills-assessments</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/mentoring</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/live-instructor-led</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+  <url>
+    <loc>https://info.stormwind.com/certification-prep</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://info.stormwind.com/stormai-learning</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Enterprise Solutions Pages -->
   <url>
     <loc>https://info.stormwind.com/enterprise-end-user</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/desktop-apps</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/security-awareness</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/business-skills</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/enterprise-reporting</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/hr-compliance</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <!-- General Pages -->
   <url>
     <loc>https://info.stormwind.com/courses</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://info.stormwind.com/webinars</loc>
-    <lastmod>2025-11-18</lastmod>
+    <loc>https://info.stormwind.com/training-samples</loc>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://info.stormwind.com/contact</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

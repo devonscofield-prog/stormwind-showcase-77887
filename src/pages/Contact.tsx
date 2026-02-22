@@ -122,10 +122,11 @@ const Contact = () => {
                 <FormItem>
                   <FormLabel className="text-white">Name *</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="Your name" 
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                      {...field} 
+                    <Input
+                      placeholder="Your name"
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      aria-required="true"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -140,11 +141,12 @@ const Contact = () => {
                 <FormItem>
                   <FormLabel className="text-white">Email *</FormLabel>
                   <FormControl>
-                    <Input 
-                      type="email" 
-                      placeholder="your.email@company.com" 
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]" 
-                      {...field} 
+                    <Input
+                      type="email"
+                      placeholder="your.email@company.com"
+                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      aria-required="true"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -196,10 +198,11 @@ const Contact = () => {
                 <FormItem>
                   <FormLabel className="text-white">Message *</FormLabel>
                   <FormControl>
-                    <Textarea 
+                    <Textarea
                       placeholder="Tell us about your training needs, pricing inquiry, or any questions you have..."
                       className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
-                      {...field} 
+                      aria-required="true"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
