@@ -156,7 +156,7 @@ const GlassCard = ({
         <div className="absolute -bottom-8 -right-8 pointer-events-none">
           <Icon 
             className={cn(
-              "w-40 h-40 transition-all duration-500",
+              "w-40 h-40 transition-all duration-300",
               isHovered ? "text-primary/15 scale-110" : "text-primary/5 dark:text-white/5"
             )} 
           />

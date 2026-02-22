@@ -16,7 +16,7 @@ const CourseListItem = ({ course, index }: CourseListItemProps) => {
   return (
     <div
       key={index}
-      className="flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 border border-transparent"
+      className="flex items-start gap-2 p-2.5 rounded-lg bg-muted/30 border border-transparent hover:bg-muted/50 transition-colors duration-200"
     >
       <div className="flex-shrink-0 mt-0.5">
         <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50" />

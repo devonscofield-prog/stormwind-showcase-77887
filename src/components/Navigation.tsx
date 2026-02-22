@@ -146,8 +146,7 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Dropdown */}
-        {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card/95 dark:bg-[#2d2d2d]/95 border-t border-border pt-4 animate-fade-in">
+        <nav className={`md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card/95 dark:bg-[#2d2d2d]/95 border-t border-border pt-4 transition-all duration-200 ease-in-out origin-top ${mobileMenuOpen ? 'opacity-100 max-h-[2000px] scale-y-100' : 'opacity-0 max-h-0 scale-y-95 pointer-events-none overflow-hidden'}`}>
             {/* Technologies Collapsible */}
             <Collapsible open={techOpen} onOpenChange={setTechOpen}>
               <CollapsibleTrigger asChild>
@@ -253,7 +252,6 @@ export const Navigation = () => {
               </Button>
             </Link>
           </nav>
-        )}
       </div>
     </header>
   );

@@ -367,7 +367,7 @@ All colors MUST be HSL.
   }
 
   .icon-animate:hover {
-    animation: icon-pulse 0.5s ease-in-out;
+    animation: icon-pulse 0.3s ease-in-out;
   }
 
   /* Gradient Overlay */

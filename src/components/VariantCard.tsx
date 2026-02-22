@@ -25,7 +25,7 @@ export const VariantCard = memo(({ variant, className }: VariantCardProps) => {
       <Card 
         className={cn(
           "group cursor-pointer relative overflow-hidden h-full",
-          "transition-all duration-500 ease-out",
+          "transition-all duration-300 ease-out",
           "hover:scale-[1.02] hover:-translate-y-2",
           "bg-card/50 backdrop-blur-sm",
           "border border-border/50 hover:border-primary/40",
@@ -37,7 +37,7 @@ export const VariantCard = memo(({ variant, className }: VariantCardProps) => {
       >
         {/* Glow effect on hover */}
         <div className={cn(
-          "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+          "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
           "bg-gradient-to-r from-primary/30 via-transparent to-primary/30 blur-sm"
         )} />
         
@@ -171,7 +171,7 @@ export const VariantCard = memo(({ variant, className }: VariantCardProps) => {
           {/* Bottom accent line */}
           <div className={cn(
             "absolute bottom-0 left-0 right-0 h-1",
-            "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+            "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300",
             isExamCrash ? "from-amber-500 to-orange-500" : theme.gradient
           )} />
         </div>

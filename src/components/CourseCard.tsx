@@ -39,7 +39,7 @@ export const CourseCard = memo(({ course, className }: CourseCardProps) => {
       <Card 
         className={cn(
           "group cursor-pointer relative overflow-hidden h-full",
-          "transition-all duration-500 ease-out",
+          "transition-all duration-300 ease-out",
           "hover:scale-[1.02] hover:-translate-y-2",
           "bg-card/80",
           "border-0 shadow-lg hover:shadow-2xl hover:shadow-primary/20",
@@ -50,7 +50,7 @@ export const CourseCard = memo(({ course, className }: CourseCardProps) => {
       >
         {/* Glow effect on hover */}
         <div className={cn(
-          "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+          "absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300",
           "bg-gradient-to-r from-primary/20 via-transparent to-accent-teal/20 blur-sm"
         )} />
         
@@ -58,7 +58,7 @@ export const CourseCard = memo(({ course, className }: CourseCardProps) => {
           {/* Thumbnail with zoom effect */}
           <div className="relative overflow-hidden">
             <div className={cn(
-              "transition-transform duration-500 ease-out",
+              "transition-transform duration-300 ease-out",
               isHovered && "scale-105"
             )}>
               <CourseThumbnail 
@@ -189,7 +189,7 @@ export const CourseCard = memo(({ course, className }: CourseCardProps) => {
           {/* Bottom accent line */}
           <div className={cn(
             "absolute bottom-0 left-0 right-0 h-0.5",
-            "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+            "bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300",
             theme.gradient
           )} />
         </div>
