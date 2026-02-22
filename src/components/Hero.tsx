@@ -137,7 +137,7 @@ const Hero = ({
           transform: isVisible && typedText.length > 30 ? 'translateY(0)' : 'translateY(20px)'
         }}>
             <Button asChild variant="hero" size="lg" className="text-base px-8 py-3 h-auto">
-              <Link to="/courses">Explore Courses</Link>
+              <Link to="/ranges">Explore Ranges</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-base px-8 py-3 h-auto border-accent-teal text-white hover:bg-accent-teal/10 hover:text-white">
               <Link to="/training-samples">Try Training Samples</Link>
