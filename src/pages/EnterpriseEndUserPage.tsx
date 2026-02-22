@@ -1,16 +1,7 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, FileText, Sparkles, Shield, TrendingUp, BookOpen } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { FileText, Sparkles, Shield, TrendingUp, BookOpen } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 
 const EnterpriseEndUserPage = () => {
   const navigate = useNavigate();
@@ -20,44 +11,12 @@ const EnterpriseEndUserPage = () => {
     features = []
   } = location.state || {};
 
-  useEffect(() => {
-    document.title = "Enterprise End User";
-  }, []);
-
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Enterprise End User</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              Enterprise End User Package
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Empower your workforce with comprehensive training in Microsoft applications, AI tools, security awareness, and essential business skills. Build a more productive, secure, and capable team.
-            </p>
-          </div>
-
+    <PageLayout
+      title="Enterprise End User Package"
+      description="Empower your workforce with comprehensive training in Microsoft applications, AI tools, security awareness, and essential business skills. Build a more productive, secure, and capable team."
+      breadcrumbs={[{ label: "Enterprise End User" }]}
+    >
           {/* Overview Section */}
           <div id="enterprise-overview" className="mb-32 animate-fade-in scroll-mt-24">
             <div className="max-w-6xl mx-auto">
@@ -246,9 +205,7 @@ const EnterpriseEndUserPage = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+    </PageLayout>
   );
 };
 

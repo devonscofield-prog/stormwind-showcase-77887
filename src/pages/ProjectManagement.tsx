@@ -1,11 +1,9 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Home, Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Award, Video, Users, Bot, ClipboardCheck, BookOpen, Target } from "lucide-react";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { InstructorCourseCard, CourseFeature } from "@/components/InstructorCourseCard";
+import { PageLayout } from "@/components/PageLayout";
 import ashleyHuntImage from "@/assets/ashley-hunt.png";
 
 const ProjectManagement = () => {
@@ -15,10 +13,6 @@ const ProjectManagement = () => {
     technologies = [],
     features = []
   } = location.state || {};
-
-  useEffect(() => {
-    document.title = "Project Management";
-  }, []);
 
   const featuredCourses = [
     {
@@ -48,43 +42,18 @@ const ProjectManagement = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Project Management</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground tracking-tight pb-2">
-              Project Management
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-              PMP® certification and continuing certification requirement (CCR) support with powerful EPIC LIVE classes and 24-7 Instant Replay recordings
-            </p>
-            <div className="flex justify-center">
-              <Button size="lg" onClick={() => navigate('/courses?category=Project Management')} className="gap-2">
-                Explore Courses
-              </Button>
-            </div>
-          </div>
-
+    <PageLayout
+      title="Project Management"
+      description="PMP® certification and continuing certification requirement (CCR) support with powerful EPIC LIVE classes and 24-7 Instant Replay recordings"
+      breadcrumbs={[{ label: "Project Management" }]}
+      heroActions={
+        <div className="flex justify-center">
+          <Button size="lg" onClick={() => navigate('/courses?category=Project Management')} className="gap-2">
+            Explore Courses
+          </Button>
+        </div>
+      }
+    >
           {/* Featured Instructor Section with Video and Testimonials */}
           <div className="mb-32 rounded-lg bg-card border border-border overflow-hidden animate-fade-in">
             {/* Instructor Bio */}
@@ -102,7 +71,7 @@ const ProjectManagement = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Instructor Training Video */}
             <div className="px-8 pb-8">
               <div className="max-w-3xl mx-auto">
@@ -121,7 +90,7 @@ const ProjectManagement = () => {
                   <p className="font-semibold text-foreground text-sm">Al Whitehouse</p>
                   <p className="text-xs text-muted-foreground">Wake County Government</p>
                 </div>
-                
+
                 <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
                   <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is amazing. She is definitely in the right job. She was engaging and helped the learning feel 'light' through all the sessions."
@@ -129,14 +98,14 @@ const ProjectManagement = () => {
                   <p className="font-semibold text-foreground text-sm">Leslie Sedlac</p>
                   <p className="text-xs text-muted-foreground">SAIC</p>
                 </div>
-                
+
                 <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
                   <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!"
                   </p>
                   <p className="font-semibold text-foreground text-sm">Danny Parsons</p>
                 </div>
-                
+
                 <div className="bg-background/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
                   <p className="text-muted-foreground mb-4 italic leading-relaxed">
                     "Ashley is incredibly knowledgeable, kept the class both focused and energized, and showed genuine kindness throughout the session. Their approachability and expertise made learning not just effective, but enjoyable."
@@ -284,9 +253,7 @@ const ProjectManagement = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+    </PageLayout>
   );
 };
 

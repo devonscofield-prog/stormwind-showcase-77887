@@ -1,19 +1,9 @@
-import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Users, ExternalLink, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import { trainingLinks } from "@/lib/trainingLinks";
+import { Shield, Brain, Settings, FileText, Mail, GraduationCap, Target, CheckCircle, Zap, Maximize2, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { PageLayout } from "@/components/PageLayout";
 import {
   Carousel,
   CarouselContent,
@@ -39,16 +29,11 @@ const slides = [
 ];
 
 const Phishing = () => {
-  const navigate = useNavigate();
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [fullscreenApi, setFullscreenApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-
-  useEffect(() => {
-    document.title = "StormAI Phishing";
-  }, []);
 
   useEffect(() => {
     if (!carouselApi) return;
@@ -76,39 +61,11 @@ const Phishing = () => {
   }, [isFullscreen, fullscreenApi]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      <main className="pt-32 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>StormAI Phishing</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          {/* Page Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              StormAI Phishing
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              AI-driven phishing simulations that mirror real-world hacker techniques, with zero manual management required.
-            </p>
-          </div>
-
+    <PageLayout
+      title="StormAI Phishing"
+      description="AI-driven phishing simulations that mirror real-world hacker techniques, with zero manual management required."
+      breadcrumbs={[{ label: "StormAI Phishing" }]}
+    >
           {/* Product Overview Slideshow */}
           <section className="mb-20">
             <div className="flex items-center justify-between mb-8">
@@ -126,7 +83,7 @@ const Phishing = () => {
                 Fullscreen
               </Button>
             </div>
-            
+
             <Card className="overflow-hidden">
               <CardContent className="p-0">
                 <Carousel setApi={setCarouselApi} className="w-full">
@@ -146,7 +103,7 @@ const Phishing = () => {
                   <CarouselPrevious className="left-4" />
                   <CarouselNext className="right-4" />
                 </Carousel>
-                
+
                 {/* Slide indicators */}
                 <div className="flex justify-center gap-2 py-4 bg-muted/50">
                   {slides.map((_, index) => (
@@ -197,7 +154,7 @@ const Phishing = () => {
                     <div>
                       <h3 className="font-semibold text-lg mb-2">Turn-Key Setup</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Configure once (15–20 minutes) and let the system automate delivery, difficulty progression, and timing.
+                        Configure once (15-20 minutes) and let the system automate delivery, difficulty progression, and timing.
                       </p>
                     </div>
                   </div>
@@ -365,7 +322,7 @@ const Phishing = () => {
                       <div>
                         <h4 className="font-semibold mb-1">Quick Setup & Integration</h4>
                         <p className="text-sm text-muted-foreground">
-                          Connect your Entra ID in 15–20 minutes. The system automatically pulls employee profiles and organizational structure to personalize simulations.
+                          Connect your Entra ID in 15-20 minutes. The system automatically pulls employee profiles and organizational structure to personalize simulations.
                         </p>
                       </div>
                     </div>
@@ -496,8 +453,6 @@ const Phishing = () => {
               </a>
             </Button>
           </section>
-        </div>
-      </main>
 
       {/* Fullscreen Slideshow Dialog */}
       <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
@@ -511,7 +466,7 @@ const Phishing = () => {
             >
               <X className="w-6 h-6" />
             </Button>
-            
+
             <Carousel setApi={setFullscreenApi} className="w-full max-w-6xl">
               <CarouselContent>
                 {slides.map((slide, index) => (
@@ -529,7 +484,7 @@ const Phishing = () => {
               <CarouselPrevious className="-left-4 md:-left-12 h-12 w-12 bg-white/20 hover:bg-white/40 text-white border-white/30" />
               <CarouselNext className="-right-4 md:-right-12 h-12 w-12 bg-white/20 hover:bg-white/40 text-white border-white/30" />
             </Carousel>
-            
+
             {/* Slide indicators */}
             <div className="flex justify-center gap-2 mt-4">
               {slides.map((_, index) => (
@@ -543,14 +498,14 @@ const Phishing = () => {
                 />
               ))}
             </div>
-            
+
             <p className="text-white/70 mt-4 text-sm">
               {current} / {slides.length}
             </p>
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </PageLayout>
   );
 };
 

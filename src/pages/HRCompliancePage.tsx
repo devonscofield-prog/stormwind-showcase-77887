@@ -1,63 +1,20 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Home, Shield, Briefcase, Lock, Scale, BookOpen } from "lucide-react";
-import { Navigation } from "@/components/Navigation";
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { useLocation } from "react-router-dom";
+import { Shield, Briefcase, Lock, Scale, BookOpen } from "lucide-react";
+import { PageLayout } from "@/components/PageLayout";
 
 const HRCompliancePage = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const {
     technologies = [],
     features = []
   } = location.state || {};
 
-  useEffect(() => {
-    document.title = "HR Compliance";
-  }, []);
-
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 pt-32 pb-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb className="mb-8">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>HR Compliance</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          <div className="text-center mb-20 animate-fade-in">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-foreground leading-tight pb-2">
-              HR Compliance Training
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Transform your workplace with comprehensive compliance training. Ensure your organization not only meets regulatory standards, but thrives with a culture of integrity and resilience.
-            </p>
-          </div>
-
+    <PageLayout
+      title="HR Compliance Training"
+      description="Transform your workplace with comprehensive compliance training. Ensure your organization not only meets regulatory standards, but thrives with a culture of integrity and resilience."
+      breadcrumbs={[{ label: "HR Compliance" }]}
+    >
           {/* Overview Section */}
           <div id="compliance-overview" className="mb-32 animate-fade-in scroll-mt-24">
             <div className="max-w-6xl mx-auto">
@@ -227,9 +184,7 @@ const HRCompliancePage = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+    </PageLayout>
   );
 };
 
