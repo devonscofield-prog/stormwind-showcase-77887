@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -88,23 +89,28 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:scale-105 relative overflow-hidden">
+      <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-xl relative overflow-hidden">
         {/* Success Animation Overlay */}
         {showSuccess && (
-          <div className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
+          <div
+            className="absolute inset-0 bg-card/95 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in"
+            tabIndex={-1}
+            ref={(el) => el?.focus()}
+            onKeyDown={(e) => { if (e.key === "Escape") setShowSuccess(false); }}
+          >
             <div className="text-center animate-scale-in">
               <div className="mb-4 inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 border-2 border-primary animate-pulse">
-                <svg 
-                  className="w-10 h-10 text-primary" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-10 h-10 text-primary"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M5 13l4 4L19 7" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
                   />
                 </svg>
               </div>
@@ -116,7 +122,7 @@ const Contact = () => {
                 Check your email for a confirmation.
               </p>
               <p className="text-xs text-muted-foreground max-w-md mt-3">
-                You can safely close this page.
+                Press Escape or wait to dismiss.
               </p>
             </div>
           </div>
@@ -129,12 +135,12 @@ const Contact = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Full Name *</FormLabel>
+                  <FormLabel className="text-foreground">Full Name *</FormLabel>
                   <FormDescription>Your first and last name</FormDescription>
                   <FormControl>
                     <Input
                       placeholder="Your name"
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      className="bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                       aria-required="true"
                       {...field}
                     />
@@ -149,12 +155,12 @@ const Contact = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Email *</FormLabel>
+                  <FormLabel className="text-foreground">Email *</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="your.email@company.com"
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      className="bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                       aria-required="true"
                       {...field}
                     />
@@ -169,12 +175,12 @@ const Contact = () => {
               name="company"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Company</FormLabel>
+                  <FormLabel className="text-foreground">Company</FormLabel>
                   <FormDescription>Optional — helps us tailor our recommendations</FormDescription>
                   <FormControl>
                     <Input
                       placeholder="Your company name"
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      className="bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                       {...field}
                     />
                   </FormControl>
@@ -188,13 +194,13 @@ const Contact = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Phone Number</FormLabel>
+                  <FormLabel className="text-foreground">Phone Number</FormLabel>
                   <FormDescription>Optional — we'll reach out via email by default</FormDescription>
                   <FormControl>
                     <Input
                       type="tel"
                       placeholder="Your phone number"
-                      className="bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      className="bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                       {...field}
                     />
                   </FormControl>
@@ -208,11 +214,11 @@ const Contact = () => {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-white">Message *</FormLabel>
+                  <FormLabel className="text-foreground">Message *</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Tell us about your training needs (e.g., team size, certifications of interest, timeline...)"
-                      className="min-h-[150px] bg-[#252b3d] border-gray-600 text-white placeholder:text-gray-400 focus:border-[#4FD1C5]"
+                      className="min-h-[150px] bg-card border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                       aria-required="true"
                       {...field}
                     />
@@ -222,11 +228,13 @@ const Contact = () => {
               )}
             />
 
-            <Button 
-              type="submit" 
-              className="w-full bg-[#4FD1C5] hover:bg-[#3db8ac] text-white font-semibold transition-all duration-300" 
+            <Button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isSubmitting}
+              aria-busy={isSubmitting}
             >
+              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>

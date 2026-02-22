@@ -20,7 +20,7 @@ const CoursePagination = ({ currentPage, totalPages, onPageChange }: CoursePagin
     <div className="mt-8 flex justify-center">
       <Pagination>
         <PaginationContent>
-          <PaginationItem>
+          <PaginationItem className={currentPage === 1 ? 'cursor-not-allowed' : ''}>
             <PaginationPrevious
               href="#"
               onClick={(e) => {
@@ -62,7 +62,7 @@ const CoursePagination = ({ currentPage, totalPages, onPageChange }: CoursePagin
             );
           })}
 
-          <PaginationItem>
+          <PaginationItem className={currentPage === totalPages ? 'cursor-not-allowed' : ''}>
             <PaginationNext
               href="#"
               onClick={(e) => {
