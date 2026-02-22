@@ -9,6 +9,7 @@ interface MenuItemProps {
   to: string;
   icon: LucideIcon;
   description?: string;
+  group?: string;
 }
 
 interface MenuItemComponentProps extends MenuItemProps {
@@ -106,6 +107,26 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
   const gridCols = columns === 2 ? "grid-cols-2" : "grid-cols-3";
   const menuWidth = columns === 2 ? "w-[500px] max-w-[90vw]" : "w-[700px] max-w-[90vw]";
 
+  // Check if items have groups
+  const hasGroups = items.some((item) => item.group);
+
+  // Build grouped structure preserving order of first appearance
+  const groups: { name: string; items: MenuItemProps[] }[] = [];
+  if (hasGroups) {
+    const seen = new Map<string, number>();
+    for (const item of items) {
+      const groupName = item.group || "Other";
+      if (seen.has(groupName)) {
+        groups[seen.get(groupName)!].items.push(item);
+      } else {
+        seen.set(groupName, groups.length);
+        groups.push({ name: groupName, items: [item] });
+      }
+    }
+  }
+
+  let itemIndex = 0;
+
   return (
     <div
       ref={menuRef}
@@ -151,11 +172,29 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
             menuWidth
           )}
         >
-          <div className={cn("grid gap-1", gridCols)}>
-            {items.map((item, index) => (
-              <MenuItem key={item.to} {...item} index={index} isVisible={isOpen} onItemClick={handleItemClick} />
-            ))}
-          </div>
+          {hasGroups ? (
+            <div className={cn("grid gap-x-6 gap-y-0", gridCols)}>
+              {groups.map((group) => (
+                <div key={group.name} className="mb-2">
+                  <div className="text-xs uppercase text-muted-foreground font-semibold mb-2 mt-2 px-3 tracking-wider">
+                    {group.name}
+                  </div>
+                  {group.items.map((item) => {
+                    const idx = itemIndex++;
+                    return (
+                      <MenuItem key={item.to} {...item} index={idx} isVisible={isOpen} onItemClick={handleItemClick} />
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={cn("grid gap-1", gridCols)}>
+              {items.map((item, index) => (
+                <MenuItem key={item.to} {...item} index={index} isVisible={isOpen} onItemClick={handleItemClick} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

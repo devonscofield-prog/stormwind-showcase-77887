@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Award, BookOpen, Hammer } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
@@ -128,9 +129,9 @@ const Mentoring = () => {
             Unlike traditional eLearning, you're never on your own. Get direct access to instructors for personalized help whenever you need it.
           </p>
           <Button size="lg" className="px-8 py-6 text-lg" asChild>
-            <a href="https://stormwindstudios.com/instructors" target="_blank" rel="noopener noreferrer">
-              Meet All Our Instructors
-            </a>
+            <Link to="/contact">
+              Connect with Our Instructors
+            </Link>
           </Button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { usePageView } from "@/hooks/usePageView";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,15 @@ import { TechBackground } from "@/components/TechBackground";
 import { Navigation } from "@/components/Navigation";
 import { VariantCard } from "@/components/VariantCard";
 import { sampleCourses, categories, flattenCourses } from "@/lib/trainingSampleData";
-import { GraduationCap, BookOpen, Sparkles, Clock, Shield, Cloud, Server, Brain, Network, FolderKanban, Layers, Lock, Calendar } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { GraduationCap, BookOpen, Sparkles, Clock, Shield, Cloud, Server, Brain, Network, FolderKanban, Layers, Lock, Calendar, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Category icons mapping
@@ -88,6 +96,24 @@ const TrainingSamples = () => {
       <Navigation />
       <TechBackground />
       <div className="container max-w-7xl mx-auto px-4 relative z-10">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb className="mb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/" className="flex items-center gap-2">
+                  <Home className="w-4 h-4" />
+                  Home
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Training Samples</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6 animate-fade-in">
           {/* Animated icon */}

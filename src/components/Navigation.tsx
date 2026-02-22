@@ -19,24 +19,24 @@ import {
 } from "@/components/ui/collapsible";
 import stormwindLogo from "@/assets/stormwind-logo.png";
 
-// Topics menu items - flat array sorted logically (core tech → specialized → business)
+// Topics menu items - grouped by category
 const topicsMenuItems = [
-  { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Azure, M365, Windows Server" },
-  { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure, GCP certifications" },
-  { label: "Networking", to: "/networking", icon: Network, description: "Network+, CCNA, CCNP" },
-  { label: "DevOps", to: "/devops", icon: GitBranch, description: "Docker, Kubernetes, Terraform" },
-  { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "React, Node.js, Python, APIs" },
-  { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Sec+, CISM, CISSP" },
-  { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "ChatGPT, Copilot, ML fundamentals" },
-  { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data" },
-  { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "Phishing, social engineering" },
-  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, ITIL, troubleshooting" },
-  { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Excel, Word, Outlook, Teams" },
-  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Leadership, communication" },
-  { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile" },
-  { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "AI-driven phishing tests" },
-  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Onboarding, productivity" },
-  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Workplace safety, ethics" },
+  { label: "Microsoft", to: "/microsoft", icon: Monitor, description: "Azure, M365, Windows Server", group: "Infrastructure & Cloud" },
+  { label: "Cloud", to: "/cloud", icon: Cloud, description: "AWS, Azure, GCP certifications", group: "Infrastructure & Cloud" },
+  { label: "Networking", to: "/networking", icon: Network, description: "Network+, CCNA, CCNP", group: "Infrastructure & Cloud" },
+  { label: "DevOps", to: "/devops", icon: GitBranch, description: "Docker, Kubernetes, Terraform", group: "Infrastructure & Cloud" },
+  { label: "Cybersecurity", to: "/cybersecurity", icon: Shield, description: "Sec+, CISM, CISSP", group: "Security" },
+  { label: "Security Awareness", to: "/security-awareness", icon: Lock, description: "Phishing, social engineering", group: "Security" },
+  { label: "StormAI Phishing", to: "/phishing", icon: Fish, description: "AI-driven phishing tests", group: "Security" },
+  { label: "Full Stack Dev", to: "/fullstack-developer", icon: Code2, description: "React, Node.js, Python, APIs", group: "Development & Data" },
+  { label: "AI & ML", to: "/ai-pro", icon: Brain, description: "ChatGPT, Copilot, ML fundamentals", group: "Development & Data" },
+  { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data", group: "Development & Data" },
+  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Leadership, communication", group: "Business & Productivity" },
+  { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile", group: "Business & Productivity" },
+  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, ITIL, troubleshooting", group: "Business & Productivity" },
+  { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Excel, Word, Outlook, Teams", group: "Business & Productivity" },
+  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Onboarding, productivity", group: "Business & Productivity" },
+  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Workplace safety, ethics", group: "Business & Productivity" },
 ];
 
 // Platform features menu items - flat array sorted logically
@@ -159,14 +159,28 @@ export const Navigation = () => {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="pl-4 mt-2 space-y-1">
-                {topicsMenuItems.map((item) => (
-                  <Link key={item.to} to={item.to} onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted">
-                      <item.icon className="w-4 h-4 mr-2 text-primary" />
-                      {item.label}
-                    </Button>
-                  </Link>
-                ))}
+                {(() => {
+                  let lastGroup = "";
+                  return topicsMenuItems.map((item) => {
+                    const showGroupLabel = item.group && item.group !== lastGroup;
+                    if (item.group) lastGroup = item.group;
+                    return (
+                      <div key={item.to}>
+                        {showGroupLabel && (
+                          <div className="text-xs uppercase text-muted-foreground font-semibold mt-3 mb-1 px-4 tracking-wider">
+                            {item.group}
+                          </div>
+                        )}
+                        <Link to={item.to} onClick={() => setMobileMenuOpen(false)}>
+                          <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted">
+                            <item.icon className="w-4 h-4 mr-2 text-primary" />
+                            {item.label}
+                          </Button>
+                        </Link>
+                      </div>
+                    );
+                  });
+                })()}
               </CollapsibleContent>
             </Collapsible>
 

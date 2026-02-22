@@ -134,6 +134,22 @@ const Cybersecurity = () => {
           ))}
         </div>
       </div>
+
+      {/* Related Topics */}
+      <div className="mt-24 pt-12 border-t border-border">
+        <h3 className="text-lg font-semibold text-muted-foreground mb-6">Related Topics</h3>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild variant="outline" size="sm">
+            <Link to="/security-awareness">Security Awareness</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/networking">Networking</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/phishing">Phishing</Link>
+          </Button>
+        </div>
+      </div>
     </PageLayout>
   );
 };

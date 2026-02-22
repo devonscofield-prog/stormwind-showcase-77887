@@ -76,6 +76,22 @@ const AIPro = () => {
           </div>
         </div>
       </div>
+
+      {/* Related Topics */}
+      <div className="mt-24 pt-12 border-t border-border">
+        <h3 className="text-lg font-semibold text-muted-foreground mb-6">Related Topics</h3>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild variant="outline" size="sm">
+            <Link to="/data-science-pro">Data Science Pro</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/devops">DevOps</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/fullstack-developer">Full Stack Developer</Link>
+          </Button>
+        </div>
+      </div>
     </PageLayout>
   );
 };
