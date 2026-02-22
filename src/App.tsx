@@ -11,6 +11,7 @@ import { TextSizeProvider } from "./contexts/TextSizeContext";
 import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Create QueryClient outside component to prevent recreation on each render
 const queryClient = new QueryClient({
@@ -60,6 +61,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <ErrorBoundary>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
       <TextSizeProvider>
         <TooltipProvider>
@@ -130,6 +132,7 @@ const App = () => (
       </TooltipProvider>
       </TextSizeProvider>
     </ThemeProvider>
+    </ErrorBoundary>
   </QueryClientProvider>
 );
 

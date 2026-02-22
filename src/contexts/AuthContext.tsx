@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { User, Session } from '@supabase/supabase-js';
+import { User, Session, AuthError } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
 interface AuthContextType {
@@ -7,8 +7,8 @@ interface AuthContextType {
   session: Session | null;
   isAdmin: boolean;
   loading: boolean;
-  signUp: (email: string, password: string, fullName: string) => Promise<{ error: any }>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string, fullName: string) => Promise<{ error: AuthError | null }>;
+  signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -29,9 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         
         // Check admin status asynchronously
         if (session?.user) {
-          setTimeout(() => {
-            checkAdminStatus(session.user.id);
-          }, 0);
+          checkAdminStatus(session.user.id);
         } else {
           setIsAdmin(false);
         }
@@ -44,10 +42,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
+
       if (session?.user) {
         checkAdminStatus(session.user.id);
       }
+      setLoading(false);
+    }).catch((error) => {
+      console.error('Failed to get session:', error);
       setLoading(false);
     });
 
@@ -55,14 +56,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const checkAdminStatus = async (userId: string) => {
-    const { data } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
-      .single();
-    
-    setIsAdmin(!!data);
+    try {
+      const { data } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .eq('role', 'admin')
+        .single();
+
+      setIsAdmin(!!data);
+    } catch (error) {
+      console.error('Failed to check admin status:', error);
+      setIsAdmin(false);
+    }
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
@@ -92,7 +98,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error('Failed to sign out:', error);
+    }
     setIsAdmin(false);
   };
 
