@@ -6,6 +6,11 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  define: {
+    'import.meta.env.VITE_SUPABASE_URL': JSON.stringify("https://zskktopasdqalyxurler.supabase.co"),
+    'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpza2t0b3Bhc2RxYWx5eHVybGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4OTkwMjYsImV4cCI6MjA3ODQ3NTAyNn0.mF_z6aHhCmPwWp6ZtWuABLnWzF67JShfRGss2Hl_cW4"),
+    'import.meta.env.VITE_SUPABASE_PROJECT_ID': JSON.stringify("zskktopasdqalyxurler"),
+  },
   server: {
     host: "::",
     port: 8080,
