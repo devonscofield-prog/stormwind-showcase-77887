@@ -92,6 +92,7 @@ All colors MUST be HSL.
   .dark {
     /* Charcoal background matching reference image */
     --background: 0 0% 17%; /* #3D3D3D */
+    --background-deep: 210 20% 8%;
     --foreground: 0 0% 100%;
 
     /* Darker card backgrounds */
@@ -619,6 +620,48 @@ All colors MUST be HSL.
 
   .pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Hero text glow - accent-teal text shadow for headings */
+  .hero-text-glow {
+    text-shadow: 0 0 40px hsl(var(--accent-teal) / 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Hero subtitle shadow */
+  .hero-text-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Hero dark background - intentional brand gradient darker than --background */
+  .hero-bg {
+    --hero-bg: 207 37% 6%;
+    --hero-bg-mid: 207 28% 7%;
+    background-color: hsl(var(--hero-bg));
+  }
+
+  .hero-bg-gradient {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--hero-bg)),
+      hsl(var(--hero-bg-mid)),
+      hsl(var(--hero-bg))
+    );
+  }
+
+  /* Aurora animation for hero background */
+  @keyframes aurora {
+    0%, 100% {
+      transform: translateX(0) translateY(0) scale(1);
+    }
+    25% {
+      transform: translateX(3%) translateY(-2%) scale(1.02);
+    }
+    50% {
+      transform: translateX(-2%) translateY(3%) scale(0.98);
+    }
+    75% {
+      transform: translateX(-3%) translateY(-1%) scale(1.01);
+    }
   }
 
   /* Bounce Animation for Icons */

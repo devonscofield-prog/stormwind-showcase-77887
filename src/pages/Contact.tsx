@@ -79,7 +79,7 @@ const Contact = () => {
       containerSize="narrow"
       heroClassName="mb-12"
     >
-      <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto mb-8">
+      <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 max-w-xl mx-auto mb-8 animate-fade-in">
         <p className="text-sm text-muted-foreground">
           Fill out the form below and a dedicated learning director will reach out within 1 business day to help you find the right training solution for your team.
         </p>

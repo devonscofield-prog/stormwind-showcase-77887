@@ -171,7 +171,7 @@ const SkillsAssessments = () => {
           </div>
 
           {/* Tabs */}
-          <Tabs defaultValue="overview" className="w-full">
+          <Tabs defaultValue="overview" className="w-full animate-fade-in">
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-8">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="team-skills">Team Skills</TabsTrigger>

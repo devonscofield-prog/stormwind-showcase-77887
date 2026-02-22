@@ -91,7 +91,7 @@ const Microlearning = () => {
           <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
             <div className="flex items-center gap-3 mb-6">
               <Zap className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl font-bold">What is Bytes?</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold">What is Bytes?</h2>
             </div>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>

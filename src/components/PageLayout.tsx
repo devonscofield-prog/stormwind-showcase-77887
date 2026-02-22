@@ -60,7 +60,7 @@ const containerSizes = {
 const backgroundVariants = {
   default: "bg-background",
   gradient: "bg-gradient-to-b from-background via-primary/5 to-background",
-  dark: "bg-[#0f1419]",
+  dark: "bg-[hsl(var(--background-deep))]",
 };
 
 export const PageLayout = ({

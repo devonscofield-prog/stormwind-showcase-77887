@@ -267,7 +267,7 @@ const LearningPaths = () => {
       breadcrumbs={[{ label: "Learning Paths" }]} 
       containerSize="wide"
     >
-      <div className="space-y-20 animate-fade-in">
+      <div className="space-y-24 sm:space-y-32 animate-fade-in">
         
         {/* Section Header with Glowing Icon */}
         <section className="text-center">
@@ -275,7 +275,7 @@ const LearningPaths = () => {
             <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse" />
             <Route className="w-8 h-8 text-primary relative z-10" />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Learning Paths</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Learning Paths</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A Learning Path is a curated series of courses designed to take you from your current skill level 
             to mastery in a specific role or technology area.
@@ -368,9 +368,9 @@ const LearningPaths = () => {
                 track team progress, and ensure your training investment delivers measurable results.
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">Personalized Guidance</span>
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">Progress Reports</span>
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">ROI Tracking</span>
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Personalized Guidance</span>
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Progress Reports</span>
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">ROI Tracking</span>
               </div>
             </div>
           </div>

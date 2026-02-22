@@ -75,31 +75,31 @@ const Hero = ({
       behavior: 'smooth'
     });
   };
-  return <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0a0f14]">
+  return <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden hero-bg">
       {/* Aurora Borealis Background Effect */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f14] via-[#0d1318] to-[#0a0f14]" />
+        <div className="absolute inset-0 hero-bg-gradient" />
         
-        {/* Aurora layers */}
+        {/* Aurora layers using design system brand colors: --accent-teal, --primary, --accent-green */}
         <div className="absolute inset-0 opacity-40" style={{
         background: `
-              radial-gradient(ellipse 120% 60% at 20% 40%, hsl(177 70% 41% / 0.3) 0%, transparent 50%),
-              radial-gradient(ellipse 100% 50% at 80% 60%, hsl(166 100% 30% / 0.25) 0%, transparent 50%),
-              radial-gradient(ellipse 80% 40% at 50% 30%, hsl(160 64% 52% / 0.2) 0%, transparent 50%)
+              radial-gradient(ellipse 120% 60% at 20% 40%, hsl(var(--accent-teal) / 0.3) 0%, transparent 50%),
+              radial-gradient(ellipse 100% 50% at 80% 60%, hsl(var(--primary) / 0.25) 0%, transparent 50%),
+              radial-gradient(ellipse 80% 40% at 50% 30%, hsl(var(--accent-green) / 0.2) 0%, transparent 50%)
             `,
         animation: 'aurora 15s ease-in-out infinite'
       }} />
         <div className="absolute inset-0 opacity-30" style={{
         background: `
-              radial-gradient(ellipse 90% 50% at 70% 50%, hsl(177 70% 41% / 0.25) 0%, transparent 45%),
-              radial-gradient(ellipse 110% 60% at 30% 70%, hsl(166 100% 30% / 0.2) 0%, transparent 50%)
+              radial-gradient(ellipse 90% 50% at 70% 50%, hsl(var(--accent-teal) / 0.25) 0%, transparent 45%),
+              radial-gradient(ellipse 110% 60% at 30% 70%, hsl(var(--primary) / 0.2) 0%, transparent 50%)
             `,
         animation: 'aurora 20s ease-in-out infinite reverse'
       }} />
         <div className="absolute inset-0 opacity-20" style={{
         background: `
-              radial-gradient(ellipse 70% 35% at 60% 45%, hsl(160 64% 52% / 0.3) 0%, transparent 40%)
+              radial-gradient(ellipse 70% 35% at 60% 45%, hsl(var(--accent-green) / 0.3) 0%, transparent 40%)
             `,
         animation: 'aurora 12s ease-in-out infinite 2s'
       }} />
@@ -113,26 +113,20 @@ const Hero = ({
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight pb-2 relative min-h-[1.2em]">
             <span className="relative inline-block">
               {/* Glow layer */}
-              <span className="absolute inset-0 text-transparent bg-clip-text blur-2xl opacity-60" style={{
-              color: '#4FD1C5'
-            }}>
+              <span className="absolute inset-0 text-accent-teal bg-clip-text blur-2xl opacity-60">
                 {typedText}
               </span>
               {/* Main text with high contrast */}
-              <span className="relative text-white font-extrabold" style={{
-              textShadow: '0 0 40px rgba(79,209,197,0.5), 0 2px 4px rgba(0,0,0,0.8)',
-              letterSpacing: '-0.02em'
-            }}>
+              <span className="relative text-white font-extrabold hero-text-glow tracking-tight">
                 {typedText}
-                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-[#4FD1C5] ml-1 animate-pulse align-middle">|</span>}
+                {typedText.length < fullText.length && <span className="inline-block w-1 h-[0.9em] bg-accent-teal ml-1 animate-pulse align-middle">|</span>}
               </span>
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 transition-all duration-500 tracking-wide" style={{
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 transition-all duration-500 tracking-wide hero-text-shadow" style={{
           opacity: isVisible && typedText.length > 20 ? 1 : 0,
-          transform: isVisible && typedText.length > 20 ? 'translateY(0)' : 'translateY(20px)',
-          textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+          transform: isVisible && typedText.length > 20 ? 'translateY(0)' : 'translateY(20px)'
         }}>
             Bite-sized learning, unlimited hands-on practice, and world-class instructors. We transform complex training into simple, accessible experiences.
           </p>
@@ -169,23 +163,7 @@ const Hero = ({
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      {/* Aurora animation keyframes */}
-      <style>{`
-        @keyframes aurora {
-          0%, 100% {
-            transform: translateX(0) translateY(0) scale(1);
-          }
-          25% {
-            transform: translateX(3%) translateY(-2%) scale(1.02);
-          }
-          50% {
-            transform: translateX(-2%) translateY(3%) scale(0.98);
-          }
-          75% {
-            transform: translateX(-3%) translateY(-1%) scale(1.01);
-          }
-        }
-      `}</style>
+      {/* Aurora keyframes defined in index.css */}
     </section>;
 };
 export default Hero;

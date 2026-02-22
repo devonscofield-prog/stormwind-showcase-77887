@@ -74,7 +74,7 @@ const TrainingSamples = () => {
 
   // Course player view
   if (showPlayer && selectedCourse) {
-    return <div className={cn("min-h-screen pt-20 pb-16 transition-all duration-300 relative bg-[#0f1419]", isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0")}>
+    return <div className={cn("min-h-screen pt-20 pb-16 transition-all duration-300 relative bg-[hsl(var(--background-deep))]", isTransitioning ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0")}>
         <Navigation />
         <TechBackground />
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
@@ -84,7 +84,7 @@ const TrainingSamples = () => {
   }
 
   // Course catalog view
-  return <div className={cn("min-h-screen pt-20 pb-16 overflow-hidden transition-all duration-300 relative bg-[#0f1419]", isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0")}>
+  return <div className={cn("min-h-screen pt-20 pb-16 overflow-hidden transition-all duration-300 relative bg-[hsl(var(--background-deep))]", isTransitioning ? "opacity-0 -translate-x-4" : "opacity-100 translate-x-0")}>
       <Navigation />
       <TechBackground />
       <div className="container max-w-7xl mx-auto px-4 relative z-10">
