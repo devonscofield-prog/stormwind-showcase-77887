@@ -2,12 +2,12 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { PageLayout } from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import { BookOpen, FlaskConical, Mail, Home } from "lucide-react";
+import { BookOpen, FlaskConical, Home } from "lucide-react";
 
 const helpfulLinks = [
   { to: "/courses", label: "Courses", icon: BookOpen },
   { to: "/training-samples", label: "Training Samples", icon: FlaskConical },
-  { to: "/contact", label: "Contact", icon: Mail },
+  
 ];
 
 const NotFound = () => {

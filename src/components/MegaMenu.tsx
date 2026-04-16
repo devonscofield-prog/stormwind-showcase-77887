@@ -58,7 +58,7 @@ const MenuItem = ({ label, to, icon: Icon, description, index, isVisible, onItem
 
 export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {

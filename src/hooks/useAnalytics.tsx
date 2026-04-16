@@ -45,7 +45,7 @@ export const useAnalytics = () => {
   const sessionStartTime = useRef(Date.now());
   const currentPageStartTime = useRef(Date.now());
   const eventBuffer = useRef<any[]>([]);
-  const flushTimeoutRef = useRef<NodeJS.Timeout>();
+  const flushTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   // Flush buffered events to database
   const flushEvents = useCallback(async () => {

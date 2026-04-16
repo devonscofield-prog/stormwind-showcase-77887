@@ -124,11 +124,11 @@ export const Navigation = () => {
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Link to="/contact">
+            <a href="https://stormwindstudios.com/#request-demo" target="_blank" rel="noopener noreferrer">
               <Button variant="default">
                 Contact Us
               </Button>
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Hamburger Menu Button */}
@@ -257,14 +257,14 @@ export const Navigation = () => {
               <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               Toggle Theme
             </Button>
-            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+            <a href="https://stormwindstudios.com/#request-demo" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
               <Button 
                 variant="default" 
                 className="w-full justify-start"
               >
                 Contact Us
               </Button>
-            </Link>
+            </a>
           </nav>
       </div>
     </header>

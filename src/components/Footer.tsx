@@ -21,7 +21,7 @@ const platformLinks = [
 const resourceLinks = [
   { label: "Courses", to: "/courses" },
   { label: "Training Samples", to: "/training-samples" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact Us", to: "https://stormwindstudios.com/#request-demo", external: true },
 ];
 
 const linkClass = "text-muted-foreground hover:text-foreground transition-colors text-sm";
@@ -73,9 +73,15 @@ export const Footer = () => {
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className={linkClass}>
-                    {link.label}
-                  </Link>
+                  {'external' in link ? (
+                    <a href={link.to} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.to} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

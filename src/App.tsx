@@ -41,7 +41,7 @@ const EnterpriseReporting = lazy(() => import("./pages/EnterpriseReporting"));
 const HRCompliancePage = lazy(() => import("./pages/HRCompliancePage"));
 const Courses = lazy(() => import("./pages/Courses"));
 const TrainingSamples = lazy(() => import("./pages/TrainingSamples"));
-const Contact = lazy(() => import("./pages/Contact"));
+
 const StormAILearning = lazy(() => import("./pages/PersonalizedLearning"));
 
 const AnalyticsDashboard = lazy(() => import("./pages/AnalyticsDashboard"));
@@ -100,7 +100,7 @@ const App = () => (
             <Route path="/training-samples" element={<TrainingSamples />} />
             <Route path="/training-samples/:courseId" element={<TrainingSamples />} />
             <Route path="/training-samples/:courseId/:variantId" element={<TrainingSamples />} />
-            <Route path="/contact" element={<Contact />} />
+            
             <Route path="/stormai-learning" element={<StormAILearning />} />
             <Route path="/personalized-learning" element={<Navigate to="/stormai-learning" replace />} />
             

@@ -58,7 +58,7 @@ const Hero = ({
   }, []);
   useEffect(() => {
     let currentIndex = 0;
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const typeNextCharacter = () => {
       if (currentIndex <= fullText.length) {
         setTypedText(fullText.slice(0, currentIndex));
@@ -143,7 +143,7 @@ const Hero = ({
               <Link to="/training-samples">Try Training Samples</Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="text-base px-8 py-3 h-auto text-white/80 hover:text-white hover:bg-white/10">
-              <Link to="/contact">Contact Us</Link>
+              <a href="https://stormwindstudios.com/#request-demo" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </Button>
           </div>
         </div>
