@@ -58,7 +58,7 @@ const Hero = ({
   }, []);
   useEffect(() => {
     let currentIndex = 0;
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const typeNextCharacter = () => {
       if (currentIndex <= fullText.length) {
         setTypedText(fullText.slice(0, currentIndex));
