@@ -73,9 +73,15 @@ export const Footer = () => {
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className={linkClass}>
-                    {link.label}
-                  </Link>
+                  {'external' in link ? (
+                    <a href={link.to} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.to} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

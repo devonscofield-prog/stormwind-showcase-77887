@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
-import { Award, BookOpen, Hammer } from "lucide-react";
+import { Award, BookOpen } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { Skeleton } from "@/components/ui/skeleton";
 import willPanek from "@/assets/will-panek.png";
