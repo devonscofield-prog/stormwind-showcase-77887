@@ -21,7 +21,7 @@ const platformLinks = [
 const resourceLinks = [
   { label: "Courses", to: "/courses" },
   { label: "Training Samples", to: "/training-samples" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact Us", to: "https://stormwindstudios.com/#request-demo", external: true },
 ];
 
 const linkClass = "text-muted-foreground hover:text-foreground transition-colors text-sm";

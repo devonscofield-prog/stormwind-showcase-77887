@@ -7,7 +7,7 @@ import { BookOpen, FlaskConical, Mail, Home } from "lucide-react";
 const helpfulLinks = [
   { to: "/courses", label: "Courses", icon: BookOpen },
   { to: "/training-samples", label: "Training Samples", icon: FlaskConical },
-  { to: "/contact", label: "Contact", icon: Mail },
+  
 ];
 
 const NotFound = () => {
