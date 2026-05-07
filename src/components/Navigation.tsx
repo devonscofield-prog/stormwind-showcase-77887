@@ -33,7 +33,7 @@ const topicsMenuItems = [
   { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data", group: "Development & Data" },
   { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Leadership, communication", group: "Business & Productivity" },
   { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile", group: "Business & Productivity" },
-  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, ITIL, troubleshooting", group: "Business & Productivity" },
+  { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, Network+, troubleshooting", group: "Business & Productivity" },
   { label: "Desktop Apps", to: "/desktop-apps", icon: AppWindow, description: "Excel, Word, Outlook, Teams", group: "Business & Productivity" },
   { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Onboarding, productivity", group: "Business & Productivity" },
   { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Workplace safety, ethics", group: "Business & Productivity" },

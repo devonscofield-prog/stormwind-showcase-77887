@@ -30,13 +30,6 @@ const HelpDesk = () => {
       description: "The industry-standard certification for IT support professionals. Master hardware, software, networking, mobile devices, operating systems, security, and troubleshooting fundamentals.",
     },
     {
-      title: "ITIL v4 Foundations",
-      instructorName: "Raymond Lacoste",
-      instructorImage: raymondLacoste,
-      level: "Intermediate" as const,
-      description: "Learn the globally recognized ITIL framework for IT service management. Master best practices for service delivery, incident management, problem resolution, and continuous improvement in modern IT environments.",
-    },
-    {
       title: "CompTIA Network+",
       instructorName: "Raymond Lacoste",
       instructorImage: raymondLacoste,
@@ -112,7 +105,7 @@ const HelpDesk = () => {
           <BentoCard
             icon={TrendingUp}
             title="ITSM & Ticketing"
-            description="ITIL frameworks, ticketing systems, and incident management."
+            description="Service management, ticketing systems, and incident management."
           />
         </BentoGrid>
       </div>

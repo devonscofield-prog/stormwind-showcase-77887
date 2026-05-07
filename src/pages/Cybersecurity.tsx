@@ -58,14 +58,6 @@ const Cybersecurity = () => {
       titleIcon: Shield,
       description: "Master penetration testing and vulnerability assessment with comprehensive training in planning, scoping, information gathering, vulnerability identification, exploitation, and reporting. Prepare for the CompTIA PenTest+ PT0-003 certification.",
     },
-    {
-      title: "Certified Ethical Hacker (CEH)",
-      instructorName: "Shane Sexton",
-      instructorImage: shaneSexton,
-      level: "Intermediate" as const,
-      titleIcon: Shield,
-      description: "Master ethical hacking techniques with comprehensive training in reconnaissance, scanning, enumeration, vulnerability analysis, and exploitation. Prepare for the EC-Council CEH v12 certification.",
-    },
   ];
 
   return (
