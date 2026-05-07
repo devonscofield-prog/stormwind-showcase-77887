@@ -16,9 +16,7 @@ const CertificationPrep = () => {
     "Microsoft Azure Fundamentals (AZ-900)",
     "AZ-104: Microsoft Azure Administrator",
     "Cisco CCNA (200-301)",
-    "ITIL 4 Foundation",
-    "Certified Information Systems Security Professional (CISSP)",
-    "Ethical Hacking v13"
+    "Certified Information Systems Security Professional (CISSP)"
   ];
 
   const prepResources = [{

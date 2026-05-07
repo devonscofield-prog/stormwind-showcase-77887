@@ -29,7 +29,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   "Microsoft": Server,
   "AI": Brain,
   "Networking": Network,
-  "ITIL": FolderKanban,
+  
   "Security Awareness": Lock,
   "Project Management": FolderKanban
 };

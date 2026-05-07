@@ -126,7 +126,7 @@ const EnterpriseIT = ({
     { name: "DevOps", Icon: DevOpsIcon, items: "Kubernetes, Docker, IAC, CI/CD, CKA, Hashicorp, and more", link: "/devops" },
     { name: "Data Science Pro", Icon: BusinessProIcon, items: "Power BI, Azure Data, SQL Server, MS Fabric, Power Platform, and more", link: "/data-science-pro" },
     { name: "Project Management", Icon: ProjectManagementIcon, items: "Authorized Training Partner for PMI, PMP, ACP, Project +, CAPM, Lean Six Sigma, and more", link: "/project-management" },
-    { name: "Help Desk", Icon: HelpDeskIcon, items: "CompTIA (Tech+, A+, Net+, Sec+), ITIL v4 Foundations, and more", link: "/help-desk" },
+    { name: "Help Desk", Icon: HelpDeskIcon, items: "CompTIA (Tech+, A+, Net+, Sec+), and more", link: "/help-desk" },
   ];
   return <div className="animate-fade-in">
       <div className="mb-12">

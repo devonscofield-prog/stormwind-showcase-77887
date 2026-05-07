@@ -335,12 +335,6 @@ const courseUrls: Record<string, string> = {
   "Improving Organizational Execution (Part 1 of 4): Eliminating The Execution Gap": "https://stormwindstudios.com/courses/improving-organizational-execution-part-1-of-4-eliminating-the-execution-gap/",
   "(ISC)\u00B2 CCSP (Certified Cloud Security Professional)": "https://stormwindstudios.com/courses/isc2-ccsp-certified-cloud-security-professional/",
   "(ISC)\u00B2 SSCP (Systems Security Certified Practitioner)": "https://stormwindstudios.com/courses/isc2-sscp-systems-security-certified-practitioner/",
-  "ITIL\u00AE 4 Foundation": "https://stormwindstudios.com/courses/itil-4-foundation/",
-  "ITIL\u00AE 4 Leader: Digital & IT Strategy": "https://stormwindstudios.com/courses/itil-4-leader-digital-and-it-strategy/",
-  "ITIL\u00AE 4 Specialist: Create, Deliver, and Support": "https://stormwindstudios.com/courses/itil-4-specialist-create-deliver-and-support/",
-  "ITIL\u00AE 4 Specialist: Drive Stakeholder Value": "https://stormwindstudios.com/courses/itil-4-specialist-drive-stakeholder-value/",
-  "ITIL\u00AE 4 Specialist: High Velocity IT": "https://stormwindstudios.com/courses/itil-4-specialist-high-velocity-it/",
-  "ITIL\u00AE 4 Strategist: Direct, Plan, and Improve": "https://stormwindstudios.com/courses/itil-4-strategist-direct-plan-and-improve/",
 
   // --- L courses ---
   "Lean Six Sigma Black Belt": "https://stormwindstudios.com/courses/lean-six-sigma-black-belt/",

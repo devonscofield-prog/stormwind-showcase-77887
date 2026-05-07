@@ -3555,10 +3555,6 @@ export const courseCatalogData: Record<string, Record<string, Course[]>> = {
         { name: "CompTIA A+ Core 2 (220-1202) V15*" },
         { name: "CompTIA Tech+ (FC0-U71)" },
       ],
-      "ITIL & Service Management": [
-        { name: "ITIL v4 Foundations" },
-        { name: "ITIL v4 Foundations Exam Crash", isBytes: true },
-      ],
       "Windows Support": [
         { name: "Windows 10 End User Essentials Beginner" },
         { name: "Windows 10 Troubleshooting Advanced" },
@@ -4300,13 +4296,6 @@ export const courseCatalogData: Record<string, Record<string, Course[]>> = {
         { name: "Certified Information Systems Security Professional (CISSP)*" },
         { name: "Certified Information Systems Security Professional (CISSP) Exam Crash", isBytes: true },
       ],
-      "EC-Council": [
-        { name: "Ethical Hacking v13*" },
-        { name: "CHFI (Professional Cybersecurity Forensic Investigator)" },
-        { name: "Network Defender Professional" },
-        { name: "Penetration Testing Professional" },
-        { name: "Chief Information Security Officer Certification (CCISO)*" },
-      ],
       "ISACA": [
         { name: "CRISC" },
         { name: "Certified Information Systems Auditor (CISA)*" },
@@ -4445,7 +4434,7 @@ export const courseCatalogData: Record<string, Record<string, Course[]>> = {
       ],
       "Cybersecurity": [
         { name: "Security+ Exam Crash", isBytes: true },
-        { name: "ITIL v4 Foundations Exam Crash", isBytes: true },
+        
         { name: "Certified Information Systems Security Professional (CISSP) Exam Crash", isBytes: true },
         { name: "NIST Cybersecurity Framework 2.0 Overview", isBytes: true },
         { name: "NIST 2.0 Functions: Identify and Protect", isBytes: true },
@@ -4502,7 +4491,7 @@ export const courseCatalogData: Record<string, Record<string, Course[]>> = {
       ],
       "Q1 2026 - Security & Networking": [
         { name: "CISA", isComingSoon: true },
-        { name: "Ethical Hacking v13 Exam Crash", isComingSoon: true },
+        
         { name: "Cisco CCNP Enterprise: ENCOR v1.2", isComingSoon: true },
         { name: "Cisco CCNA Cybersecurity", isComingSoon: true },
       ],
