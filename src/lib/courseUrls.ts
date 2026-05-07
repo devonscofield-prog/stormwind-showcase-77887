@@ -94,8 +94,6 @@ const courseUrls: Record<string, string> = {
 
   // --- C courses ---
   "CAPM® Exam Prep": "https://stormwindstudios.com/courses/capm-exam-prep/",
-  "Certified Ethical Hacker (CEH v12)": "https://stormwindstudios.com/courses/certified-ethical-hacker-ceh-v12/",
-  "Certified Ethical Hacker (CEH v13)": "https://stormwindstudios.com/courses/certified-ethical-hacker-ceh-v13/",
   "Certified Kubernetes Administrator (CKA)": "https://stormwindstudios.com/courses/certified-kubernetes-administrator-cka/",
   "Certified Kubernetes Application Developer (CKAD)": "https://stormwindstudios.com/courses/certified-kubernetes-application-developer-ckad/",
   "Certified Kubernetes Security Specialist (CKS)": "https://stormwindstudios.com/courses/certified-kubernetes-security-specialist-cks/",
