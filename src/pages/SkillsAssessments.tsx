@@ -39,7 +39,7 @@ const SkillsAssessments = () => {
     },
     {
       title: "Security",
-      assessments: ["Ethical Hacking Practitioner", "Incident Detection and Response Practitioner", "IT Security Support", "Infrastructure Security Operation", "Cisco Security Principles", "Cloud Security Principals", "Defensive Security Practices for Networking", "Ethical Hacking Tools", "Information Security Principles in Healthcare", "Comprehensive Skills Assessment for Information Security"]
+      assessments: ["Incident Detection and Response Practitioner", "IT Security Support", "Infrastructure Security Operation", "Cisco Security Principles", "Cloud Security Principals", "Defensive Security Practices for Networking", "Information Security Principles in Healthcare", "Comprehensive Skills Assessment for Information Security"]
     },
     {
       title: "Development & DevOps",

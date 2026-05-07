@@ -88,7 +88,7 @@ const Cybersecurity = () => {
           <BentoCard
             icon={Shield}
             title="Penetration Testing"
-            description="Ethical hacking, vulnerability assessments, and exploitation techniques."
+            description="Vulnerability assessments and security testing techniques."
           />
 
           <BentoCard
