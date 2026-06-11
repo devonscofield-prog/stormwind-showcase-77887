@@ -18,7 +18,7 @@ const HRCompliancePage = () => {
       heroActions={
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg">
-            <Link to="/courses">
+            <Link to="/courses?category=HR%20Compliance">
               <BookOpen className="mr-2 h-5 w-5" />
               Explore Courses
             </Link>
