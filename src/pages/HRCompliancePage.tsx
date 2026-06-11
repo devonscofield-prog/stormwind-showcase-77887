@@ -38,8 +38,11 @@ const HRCompliancePage = () => {
               <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
                 <div className="mb-8">
                   <h3 className="text-3xl font-bold mb-4">Build a Culture of Compliance and Integrity</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Compliance failures cost organizations millions in fines, litigation, and reputational damage every year. StormWind's compliance training library gives your workforce the knowledge to prevent violations before they happen through interactive, on-demand microlearning courses.
+                  </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    StormWind's HR Compliance Training provides your organization with the knowledge and tools to maintain a safe, ethical, and legally compliant workplace. From preventing harassment and workplace violence to protecting sensitive data and ensuring ethical leadership, our comprehensive training helps your team understand their responsibilities and empowers them to make the right decisions.
+                    From preventing harassment and workplace violence to protecting sensitive data and ensuring ethical leadership, our comprehensive training helps your team understand their responsibilities and empowers them to make the right decisions.
                   </p>
                 </div>
 
@@ -53,11 +56,15 @@ const HRCompliancePage = () => {
                     <ul className="space-y-2 text-sm mb-4">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Preventing Workplace Harassment</span>
+                        <span className="text-muted-foreground">Definitions of harassment, sexual harassment, and bullying</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Preventing Bullying in the Workplace</span>
+                        <span className="text-muted-foreground">Responding to harassment incidents</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Intervention strategies</span>
                       </li>
                     </ul>
                   </div>
@@ -71,15 +78,15 @@ const HRCompliancePage = () => {
                     <ul className="space-y-2 text-sm mb-4">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Active Shooter Response</span>
+                        <span className="text-muted-foreground">Preventing substance abuse</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Hazard Communication</span>
+                        <span className="text-muted-foreground">Risk management</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Workplace Violence Prevention</span>
+                        <span className="text-muted-foreground">Active shooter protocols</span>
                       </li>
                     </ul>
                   </div>
@@ -93,19 +100,15 @@ const HRCompliancePage = () => {
                     <ul className="space-y-2 text-sm mb-4">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Global Data Privacy Awareness</span>
+                        <span className="text-muted-foreground">Information security</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">HIPAA Compliance</span>
+                        <span className="text-muted-foreground">Safe internet usage</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">PCI DSS Standards</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Protecting Intellectual Property</span>
+                        <span className="text-muted-foreground">Data protection</span>
                       </li>
                     </ul>
                   </div>
@@ -119,21 +122,46 @@ const HRCompliancePage = () => {
                     <ul className="space-y-2 text-sm mb-4">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Anti-Bribery & Anti-Corruption (FCPA)</span>
+                        <span className="text-muted-foreground">Workplace discrimination laws</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Ethical Leadership</span>
+                        <span className="text-muted-foreground">Workplace safety laws</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">FMLA & Leave Management</span>
+                        <span className="text-muted-foreground">Wage and hour laws</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Lawful Hiring Practices</span>
+                        <span className="text-muted-foreground">Employee benefit laws</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Representation of different demographics</span>
                       </li>
                     </ul>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-primary/5 border border-primary/20 p-6 mb-6">
+                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <Shield className="w-6 h-6 text-primary" />
+                    Why StormWind for Compliance
+                  </h4>
+                  <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Legally Reviewed Content</p>
+                      <p className="text-muted-foreground">Harassment Prevention courses undergo bi-annual legal review by Ogletree Deakins, one of the largest labor and employment law firms in the U.S. Canadian content is reviewed by Ogletree Deakins attorneys specializing in Canadian employment law.</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">State-Specific Compliance</p>
+                      <p className="text-muted-foreground">Dedicated course versions for CA, CT, DE, IL, ME, NY, TX, WA, Ontario, and Canada, with regulatory updates incorporated into video content as laws change.</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">Comprehensive Coverage</p>
+                      <p className="text-muted-foreground">Four key compliance domains covering HIPAA, GDPR, CPRA, PIPEDA, FCPA, FERPA, ADA, Title IX, and more.</p>
+                    </div>
                   </div>
                 </div>
 
