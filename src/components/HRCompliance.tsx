@@ -18,22 +18,22 @@ const HRCompliance = ({ }: HRComplianceProps) => {
     {
       icon: HarassmentPreventionIcon,
       title: "Harassment Prevention",
-      description: "Preventing Workplace Harassment, Preventing Bullying in the Workplace"
+      description: "Definitions of harassment, sexual harassment, and bullying; responding to incidents; intervention strategies"
     },
     {
       icon: WorkplaceSafetyIcon,
       title: "Workplace Safety",
-      description: "Active Shooter Response Training Course, Hazard Communication, Workplace Violence Prevention"
+      description: "Preventing substance abuse, risk management, and active shooter protocols"
     },
     {
       icon: DataProtectionIcon,
       title: "Data Protection",
-      description: "Global Data Privacy Awareness, HIPAA and TMPA for Covered Entities and Business Associates, Pay Card Information Data Security Standards (PCI DSS), Protecting Intellectual Property"
+      description: "Information security, safe internet usage, and data protection"
     },
     {
       icon: EthicsComplianceIcon,
       title: "Ethics and Compliance",
-      description: "Anti-Bribery and Anti-Corruption (FCPA), Disability, Pregnancy & Religious Accommodations, Ethical Leadership, Export Controls, Family, Medical, and Other Protected Leave (FMLA), Interviewing and Hiring Lawfully, Managing Difficult Employees"
+      description: "Workplace discrimination, safety, wage and hour, and employee benefit laws; representation of different demographics"
     }
   ];
 
