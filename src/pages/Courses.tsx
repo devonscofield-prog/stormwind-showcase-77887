@@ -5,6 +5,16 @@ const EXTERNAL_COURSES_URL = "https://stormwindstudios.com/courses";
 const Courses = () => {
   useEffect(() => {
     document.title = "Course Catalog - StormWind Studios";
+    try {
+      // Break out of any iframe (e.g. Lovable preview) — the destination
+      // site refuses to be framed.
+      if (window.top && window.top !== window.self) {
+        window.top.location.href = EXTERNAL_COURSES_URL;
+        return;
+      }
+    } catch {
+      // Cross-origin access to window.top can throw; fall through to same-frame nav.
+    }
     window.location.replace(EXTERNAL_COURSES_URL);
   }, []);
 
