@@ -2,14 +2,20 @@ import { useEffect, useCallback, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 
-// Generate or retrieve session ID
+// Generate or retrieve session ID (safe against blocked storage — Safari
+// private mode, embedded iframes with third-party storage blocked, etc.)
 const getSessionId = (): string => {
-  let sessionId = sessionStorage.getItem('analytics_session_id');
-  if (!sessionId) {
-    sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    sessionStorage.setItem('analytics_session_id', sessionId);
+  const fallback = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  try {
+    let sessionId = sessionStorage.getItem('analytics_session_id');
+    if (!sessionId) {
+      sessionId = fallback;
+      sessionStorage.setItem('analytics_session_id', sessionId);
+    }
+    return sessionId;
+  } catch {
+    return fallback;
   }
-  return sessionId;
 };
 
 // Get device info
