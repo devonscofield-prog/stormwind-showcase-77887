@@ -34,17 +34,17 @@ const personalizedTools = [
 ];
 
 const studioFeatures = [
-  { icon: Wand2, title: "Build From Any Topic", description: "TODO: copy — assemble a custom course from topics pulled out of existing StormWind courses." },
-  { icon: BookPlus, title: "Tailored Curriculum", description: "TODO: copy — mix and match modules to match a role, team, or project need." },
-  { icon: Layers, title: "Reuse Trusted Content", description: "TODO: copy — every custom course is built on the same expert-led material as our full catalog." },
-  { icon: Sparkles, title: "AI-Assisted Assembly", description: "TODO: copy — StormAI suggests the right topics and ordering for your objective." },
+  { icon: Wand2, title: "Build From Any Topic", description: "Assemble a custom course from topics pulled out of existing StormWind courses." },
+  { icon: BookPlus, title: "Tailored Curriculum", description: "Mix and match modules to match a role, team, or project need." },
+  { icon: Layers, title: "Reuse Trusted Content", description: "Every custom course is built on the same expert-led material as our full catalog." },
+  { icon: Sparkles, title: "AI-Assisted Assembly", description: "StormAI suggests the right topics and ordering for your objective." },
 ];
 
 const atlasFeatures = [
-  { icon: Map, title: "Visual Skill Tree", description: "TODO: copy — explore skills like a game map and see how they connect to certifications and roles." },
-  { icon: GitBranch, title: "Branching Paths", description: "TODO: copy — pick the branch that matches your goal — cert prep, role readiness, or specialization." },
-  { icon: Trophy, title: "Unlock as You Learn", description: "TODO: copy — progress through nodes as you complete the courses tied to each skill." },
-  { icon: Target, title: "Role & Cert Aligned", description: "TODO: copy — every skill maps to real job roles and industry certifications." },
+  { icon: Map, title: "Visual Skill Tree", description: "Explore skills like a game map and see how they connect to certifications and roles." },
+  { icon: GitBranch, title: "Branching Paths", description: "Pick the branch that matches your goal — cert prep, role readiness, or specialization." },
+  { icon: Trophy, title: "Unlock as You Learn", description: "Progress through nodes as you complete the courses tied to each skill." },
+  { icon: Target, title: "Role & Cert Aligned", description: "Every skill maps to real job roles and industry certifications." },
 ];
 
 
