@@ -15,7 +15,6 @@ import {
   GitBranch,
   Trophy,
   Target,
-  Video,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
@@ -48,14 +47,6 @@ const atlasFeatures = [
   { icon: Target, title: "Role & Cert Aligned", description: "TODO: copy — every skill maps to real job roles and industry certifications." },
 ];
 
-const VideoPlaceholder = ({ label }: { label: string }) => (
-  <div className="max-w-4xl mx-auto mb-12">
-    <div className="aspect-video rounded-2xl border border-dashed border-border/60 bg-card/40 flex flex-col items-center justify-center gap-3 text-muted-foreground">
-      <Video className="w-10 h-10 opacity-60" />
-      <p className="text-sm">{label}</p>
-    </div>
-  </div>
-);
 
 const PersonalizedLearning = () => {
   usePageView("StormAI Learning");
@@ -149,7 +140,19 @@ const PersonalizedLearning = () => {
             Create custom courses built from topics inside our existing courses — tailor training to a role, team, or project without starting from scratch.
           </p>
 
-          <VideoPlaceholder label="StormAI Studio video coming soon" />
+          <div className="max-w-4xl mx-auto mb-16 animate-fade-in">
+            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
+              <VideoEmbed
+                videoId="q454y9mtg0"
+                title="StormAI Studio"
+                trackingMetadata={{
+                  courseName: "StormAI Learning",
+                  variantName: "StormAI Studio",
+                  lessonTitle: "StormAI Studio Overview",
+                }}
+              />
+            </div>
+          </div>
 
           <section>
             <div className="flex items-center gap-3 mb-8">
@@ -172,7 +175,19 @@ const PersonalizedLearning = () => {
             A video-game-style skill tree for professional development — pick a certification or job role and unlock the courses that build the skills to get there.
           </p>
 
-          <VideoPlaceholder label="Skill Atlas video coming soon" />
+          <div className="max-w-4xl mx-auto mb-16 animate-fade-in">
+            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
+              <VideoEmbed
+                videoId="f96gcr3bls"
+                title="Skill Atlas"
+                trackingMetadata={{
+                  courseName: "StormAI Learning",
+                  variantName: "Skill Atlas",
+                  lessonTitle: "Skill Atlas Overview",
+                }}
+              />
+            </div>
+          </div>
 
           <section>
             <div className="flex items-center gap-3 mb-8">
