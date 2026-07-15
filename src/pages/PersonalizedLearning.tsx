@@ -15,7 +15,6 @@ import {
   GitBranch,
   Trophy,
   Target,
-  Video,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
@@ -48,14 +47,6 @@ const atlasFeatures = [
   { icon: Target, title: "Role & Cert Aligned", description: "TODO: copy — every skill maps to real job roles and industry certifications." },
 ];
 
-const VideoPlaceholder = ({ label }: { label: string }) => (
-  <div className="max-w-4xl mx-auto mb-12">
-    <div className="aspect-video rounded-2xl border border-dashed border-border/60 bg-card/40 flex flex-col items-center justify-center gap-3 text-muted-foreground">
-      <Video className="w-10 h-10 opacity-60" />
-      <p className="text-sm">{label}</p>
-    </div>
-  </div>
-);
 
 const PersonalizedLearning = () => {
   usePageView("StormAI Learning");
