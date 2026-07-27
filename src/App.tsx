@@ -21,7 +21,7 @@ const DataSciencePro = lazy(() => import("./pages/DataSciencePro"));
 const BusinessSkills = lazy(() => import("./pages/BusinessSkills"));
 const ProjectManagement = lazy(() => import("./pages/ProjectManagement"));
 const AIPro = lazy(() => import("./pages/AIPro"));
-const AILearning = lazy(() => import("./pages/AILearning"));
+
 const Cybersecurity = lazy(() => import("./pages/Cybersecurity"));
 const Networking = lazy(() => import("./pages/Networking"));
 const HelpDesk = lazy(() => import("./pages/HelpDesk"));
