@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import {
   BarChart,
@@ -403,7 +404,9 @@ const SkillsAssessments = () => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </div>
+
   );
 };
 

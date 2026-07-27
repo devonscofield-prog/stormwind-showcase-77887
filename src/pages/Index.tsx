@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import Hero from "@/components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import PersonalizedLearningBanner from "@/components/PersonalizedLearningBanner";
 import { BookOpen, Users, Play, Shield } from "lucide-react";
 
@@ -152,6 +153,8 @@ const Index = () => {
           </Tabs>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
