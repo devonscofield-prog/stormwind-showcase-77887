@@ -43,7 +43,7 @@ const topicsMenuItems = [
 const platformMenuItems = [
   { label: "StormAI Learning", to: "/stormai-learning", icon: Sparkles, description: "Personalized experience" },
   { label: "Mentoring", to: "/mentoring", icon: UserCheck, description: "1:1 expert guidance" },
-  { label: "StormAI Tutor", to: "/ai-learning", icon: Bot, description: "AI-powered learning" },
+  { label: "StormAI Tutor", to: "/stormai-tutor", icon: Bot, description: "AI-powered learning" },
   { label: "Microlearning (Bytes)", to: "/bytes", icon: Zap, description: "Quick skill bursts" },
   { label: "Learning Paths", to: "/learning-paths", icon: Map, description: "Structured curricula" },
   { label: "Certification Prep", to: "/certification-prep", icon: Award, description: "Exam prep resources" },
