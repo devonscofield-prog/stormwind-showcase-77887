@@ -54,7 +54,7 @@ const StormAIPhishing = ({ }: StormAIPhishingProps) => {
   return (
     <div className="animate-fade-in">
       <div className="mb-12">
-        <h2 className="text-4xl font-bold mb-6 text-foreground leading-tight pb-2">
+        <h2 className="text-4xl font-bold mb-6 text-gradient-brand leading-tight pb-2">
           StormAI Phishing
         </h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed mb-6">
