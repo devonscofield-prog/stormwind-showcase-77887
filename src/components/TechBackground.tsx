@@ -40,6 +40,23 @@ export const TechBackground = () => {
   const animationRef = useRef<number | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [scrollFade, setScrollFade] = useState(1);
+
+  // Fade the background out once the user scrolls past the hero
+  useEffect(() => {
+    const update = () => {
+      const heroHeight = Math.max(window.innerHeight * 0.6, 320);
+      const t = Math.min(window.scrollY / heroHeight, 1);
+      setScrollFade(Math.max(1 - t, 0.03));
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -366,8 +383,15 @@ export const TechBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0 }}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none transition-opacity duration-300"
+      style={{
+        zIndex: 0,
+        opacity: scrollFade,
+        maskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 45%, rgba(0,0,0,0.25) 75%, rgba(0,0,0,0) 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 45%, rgba(0,0,0,0.25) 75%, rgba(0,0,0,0) 100%)",
+      }}
       aria-hidden="true"
     />
   );
