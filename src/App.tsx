@@ -77,7 +77,7 @@ const App = () => (
             <Route path="/business-skills" element={<BusinessSkills />} />
             <Route path="/project-management" element={<ProjectManagement />} />
             <Route path="/ai-pro" element={<AIPro />} />
-            <Route path="/ai-learning" element={<AILearning />} />
+            <Route path="/ai-learning" element={<Navigate to="/stormai-learning" replace />} />
             <Route path="/cybersecurity" element={<Cybersecurity />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/help-desk" element={<HelpDesk />} />
