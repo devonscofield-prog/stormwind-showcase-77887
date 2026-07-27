@@ -21,7 +21,7 @@ const DataSciencePro = lazy(() => import("./pages/DataSciencePro"));
 const BusinessSkills = lazy(() => import("./pages/BusinessSkills"));
 const ProjectManagement = lazy(() => import("./pages/ProjectManagement"));
 const AIPro = lazy(() => import("./pages/AIPro"));
-const AILearning = lazy(() => import("./pages/AILearning"));
+
 const Cybersecurity = lazy(() => import("./pages/Cybersecurity"));
 const Networking = lazy(() => import("./pages/Networking"));
 const HelpDesk = lazy(() => import("./pages/HelpDesk"));
@@ -77,7 +77,7 @@ const App = () => (
             <Route path="/business-skills" element={<BusinessSkills />} />
             <Route path="/project-management" element={<ProjectManagement />} />
             <Route path="/ai-pro" element={<AIPro />} />
-            <Route path="/ai-learning" element={<AILearning />} />
+            <Route path="/ai-learning" element={<Navigate to="/stormai-learning" replace />} />
             <Route path="/cybersecurity" element={<Cybersecurity />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/help-desk" element={<HelpDesk />} />
