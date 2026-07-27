@@ -404,8 +404,9 @@ const SkillsAssessments = () => {
           </Tabs>
         </div>
       </div>
-    </div>
       <Footer />
+    </div>
+
   );
 };
 
