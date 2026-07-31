@@ -10,7 +10,7 @@ import { BookOpen, Users, Play, Shield } from "lucide-react";
 const EnterpriseIT = lazy(() => import("@/components/EnterpriseIT"));
 const StormAIPhishing = lazy(() => import("@/components/StormAIPhishing"));
 const EnterpriseEndUser = lazy(() => import("@/components/EnterpriseEndUser"));
-const HRCompliance = lazy(() => import("@/components/HRCompliance"));
+
 const ProjectManagement = lazy(() => import("@/components/ProjectManagement"));
 
 // Simple loading placeholder
