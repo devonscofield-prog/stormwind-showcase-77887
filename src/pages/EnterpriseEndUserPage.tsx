@@ -87,6 +87,48 @@ const hrCompliance: Card[] = [
   },
 ];
 
+const benefits: Record<string, { heading: string; items: string[] }> = {
+  desktop: {
+    heading: "Desktop Applications Benefits",
+    items: [
+      "Increased workplace productivity and efficiency",
+      "Comprehensive Microsoft 365 mastery across Word, Excel, and PowerPoint",
+      "Professional document, report, and presentation creation",
+      "Advanced data analysis and reporting capabilities",
+      "AI-powered productivity with Copilot and ChatGPT",
+      "Enhanced cybersecurity awareness across the workforce",
+      "Reduced security incidents and breaches from phishing",
+      "Better email, calendar, and file organization",
+    ],
+  },
+  business: {
+    heading: "Business Skills Benefits",
+    items: [
+      "Stronger professional communication skills",
+      "Enhanced leadership and management capabilities",
+      "Improved collaboration and teamwork across departments",
+      "Better time management and workplace efficiency",
+      "Improved customer service and satisfaction",
+      "Increased employee confidence and engagement",
+      "Bite-sized microlearning that fits busy schedules",
+      "Career advancement opportunities for your people",
+    ],
+  },
+  compliance: {
+    heading: "HR Compliance Benefits",
+    items: [
+      "Reduced legal risks and liability",
+      "Regulatory compliance confidence",
+      "State-specific harassment prevention coverage",
+      "Enhanced workplace safety and security",
+      "Better data protection and privacy compliance",
+      "Reduced workplace incidents and claims",
+      "Improved employee morale and retention",
+      "Demonstrated commitment to ethical practices",
+    ],
+  },
+};
+
 const EnterpriseEndUserPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("desktop");
@@ -183,35 +225,19 @@ const EnterpriseEndUserPage = () => {
             <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
               <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <BookOpen className="w-6 h-6 text-primary" />
-                Training Benefits
+                {benefits[activeTab].heading}
               </h4>
               <div className="grid md:grid-cols-2 gap-4">
-                <ul className="space-y-2 text-sm">
-                  {[
-                    "Comprehensive Microsoft 365 mastery",
-                    "AI-powered productivity enhancement",
-                    "Enhanced cybersecurity awareness",
-                    "Reduced security incidents and breaches",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="space-y-2 text-sm">
-                  {[
-                    "Improved communication and collaboration",
-                    "Better time management and efficiency",
-                    "Increased employee confidence",
-                    "Measurable ROI on training investment",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {[benefits[activeTab].items.slice(0, 4), benefits[activeTab].items.slice(4)].map((column, ci) => (
+                  <ul key={ci} className="space-y-2 text-sm">
+                    {column.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
               </div>
             </div>
           </div>
