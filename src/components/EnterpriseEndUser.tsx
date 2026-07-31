@@ -7,6 +7,7 @@ import {
   SecurityAwarenessIcon, 
   BusinessSkillsIcon 
 } from "./icons/animated";
+import { EthicsComplianceIcon } from "./icons/animated";
 
 interface EnterpriseEndUserProps {
   selectedFeatures: string[];
