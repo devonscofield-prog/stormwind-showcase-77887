@@ -140,12 +140,6 @@ const Index = () => {
                   <EnterpriseEndUser selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
                 </TabsContent>
               )}
-
-              {activeTab === "hr-compliance" && (
-                <TabsContent value="hr-compliance" className="mt-0 -mx-6 px-6 py-8 rounded-xl bg-card/30">
-                  <HRCompliance selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
-                </TabsContent>
-              )}
             </Suspense>
           </Tabs>
         </div>
