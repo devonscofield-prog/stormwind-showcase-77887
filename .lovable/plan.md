@@ -1,65 +1,44 @@
-
 ## Goal
 
-Rework `/stormai-learning` so it presents **StormAI Learning** as an umbrella with three tabs:
-
-1. **Personalized Learning** (existing content, condensed)
-2. **StormAI Studio** — custom course creation from topics within courses
-3. **Skill Atlas** — video-game-style skill tree tied to certifications and job roles
-
-No navigation/mega-menu changes. Videos and full copy for the two new sections will be provided later — scaffold with placeholders.
+Reformat `src/pages/EnterpriseEndUserPage.tsx` into three "parts" — like the StormAI Learning page — with an equal 3-up card layout inside each part. No visual design changes: same dark cards, brand green, gradient page title, hero buttons, borders, hover lift, bullet dots, and typography as today.
 
 ## Structure
 
-Update `src/pages/PersonalizedLearning.tsx` (keep the same route/file to avoid router churn):
+Hero (unchanged) → overview panel → tab row → tab content.
 
 ```text
-PageLayout (title: "StormAI Learning")
-└── Tabs (shadcn Tabs, styled to match Index.tsx tab pills)
-    ├── Personalized Learning
-    ├── StormAI Studio
-    └── Skill Atlas
+[ Transform Your Workforce  (intro paragraph, unchanged) ]
+
+[ Desktop Applications | Business Skills | HR Compliance ]
+
+[  card  ][  card  ][  card  ]      <- equal 3-up grid
+
+[ Training Benefits (unchanged, below tabs) ]
 ```
 
-Tab pill styling reuses the pattern from `src/pages/Index.tsx` (bg-card/50, active = primary) for visual consistency.
+### Tab 1 — Desktop Applications
+Three equal cards, reusing the existing card markup verbatim:
+- **Microsoft Apps** (FileText) — Word/Excel/PowerPoint, Outlook & Teams, OneDrive & SharePoint, OneNote & Planner → Learn More `/desktop-apps`
+- **AI Tools** (Sparkles) — Copilot, ChatGPT Essentials, Prompt Engineering, AI Best Practices
+- **Security** (Shield) — Phishing Awareness, Password Security, Data Protection, Safe Browsing → Learn More `/security-awareness`
 
-### Tab 1 — Personalized Learning (condensed)
+### Tab 2 — Business Skills
+Three equal cards, splitting today's single Business Skills card into its natural groups (same card styling, same bullet content, no new copy invented beyond regrouping):
+- **Communication** (TrendingUp) — Communication Skills, Presentation & Writing basics
+- **Productivity** — Time Management, Problem Solving
+- **Leadership** — Leadership & Teamwork
+Each with a Learn More button to `/business-skills`.
 
-Keep the essence, cut the length so it feels like 1 of 3 peers:
+### Tab 3 — HR Compliance
+Three equal cards from today's HR Compliance bullets:
+- **Harassment Prevention** (FileCheck)
+- **Workplace Safety & Data Protection** (Shield)
+- **Ethics & Compliance** (FileCheck)
+Each with Learn More → `/hr-compliance`. Keeps the existing learning-director disclaimer behavior of the HR Compliance page (that page is untouched).
 
-- Keep: intro paragraph, VideoEmbed (`axic12xcaf`), the **7-tool BentoGrid**.
-- Remove/collapse: the 3-step "Personalize Your Experience" section and the "Tool Categories" section (redundant with the bento grid).
-- Keep the "Save up to 80% of your time" ROI callout as a single compact card.
+## Technical notes
 
-### Tab 2 — StormAI Studio
-
-Scaffold with:
-
-- Section intro: "Create custom courses built from topics inside our existing courses."
-- Placeholder `VideoEmbed` slot (empty `videoId=""` with a TODO comment; user will supply).
-- 3–4 placeholder BentoCards (icon + short lorem-style copy marked `TODO: copy`).
-- Icon direction: `Wand2`, `BookPlus`, `Layers`, `Sparkles` from lucide.
-
-### Tab 3 — Skill Atlas
-
-Scaffold with:
-
-- Section intro: "A skill-tree view of certifications and job roles — pick a path, unlock the courses that build it."
-- Placeholder `VideoEmbed` slot.
-- 3–4 placeholder BentoCards with icons: `Map`, `GitBranch`, `Trophy`, `Target`.
-- Note in card copy that content will be filled in when videos/copy arrive.
-
-## Technical Details
-
-- File touched: `src/pages/PersonalizedLearning.tsx` only.
-- Reuse existing primitives: `PageLayout`, `Tabs/TabsList/TabsTrigger/TabsContent`, `BentoGrid`, `BentoCard`, `VideoEmbed`.
-- Preserve `usePageView("StormAI Learning")` call.
-- Add a small `useState` for `activeTab` (default `"personalized"`) so we can later hook deep-links (`?tab=studio`) if desired — not implemented now.
-- Placeholder `VideoEmbed` components will be commented out or rendered inside a bordered "Video coming soon" placeholder div to avoid runtime errors from an empty `videoId`.
-- No route changes, no nav changes, no new files.
-
-## Out of Scope
-
-- Uploading/wiring the actual Studio and Atlas videos (waiting on user).
-- Final marketing copy for the two new sections.
-- Mega-menu or Navigation updates.
+- Use the same shadcn `Tabs`/`TabsList`/`TabsTrigger`/`TabsContent` component and trigger styling already used on `src/pages/PersonalizedLearning.tsx`, so the tab chrome matches the StormAI Learning page exactly.
+- Card grid becomes `grid md:grid-cols-2 lg:grid-cols-3 gap-6` (replacing the current `lg:grid-cols-4` row of 5 that leaves an orphan).
+- Restore the missing hover classes on the Business Skills card so all cards behave identically.
+- No changes to `index.css`, tokens, PageLayout, navigation, or any other page. Only `EnterpriseEndUserPage.tsx` is edited.
