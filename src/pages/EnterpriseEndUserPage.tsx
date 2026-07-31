@@ -225,35 +225,19 @@ const EnterpriseEndUserPage = () => {
             <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
               <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <BookOpen className="w-6 h-6 text-primary" />
-                Training Benefits
+                {benefits[activeTab].heading}
               </h4>
               <div className="grid md:grid-cols-2 gap-4">
-                <ul className="space-y-2 text-sm">
-                  {[
-                    "Comprehensive Microsoft 365 mastery",
-                    "AI-powered productivity enhancement",
-                    "Enhanced cybersecurity awareness",
-                    "Reduced security incidents and breaches",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="space-y-2 text-sm">
-                  {[
-                    "Improved communication and collaboration",
-                    "Better time management and efficiency",
-                    "Increased employee confidence",
-                    "Measurable ROI on training investment",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {[benefits[activeTab].items.slice(0, 4), benefits[activeTab].items.slice(4)].map((column, ci) => (
+                  <ul key={ci} className="space-y-2 text-sm">
+                    {column.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
               </div>
             </div>
           </div>
