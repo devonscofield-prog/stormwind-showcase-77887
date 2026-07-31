@@ -172,6 +172,40 @@ const EnterpriseEndUserPage = () => {
                       Learn More
                     </Button>
                   </div>
+
+                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                    <div className="flex items-center gap-3 mb-3">
+                      <FileCheck className="w-8 h-8 text-primary" />
+                      <h4 className="text-xl font-bold">HR Compliance</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">Meet regulatory and workplace training requirements</p>
+                    <ul className="space-y-2 text-sm mb-4">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Harassment Prevention</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Workplace Safety</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Data Protection</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span className="text-muted-foreground">Ethics & Compliance</span>
+                      </li>
+                    </ul>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full gap-2"
+                      onClick={() => navigate('/hr-compliance')}
+                    >
+                      Learn More
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
