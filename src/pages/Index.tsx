@@ -113,9 +113,6 @@ const Index = () => {
               <TabsTrigger value="enterprise-end-user" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
                 Enterprise End User
               </TabsTrigger>
-              <TabsTrigger value="hr-compliance" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
-                HR Compliance
-              </TabsTrigger>
             </TabsList>
 
             {/* Only render active tab content for performance */}
