@@ -100,7 +100,7 @@ const Index = () => {
       <section id="content-section" className="py-24 lg:py-32 scroll-mt-20 relative z-10 bg-gradient-to-br from-background via-background to-primary/5 rounded-t-3xl shadow-xl -mt-8">
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 bg-transparent h-auto p-0 mb-12">
+            <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-transparent h-auto p-0 mb-12">
               <TabsTrigger value="enterprise-it" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
                 Enterprise IT
               </TabsTrigger>
