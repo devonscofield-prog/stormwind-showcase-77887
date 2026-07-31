@@ -87,6 +87,48 @@ const hrCompliance: Card[] = [
   },
 ];
 
+const benefits: Record<string, { heading: string; items: string[] }> = {
+  desktop: {
+    heading: "Desktop Applications Benefits",
+    items: [
+      "Increased workplace productivity and efficiency",
+      "Comprehensive Microsoft 365 mastery across Word, Excel, and PowerPoint",
+      "Professional document, report, and presentation creation",
+      "Advanced data analysis and reporting capabilities",
+      "AI-powered productivity with Copilot and ChatGPT",
+      "Enhanced cybersecurity awareness across the workforce",
+      "Reduced security incidents and breaches from phishing",
+      "Better email, calendar, and file organization",
+    ],
+  },
+  business: {
+    heading: "Business Skills Benefits",
+    items: [
+      "Stronger professional communication skills",
+      "Enhanced leadership and management capabilities",
+      "Improved collaboration and teamwork across departments",
+      "Better time management and workplace efficiency",
+      "Improved customer service and satisfaction",
+      "Increased employee confidence and engagement",
+      "Bite-sized microlearning that fits busy schedules",
+      "Career advancement opportunities for your people",
+    ],
+  },
+  compliance: {
+    heading: "HR Compliance Benefits",
+    items: [
+      "Reduced legal risks and liability",
+      "Regulatory compliance confidence",
+      "State-specific harassment prevention coverage",
+      "Enhanced workplace safety and security",
+      "Better data protection and privacy compliance",
+      "Reduced workplace incidents and claims",
+      "Improved employee morale and retention",
+      "Demonstrated commitment to ethical practices",
+    ],
+  },
+};
+
 const EnterpriseEndUserPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("desktop");
