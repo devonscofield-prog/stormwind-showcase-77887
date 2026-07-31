@@ -1,15 +1,128 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Sparkles, Shield, TrendingUp, BookOpen, FlaskConical, FileCheck } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FileText, Sparkles, Shield, TrendingUp, BookOpen, FlaskConical, FileCheck, Clock, Users } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+
+type Card = {
+  icon: typeof FileText;
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  href?: string;
+};
+
+const TAB_TRIGGER_CLASS =
+  "bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg";
+
+const desktopApps: Card[] = [
+  {
+    icon: FileText,
+    title: "Microsoft Apps",
+    subtitle: "Master Microsoft 365 productivity tools",
+    bullets: ["Word, Excel, PowerPoint", "Outlook & Teams", "OneDrive & SharePoint", "OneNote & Planner"],
+    href: "/desktop-apps",
+  },
+  {
+    icon: Sparkles,
+    title: "AI Tools",
+    subtitle: "Leverage AI to boost productivity",
+    bullets: ["Microsoft Copilot", "ChatGPT Essentials", "Prompt Engineering", "AI Best Practices"],
+  },
+  {
+    icon: Shield,
+    title: "Security",
+    subtitle: "Protect against cyber threats",
+    bullets: ["Phishing Awareness", "Password Security", "Data Protection", "Safe Browsing Practices"],
+    href: "/security-awareness",
+  },
+];
+
+const businessSkills: Card[] = [
+  {
+    icon: TrendingUp,
+    title: "Communication",
+    subtitle: "Connect clearly across the organization",
+    bullets: ["Communication Skills", "Presentation Skills", "Business Writing"],
+    href: "/business-skills",
+  },
+  {
+    icon: Clock,
+    title: "Productivity",
+    subtitle: "Get more done with less friction",
+    bullets: ["Time Management", "Problem Solving", "Workplace Efficiency"],
+    href: "/business-skills",
+  },
+  {
+    icon: Users,
+    title: "Leadership",
+    subtitle: "Build stronger teams and managers",
+    bullets: ["Leadership & Teamwork", "Coaching & Feedback", "Collaboration"],
+    href: "/business-skills",
+  },
+];
+
+const hrCompliance: Card[] = [
+  {
+    icon: FileCheck,
+    title: "Harassment Prevention",
+    subtitle: "State-specific, legally reviewed training",
+    bullets: ["Harassment Prevention", "Respectful Workplace", "Manager Responsibilities"],
+    href: "/hr-compliance",
+  },
+  {
+    icon: Shield,
+    title: "Workplace Safety & Data Protection",
+    subtitle: "Keep people and information safe",
+    bullets: ["Workplace Safety", "Data Protection", "Privacy Requirements"],
+    href: "/hr-compliance",
+  },
+  {
+    icon: FileCheck,
+    title: "Ethics & Compliance",
+    subtitle: "Meet regulatory training requirements",
+    bullets: ["Ethics & Compliance", "Code of Conduct", "Reporting & Escalation"],
+    href: "/hr-compliance",
+  },
+];
 
 const EnterpriseEndUserPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const {
-    technologies = [],
-    features = []
-  } = location.state || {};
+  const [activeTab, setActiveTab] = useState("desktop");
+
+  const renderCards = (cards: Card[]) => (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {cards.map((card) => {
+        const Icon = card.icon;
+        return (
+          <div
+            key={card.title}
+            className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <Icon className="w-8 h-8 text-primary flex-shrink-0" />
+              <h4 className="text-xl font-bold">{card.title}</h4>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">{card.subtitle}</p>
+            <ul className="space-y-2 text-sm mb-4 flex-1">
+              {card.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <span className="text-muted-foreground">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+            {card.href && (
+              <Button size="sm" variant="outline" className="w-full gap-2" onClick={() => navigate(card.href!)}>
+                Learn More
+              </Button>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return (
     <PageLayout
@@ -33,228 +146,77 @@ const EnterpriseEndUserPage = () => {
         </div>
       }
     >
-          {/* Overview Section */}
-          <div id="enterprise-overview" className="mb-32 animate-fade-in scroll-mt-24">
-            <div className="max-w-6xl mx-auto">
-              <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
-                <div className="mb-8">
-                  <h3 className="text-3xl font-bold mb-4">Transform Your Workforce</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    StormWind's Enterprise End User Package delivers essential training to help your team work smarter, safer, and more efficiently. From mastering Microsoft 365 applications to understanding AI tools like Copilot and ChatGPT, staying secure against cyber threats, and developing critical business skills—this comprehensive package ensures your employees have the knowledge they need to excel in the modern workplace.
-                  </p>
-                </div>
+      <div id="enterprise-overview" className="mb-32 animate-fade-in scroll-mt-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
+            <div className="mb-8">
+              <h3 className="text-3xl font-bold mb-4">Transform Your Workforce</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                StormWind's Enterprise End User Package delivers essential training to help your team work smarter, safer, and more efficiently. From mastering Microsoft 365 applications to understanding AI tools like Copilot and ChatGPT, staying secure against cyber threats, and developing critical business skills—this comprehensive package ensures your employees have the knowledge they need to excel in the modern workplace.
+              </p>
+            </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <FileText className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">Microsoft Apps</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Master Microsoft 365 productivity tools</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Word, Excel, PowerPoint</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Outlook & Teams</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">OneDrive & SharePoint</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">OneNote & Planner</span>
-                      </li>
-                    </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      onClick={() => navigate('/desktop-apps')}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-8">
+              <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 gap-4 bg-transparent h-auto p-0 mb-8">
+                <TabsTrigger value="desktop" className={TAB_TRIGGER_CLASS}>
+                  Desktop Applications
+                </TabsTrigger>
+                <TabsTrigger value="business" className={TAB_TRIGGER_CLASS}>
+                  Business Skills
+                </TabsTrigger>
+                <TabsTrigger value="compliance" className={TAB_TRIGGER_CLASS}>
+                  HR Compliance
+                </TabsTrigger>
+              </TabsList>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Sparkles className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">AI Tools</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Leverage AI to boost productivity</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Microsoft Copilot</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">ChatGPT Essentials</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Prompt Engineering</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">AI Best Practices</span>
-                      </li>
-                    </ul>
-                  </div>
+              <TabsContent value="desktop" className="mt-0">
+                {renderCards(desktopApps)}
+              </TabsContent>
+              <TabsContent value="business" className="mt-0">
+                {renderCards(businessSkills)}
+              </TabsContent>
+              <TabsContent value="compliance" className="mt-0">
+                {renderCards(hrCompliance)}
+              </TabsContent>
+            </Tabs>
 
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Shield className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">Security</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Protect against cyber threats</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Phishing Awareness</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Password Security</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Data Protection</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Safe Browsing Practices</span>
-                      </li>
-                    </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      onClick={() => navigate('/security-awareness')}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-
-                  <div className="rounded-lg bg-card/50 border border-border p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <TrendingUp className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">Business Skills</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Develop essential workplace competencies</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Communication Skills</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Time Management</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Leadership & Teamwork</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Problem Solving</span>
-                      </li>
-                    </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      onClick={() => navigate('/business-skills')}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-
-                  <div className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <FileCheck className="w-8 h-8 text-primary" />
-                      <h4 className="text-xl font-bold">HR Compliance</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4">Meet regulatory and workplace training requirements</p>
-                    <ul className="space-y-2 text-sm mb-4">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Harassment Prevention</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Workplace Safety</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Data Protection</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Ethics & Compliance</span>
-                      </li>
-                    </ul>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full gap-2"
-                      onClick={() => navigate('/hr-compliance')}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
-                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <BookOpen className="w-6 h-6 text-primary" />
-                    Training Benefits
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Comprehensive Microsoft 365 mastery</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">AI-powered productivity enhancement</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Enhanced cybersecurity awareness</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Reduced security incidents and breaches</span>
-                      </li>
-                    </ul>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Improved communication and collaboration</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Better time management and efficiency</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Increased employee confidence</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">Measurable ROI on training investment</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <BookOpen className="w-6 h-6 text-primary" />
+                Training Benefits
+              </h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                <ul className="space-y-2 text-sm">
+                  {[
+                    "Comprehensive Microsoft 365 mastery",
+                    "AI-powered productivity enhancement",
+                    "Enhanced cybersecurity awareness",
+                    "Reduced security incidents and breaches",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="space-y-2 text-sm">
+                  {[
+                    "Improved communication and collaboration",
+                    "Better time management and efficiency",
+                    "Increased employee confidence",
+                    "Measurable ROI on training investment",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
+        </div>
+      </div>
     </PageLayout>
   );
 };
