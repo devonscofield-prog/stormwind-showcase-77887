@@ -7,6 +7,7 @@ import {
   SecurityAwarenessIcon, 
   BusinessSkillsIcon 
 } from "./icons/animated";
+import { EthicsComplianceIcon } from "./icons/animated";
 
 interface EnterpriseEndUserProps {
   selectedFeatures: string[];
@@ -39,9 +40,15 @@ const EnterpriseEndUser = ({ }: EnterpriseEndUserProps) => {
       description: "Topics spanning leadership, marketing, communication, ethics, wellness, and customer service.",
       link: "/business-skills"
     },
+    {
+      icon: EthicsComplianceIcon,
+      title: "HR Compliance",
+      description: "Harassment prevention, workplace safety, data protection, and ethics training reviewed by employment law counsel.",
+      link: "/hr-compliance"
+    },
   ];
 
-  const featureColors = ['#60A5FA', '#FB923C', '#A78BFA', '#4ADE80'];
+  const featureColors = ['#60A5FA', '#FB923C', '#A78BFA', '#4ADE80', '#F472B6'];
 
   return (
     <div className="animate-fade-in">
