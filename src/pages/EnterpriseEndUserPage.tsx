@@ -1,6 +1,6 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Sparkles, Shield, TrendingUp, BookOpen, FlaskConical } from "lucide-react";
+import { FileText, Sparkles, Shield, TrendingUp, BookOpen, FlaskConical, FileCheck } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 
 const EnterpriseEndUserPage = () => {
