@@ -101,6 +101,11 @@ export const Navigation = () => {
                 Ranges
               </Button>
             </Link>
+            <Link to="/roi-case-studies">
+              <Button variant="ghost" className="text-foreground hover:text-primary transition-colors">
+                ROI & Case Studies
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -235,6 +240,14 @@ export const Navigation = () => {
                 className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
               >
                 Ranges
+              </Button>
+            </Link>
+            <Link to="/roi-case-studies" onClick={() => setMobileMenuOpen(false)}>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start text-foreground hover:text-primary hover:bg-muted transition-colors"
+              >
+                ROI & Case Studies
               </Button>
             </Link>
             <Button
