@@ -55,30 +55,31 @@ const EnterpriseReporting = () => {
     });
   }, [fullscreenApi]);
   const features = [{
-    icon: Users,
-    title: "Manage Licenses",
-    description: "Full control over user management and license allocation. Easily assign, track, and manage licenses across your entire organization with real-time visibility into remaining seats and end dates."
-  }, {
     icon: BarChart3,
-    title: "Track Learning",
-    description: "Monitor individual and team progress with detailed analytics. View course completion rates, time spent learning, and engagement metrics to understand your team's development."
+    title: "Admin Dashboard",
+    description: "Land on a single view of license usage and organization-wide activity. See seats used and remaining, subscription end dates, and recent learner activity at a glance — no report building required."
   }, {
-    icon: UserPlus,
-    title: "Assign Courses",
-    description: "Tailor the learning experience to your team's unique needs. Search and assign specific courses to individuals or groups, creating personalized learning paths that align with your organizational goals."
-  }, {
-    icon: Calendar,
-    title: "Assign Due Dates",
-    description: "Drive measurable outcomes by setting course deadlines and milestones. Track progress against timelines and ensure your team stays on track with their learning objectives."
-  }, {
-    icon: TrendingUp,
-    title: "View Progress",
-    description: "Comprehensive reporting dashboards show completion percentages, time remaining, and detailed progress metrics. Identify top performers and those who may need additional support."
+    icon: Users,
+    title: "Roster & User Management",
+    description: "Search and filter your full roster by name, email, group, or status. Add, edit, deactivate, and reactivate users, reassign licenses as staff change, and manage access without waiting on support."
   }, {
     icon: ClipboardCheck,
-    title: "Export Activity",
-    description: "Generate detailed reports and export learning data for stakeholder presentations, compliance documentation, or integration with your existing HR systems."
+    title: "License & Activity Reports",
+    description: "Run license reports to see who holds a seat and when it expires, and activity reports covering courses started, completed, and time spent. Export any report for stakeholders, audits, or your HR system."
+  }, {
+    icon: TrendingUp,
+    title: "Skills Assessment Data",
+    description: "Review assessment results across individuals and teams to see measured competency, not just completions. Use the data to target follow-up training where the gaps actually are."
+  }, {
+    icon: Calendar,
+    title: "Due Dates & Accountability",
+    description: "Assign due dates to courses and learning paths, then track progress against those deadlines. Learners see what's expected and by when, and managers see who's on pace."
+  }, {
+    icon: UserPlus,
+    title: "Custom Learning Paths",
+    description: "Build learning paths from any combination of courses, then assign them to individuals or groups. Tailor curricula to roles, certifications, or onboarding programs and reuse them as your team grows."
   }];
+
   return <PageLayout title="Enterprise Reporting and Administration" description="Empower your team with our comprehensive SaaS platform, offering full control over user management and license allocation. Tailor the learning experience to your team's unique needs and drive measurable outcomes. As a manager, you'll have the tools to monitor progress, align training with organizational goals, and maximize your team's potential." breadcrumbs={[{
     label: "Enterprise Reporting"
   }]}>
