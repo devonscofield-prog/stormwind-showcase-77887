@@ -15,8 +15,8 @@ import {
   FlaskConical,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import nathanMielke from "@/assets/nathan-mielke.jpg.asset.json";
-import ijRosenblum from "@/assets/ij-rosenblum.jpg.asset.json";
+import nathanMielke from "@/assets/nathan-mielke.jpg";
+import ijRosenblum from "@/assets/ij-rosenblum.jpg";
 
 const capabilities = [
   {
@@ -61,7 +61,7 @@ const caseStudies = [
   {
     id: "mielke",
     name: "Nathan Mielke",
-    image: nathanMielke.url,
+    image: nathanMielke,
     role: "K-12 Educational Technology Consultant & Director of Technology Services",
     org: "Public school district",
     location: "Milwaukee, WI",
@@ -94,7 +94,7 @@ const caseStudies = [
   {
     id: "rosenblum",
     name: "IJ Rosenblum",
-    image: ijRosenblum.url,
+    image: ijRosenblum,
     role: "Director of IT",
     org: "SMG — Philadelphia Convention Center",
     location: "Philadelphia, PA",
