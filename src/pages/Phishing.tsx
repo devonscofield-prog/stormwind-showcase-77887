@@ -332,7 +332,7 @@ const Phishing = () => {
                     </Button>
                   </div>
 
-                  </div>
+
 
                   <div className="bg-accent/30 rounded-lg p-6 mt-6">
                     <h3 className="font-semibold text-lg mb-3">Tailored to Your Organization</h3>
