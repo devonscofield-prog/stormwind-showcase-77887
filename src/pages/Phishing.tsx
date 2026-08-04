@@ -281,6 +281,14 @@ const Phishing = () => {
                           <span className="text-primary mt-0.5">•</span>
                           <span>Malicious attachments and suspicious links</span>
                         </li>
+                        <li className="flex items-start gap-2 text-sm">
+                          <span className="text-primary mt-0.5">•</span>
+                          <span>Sequenced follow-ups and reminder emails that escalate pressure</span>
+                        </li>
+                        <li className="flex items-start gap-2 text-sm">
+                          <span className="text-primary mt-0.5">•</span>
+                          <span>Reply-based attacks that hijack an existing thread</span>
+                        </li>
                       </ul>
                     </div>
 
@@ -300,6 +308,10 @@ const Phishing = () => {
                         </li>
                         <li className="flex items-start gap-2 text-sm">
                           <span className="text-primary mt-0.5">•</span>
+                          <span>Phone and voice-based social engineering (vishing)</span>
+                        </li>
+                        <li className="flex items-start gap-2 text-sm">
+                          <span className="text-primary mt-0.5">•</span>
                           <span>Business email compromise (BEC)</span>
                         </li>
                         <li className="flex items-start gap-2 text-sm">
@@ -309,6 +321,18 @@ const Phishing = () => {
                       </ul>
                     </div>
                   </div>
+
+                  <div className="bg-accent/30 rounded-lg p-6 mt-6">
+                    <h3 className="font-semibold text-lg mb-3">Program ROI</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Automating campaigns, scoring, and follow-up hands roughly 24 administrator hours back to your security team each year, while click rates typically fall from an initial 20–35% to 2–5% as the program matures.
+                    </p>
+                    <Button asChild variant="outline" size="sm">
+                      <Link to="/roi-case-studies">See the full ROI breakdown</Link>
+                    </Button>
+                  </div>
+
+
 
                   <div className="bg-accent/30 rounded-lg p-6 mt-6">
                     <h3 className="font-semibold text-lg mb-3">Tailored to Your Organization</h3>

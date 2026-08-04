@@ -38,4 +38,7 @@ export const trainingLinks: Record<string, string> = {
   
   // Features
   "StormAI Learning": "/stormai-learning",
+
+  // ROI & Case Studies
+  "ROI & Case Studies": "/roi-case-studies",
 };
