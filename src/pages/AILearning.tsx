@@ -180,7 +180,7 @@ const AILearning = () => {
 
       {/* Two-up detail panels */}
       <section className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/9 to-transparent p-8 backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-8 backdrop-blur-xl">
           <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Zap className="h-6 w-6 text-primary" />
           </div>
