@@ -74,20 +74,6 @@ const ChatMockup = () => (
             Hello! I'm Storm AI Tutor, your learning assistant. Ask me anything about this course, and I'll guide you.
           </p>
         </div>
-        <div className="flex gap-3">
-          <span className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary/15">
-            <Bot className="h-4 w-4 text-primary" />
-          </span>
-          <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-border/50 bg-muted/40 px-4 py-3">
-            <p className="text-sm leading-relaxed text-foreground/90">
-              EtherChannel hashes frame fields — source/destination MAC or IP — to pick a physical
-              link, so each flow stays on one member link.
-            </p>
-            <p className="mt-2 text-xs text-primary">
-              ▸ See: Switching Fundamentals · Lesson 4.2
-            </p>
-          </div>
-        </div>
       </div>
 
       <div className="flex items-center gap-2 border-t border-border/50 px-4 py-3">
