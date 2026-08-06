@@ -574,6 +574,54 @@ All colors MUST be HSL.
     );
   }
 
+  /* StormAI aurora background — layered mint/teal gradients over deep base */
+  .bg-stormai-aurora {
+    position: relative;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -8%, hsl(var(--primary) / 0.20) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 8% 18%, hsl(var(--accent-teal) / 0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 65% 50% at 95% 42%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 45% at 50% 105%, hsl(var(--accent-teal) / 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, hsl(var(--background-deep)) 0%, hsl(var(--background)) 45%, hsl(var(--background-deep)) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Fine grid + vignette overlay for depth */
+  .bg-stormai-aurora::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 80%);
+  }
+
+  @keyframes aurora-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+    50% { transform: translate3d(4%, -3%, 0) scale(1.12); opacity: 0.85; }
+  }
+
+  .animate-aurora-drift {
+    animation: aurora-drift 18s ease-in-out infinite;
+  }
+
+  .animate-aurora-drift-slow {
+    animation: aurora-drift 26s ease-in-out infinite reverse;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-aurora-drift,
+    .animate-aurora-drift-slow {
+      animation: none;
+    }
+  }
+
+
   /* Gradient Icon Backgrounds */
   .icon-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-green)));

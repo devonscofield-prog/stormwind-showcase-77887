@@ -121,13 +121,15 @@ const PersonalizedLearning = () => {
       description="Three connected experiences — Personalized Learning, StormAI Studio, and Skill Atlas — that adapt training to every learner, team, and goal."
       breadcrumbs={[{ label: "StormAI Learning" }]}
       titleIcon={Sparkles}
-      backgroundVariant="dark"
+      backgroundClassName="bg-stormai-aurora"
     >
-      {/* Ambient glows */}
+      {/* Ambient drifting glows */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] h-[50%] w-[50%] rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute -bottom-[10%] -right-[10%] h-[50%] w-[50%] rounded-full bg-accent-teal/10 blur-[120px]" />
+        <div className="animate-aurora-drift absolute -top-[15%] -left-[10%] h-[55%] w-[55%] rounded-full bg-primary/20 blur-[140px]" />
+        <div className="animate-aurora-drift-slow absolute top-[30%] -right-[15%] h-[50%] w-[50%] rounded-full bg-accent-teal/20 blur-[140px]" />
+        <div className="animate-aurora-drift absolute -bottom-[20%] left-[20%] h-[45%] w-[55%] rounded-full bg-primary/15 blur-[150px]" />
       </div>
+
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="flex justify-center mb-14">
