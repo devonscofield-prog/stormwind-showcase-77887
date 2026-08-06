@@ -141,7 +141,7 @@ const AILearning = () => {
       {/* Capabilities bento */}
       <section className="mb-20">
         <div className="mb-8 flex items-center gap-3">
-          <div className="rounded-full bg-primary/12 p-3">
+          <div className="rounded-full bg-primary/10 p-3">
             <Zap className="h-6 w-6 text-primary" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold">Why Learners Rely on StormAI Tutor</h2>
