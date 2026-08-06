@@ -57,10 +57,10 @@ const capabilities: Capability[] = [
 
 const ChatMockup = () => (
   <div className="relative mx-auto w-full max-w-xl">
-    <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/25 blur-[70px]" />
-    <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-card/60 backdrop-blur-xl shadow-2xl">
+    <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/18 blur-[70px]" />
+    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/60 backdrop-blur-xl shadow-2xl">
       <div className="flex items-center gap-2 border-b border-border/50 px-5 py-3">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15">
           <Bot className="h-3.5 w-3.5 text-primary" />
         </span>
         <span className="text-sm font-semibold text-foreground">
@@ -75,7 +75,7 @@ const ChatMockup = () => (
           </p>
         </div>
         <div className="flex gap-3">
-          <span className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
+          <span className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary/15">
             <Bot className="h-4 w-4 text-primary" />
           </span>
           <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-border/50 bg-muted/40 px-4 py-3">
