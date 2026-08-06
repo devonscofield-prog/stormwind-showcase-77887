@@ -154,12 +154,12 @@ const AILearning = () => {
               className={cn(
                 "group relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-200",
                 item.featured
-                  ? "border-primary/22 bg-gradient-to-br from-primary/9 to-transparent hover:border-primary/55"
+                  ? "border-primary/25 bg-gradient-to-br from-primary/10 to-transparent hover:border-primary/55"
                   : "border-border/60 bg-card/40 hover:border-primary/40",
                 item.span
               )}
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/12 transition-shadow duration-200 group-hover:shadow-[0_0_16px_hsl(var(--primary)/0.4)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 transition-shadow duration-200 group-hover:shadow-[0_0_16px_hsl(var(--primary)/0.4)]">
                 <item.icon className="h-6 w-6 text-primary" />
               </div>
               <h3
