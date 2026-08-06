@@ -70,7 +70,7 @@ const ChatMockup = () => (
 
       <div className="space-y-4 px-5 py-6">
         <div className="flex justify-end">
-          <p className="max-w-[80%] rounded-2xl rounded-br-md bg-primary px-4 py-2.5 text-sm text-primary-foreground">
+          <p className="max-w-[80%] rounded-2xl rounded-br-md bg-primary/85 px-4 py-2.5 text-sm text-primary-foreground">
             Can you explain how EtherChannel load balancing works?
           </p>
         </div>
