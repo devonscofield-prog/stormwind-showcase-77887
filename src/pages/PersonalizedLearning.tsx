@@ -15,38 +15,101 @@ import {
   GitBranch,
   Trophy,
   Target,
+  LucideIcon,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { usePageView } from "@/hooks/usePageView";
-import { BentoGrid } from "@/components/BentoGrid";
-import { BentoCard } from "@/components/BentoCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
-const personalizedTools = [
-  { icon: FileText, title: "Study Notes", description: "Instant notes capturing key points, so learners stay focused on learning instead of note-taking." },
-  { icon: Timer, title: "Realtime Exam", description: "See practice questions as instructors mention them, reinforcing learning in the moment." },
-  { icon: LayoutGrid, title: "Topic Guide", description: "A complete map of every video lets learners jump directly to specific topics they need." },
-  { icon: FastForward, title: "Fast Track", description: "Save hours by skipping over material you already know and focus on what matters." },
-  { icon: Brain, title: "StormAI Examiner", description: "Generate unlimited practice tests on the fly for any topic you're studying." },
-  { icon: Layers, title: "Flashcards", description: "Built-in flashcards for quick review, all downloadable for offline study sessions." },
-  { icon: Search, title: "Highlights", description: "Search any keyword to see exactly where topics appear across the entire course." },
+interface Tool {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  span?: string;
+  featured?: boolean;
+}
+
+const personalizedTools: Tool[] = [
+  { icon: FileText, title: "Study Notes", description: "Instant notes capturing key points, so learners stay focused on learning instead of note-taking.", span: "md:col-span-8", featured: true },
+  { icon: Timer, title: "Realtime Exam", description: "See practice questions as instructors mention them, reinforcing learning in the moment.", span: "md:col-span-4" },
+  { icon: LayoutGrid, title: "Topic Guide", description: "A complete map of every video lets learners jump directly to specific topics they need.", span: "md:col-span-4" },
+  { icon: FastForward, title: "Fast Track", description: "Save hours by skipping over material you already know and focus on what matters.", span: "md:col-span-4" },
+  { icon: Brain, title: "StormAI Examiner", description: "Generate unlimited practice tests on the fly for any topic you're studying.", span: "md:col-span-4" },
+  { icon: Layers, title: "Flashcards", description: "Built-in flashcards for quick review, all downloadable for offline study sessions.", span: "md:col-span-4" },
+  { icon: Search, title: "Highlights", description: "Search any keyword to see exactly where topics appear across the entire course.", span: "md:col-span-8", featured: true },
 ];
 
-const studioFeatures = [
-  { icon: Wand2, title: "Build From Any Topic", description: "Assemble a custom course from topics pulled out of existing StormWind courses." },
-  { icon: BookPlus, title: "Tailored Curriculum", description: "Mix and match modules to match a role, team, or project need." },
-  { icon: Layers, title: "Reuse Trusted Content", description: "Every custom course is built on the same expert-led material as our full catalog." },
-  { icon: Sparkles, title: "AI-Assisted Assembly", description: "StormAI suggests the right topics and ordering for your objective." },
+const studioFeatures: Tool[] = [
+  { icon: Wand2, title: "Build From Any Topic", description: "Assemble a custom course from topics pulled out of existing StormWind courses.", span: "md:col-span-7", featured: true },
+  { icon: BookPlus, title: "Tailored Curriculum", description: "Mix and match modules to match a role, team, or project need.", span: "md:col-span-5" },
+  { icon: Layers, title: "Reuse Trusted Content", description: "Every custom course is built on the same expert-led material as our full catalog.", span: "md:col-span-5" },
+  { icon: Sparkles, title: "AI-Assisted Assembly", description: "StormAI suggests the right topics and ordering for your objective.", span: "md:col-span-7", featured: true },
 ];
 
-const atlasFeatures = [
-  { icon: Map, title: "Visual Skill Tree", description: "Explore skills like a game map and see how they connect to certifications and roles." },
-  { icon: GitBranch, title: "Branching Paths", description: "Pick the branch that matches your goal — cert prep, role readiness, or specialization." },
-  { icon: Trophy, title: "Unlock as You Learn", description: "Progress through nodes as you complete the courses tied to each skill." },
-  { icon: Target, title: "Role & Cert Aligned", description: "Every skill maps to real job roles and industry certifications." },
+const atlasFeatures: Tool[] = [
+  { icon: Map, title: "Visual Skill Tree", description: "Explore skills like a game map and see how they connect to certifications and roles.", span: "md:col-span-7", featured: true },
+  { icon: GitBranch, title: "Branching Paths", description: "Pick the branch that matches your goal — cert prep, role readiness, or specialization.", span: "md:col-span-5" },
+  { icon: Trophy, title: "Unlock as You Learn", description: "Progress through nodes as you complete the courses tied to each skill.", span: "md:col-span-5" },
+  { icon: Target, title: "Role & Cert Aligned", description: "Every skill maps to real job roles and industry certifications.", span: "md:col-span-7", featured: true },
 ];
 
+const tabTriggerClass =
+  "rounded-xl px-4 py-3 sm:px-6 text-sm font-semibold text-muted-foreground transition-all duration-200 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-[0_0_24px_hsl(var(--primary)/0.45)] hover:text-foreground";
+
+const ToolBento = ({ items }: { items: Tool[] }) => (
+  <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+    {items.map((item) => (
+      <div
+        key={item.title}
+        className={cn(
+          "group relative overflow-hidden rounded-[2rem] p-8 backdrop-blur-xl transition-all duration-200",
+          "bg-card/40 border",
+          item.featured
+            ? "border-primary/30 bg-gradient-to-br from-primary/10 to-transparent hover:border-primary"
+            : "border-border/60 hover:border-primary/50",
+          item.span
+        )}
+      >
+        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 border border-primary/20 transition-shadow duration-200 group-hover:shadow-[0_0_18px_hsl(var(--primary)/0.6)]">
+          <item.icon className="h-6 w-6 text-primary" />
+        </div>
+        <h3 className={cn("mb-2 font-bold text-foreground", item.featured ? "text-2xl" : "text-xl")}>
+          {item.title}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">{item.description}</p>
+      </div>
+    ))}
+  </div>
+);
+
+const VideoPanel = ({
+  videoId,
+  title,
+  variantName,
+  lessonTitle,
+}: {
+  videoId: string;
+  title: string;
+  variantName: string;
+  lessonTitle: string;
+}) => (
+  <div className="relative mb-20 animate-fade-in">
+    <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-primary/40 via-accent-teal/30 to-primary/40 opacity-30 blur-xl pointer-events-none" />
+    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-black/40 backdrop-blur-sm shadow-2xl">
+      <VideoEmbed
+        videoId={videoId}
+        title={title}
+        trackingMetadata={{
+          courseName: "StormAI Learning",
+          variantName,
+          lessonTitle,
+        }}
+      />
+    </div>
+  </div>
+);
 
 const PersonalizedLearning = () => {
   usePageView("StormAI Learning");
@@ -58,149 +121,109 @@ const PersonalizedLearning = () => {
       description="Three connected experiences — Personalized Learning, StormAI Studio, and Skill Atlas — that adapt training to every learner, team, and goal."
       breadcrumbs={[{ label: "StormAI Learning" }]}
       titleIcon={Sparkles}
-      backgroundVariant="gradient"
+      backgroundVariant="dark"
     >
+      {/* Ambient glows */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-[10%] -left-[10%] h-[50%] w-[50%] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute -bottom-[10%] -right-[10%] h-[50%] w-[50%] rounded-full bg-accent-teal/10 blur-[120px]" />
+      </div>
+
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 gap-4 bg-transparent h-auto p-0 mb-12">
-          <TabsTrigger
-            value="personalized"
-            className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg"
-          >
-            Personalized Learning
-          </TabsTrigger>
-          <TabsTrigger
-            value="studio"
-            className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg"
-          >
-            StormAI Studio
-          </TabsTrigger>
-          <TabsTrigger
-            value="atlas"
-            className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg"
-          >
-            Skill Atlas
-          </TabsTrigger>
-        </TabsList>
+        <div className="flex justify-center mb-14">
+          <TabsList className="inline-flex flex-col md:flex-row h-auto gap-1 rounded-2xl border border-border/60 bg-card/40 p-1 backdrop-blur-md w-full md:w-auto">
+            <TabsTrigger value="personalized" className={tabTriggerClass}>
+              Personalized Learning
+            </TabsTrigger>
+            <TabsTrigger value="studio" className={tabTriggerClass}>
+              StormAI Studio
+            </TabsTrigger>
+            <TabsTrigger value="atlas" className={tabTriggerClass}>
+              Skill Atlas
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         {/* Personalized Learning */}
         <TabsContent value="personalized" className="mt-0">
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center mb-10">
+          <p className="mx-auto mb-10 max-w-2xl text-center text-lg text-muted-foreground">
             Seven powerful tools that adapt to each learner and maximize ROI on every training hour — skill up faster and save up to 80% of your time.
           </p>
 
-          <div className="max-w-4xl mx-auto mb-16 animate-fade-in">
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
-              <VideoEmbed
-                videoId="axic12xcaf"
-                title="StormAI Learning"
-                trackingMetadata={{
-                  courseName: "StormAI Learning",
-                  variantName: "Overview",
-                  lessonTitle: "Introduction to StormAI Learning",
-                }}
-              />
-            </div>
-          </div>
+          <VideoPanel
+            videoId="axic12xcaf"
+            title="StormAI Learning"
+            variantName="Overview"
+            lessonTitle="Introduction to StormAI Learning"
+          />
 
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Sparkles className="w-6 h-6 text-primary" />
+          <section className="mb-20">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="rounded-full bg-primary/10 p-3">
+                <Sparkles className="h-6 w-6 text-primary" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">Seven Tools. One Personalized Experience.</h2>
             </div>
-            <BentoGrid columns={4}>
-              {personalizedTools.map((tool) => (
-                <BentoCard key={tool.title} icon={tool.icon} title={tool.title} description={tool.description} />
-              ))}
-            </BentoGrid>
+            <ToolBento items={personalizedTools} />
           </section>
 
-          <section>
-            <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/20 flex-shrink-0">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Save Up to 80% of Your Time</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Fast Track and Topic Guide work together so learners with foundational knowledge focus only on new concepts —
-                    no rewatching material you've already mastered.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <section className="relative overflow-hidden rounded-[2.5rem] bg-primary p-10 md:p-12 text-center">
+            <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/10 blur-[60px]" />
+            <h3 className="relative z-10 mb-4 text-3xl md:text-4xl font-extrabold text-primary-foreground">
+              Save Up to 80% of Your Time
+            </h3>
+            <p className="relative z-10 mx-auto max-w-2xl text-primary-foreground/85 leading-relaxed">
+              Fast Track and Topic Guide work together so learners with foundational knowledge focus only on new concepts —
+              no rewatching material you've already mastered.
+            </p>
           </section>
         </TabsContent>
 
         {/* StormAI Studio */}
         <TabsContent value="studio" className="mt-0">
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center mb-10">
+          <p className="mx-auto mb-10 max-w-2xl text-center text-lg text-muted-foreground">
             Create custom courses built from topics inside our existing courses — tailor training to a role, team, or project without starting from scratch.
           </p>
 
-          <div className="max-w-4xl mx-auto mb-16 animate-fade-in">
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
-              <VideoEmbed
-                videoId="q454y9mtg0"
-                title="StormAI Studio"
-                trackingMetadata={{
-                  courseName: "StormAI Learning",
-                  variantName: "StormAI Studio",
-                  lessonTitle: "StormAI Studio Overview",
-                }}
-              />
-            </div>
-          </div>
+          <VideoPanel
+            videoId="q454y9mtg0"
+            title="StormAI Studio"
+            variantName="StormAI Studio"
+            lessonTitle="StormAI Studio Overview"
+          />
 
           <section>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Wand2 className="w-6 h-6 text-primary" />
+            <div className="mb-8 flex items-center gap-3">
+              <div className="rounded-full bg-primary/10 p-3">
+                <Wand2 className="h-6 w-6 text-primary" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">Custom Courses, Built From Trusted Content</h2>
             </div>
-            <BentoGrid columns={4}>
-              {studioFeatures.map((f) => (
-                <BentoCard key={f.title} icon={f.icon} title={f.title} description={f.description} />
-              ))}
-            </BentoGrid>
+            <ToolBento items={studioFeatures} />
           </section>
         </TabsContent>
 
         {/* Skill Atlas */}
         <TabsContent value="atlas" className="mt-0">
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center mb-10">
+          <p className="mx-auto mb-10 max-w-2xl text-center text-lg text-muted-foreground">
             A video-game-style skill tree for professional development — pick a certification or job role and unlock the courses that build the skills to get there.
           </p>
 
-          <div className="max-w-4xl mx-auto mb-16 animate-fade-in">
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50">
-              <VideoEmbed
-                videoId="f96gcr3bls"
-                title="Skill Atlas"
-                trackingMetadata={{
-                  courseName: "StormAI Learning",
-                  variantName: "Skill Atlas",
-                  lessonTitle: "Skill Atlas Overview",
-                }}
-              />
-            </div>
-          </div>
+          <VideoPanel
+            videoId="f96gcr3bls"
+            title="Skill Atlas"
+            variantName="Skill Atlas"
+            lessonTitle="Skill Atlas Overview"
+          />
 
           <section>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Map className="w-6 h-6 text-primary" />
+            <div className="mb-8 flex items-center gap-3">
+              <div className="rounded-full bg-primary/10 p-3">
+                <Map className="h-6 w-6 text-primary" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">Map Your Path. Unlock Your Skills.</h2>
             </div>
-            <BentoGrid columns={4}>
-              {atlasFeatures.map((f) => (
-                <BentoCard key={f.title} icon={f.icon} title={f.title} description={f.description} />
-              ))}
-            </BentoGrid>
+            <ToolBento items={atlasFeatures} />
           </section>
         </TabsContent>
       </Tabs>
