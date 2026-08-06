@@ -210,7 +210,7 @@ const AILearning = () => {
 
       {/* Closing band */}
       <section className="relative overflow-hidden rounded-[2.5rem] bg-primary p-10 md:p-12 text-center">
-        <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/8 blur-[60px]" />
+        <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/10 blur-[60px]" />
         <h3 className="relative z-10 mb-4 text-3xl md:text-4xl font-extrabold text-primary-foreground">
           An Expert Tutor in Every Course
         </h3>
