@@ -57,10 +57,10 @@ const capabilities: Capability[] = [
 
 const ChatMockup = () => (
   <div className="relative mx-auto w-full max-w-xl">
-    <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/25 blur-[70px]" />
-    <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-card/60 backdrop-blur-xl shadow-2xl">
+    <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/18 blur-[70px]" />
+    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/60 backdrop-blur-xl shadow-2xl">
       <div className="flex items-center gap-2 border-b border-border/50 px-5 py-3">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15">
           <Bot className="h-3.5 w-3.5 text-primary" />
         </span>
         <span className="text-sm font-semibold text-foreground">
@@ -75,7 +75,7 @@ const ChatMockup = () => (
           </p>
         </div>
         <div className="flex gap-3">
-          <span className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
+          <span className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary/15">
             <Bot className="h-4 w-4 text-primary" />
           </span>
           <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-border/50 bg-muted/40 px-4 py-3">
@@ -115,13 +115,13 @@ const AILearning = () => {
       backgroundClassName="bg-tutor-nebula tutor-scope"
       heroActions={
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="shadow-[0_0_28px_hsl(var(--primary)/0.5)]">
+          <Button asChild size="lg" className="shadow-[0_0_24px_hsl(var(--primary)/0.35)]">
             <Link to="/courses">
               <BookOpen className="mr-2 h-5 w-5" />
               Explore Courses
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-primary/40">
+          <Button asChild variant="outline" size="lg" className="border-primary/30">
             <Link to="/training-samples">
               <FlaskConical className="mr-2 h-5 w-5" />
               Try Training Samples
@@ -141,7 +141,7 @@ const AILearning = () => {
       {/* Capabilities bento */}
       <section className="mb-20">
         <div className="mb-8 flex items-center gap-3">
-          <div className="rounded-full bg-primary/15 p-3">
+          <div className="rounded-full bg-primary/10 p-3">
             <Zap className="h-6 w-6 text-primary" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold">Why Learners Rely on StormAI Tutor</h2>
@@ -154,12 +154,12 @@ const AILearning = () => {
               className={cn(
                 "group relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-200",
                 item.featured
-                  ? "border-primary/30 bg-gradient-to-br from-primary/12 to-transparent hover:border-primary"
-                  : "border-border/60 bg-card/40 hover:border-primary/50",
+                  ? "border-primary/25 bg-gradient-to-br from-primary/10 to-transparent hover:border-primary/55"
+                  : "border-border/60 bg-card/40 hover:border-primary/40",
                 item.span
               )}
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/25 bg-primary/15 transition-shadow duration-200 group-hover:shadow-[0_0_18px_hsl(var(--primary)/0.6)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 transition-shadow duration-200 group-hover:shadow-[0_0_16px_hsl(var(--primary)/0.4)]">
                 <item.icon className="h-6 w-6 text-primary" />
               </div>
               <h3
@@ -180,8 +180,8 @@ const AILearning = () => {
 
       {/* Two-up detail panels */}
       <section className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-[2rem] border border-primary/25 bg-gradient-to-br from-primary/12 to-transparent p-8 backdrop-blur-xl">
-          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20">
+        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-8 backdrop-blur-xl">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Zap className="h-6 w-6 text-primary" />
           </div>
           <h3 className="mb-3 text-xl font-semibold">Powered by StormWind Excellence</h3>
@@ -193,7 +193,7 @@ const AILearning = () => {
         </div>
 
         <div className="rounded-[2rem] border border-border/60 bg-card/40 p-8 backdrop-blur-xl">
-          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Video className="h-6 w-6 text-primary" />
           </div>
           <h3 className="mb-3 text-xl font-semibold">Direct Video References</h3>
