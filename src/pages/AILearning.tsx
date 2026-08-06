@@ -115,13 +115,13 @@ const AILearning = () => {
       backgroundClassName="bg-tutor-nebula tutor-scope"
       heroActions={
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="shadow-[0_0_28px_hsl(var(--primary)/0.5)]">
+          <Button asChild size="lg" className="shadow-[0_0_24px_hsl(var(--primary)/0.35)]">
             <Link to="/courses">
               <BookOpen className="mr-2 h-5 w-5" />
               Explore Courses
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-primary/40">
+          <Button asChild variant="outline" size="lg" className="border-primary/30">
             <Link to="/training-samples">
               <FlaskConical className="mr-2 h-5 w-5" />
               Try Training Samples
@@ -141,7 +141,7 @@ const AILearning = () => {
       {/* Capabilities bento */}
       <section className="mb-20">
         <div className="mb-8 flex items-center gap-3">
-          <div className="rounded-full bg-primary/15 p-3">
+          <div className="rounded-full bg-primary/12 p-3">
             <Zap className="h-6 w-6 text-primary" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold">Why Learners Rely on StormAI Tutor</h2>
@@ -154,12 +154,12 @@ const AILearning = () => {
               className={cn(
                 "group relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-200",
                 item.featured
-                  ? "border-primary/30 bg-gradient-to-br from-primary/12 to-transparent hover:border-primary"
-                  : "border-border/60 bg-card/40 hover:border-primary/50",
+                  ? "border-primary/22 bg-gradient-to-br from-primary/9 to-transparent hover:border-primary/55"
+                  : "border-border/60 bg-card/40 hover:border-primary/40",
                 item.span
               )}
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/25 bg-primary/15 transition-shadow duration-200 group-hover:shadow-[0_0_18px_hsl(var(--primary)/0.6)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/20 bg-primary/12 transition-shadow duration-200 group-hover:shadow-[0_0_16px_hsl(var(--primary)/0.4)]">
                 <item.icon className="h-6 w-6 text-primary" />
               </div>
               <h3
@@ -180,8 +180,8 @@ const AILearning = () => {
 
       {/* Two-up detail panels */}
       <section className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-[2rem] border border-primary/25 bg-gradient-to-br from-primary/12 to-transparent p-8 backdrop-blur-xl">
-          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20">
+        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/9 to-transparent p-8 backdrop-blur-xl">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Zap className="h-6 w-6 text-primary" />
           </div>
           <h3 className="mb-3 text-xl font-semibold">Powered by StormWind Excellence</h3>
@@ -193,7 +193,7 @@ const AILearning = () => {
         </div>
 
         <div className="rounded-[2rem] border border-border/60 bg-card/40 p-8 backdrop-blur-xl">
-          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Video className="h-6 w-6 text-primary" />
           </div>
           <h3 className="mb-3 text-xl font-semibold">Direct Video References</h3>
@@ -210,7 +210,7 @@ const AILearning = () => {
 
       {/* Closing band */}
       <section className="relative overflow-hidden rounded-[2.5rem] bg-primary p-10 md:p-12 text-center">
-        <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/10 blur-[60px]" />
+        <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/8 blur-[60px]" />
         <h3 className="relative z-10 mb-4 text-3xl md:text-4xl font-extrabold text-primary-foreground">
           An Expert Tutor in Every Course
         </h3>
