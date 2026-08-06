@@ -212,7 +212,7 @@ const AILearning = () => {
       <section className="relative overflow-hidden rounded-[2.5rem] bg-primary p-10 md:p-12 text-center">
         <div className="pointer-events-none absolute -top-1/2 right-0 h-64 w-64 translate-x-1/2 rounded-full bg-primary-foreground/10 blur-[60px]" />
         <h3 className="relative z-10 mb-4 text-3xl md:text-4xl font-extrabold text-primary-foreground">
-          A Expert Tutor in Every Course
+          An Expert Tutor in Every Course
         </h3>
         <p className="relative z-10 mx-auto max-w-2xl leading-relaxed text-primary-foreground/85">
           StormAI Tutor sits alongside every lesson — answering questions, summarizing modules, and
