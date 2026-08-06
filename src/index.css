@@ -621,6 +621,44 @@ All colors MUST be HSL.
     }
   }
 
+  /* ---- StormAI Tutor: violet-on-midnight scheme (page-scoped) ---- */
+  .tutor-scope {
+    --primary: 258 90% 66%;
+    --primary-foreground: 0 0% 100%;
+    --ring: 258 90% 66%;
+  }
+
+  .bg-tutor-nebula {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -6%, hsl(258 90% 66% / 0.22) 0%, transparent 58%),
+      radial-gradient(ellipse 55% 40% at 12% 24%, hsl(272 85% 60% / 0.14) 0%, transparent 62%),
+      radial-gradient(ellipse 60% 45% at 92% 55%, hsl(248 90% 62% / 0.14) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(240 32% 7%) 0%, hsl(243 34% 6%) 50%, hsl(240 32% 5%) 100%);
+    background-attachment: fixed;
+  }
+
+  .bg-tutor-nebula::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(to right, hsl(258 90% 70% / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(258 90% 70% / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 25%, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 25%, black 0%, transparent 80%);
+  }
+
+  .text-gradient-tutor {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 10%, hsl(258 95% 78%) 55%, hsl(272 90% 72%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
 
   /* Gradient Icon Backgrounds */
   .icon-gradient-primary {
