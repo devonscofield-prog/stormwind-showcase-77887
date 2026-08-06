@@ -69,8 +69,8 @@ const ChatMockup = () => (
       </div>
 
       <div className="space-y-4 px-5 py-6">
-        <div className="flex justify-end">
-          <p className="max-w-[80%] rounded-2xl rounded-br-md bg-primary/85 px-4 py-2.5 text-sm text-primary-foreground">
+        <div className="flex justify-start">
+          <p className="max-w-[80%] rounded-2xl rounded-bl-md bg-primary/85 px-4 py-2.5 text-sm text-primary-foreground">
             Hello! I'm Storm AI Tutor, your learning assistant. Ask me anything about this course, and I'll guide you.
           </p>
         </div>
