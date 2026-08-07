@@ -16,11 +16,9 @@ import {
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { cn } from "@/lib/utils";
-import tutorLogoLightAsset from "@/assets/stormai-tutor-logo-light.png.asset.json";
-import tutorLogoDarkAsset from "@/assets/stormai-tutor-logo-dark.png.asset.json";
+import tutorLogoAsset from "@/assets/stormai-tutor-logo.png.asset.json";
 
-const tutorLogoLight = tutorLogoLightAsset.url;
-const tutorLogoDark = tutorLogoDarkAsset.url;
+const tutorLogo = tutorLogoAsset.url;
 
 
 interface Capability {
@@ -67,14 +65,9 @@ const ChatMockup = () => (
     <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/60 backdrop-blur-xl shadow-2xl">
       <div className="flex items-center gap-2 border-b border-border/50 px-5 py-3">
         <img
-          src={tutorLogoLight}
+          src={tutorLogo}
           alt="Storm AI Tutor logo"
-          className="h-6 w-auto dark:hidden"
-        />
-        <img
-          src={tutorLogoDark}
-          alt="Storm AI Tutor logo"
-          className="hidden h-6 w-auto dark:block"
+          className="h-7 w-auto"
         />
       </div>
 
