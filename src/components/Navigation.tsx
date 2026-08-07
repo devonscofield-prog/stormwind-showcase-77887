@@ -33,7 +33,12 @@ const topicsMenuItems = [
   { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data", group: "Development & Data" },
   { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile", group: "Business & Productivity" },
   { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, Network+, troubleshooting", group: "Business & Productivity" },
-  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Desktop Apps, Business Skills, HR Compliance", group: "Business & Productivity" },
+  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Desktop Apps, Business Skills, HR Compliance", group: "Business & Productivity", subItems: [
+    { label: "Desktop Applications", to: "/desktop-apps" },
+    { label: "Business Skills", to: "/business-skills" },
+    { label: "HR Compliance", to: "/hr-compliance" },
+  ]},
+
 ];
 
 // Platform features menu items - flat array sorted logically
