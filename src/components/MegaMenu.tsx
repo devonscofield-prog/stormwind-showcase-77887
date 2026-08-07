@@ -35,33 +35,52 @@ interface MenuItemInternalProps extends MenuItemComponentProps {
   onItemClick: () => void;
 }
 
-const MenuItem = ({ label, to, icon: Icon, description, index, isVisible, onItemClick }: MenuItemInternalProps) => (
-  <Link
-    to={to}
+const MenuItem = ({ label, to, icon: Icon, description, subItems, index, isVisible, onItemClick }: MenuItemInternalProps) => (
+  <div
     role="menuitem"
-    onClick={onItemClick}
-    className="group flex items-start gap-3 rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5 hover:scale-[1.02]"
+    className="rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5 hover:scale-[1.02]"
     style={{
       opacity: isVisible ? 1 : 0,
       transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
       transition: `opacity 0.2s ease-out ${index * 30}ms, transform 0.2s ease-out ${index * 30}ms`,
     }}
   >
-    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-200 group-hover:bg-primary/20 group-hover:shadow-[0_0_12px_hsl(var(--primary)/0.4)]">
-      <Icon className="h-4 w-4" />
-    </div>
-    <div className="flex flex-col">
-      <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-        {label}
-      </span>
-      {description && (
-        <span className="text-xs text-muted-foreground line-clamp-1">
-          {description}
+    <Link
+      to={to}
+      onClick={onItemClick}
+      className="group flex items-start gap-3"
+    >
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-200 group-hover:bg-primary/20 group-hover:shadow-[0_0_12px_hsl(var(--primary)/0.4)]">
+        <Icon className="h-4 w-4" />
+      </div>
+      <div className="flex flex-col">
+        <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+          {label}
         </span>
-      )}
-    </div>
-  </Link>
+        {description && (
+          <span className="text-xs text-muted-foreground line-clamp-1">
+            {description}
+          </span>
+        )}
+      </div>
+    </Link>
+    {subItems && subItems.length > 0 && (
+      <div className="mt-2 ml-12 flex flex-col gap-1 border-l border-border/60 pl-3">
+        {subItems.map((sub) => (
+          <Link
+            key={sub.to}
+            to={sub.to}
+            onClick={onItemClick}
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            {sub.label}
+          </Link>
+        ))}
+      </div>
+    )}
+  </div>
 );
+
 
 export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
