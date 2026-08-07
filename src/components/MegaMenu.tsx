@@ -4,13 +4,20 @@ import { ChevronDown, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+interface SubItemProps {
+  label: string;
+  to: string;
+}
+
 interface MenuItemProps {
   label: string;
   to: string;
   icon: LucideIcon;
   description?: string;
   group?: string;
+  subItems?: SubItemProps[];
 }
+
 
 interface MenuItemComponentProps extends MenuItemProps {
   index: number;
