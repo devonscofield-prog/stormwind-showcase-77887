@@ -299,29 +299,6 @@ const Microsoft = () => {
           </div>
         </section>
 
-        {/* Platform */}
-        <section id="platform" className="relative z-10 mb-24 scroll-mt-28">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">03 — Platform</span>
-          <h2 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight">
-            Everything around the course.
-          </h2>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {platform.map((item) => (
-              <Link
-                key={item.title}
-                to={item.to}
-                className="group rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <h3 className="text-base font-bold tracking-tight group-hover:text-primary">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
         {/* Related Topics */}
         <section className="relative z-10 mt-24 border-t border-border/60 pt-12">
           <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
