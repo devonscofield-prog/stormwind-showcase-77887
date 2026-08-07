@@ -10,7 +10,6 @@ import {
   Brain,
   Lightbulb,
   FlaskConical,
-  Check,
   Database,
   Terminal,
 } from "lucide-react";
