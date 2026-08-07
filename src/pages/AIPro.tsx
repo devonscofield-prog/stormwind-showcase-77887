@@ -203,8 +203,8 @@ const AIPro = () => {
           </span>
 
           <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-            <span className="block text-foreground">Use AI</span>
-            <span className="block text-gradient-brand pb-2">like you built it.</span>
+            <span className="block text-foreground">Put AI to work.</span>
+            <span className="block text-gradient-brand pb-2">Not on a slide.</span>
           </h1>
 
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
