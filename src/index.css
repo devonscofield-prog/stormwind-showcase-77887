@@ -638,21 +638,40 @@ All colors MUST be HSL.
     }
   }
 
-  /* ---- StormAI Tutor: muted violet-on-midnight scheme (page-scoped) ---- */
+  /* ---- StormAI Tutor: lavender scheme, light + dark aware (page-scoped) ---- */
   .tutor-scope {
-    --primary: 258 62% 56%;
+    /* Sampled purple from the "Not on a slide." reference (#B090F0) */
+    --tutor-purple: 260 76% 75%;
+    /* Darker sibling keeps buttons and primary accents accessible in light mode */
+    --tutor-purple-dark: 260 65% 45%;
+
+    --primary: var(--tutor-purple-dark);
     --primary-foreground: 0 0% 100%;
-    --ring: 258 62% 56%;
+    --ring: var(--tutor-purple-dark);
+  }
+
+  .dark .tutor-scope {
+    --primary: var(--tutor-purple);
+    --primary-foreground: 240 32% 7%;
+    --ring: var(--tutor-purple);
   }
 
   .bg-tutor-nebula {
     position: relative;
     background:
-      radial-gradient(ellipse 80% 50% at 50% -6%, hsl(258 62% 56% / 0.16) 0%, transparent 58%),
-      radial-gradient(ellipse 55% 40% at 12% 24%, hsl(272 55% 52% / 0.10) 0%, transparent 62%),
-      radial-gradient(ellipse 60% 45% at 92% 55%, hsl(248 60% 54% / 0.10) 0%, transparent 62%),
-      linear-gradient(180deg, hsl(240 32% 7%) 0%, hsl(243 34% 6%) 50%, hsl(240 32% 5%) 100%);
+      radial-gradient(ellipse 80% 50% at 50% -6%, hsl(var(--tutor-purple) / 0.14) 0%, transparent 58%),
+      radial-gradient(ellipse 55% 40% at 12% 24%, hsl(270 60% 62% / 0.08) 0%, transparent 62%),
+      radial-gradient(ellipse 60% 45% at 92% 55%, hsl(250 60% 62% / 0.08) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(260 30% 98%) 0%, hsl(260 25% 97%) 50%, hsl(260 20% 96%) 100%);
     background-attachment: fixed;
+  }
+
+  .dark .bg-tutor-nebula {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -6%, hsl(var(--tutor-purple) / 0.16) 0%, transparent 58%),
+      radial-gradient(ellipse 55% 40% at 12% 24%, hsl(272 55% 56% / 0.12) 0%, transparent 62%),
+      radial-gradient(ellipse 60% 45% at 92% 55%, hsl(248 60% 58% / 0.12) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(240 32% 7%) 0%, hsl(243 34% 6%) 50%, hsl(240 32% 5%) 100%);
   }
 
   .bg-tutor-nebula::before {
@@ -662,19 +681,32 @@ All colors MUST be HSL.
     pointer-events: none;
     z-index: 0;
     background-image:
-      linear-gradient(to right, hsl(258 62% 62% / 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(258 62% 62% / 0.04) 1px, transparent 1px);
+      linear-gradient(to right, hsl(var(--tutor-purple) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--tutor-purple) / 0.06) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 25%, black 0%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 25%, black 0%, transparent 80%);
   }
 
-  .text-gradient-tutor {
-    background-image: linear-gradient(100deg, hsl(0 0% 100%) 10%, hsl(258 65% 70%) 55%, hsl(272 55% 66%) 100%);
+  .dark .bg-tutor-nebula::before {
+    background-image:
+      linear-gradient(to right, hsl(var(--tutor-purple) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--tutor-purple) / 0.05) 1px, transparent 1px);
+  }
+
+  .text-gradient-tutor,
+  .tutor-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 10%, hsl(var(--tutor-purple)) 55%, hsl(270 60% 62%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
+
+  .dark .text-gradient-tutor,
+  .dark .tutor-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 10%, hsl(var(--tutor-purple)) 55%, hsl(272 55% 70%) 100%);
+  }
+
 
 
   /* Gradient Icon Backgrounds */
