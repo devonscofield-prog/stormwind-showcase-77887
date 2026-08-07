@@ -191,75 +191,37 @@ const Microsoft = () => {
       >
         {/* Hero */}
         <section className="relative z-10 mb-24 animate-fade-in">
-          <div className="grid gap-12 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center">
-            <div className="max-w-2xl">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
-                Microsoft Training
-              </span>
+          <div className="max-w-3xl py-8">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+              Microsoft Training
+            </span>
 
-              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-                <span className="block text-foreground">Run Microsoft</span>
-                <span className="block text-gradient-brand pb-2">like you built it.</span>
-              </h1>
+            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+              <span className="block text-foreground">Run Microsoft</span>
+              <span className="block text-gradient-brand pb-2">like you built it.</span>
+            </h1>
 
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Azure, Microsoft 365, Windows Server, PowerShell and Copilot — taught live by
-                working engineers, practiced in real labs, and tracked all the way to the exam.
-              </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Azure, Microsoft 365, Windows Server, PowerShell and Copilot — taught live by
+              working engineers, practiced in real labs, and tracked all the way to the exam.
+            </p>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="rounded-lg">
-                  <Link to="/courses">
-                    <BookOpen className="mr-2 h-5 w-5" />
-                    Explore courses
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-lg bg-background/60 backdrop-blur">
-                  <Link to="/training-samples">
-                    <FlaskConical className="mr-2 h-5 w-5" />
-                    Try training samples
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* License card */}
-            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
-              <div className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                What a license includes
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-y-6 border-t border-border/60 pt-6">
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-3xl font-bold tracking-tight text-foreground">{stat.value}</div>
-                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-              <ul className="mt-6 space-y-3 border-t border-border/60 pt-6">
-                {includes.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-foreground/85">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button asChild size="lg" className="rounded-lg">
+                <Link to="/courses">
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Explore courses
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-lg bg-background/60 backdrop-blur">
+                <Link to="/training-samples">
+                  <FlaskConical className="mr-2 h-5 w-5" />
+                  Try training samples
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
-
-        {/* Section rail */}
-        <nav className="relative z-10 mb-24 flex flex-wrap justify-center gap-x-10 gap-y-3 border-y border-border/60 py-5">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground transition-colors duration-200 hover:text-primary"
-            >
-              {section.label}
-            </a>
-          ))}
-        </nav>
 
         {/* Topics */}
         <section id="topics" className="relative z-10 mb-28 scroll-mt-28">
