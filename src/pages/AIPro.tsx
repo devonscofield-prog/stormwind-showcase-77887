@@ -127,13 +127,13 @@ const audienceStyles: Record<Audience, string> = {
 };
 
 const AIPro = () => {
-  const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
+  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("All");
 
   useEffect(() => {
     document.title = "AI & ML Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter((c) => filter === "All" || c.level === filter);
+  const visible = courses.filter((c) => filter === "All" || c.audience === filter);
 
   return (
     <PageLayout
