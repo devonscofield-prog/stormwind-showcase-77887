@@ -183,17 +183,6 @@ export const Navigation = () => {
                             {item.label}
                           </Button>
                         </Link>
-                        {item.subItems && item.subItems.length > 0 && (
-                          <div className="ml-8 pl-4 border-l border-border/60 flex flex-col gap-1 py-1">
-                            {item.subItems.map((sub) => (
-                              <Link key={sub.to} to={sub.to} onClick={() => setMobileMenuOpen(false)}>
-                                <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-primary hover:bg-muted text-sm py-1.5 h-auto">
-                                  {sub.label}
-                                </Button>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     );
                   });
