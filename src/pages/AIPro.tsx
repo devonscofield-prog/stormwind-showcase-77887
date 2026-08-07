@@ -17,9 +17,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { cn } from "@/lib/utils";
 
 const stats = [
-  { value: "4", label: "focus areas" },
   { value: "30+", label: "years training IT teams" },
-  { value: "100%", label: "live, instructor-led" },
   { value: "1:1", label: "mentoring included" },
 ];
 
