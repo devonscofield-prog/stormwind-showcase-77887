@@ -20,24 +20,9 @@ import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
 
-const stats = [
-  { value: "8", label: "topic areas" },
-  { value: "30+", label: "years training IT teams" },
-  { value: "100%", label: "live, instructor-led" },
-  { value: "1:1", label: "mentoring included" },
-];
-
-const includes = [
-  "Live instructor-led classes, not recordings",
-  "Hands-on labs and cyber ranges, 24/7",
-  "StormAI Tutor inside every course",
-  "Unlimited practice exams",
-];
-
 const sections = [
   { id: "topics", label: "01 Topics" },
   { id: "courses", label: "02 Courses" },
-  { id: "platform", label: "03 Platform" },
 ];
 
 const topics = [
