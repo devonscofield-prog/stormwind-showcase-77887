@@ -275,10 +275,7 @@ const Microsoft = () => {
                     />
                   </div>
                   <div className="min-w-0">
-                    <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                      {course.code}
-                    </div>
-                    <h3 className="mt-1 text-lg font-bold leading-snug tracking-tight">{course.title}</h3>
+                    <h3 className="text-lg font-bold leading-snug tracking-tight">{course.title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{course.instructorName}</p>
                   </div>
                 </div>
