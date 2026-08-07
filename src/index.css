@@ -1069,3 +1069,60 @@ All colors MUST be HSL.
     background: hsl(var(--primary) / 0.4);
   }
 }
+@layer components {
+  /* ── Microsoft Training page scope (blue console theme) ────────────── */
+  .ms-scope {
+    --ms-blue: 213 94% 68%;
+    --ms-blue-deep: 217 91% 52%;
+
+    --primary: var(--ms-blue-deep);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--ms-blue-deep);
+  }
+
+  .dark .ms-scope {
+    --primary: var(--ms-blue);
+    --primary-foreground: 220 40% 8%;
+    --ring: var(--ms-blue);
+  }
+
+  .bg-ms-console {
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 45% at 20% -4%, hsl(var(--ms-blue) / 0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 88% 8%, hsl(199 89% 60% / 0.10) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(210 40% 99%) 0%, hsl(212 34% 97%) 60%, hsl(210 30% 96%) 100%);
+  }
+
+  .dark .bg-ms-console {
+    background:
+      radial-gradient(ellipse 70% 45% at 20% -4%, hsl(var(--ms-blue) / 0.16) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 88% 8%, hsl(199 89% 55% / 0.12) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(220 33% 7%) 0%, hsl(222 30% 5%) 55%, hsl(220 28% 4%) 100%);
+  }
+
+  .bg-ms-console::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(to right, hsl(var(--ms-blue) / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--ms-blue) / 0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 45% at 40% 8%, black 0%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 45% at 40% 8%, black 0%, transparent 78%);
+  }
+
+  .ms-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 8%, hsl(var(--ms-blue-deep)) 60%, hsl(199 89% 48%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .ms-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--ms-blue)) 62%, hsl(199 89% 70%) 100%);
+  }
+}
