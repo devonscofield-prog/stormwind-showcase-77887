@@ -148,7 +148,7 @@ const AIPro = () => {
       <section className="relative mb-28 animate-fade-in">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[calc(100%+6rem)] w-screen -translate-x-1/2 bg-hero-mist"
+          className="pointer-events-none absolute left-1/2 -top-24 z-0 h-[calc(100%+12rem)] w-screen -translate-x-1/2 bg-hero-mist"
           style={{
             maskImage:
               "linear-gradient(to bottom, #000 0%, #000 85%, transparent 100%)",
