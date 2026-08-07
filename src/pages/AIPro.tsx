@@ -148,9 +148,9 @@ const AIPro = () => {
       <section className="relative mb-28 animate-fade-in">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[calc(100%+10rem)] w-screen -translate-x-1/2 -translate-y-1/2 bg-hero-mist"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[calc(100%+10rem)] w-screen -translate-x-1/2 -translate-y-1/2 bg-hero-mist"
         />
-        <div className="grid gap-12 py-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+        <div className="relative z-10 grid gap-12 py-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-background/80 px-4 py-1.5 text-sm font-medium text-foreground/80 shadow-sm backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
