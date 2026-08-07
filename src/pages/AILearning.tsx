@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { cn } from "@/lib/utils";
+import tutorLogoLightAsset from "@/assets/stormai-tutor-logo-light.png.asset.json";
+import tutorLogoDarkAsset from "@/assets/stormai-tutor-logo-dark.png.asset.json";
+
+const tutorLogoLight = tutorLogoLightAsset.url;
+const tutorLogoDark = tutorLogoDarkAsset.url;
+
 
 interface Capability {
   icon: LucideIcon;
@@ -60,13 +66,18 @@ const ChatMockup = () => (
     <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/18 blur-[70px]" />
     <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/60 backdrop-blur-xl shadow-2xl">
       <div className="flex items-center gap-2 border-b border-border/50 px-5 py-3">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15">
-          <Bot className="h-3.5 w-3.5 text-primary" />
-        </span>
-        <span className="text-sm font-semibold text-foreground">
-          StormAI <span className="font-normal text-muted-foreground">Tutor</span>
-        </span>
+        <img
+          src={tutorLogoLight}
+          alt="Storm AI Tutor logo"
+          className="h-6 w-auto dark:hidden"
+        />
+        <img
+          src={tutorLogoDark}
+          alt="Storm AI Tutor logo"
+          className="hidden h-6 w-auto dark:block"
+        />
       </div>
+
 
       <div className="space-y-4 px-5 py-6">
         <div className="flex justify-start">
