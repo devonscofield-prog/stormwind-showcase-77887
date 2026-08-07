@@ -290,10 +290,10 @@ const AIPro = () => {
                 <span
                   className={cn(
                     "rounded-full px-3 py-1 text-xs font-semibold",
-                    levelStyles[course.level]
+                    audienceStyles[course.audience]
                   )}
                 >
-                  {course.level}
+                  {course.audience}
                 </span>
                 <Link
                   to="/courses"
