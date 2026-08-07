@@ -216,19 +216,19 @@ const Microsoft = () => {
               <ul className="mt-6 space-y-3 border-t border-border/60 pt-6">
                 <li className="flex items-start gap-3 text-sm text-foreground/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  Live instructor-led classes, not recordings
+                  Live instructor-led classes, not just recordings
                 </li>
                 <li className="flex items-start gap-3 text-sm text-foreground/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  Hands-on labs and cyber ranges, 24/7
+                  Hands-on labs, Azure, and Microsoft ranges 24/7
                 </li>
                 <li className="flex items-start gap-3 text-sm text-foreground/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  StormAI Tutor inside every course
+                  Fast Track to what you actually need
                 </li>
                 <li className="flex items-start gap-3 text-sm text-foreground/85">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  Unlimited practice exams
+                  Industry Leading Microsoft expert instructors
                 </li>
               </ul>
             </div>
