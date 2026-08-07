@@ -12,7 +12,6 @@ import {
   FileSearch,
   Workflow,
   ShieldCheck,
-  ArrowRight,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { cn } from "@/lib/utils";
