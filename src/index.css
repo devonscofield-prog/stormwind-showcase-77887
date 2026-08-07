@@ -298,9 +298,9 @@ All colors MUST be HSL.
 
   .dark .bg-hero-mist {
     background:
-      radial-gradient(150% 150% at 0% 0%, hsl(166 70% 35% / 0.55) 0%, transparent 72%),
-      radial-gradient(160% 160% at 100% 0%, hsl(205 90% 55% / 0.55) 0%, transparent 75%),
-      linear-gradient(115deg, hsl(170 40% 14%) 0%, hsl(200 35% 14%) 55%, hsl(210 50% 22%) 100%);
+      radial-gradient(160% 160% at 10% 20%, hsl(166 65% 40% / 0.45) 0%, transparent 75%),
+      radial-gradient(180% 180% at 90% 25%, hsl(205 95% 62% / 0.5) 0%, transparent 78%),
+      linear-gradient(115deg, hsl(170 40% 16%) 0%, hsl(200 38% 18%) 55%, hsl(210 50% 26%) 100%);
   }
 
 
