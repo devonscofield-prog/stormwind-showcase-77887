@@ -67,64 +67,63 @@ const topics = [
   },
 ];
 
-type Level = "Beginner" | "Intermediate" | "Advanced";
+type Audience = "End-User" | "Technical";
 
 const courses: {
   code: string;
   title: string;
-  level: Level;
+  audience: Audience;
   description: string;
 }[] = [
   {
     code: "CHATGPT",
     title: "ChatGPT Fundamentals",
-    level: "Beginner",
+    audience: "End-User",
     description:
       "Start from zero: how the models actually work, where they fail, and how to get consistently useful output in everyday work.",
   },
   {
     code: "PROMPT-ENG",
     title: "Prompt Engineering",
-    level: "Intermediate",
+    audience: "Technical",
     description:
       "Structure, context, and iteration — the patterns that turn a vague request into a reliable, repeatable result.",
   },
   {
     code: "M365-COPILOT",
     title: "Microsoft 365 Copilot",
-    level: "Intermediate",
+    audience: "End-User",
     description:
       "Copilot across Word, Excel, Teams, Outlook, and PowerPoint, taught against the work your teams already do.",
   },
   {
     code: "AI-900",
     title: "Azure AI Fundamentals",
-    level: "Beginner",
+    audience: "Technical",
     description:
       "Core AI and machine learning concepts on Azure, prepped straight against the AI-900 exam objectives.",
   },
   {
     code: "AWS-AIF",
     title: "AWS AI Practitioner",
-    level: "Beginner",
+    audience: "Technical",
     description:
       "Foundational AI and generative AI services on AWS, framed for practitioners supporting cloud workloads.",
   },
   {
     code: "AI-CODE",
     title: "AI-Assisted Development",
-    level: "Advanced",
+    audience: "Technical",
     description:
       "Claude Code, Codex, and Copilot inside a real development loop — scaffolding, refactoring, and debugging.",
   },
 ];
 
-const levelFilters = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+const audienceFilters = ["All", "End-User", "Technical"] as const;
 
-const levelStyles: Record<Level, string> = {
-  Beginner: "bg-primary/10 text-primary",
-  Intermediate: "bg-accent-teal/10 text-accent-teal",
-  Advanced: "bg-destructive/10 text-destructive",
+const audienceStyles: Record<Audience, string> = {
+  "End-User": "bg-primary/10 text-primary",
+  Technical: "bg-accent-teal/10 text-accent-teal",
 };
 
 const AIPro = () => {
