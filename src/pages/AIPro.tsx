@@ -76,11 +76,46 @@ const courses: {
   description: string;
 }[] = [
   {
-    code: "CHATGPT",
-    title: "ChatGPT Fundamentals",
+    code: "COPILOT-OFFICE",
+    title: "Copilot for Office Applications",
     audience: "End-User",
     description:
-      "Start from zero: how the models actually work, where they fail, and how to get consistently useful output in everyday work.",
+      "Practical Copilot use across Word, PowerPoint, Excel, Teams, Outlook, and more — built around real daily workflows.",
+  },
+  {
+    code: "GEMINI-GWS",
+    title: "Gemini in Google Workspace",
+    audience: "End-User",
+    description:
+      "Use Gemini inside Slides, Docs, Gmail, Chat, Meet, and Sheets to draft, summarize, and accelerate team work.",
+  },
+  {
+    code: "CLAUDE-COWORK",
+    title: "Learn Claude: Cowork with 20 Everyday Examples",
+    audience: "End-User",
+    description:
+      "Twenty hands-on scenarios that show how Claude fits into everyday tasks from email to analysis to brainstorming.",
+  },
+  {
+    code: "CLAUDE-SKILLS",
+    title: "Using Claude Skills",
+    audience: "End-User",
+    description:
+      "Build and reuse Claude Skills so teams get consistent, high-quality output on repeated tasks and projects.",
+  },
+  {
+    code: "CHATGPT-QS",
+    title: "ChatGPT Quickstart",
+    audience: "End-User",
+    description:
+      "A fast, practical introduction to ChatGPT: prompting basics, common pitfalls, and immediate workplace use cases.",
+  },
+  {
+    code: "AI-ETHICS",
+    title: "AI Ethical Use and Responsibility",
+    audience: "End-User",
+    description:
+      "Guide safe, responsible AI adoption with clear principles on data handling, accuracy, bias, and organizational policy.",
   },
   {
     code: "PROMPT-ENG",
@@ -88,13 +123,6 @@ const courses: {
     audience: "Technical",
     description:
       "Structure, context, and iteration — the patterns that turn a vague request into a reliable, repeatable result.",
-  },
-  {
-    code: "M365-COPILOT",
-    title: "Microsoft 365 Copilot",
-    audience: "End-User",
-    description:
-      "Copilot across Word, Excel, Teams, Outlook, and PowerPoint, taught against the work your teams already do.",
   },
   {
     code: "AI-900",
@@ -286,7 +314,7 @@ const AIPro = () => {
                   {course.description}
                 </p>
               </div>
-              <div className="flex items-center justify-between border-t border-border/60 px-6 py-4">
+              <div className="flex items-center border-t border-border/60 px-6 py-4">
                 <span
                   className={cn(
                     "rounded-full px-3 py-1 text-xs font-semibold",
@@ -295,13 +323,6 @@ const AIPro = () => {
                 >
                   {course.audience}
                 </span>
-                <Link
-                  to="/courses"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors duration-200 hover:text-primary"
-                >
-                  Course detail
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
               </div>
             </article>
           ))}
