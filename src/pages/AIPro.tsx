@@ -317,11 +317,8 @@ const AIPro = () => {
               className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-xl transition-all duration-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="flex-1 p-6">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  {course.code}
-                </p>
-                <h3 className="mt-2 text-xl font-bold tracking-tight">{course.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="text-xl font-bold tracking-tight">{course.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {course.description}
                 </p>
               </div>
