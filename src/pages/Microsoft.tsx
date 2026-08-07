@@ -10,7 +10,6 @@ import {
   Brain,
   Lightbulb,
   FlaskConical,
-  Check,
   Database,
   Terminal,
 } from "lucide-react";
@@ -20,24 +19,9 @@ import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 import mikePfeiffer from "@/assets/mike-pfeiffer.png";
 
-const stats = [
-  { value: "8", label: "topic areas" },
-  { value: "30+", label: "years training IT teams" },
-  { value: "100%", label: "live, instructor-led" },
-  { value: "1:1", label: "mentoring included" },
-];
-
-const includes = [
-  "Live instructor-led classes, not recordings",
-  "Hands-on labs and cyber ranges, 24/7",
-  "StormAI Tutor inside every course",
-  "Unlimited practice exams",
-];
-
 const sections = [
   { id: "topics", label: "01 Topics" },
   { id: "courses", label: "02 Courses" },
-  { id: "platform", label: "03 Platform" },
 ];
 
 const topics = [
@@ -96,7 +80,7 @@ const courses: {
 }[] = [
   {
     code: "AZ-900",
-    title: "Azure Fundamentals",
+    title: "AZ-900 Azure Fundamentals",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -106,7 +90,7 @@ const courses: {
   },
   {
     code: "AZ-104",
-    title: "Azure Administrator",
+    title: "AZ-104 Azure Administrator",
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
@@ -116,7 +100,7 @@ const courses: {
   },
   {
     code: "MS-102",
-    title: "Microsoft 365 Administrator",
+    title: "MS-102 Microsoft 365 Administrator",
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
@@ -126,7 +110,7 @@ const courses: {
   },
   {
     code: "MD-102",
-    title: "Endpoint Administrator",
+    title: "MD-102 Endpoint Administrator",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -146,7 +130,7 @@ const courses: {
   },
   {
     code: "SC-900",
-    title: "Security Fundamentals",
+    title: "SC-900 Security Fundamentals",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -163,29 +147,6 @@ const levelStyles: Record<Level, string> = {
   Intermediate: "border-sky-500/40 bg-sky-500/10 text-sky-500",
   Advanced: "border-rose-500/40 bg-rose-500/10 text-rose-500",
 };
-
-const platform = [
-  {
-    title: "Skills Assessments",
-    description: "Place every learner before day one so nobody sits through what they already know.",
-    to: "/skills-assessments",
-  },
-  {
-    title: "Learning Paths",
-    description: "Sequenced role and certification tracks that run from fundamentals to the exam.",
-    to: "/learning-paths",
-  },
-  {
-    title: "StormWind Ranges",
-    description: "Live hands-on lab environments, available around the clock.",
-    to: "/ranges",
-  },
-  {
-    title: "1:1 Mentoring",
-    description: "Direct time with working practitioners, included with every license.",
-    to: "/mentoring",
-  },
-];
 
 const Microsoft = () => {
   const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
@@ -207,75 +168,37 @@ const Microsoft = () => {
       >
         {/* Hero */}
         <section className="relative z-10 mb-24 animate-fade-in">
-          <div className="grid gap-12 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center">
-            <div className="max-w-2xl">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
-                Microsoft Training
-              </span>
+          <div className="max-w-3xl py-8">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+              Microsoft Training
+            </span>
 
-              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-                <span className="block text-foreground">Run Microsoft</span>
-                <span className="block text-gradient-brand pb-2">like you built it.</span>
-              </h1>
+            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+              <span className="block text-foreground">Run Microsoft</span>
+              <span className="block text-gradient-brand pb-2">like you built it.</span>
+            </h1>
 
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Azure, Microsoft 365, Windows Server, PowerShell and Copilot — taught live by
-                working engineers, practiced in real labs, and tracked all the way to the exam.
-              </p>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Azure, Microsoft 365, Windows Server, PowerShell and Copilot — taught live by
+              working engineers, practiced in real labs, and tracked all the way to the exam.
+            </p>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="rounded-lg">
-                  <Link to="/courses">
-                    <BookOpen className="mr-2 h-5 w-5" />
-                    Explore courses
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-lg bg-background/60 backdrop-blur">
-                  <Link to="/training-samples">
-                    <FlaskConical className="mr-2 h-5 w-5" />
-                    Try training samples
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* License card */}
-            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
-              <div className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                What a license includes
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-y-6 border-t border-border/60 pt-6">
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-3xl font-bold tracking-tight text-foreground">{stat.value}</div>
-                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-              <ul className="mt-6 space-y-3 border-t border-border/60 pt-6">
-                {includes.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-foreground/85">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button asChild size="lg" className="rounded-lg">
+                <Link to="/courses">
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Explore courses
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-lg bg-background/60 backdrop-blur">
+                <Link to="/training-samples">
+                  <FlaskConical className="mr-2 h-5 w-5" />
+                  Try training samples
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
-
-        {/* Section rail */}
-        <nav className="relative z-10 mb-24 flex flex-wrap justify-center gap-x-10 gap-y-3 border-y border-border/60 py-5">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground transition-colors duration-200 hover:text-primary"
-            >
-              {section.label}
-            </a>
-          ))}
-        </nav>
 
         {/* Topics */}
         <section id="topics" className="relative z-10 mb-28 scroll-mt-28">
@@ -352,10 +275,7 @@ const Microsoft = () => {
                     />
                   </div>
                   <div className="min-w-0">
-                    <div className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                      {course.code}
-                    </div>
-                    <h3 className="mt-1 text-lg font-bold leading-snug tracking-tight">{course.title}</h3>
+                    <h3 className="text-lg font-bold leading-snug tracking-tight">{course.title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{course.instructorName}</p>
                   </div>
                 </div>
@@ -375,29 +295,6 @@ const Microsoft = () => {
                   </span>
                 </div>
               </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Platform */}
-        <section id="platform" className="relative z-10 mb-24 scroll-mt-28">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">03 — Platform</span>
-          <h2 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight">
-            Everything around the course.
-          </h2>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {platform.map((item) => (
-              <Link
-                key={item.title}
-                to={item.to}
-                className="group rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <h3 className="text-base font-bold tracking-tight group-hover:text-primary">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-              </Link>
             ))}
           </div>
         </section>
