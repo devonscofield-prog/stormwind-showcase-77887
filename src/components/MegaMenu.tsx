@@ -29,7 +29,7 @@ interface MenuItemInternalProps extends MenuItemComponentProps {
   onItemClick: () => void;
 }
 
-const MenuItem = ({ label, to, icon: Icon, description, subItems, index, isVisible, onItemClick }: MenuItemInternalProps) => (
+const MenuItem = ({ label, to, icon: Icon, description, index, isVisible, onItemClick }: MenuItemInternalProps) => (
   <div
     role="menuitem"
     className="rounded-lg p-3 transition-all duration-200 hover:bg-white/5 dark:hover:bg-white/5 hover:scale-[1.02]"
@@ -58,20 +58,6 @@ const MenuItem = ({ label, to, icon: Icon, description, subItems, index, isVisib
         )}
       </div>
     </Link>
-    {subItems && subItems.length > 0 && (
-      <div className="mt-2 ml-12 flex flex-col gap-1 border-l border-border/60 pl-3">
-        {subItems.map((sub) => (
-          <Link
-            key={sub.to}
-            to={sub.to}
-            onClick={onItemClick}
-            className="text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            {sub.label}
-          </Link>
-        ))}
-      </div>
-    )}
   </div>
 );
 
