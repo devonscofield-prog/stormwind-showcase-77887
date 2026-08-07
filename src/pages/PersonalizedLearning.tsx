@@ -153,7 +153,7 @@ const PersonalizedLearning = () => {
           </p>
 
           <VideoPanel
-            videoId="axic12xcaf"
+            videoId="9dxeidkijt"
             title="StormAI Learning"
             variantName="Overview"
             lessonTitle="Introduction to StormAI Learning"
