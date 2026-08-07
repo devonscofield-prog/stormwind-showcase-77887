@@ -145,9 +145,21 @@ const AIPro = () => {
       backgroundVariant="gradient"
     >
       {/* Hero */}
-      <section className="mb-28 grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center animate-fade-in">
+      <section className="relative mb-28 animate-fade-in">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[calc(100%+3rem)] w-screen -translate-x-1/2 -translate-y-1/2 bg-hero-mist"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%)",
+          }}
+        />
+
+        <div className="relative z-10 grid gap-12 py-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-1.5 text-sm font-medium text-foreground/80 backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full bg-background/80 px-4 py-1.5 text-sm font-medium text-foreground/80 shadow-sm backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             AI &amp; ML Training
           </span>
@@ -170,7 +182,7 @@ const AIPro = () => {
                 Explore courses
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-full">
+            <Button asChild variant="outline" size="lg" className="rounded-full bg-background/80 backdrop-blur">
               <Link to="/training-samples">
                 <FlaskConical className="mr-2 h-5 w-5" />
                 Try training samples
@@ -183,14 +195,16 @@ const AIPro = () => {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-border/60 bg-card/80 px-6 py-6 backdrop-blur-xl transition-colors duration-200 hover:border-primary/40"
+              className="rounded-2xl border border-border/40 bg-background px-6 py-6 shadow-[0_10px_30px_-18px_hsl(var(--foreground)/0.35)] transition-colors duration-200 hover:border-primary/40"
             >
               <div className="text-3xl font-bold tracking-tight text-foreground">{stat.value}</div>
               <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
+        </div>
       </section>
+
 
       {/* Topics */}
       <section className="mb-28">
