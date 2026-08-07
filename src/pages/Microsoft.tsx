@@ -80,7 +80,7 @@ const courses: {
 }[] = [
   {
     code: "AZ-900",
-    title: "Azure Fundamentals",
+    title: "AZ-900 Azure Fundamentals",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -90,7 +90,7 @@ const courses: {
   },
   {
     code: "AZ-104",
-    title: "Azure Administrator",
+    title: "AZ-104 Azure Administrator",
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
@@ -100,7 +100,7 @@ const courses: {
   },
   {
     code: "MS-102",
-    title: "Microsoft 365 Administrator",
+    title: "MS-102 Microsoft 365 Administrator",
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
@@ -110,7 +110,7 @@ const courses: {
   },
   {
     code: "MD-102",
-    title: "Endpoint Administrator",
+    title: "MD-102 Endpoint Administrator",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -130,7 +130,7 @@ const courses: {
   },
   {
     code: "SC-900",
-    title: "Security Fundamentals",
+    title: "SC-900 Security Fundamentals",
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
@@ -147,29 +147,6 @@ const levelStyles: Record<Level, string> = {
   Intermediate: "border-sky-500/40 bg-sky-500/10 text-sky-500",
   Advanced: "border-rose-500/40 bg-rose-500/10 text-rose-500",
 };
-
-const platform = [
-  {
-    title: "Skills Assessments",
-    description: "Place every learner before day one so nobody sits through what they already know.",
-    to: "/skills-assessments",
-  },
-  {
-    title: "Learning Paths",
-    description: "Sequenced role and certification tracks that run from fundamentals to the exam.",
-    to: "/learning-paths",
-  },
-  {
-    title: "StormWind Ranges",
-    description: "Live hands-on lab environments, available around the clock.",
-    to: "/ranges",
-  },
-  {
-    title: "1:1 Mentoring",
-    description: "Direct time with working practitioners, included with every license.",
-    to: "/mentoring",
-  },
-];
 
 const Microsoft = () => {
   const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
