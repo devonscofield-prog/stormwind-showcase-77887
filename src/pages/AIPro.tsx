@@ -67,74 +67,73 @@ const topics = [
   },
 ];
 
-type Level = "Beginner" | "Intermediate" | "Advanced";
+type Audience = "End-User" | "Technical";
 
 const courses: {
   code: string;
   title: string;
-  level: Level;
+  audience: Audience;
   description: string;
 }[] = [
   {
     code: "CHATGPT",
     title: "ChatGPT Fundamentals",
-    level: "Beginner",
+    audience: "End-User",
     description:
       "Start from zero: how the models actually work, where they fail, and how to get consistently useful output in everyday work.",
   },
   {
     code: "PROMPT-ENG",
     title: "Prompt Engineering",
-    level: "Intermediate",
+    audience: "Technical",
     description:
       "Structure, context, and iteration — the patterns that turn a vague request into a reliable, repeatable result.",
   },
   {
     code: "M365-COPILOT",
     title: "Microsoft 365 Copilot",
-    level: "Intermediate",
+    audience: "End-User",
     description:
       "Copilot across Word, Excel, Teams, Outlook, and PowerPoint, taught against the work your teams already do.",
   },
   {
     code: "AI-900",
     title: "Azure AI Fundamentals",
-    level: "Beginner",
+    audience: "Technical",
     description:
       "Core AI and machine learning concepts on Azure, prepped straight against the AI-900 exam objectives.",
   },
   {
     code: "AWS-AIF",
     title: "AWS AI Practitioner",
-    level: "Beginner",
+    audience: "Technical",
     description:
       "Foundational AI and generative AI services on AWS, framed for practitioners supporting cloud workloads.",
   },
   {
     code: "AI-CODE",
     title: "AI-Assisted Development",
-    level: "Advanced",
+    audience: "Technical",
     description:
       "Claude Code, Codex, and Copilot inside a real development loop — scaffolding, refactoring, and debugging.",
   },
 ];
 
-const levelFilters = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+const audienceFilters = ["All", "End-User", "Technical"] as const;
 
-const levelStyles: Record<Level, string> = {
-  Beginner: "bg-primary/10 text-primary",
-  Intermediate: "bg-accent-teal/10 text-accent-teal",
-  Advanced: "bg-destructive/10 text-destructive",
+const audienceStyles: Record<Audience, string> = {
+  "End-User": "bg-primary/10 text-primary",
+  Technical: "bg-accent-teal/10 text-accent-teal",
 };
 
 const AIPro = () => {
-  const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
+  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("All");
 
   useEffect(() => {
     document.title = "AI & ML Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter((c) => filter === "All" || c.level === filter);
+  const visible = courses.filter((c) => filter === "All" || c.audience === filter);
 
   return (
     <PageLayout
@@ -255,19 +254,19 @@ const AIPro = () => {
         </div>
 
         <div className="mb-10 flex flex-wrap justify-center gap-2">
-          {levelFilters.map((level) => (
+          {audienceFilters.map((audience) => (
             <button
-              key={level}
+              key={audience}
               type="button"
-              onClick={() => setFilter(level)}
+              onClick={() => setFilter(audience)}
               className={cn(
                 "rounded-full border px-5 py-2 text-sm font-medium transition-all duration-200",
-                filter === level
+                filter === audience
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border/60 bg-card/70 text-muted-foreground hover:border-primary/40 hover:text-foreground"
               )}
             >
-              {level}
+              {audience}
             </button>
           ))}
         </div>
@@ -291,10 +290,10 @@ const AIPro = () => {
                 <span
                   className={cn(
                     "rounded-full px-3 py-1 text-xs font-semibold",
-                    levelStyles[course.level]
+                    audienceStyles[course.audience]
                   )}
                 >
-                  {course.level}
+                  {course.audience}
                 </span>
                 <Link
                   to="/courses"
