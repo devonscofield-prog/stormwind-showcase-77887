@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { cn } from "@/lib/utils";
+import tutorLogoLightAsset from "@/assets/stormai-tutor-logo-light.png.asset.json";
+import tutorLogoDarkAsset from "@/assets/stormai-tutor-logo-dark.png.asset.json";
+
+const tutorLogoLight = tutorLogoLightAsset.url;
+const tutorLogoDark = tutorLogoDarkAsset.url;
+
 
 interface Capability {
   icon: LucideIcon;
