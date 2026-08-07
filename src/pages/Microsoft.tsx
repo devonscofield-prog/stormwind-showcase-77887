@@ -203,7 +203,7 @@ const Microsoft = () => {
 
             {/* License card */}
             <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
-              <div className="mt-5 grid grid-cols-2 gap-y-6 border-t border-border/60 pt-6">
+              <div className="grid grid-cols-2 gap-y-6">
                 <div>
                   <div className="text-3xl font-bold tracking-tight text-foreground">30+</div>
                   <div className="mt-1 text-sm text-muted-foreground">years training IT teams</div>
