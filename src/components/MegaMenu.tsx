@@ -174,7 +174,7 @@ export const MegaMenu = ({ trigger, items, columns = 3, className }: MegaMenuPro
           role="menu"
           className={cn(
             "rounded-xl border border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl shadow-black/20",
-            "p-4",
+            "p-4 max-h-[calc(100vh-6rem)] overflow-y-auto",
             menuWidth
           )}
         >
