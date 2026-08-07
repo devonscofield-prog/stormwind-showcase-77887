@@ -33,11 +33,10 @@ const topicsMenuItems = [
   { label: "Data Science Pro", to: "/data-science-pro", icon: Database, description: "SQL Server, Power BI, Azure Data", group: "Development & Data" },
   { label: "Project Management", to: "/project-management", icon: ClipboardList, description: "PMP, CAPM, Scrum, Agile", group: "Business & Productivity" },
   { label: "Help Desk", to: "/help-desk", icon: Headphones, description: "A+, Network+, troubleshooting", group: "Business & Productivity" },
-  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Desktop Apps, Business Skills, HR Compliance", group: "Business & Productivity", subItems: [
-    { label: "Desktop Applications", to: "/desktop-apps" },
-    { label: "Business Skills", to: "/business-skills" },
-    { label: "HR Compliance", to: "/hr-compliance" },
-  ]},
+  { label: "Enterprise End User", to: "/enterprise-end-user", icon: Users, description: "Microsoft apps, AI, security, and business skills", group: "Business & Productivity" },
+  { label: "Desktop Applications", to: "/desktop-apps", icon: AppWindow, description: "Microsoft 365, productivity tools, AI assistants", group: "Business & Productivity" },
+  { label: "Business Skills", to: "/business-skills", icon: Briefcase, description: "Communication, productivity, and leadership", group: "Business & Productivity" },
+  { label: "HR Compliance", to: "/hr-compliance", icon: FileCheck, description: "Harassment prevention, safety, and ethics training", group: "Business & Productivity" },
 
 ];
 
@@ -184,17 +183,6 @@ export const Navigation = () => {
                             {item.label}
                           </Button>
                         </Link>
-                        {item.subItems && item.subItems.length > 0 && (
-                          <div className="ml-8 pl-4 border-l border-border/60 flex flex-col gap-1 py-1">
-                            {item.subItems.map((sub) => (
-                              <Link key={sub.to} to={sub.to} onClick={() => setMobileMenuOpen(false)}>
-                                <Button variant="ghost" className="w-full justify-start text-muted-foreground hover:text-primary hover:bg-muted text-sm py-1.5 h-auto">
-                                  {sub.label}
-                                </Button>
-                              </Link>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     );
                   });
