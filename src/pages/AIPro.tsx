@@ -254,19 +254,19 @@ const AIPro = () => {
         </div>
 
         <div className="mb-10 flex flex-wrap justify-center gap-2">
-          {levelFilters.map((level) => (
+          {audienceFilters.map((audience) => (
             <button
-              key={level}
+              key={audience}
               type="button"
-              onClick={() => setFilter(level)}
+              onClick={() => setFilter(audience)}
               className={cn(
                 "rounded-full border px-5 py-2 text-sm font-medium transition-all duration-200",
-                filter === level
+                filter === audience
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border/60 bg-card/70 text-muted-foreground hover:border-primary/40 hover:text-foreground"
               )}
             >
-              {level}
+              {audience}
             </button>
           ))}
         </div>
