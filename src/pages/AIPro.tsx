@@ -117,25 +117,39 @@ const courses: {
       "Guide safe, responsible AI adoption with clear principles on data handling, accuracy, bias, and organizational policy.",
   },
   {
-    code: "PROMPT-ENG",
-    title: "Prompt Engineering",
+    code: "AI-GOV",
+    title: "AI Governance",
     audience: "Technical",
     description:
-      "Structure, context, and iteration — the patterns that turn a vague request into a reliable, repeatable result.",
+      "Frameworks, risk management, and policy controls for deploying AI responsibly at scale.",
   },
   {
-    code: "AI-900",
-    title: "Azure AI Fundamentals",
+    code: "SECAI+",
+    title: "CompTIA SecAI+",
     audience: "Technical",
     description:
-      "Core AI and machine learning concepts on Azure, prepped straight against the AI-900 exam objectives.",
+      "Security fundamentals for AI systems, covering threats, vulnerabilities, and safe AI operations.",
   },
   {
-    code: "AWS-AIF",
-    title: "AWS AI Practitioner",
+    code: "AB-900",
+    title: "AB-900: Copilot and Agent Administration",
     audience: "Technical",
     description:
-      "Foundational AI and generative AI services on AWS, framed for practitioners supporting cloud workloads.",
+      "Deploy, configure, and manage Microsoft Copilot agents and administrative controls.",
+  },
+  {
+    code: "CLAUDE-CODE",
+    title: "Claude Code: Essentials & Power User",
+    audience: "Technical",
+    description:
+      "From first commands to advanced workflows — harness Claude Code for scaffolding, review, and automation.",
+  },
+  {
+    code: "GIT-GITHUB",
+    title: "Git & Github Masterclass",
+    audience: "Technical",
+    description:
+      "Version control, branching strategies, pull requests, and team collaboration on GitHub.",
   },
   {
     code: "AI-CODE",
