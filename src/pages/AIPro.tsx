@@ -148,8 +148,15 @@ const AIPro = () => {
       <section className="relative mb-28 animate-fade-in">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[calc(100%+10rem)] w-screen -translate-x-1/2 -translate-y-1/2 bg-hero-mist"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[calc(100%+3rem)] w-screen -translate-x-1/2 -translate-y-1/2 bg-hero-mist"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, #000 12%, #000 82%, transparent 100%)",
+          }}
         />
+
         <div className="relative z-10 grid gap-12 py-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-background/80 px-4 py-1.5 text-sm font-medium text-foreground/80 shadow-sm backdrop-blur">
