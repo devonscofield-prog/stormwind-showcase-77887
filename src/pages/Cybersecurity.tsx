@@ -77,7 +77,7 @@ const courses: {
     title: "CompTIA Security+",
     instructorName: "Raymond Lacoste",
     instructorImage: raymondLacoste,
-    level: "Intermediate",
+    level: "Beginner",
     description:
       "Vendor-neutral proof you can assess security posture, implement solutions, and monitor hybrid environments — cloud, mobile and IoT included.",
   },
