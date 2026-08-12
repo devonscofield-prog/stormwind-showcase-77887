@@ -255,7 +255,7 @@ const AIPro = () => {
             Start where your team actually is.
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Nobody needs all of it. Skills Assessments place each learner, and the rest is a
+            Nobody needs all of it. We meet each learner where they are, then draw a
             straight line from first prompt to production use.
           </p>
         </div>
