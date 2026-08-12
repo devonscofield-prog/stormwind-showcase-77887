@@ -255,8 +255,8 @@ const AIPro = () => {
             Start where your team actually is.
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Nobody needs all of it. We meet each learner where they are, then draw a
-            straight line from first prompt to production use.
+            Eight focus areas, one job: turn AI curiosity into daily, dependable
+            practice. Pick the lane your team needs and skip the rest.
           </p>
         </div>
 
