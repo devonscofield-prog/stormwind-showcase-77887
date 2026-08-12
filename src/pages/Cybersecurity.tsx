@@ -220,8 +220,8 @@ const Cybersecurity = () => {
             Start where your team actually is.
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Nobody needs all of it. Skills Assessments place each learner, and the rest is a straight
-            line to the credential.
+            Threats don't wait for a syllabus. Skills Assessments place each learner where they
+            actually are, then close the gap to the credential.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
