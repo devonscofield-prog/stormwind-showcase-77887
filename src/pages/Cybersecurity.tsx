@@ -220,8 +220,9 @@ const Cybersecurity = () => {
             Start where your team actually is.
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Threats don't wait for a syllabus. Skills Assessments place each learner where they
-            actually are, then close the gap to the credential.
+            Threats don't wait for a syllabus. We map each learner to the right
+            starting point, then drive straight to the credential — no wasted seat
+            time, no generic track.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
