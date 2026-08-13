@@ -149,6 +149,62 @@ const courses: {
     description:
       "Server deployment, configuration, management and security on the newest release, taught as enterprise-grade infrastructure work.",
   },
+  // Technical — Copilot
+  {
+    code: "AB-900",
+    title: "AB-900 Copilot and Agent Administration Fundamentals",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Copilot",
+    description:
+      "Plan, deploy, secure and govern Microsoft Copilot and autonomous agents across Microsoft 365 — aligned to the AB-900 exam objectives.",
+  },
+  {
+    code: "COPILOT-ADMIN",
+    title: "Administering Microsoft Copilot AI",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Copilot",
+    description:
+      "Configure Copilot services, manage plugins and connectors, control data access, and maintain compliance for enterprise AI rollouts.",
+  },
+  {
+    code: "COPILOT-AUTONOMOUS",
+    title: "Creating Autonomous Agents with Copilot Studio",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Copilot",
+    description:
+      "Design, build and deploy autonomous agents in Copilot Studio that act across business systems with custom topics and actions.",
+  },
+  {
+    code: "COPILOT-AIAD",
+    title: "Agent in a Day",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Copilot",
+    description:
+      "A hands-on workshop that takes your team from agent concepts to a working Copilot Studio agent in a single day.",
+  },
+  {
+    code: "COPILOT-STUDIO",
+    title: "Copilot Studio: Beginner to Pro",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Copilot",
+    description:
+      "Build custom AI copilots and agents tailored to your organization, from first conversation to production deployment.",
+  },
   // End User — Copilot
   {
     code: "COPILOT-USE",
@@ -193,17 +249,6 @@ const courses: {
     topic: "Copilot",
     description:
       "Analyze data, generate formulas, and build insights with Copilot in Excel — no advanced spreadsheet skills required.",
-  },
-  {
-    code: "COPILOT-STUDIO",
-    title: "Copilot Studio: Beginner to Pro",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Copilot",
-    description:
-      "Build custom AI copilots and agents tailored to your organization, from first conversation to production deployment.",
   },
   // End User — M365 + SharePoint
   {
