@@ -385,7 +385,7 @@ const courses: {
   },
 ];
 
-const audienceFilters = ["All", "Technical", "End User"] as const;
+const audienceFilters = ["Technical", "End User"] as const;
 
 const audienceStyles: Record<Audience, string> = {
   Technical: "border-sky-500/40 bg-sky-500/10 text-sky-500",
@@ -393,7 +393,7 @@ const audienceStyles: Record<Audience, string> = {
 };
 
 const Microsoft = () => {
-  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("All");
+  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("Technical");
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
   useEffect(() => {
@@ -402,7 +402,7 @@ const Microsoft = () => {
 
   const visible = courses.filter(
     (c) =>
-      (filter === "All" || c.audience === filter) &&
+      c.audience === filter &&
       (!activeTopic || c.topic === activeTopic)
   );
 
