@@ -58,8 +58,8 @@ const topics = [
   },
   {
     icon: Brain,
-    title: "Microsoft 365 Copilot",
-    description: "AI productivity with Copilot for Word, Excel, Teams, and more.",
+    title: "Copilot",
+    description: "AI productivity with Microsoft 365 Copilot and Copilot Studio.",
   },
   {
     icon: Lightbulb,
@@ -69,6 +69,8 @@ const topics = [
 ];
 
 type Audience = "Technical" | "End User";
+
+const placeholderInstructor = "/placeholder.svg";
 
 const courses: {
   code: string;
@@ -80,17 +82,7 @@ const courses: {
   topic: string;
   description: string;
 }[] = [
-  {
-    code: "AZ-900",
-    title: "AZ-900 Azure Fundamentals",
-    instructorName: "Will Panek",
-    instructorImage: willPanek,
-    initials: "WP",
-    audience: "End User",
-    topic: "Microsoft Azure",
-    description:
-      "Build foundational knowledge of cloud concepts and Azure services. Built for anyone new to cloud, or heading toward the deeper Azure certifications.",
-  },
+  // Technical
   {
     code: "AZ-104",
     title: "AZ-104 Azure Administrator",
@@ -135,16 +127,162 @@ const courses: {
     description:
       "Server deployment, configuration, management and security on the newest release, taught as enterprise-grade infrastructure work.",
   },
+  // End User — Copilot
   {
-    code: "SC-900",
-    title: "SC-900 Security Fundamentals",
-    instructorName: "Will Panek",
-    instructorImage: willPanek,
-    initials: "WP",
+    code: "COPILOT-USE",
+    title: "Using Microsoft Copilot",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
     audience: "End User",
-    topic: "Security & Compliance",
+    topic: "Copilot",
     description:
-      "Microsoft security, compliance and identity fundamentals — the concepts and solutions that underpin every other security path.",
+      "Get productive with Microsoft Copilot across everyday tasks, from drafting content to summarizing information and automating workflows.",
+  },
+  {
+    code: "COPILOT-OD",
+    title: "Microsoft 365 Copilot: OneDrive",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Copilot",
+    description:
+      "Use Copilot inside OneDrive to find files faster, summarize documents, and surface the content that matters.",
+  },
+  {
+    code: "COPILOT-WORD",
+    title: "Microsoft 365 Copilot: Word",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Copilot",
+    description:
+      "Draft, rewrite, and refine documents with Copilot in Word — turning rough notes into polished content in seconds.",
+  },
+  {
+    code: "COPILOT-EXCEL",
+    title: "Microsoft 365 Copilot: Excel",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Copilot",
+    description:
+      "Analyze data, generate formulas, and build insights with Copilot in Excel — no advanced spreadsheet skills required.",
+  },
+  {
+    code: "COPILOT-STUDIO",
+    title: "Copilot Studio: Beginner to Pro",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Copilot",
+    description:
+      "Build custom AI copilots and agents tailored to your organization, from first conversation to production deployment.",
+  },
+  // End User — M365 + SharePoint
+  {
+    code: "M365-EXCEL",
+    title: "Excel 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Beginner, Intermediate, and Advanced Excel 365 training — formulas, pivot tables, data analysis, and reporting.",
+  },
+  {
+    code: "M365-PPT",
+    title: "PowerPoint 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Beginner and Advanced PowerPoint 365 training — design compelling slides, animations, and presentations that land.",
+  },
+  {
+    code: "M365-WORD",
+    title: "Word 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Beginner, Intermediate, and Advanced Word 365 training — professional documents, styles, mail merge, and collaboration.",
+  },
+  {
+    code: "M365-ADOBE",
+    title: "Adobe Suite",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Photoshop, Acrobat, Illustrator, InDesign, and more — creative and document workflows for the modern workplace.",
+  },
+  {
+    code: "M365-SP-USER",
+    title: "SharePoint 365 Site User",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Navigate, contribute, and collaborate in SharePoint sites — lists, libraries, pages, and permissions from the user view.",
+  },
+  {
+    code: "M365-SP-OWNER",
+    title: "SharePoint 365 Site Owner",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Design, build, and manage SharePoint sites — site architecture, permissions, workflows, and governance basics.",
+  },
+  // End User — Power Platform
+  {
+    code: "PP-BI",
+    title: "Learn Power BI",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "Dashboards, AI with Power BI, building BI with Pivot Tables, data modeling, and turning raw data into clear decisions.",
+  },
+  {
+    code: "PP-APPS",
+    title: "Power Apps",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "App in a Day, Advancing Power Apps skills, and Beginner through Advanced Power Apps development — build apps without heavy code.",
+  },
+  {
+    code: "PP-AUTOMATE",
+    title: "Power Automate",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "Beginner, Intermediate, and Advanced automation, plus Automation in a Day — connect apps and services to eliminate repetitive work.",
   },
 ];
 
