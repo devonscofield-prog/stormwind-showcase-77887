@@ -106,9 +106,9 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
   return (
     <section
       id="solution-finder"
-      className="relative z-10 scroll-mt-20 animate-fade-in"
+      className="finder-scope bg-finder-console text-foreground relative z-10 scroll-mt-20 animate-fade-in"
     >
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_520px] bg-card/40">
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_520px]">
         {/* Left column — questions */}
         <div className="p-8 lg:p-10 flex flex-col gap-6">
           <div className="flex flex-col gap-3">
@@ -165,8 +165,8 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                             "w-full p-4 rounded-lg text-left flex flex-col gap-1",
                             "transition-[background,box-shadow] duration-200",
                             isSelected
-                              ? "bg-primary/15 ring-1 ring-inset ring-primary"
-                              : "bg-card/50 ring-1 ring-inset ring-border hover:ring-primary/60"
+                              ? "bg-primary/10 ring-1 ring-inset ring-primary"
+                              : "bg-card ring-1 ring-inset ring-border hover:ring-primary/50"
                           )}
                         >
                           <span className="text-sm font-semibold">{option.label}</span>
@@ -182,7 +182,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
         </div>
 
         {/* Right rail — recommendation (focus stack) */}
-        <div className="p-8 lg:p-10 bg-background/60 lg:border-l border-border lg:sticky lg:top-28 self-start">
+        <div className="p-8 lg:p-10 bg-[hsl(158_10%_7%)] lg:border-l border-border lg:sticky lg:top-28 self-start">
           <div className="flex flex-col gap-5" aria-live="polite">
             {!hasSelections ? (
               <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">
@@ -272,7 +272,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
 
                           <Button
                             onClick={() => onTabChange(program.tabValue)}
-                            className="w-full rounded-lg text-sm"
+                            className="w-full rounded-full text-sm font-bold uppercase tracking-wide bg-primary text-primary-foreground hover:bg-primary/90"
                           >
                             See the program
                           </Button>

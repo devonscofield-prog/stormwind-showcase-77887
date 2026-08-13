@@ -1191,3 +1191,30 @@ All colors MUST be HSL.
   }
 }
 
+
+@layer utilities {
+  /* Solution Finder — mint-on-near-black scope */
+  .finder-scope,
+  .dark .finder-scope {
+    --background: 160 8% 5%;
+    --foreground: 0 0% 98%;
+    --card: 158 10% 8%;
+    --card-foreground: 0 0% 98%;
+    --muted: 158 8% 12%;
+    --muted-foreground: 155 6% 66%;
+    --border: 158 10% 17%;
+    --input: 158 10% 17%;
+    --primary: 156 62% 55%;
+    --primary-foreground: 160 40% 7%;
+    --accent: 156 62% 55%;
+    --accent-foreground: 160 40% 7%;
+    --ring: 156 62% 55%;
+  }
+
+  .bg-finder-console {
+    background:
+      radial-gradient(ellipse 60% 45% at 12% 0%, hsl(156 62% 45% / 0.10) 0%, transparent 62%),
+      radial-gradient(ellipse 50% 40% at 92% 10%, hsl(156 62% 45% / 0.06) 0%, transparent 60%),
+      hsl(var(--background));
+  }
+}
