@@ -373,6 +373,15 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes sheen {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
   .float-card {
     animation: float 6s ease-in-out infinite;
   }
