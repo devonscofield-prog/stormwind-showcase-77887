@@ -34,7 +34,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Branding */}
           <div>
-            <h3 className="text-foreground font-semibold mb-4">StormWind Studios</h3>
+            <img src={stormwindLogo} alt="StormWind Studios" className="h-9 w-auto mb-4" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Enterprise IT training that transforms careers and organizations.
             </p>

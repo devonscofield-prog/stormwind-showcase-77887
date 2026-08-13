@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import PersonalizedLearningBanner from "@/components/PersonalizedLearningBanner";
 import { BookOpen, Users, Play, Shield } from "lucide-react";
+import { CARD_SURFACE } from "@/components/AnimatedFeatureCard";
 
 // Lazy load heavy tab components
 const EnterpriseIT = lazy(() => import("@/components/EnterpriseIT"));
