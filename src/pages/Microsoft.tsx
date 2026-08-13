@@ -679,7 +679,10 @@ const Microsoft = () => {
             <span className="mr-2 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
               Audience
             </span>
-            {audienceFilters.map((aud) => (
+            {(activeTopic && technicalOnlyTopics.has(activeTopic)
+              ? (["Technical"] as const)
+              : audienceFilters
+            ).map((aud) => (
               <button
                 key={aud}
                 type="button"
