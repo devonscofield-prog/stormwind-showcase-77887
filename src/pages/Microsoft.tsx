@@ -240,6 +240,39 @@ const courses: {
       "Beginner and Advanced levels — professional slide design, layouts, animations, transitions, media, and presentation delivery.",
   },
   {
+    code: "M365-TEAMS",
+    title: "Teams 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Chat, meet, call and collaborate in Microsoft Teams — channels, files, meetings, apps and day-to-day teamwork.",
+  },
+  {
+    code: "M365-OUTLOOK",
+    title: "Outlook 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Manage email, calendar, contacts and tasks in Outlook — organization, search, rules and productivity workflows.",
+  },
+  {
+    code: "M365-SP",
+    title: "SharePoint 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Navigate, contribute to and manage SharePoint sites — lists, libraries, pages, permissions and site ownership fundamentals.",
+  },
+  {
     code: "M365-PS",
     title: "Adobe Photoshop",
     instructorName: "StormWind Instructor",
