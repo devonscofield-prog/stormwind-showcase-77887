@@ -45,6 +45,10 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
     return tieOrder.filter((key) => selected.has(key));
   }, [picks]);
 
+  const [openKey, setOpenKey] = useState<ProgramKey | null>(null);
+  const activeKey =
+    openKey && recommendedKeys.includes(openKey) ? openKey : recommendedKeys[0];
+
   const handlePick = (questionKey: QuestionKey, value: ProgramKey) => {
     setPicks((prev) => {
       const current = prev[questionKey];
