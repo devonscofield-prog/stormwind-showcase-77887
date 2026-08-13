@@ -133,7 +133,7 @@ const EnterpriseIT = ({
           {technologies.map((tech, index) => (
             <Link key={index} to={tech.link} className={`${CARD_SURFACE} block min-h-[152px]`}>
               <div className="absolute -right-3.5 -bottom-4 opacity-[0.11] pointer-events-none text-primary">
-                <div className="w-[124px] h-[124px] [&>svg]:w-full [&>svg]:h-full [&_*]:!fill-current [&_*]:!stroke-current">
+                <div className="w-[124px] h-[124px] [&>svg]:w-full [&>svg]:h-full [&_*:not([fill='none'])]:!fill-current [&_*]:!stroke-current">
                   <tech.Icon isHovered={false} />
                 </div>
               </div>

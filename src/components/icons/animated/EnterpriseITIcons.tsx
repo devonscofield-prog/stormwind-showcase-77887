@@ -332,34 +332,34 @@ export const MicrosoftIcon = ({ isHovered }: { isHovered: boolean }) => {
 
 export const CloudIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M27 55h26a12 12 0 0 0 1.5-23.9A17 17 0 0 0 22.7 34 11 11 0 0 0 27 55Z" />
-    <path d="M40 62v-14" />
-    <path d="M34 54l6-6 6 6" />
+    <path fill="none" d="M27 55h26a12 12 0 0 0 1.5-23.9A17 17 0 0 0 22.7 34 11 11 0 0 0 27 55Z" />
+    <path fill="none" d="M40 62v-14" />
+    <path fill="none" d="M34 54l6-6 6 6" />
   </svg>
 );
 
 export const CybersecurityIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M40 14 60 22v16c0 13-8.6 21.6-20 26-11.4-4.4-20-13-20-26V22l20-8Z" />
-    <rect x="32" y="36" width="16" height="13" rx="2.5" />
-    <path d="M36 36v-3.5a4 4 0 0 1 8 0V36" />
+    <path fill="none" d="M40 14 60 22v16c0 13-8.6 21.6-20 26-11.4-4.4-20-13-20-26V22l20-8Z" />
+    <rect fill="none" x="32" y="36" width="16" height="13" rx="2.5" />
+    <path fill="none" d="M36 36v-3.5a4 4 0 0 1 8 0V36" />
   </svg>
 );
 
 export const AIIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="26" y="26" width="28" height="28" rx="7" />
-    <rect x="35" y="35" width="10" height="10" rx="2.5" />
-    <path d="M33 18v8M47 18v8M33 54v8M47 54v8M18 33h8M18 47h8M54 33h8M54 47h8" />
+    <rect fill="none" x="26" y="26" width="28" height="28" rx="7" />
+    <rect fill="none" x="35" y="35" width="10" height="10" rx="2.5" />
+    <path fill="none" d="M33 18v8M47 18v8M33 54v8M47 54v8M18 33h8M18 47h8M54 33h8M54 47h8" />
   </svg>
 );
 
 export const NetworkingIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="30" y="12" width="20" height="14" rx="3" />
-    <rect x="12" y="52" width="20" height="14" rx="3" />
-    <rect x="48" y="52" width="20" height="14" rx="3" />
-    <path d="M40 26v12M22 52V38h36v14" />
+    <rect fill="none" x="30" y="12" width="20" height="14" rx="3" />
+    <rect fill="none" x="12" y="52" width="20" height="14" rx="3" />
+    <rect fill="none" x="48" y="52" width="20" height="14" rx="3" />
+    <path fill="none" d="M40 26v12M22 52V38h36v14" />
   </svg>
 );
 
@@ -479,10 +479,10 @@ export const ProjectManagementIcon = ({ isHovered }: { isHovered: boolean }) => 
 
 export const HelpDeskIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 44v-6a20 20 0 0 1 40 0v6" />
-    <rect x="14" y="40" width="12" height="16" rx="4" />
-    <rect x="54" y="40" width="12" height="16" rx="4" />
-    <path d="M60 56v3a7 7 0 0 1-7 7h-9" />
+    <path fill="none" d="M20 44v-6a20 20 0 0 1 40 0v6" />
+    <rect fill="none" x="14" y="40" width="12" height="16" rx="4" />
+    <rect fill="none" x="54" y="40" width="12" height="16" rx="4" />
+    <path fill="none" d="M60 56v3a7 7 0 0 1-7 7h-9" />
     <circle cx="40" cy="66" r="3.2" fill="currentColor" stroke="none" />
   </svg>
 );
