@@ -487,6 +487,13 @@ const courses: {
 
 const audienceFilters = ["Technical", "End User"] as const;
 
+const technicalOnlyTopics = new Set([
+  "Microsoft Azure",
+  "SQL Server & Databases",
+  "Security & Compliance",
+  "Windows Server",
+]);
+
 const audienceStyles: Record<Audience, string> = {
   Technical: "border-sky-500/40 bg-sky-500/10 text-sky-500",
   "End User": "border-primary/40 bg-primary/10 text-primary",
