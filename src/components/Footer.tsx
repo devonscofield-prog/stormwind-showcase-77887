@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import stormwindLogo from "@/assets/stormwind-logo.png";
 
 const topicLinks = [
   { label: "Microsoft", to: "/microsoft" },
@@ -33,7 +34,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Branding */}
           <div>
-            <h3 className="text-foreground font-semibold mb-4">StormWind Studios</h3>
+            <img src={stormwindLogo} alt="StormWind Studios" className="h-9 w-auto mb-4" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Enterprise IT training that transforms careers and organizations.
             </p>
@@ -90,7 +91,7 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-border mt-8 pt-8">
-          <p className="text-muted-foreground text-sm text-center">
+          <p className="text-foreground/70 text-sm text-center">
             &copy; 2026 StormWind Studios. All rights reserved.
           </p>
         </div>
