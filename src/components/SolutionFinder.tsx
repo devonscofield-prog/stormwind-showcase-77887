@@ -135,84 +135,128 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
           </div>
         </div>
 
-        {/* Right rail — recommendation */}
+        {/* Right rail — recommendation (focus stack) */}
         <div className="p-8 lg:p-10 bg-background/60 lg:border-l border-border lg:sticky lg:top-28 self-start">
           <div className="flex flex-col gap-5" aria-live="polite">
-            <span className="text-xs font-bold uppercase tracking-[1.3px] text-muted-foreground">
-              {recommendedKeys.length > 1 ? "Recommended programs" : "Recommended"}
-            </span>
+            <div className="flex items-center justify-between gap-3 px-0.5">
+              <span className="text-xs font-bold uppercase tracking-[1.3px] text-muted-foreground">
+                {recommendedKeys.length > 1 ? "Recommended programs" : "Recommended"}
+              </span>
+              {recommendedKeys.length > 1 && (
+                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/15 text-primary ring-1 ring-inset ring-primary/30">
+                  {recommendedKeys.length} matches
+                </span>
+              )}
+            </div>
 
-            {recommendedKeys.map((key) => {
-              const program = programs[key];
-              const ProgramIcon = program.icon;
-              return (
-                <div
-                  key={program.key}
-                  className="rounded-xl bg-card ring-1 ring-inset ring-primary/40 p-5 flex flex-col gap-4 animate-scale-in"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15">
-                      <ProgramIcon className="h-4 w-4 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-bold tracking-tight">{program.title}</h3>
-                  </div>
+            <div className="flex flex-col gap-3">
+              {recommendedKeys.map((key) => {
+                const program = programs[key];
+                const ProgramIcon = program.icon;
+                const isActive = key === activeKey;
 
-                  <p className="text-xs leading-relaxed text-muted-foreground">{program.body}</p>
+                if (!isActive) {
+                  return (
+                    <button
+                      key={program.key}
+                      type="button"
+                      onClick={() => setOpenKey(key)}
+                      className="group w-full rounded-xl bg-card/40 ring-1 ring-inset ring-border p-4 flex items-center justify-between gap-3 text-left transition-colors duration-200 hover:bg-card/70"
+                    >
+                      <span className="flex items-center gap-3 min-w-0">
+                        <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 transition-colors duration-200 group-hover:bg-primary" />
+                        <span className="text-sm font-medium truncate">{program.title}</span>
+                      </span>
+                      <span className="flex items-center gap-2 shrink-0">
+                        <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-tight text-muted-foreground">
+                          {program.tags.slice(0, 2).join(" • ")}
+                        </span>
+                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                      </span>
+                    </button>
+                  );
+                }
 
-                  <div className="flex flex-wrap gap-1.5">
-                    {program.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-[10px] px-2 py-0.5">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-border pt-4 flex flex-col gap-3">
-                    {program.points.map((point) => (
-                      <div key={point} className="flex gap-2.5">
-                        <CheckCircle2 className="w-4 text-primary shrink-0 mt-0.5" />
-                        <span className="text-xs text-foreground/85 leading-relaxed">{point}</span>
+                return (
+                  <div key={program.key} className="relative">
+                    <div className="absolute -left-1 top-4 bottom-4 w-1 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]" />
+                    <div className="rounded-xl bg-card ring-1 ring-inset ring-border p-5 flex flex-col gap-4 shadow-xl animate-fade-in">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15">
+                            <ProgramIcon className="h-4 w-4 text-primary" />
+                          </div>
+                          <h3 className="text-lg font-bold tracking-tight leading-tight">
+                            {program.title}
+                          </h3>
+                        </div>
+                        <div className="hidden sm:flex flex-wrap justify-end gap-1.5">
+                          {program.tags.slice(0, 2).map((tag) => (
+                            <span
+                              key={tag}
+                              className="font-mono text-[9px] uppercase tracking-tight px-2 py-0.5 rounded bg-muted text-muted-foreground ring-1 ring-inset ring-border"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    ))}
+
+                      <p className="text-sm leading-relaxed text-muted-foreground">{program.body}</p>
+
+                      <ul className="flex flex-col gap-2">
+                        {program.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2 text-xs">
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                            <span className="text-foreground/85 leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Button
+                        onClick={() => onTabChange(program.tabValue)}
+                        className="w-full rounded-lg text-sm"
+                      >
+                        See the program
+                      </Button>
+                    </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  <Button
-                    onClick={() => onTabChange(program.tabValue)}
-                    className="w-full rounded-lg text-sm"
-                    size="default"
-                  >
-                    See the program
-                  </Button>
-                </div>
-              );
-            })}
-
-            <div className="flex flex-col gap-2">
-              <span className="text-xs text-muted-foreground">Also worth a look</span>
-              {Array.from(
-                new Map(
-                  recommendedKeys
-                    .flatMap((key) => programs[key].also)
-                    .map((item) => [item.label, item])
-                ).values()
-              )
-                .filter(
-                  (item) =>
-                    !recommendedKeys.some((key) => programs[key].title === item.label)
+            <div className="pt-4 border-t border-border">
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-3 px-0.5">
+                Also worth a look
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                {Array.from(
+                  new Map(
+                    recommendedKeys
+                      .flatMap((key) => programs[key].also)
+                      .map((item) => [item.label, item])
+                  ).values()
                 )
-                .map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className="rounded-lg flex items-center justify-between p-3 bg-card ring-1 ring-inset ring-border transition-all duration-200 hover:ring-primary/60 hover:bg-card/80"
-                >
-                  <span className="text-xs font-semibold">{item.label}</span>
-                  <span className="text-[10px] text-muted-foreground">{item.reason}</span>
-                </Link>
-              ))}
+                  .filter(
+                    (item) =>
+                      !recommendedKeys.some((key) => programs[key].title === item.label)
+                  )
+                  .map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      title={item.reason}
+                      className="px-3 py-2 rounded-lg bg-card/40 ring-1 ring-inset ring-border text-[11px] text-muted-foreground transition-colors duration-200 hover:text-foreground hover:bg-card/70 flex items-center gap-2"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                      <span className="truncate">{item.label}</span>
+                    </Link>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
