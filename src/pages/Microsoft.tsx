@@ -632,14 +632,21 @@ const Microsoft = () => {
                 className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/70 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
               >
                 <div className="flex items-start gap-4 border-b border-border/60 p-6">
-                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg border border-primary/25 bg-primary/10">
-                    <img
-                      src={course.instructorImage}
-                      alt={`${course.instructorName}, StormWind instructor`}
-                      loading="lazy"
-                      className="h-full w-full object-cover object-top"
-                    />
+                  <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-primary/25 bg-primary/10">
+                    {course.instructorImage === placeholderInstructor ? (
+                      <span className="font-mono text-xs font-semibold uppercase tracking-widest text-primary">
+                        {course.initials}
+                      </span>
+                    ) : (
+                      <img
+                        src={course.instructorImage}
+                        alt={`${course.instructorName}, StormWind instructor`}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-top"
+                      />
+                    )}
                   </div>
+
                   <div className="min-w-0">
                     <h3 className="text-lg font-bold leading-snug tracking-tight">{course.title}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{course.instructorName}</p>
