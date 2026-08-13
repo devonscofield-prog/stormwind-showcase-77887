@@ -141,34 +141,19 @@ const EnterpriseIT = ({
       <div className="mb-16">
         <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Technologies We Train On</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {technologies.map((tech, index) => {
-            const TechCard = () => {
-              const [isHovered, setIsHovered] = useState(false);
-
-              return (
-                <Link 
-                  to={tech.link} 
-                  className="glass-feature-card group relative overflow-hidden rounded-lg p-4 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-
-                  
-                  {/* Animated Icon Background */}
-                  <div className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                    <tech.Icon isHovered={isHovered} />
-                  </div>
-                  
-                  <h4 className="text-base font-bold relative z-10 mb-2 transition-colors duration-300 text-foreground">
-                    {tech.name}
-                  </h4>
-                  <p className="text-xs text-gray-400 leading-relaxed relative z-10">{tech.items}</p>
-                </Link>
-              );
-            };
-            
-            return <TechCard key={index} />;
-          })}
+          {technologies.map((tech, index) => (
+            <Link key={index} to={tech.link} className={`${CARD_SURFACE} block min-h-[152px]`}>
+              <div className="absolute -right-3.5 -bottom-4 opacity-[0.11] pointer-events-none text-primary">
+                <div className="w-[124px] h-[124px] [&>svg]:w-full [&>svg]:h-full">
+                  <tech.Icon color="currentColor" isHovered={false} />
+                </div>
+              </div>
+              <div className="relative flex flex-col gap-2">
+                <h4 className="text-[15px] font-bold tracking-tight text-foreground">{tech.name}</h4>
+                <p className="text-xs leading-[17px] text-muted-foreground">{tech.items}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -184,191 +169,71 @@ const EnterpriseIT = ({
         <div className="flex items-center justify-center gap-4 mb-8">
           <h3 className="text-2xl font-bold text-foreground">Platform Features</h3>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {consolidatedFeatures.map((feature, index) => {
-          const featureLinks: Record<string, string> = {
-            "Learning Paths": "/learning-paths",
-            "Bytes: Microlearning": "/bytes",
-            "AI-Powered Learning": "/ai-learning",
-            "StormWind Ranges": "/ranges",
-            "Live Instructor Led Courses": "/live-instructor-led",
-            "1:1 Mentoring with Industry Experts": "/mentoring",
-            "Skills Assessments": "/skills-assessments",
-            "Enterprise Reporting and Administration": "/enterprise-reporting"
-          };
-          const featureColors = [
-            '#60A5FA', // blue
-            '#FB923C', // orange
-            '#A78BFA', // purple
-            '#4ADE80', // green
-            '#38BDF8', // cyan
-            '#FBBF24', // yellow
-            '#F472B6', // pink
-            '#6366F1', // indigo
-          ];
-          const color = featureColors[index % featureColors.length];
-          
-          const FeatureCard = () => {
-            const [isHovered, setIsHovered] = useState(false);
-            const [particles, setParticles] = useState<Array<{
-              id: number;
-              x: number;
-              y: number;
-              opacity: number;
-              size: number;
-            }>>([]);
-            const cardRef = useRef<HTMLAnchorElement>(null);
-            const particleIdRef = useRef(0);
-            
-            useEffect(() => {
-              if (particles.length === 0) return;
-              
-              const interval = setInterval(() => {
-                setParticles(prev => 
-                  prev
-                    .map(p => ({ ...p, opacity: p.opacity - 0.05 }))
-                    .filter(p => p.opacity > 0)
-                );
-              }, 50);
-              
-              return () => clearInterval(interval);
-            }, [particles.length]);
-            
-            const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              if (!cardRef.current || !isHovered) return;
-              
-              const rect = cardRef.current.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              
-              const newParticle = {
-                id: particleIdRef.current++,
-                x,
-                y,
-                opacity: 1,
-                size: Math.random() * 4 + 2,
-              };
-              
-              setParticles(prev => [...prev.slice(-20), newParticle]);
+            const featureLinks: Record<string, string> = {
+              "Learning Paths": "/learning-paths",
+              "Bytes: Microlearning": "/bytes",
+              "AI-Powered Learning": "/ai-learning",
+              "StormWind Ranges": "/ranges",
+              "Live Instructor Led Courses": "/live-instructor-led",
+              "1:1 Mentoring with Industry Experts": "/mentoring",
+              "Skills Assessments": "/skills-assessments",
+              "Enterprise Reporting and Administration": "/enterprise-reporting"
             };
-            
+
             return (
-              <Link 
-                ref={cardRef}
-                to={featureLinks[feature.title]} 
-                className="glass-feature-card group relative overflow-hidden rounded-lg p-6 transition-all duration-300 cursor-pointer block hover:scale-105 hover:-translate-y-1 border border-white/10"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => {
-                  setIsHovered(false);
-                  setParticles([]);
-                }}
-                onMouseMove={handleMouseMove}
-              >
-                {/* Particle Trail */}
-                {particles.map(particle => (
-                  <div
-                    key={particle.id}
-                    className="absolute rounded-full pointer-events-none z-20"
-                    style={{
-                      left: particle.x,
-                      top: particle.y,
-                      width: particle.size,
-                      height: particle.size,
-                      opacity: particle.opacity,
-                      background: color,
-                      boxShadow: `0 0 ${particle.size * 2}px ${color}`,
-                      transform: 'translate(-50%, -50%)',
-                      transition: 'opacity 0.05s linear',
-                    }}
-                  />
-                ))}
-                
-                {/* Floating Particles Background */}
-                <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                  {/* Animated floating dots */}
-                  {[...Array(8)].map((_, i) => (
-                    <circle 
-                      key={i}
-                      cx={50 + (i * 50)} 
-                      cy={50 + (i * 40)} 
-                      r="2" 
-                      fill={color}
-                      opacity="0.3"
-                    >
-                      <animate 
-                        attributeName="cy" 
-                        values={`${50 + (i * 40)};${30 + (i * 40)};${50 + (i * 40)}`} 
-                        dur={`${3 + (i * 0.5)}s`} 
-                        repeatCount="indefinite" 
-                      />
-                      <animate 
-                        attributeName="opacity" 
-                        values="0.2;0.5;0.2" 
-                        dur={`${3 + (i * 0.5)}s`} 
-                        repeatCount="indefinite" 
-                      />
-                    </circle>
-                  ))}
-                </svg>
-                
-                {/* Animated Icon with Glow */}
-                <div className="mb-6 inline-flex relative z-10">
-                  {/* Glow effect */}
-                  <div 
-                    className="absolute inset-0 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300" 
-                    style={{ backgroundColor: color }}
-                  />
-                  {/* Animated SVG Icon */}
-                  <div className="relative transition-transform duration-300 group-hover:scale-110">
-                    <feature.icon color={color} isHovered={isHovered} />
+              <Link key={index} to={featureLinks[feature.title]} className={`${CARD_SURFACE} block`}>
+                <div className="relative flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
+                      <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full">
+                        <feature.icon color="currentColor" isHovered={false} />
+                      </div>
+                    </div>
+                    <h4 className="text-lg font-semibold tracking-tight text-foreground">
+                      {feature.title}
+                    </h4>
                   </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+
+                  {feature.details && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.details}</p>
+                  )}
+
+                  {feature.bullets && (
+                    <ul className="space-y-2">
+                      {feature.bullets.map((bullet, idx) => (
+                        <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="w-1 h-1 mt-2 shrink-0 rounded-full bg-primary" />
+                          <span className="leading-relaxed">{bullet.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {feature.additionalInfo && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.additionalInfo}
+                    </p>
+                  )}
                 </div>
-                
-                {/* Title with Color */}
-                <h4 
-                  className="text-xl font-bold mb-3 relative z-10 transition-colors duration-300" 
-                  style={{ color: color }}
-                >
-                  {feature.title}
-                </h4>
-                
-                {/* Description */}
-                <p className="text-sm text-gray-300 leading-relaxed mb-3 relative z-10">
-                  {feature.description}
-                </p>
-                
-                {/* Details */}
-                {feature.details && <p className="text-sm text-gray-400 leading-relaxed mb-3 relative z-10">
-                    {feature.details}
-                  </p>}
-                
-                {/* Bullets */}
-                {feature.bullets && <ul className="space-y-2 mb-3 relative z-10">
-                    {feature.bullets.map((bullet, idx) => <li key={idx} className="text-sm text-gray-400 flex items-start gap-2">
-                        <span className="flex-shrink-0">{bullet.emoji}</span>
-                        <span className="leading-relaxed">{bullet.text}</span>
-                      </li>)}
-                  </ul>}
-                
-                {/* Additional Info */}
-                {feature.additionalInfo && <p className="text-sm text-gray-400 leading-relaxed relative z-10">
-                    {feature.additionalInfo}
-                  </p>}
               </Link>
             );
-          };
-          
-          return <FeatureCard key={index} />;
-        })}
+          })}
         </div>
       </div>
 
       {/* SSO Banner */}
       <div className="mt-12 animate-fade-in">
-        <div className="relative overflow-hidden rounded-lg border border-border bg-muted/30 p-6 text-center">
-          <h3 className="text-xl font-semibold text-muted-foreground relative z-10">
-            Single Sign On Available
-          </h3>
+        <div className={`${CARD_SURFACE} flex items-center justify-center gap-2.5`}>
+          <Lock className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
+          <span className="text-[15px] font-semibold text-muted-foreground">
+            Single sign-on available
+          </span>
         </div>
       </div>
     </div>;
