@@ -184,122 +184,135 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
         {/* Right rail — recommendation (focus stack) */}
         <div className="p-8 lg:p-10 bg-background/60 lg:border-l border-border lg:sticky lg:top-28 self-start">
           <div className="flex flex-col gap-5" aria-live="polite">
-            <div className="flex items-center justify-between gap-3 px-0.5">
-              <span className="text-xs font-bold uppercase tracking-[1.3px] text-muted-foreground">
-                {recommendedKeys.length > 1 ? "Recommended programs" : "Recommended"}
-              </span>
-              {recommendedKeys.length > 1 && (
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/15 text-primary ring-1 ring-inset ring-primary/30">
-                  {recommendedKeys.length} matches
+            {!hasSelections ? (
+              <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">
+                <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Sparkles className="h-5 w-5 text-primary/70" />
                 </span>
-              )}
-            </div>
+                <p className="text-sm text-muted-foreground max-w-[220px]">
+                  Select an option to see recommended programs.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-between gap-3 px-0.5">
+                  <span className="text-xs font-bold uppercase tracking-[1.3px] text-muted-foreground">
+                    {recommendedKeys.length > 1 ? "Recommended programs" : "Recommended"}
+                  </span>
+                  {recommendedKeys.length > 1 && (
+                    <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/15 text-primary ring-1 ring-inset ring-primary/30">
+                      {recommendedKeys.length} matches
+                    </span>
+                  )}
+                </div>
 
-            <div className="flex flex-col gap-3">
-              {recommendedKeys.map((key) => {
-                const program = programs[key];
-                const ProgramIcon = program.icon;
-                const isActive = key === activeKey;
+                <div className="flex flex-col gap-3">
+                  {recommendedKeys.map((key) => {
+                    const program = programs[key];
+                    const ProgramIcon = program.icon;
+                    const isActive = key === activeKey;
 
-                if (!isActive) {
-                  return (
-                    <button
-                      key={program.key}
-                      type="button"
-                      onClick={() => setOpenKey(key)}
-                      className="group w-full rounded-xl bg-card/40 ring-1 ring-inset ring-border p-4 flex items-center justify-between gap-3 text-left transition-colors duration-200 hover:bg-card/70"
-                    >
-                      <span className="flex items-center gap-3 min-w-0">
-                        <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 transition-colors duration-200 group-hover:bg-primary" />
-                        <span className="text-sm font-medium truncate">{program.title}</span>
-                      </span>
-                      <span className="flex items-center gap-2 shrink-0">
-                        <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-tight text-muted-foreground">
-                          {program.tags.slice(0, 2).join(" • ")}
-                        </span>
-                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                      </span>
-                    </button>
-                  );
-                }
-
-                return (
-                  <div key={program.key} className="relative">
-                    <div className="absolute -left-1 top-4 bottom-4 w-1 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]" />
-                    <div className="rounded-xl bg-card ring-1 ring-inset ring-border p-5 flex flex-col gap-4 shadow-xl animate-fade-in">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15">
-                            <ProgramIcon className="h-4 w-4 text-primary" />
-                          </div>
-                          <h3 className="text-lg font-bold tracking-tight leading-tight">
-                            {program.title}
-                          </h3>
-                        </div>
-                        <div className="hidden sm:flex flex-wrap justify-end gap-1.5">
-                          {program.tags.slice(0, 2).map((tag) => (
-                            <span
-                              key={tag}
-                              className="font-mono text-[9px] uppercase tracking-tight px-2 py-0.5 rounded bg-muted text-muted-foreground ring-1 ring-inset ring-border"
-                            >
-                              {tag}
+                    if (!isActive) {
+                      return (
+                        <button
+                          key={program.key}
+                          type="button"
+                          onClick={() => setOpenKey(key)}
+                          className="group w-full rounded-xl bg-card/40 ring-1 ring-inset ring-border p-4 flex items-center justify-between gap-3 text-left transition-colors duration-200 hover:bg-card/70"
+                        >
+                          <span className="flex items-center gap-3 min-w-0">
+                            <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 transition-colors duration-200 group-hover:bg-primary" />
+                            <span className="text-sm font-medium truncate">{program.title}</span>
+                          </span>
+                          <span className="flex items-center gap-2 shrink-0">
+                            <span className="hidden sm:inline font-mono text-[9px] uppercase tracking-tight text-muted-foreground">
+                              {program.tags.slice(0, 2).join(" • ")}
                             </span>
-                          ))}
+                            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                          </span>
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <div key={program.key} className="relative">
+                        <div className="absolute -left-1 top-4 bottom-4 w-1 rounded-full bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.5)]" />
+                        <div className="rounded-xl bg-card ring-1 ring-inset ring-border p-5 flex flex-col gap-4 shadow-xl animate-fade-in">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15">
+                                <ProgramIcon className="h-4 w-4 text-primary" />
+                              </div>
+                              <h3 className="text-lg font-bold tracking-tight leading-tight">
+                                {program.title}
+                              </h3>
+                            </div>
+                            <div className="hidden sm:flex flex-wrap justify-end gap-1.5">
+                              {program.tags.slice(0, 2).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="font-mono text-[9px] uppercase tracking-tight px-2 py-0.5 rounded bg-muted text-muted-foreground ring-1 ring-inset ring-border"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <p className="text-sm leading-relaxed text-muted-foreground">{program.body}</p>
+
+                          <ul className="flex flex-col gap-2">
+                            {program.points.map((point) => (
+                              <li key={point} className="flex items-start gap-2 text-xs">
+                                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                                <span className="text-foreground/85 leading-relaxed">{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Button
+                            onClick={() => onTabChange(program.tabValue)}
+                            className="w-full rounded-lg text-sm"
+                          >
+                            See the program
+                          </Button>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
 
-                      <p className="text-sm leading-relaxed text-muted-foreground">{program.body}</p>
-
-                      <ul className="flex flex-col gap-2">
-                        {program.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2 text-xs">
-                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                            <span className="text-foreground/85 leading-relaxed">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Button
-                        onClick={() => onTabChange(program.tabValue)}
-                        className="w-full rounded-lg text-sm"
-                      >
-                        See the program
-                      </Button>
-                    </div>
+                <div className="pt-4 border-t border-border">
+                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-3 px-0.5">
+                    Also worth a look
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Array.from(
+                      new Map(
+                        recommendedKeys
+                          .flatMap((key) => programs[key].also)
+                          .map((item) => [item.label, item])
+                      ).values()
+                    )
+                      .filter(
+                        (item) =>
+                          !recommendedKeys.some((key) => programs[key].title === item.label)
+                      )
+                      .map((item) => (
+                        <Link
+                          key={item.label}
+                          to={item.href}
+                          title={item.reason}
+                          className="px-3 py-2 rounded-lg bg-card/40 ring-1 ring-inset ring-border text-[11px] text-muted-foreground transition-colors duration-200 hover:text-foreground hover:bg-card/70 flex items-center gap-2"
+                        >
+                          <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
+                          <span className="truncate">{item.label}</span>
+                        </Link>
+                      ))}
                   </div>
-                );
-              })}
-            </div>
-
-            <div className="pt-4 border-t border-border">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-3 px-0.5">
-                Also worth a look
-              </h4>
-              <div className="grid grid-cols-2 gap-2">
-                {Array.from(
-                  new Map(
-                    recommendedKeys
-                      .flatMap((key) => programs[key].also)
-                      .map((item) => [item.label, item])
-                  ).values()
-                )
-                  .filter(
-                    (item) =>
-                      !recommendedKeys.some((key) => programs[key].title === item.label)
-                  )
-                  .map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      title={item.reason}
-                      className="px-3 py-2 rounded-lg bg-card/40 ring-1 ring-inset ring-border text-[11px] text-muted-foreground transition-colors duration-200 hover:text-foreground hover:bg-card/70 flex items-center gap-2"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-muted-foreground/50 shrink-0" />
-                      <span className="truncate">{item.label}</span>
-                    </Link>
-                  ))}
-              </div>
-            </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
