@@ -21,7 +21,7 @@ const ProjectManagement = () => {
       level: "Advanced" as const,
       description: "Comprehensive preparation for the globally recognized Project Management Professional certification. Master the PMBOK Guide and earn 35 contact hours required for PMP® exam eligibility.",
       features: [
-        { icon: Video, title: "Live Sessions Available", description: "Interactive EPIC LIVE training" },
+        { icon: Video, title: "Live Sessions Available", description: "Interactive live instructor-led sessions with Instant Replay" },
         { icon: Bot, title: "AI Tutor", description: "24/7 AI-powered assistance" },
         { icon: ClipboardCheck, title: "Practice Exams", description: "Comprehensive exam preparation" },
       ] as CourseFeature[],
@@ -43,7 +43,7 @@ const ProjectManagement = () => {
   return (
     <PageLayout
       title="Project Management"
-      description="PMP® certification and continuing certification requirement (CCR) support with powerful EPIC LIVE classes and 24-7 Instant Replay recordings"
+      description="PMP® certification and continuing certification requirement (CCR) support with live instructor-led sessions with Instant Replay"
       breadcrumbs={[{ label: "Project Management" }]}
       heroActions={
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -154,7 +154,7 @@ const ProjectManagement = () => {
                 <div className="mb-8">
                   <h3 className="text-3xl font-bold mb-4">Master Project Management</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Our project management training programs prepare you for PMP® certification and continuing certification requirements (CCR). Featuring EPIC LIVE classes with expert instructor Ashley Hunt, 24-7 Instant Replay recordings, practice exams, 1:1 mentoring, and downloadable project templates. Earn Professional Development Units (PDUs) across technical, leadership, and strategic competencies to maintain your certification.
+                    Our project management training programs prepare you for PMP® certification and continuing certification requirements (CCR). Featuring live instructor-led sessions with Instant Replay with expert instructor Ashley Hunt, practice exams, 1:1 mentoring, and downloadable project templates. Earn Professional Development Units (PDUs) across technical, leadership, and strategic competencies to maintain your certification.
                   </p>
                 </div>
 

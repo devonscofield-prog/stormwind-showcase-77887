@@ -40,7 +40,7 @@ const ProjectManagement = ({ }: ProjectManagementProps) => {
           Project Management
         </h2>
         <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed mb-6">
-          Prepare for PMP® certification and meet continuing certification requirements (CCR) with StormWind's Project Management All Access Bundle. Featuring EPIC LIVE classes with expert instructor Ashley Hunt, 24-7 Instant Replay recordings, practice exams, 1:1 mentoring, and downloadable project templates. Earn Professional Development Units (PDUs) across technical, leadership, and strategic competencies to maintain your certification.
+          Prepare for PMP® certification and meet continuing certification requirements (CCR) with StormWind's Project Management All Access Bundle. Featuring live instructor-led sessions with Instant Replay with expert instructor Ashley Hunt, practice exams, 1:1 mentoring, and downloadable project templates. Earn Professional Development Units (PDUs) across technical, leadership, and strategic competencies to maintain your certification.
         </p>
         <Button
           size="lg"
