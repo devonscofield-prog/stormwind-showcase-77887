@@ -330,123 +330,38 @@ export const MicrosoftIcon = ({ isHovered }: { isHovered: boolean }) => {
   );
 };
 
-export const CloudIcon = ({ isHovered }: { isHovered: boolean }) => {
-  const begin = isHovered ? "0s" : "indefinite";
-  return (
-    <svg viewBox="0 0 80 80" className="w-full h-full">
-      <defs>
-        <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(217, 89%, 61%)">
-            <animate attributeName="stop-color" values="hsl(217, 89%, 61%); hsl(200, 100%, 50%); hsl(217, 89%, 61%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-          <stop offset="100%" stopColor="hsl(200, 100%, 50%)">
-            <animate attributeName="stop-color" values="hsl(200, 100%, 50%); hsl(217, 89%, 61%); hsl(200, 100%, 50%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-        </linearGradient>
-      </defs>
-      <path d="M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z" fill="url(#cloudGrad)" opacity="0.9">
-        <animate attributeName="d" values="M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z; M20,50 Q20,35 40,30 T60,35 Q65,35 65,42 Q65,50 55,50 Z; M20,50 Q20,30 40,25 T60,30 Q65,30 65,40 Q65,50 55,50 Z" dur="4s" repeatCount="indefinite" begin={begin} />
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" begin={begin} />
-      </path>
-      <circle cx="40" cy="45" r="4" fill="url(#cloudGrad)" opacity="0.6">
-        <animate attributeName="cy" values="45;42;45" dur="3s" repeatCount="indefinite" begin={begin} />
-      </circle>
-    </svg>
-  );
-};
+export const CloudIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M27 55h26a12 12 0 0 0 1.5-23.9A17 17 0 0 0 22.7 34 11 11 0 0 0 27 55Z" />
+    <path d="M40 62v-14" />
+    <path d="M34 54l6-6 6 6" />
+  </svg>
+);
 
-export const CybersecurityIcon = ({ isHovered }: { isHovered: boolean }) => {
-  const begin = isHovered ? "0s" : "indefinite";
-  return (
-    <svg viewBox="0 0 80 80" className="w-full h-full">
-      <defs>
-        <linearGradient id="securityGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="hsl(0, 84%, 60%)">
-            <animate attributeName="stop-color" values="hsl(0, 84%, 60%); hsl(338, 100%, 50%); hsl(0, 84%, 60%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-          <stop offset="100%" stopColor="hsl(338, 100%, 50%)">
-            <animate attributeName="stop-color" values="hsl(338, 100%, 50%); hsl(0, 84%, 60%); hsl(338, 100%, 50%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-        </linearGradient>
-      </defs>
-      <path d="M40,15 L55,22 L55,38 Q55,55 40,65 Q25,55 25,38 L25,22 Z" fill="url(#securityGrad)" opacity="0.9">
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" begin={begin} />
-      </path>
-      <path d="M35,40 L38,43 L45,33" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <animate attributeName="stroke-dasharray" values="0,20; 20,0; 0,20" dur="3s" repeatCount="indefinite" begin={begin} />
-      </path>
-    </svg>
-  );
-};
+export const CybersecurityIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M40 14 60 22v16c0 13-8.6 21.6-20 26-11.4-4.4-20-13-20-26V22l20-8Z" />
+    <rect x="32" y="36" width="16" height="13" rx="2.5" />
+    <path d="M36 36v-3.5a4 4 0 0 1 8 0V36" />
+  </svg>
+);
 
-export const AIIcon = ({ isHovered }: { isHovered: boolean }) => {
-  const begin = isHovered ? "0s" : "indefinite";
-  return (
-    <svg viewBox="0 0 80 80" className="w-full h-full">
-      <defs>
-        <radialGradient id="aiGrad">
-          <stop offset="0%" stopColor="hsl(280, 100%, 70%)">
-            <animate attributeName="stop-color" values="hsl(280, 100%, 70%); hsl(200, 100%, 60%); hsl(280, 100%, 70%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-          <stop offset="100%" stopColor="hsl(200, 100%, 60%)">
-            <animate attributeName="stop-color" values="hsl(200, 100%, 60%); hsl(280, 100%, 70%); hsl(200, 100%, 60%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-        </radialGradient>
-      </defs>
-      <circle cx="25" cy="30" r="6" fill="url(#aiGrad)">
-        <animate attributeName="cy" values="30;35;30" dur="3s" repeatCount="indefinite" begin={begin} />
-      </circle>
-      <circle cx="55" cy="30" r="6" fill="url(#aiGrad)">
-        <animate attributeName="cy" values="30;35;30" dur="3s" repeatCount="indefinite" begin={isHovered ? "0.3s" : "indefinite"} />
-      </circle>
-      <circle cx="40" cy="50" r="6" fill="url(#aiGrad)">
-        <animate attributeName="cy" values="50;55;50" dur="3s" repeatCount="indefinite" begin={isHovered ? "0.6s" : "indefinite"} />
-      </circle>
-      <line x1="25" y1="30" x2="40" y2="50" stroke="url(#aiGrad)" strokeWidth="2" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin={begin} />
-      </line>
-      <line x1="55" y1="30" x2="40" y2="50" stroke="url(#aiGrad)" strokeWidth="2" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin={isHovered ? "0.5s" : "indefinite"} />
-      </line>
-    </svg>
-  );
-};
+export const AIIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="26" y="26" width="28" height="28" rx="7" />
+    <rect x="35" y="35" width="10" height="10" rx="2.5" />
+    <path d="M33 18v8M47 18v8M33 54v8M47 54v8M18 33h8M18 47h8M54 33h8M54 47h8" />
+  </svg>
+);
 
-export const NetworkingIcon = ({ isHovered }: { isHovered: boolean }) => {
-  const begin = isHovered ? "0s" : "indefinite";
-  return (
-    <svg viewBox="0 0 80 80" className="w-full h-full">
-      <defs>
-        <linearGradient id="networkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(200, 100%, 50%)">
-            <animate attributeName="stop-color" values="hsl(200, 100%, 50%); hsl(240, 100%, 60%); hsl(200, 100%, 50%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-          <stop offset="100%" stopColor="hsl(240, 100%, 60%)">
-            <animate attributeName="stop-color" values="hsl(240, 100%, 60%); hsl(200, 100%, 50%); hsl(240, 100%, 60%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-        </linearGradient>
-      </defs>
-      <circle cx="40" cy="25" r="5" fill="url(#networkGrad)">
-        <animate attributeName="r" values="5;6;5" dur="3s" repeatCount="indefinite" begin={begin} />
-      </circle>
-      <circle cx="25" cy="50" r="5" fill="url(#networkGrad)">
-        <animate attributeName="r" values="5;6;5" dur="3s" repeatCount="indefinite" begin={isHovered ? "0.3s" : "indefinite"} />
-      </circle>
-      <circle cx="55" cy="50" r="5" fill="url(#networkGrad)">
-        <animate attributeName="r" values="5;6;5" dur="3s" repeatCount="indefinite" begin={isHovered ? "0.6s" : "indefinite"} />
-      </circle>
-      <line x1="40" y1="25" x2="25" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
-        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin={begin} />
-      </line>
-      <line x1="40" y1="25" x2="55" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
-        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin={isHovered ? "0.4s" : "indefinite"} />
-      </line>
-      <line x1="25" y1="50" x2="55" y2="50" stroke="url(#networkGrad)" strokeWidth="2">
-        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" begin={isHovered ? "0.8s" : "indefinite"} />
-      </line>
-    </svg>
-  );
-};
+export const NetworkingIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="30" y="12" width="20" height="14" rx="3" />
+    <rect x="12" y="52" width="20" height="14" rx="3" />
+    <rect x="48" y="52" width="20" height="14" rx="3" />
+    <path d="M40 26v12M22 52V38h36v14" />
+  </svg>
+);
 
 export const FullStackIcon = ({ isHovered }: { isHovered: boolean }) => {
   const begin = isHovered ? "0s" : "indefinite";
@@ -562,29 +477,12 @@ export const ProjectManagementIcon = ({ isHovered }: { isHovered: boolean }) => 
   );
 };
 
-export const HelpDeskIcon = ({ isHovered }: { isHovered: boolean }) => {
-  const begin = isHovered ? "0s" : "indefinite";
-  return (
-    <svg viewBox="0 0 80 80" className="w-full h-full">
-      <defs>
-        <linearGradient id="helpdeskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(168, 76%, 42%)">
-            <animate attributeName="stop-color" values="hsl(168, 76%, 42%); hsl(142, 71%, 45%); hsl(168, 76%, 42%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-          <stop offset="100%" stopColor="hsl(142, 71%, 45%)">
-            <animate attributeName="stop-color" values="hsl(142, 71%, 45%); hsl(168, 76%, 42%); hsl(142, 71%, 45%)" dur="2s" repeatCount="indefinite" begin={begin} />
-          </stop>
-        </linearGradient>
-      </defs>
-      <path d="M25,30 Q25,20 35,20 L45,20 Q55,20 55,30 L55,40 Q55,50 45,50 L40,50" stroke="url(#helpdeskGrad)" strokeWidth="3" fill="none">
-        <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" begin={begin} />
-      </path>
-      <circle cx="40" cy="58" r="3" fill="url(#helpdeskGrad)">
-        <animate attributeName="r" values="3;4;3" dur="3s" repeatCount="indefinite" begin={begin} />
-      </circle>
-      <path d="M30,50 Q30,55 35,55 L45,55 Q50,55 50,50" stroke="url(#helpdeskGrad)" strokeWidth="2" fill="none">
-        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin={isHovered ? "0.3s" : "indefinite"} />
-      </path>
-    </svg>
-  );
-};
+export const HelpDeskIcon = ({ isHovered }: { isHovered: boolean }) => (
+  <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 44v-6a20 20 0 0 1 40 0v6" />
+    <rect x="14" y="40" width="12" height="16" rx="4" />
+    <rect x="54" y="40" width="12" height="16" rx="4" />
+    <path d="M60 56v3a7 7 0 0 1-7 7h-9" />
+    <circle cx="40" cy="66" r="3.2" fill="currentColor" stroke="none" />
+  </svg>
+);
