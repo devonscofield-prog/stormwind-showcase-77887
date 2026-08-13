@@ -87,7 +87,9 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
 
   const [openKey, setOpenKey] = useState<ProgramKey | null>(null);
   const activeKey =
-    openKey && recommendedKeys.includes(openKey) ? openKey : recommendedKeys[0];
+    openKey && recommendedKeys.includes(openKey)
+      ? openKey
+      : recommendedKeys[0] ?? null;
 
   const handlePick = (questionKey: QuestionKey, value: ProgramKey) => {
     setPicks((prev) => {
