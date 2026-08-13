@@ -256,27 +256,39 @@ const Microsoft = () => {
         <section id="topics" className="relative z-10 mb-28 scroll-mt-28">
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">01 — Topics</span>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight">
-            Start where your team actually is.
+            Pick the stack you actually run.
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Nobody needs all of it. Skills Assessments place each learner, and the rest is a straight
-            line to the credential.
+            Select a focus area to see the courses that go with it — no wading through a catalog to
+            find the three that matter to your team.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {topics.map((topic) => (
-              <div
-                key={topic.title}
-                className="group rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
-                  <topic.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-bold tracking-tight">{topic.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
-              </div>
-            ))}
+            {topics.map((topic) => {
+              const isActive = activeTopic === topic.title;
+              return (
+                <button
+                  key={topic.title}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => handleTopicClick(topic.title)}
+                  className={cn(
+                    "group rounded-2xl border p-6 text-left backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
+                    isActive
+                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
+                      : "border-border/60 bg-card/70"
+                  )}
+                >
+                  <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                    <topic.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold tracking-tight">{topic.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
+                </button>
+              );
+            })}
           </div>
+
         </section>
 
         {/* Courses */}
