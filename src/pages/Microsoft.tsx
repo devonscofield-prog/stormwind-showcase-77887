@@ -487,6 +487,13 @@ const courses: {
 
 const audienceFilters = ["Technical", "End User"] as const;
 
+const technicalOnlyTopics = new Set([
+  "Microsoft Azure",
+  "SQL Server & Databases",
+  "Security & Compliance",
+  "Windows Server",
+]);
+
 const audienceStyles: Record<Audience, string> = {
   Technical: "border-sky-500/40 bg-sky-500/10 text-sky-500",
   "End User": "border-primary/40 bg-primary/10 text-primary",
@@ -517,20 +524,26 @@ const Microsoft = () => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
+  const effectiveFilter =
+    activeTopic && technicalOnlyTopics.has(activeTopic) ? "Technical" : filter;
+
   const visible = courses
     .filter((c) => {
-      if (c.audience !== filter) return false;
+      if (c.audience !== effectiveFilter) return false;
       if (activeTopic) return c.topic === activeTopic;
-      return featuredCodes[filter].includes(c.code);
+      return featuredCodes[effectiveFilter].includes(c.code);
     })
     .sort((a, b) => {
       if (activeTopic) return 0;
-      const order = featuredCodes[filter];
+      const order = featuredCodes[effectiveFilter];
       return order.indexOf(a.code) - order.indexOf(b.code);
     });
 
   const handleTopicClick = (title: string) => {
     setActiveTopic((prev) => (prev === title ? null : title));
+    if (technicalOnlyTopics.has(title)) {
+      setFilter("Technical");
+    }
     document.getElementById("courses")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -666,7 +679,10 @@ const Microsoft = () => {
             <span className="mr-2 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
               Audience
             </span>
-            {audienceFilters.map((aud) => (
+            {(activeTopic && technicalOnlyTopics.has(activeTopic)
+              ? (["Technical"] as const)
+              : audienceFilters
+            ).map((aud) => (
               <button
                 key={aud}
                 type="button"
