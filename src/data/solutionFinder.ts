@@ -65,9 +65,9 @@ export const programs: Record<ProgramKey, Program> = {
     title: "Enterprise IT",
     icon: Settings,
     body: "Live and on-demand training across IT, DevOps, cloud, AI and data, with hands-on ranges and certification study plans behind it.",
-    tags: ["Live instructor-led sessions with Instant Replay", "StormWind Ranges", "Cert study plans"],
+    tags: ["Personalized Learning Experience", "StormWind Ranges", "Cert study plans"],
     points: [
-      "Live instructor-led sessions with Instant Replay",
+      "Personalized Learning Experience",
       "Hands-on labs in Cyber, Azure, Microsoft and Networking",
       "1:1 mentoring from the instructor who taught the course",
     ],
@@ -118,7 +118,7 @@ export const programs: Record<ProgramKey, Program> = {
     body: "PMP-focused All Access Bundle with live instructor-led sessions with Instant Replay, practice exams, mentoring and downloadable project templates.",
     tags: ["PMP prep", "35 contact hours", "PDUs"],
     points: [
-      "Live instructor-led sessions with Instant Replay",
+      "Personalized Learning Experience",
       "Practice exams and 1:1 mentoring",
       "PDUs across technical, leadership and strategic competencies",
     ],
