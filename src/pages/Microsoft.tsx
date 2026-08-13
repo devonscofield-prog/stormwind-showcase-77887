@@ -340,72 +340,6 @@ const courses: {
   },
   // End User — Power Platform
   {
-    code: "PP-BI-DASH",
-    title: "Learn Power BI: Dashboards",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Build interactive Power BI dashboards that turn raw data into clear, actionable visuals for decision makers.",
-  },
-  {
-    code: "PP-BI-AI",
-    title: "Learn Power BI: AI with Power BI",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Use built-in AI features in Power BI to uncover trends, generate insights, and enhance reports with smart visuals.",
-  },
-  {
-    code: "PP-BI-PIVOT",
-    title: "Learn Power BI: Building BI with Pivot Tables",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Create business intelligence reports and analyses using pivot tables and Power BI together for fast reporting.",
-  },
-  {
-    code: "PP-BI-MODEL",
-    title: "Learn Power BI: Data Modeling",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Design efficient data models, relationships, and calculations in Power BI to support scalable reporting.",
-  },
-  {
-    code: "PP-APPS-AID",
-    title: "Power Apps: App in a Day",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Build your first working Power Apps solution in a single day — from data source to functional app.",
-  },
-  {
-    code: "PP-APPS-ADV",
-    title: "Power Apps: Advancing Power Apps Skills",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Take Power Apps further with advanced controls, formulas, connectors, and real-world app architecture.",
-  },
-  {
     code: "PP-APPS-BEG",
     title: "Power Apps Beginner",
     instructorName: "StormWind Instructor",
@@ -470,17 +404,6 @@ const courses: {
     topic: "Power Platform",
     description:
       "Build enterprise-grade automation with custom connectors, error handling, governance, and advanced flow patterns.",
-  },
-  {
-    code: "PP-AUTO-AID",
-    title: "Power Automate: Automation in a Day",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Learn the fundamentals of process automation and leave with working Power Automate flows in a single day.",
   },
 ];
 
