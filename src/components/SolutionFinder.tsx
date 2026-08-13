@@ -120,51 +120,63 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
         <div className="p-10 lg:p-14 bg-background/60 lg:border-l border-border lg:sticky lg:top-28 self-start">
           <div className="flex flex-col gap-6" aria-live="polite">
             <span className="text-xs font-bold uppercase tracking-[1.3px] text-muted-foreground">
-              Recommended
+              {recommendedKeys.length > 1 ? "Recommended programs" : "Recommended"}
             </span>
 
-            <div
-              key={program.key}
-              className="rounded-2xl bg-card ring-1 ring-inset ring-primary/40 p-6 flex flex-col gap-5 animate-scale-in"
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
-                  <ProgramIcon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-[22px] font-bold tracking-tight">{program.title}</h3>
-              </div>
-
-              <p className="text-sm leading-5 text-muted-foreground">{program.body}</p>
-
-              <div className="flex flex-wrap gap-2">
-                {program.tags.map((tag) => (
-                  <Badge key={tag} variant="outline" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="border-t border-border pt-5 flex flex-col gap-4">
-                {program.points.map((point) => (
-                  <div key={point} className="flex gap-3">
-                    <CheckCircle2 className="w-[18px] text-primary shrink-0 mt-0.5" />
-                    <span className="text-sm text-foreground/85">{point}</span>
+            {recommendedKeys.map((key) => {
+              const program = programs[key];
+              const ProgramIcon = program.icon;
+              return (
+                <div
+                  key={program.key}
+                  className="rounded-2xl bg-card ring-1 ring-inset ring-primary/40 p-6 flex flex-col gap-5 animate-scale-in"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
+                      <ProgramIcon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="text-[22px] font-bold tracking-tight">{program.title}</h3>
                   </div>
-                ))}
-              </div>
 
-              <Button
-                onClick={() => onTabChange(program.tabValue)}
-                className="w-full mt-1 rounded-lg"
-                size="lg"
-              >
-                See the program
-              </Button>
-            </div>
+                  <p className="text-sm leading-5 text-muted-foreground">{program.body}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {program.tags.map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-border pt-5 flex flex-col gap-4">
+                    {program.points.map((point) => (
+                      <div key={point} className="flex gap-3">
+                        <CheckCircle2 className="w-[18px] text-primary shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground/85">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button
+                    onClick={() => onTabChange(program.tabValue)}
+                    className="w-full mt-1 rounded-lg"
+                    size="lg"
+                  >
+                    See the program
+                  </Button>
+                </div>
+              );
+            })}
 
             <div className="flex flex-col gap-3">
               <span className="text-xs text-muted-foreground">Also worth a look</span>
-              {program.also.map((item) => (
+              {Array.from(
+                new Map(
+                  recommendedKeys
+                    .flatMap((key) => programs[key].also)
+                    .map((item) => [item.label, item])
+                ).values()
+              ).map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}
