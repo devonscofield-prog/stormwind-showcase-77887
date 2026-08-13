@@ -158,7 +158,7 @@ const EnterpriseIT = ({
         <div className="flex items-center justify-center gap-4 mb-8">
           <h3 className="text-2xl font-bold text-foreground">Platform Features</h3>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
           {consolidatedFeatures.map((feature, index) => {
             const featureLinks: Record<string, string> = {
               "Learning Paths": "/learning-paths",
@@ -172,29 +172,32 @@ const EnterpriseIT = ({
             };
 
             return (
-              <Link key={index} to={featureLinks[feature.title]} className={`${CARD_SURFACE} block`}>
-                <div className="relative flex flex-col gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
-                      <div className="w-5 h-5 [&>svg]:w-full [&>svg]:h-full">
-                        <feature.icon color="currentColor" isHovered={false} />
-                      </div>
+              <Link
+                key={index}
+                to={featureLinks[feature.title]}
+                className={`${CARD_SURFACE} h-full flex flex-col`}
+              >
+                <div className="relative flex flex-col gap-4 h-full">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-inset ring-primary/25 shadow-[0_0_22px_hsl(var(--primary)/0.18)]">
+                    <div className="w-6 h-6 [&>svg]:w-full [&>svg]:h-full">
+                      <feature.icon color="currentColor" isHovered={false} />
                     </div>
-                    <h4 className="text-lg font-semibold tracking-tight text-foreground">
-                      {feature.title}
-                    </h4>
                   </div>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h4 className="text-base font-bold tracking-tight text-primary leading-snug">
+                    {feature.title}
+                  </h4>
+
+                  <p className="text-sm text-foreground/85 leading-relaxed">
                     {feature.description}
                   </p>
 
                   {feature.details && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.details}</p>
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed">{feature.details}</p>
                   )}
 
                   {feature.bullets && (
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {feature.bullets.map((bullet, idx) => (
                         <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
                           <span className="w-1 h-1 mt-2 shrink-0 rounded-full bg-primary" />
@@ -205,7 +208,7 @@ const EnterpriseIT = ({
                   )}
 
                   {feature.additionalInfo && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed">
                       {feature.additionalInfo}
                     </p>
                   )}
