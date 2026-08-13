@@ -1,6 +1,6 @@
-import { Settings, ShieldCheck, Sparkles, LucideIcon } from "lucide-react";
+import { Settings, ShieldCheck, Sparkles, ClipboardList, LucideIcon } from "lucide-react";
 
-export type ProgramKey = "it" | "phishing" | "endUser";
+export type ProgramKey = "it" | "phishing" | "endUser" | "projectMgmt";
 
 export interface Program {
   key: ProgramKey;
@@ -35,6 +35,7 @@ export const questions: Question[] = [
       { label: "IT and engineering", subLabel: "Admins, network, cloud, DevOps", value: "it" },
       { label: "The whole company", subLabel: "Every employee with a mailbox", value: "phishing" },
       { label: "Business teams", subLabel: "Finance, ops, marketing, HR", value: "endUser" },
+      { label: "Project leaders", subLabel: "PMs, delivery, program owners", value: "projectMgmt" },
     ],
   },
   {
@@ -44,6 +45,7 @@ export const questions: Question[] = [
       { label: "Certifications earned", subLabel: "Validated, exam-ready skills", value: "it" },
       { label: "Reduced breach risk", subLabel: "Behavior change you can report on", value: "phishing" },
       { label: "Tool adoption", subLabel: "Copilot and Microsoft 365 in daily use", value: "endUser" },
+      { label: "Projects delivered on time", subLabel: "PMP-ready delivery discipline", value: "projectMgmt" },
     ],
   },
   {
@@ -53,6 +55,7 @@ export const questions: Question[] = [
       { label: "We will run it", subLabel: "Own the paths and the cadence", value: "it" },
       { label: "Automate it", subLabel: "Set up once, let it run", value: "phishing" },
       { label: "Light touch", subLabel: "Self-serve with admin reporting", value: "endUser" },
+      { label: "Scheduled cohorts", subLabel: "Live classes on a set calendar", value: "projectMgmt" },
     ],
   },
 ];
@@ -109,7 +112,24 @@ export const programs: Record<ProgramKey, Program> = {
       { label: "Bytes", reason: "3-minute reinforcement", href: "/bytes" },
     ],
   },
+  projectMgmt: {
+    key: "projectMgmt",
+    tabValue: "project-management",
+    title: "Project Management",
+    icon: ClipboardList,
+    body: "PMP-focused All Access Bundle with EPIC LIVE classes, practice exams, mentoring and downloadable project templates.",
+    tags: ["PMP prep", "35 contact hours", "PDUs"],
+    points: [
+      "EPIC LIVE classes with 24/7 Instant Replay",
+      "Practice exams and 1:1 mentoring",
+      "PDUs across technical, leadership and strategic competencies",
+    ],
+    also: [
+      { label: "Enterprise Reporting", reason: "Track team progress", href: "/enterprise-reporting" },
+      { label: "Business Skills", reason: "Leadership and communication", href: "/enterprise-end-user" },
+    ],
+  },
 };
 
 export const defaultProgramKey: ProgramKey = "it";
-export const tieOrder: ProgramKey[] = ["it", "phishing", "endUser"];
+export const tieOrder: ProgramKey[] = ["it", "phishing", "endUser", "projectMgmt"];
