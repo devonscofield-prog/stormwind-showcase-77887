@@ -9,7 +9,7 @@ const PersonalizedLearningBanner = () => {
         <Link to="/stormai-learning" className="block group">
           <div
             className="relative overflow-hidden rounded-2xl
-              bg-[linear-gradient(155deg,hsl(160_16%_13%)_0%,hsl(155_8%_10%)_62%,hsl(150_6%_10%)_100%)]
+              bg-[linear-gradient(155deg,hsl(160_14%_17%)_0%,hsl(157_9%_14%)_62%,hsl(155_8%_13%)_100%)]
               transition-[box-shadow] duration-200 hover:shadow-[0_0_30px_rgba(0,154,119,0.12)]"
           >
             {/* Animated gradient sheen */}
