@@ -81,30 +81,6 @@ const Index = () => {
           <PersonalizedLearningBanner />
         </div>
 
-        {/* Trust Signals / Social Proof */}
-        <section className="py-10">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { icon: BookOpen, label: "500+ Courses", subtitle: "Comprehensive IT curriculum" },
-                { icon: Users, label: "Expert Instructors", subtitle: "Industry-certified trainers" },
-                { icon: Play, label: "Live & On-Demand", subtitle: "Learn on your schedule" },
-                { icon: Shield, label: "Enterprise-Ready", subtitle: "Scalable team training" },
-              ].map(({ icon: Icon, label, subtitle }) => (
-                <div key={label} className={`${CARD_SURFACE} flex items-center gap-4`}>
-                  <div className="flex items-center justify-center w-11 h-11 shrink-0 rounded-lg bg-primary/15">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-base font-bold text-foreground">{label}</p>
-                    <p className="text-xs text-muted-foreground">{subtitle}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Tabbed Content Section */}
         <section id="content-section" className="py-20 lg:py-28 scroll-mt-20">
           <div className="container mx-auto px-6">
