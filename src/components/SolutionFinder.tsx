@@ -195,7 +195,12 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                     .flatMap((key) => programs[key].also)
                     .map((item) => [item.label, item])
                 ).values()
-              ).map((item) => (
+              )
+                .filter(
+                  (item) =>
+                    !recommendedKeys.some((key) => programs[key].title === item.label)
+                )
+                .map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}
