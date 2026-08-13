@@ -52,7 +52,7 @@ const ProjectManagement = ({ }: ProjectManagementProps) => {
         </Button>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
         {features.map((feature, index) => (
             <AnimatedFeatureCard
               key={index}
