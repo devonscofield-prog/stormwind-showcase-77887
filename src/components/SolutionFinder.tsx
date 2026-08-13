@@ -60,7 +60,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
   return (
     <section
       id="solution-finder"
-      className="relative z-10 scroll-mt-20 border-t border-primary/30 animate-fade-in"
+      className="relative z-10 scroll-mt-20 animate-fade-in"
     >
       <div className="grid lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_520px] bg-card/40">
         {/* Left column — questions */}
