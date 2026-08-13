@@ -340,6 +340,39 @@ const courses: {
   },
   // End User — Power Platform
   {
+    code: "PP-BI-BEG",
+    title: "Power BI Beginner",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "Build your first Power BI reports — connect to data, create visuals, and publish shareable dashboards.",
+  },
+  {
+    code: "PP-BI-INT",
+    title: "Power BI Intermediate",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "Go deeper with Power BI — data transformation, relationships, DAX calculations, and richer report design.",
+  },
+  {
+    code: "PP-BI-ADV",
+    title: "Power BI Advanced",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "Power Platform",
+    description:
+      "Master advanced Power BI — complex data models, optimization, row-level security, and enterprise deployment.",
+  },
+  {
     code: "PP-APPS-BEG",
     title: "Power Apps Beginner",
     instructorName: "StormWind Instructor",
