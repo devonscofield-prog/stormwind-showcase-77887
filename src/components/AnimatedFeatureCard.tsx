@@ -16,7 +16,9 @@ interface AnimatedFeatureCardProps {
 
 const CARD_SURFACE =
   "relative overflow-hidden rounded-2xl p-6 ring-1 ring-inset ring-border " +
-  "bg-[linear-gradient(155deg,hsl(160_14%_17%)_0%,hsl(157_9%_14%)_62%,hsl(155_8%_13%)_100%)] " +
+  "bg-[linear-gradient(155deg,hsl(0_0%_100%)_0%,hsl(166_32%_98%)_60%,hsl(166_26%_96%)_100%)] " +
+  "shadow-[0_1px_2px_hsl(160_20%_20%/0.06)] " +
+  "dark:shadow-none dark:bg-[linear-gradient(155deg,hsl(160_14%_17%)_0%,hsl(157_9%_14%)_62%,hsl(155_8%_13%)_100%)] " +
   "transition-[background,box-shadow] duration-150 hover:ring-primary/70";
 
 const AnimatedFeatureCard = ({

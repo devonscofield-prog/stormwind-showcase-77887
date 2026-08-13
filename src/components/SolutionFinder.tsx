@@ -182,7 +182,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
         </div>
 
         {/* Right rail — recommendation (focus stack) */}
-        <div className="p-8 lg:p-10 bg-[hsl(158_10%_11%)] lg:border-l border-border lg:sticky lg:top-28 self-start">
+        <div className="p-8 lg:p-10 bg-[hsl(166_28%_94%)] dark:bg-[hsl(158_10%_11%)] lg:border-l border-border lg:sticky lg:top-28 self-start">
           <div className="flex flex-col gap-5" aria-live="polite">
             {!hasSelections ? (
               <div className="flex flex-col items-center justify-center gap-3 py-12 text-center">

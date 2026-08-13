@@ -94,7 +94,7 @@ const Index = () => {
                   <TabsTrigger
                     key={tab.value}
                     value={tab.value}
-                    className={`${CARD_SURFACE} p-4 rounded-lg text-[15px] font-semibold cursor-pointer text-muted-foreground data-[state=active]:bg-primary/80 data-[state=active]:bg-none data-[state=active]:text-foreground`}
+                    className={`${CARD_SURFACE} p-4 rounded-lg text-[15px] font-semibold cursor-pointer text-muted-foreground data-[state=active]:bg-primary data-[state=active]:bg-none data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary/80 dark:data-[state=active]:text-foreground`}
                   >
                     {tab.label}
                   </TabsTrigger>
