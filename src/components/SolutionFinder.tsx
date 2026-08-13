@@ -23,22 +23,26 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
   const answeredCount = answeredKeys.length;
   const stepLabel = Math.min(answeredCount + 1, 3);
 
-  const recommendedKey = useMemo<ProgramKey>(() => {
-    if (answeredCount === 0) return defaultProgramKey;
+  const recommendedKeys = useMemo<ProgramKey[]>(() => {
+    if (answeredCount === 0) return [defaultProgramKey];
     const counts: Record<ProgramKey, number> = { it: 0, phishing: 0, endUser: 0 };
     Object.values(picks).forEach((value) => {
       if (value) counts[value] += 1;
     });
     const maxCount = Math.max(...Object.values(counts));
     const winners = tieOrder.filter((key) => counts[key] === maxCount);
-    return winners[0] ?? defaultProgramKey;
+    return winners.length ? winners : [defaultProgramKey];
   }, [picks, answeredCount]);
 
-  const program = programs[recommendedKey];
-  const ProgramIcon = program.icon;
-
   const handlePick = (questionKey: "who" | "goal" | "effort", value: ProgramKey) => {
-    setPicks((prev) => ({ ...prev, [questionKey]: value }));
+    setPicks((prev) => {
+      if (prev[questionKey] === value) {
+        const next = { ...prev };
+        delete next[questionKey];
+        return next;
+      }
+      return { ...prev, [questionKey]: value };
+    });
   };
 
   return (
