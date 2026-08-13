@@ -95,16 +95,17 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                           key={option.value}
                           type="button"
                           onClick={() => handlePick(question.key, option.value)}
+                          aria-pressed={isSelected}
                           className={cn(
-                            "w-[212px] p-4 rounded-lg text-left flex flex-col gap-1.5",
+                            "w-[248px] p-5 rounded-xl text-left flex flex-col gap-2",
                             "transition-[background,box-shadow] duration-200",
                             isSelected
                               ? "bg-primary/15 ring-1 ring-inset ring-primary"
                               : "bg-card/50 ring-1 ring-inset ring-border hover:ring-primary/60"
                           )}
                         >
-                          <span className="text-sm font-semibold">{option.label}</span>
-                          <span className="text-xs text-muted-foreground">{option.subLabel}</span>
+                          <span className="text-base font-semibold">{option.label}</span>
+                          <span className="text-sm text-muted-foreground">{option.subLabel}</span>
                         </button>
                       );
                     })}
