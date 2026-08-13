@@ -65,7 +65,7 @@ export const programs: Record<ProgramKey, Program> = {
     title: "Enterprise IT",
     icon: Settings,
     body: "Live and on-demand training across IT, DevOps, cloud, AI and data, with hands-on ranges and certification study plans behind it.",
-    tags: ["Epic Live", "StormWind Ranges", "Cert study plans"],
+    tags: ["Live instructor-led sessions with Instant Replay", "StormWind Ranges", "Cert study plans"],
     points: [
       "Live instructor-led sessions with Instant Replay",
       "Hands-on labs in Cyber, Azure, Microsoft and Networking",
@@ -115,10 +115,10 @@ export const programs: Record<ProgramKey, Program> = {
     tabValue: "project-management",
     title: "Project Management",
     icon: ClipboardList,
-    body: "PMP-focused All Access Bundle with EPIC LIVE classes, practice exams, mentoring and downloadable project templates.",
+    body: "PMP-focused All Access Bundle with live instructor-led sessions with Instant Replay, practice exams, mentoring and downloadable project templates.",
     tags: ["PMP prep", "35 contact hours", "PDUs"],
     points: [
-      "EPIC LIVE classes with 24/7 Instant Replay",
+      "Live instructor-led sessions with Instant Replay",
       "Practice exams and 1:1 mentoring",
       "PDUs across technical, leadership and strategic competencies",
     ],

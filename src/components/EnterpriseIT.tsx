@@ -40,7 +40,7 @@ const EnterpriseIT = ({
     title: "Learning Paths",
     description: "Structured paths with guided assessment, targeted training, and readiness validation—personalized and effective.",
     details: "Flexible pathways for every skill level. Begin with an assessment, follow a guided roadmap, and validate your readiness with confidence.",
-    additionalInfo: "Access live instructor-led Epic Live sessions and on-demand courses with instant replay for flexible learning anytime, anywhere."
+    additionalInfo: "Access live instructor-led sessions with Instant Replay and on-demand courses for flexible learning anytime, anywhere."
   }, {
     icon: MicrolearningIcon,
     title: "Bytes: Microlearning",
