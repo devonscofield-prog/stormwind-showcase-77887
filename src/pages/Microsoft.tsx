@@ -304,24 +304,34 @@ const Microsoft = () => {
 
           <div className="mt-10 flex flex-wrap items-center gap-2">
             <span className="mr-2 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Level
+              Audience
             </span>
-            {levelFilters.map((level) => (
+            {audienceFilters.map((aud) => (
               <button
-                key={level}
+                key={aud}
                 type="button"
-                onClick={() => setFilter(level)}
+                onClick={() => setFilter(aud)}
                 className={cn(
                   "rounded-lg border px-4 py-1.5 text-sm font-medium transition-all duration-200",
-                  filter === level
+                  filter === aud
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border/60 bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground"
                 )}
               >
-                {level}
+                {aud}
               </button>
             ))}
+            {activeTopic && (
+              <button
+                type="button"
+                onClick={() => setActiveTopic(null)}
+                className="ml-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:bg-primary/20"
+              >
+                {activeTopic} ✕
+              </button>
+            )}
           </div>
+
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {visible.map((course) => (
