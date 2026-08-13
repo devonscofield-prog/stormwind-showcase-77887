@@ -117,6 +117,28 @@ const courses: {
       "Deploy, configure, secure and monitor devices at enterprise scale — Windows 11, Intune, Configuration Manager and endpoint security.",
   },
   {
+    code: "AZ-900",
+    title: "AZ-900 Microsoft Azure Fundamentals",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Microsoft Azure",
+    description:
+      "Build a solid foundation in cloud concepts, Azure services, workloads, security, privacy, pricing and support — prepped for the AZ-900 exam.",
+  },
+  {
+    code: "AZ-802",
+    title: "AZ-802 Administering Windows Server",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Windows Server",
+    description:
+      "Configure and manage Windows Server core services including Active Directory, storage, compute and networking for hybrid environments.",
+  },
+  {
     code: "WS-2025",
     title: "Windows Server 2025 Administration",
     instructorName: "Mike Pfeiffer",
@@ -216,6 +238,39 @@ const courses: {
     topic: "M365 + SharePoint",
     description:
       "Beginner and Advanced levels — professional slide design, layouts, animations, transitions, media, and presentation delivery.",
+  },
+  {
+    code: "M365-TEAMS",
+    title: "Teams 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Chat, meet, call and collaborate in Microsoft Teams — channels, files, meetings, apps and day-to-day teamwork.",
+  },
+  {
+    code: "M365-OUTLOOK",
+    title: "Outlook 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Manage email, calendar, contacts and tasks in Outlook — organization, search, rules and productivity workflows.",
+  },
+  {
+    code: "M365-SP",
+    title: "SharePoint 365",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "End User",
+    topic: "M365 + SharePoint",
+    description:
+      "Navigate, contribute to and manage SharePoint sites — lists, libraries, pages, permissions and site ownership fundamentals.",
   },
   {
     code: "M365-PS",
@@ -392,6 +447,23 @@ const audienceStyles: Record<Audience, string> = {
   "End User": "border-primary/40 bg-primary/10 text-primary",
 };
 
+const featuredCodes: Record<Audience, string[]> = {
+  Technical: [
+    "MS-102",
+    "MD-102",
+    "AZ-900",
+    "AZ-104",
+    "AZ-802",
+  ],
+  "End User": [
+    "COPILOT-USE",
+    "M365-EXCEL",
+    "M365-TEAMS",
+    "M365-OUTLOOK",
+    "M365-SP",
+  ],
+};
+
 const Microsoft = () => {
   const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("Technical");
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
@@ -400,11 +472,17 @@ const Microsoft = () => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter(
-    (c) =>
-      c.audience === filter &&
-      (!activeTopic || c.topic === activeTopic)
-  );
+  const visible = courses
+    .filter((c) => {
+      if (c.audience !== filter) return false;
+      if (activeTopic) return c.topic === activeTopic;
+      return featuredCodes[filter].includes(c.code);
+    })
+    .sort((a, b) => {
+      if (activeTopic) return 0;
+      const order = featuredCodes[filter];
+      return order.indexOf(a.code) - order.indexOf(b.code);
+    });
 
   const handleTopicClick = (title: string) => {
     setActiveTopic((prev) => (prev === title ? null : title));
