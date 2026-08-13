@@ -70,6 +70,8 @@ const Index = () => {
         <Hero onTabChange={setActiveTab} />
       </div>
 
+      <SolutionFinder onTabChange={setActiveTab} />
+
       {/* Personalized Learning Banner - Featured Callout */}
       <PersonalizedLearningBanner />
 
