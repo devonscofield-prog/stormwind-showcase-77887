@@ -362,15 +362,22 @@ const Microsoft = () => {
                   <span
                     className={cn(
                       "rounded-md border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em]",
-                      levelStyles[course.level]
+                      audienceStyles[course.audience]
                     )}
                   >
-                    {course.level}
+                    {course.audience}
                   </span>
                 </div>
               </article>
             ))}
+            {visible.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No featured courses for this selection yet — clear the filter or explore the full
+                catalog.
+              </p>
+            )}
           </div>
+
         </section>
 
         {/* Related Topics */}
