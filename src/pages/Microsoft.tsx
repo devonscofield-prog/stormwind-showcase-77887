@@ -68,7 +68,7 @@ const topics = [
   },
 ];
 
-type Level = "Beginner" | "Intermediate" | "Advanced";
+type Audience = "Technical" | "End User";
 
 const courses: {
   code: string;
@@ -76,7 +76,8 @@ const courses: {
   instructorName: string;
   instructorImage: string;
   initials: string;
-  level: Level;
+  audience: Audience;
+  topic: string;
   description: string;
 }[] = [
   {
@@ -85,7 +86,8 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Beginner",
+    audience: "End User",
+    topic: "Microsoft Azure",
     description:
       "Build foundational knowledge of cloud concepts and Azure services. Built for anyone new to cloud, or heading toward the deeper Azure certifications.",
   },
@@ -95,7 +97,8 @@ const courses: {
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
-    level: "Intermediate",
+    audience: "Technical",
+    topic: "Microsoft Azure",
     description:
       "Manage Azure subscriptions, storage, virtual networks and monitoring — the day-to-day administration work, prepped against the AZ-104 exam.",
   },
@@ -105,7 +108,8 @@ const courses: {
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
-    level: "Advanced",
+    audience: "Technical",
+    topic: "M365 + SharePoint",
     description:
       "Identity and access management, security, compliance and enterprise deployment across the full Microsoft 365 stack.",
   },
@@ -115,7 +119,8 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Intermediate",
+    audience: "Technical",
+    topic: "M365 + SharePoint",
     description:
       "Deploy, configure, secure and monitor devices at enterprise scale — Windows 11, Intune, Configuration Manager and endpoint security.",
   },
@@ -125,7 +130,8 @@ const courses: {
     instructorName: "Mike Pfeiffer",
     instructorImage: mikePfeiffer,
     initials: "MP",
-    level: "Advanced",
+    audience: "Technical",
+    topic: "Windows Server",
     description:
       "Server deployment, configuration, management and security on the newest release, taught as enterprise-grade infrastructure work.",
   },
@@ -135,28 +141,39 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Beginner",
+    audience: "End User",
+    topic: "Security & Compliance",
     description:
       "Microsoft security, compliance and identity fundamentals — the concepts and solutions that underpin every other security path.",
   },
 ];
 
-const levelFilters = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+const audienceFilters = ["All", "Technical", "End User"] as const;
 
-const levelStyles: Record<Level, string> = {
-  Beginner: "border-primary/40 bg-primary/10 text-primary",
-  Intermediate: "border-sky-500/40 bg-sky-500/10 text-sky-500",
-  Advanced: "border-rose-500/40 bg-rose-500/10 text-rose-500",
+const audienceStyles: Record<Audience, string> = {
+  Technical: "border-sky-500/40 bg-sky-500/10 text-sky-500",
+  "End User": "border-primary/40 bg-primary/10 text-primary",
 };
 
 const Microsoft = () => {
-  const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
+  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("All");
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter((c) => filter === "All" || c.level === filter);
+  const visible = courses.filter(
+    (c) =>
+      (filter === "All" || c.audience === filter) &&
+      (!activeTopic || c.topic === activeTopic)
+  );
+
+  const handleTopicClick = (title: string) => {
+    setActiveTopic((prev) => (prev === title ? null : title));
+    document.getElementById("courses")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
 
   return (
     <div className="ms-scope">
