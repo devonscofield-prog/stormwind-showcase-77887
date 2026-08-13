@@ -1192,7 +1192,22 @@ All colors MUST be HSL.
 
 @layer utilities {
   /* Solution Finder — mint-on-near-black scope */
-  .finder-scope,
+  .finder-scope {
+    --background: 166 30% 97%;
+    --foreground: 160 12% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 12% 14%;
+    --muted: 166 20% 94%;
+    --muted-foreground: 160 8% 38%;
+    --border: 166 18% 87%;
+    --input: 166 18% 87%;
+    --primary: 166 100% 30%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 166 100% 30%;
+    --accent-foreground: 0 0% 100%;
+    --ring: 166 100% 30%;
+  }
+
   .dark .finder-scope {
     --background: 160 8% 9%;
     --foreground: 0 0% 98%;
