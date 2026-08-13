@@ -101,7 +101,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                       Pick any that apply
                     </span>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-2.5">
+                  <div className="grid sm:grid-cols-3 gap-2.5">
                     {question.options.map((option) => {
                       const isSelected = selected.includes(option.value);
                       return (

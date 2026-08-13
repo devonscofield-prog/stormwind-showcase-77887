@@ -32,20 +32,18 @@ export const questions: Question[] = [
     key: "who",
     title: "Who are you training?",
     options: [
-      { label: "IT and engineering", subLabel: "Admins, network, cloud, DevOps", value: "it" },
-      { label: "The whole company", subLabel: "Every employee with a mailbox", value: "phishing" },
-      { label: "Business teams", subLabel: "Finance, ops, marketing, HR", value: "endUser" },
-      { label: "Project leaders", subLabel: "PMs, delivery, program owners", value: "projectMgmt" },
+      { label: "IT Professionals", subLabel: "Admins, network, cloud, DevOps", value: "it" },
+      { label: "End Users or Whole Company", subLabel: "Business skills, Microsoft apps, Copilot", value: "endUser" },
+      { label: "Project Leaders", subLabel: "PMs, delivery, program owners", value: "projectMgmt" },
     ],
   },
   {
     key: "goal",
-    title: "What is the outcome you need?",
+    title: "What outcomes are you looking for?",
     options: [
       { label: "Certifications earned", subLabel: "Validated, exam-ready skills", value: "it" },
-      { label: "Reduced breach risk", subLabel: "Behavior change you can report on", value: "phishing" },
-      { label: "Tool adoption", subLabel: "Copilot and Microsoft 365 in daily use", value: "endUser" },
-      { label: "Projects delivered on time", subLabel: "PMP-ready delivery discipline", value: "projectMgmt" },
+      { label: "Reducing security risks", subLabel: "Behavior change you can report on", value: "phishing" },
+      { label: "Real World Concepts", subLabel: "Practical skills and project templates", value: "projectMgmt" },
     ],
   },
   {
@@ -54,8 +52,7 @@ export const questions: Question[] = [
     options: [
       { label: "We will run it", subLabel: "Own the paths and the cadence", value: "it" },
       { label: "Automate it", subLabel: "Set up once, let it run", value: "phishing" },
-      { label: "Light touch", subLabel: "Self-serve with admin reporting", value: "endUser" },
-      { label: "Scheduled cohorts", subLabel: "Live classes on a set calendar", value: "projectMgmt" },
+      { label: "Use StormWind built recommendations", subLabel: "AI-curated paths and skill trees", value: "endUser" },
     ],
   },
 ];
