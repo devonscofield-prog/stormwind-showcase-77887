@@ -524,20 +524,26 @@ const Microsoft = () => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
+  const effectiveFilter =
+    activeTopic && technicalOnlyTopics.has(activeTopic) ? "Technical" : filter;
+
   const visible = courses
     .filter((c) => {
-      if (c.audience !== filter) return false;
+      if (c.audience !== effectiveFilter) return false;
       if (activeTopic) return c.topic === activeTopic;
-      return featuredCodes[filter].includes(c.code);
+      return featuredCodes[effectiveFilter].includes(c.code);
     })
     .sort((a, b) => {
       if (activeTopic) return 0;
-      const order = featuredCodes[filter];
+      const order = featuredCodes[effectiveFilter];
       return order.indexOf(a.code) - order.indexOf(b.code);
     });
 
   const handleTopicClick = (title: string) => {
     setActiveTopic((prev) => (prev === title ? null : title));
+    if (technicalOnlyTopics.has(title)) {
+      setFilter("Technical");
+    }
     document.getElementById("courses")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
