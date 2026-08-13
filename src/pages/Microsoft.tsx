@@ -117,6 +117,28 @@ const courses: {
       "Deploy, configure, secure and monitor devices at enterprise scale — Windows 11, Intune, Configuration Manager and endpoint security.",
   },
   {
+    code: "AZ-900",
+    title: "AZ-900 Microsoft Azure Fundamentals",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Microsoft Azure",
+    description:
+      "Build a solid foundation in cloud concepts, Azure services, workloads, security, privacy, pricing and support — prepped for the AZ-900 exam.",
+  },
+  {
+    code: "AZ-802",
+    title: "AZ-802 Administering Windows Server",
+    instructorName: "StormWind Instructor",
+    instructorImage: placeholderInstructor,
+    initials: "SW",
+    audience: "Technical",
+    topic: "Windows Server",
+    description:
+      "Configure and manage Windows Server core services including Active Directory, storage, compute and networking for hybrid environments.",
+  },
+  {
     code: "WS-2025",
     title: "Windows Server 2025 Administration",
     instructorName: "Mike Pfeiffer",
