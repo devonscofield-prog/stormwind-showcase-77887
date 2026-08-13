@@ -33,7 +33,7 @@ const topics = [
   },
   {
     icon: Users,
-    title: "Microsoft 365",
+    title: "M365 + SharePoint",
     description: "M365 administration, Intune, Exchange, Teams, and SharePoint management.",
   },
   {
@@ -68,7 +68,7 @@ const topics = [
   },
 ];
 
-type Level = "Beginner" | "Intermediate" | "Advanced";
+type Audience = "Technical" | "End User";
 
 const courses: {
   code: string;
@@ -76,7 +76,8 @@ const courses: {
   instructorName: string;
   instructorImage: string;
   initials: string;
-  level: Level;
+  audience: Audience;
+  topic: string;
   description: string;
 }[] = [
   {
@@ -85,7 +86,8 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Beginner",
+    audience: "End User",
+    topic: "Microsoft Azure",
     description:
       "Build foundational knowledge of cloud concepts and Azure services. Built for anyone new to cloud, or heading toward the deeper Azure certifications.",
   },
@@ -95,7 +97,8 @@ const courses: {
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
-    level: "Intermediate",
+    audience: "Technical",
+    topic: "Microsoft Azure",
     description:
       "Manage Azure subscriptions, storage, virtual networks and monitoring — the day-to-day administration work, prepped against the AZ-104 exam.",
   },
@@ -105,7 +108,8 @@ const courses: {
     instructorName: "Spike Xavier",
     instructorImage: spikeXavier,
     initials: "SX",
-    level: "Advanced",
+    audience: "Technical",
+    topic: "M365 + SharePoint",
     description:
       "Identity and access management, security, compliance and enterprise deployment across the full Microsoft 365 stack.",
   },
@@ -115,7 +119,8 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Intermediate",
+    audience: "Technical",
+    topic: "M365 + SharePoint",
     description:
       "Deploy, configure, secure and monitor devices at enterprise scale — Windows 11, Intune, Configuration Manager and endpoint security.",
   },
@@ -125,7 +130,8 @@ const courses: {
     instructorName: "Mike Pfeiffer",
     instructorImage: mikePfeiffer,
     initials: "MP",
-    level: "Advanced",
+    audience: "Technical",
+    topic: "Windows Server",
     description:
       "Server deployment, configuration, management and security on the newest release, taught as enterprise-grade infrastructure work.",
   },
@@ -135,28 +141,39 @@ const courses: {
     instructorName: "Will Panek",
     instructorImage: willPanek,
     initials: "WP",
-    level: "Beginner",
+    audience: "End User",
+    topic: "Security & Compliance",
     description:
       "Microsoft security, compliance and identity fundamentals — the concepts and solutions that underpin every other security path.",
   },
 ];
 
-const levelFilters = ["All", "Beginner", "Intermediate", "Advanced"] as const;
+const audienceFilters = ["All", "Technical", "End User"] as const;
 
-const levelStyles: Record<Level, string> = {
-  Beginner: "border-primary/40 bg-primary/10 text-primary",
-  Intermediate: "border-sky-500/40 bg-sky-500/10 text-sky-500",
-  Advanced: "border-rose-500/40 bg-rose-500/10 text-rose-500",
+const audienceStyles: Record<Audience, string> = {
+  Technical: "border-sky-500/40 bg-sky-500/10 text-sky-500",
+  "End User": "border-primary/40 bg-primary/10 text-primary",
 };
 
 const Microsoft = () => {
-  const [filter, setFilter] = useState<(typeof levelFilters)[number]>("All");
+  const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("All");
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter((c) => filter === "All" || c.level === filter);
+  const visible = courses.filter(
+    (c) =>
+      (filter === "All" || c.audience === filter) &&
+      (!activeTopic || c.topic === activeTopic)
+  );
+
+  const handleTopicClick = (title: string) => {
+    setActiveTopic((prev) => (prev === title ? null : title));
+    document.getElementById("courses")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
 
   return (
     <div className="ms-scope">
@@ -239,27 +256,39 @@ const Microsoft = () => {
         <section id="topics" className="relative z-10 mb-28 scroll-mt-28">
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">01 — Topics</span>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight">
-            Start where your team actually is.
+            Pick the stack you actually run.
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-            Nobody needs all of it. Skills Assessments place each learner, and the rest is a straight
-            line to the credential.
+            Select a focus area to see the courses that go with it — no wading through a catalog to
+            find the three that matter to your team.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {topics.map((topic) => (
-              <div
-                key={topic.title}
-                className="group rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
-                  <topic.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-bold tracking-tight">{topic.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
-              </div>
-            ))}
+            {topics.map((topic) => {
+              const isActive = activeTopic === topic.title;
+              return (
+                <button
+                  key={topic.title}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => handleTopicClick(topic.title)}
+                  className={cn(
+                    "group rounded-2xl border p-6 text-left backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
+                    isActive
+                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
+                      : "border-border/60 bg-card/70"
+                  )}
+                >
+                  <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
+                    <topic.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold tracking-tight">{topic.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
+                </button>
+              );
+            })}
           </div>
+
         </section>
 
         {/* Courses */}
@@ -275,24 +304,34 @@ const Microsoft = () => {
 
           <div className="mt-10 flex flex-wrap items-center gap-2">
             <span className="mr-2 font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Level
+              Audience
             </span>
-            {levelFilters.map((level) => (
+            {audienceFilters.map((aud) => (
               <button
-                key={level}
+                key={aud}
                 type="button"
-                onClick={() => setFilter(level)}
+                onClick={() => setFilter(aud)}
                 className={cn(
                   "rounded-lg border px-4 py-1.5 text-sm font-medium transition-all duration-200",
-                  filter === level
+                  filter === aud
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border/60 bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground"
                 )}
               >
-                {level}
+                {aud}
               </button>
             ))}
+            {activeTopic && (
+              <button
+                type="button"
+                onClick={() => setActiveTopic(null)}
+                className="ml-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary transition-all duration-200 hover:bg-primary/20"
+              >
+                {activeTopic} ✕
+              </button>
+            )}
           </div>
+
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {visible.map((course) => (
@@ -323,15 +362,22 @@ const Microsoft = () => {
                   <span
                     className={cn(
                       "rounded-md border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.18em]",
-                      levelStyles[course.level]
+                      audienceStyles[course.audience]
                     )}
                   >
-                    {course.level}
+                    {course.audience}
                   </span>
                 </div>
               </article>
             ))}
+            {visible.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No featured courses for this selection yet — clear the filter or explore the full
+                catalog.
+              </p>
+            )}
           </div>
+
         </section>
 
         {/* Related Topics */}
