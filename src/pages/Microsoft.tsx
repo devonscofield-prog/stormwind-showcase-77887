@@ -392,6 +392,23 @@ const audienceStyles: Record<Audience, string> = {
   "End User": "border-primary/40 bg-primary/10 text-primary",
 };
 
+const featuredCodes: Record<Audience, string[]> = {
+  Technical: [
+    "MS-102",
+    "MD-102",
+    "AZ-900",
+    "AZ-104",
+    "AZ-802",
+  ],
+  "End User": [
+    "COPILOT-USE",
+    "M365-EXCEL",
+    "M365-TEAMS",
+    "M365-OUTLOOK",
+    "M365-SP",
+  ],
+};
+
 const Microsoft = () => {
   const [filter, setFilter] = useState<(typeof audienceFilters)[number]>("Technical");
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
@@ -400,11 +417,17 @@ const Microsoft = () => {
     document.title = "Microsoft Training | StormWind Studios";
   }, []);
 
-  const visible = courses.filter(
-    (c) =>
-      c.audience === filter &&
-      (!activeTopic || c.topic === activeTopic)
-  );
+  const visible = courses
+    .filter((c) => {
+      if (c.audience !== filter) return false;
+      if (activeTopic) return c.topic === activeTopic;
+      return featuredCodes[filter].includes(c.code);
+    })
+    .sort((a, b) => {
+      if (activeTopic) return 0;
+      const order = featuredCodes[filter];
+      return order.indexOf(a.code) - order.indexOf(b.code);
+    });
 
   const handleTopicClick = (title: string) => {
     setActiveTopic((prev) => (prev === title ? null : title));
