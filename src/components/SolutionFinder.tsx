@@ -30,12 +30,15 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
   ).length;
   const stepLabel = Math.min(answeredCount + 1, 3);
 
+  const hasSelections = picks.who.length > 0 || picks.goal.length > 0;
+
   const recommendedKeys = useMemo<ProgramKey[]>(() => {
     // "How much can your team manage?" (effort) does not influence recommendations.
     const who = picks.who;
     const goal = picks.goal;
 
-    if (who.length === 0 && goal.length === 0) return [defaultProgramKey];
+    // Nothing selected => no recommendations yet.
+    if (who.length === 0 && goal.length === 0) return [];
 
     // StormAI Phishing is the ONLY recommendation when the only selections are
     // "End Users or Whole Company" + "Reducing security risks".
@@ -79,7 +82,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
       ];
     }
 
-    return result.length > 0 ? result : [defaultProgramKey];
+    return result.length > 0 ? result : [];
   }, [picks]);
 
   const [openKey, setOpenKey] = useState<ProgramKey | null>(null);
