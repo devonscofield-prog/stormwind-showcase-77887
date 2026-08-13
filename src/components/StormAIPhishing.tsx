@@ -49,7 +49,6 @@ const StormAIPhishing = ({ }: StormAIPhishingProps) => {
     }
   ];
 
-  const featureColors = ['#60A5FA', '#FB923C', '#A78BFA', '#4ADE80', '#38BDF8', '#FBBF24'];
 
   return (
     <div className="animate-fade-in">
@@ -64,27 +63,22 @@ const StormAIPhishing = ({ }: StormAIPhishingProps) => {
           size="lg"
           variant="outline"
           asChild
-          className="gap-2 transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
+          className="gap-2 transition-all shadow-lg hover:shadow-xl border-2"
         >
           <Link to="/phishing">Learn More</Link>
         </Button>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {features.map((feature, index) => {
-          const color = featureColors[index];
-          
-          return (
+        {features.map((feature, index) => (
             <AnimatedFeatureCard
               key={index}
               to="/phishing"
-              color={color}
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
             />
-          );
-        })}
+        ))}
       </div>
     </div>
   );
