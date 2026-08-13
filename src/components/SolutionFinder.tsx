@@ -16,32 +16,44 @@ interface SolutionFinderProps {
   onTabChange: (tabValue: string) => void;
 }
 
-export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
-  const [picks, setPicks] = useState<Partial<Record<"who" | "goal" | "effort", ProgramKey>>>({});
+type QuestionKey = "who" | "goal" | "effort";
 
-  const answeredKeys = Object.keys(picks) as ("who" | "goal" | "effort")[];
-  const answeredCount = answeredKeys.length;
+export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
+  const [picks, setPicks] = useState<Record<QuestionKey, ProgramKey[]>>({
+    who: [],
+    goal: [],
+    effort: [],
+  });
+
+  const answeredCount = (Object.values(picks) as ProgramKey[][]).filter(
+    (list) => list.length > 0
+  ).length;
   const stepLabel = Math.min(answeredCount + 1, 3);
 
   const recommendedKeys = useMemo<ProgramKey[]>(() => {
-    if (answeredCount === 0) return [defaultProgramKey];
-    const counts: Record<ProgramKey, number> = { it: 0, phishing: 0, endUser: 0 };
-    Object.values(picks).forEach((value) => {
-      if (value) counts[value] += 1;
-    });
+    const counts: Record<ProgramKey, number> = { it: 0, phishing: 0, endUser: 0, projectMgmt: 0 };
+    let total = 0;
+    (Object.values(picks) as ProgramKey[][]).forEach((list) =>
+      list.forEach((value) => {
+        counts[value] += 1;
+        total += 1;
+      })
+    );
+    if (total === 0) return [defaultProgramKey];
     const maxCount = Math.max(...Object.values(counts));
     const winners = tieOrder.filter((key) => counts[key] === maxCount);
     return winners.length ? winners : [defaultProgramKey];
-  }, [picks, answeredCount]);
+  }, [picks]);
 
-  const handlePick = (questionKey: "who" | "goal" | "effort", value: ProgramKey) => {
+  const handlePick = (questionKey: QuestionKey, value: ProgramKey) => {
     setPicks((prev) => {
-      if (prev[questionKey] === value) {
-        const next = { ...prev };
-        delete next[questionKey];
-        return next;
-      }
-      return { ...prev, [questionKey]: value };
+      const current = prev[questionKey];
+      return {
+        ...prev,
+        [questionKey]: current.includes(value)
+          ? current.filter((v) => v !== value)
+          : [...current, value],
+      };
     });
   };
 
@@ -50,7 +62,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
       id="solution-finder"
       className="relative z-10 scroll-mt-20 border-t border-primary/30 animate-fade-in"
     >
-      <div className="grid lg:grid-cols-[1fr_452px] bg-card/40">
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_520px] xl:grid-cols-[minmax(0,1fr)_560px] bg-card/40">
         {/* Left column — questions */}
         <div className="p-10 lg:p-14 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
@@ -85,11 +97,13 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                 <div key={question.key} className="flex flex-col gap-4">
                   <div className="flex items-baseline gap-3">
                     <h3 className="text-xl font-semibold">{question.title}</h3>
-                    <span className="text-xs text-muted-foreground">Pick one</span>
+                    <span className="text-xs text-muted-foreground">
+                      Pick any that apply
+                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
                     {question.options.map((option) => {
-                      const isSelected = selected === option.value;
+                      const isSelected = selected.includes(option.value);
                       return (
                         <button
                           key={option.value}
@@ -97,7 +111,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                           onClick={() => handlePick(question.key, option.value)}
                           aria-pressed={isSelected}
                           className={cn(
-                            "w-[248px] p-5 rounded-xl text-left flex flex-col gap-2",
+                            "w-full p-5 rounded-xl text-left flex flex-col gap-2",
                             "transition-[background,box-shadow] duration-200",
                             isSelected
                               ? "bg-primary/15 ring-1 ring-inset ring-primary"
