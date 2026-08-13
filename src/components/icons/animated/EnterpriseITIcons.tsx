@@ -333,8 +333,6 @@ export const MicrosoftIcon = ({ isHovered }: { isHovered: boolean }) => {
 export const CloudIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
     <path fill="none" d="M27 55h26a12 12 0 0 0 1.5-23.9A17 17 0 0 0 22.7 34 11 11 0 0 0 27 55Z" />
-    <path fill="none" d="M40 62v-14" />
-    <path fill="none" d="M34 54l6-6 6 6" />
   </svg>
 );
 
@@ -348,11 +346,15 @@ export const CybersecurityIcon = ({ isHovered }: { isHovered: boolean }) => (
 
 export const AIIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <rect fill="none" x="26" y="26" width="28" height="28" rx="7" />
-    <rect fill="none" x="35" y="35" width="10" height="10" rx="2.5" />
-    <path fill="none" d="M33 18v8M47 18v8M33 54v8M47 54v8M18 33h8M18 47h8M54 33h8M54 47h8" />
+    {/* four-point sparkle */}
+    <path fill="none" d="M36 16c0 12-6 18-18 20 12 2 18 8 18 20 0-12 6-18 18-20-12-2-18-8-18-20Z" />
+    {/* small sparkle top-right */}
+    <path fill="none" d="M58 20c0 5-2.5 7.5-7 8.5 4.5 1 7 3.5 7 8.5 0-5 2.5-7.5 7-8.5-4.5-1-7-3.5-7-8.5Z" />
+    {/* small sparkle bottom-left */}
+    <path fill="none" d="M28 52c0 4-2 6-5.5 6.8 3.5.8 5.5 2.8 5.5 6.7 0-3.9 2-5.9 5.5-6.7C30 58 28 56 28 52Z" />
   </svg>
 );
+
 
 export const NetworkingIcon = ({ isHovered }: { isHovered: boolean }) => (
   <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
