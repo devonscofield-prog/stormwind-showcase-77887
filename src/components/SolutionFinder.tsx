@@ -53,28 +53,31 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
 
     const selected = new Set<ProgramKey>([...who, ...goal]);
 
+    // Project Management only appears when "Project Leaders" is the ONLY
+    // persona selected (matching outcomes are okay, but no other personas).
+    const isProjectLeadersOnly =
+      who.length === 1 &&
+      who[0] === "projectMgmt" &&
+      goal.every((key) => key === "projectMgmt");
+
+    if (!isProjectLeadersOnly) {
+      selected.delete("projectMgmt");
+    }
+
     // IT Professionals always triggers Enterprise IT.
     if (who.includes("it")) {
       selected.add("it");
     }
 
-    // Project Leaders only (no IT, no End Users) => Enterprise IT secondary.
-    if (
-      who.includes("projectMgmt") &&
-      !who.includes("it") &&
-      !who.includes("endUser")
-    ) {
+    // Project Leaders only => Enterprise IT secondary.
+    if (isProjectLeadersOnly) {
       selected.add("it");
     }
 
     let result = tieOrder.filter((key) => selected.has(key));
 
     // Project Leaders only: put Project Management first, Enterprise IT second.
-    if (
-      who.includes("projectMgmt") &&
-      !who.includes("it") &&
-      !who.includes("endUser")
-    ) {
+    if (isProjectLeadersOnly) {
       result = [
         "projectMgmt",
         "it",
