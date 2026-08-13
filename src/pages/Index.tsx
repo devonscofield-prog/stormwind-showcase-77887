@@ -78,20 +78,20 @@ const Index = () => {
       {/* Trust Signals / Social Proof */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: BookOpen, label: "500+ Courses", subtitle: "Comprehensive IT curriculum" },
               { icon: Users, label: "Expert Instructors", subtitle: "Industry-certified trainers" },
               { icon: Play, label: "Live & On-Demand", subtitle: "Learn on your schedule" },
               { icon: Shield, label: "Enterprise-Ready", subtitle: "Scalable team training" },
             ].map(({ icon: Icon, label, subtitle }) => (
-              <div key={label} className="flex flex-col items-center text-center gap-3">
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10">
-                  <Icon className="w-7 h-7 text-primary" />
+              <div key={label} className={`${CARD_SURFACE} flex items-center gap-4`}>
+                <div className="flex items-center justify-center w-11 h-11 shrink-0 rounded-lg bg-primary/15">
+                  <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-foreground">{label}</p>
-                  <p className="text-sm text-muted-foreground">{subtitle}</p>
+                  <p className="text-base font-bold text-foreground">{label}</p>
+                  <p className="text-xs text-muted-foreground">{subtitle}</p>
                 </div>
               </div>
             ))}
@@ -104,42 +104,44 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-transparent h-auto p-0 mb-12">
-              <TabsTrigger value="enterprise-it" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
-                Enterprise IT
-              </TabsTrigger>
-              <TabsTrigger value="project-management" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
-                Project Management
-              </TabsTrigger>
-              <TabsTrigger value="stormai-phishing" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
-                StormAI Phishing
-              </TabsTrigger>
-              <TabsTrigger value="enterprise-end-user" className="bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg">
-                Enterprise End User
-              </TabsTrigger>
+              {[
+                { value: "enterprise-it", label: "Enterprise IT" },
+                { value: "project-management", label: "Project Management" },
+                { value: "stormai-phishing", label: "StormAI Phishing" },
+                { value: "enterprise-end-user", label: "Enterprise End User" },
+              ].map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className={`${CARD_SURFACE} p-4 rounded-lg text-[15px] font-semibold cursor-pointer text-muted-foreground data-[state=active]:bg-primary/80 data-[state=active]:bg-none data-[state=active]:text-foreground`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
             </TabsList>
 
             {/* Only render active tab content for performance */}
             <Suspense fallback={<TabLoading />}>
               {activeTab === "enterprise-it" && (
-                <TabsContent value="enterprise-it" className="mt-0 -mx-6 px-6 py-8 rounded-xl bg-card/30">
+                <TabsContent value="enterprise-it" className="mt-0 -mx-6 px-6 py-8 rounded-xl">
                   <EnterpriseIT selectedTechnologies={selectedTechnologies} selectedFeatures={selectedFeatures} toggleTechnology={toggleTechnology} toggleFeature={toggleFeature} />
                 </TabsContent>
               )}
 
               {activeTab === "project-management" && (
-                <TabsContent value="project-management" className="mt-0 -mx-6 px-6 py-8 rounded-xl bg-card/30">
+                <TabsContent value="project-management" className="mt-0 -mx-6 px-6 py-8 rounded-xl">
                   <ProjectManagement selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
                 </TabsContent>
               )}
 
               {activeTab === "stormai-phishing" && (
-                <TabsContent value="stormai-phishing" className="mt-0 -mx-6 px-6 py-8 rounded-xl bg-card/30">
+                <TabsContent value="stormai-phishing" className="mt-0 -mx-6 px-6 py-8 rounded-xl">
                   <StormAIPhishing selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
                 </TabsContent>
               )}
 
               {activeTab === "enterprise-end-user" && (
-                <TabsContent value="enterprise-end-user" className="mt-0 -mx-6 px-6 py-8 rounded-xl bg-card/30">
+                <TabsContent value="enterprise-end-user" className="mt-0 -mx-6 px-6 py-8 rounded-xl">
                   <EnterpriseEndUser selectedFeatures={selectedFeatures} toggleFeature={toggleFeature} />
                 </TabsContent>
               )}

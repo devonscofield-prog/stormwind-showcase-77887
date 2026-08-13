@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import stormwindLogo from "@/assets/stormwind-logo.png";
 
 const topicLinks = [
   { label: "Microsoft", to: "/microsoft" },
