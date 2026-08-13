@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { Lock } from "lucide-react";
+import { CARD_SURFACE } from "@/components/AnimatedFeatureCard";
 import {
   LearningPathIcon,
   MicrolearningIcon,
@@ -36,61 +37,61 @@ const EnterpriseIT = ({
 }: EnterpriseITProps) => {
   const consolidatedFeatures = [{
     icon: LearningPathIcon,
-    emoji: "✅",
+    _emoji: "✅",
     title: "Learning Paths",
     description: "Structured paths with guided assessment, targeted training, and readiness validation—personalized and effective.",
     details: "Flexible pathways for every skill level. Begin with an assessment, follow a guided roadmap, and validate your readiness with confidence.",
     additionalInfo: "Access live instructor-led Epic Live sessions and on-demand courses with instant replay for flexible learning anytime, anywhere."
   }, {
     icon: MicrolearningIcon,
-    emoji: "⏰",
+    _emoji: "⏰",
     title: "Bytes: Microlearning",
     description: "Short sessions (3-5 min), adaptive personalization, sequential skill stacking, and real-world application.",
     details: "Learn in brief, focused sessions designed for retention. Get personalized paths from initial assessments and stack skills progressively for rapid mastery."
   }, {
     icon: AILearningIcon,
-    emoji: "🧠",
+    _emoji: "🧠",
     title: "AI-Powered Learning",
     description: "StormWind's AI Tutors leverage proprietary knowledge bases—no public internet, no hallucinations or inaccuracies.",
     details: "They support your certification studies, answer on-the-fly questions, provide step-by-step troubleshooting guidance, and integrate perfectly with our hands-on training content.",
     additionalInfo: "Combine AI assistance with 1:1 instructor mentoring for personal guidance from industry-recognized experts."
   }, {
     icon: RangesIcon,
-    emoji: "🛠️",
+    _emoji: "🛠️",
     title: "StormWind Ranges",
     description: "Hands-on cyber, Azure, Microsoft, and networking ranges – real, production-like practice environments.",
     bullets: [{
-      emoji: "🔒",
+      _emoji: "🔒",
       text: "Cyber Range: Practice with Splunk, OpenVAS, Nmap, Wireshark, and more."
     }, {
-      emoji: "☁️",
+      _emoji: "☁️",
       text: "Azure Range: Build VNets, VMs, storage and more, including an empty sandbox for testing ARM/Bicep or Terraform templates."
     }, {
-      emoji: "💻",
+      _emoji: "💻",
       text: "Microsoft Range: Server 2025, Windows 11, AD, DNS, PowerShell, and more."
     }, {
-      emoji: "🌐",
+      _emoji: "🌐",
       text: "Networking Range: VLANs, OSPF, BGP, IPv4/6, and security configurations."
     }]
   }, {
     icon: LiveInstructorIcon,
-    emoji: "🎓",
+    _emoji: "🎓",
     title: "Live Instructor Led Courses",
     description: "The most effective learning possible happens in a live environment with a world class instructor. Many of StormWind's classes run live, allowing you to fully interact in the most engaging online learning experience available anywhere.",
     details: "The short, 2-hour sessions allow you to easily digest the information."
   }, {
     icon: MentoringIcon,
-    emoji: "🤝",
+    _emoji: "🤝",
     title: "1:1 Mentoring with Industry Experts",
     description: "Like learning anything new, you are inevitably going to get stuck on something. Unlike traditional eLearning, you aren't on your own. You have access to the instructor from every class to ask questions. This feature is one of the most raved about offerings by our clients."
   }, {
     icon: AssessmentIcon,
-    emoji: "🎯",
+    _emoji: "🎯",
     title: "Skills Assessments",
     description: "Test your team's skills on a number of different topics and get real time data on where the gaps are. Get course suggestions based on proficiency and streamline the training process by ensuring everyone is taking courses that fit their skill level."
   }, {
     icon: ReportingIcon,
-    emoji: "📊",
+    _emoji: "📊",
     title: "Enterprise Reporting and Administration",
     description: "Generate easy to read reports on usage and course completion. Whether you need it for compliance/insurance purposes, or to present to management, we make it simple to get the data you need.",
     details: "You can assign individual courses, create and assign learning paths, add due dates, and track assessment scores all from an intuitive Dashboard that is only visible to designated admins."
@@ -145,7 +146,7 @@ const EnterpriseIT = ({
             <Link key={index} to={tech.link} className={`${CARD_SURFACE} block min-h-[152px]`}>
               <div className="absolute -right-3.5 -bottom-4 opacity-[0.11] pointer-events-none text-primary">
                 <div className="w-[124px] h-[124px] [&>svg]:w-full [&>svg]:h-full">
-                  <tech.Icon color="currentColor" isHovered={false} />
+                  <tech.Icon isHovered={false} />
                 </div>
               </div>
               <div className="relative flex flex-col gap-2">
