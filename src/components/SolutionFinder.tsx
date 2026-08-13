@@ -35,14 +35,51 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
     const who = picks.who;
     const goal = picks.goal;
 
-    // End users + security risk as the only outcome => phishing only.
-    if (who.includes("endUser") && goal.length === 1 && goal[0] === "phishing") {
+    if (who.length === 0 && goal.length === 0) return [defaultProgramKey];
+
+    // StormAI Phishing is the ONLY recommendation when the only selections are
+    // "End Users or Whole Company" + "Reducing security risks".
+    if (
+      who.length === 1 &&
+      who[0] === "endUser" &&
+      goal.length === 1 &&
+      goal[0] === "phishing"
+    ) {
       return ["phishing"];
     }
 
     const selected = new Set<ProgramKey>([...who, ...goal]);
-    if (selected.size === 0) return [defaultProgramKey];
-    return tieOrder.filter((key) => selected.has(key));
+
+    // IT Professionals always triggers Enterprise IT.
+    if (who.includes("it")) {
+      selected.add("it");
+    }
+
+    // Project Leaders only (no IT, no End Users) => Enterprise IT secondary.
+    if (
+      who.includes("projectMgmt") &&
+      !who.includes("it") &&
+      !who.includes("endUser")
+    ) {
+      selected.add("it");
+    }
+
+    let result = tieOrder.filter((key) => selected.has(key));
+
+    // Project Leaders only: put Project Management first, Enterprise IT second.
+    if (
+      who.includes("projectMgmt") &&
+      !who.includes("it") &&
+      !who.includes("endUser")
+    ) {
+      result = [
+        "projectMgmt",
+        "it",
+        ...result.filter((key) => key !== "projectMgmt" && key !== "it"),
+      ];
+    }
+
+    return result.length > 0 ? result : [defaultProgramKey];
   }, [picks]);
 
   const [openKey, setOpenKey] = useState<ProgramKey | null>(null);
