@@ -178,11 +178,7 @@ const EnterpriseIT = ({
                 className={`${CARD_SURFACE} h-full flex flex-col`}
               >
                 <div className="relative flex flex-col gap-4 h-full">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-inset ring-primary/25 shadow-[0_0_22px_hsl(var(--primary)/0.18)]">
-                    <div className="w-6 h-6 [&>svg]:w-full [&>svg]:h-full">
-                      <feature.icon color="currentColor" isHovered={false} />
-                    </div>
-                  </div>
+
 
                   <h4 className="text-base font-bold tracking-tight text-primary leading-snug">
                     {feature.title}
