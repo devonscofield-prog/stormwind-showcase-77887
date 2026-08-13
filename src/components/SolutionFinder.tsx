@@ -41,7 +41,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
     if (who.length === 0 && goal.length === 0) return [];
 
     // StormAI Phishing is the ONLY recommendation when the only selections are
-    // "End Users or Whole Company" + "Reducing security risks".
+    // "End Users or Whole Company" + "Reducing security risks" (no Project Leaders).
     if (
       who.length === 1 &&
       who[0] === "endUser" &&
@@ -52,36 +52,29 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
     }
 
     const selected = new Set<ProgramKey>([...who, ...goal]);
+    const projectLeadersSelected = who.includes("projectMgmt");
+    const itSelected = who.includes("it");
 
-    // Project Management only appears when "Project Leaders" is the ONLY
-    // persona selected (matching outcomes are okay, but no other personas).
-    const isProjectLeadersOnly =
-      who.length === 1 &&
-      who[0] === "projectMgmt" &&
-      goal.every((key) => key === "projectMgmt");
-
-    if (!isProjectLeadersOnly) {
+    // Project Management is recommended whenever Project Leaders is selected,
+    // unless IT Professionals is also selected.
+    if (projectLeadersSelected && !itSelected) {
+      selected.add("projectMgmt");
+    } else {
       selected.delete("projectMgmt");
     }
 
     // IT Professionals always triggers Enterprise IT.
-    if (who.includes("it")) {
-      selected.add("it");
-    }
-
-    // Project Leaders only => Enterprise IT secondary.
-    if (isProjectLeadersOnly) {
+    if (itSelected) {
       selected.add("it");
     }
 
     let result = tieOrder.filter((key) => selected.has(key));
 
-    // Project Leaders only: put Project Management first, Enterprise IT second.
-    if (isProjectLeadersOnly) {
+    // Keep Project Management first when it is recommended.
+    if (projectLeadersSelected && !itSelected) {
       result = [
         "projectMgmt",
-        "it",
-        ...result.filter((key) => key !== "projectMgmt" && key !== "it"),
+        ...result.filter((key) => key !== "projectMgmt"),
       ];
     }
 
