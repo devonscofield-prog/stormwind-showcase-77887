@@ -33,7 +33,7 @@ const topics = [
   },
   {
     icon: Users,
-    title: "Microsoft 365",
+    title: "M365 + SharePoint",
     description: "M365 administration, Intune, Exchange, Teams, and SharePoint management.",
   },
   {
