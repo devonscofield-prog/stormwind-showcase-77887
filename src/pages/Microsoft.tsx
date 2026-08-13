@@ -405,17 +405,6 @@ const courses: {
     description:
       "Build enterprise-grade automation with custom connectors, error handling, governance, and advanced flow patterns.",
   },
-  {
-    code: "PP-AUTO-AID",
-    title: "Power Automate: Automation in a Day",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "Power Platform",
-    description:
-      "Learn the fundamentals of process automation and leave with working Power Automate flows in a single day.",
-  },
 ];
 
 const audienceFilters = ["All", "Technical", "End User"] as const;
