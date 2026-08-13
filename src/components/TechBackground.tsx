@@ -356,7 +356,11 @@ export const TechBackground = () => {
       }
 
       // Draw scanning line effect (subtle)
-      const scanY = (timestamp * 0.02) % currentRect.height;
+      const scanY = currentRect.height > 0 ? (timestamp * 0.02) % currentRect.height : 0;
+      if (!Number.isFinite(scanY)) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
       const scanGradient = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
       scanGradient.addColorStop(0, "rgba(79, 209, 197, 0)");
       scanGradient.addColorStop(0.5, "rgba(79, 209, 197, 0.03)");
