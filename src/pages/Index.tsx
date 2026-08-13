@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import Hero from "@/components/Hero";
+import { SolutionFinder } from "@/components/SolutionFinder";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -68,6 +69,8 @@ const Index = () => {
       <div className="pt-20 relative z-10">
         <Hero onTabChange={setActiveTab} />
       </div>
+
+      <SolutionFinder onTabChange={setActiveTab} />
 
       {/* Personalized Learning Banner - Featured Callout */}
       <PersonalizedLearningBanner />
