@@ -91,7 +91,7 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-border mt-8 pt-8">
-          <p className="text-muted-foreground text-sm text-center">
+          <p className="text-foreground/70 text-sm text-center">
             &copy; 2026 StormWind Studios. All rights reserved.
           </p>
         </div>
