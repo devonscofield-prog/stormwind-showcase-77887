@@ -31,18 +31,18 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
   const stepLabel = Math.min(answeredCount + 1, 3);
 
   const recommendedKeys = useMemo<ProgramKey[]>(() => {
-    const counts: Record<ProgramKey, number> = { it: 0, phishing: 0, endUser: 0, projectMgmt: 0 };
-    let total = 0;
-    (Object.values(picks) as ProgramKey[][]).forEach((list) =>
-      list.forEach((value) => {
-        counts[value] += 1;
-        total += 1;
-      })
-    );
-    if (total === 0) return [defaultProgramKey];
-    const maxCount = Math.max(...Object.values(counts));
-    const winners = tieOrder.filter((key) => counts[key] === maxCount);
-    return winners.length ? winners : [defaultProgramKey];
+    // "How much can your team manage?" (effort) does not influence recommendations.
+    const who = picks.who;
+    const goal = picks.goal;
+
+    // End users + security risk as the only outcome => phishing only.
+    if (who.includes("endUser") && goal.length === 1 && goal[0] === "phishing") {
+      return ["phishing"];
+    }
+
+    const selected = new Set<ProgramKey>([...who, ...goal]);
+    if (selected.size === 0) return [defaultProgramKey];
+    return tieOrder.filter((key) => selected.has(key));
   }, [picks]);
 
   const handlePick = (questionKey: QuestionKey, value: ProgramKey) => {
@@ -101,7 +101,12 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                       Pick any that apply
                     </span>
                   </div>
-                  <div className="grid sm:grid-cols-3 gap-2.5">
+                  <div
+                    className={cn(
+                      "grid gap-2.5",
+                      question.options.length > 3 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"
+                    )}
+                  >
                     {question.options.map((option) => {
                       const isSelected = selected.includes(option.value);
                       return (
@@ -190,7 +195,12 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
                     .flatMap((key) => programs[key].also)
                     .map((item) => [item.label, item])
                 ).values()
-              ).map((item) => (
+              )
+                .filter(
+                  (item) =>
+                    !recommendedKeys.some((key) => programs[key].title === item.label)
+                )
+                .map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}

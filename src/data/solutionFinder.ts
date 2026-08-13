@@ -44,6 +44,7 @@ export const questions: Question[] = [
       { label: "Certifications earned", subLabel: "Validated, exam-ready skills", value: "it" },
       { label: "Reducing security risks", subLabel: "Behavior change you can report on", value: "phishing" },
       { label: "Real World Concepts", subLabel: "Practical skills and project templates", value: "projectMgmt" },
+      { label: "Tool Adoption", subLabel: "Microsoft apps and Copilot readiness", value: "endUser" },
     ],
   },
   {
