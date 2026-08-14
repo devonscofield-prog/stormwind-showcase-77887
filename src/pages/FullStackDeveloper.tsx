@@ -41,13 +41,12 @@ const topics = [
 ];
 
 const interactiveFeatures = [
-  "Over 1500 hours of expert training",
+  "1:1 mentorship",
   "130+ comprehensive coding classes",
-  "950+ hands-on laboratory exercises",
-  "Capture the Flag security challenges",
+  "900+ Secure Coding laboratory exercises",
+  "Built-in Integrated Development Environment (IDE)",
   "Project-based learning approach",
   "Real-time code feedback",
-  "Portfolio-ready projects",
 ];
 
 const FullStackDeveloper = () => {
@@ -109,20 +108,19 @@ const FullStackDeveloper = () => {
             <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
               <div className="grid grid-cols-2 gap-y-6">
                 <div>
-                  <div className="text-3xl font-bold tracking-tight text-foreground">1500+</div>
-                  <div className="mt-1 text-sm text-muted-foreground">hours of training</div>
+                  <div className="text-3xl font-bold tracking-tight text-foreground">1:1</div>
+                  <div className="mt-1 text-sm text-muted-foreground">mentorship</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold tracking-tight text-foreground">950+</div>
-                  <div className="mt-1 text-sm text-muted-foreground">hands-on labs</div>
+                  <div className="text-3xl font-bold tracking-tight text-foreground">900+</div>
+                  <div className="mt-1 text-sm text-muted-foreground">Secure Coding labs</div>
                 </div>
               </div>
               <ul className="mt-6 space-y-3 border-t border-border/60 pt-6">
                 {[
                   "130+ comprehensive coding classes",
-                  "Capture the Flag security challenges",
+                  "Built-in Integrated Development Environment (IDE)",
                   "Project-based learning approach",
-                  "Portfolio-ready projects",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-foreground/85">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
