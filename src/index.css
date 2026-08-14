@@ -1187,7 +1187,64 @@ All colors MUST be HSL.
   .dark .cyber-scope .text-gradient-brand {
     background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--cy-red)) 62%, hsl(14 90% 72%) 100%);
   }
+
+  /* Full Stack Developer — violet console scope */
+  .fs-scope {
+    --fs-violet: 262 83% 68%;
+    --fs-violet-deep: 258 74% 52%;
+
+    --primary: var(--fs-violet-deep);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--fs-violet-deep);
+  }
+
+  .dark .fs-scope {
+    --primary: var(--fs-violet);
+    --primary-foreground: 262 40% 8%;
+    --ring: var(--fs-violet);
+  }
+
+  .bg-fs-console {
+    position: relative;
+    background:
+      radial-gradient(ellipse 70% 45% at 20% -4%, hsl(var(--fs-violet) / 0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 88% 8%, hsl(226 84% 62% / 0.10) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(260 40% 99%) 0%, hsl(258 32% 97%) 60%, hsl(255 28% 96%) 100%);
+  }
+
+  .dark .bg-fs-console {
+    background:
+      radial-gradient(ellipse 70% 45% at 20% -4%, hsl(var(--fs-violet) / 0.16) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 40% at 88% 8%, hsl(226 84% 60% / 0.12) 0%, transparent 62%),
+      linear-gradient(180deg, hsl(258 26% 8%) 0%, hsl(258 24% 5%) 55%, hsl(258 22% 4%) 100%);
+  }
+
+  .bg-fs-console::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(to right, hsl(var(--fs-violet) / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--fs-violet) / 0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 45% at 40% 8%, black 0%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 45% at 40% 8%, black 0%, transparent 78%);
+  }
+
+  .fs-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 8%, hsl(var(--fs-violet-deep)) 60%, hsl(226 84% 56%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .fs-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--fs-violet)) 62%, hsl(226 90% 74%) 100%);
+  }
 }
+
 
 
 @layer utilities {
