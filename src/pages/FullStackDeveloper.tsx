@@ -57,7 +57,7 @@ const FullStackDeveloper = () => {
   return (
     <div className="fs-scope">
       <PageLayout
-        title="Full Stack Developer Package"
+        title="Full Stack Developer Training"
         description=""
         breadcrumbs={[{ label: "Full Stack Developer" }]}
         hideHero
@@ -73,7 +73,7 @@ const FullStackDeveloper = () => {
 
               <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
                 <span className="block text-foreground">Full Stack Developer</span>
-                <span className="block text-gradient-brand pb-2">Package</span>
+                <span className="block text-gradient-brand pb-2">Training</span>
               </h1>
 
               <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
@@ -141,10 +141,10 @@ const FullStackDeveloper = () => {
             Master Full Stack Development
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            StormWind's Developer Package offers security-centric software development training with
-            over 1500 hours of content from industry experts. Learn to build complete web
-            applications from frontend to backend with modern frameworks, secure coding practices,
-            and interactive development environments.
+            StormWind's Full Stack Developer Training offers security-centric software development
+            training with over 1500 hours of content from industry experts. Learn to build complete
+            web applications from frontend to backend with modern frameworks, secure coding
+            practices, and interactive development environments.
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
