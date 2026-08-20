@@ -607,13 +607,12 @@ All colors MUST be HSL.
       radial-gradient(ellipse 65% 50% at 95% 42%, hsl(var(--primary) / 0.12) 0%, transparent 60%),
       radial-gradient(ellipse 80% 45% at 50% 105%, hsl(var(--accent-teal) / 0.12) 0%, transparent 60%),
       linear-gradient(180deg, hsl(var(--background-deep)) 0%, hsl(var(--background)) 45%, hsl(var(--background-deep)) 100%);
-    background-attachment: fixed;
   }
 
   /* Fine grid + vignette overlay for depth */
   .bg-stormai-aurora::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
