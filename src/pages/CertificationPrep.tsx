@@ -98,7 +98,7 @@ const CertificationPrep = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
-        className="relative p-6 rounded-xl bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-300 group overflow-hidden cursor-default animate-fade-in"
+        className="relative p-6 rounded-xl bg-card/80 dark:bg-black/60 border border-border/50 hover:border-primary/50 transition-all duration-300 group overflow-hidden cursor-default animate-fade-in"
         style={{ 
           ...tiltStyle, 
           animationDelay: `${index * 50}ms`,
@@ -180,7 +180,7 @@ const CertificationPrep = () => {
           </div>
 
           {/* How It Works - Enhanced */}
-          <Card className="bg-card/80 dark:bg-black/40 backdrop-blur-xl border-border/50 mb-10 overflow-hidden">
+          <Card className="bg-card/80 dark:bg-black/60 border-border/50 mb-10 overflow-hidden">
             <CardContent className="p-8 relative">
               {/* Subtle background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
@@ -235,7 +235,7 @@ const CertificationPrep = () => {
               {certifications.map((cert, index) => (
                 <div 
                   key={cert} 
-                  className="group p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10 flex items-center gap-3 cursor-default animate-fade-in"
+                  className="group p-4 rounded-lg bg-card/80 dark:bg-black/60 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10 flex items-center gap-3 cursor-default animate-fade-in"
                   style={{ 
                     animationDelay: `${index * 30}ms`,
                     animationFillMode: 'backwards'

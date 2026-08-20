@@ -105,7 +105,7 @@ const FullStackDeveloper = () => {
             </div>
 
             {/* Stat card */}
-            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
+            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
               <div className="grid grid-cols-2 gap-y-6">
                 <div>
                   <div className="text-3xl font-bold tracking-tight text-foreground">1:1</div>
@@ -151,7 +151,7 @@ const FullStackDeveloper = () => {
             {topics.map((topic) => (
               <div
                 key={topic.title}
-                className="group rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+                className="group rounded-2xl border border-border/60 bg-card/70 p-6 transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
               >
                 <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
                   <topic.icon className="h-5 w-5 text-primary" />
@@ -184,7 +184,7 @@ const FullStackDeveloper = () => {
             {interactiveFeatures.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/70 p-5 text-sm backdrop-blur-xl transition-all duration-200 hover:border-primary/50"
+                className="flex items-start gap-3 rounded-xl border border-border/60 bg-card/70 p-5 text-sm transition-all duration-200 hover:border-primary/50"
               >
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span className="text-foreground/85">{item}</span>

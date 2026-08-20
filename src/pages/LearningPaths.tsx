@@ -78,7 +78,7 @@ const StepCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex flex-col items-center text-center p-6 rounded-xl bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+      <div className="flex flex-col items-center text-center p-6 rounded-xl bg-card/80 dark:bg-black/60 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
         <div className="relative mb-4">
           <div className={`absolute inset-0 rounded-full bg-primary/30 blur-lg transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
           <div className="relative w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
@@ -127,7 +127,7 @@ const FeatureCard = ({
       }}
       onMouseEnter={() => setIsHovered(true)}
     >
-      <div className="h-full p-6 rounded-xl bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden">
+      <div className="h-full p-6 rounded-xl bg-card/80 dark:bg-black/60 border border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden">
         {/* Watermark Icon */}
         <Icon className="absolute bottom-4 right-4 w-20 h-20 text-primary/10 pointer-events-none" />
         
@@ -160,7 +160,7 @@ const PathCard = ({
   delay: number;
 }) => (
   <div 
-    className="group p-4 rounded-lg bg-card/80 dark:bg-black/40 backdrop-blur-xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10 flex items-center gap-3 cursor-default animate-fade-in"
+    className="group p-4 rounded-lg bg-card/80 dark:bg-black/60 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/10 flex items-center gap-3 cursor-default animate-fade-in"
     style={{ animationDelay: `${delay}ms`, animationFillMode: 'backwards' }}
   >
     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -204,7 +204,7 @@ const MainCard = ({
       }}
       onMouseEnter={() => setIsHovered(true)}
     >
-      <Card className="relative h-full bg-card/80 dark:bg-black/40 backdrop-blur-xl border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden group">
+      <Card className="relative h-full bg-card/80 dark:bg-black/60 border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden group">
         {/* Watermark Icon */}
         <Icon className="absolute bottom-6 right-6 w-32 h-32 text-primary/10 pointer-events-none" />
         

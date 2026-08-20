@@ -58,7 +58,7 @@ const capabilities: Capability[] = [
 const ChatMockup = () => (
   <div className="relative mx-auto w-full max-w-xl">
     <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-primary/18 blur-[70px]" />
-    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/60 backdrop-blur-xl shadow-2xl">
+    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-card/80 shadow-2xl">
       <div className="flex items-center gap-2 border-b border-border/50 px-5 py-3">
         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15">
           <Bot className="h-3.5 w-3.5 text-primary" />
@@ -138,10 +138,10 @@ const AILearning = () => {
             <div
               key={item.title}
               className={cn(
-                "group relative overflow-hidden rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-200",
+                "group relative overflow-hidden rounded-[2rem] border p-8 transition-all duration-200",
                 item.featured
                   ? "border-primary/25 bg-gradient-to-br from-primary/10 to-transparent hover:border-primary/55"
-                  : "border-border/60 bg-card/40 hover:border-primary/40",
+                  : "border-border/60 bg-card/70 hover:border-primary/40",
                 item.span
               )}
             >
@@ -166,7 +166,7 @@ const AILearning = () => {
 
       {/* Two-up detail panels */}
       <section className="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-8 backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-8">
           <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Zap className="h-6 w-6 text-primary" />
           </div>
@@ -178,7 +178,7 @@ const AILearning = () => {
           </p>
         </div>
 
-        <div className="rounded-[2rem] border border-border/60 bg-card/40 p-8 backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-border/60 bg-card/70 p-8">
           <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
             <Video className="h-6 w-6 text-primary" />
           </div>

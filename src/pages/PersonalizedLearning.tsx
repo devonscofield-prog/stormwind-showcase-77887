@@ -64,8 +64,8 @@ const ToolBento = ({ items }: { items: Tool[] }) => (
       <div
         key={item.title}
         className={cn(
-          "group relative overflow-hidden rounded-[2rem] p-8 backdrop-blur-xl transition-all duration-200",
-          "bg-card/40 border",
+          "group relative overflow-hidden rounded-[2rem] p-8 transition-all duration-200",
+          "bg-card/70 border",
           item.featured
             ? "border-primary/30 bg-gradient-to-br from-primary/10 to-transparent hover:border-primary"
             : "border-border/60 hover:border-primary/50",
@@ -97,7 +97,7 @@ const VideoPanel = ({
 }) => (
   <div className="relative mb-20 animate-fade-in">
     <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-primary/40 via-accent-teal/30 to-primary/40 opacity-30 blur-xl pointer-events-none" />
-    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-black/40 backdrop-blur-sm shadow-2xl">
+    <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-black/40 shadow-2xl">
       <VideoEmbed
         videoId={videoId}
         title={title}
@@ -123,17 +123,13 @@ const PersonalizedLearning = () => {
       titleIcon={Sparkles}
       backgroundClassName="bg-stormai-aurora"
     >
-      {/* Ambient drifting glows */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="animate-aurora-drift absolute -top-[15%] -left-[10%] h-[55%] w-[55%] rounded-full bg-primary/20 blur-[140px]" />
-        <div className="animate-aurora-drift-slow absolute top-[30%] -right-[15%] h-[50%] w-[50%] rounded-full bg-accent-teal/20 blur-[140px]" />
-        <div className="animate-aurora-drift absolute -bottom-[20%] left-[20%] h-[45%] w-[55%] rounded-full bg-primary/15 blur-[150px]" />
-      </div>
+      {/* Ambient glow — static gradient layer (no per-frame blur repaint) */}
+      <div className="ambient-aurora-static pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="flex justify-center mb-14">
-          <TabsList className="inline-flex flex-col md:flex-row h-auto gap-1 rounded-2xl border border-border/60 bg-card/40 p-1 backdrop-blur-md w-full md:w-auto">
+          <TabsList className="inline-flex flex-col md:flex-row h-auto gap-1 rounded-2xl border border-border/60 bg-card/70 p-1 w-full md:w-auto">
             <TabsTrigger value="personalized" className={tabTriggerClass}>
               Personalized Learning
             </TabsTrigger>

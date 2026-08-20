@@ -264,7 +264,7 @@ const AIPro = () => {
           {topics.map((topic) => (
             <div
               key={topic.title}
-              className="group rounded-2xl border border-border/60 bg-card/80 p-6 backdrop-blur-xl transition-all duration-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+              className="group rounded-2xl border border-border/60 bg-card/80 p-6 transition-all duration-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-200 group-hover:bg-primary/20">
                 <topic.icon className="h-5 w-5 text-primary" />
@@ -314,7 +314,7 @@ const AIPro = () => {
           {visible.map((course) => (
             <article
               key={course.code}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-xl transition-all duration-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+              className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/80 transition-all duration-200 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="flex-1 p-6">
                 <h3 className="text-xl font-bold tracking-tight">{course.title}</h3>
