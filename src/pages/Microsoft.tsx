@@ -592,7 +592,7 @@ const Microsoft = () => {
             </div>
 
             {/* License card */}
-            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
+            <div className="rounded-2xl border border-border/60 bg-card/70 p-8 shadow-[0_20px_60px_-30px_hsl(var(--foreground)/0.45)]">
               <div className="grid grid-cols-2 gap-y-6">
                 <div>
                   <div className="text-3xl font-bold tracking-tight text-foreground">30+</div>
@@ -646,7 +646,7 @@ const Microsoft = () => {
                   aria-pressed={isActive}
                   onClick={() => handleTopicClick(topic.title)}
                   className={cn(
-                    "group rounded-2xl border p-6 text-left backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
+                    "group rounded-2xl border p-6 text-left transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
                     isActive
                       ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
                       : "border-border/60 bg-card/70"
@@ -691,7 +691,7 @@ const Microsoft = () => {
                   "rounded-lg border px-4 py-1.5 text-sm font-medium transition-all duration-200",
                   filter === aud
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border/60 bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                    : "border-border/60 bg-card/80 text-muted-foreground hover:border-primary/40 hover:text-foreground"
                 )}
               >
                 {aud}
@@ -713,7 +713,7 @@ const Microsoft = () => {
             {visible.map((course) => (
               <article
                 key={course.code}
-                className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/70 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+                className="flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/70 transition-all duration-200 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
               >
                 <div className="flex items-start gap-4 border-b border-border/60 p-6">
                   <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-primary/25 bg-primary/10">
