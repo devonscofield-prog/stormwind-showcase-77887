@@ -73,7 +73,7 @@ export const Navigation = () => {
             onClick={() => navigate('/')}
             width={150}
             height={48}
-            fetchPriority="high"
+            {...{ fetchpriority: "high" }}
           />
           
           {/* Desktop Navigation */}
