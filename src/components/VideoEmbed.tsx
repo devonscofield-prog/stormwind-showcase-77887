@@ -35,6 +35,9 @@ declare global {
   }
 }
 
+// Module-level cache so remounts (e.g. tab switches) don't refetch thumbnails
+const thumbnailCache = new Map<string, string>();
+
 export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: VideoEmbedProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -50,8 +53,10 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
   // Video tracking
   useVideoTracking(videoId, showVideo, trackingMetadata || {});
 
-  // Load Wistia player script once
+  // Load Wistia player script only once the user has requested playback
   useEffect(() => {
+    if (!showVideo || isPlaceholder) return;
+
     if (document.getElementById('wistia-player-script')) {
       setScriptLoaded(true);
       return;
@@ -68,7 +73,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     return () => {
       // Don't remove the script on cleanup - it should persist
     };
-  }, []);
+  }, [showVideo, isPlaceholder]);
 
   // Load video-specific embed script when showing video
   useEffect(() => {
@@ -85,36 +90,34 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     document.head.appendChild(script);
   }, [videoId, showVideo, isPlaceholder, scriptLoaded]);
 
-  // Handle player ready state
+  // Handle player ready state — listen for the player element instead of polling
   useEffect(() => {
     if (!showVideo || !scriptLoaded) return;
 
-    const checkPlayer = () => {
-      const player = containerRef.current?.querySelector('wistia-player');
-      if (player) {
-        setVideoLoaded(true);
-      }
-    };
+    const player = containerRef.current?.querySelector('wistia-player');
+    const onReady = () => setVideoLoaded(true);
 
-    // Check immediately and then poll briefly
-    checkPlayer();
-    const interval = setInterval(checkPlayer, 100);
-    const timeout = setTimeout(() => {
-      clearInterval(interval);
-      if (!videoLoaded) {
-        setVideoLoaded(true); // Assume loaded after timeout
-      }
-    }, 2000);
+    player?.addEventListener('player-api-ready', onReady);
+
+    // Single fallback in case the ready event never fires
+    const timeout = setTimeout(onReady, 2000);
 
     return () => {
-      clearInterval(interval);
+      player?.removeEventListener('player-api-ready', onReady);
       clearTimeout(timeout);
     };
-  }, [showVideo, scriptLoaded, videoLoaded]);
+  }, [showVideo, scriptLoaded]);
 
-  // Fetch Wistia thumbnail when videoId changes using JSONP
+  // Resolve Wistia thumbnail — cached, with a deterministic URL first
   useEffect(() => {
     if (isPlaceholder || thumbnail) {
+      setThumbnailLoading(false);
+      return;
+    }
+
+    const cached = thumbnailCache.get(videoId);
+    if (cached) {
+      setWistiaThumbnail(cached);
       setThumbnailLoading(false);
       return;
     }
@@ -127,6 +130,7 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
     (window as any)[callbackName] = (data: any) => {
       if (data?.thumbnail_url) {
         const highResThumbnail = data.thumbnail_url.replace(/\?.*$/, '');
+        thumbnailCache.set(videoId, highResThumbnail);
         setWistiaThumbnail(highResThumbnail);
       }
       setThumbnailLoading(false);
@@ -242,6 +246,8 @@ export const VideoEmbed = ({ videoId, title, thumbnail, trackingMetadata }: Vide
             <img 
               src={displayThumbnail} 
               alt={title}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover"
             />
           ) : (
