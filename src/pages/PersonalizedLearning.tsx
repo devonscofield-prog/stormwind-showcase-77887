@@ -123,12 +123,8 @@ const PersonalizedLearning = () => {
       titleIcon={Sparkles}
       backgroundClassName="bg-stormai-aurora"
     >
-      {/* Ambient drifting glows */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="animate-aurora-drift absolute -top-[15%] -left-[10%] h-[55%] w-[55%] rounded-full bg-primary/20 blur-[140px]" />
-        <div className="animate-aurora-drift-slow absolute top-[30%] -right-[15%] h-[50%] w-[50%] rounded-full bg-accent-teal/20 blur-[140px]" />
-        <div className="animate-aurora-drift absolute -bottom-[20%] left-[20%] h-[45%] w-[55%] rounded-full bg-primary/15 blur-[150px]" />
-      </div>
+      {/* Ambient glow — static gradient layer (no per-frame blur repaint) */}
+      <div className="ambient-aurora-static pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
