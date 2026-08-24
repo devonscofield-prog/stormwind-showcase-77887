@@ -39,20 +39,34 @@ const Index = () => {
     document.title = "Home";
   }, []);
 
-  // Scroll to content when tab changes (but not on initial render)
+// Scroll to content when tab changes (but not on initial render)
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
     
+    scrollToContent();
+  }, [activeTab]);
+
+  const scrollToContent = () => {
     const contentSection = document.getElementById("content-section");
     if (contentSection) {
       contentSection.scrollIntoView({
         behavior: "smooth"
       });
     }
-  }, [activeTab]);
+  };
+
+  // "See the program" should scroll down to the section even when the
+  // target tab is already the active one (no state change to trigger the
+  // activeTab effect above).
+  const handleSeeProgram = (tabValue: string) => {
+    setActiveTab(tabValue);
+    if (tabValue === activeTab) {
+      scrollToContent();
+    }
+  };
 
   return (
     <div className="min-h-screen relative">
