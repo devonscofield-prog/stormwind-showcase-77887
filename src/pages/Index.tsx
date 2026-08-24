@@ -39,20 +39,34 @@ const Index = () => {
     document.title = "Home";
   }, []);
 
-  // Scroll to content when tab changes (but not on initial render)
+// Scroll to content when tab changes (but not on initial render)
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
     
+    scrollToContent();
+  }, [activeTab]);
+
+  const scrollToContent = () => {
     const contentSection = document.getElementById("content-section");
     if (contentSection) {
       contentSection.scrollIntoView({
         behavior: "smooth"
       });
     }
-  }, [activeTab]);
+  };
+
+  // "See the program" should scroll down to the section even when the
+  // target tab is already the active one (no state change to trigger the
+  // activeTab effect above).
+  const handleSeeProgram = (tabValue: string) => {
+    setActiveTab(tabValue);
+    if (tabValue === activeTab) {
+      scrollToContent();
+    }
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -71,7 +85,7 @@ const Index = () => {
         <Hero onTabChange={setActiveTab} />
       </div>
 
-      <SolutionFinder onTabChange={setActiveTab} />
+      <SolutionFinder onTabChange={handleSeeProgram} />
 
       {/* Blended lower section: banner, trust signals, and tabbed content share a continuous surface */}
       <div className="relative z-10 bg-gradient-to-b from-transparent via-primary/[0.02] to-primary/[0.05]">
