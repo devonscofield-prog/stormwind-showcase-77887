@@ -85,7 +85,7 @@ const Index = () => {
         <Hero onTabChange={setActiveTab} />
       </div>
 
-      <SolutionFinder onTabChange={setActiveTab} />
+      <SolutionFinder onTabChange={handleSeeProgram} />
 
       {/* Blended lower section: banner, trust signals, and tabbed content share a continuous surface */}
       <div className="relative z-10 bg-gradient-to-b from-transparent via-primary/[0.02] to-primary/[0.05]">
