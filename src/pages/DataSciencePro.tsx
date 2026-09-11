@@ -104,7 +104,6 @@ const heroStats = [
   { n: "258", l: "courses across four tracks" },
   { n: "104", l: "SQL Server, T-SQL & Excel courses" },
   { n: "60", l: "Power BI courses" },
-  { n: "2", l: "featured Microsoft certifications" },
 ];
 
 const benefits = [
