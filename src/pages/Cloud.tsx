@@ -365,7 +365,17 @@ const CloudTraining = () => {
             </div>
 
             <div className="relative">
-              <RangeLibraryWindow />
+              <div className="overflow-hidden rounded-[16px] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+                <VideoEmbed
+                  videoId="4h1c0m2kaf"
+                  title="Azure Range Demo"
+                  trackingMetadata={{
+                    courseName: "StormWind Ranges",
+                    variantName: "Azure Range",
+                    lessonTitle: "Azure Range Demo Video",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </section>
