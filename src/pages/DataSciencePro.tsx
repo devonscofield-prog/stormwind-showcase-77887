@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/PageLayout";
 import { DataIsoScene } from "@/components/DataIsoScene";
 import { IsoGlyph } from "@/components/IsoGlyph";
-import { DataReportWindow } from "@/components/DataReportWindow";
+import { CertPathWindow } from "@/components/CertPathWindow";
 import type { GlyphKind } from "@/lib/isoScene";
 
 const topics: {
@@ -334,7 +334,7 @@ const DataSciencePro = () => {
             </div>
 
             <div className="relative">
-              <DataReportWindow />
+              <CertPathWindow />
             </div>
           </div>
         </section>
