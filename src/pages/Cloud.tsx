@@ -1,53 +1,64 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Check, FlaskConical, Monitor } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Check,
+  FlaskConical,
+  Monitor,
+  Layers,
+  Box,
+  LayoutGrid,
+  Boxes,
+  ShieldCheck,
+  Database,
+  type LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/PageLayout";
 import { CloudIsoScene } from "@/components/CloudIsoScene";
-import { IsoGlyph } from "@/components/IsoGlyph";
-import { RangeLibraryWindow } from "@/components/RangeLibraryWindow";
-import type { GlyphKind } from "@/lib/isoScene";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import benBurich from "@/assets/ben-burich.png";
 import abdelSalem from "@/assets/abdel-salem.png";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import willPanek from "@/assets/will-panek.png";
 import spikeXavier from "@/assets/spike-xavier.png";
 
-const topics: { title: string; description: string; glyph: GlyphKind; color: string }[] = [
+const topics: { title: string; description: string; icon: LucideIcon; color: string }[] = [
   {
     title: "Microsoft Azure",
     description:
       "Cloud computing, infrastructure, DevOps, security, and virtual desktop solutions.",
-    glyph: "stack",
+    icon: Layers,
     color: "#2F8FE0",
   },
   {
     title: "Amazon Web Services",
     description: "AWS fundamentals, solutions architecture, and cloud practitioner training.",
-    glyph: "cube",
+    icon: Box,
     color: "#E8931C",
   },
   {
     title: "Google Cloud Platform",
     description: "GCP fundamentals, cloud architecture, and certification preparation.",
-    glyph: "grid",
+    icon: LayoutGrid,
     color: "#E0483C",
   },
   {
     title: "Containerization & IaC",
     description: "Docker, Kubernetes, Terraform, and CI/CD automation.",
-    glyph: "grid",
+    icon: Boxes,
     color: "#0C86C0",
   },
   {
     title: "Cloud Security",
     description: "Security architecture, identity management, and compliance.",
-    glyph: "shield",
+    icon: ShieldCheck,
     color: "#1A9671",
   },
   {
     title: "Cloud Databases",
     description: "Azure SQL, AWS RDS, Cloud SQL, and database migration.",
-    glyph: "db",
+    icon: Database,
     color: "#7C5CF0",
   },
 ];
@@ -226,7 +237,16 @@ const CloudTraining = () => {
                     background: `linear-gradient(180deg, ${t.color}1A, ${t.color}08)`,
                   }}
                 >
-                  <IsoGlyph kind={t.glyph} color={t.color} />
+                  <div
+                    className="grid h-[76px] w-[76px] place-items-center rounded-[18px] border"
+                    style={{
+                      borderColor: `${t.color}33`,
+                      background: `${t.color}14`,
+                      color: t.color,
+                    }}
+                  >
+                    <t.icon className="h-9 w-9" strokeWidth={1.5} />
+                  </div>
                 </div>
                 <div className="px-6 pb-6 pt-5">
                   <h3 className="mb-2 text-[18px] font-bold leading-[1.25] tracking-[-0.022em] text-foreground">
@@ -345,7 +365,17 @@ const CloudTraining = () => {
             </div>
 
             <div className="relative">
-              <RangeLibraryWindow />
+              <div className="overflow-hidden rounded-[16px] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+                <VideoEmbed
+                  videoId="4h1c0m2kaf"
+                  title="Azure Range Demo"
+                  trackingMetadata={{
+                    courseName: "StormWind Ranges",
+                    variantName: "Azure Range",
+                    lessonTitle: "Azure Range Demo Video",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </section>
