@@ -15,7 +15,9 @@ export const P = (x: number, y: number, z: number): Pt => [
 ];
 
 export const poly = (pts: Pt[], fill: string, extra = ""): string =>
-  `<path d="M${pts.map((p) => p.join(" ")).join("L")}Z" fill="${fill}" ${extra}/>`;
+  `<path d="M${pts
+    .map((p) => p.map((n) => Math.round(n * 100) / 100).join(" "))
+    .join("L")}Z" fill="${fill}" stroke="${fill}" stroke-width="0.7" stroke-linejoin="round" shape-rendering="geometricPrecision" ${extra}/>`;
 
 /** Cuboid at grid (x,y,z) with size w (x), d (y), h (z). */
 export function cuboid(

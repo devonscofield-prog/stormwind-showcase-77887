@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/PageLayout";
 import { CloudIsoScene } from "@/components/CloudIsoScene";
 import { IsoGlyph } from "@/components/IsoGlyph";
-import { RangeTerminal } from "@/components/RangeTerminal";
+import { RangeLibraryWindow } from "@/components/RangeLibraryWindow";
 import type { GlyphKind } from "@/lib/isoScene";
 import benBurich from "@/assets/ben-burich.png";
 import abdelSalem from "@/assets/abdel-salem.png";
@@ -345,7 +345,7 @@ const CloudTraining = () => {
             </div>
 
             <div className="relative">
-              <RangeTerminal />
+              <RangeLibraryWindow />
             </div>
           </div>
         </section>

@@ -14,6 +14,7 @@ export const IsoGlyph = ({ kind, color }: IsoGlyphProps) => {
       viewBox="0 0 120 110"
       aria-hidden="true"
       focusable="false"
+      shapeRendering="geometricPrecision"
       style={{ width: 120, height: 110, overflow: "visible" }}
       dangerouslySetInnerHTML={{ __html: markup }}
     />
