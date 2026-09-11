@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, FlaskConical } from "lucide-react";
+import { ArrowRight, BookOpen, Check, FlaskConical, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/PageLayout";
 import { RackScene } from "@/components/RackScene";
 import { LedStrip } from "@/components/LedStrip";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import raymondLacoste from "@/assets/raymond-lacoste.png";
 import danYoung from "@/assets/dan-young.png";
 
@@ -90,6 +91,13 @@ const featuredCourses: {
     description:
       "Master network protocol analysis with Wireshark. Learn to capture, filter, and analyze network traffic for troubleshooting, security analysis, and performance optimization. Essential skills for any network professional.",
   },
+];
+
+const rangeBullets = [
+  "Cisco routers and multi-layer switches",
+  "Over 70 hands-on lab activities",
+  "Routing, switching, security, and IPv6 scenarios",
+  "Isolated environments built for safe practice",
 ];
 
 const Networking = () => {
@@ -236,6 +244,66 @@ const Networking = () => {
                 </span>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* NETWORKING RANGE BAND */}
+        <section className="pb-16">
+          <div className="relative grid items-center gap-12 overflow-hidden rounded-[24px] bg-[#0F1720] p-9 text-[#E6EDF3] lg:grid-cols-2 lg:p-14">
+            <div
+              className="pointer-events-none absolute -right-[200px] -top-[200px] h-[400px] w-[600px] rounded-full"
+              style={{
+                background: "radial-gradient(circle, rgba(52,211,153,.25), transparent 65%)",
+              }}
+            />
+            <div className="relative">
+              <span className="font-mono text-[11.5px] font-semibold uppercase leading-none tracking-[0.25em] text-[#34D399]">
+                Hands-on
+              </span>
+              <h2 className="mt-4 text-[36px] font-bold leading-[1.12] tracking-[-0.034em] text-white">
+                The Networking Range
+              </h2>
+              <p className="mt-3.5 leading-[1.65] text-[rgba(230,237,243,0.72)]">
+                A dynamic networking sandbox built for both simple setups and advanced architectures,
+                featuring multiple routers, multi-layer switches, and a variety of connected hosts
+                and servers. Over 70 lab activities are available.
+              </p>
+              <ul className="mt-[22px] grid gap-2.5">
+                {rangeBullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex gap-2.5 text-[14.5px] text-[rgba(230,237,243,0.85)]"
+                  >
+                    <Check className="mt-[3px] h-4 w-4 flex-none text-[#34D399]" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                asChild
+                size="lg"
+                className="mt-[26px] rounded-lg bg-[#34D399] text-[#062019] hover:bg-[#5EE2AD]"
+              >
+                <Link to="/ranges">
+                  <Monitor className="mr-2 h-5 w-5" />
+                  See the Range
+                </Link>
+              </Button>
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-[16px] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+                <VideoEmbed
+                  videoId="6i6y01qjp0"
+                  title="Network Range Demo"
+                  trackingMetadata={{
+                    courseName: "StormWind Ranges",
+                    variantName: "Network Range",
+                    lessonTitle: "Network Range Demo Video",
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </section>
 
