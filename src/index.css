@@ -1330,8 +1330,79 @@ All colors MUST be HSL.
     background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--cloud-cyan-light)) 62%, hsl(193 90% 74%) 100%);
   }
 
+
+  /* ── DevOps page scope (light-first indigo) ── */
+  .devops-scope {
+    --devops-indigo: 243 75% 59%;
+    --devops-indigo-light: 234 89% 74%;
+    --primary: var(--devops-indigo);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--devops-indigo);
+  }
+
+  .dark .devops-scope {
+    --primary: var(--devops-indigo-light);
+    --primary-foreground: 240 40% 8%;
+    --ring: var(--devops-indigo-light);
+  }
+
+  .bg-devops-console {
+    background: hsl(0 0% 100%);
+  }
+
+  .dark .bg-devops-console {
+    background: hsl(var(--background));
+  }
+
+  .devops-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 8%, hsl(var(--devops-indigo)) 65%, hsl(252 80% 60%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .devops-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--devops-indigo-light)) 62%, hsl(252 90% 80%) 100%);
+  }
+
+  /* ── Data Science Pro page scope (light-first amber) ── */
+  .datascience-scope {
+    --ds-amber: 32 95% 44%;
+    --ds-amber-light: 43 96% 56%;
+    --primary: var(--ds-amber);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--ds-amber);
+  }
+
+  .dark .datascience-scope {
+    --primary: var(--ds-amber-light);
+    --primary-foreground: 30 40% 8%;
+    --ring: var(--ds-amber-light);
+  }
+
+  .bg-datascience-console {
+    background: hsl(0 0% 100%);
+  }
+
+  .dark .bg-datascience-console {
+    background: hsl(var(--background));
+  }
+
+  .datascience-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 8%, hsl(var(--ds-amber)) 65%, hsl(20 90% 50%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .datascience-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--ds-amber-light)) 62%, hsl(43 96% 76%) 100%);
+  }
+
   /* Floating labels over the isometric hero scene */
-  .cloud-scope .iso .lab {
+  .cloud-scope .iso .lab,
+  .devops-scope .iso .lab,
+  .datascience-scope .iso .lab {
     position: absolute;
     display: flex;
     align-items: center;
@@ -1346,17 +1417,23 @@ All colors MUST be HSL.
     box-shadow: 0 12px 28px -14px rgba(18, 38, 52, 0.35);
   }
 
-  .cloud-scope .iso .lab i {
+  .cloud-scope .iso .lab i,
+  .devops-scope .iso .lab i,
+  .datascience-scope .iso .lab i {
     width: 8px;
     height: 8px;
     border-radius: 50%;
   }
 
-  .cloud-scope .iso .lab.live i {
+  .cloud-scope .iso .lab.live i,
+  .devops-scope .iso .lab.live i,
+  .datascience-scope .iso .lab.live i {
     box-shadow: 0 0 0 4px rgba(26, 150, 113, 0.18);
   }
 
-  .cloud-scope .iso .lab small {
+  .cloud-scope .iso .lab small,
+  .devops-scope .iso .lab small,
+  .datascience-scope .iso .lab small {
     font-weight: 500;
     color: hsl(var(--muted-foreground));
   }
@@ -1371,23 +1448,33 @@ All colors MUST be HSL.
     }
   }
 
-  .cloud-scope .iso .bob {
+  .cloud-scope .iso .bob,
+  .devops-scope .iso .bob,
+  .datascience-scope .iso .bob {
     animation: cloud-bob 5s ease-in-out infinite;
   }
 
-  .cloud-scope .iso .bob2 {
+  .cloud-scope .iso .bob2,
+  .devops-scope .iso .bob2,
+  .datascience-scope .iso .bob2 {
     animation: cloud-bob 6.5s ease-in-out infinite reverse;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .cloud-scope .iso .bob,
-    .cloud-scope .iso .bob2 {
+    .cloud-scope .iso .bob2,
+    .devops-scope .iso .bob,
+    .devops-scope .iso .bob2,
+    .datascience-scope .iso .bob,
+    .datascience-scope .iso .bob2 {
       animation: none;
     }
   }
 
   @media (max-width: 720px) {
-    .cloud-scope .iso .lab {
+    .cloud-scope .iso .lab,
+    .devops-scope .iso .lab,
+    .datascience-scope .iso .lab {
       display: none;
     }
   }
