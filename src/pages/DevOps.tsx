@@ -90,14 +90,12 @@ const heroStats = [
   { n: "3", l: "Kubernetes certifications" },
   { n: "4", l: "DevOps playgrounds" },
   { n: "3", l: "cloud platforms — AWS, Azure, GCP" },
-  { n: "0", l: "cleanup required" },
 ];
 
 const playgroundFeatures = [
   "Instant environment provisioning",
   "Pre-configured scenarios",
   "Safe sandbox environments",
-  "No cleanup required",
 ];
 
 const DevOps = () => {
