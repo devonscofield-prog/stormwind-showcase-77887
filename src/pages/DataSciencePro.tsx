@@ -27,7 +27,7 @@ const topics: {
 }[] = [
   {
     title: "Power BI",
-    glyph: "bars",
+    icon: BarChart3,
     color: "#E3B505",
     metaColor: "#B58F03",
     count: "60 courses",
@@ -37,7 +37,7 @@ const topics: {
   },
   {
     title: "Cloud Data",
-    glyph: "stack",
+    icon: Cloud,
     color: "#2F8FE0",
     metaColor: "#2F8FE0",
     count: "44 courses",
@@ -47,7 +47,7 @@ const topics: {
   },
   {
     title: "Data Skills",
-    glyph: "db",
+    icon: Database,
     color: "#CC2927",
     metaColor: "#CC2927",
     count: "104 courses",
@@ -57,7 +57,7 @@ const topics: {
   },
   {
     title: "Power Platform",
-    glyph: "grid",
+    icon: LayoutGrid,
     color: "#742774",
     metaColor: "#742774",
     count: "50 courses",
@@ -218,7 +218,16 @@ const DataSciencePro = () => {
                     background: `linear-gradient(180deg, ${t.color}1A, ${t.color}08)`,
                   }}
                 >
-                  <IsoGlyph kind={t.glyph} color={t.color} />
+                  <div
+                    className="grid h-[76px] w-[76px] place-items-center rounded-[18px] border"
+                    style={{
+                      borderColor: `${t.color}33`,
+                      background: `${t.color}14`,
+                      color: t.color,
+                    }}
+                  >
+                    <t.icon className="h-9 w-9" strokeWidth={1.5} />
+                  </div>
                 </div>
                 <div className="px-6 pb-6 pt-5">
                   <h3 className="mb-2 text-[18px] font-bold leading-[1.25] tracking-[-0.022em] text-foreground">

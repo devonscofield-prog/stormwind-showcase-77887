@@ -25,7 +25,7 @@ const topics: {
   {
     title: "Containerization",
     description: "Docker, Kubernetes (CKA, CKAD, CKS), Helm, and Service Mesh.",
-    glyph: "grid",
+    icon: Boxes,
     color: "#326CE5",
     bullets: [
       "Docker & Docker Swarm",
@@ -37,7 +37,7 @@ const topics: {
   {
     title: "Infrastructure as Code",
     description: "Automate infrastructure provisioning across cloud platforms.",
-    glyph: "stack",
+    icon: Layers,
     color: "#7B42BC",
     bullets: [
       "Terraform & Terraform Cloud",
@@ -49,7 +49,7 @@ const topics: {
   {
     title: "CI/CD & GitOps",
     description: "Continuous delivery pipelines and modern workflows.",
-    glyph: "pipe",
+    icon: GitBranch,
     color: "#EF7B4D",
     bullets: [
       "GitOps with ArgoCD & FluxCD",
@@ -193,7 +193,16 @@ const DevOps = () => {
                     background: `linear-gradient(180deg, ${t.color}1A, ${t.color}08)`,
                   }}
                 >
-                  <IsoGlyph kind={t.glyph} color={t.color} />
+                  <div
+                    className="grid h-[76px] w-[76px] place-items-center rounded-[18px] border"
+                    style={{
+                      borderColor: `${t.color}33`,
+                      background: `${t.color}14`,
+                      color: t.color,
+                    }}
+                  >
+                    <t.icon className="h-9 w-9" strokeWidth={1.5} />
+                  </div>
                 </div>
                 <div className="px-6 pb-6 pt-5">
                   <h3 className="mb-2 text-[18px] font-bold leading-[1.25] tracking-[-0.022em] text-foreground">
