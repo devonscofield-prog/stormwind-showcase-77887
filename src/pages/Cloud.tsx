@@ -170,7 +170,7 @@ const CloudTraining = () => {
             </span>
 
             <h1 className="mt-[22px] text-[clamp(44px,5.6vw,70px)] font-bold leading-[1.03] tracking-[-0.042em] text-foreground">
-              Cloud <span className="text-primary">Training</span>
+              Cloud <span className="text-gradient-brand">Training</span>
             </h1>
 
             <p className="mt-[22px] max-w-[36rem] text-[18px] leading-[1.65] text-muted-foreground">
