@@ -1,27 +1,9 @@
 import { ArrowLeft, Lock, Rocket, RotateCw } from "lucide-react";
 
-/** Static browser-window mockup of a StormWind certification-prep path navigator,
+/** Static mockup of a certification-prep path navigator concept,
  *  shown on the Data Science Pro page. */
 export const CertPathWindow = () => (
   <div className="w-full overflow-hidden rounded-[12px] border border-white/10 bg-[#0F1720] shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
-    {/* browser chrome */}
-    <div className="flex items-center gap-2 border-b border-white/[0.06] px-3 pt-2.5">
-      <div className="flex items-center gap-2 rounded-t-[7px] bg-[#1B2530] px-3 py-[7px] text-[10.5px] text-[#C8D3DE]">
-        <span className="block h-2 w-2 rounded-full bg-[#3B9BE8]" />
-        StormWind Cert Navigator
-      </div>
-    </div>
-    <div className="flex items-center gap-2 bg-[#1B2530] px-3 py-2">
-      <span className="flex gap-1.5">
-        <i className="block h-[7px] w-[7px] rounded-full bg-[#2B3543]" />
-        <i className="block h-[7px] w-[7px] rounded-full bg-[#2B3543]" />
-        <i className="block h-[7px] w-[7px] rounded-full bg-[#2B3543]" />
-      </span>
-      <span className="ml-1 flex-1 truncate rounded-full bg-[#0F1720] px-3 py-[5px] font-mono text-[10.5px] text-[#8FA0B0]">
-        certprep.stormwind.com/paths/pl-300
-      </span>
-    </div>
-
     {/* app */}
     <div
       className="relative h-[310px] min-w-0 overflow-hidden"
