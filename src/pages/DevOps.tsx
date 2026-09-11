@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { ArrowRight, BookOpen, Check, FlaskConical } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Boxes,
+  Check,
+  FlaskConical,
+  GitBranch,
+  Layers,
+  type LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/PageLayout";
 import { DevOpsIsoScene } from "@/components/DevOpsIsoScene";
-import { IsoGlyph } from "@/components/IsoGlyph";
 import { PlaygroundLibraryWindow } from "@/components/PlaygroundLibraryWindow";
-import type { GlyphKind } from "@/lib/isoScene";
 
 const topics: {
   title: string;
   description: string;
-  glyph: GlyphKind;
+  icon: LucideIcon;
   color: string;
   bullets: string[];
 }[] = [
