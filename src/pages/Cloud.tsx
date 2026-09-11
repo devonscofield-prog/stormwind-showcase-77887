@@ -237,7 +237,16 @@ const CloudTraining = () => {
                     background: `linear-gradient(180deg, ${t.color}1A, ${t.color}08)`,
                   }}
                 >
-                  <IsoGlyph kind={t.glyph} color={t.color} />
+                  <div
+                    className="grid h-[76px] w-[76px] place-items-center rounded-[18px] border"
+                    style={{
+                      borderColor: `${t.color}33`,
+                      background: `${t.color}14`,
+                      color: t.color,
+                    }}
+                  >
+                    <t.icon className="h-9 w-9" strokeWidth={1.5} />
+                  </div>
                 </div>
                 <div className="px-6 pb-6 pt-5">
                   <h3 className="mb-2 text-[18px] font-bold leading-[1.25] tracking-[-0.022em] text-foreground">
