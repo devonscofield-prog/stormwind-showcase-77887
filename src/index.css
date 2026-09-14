@@ -1617,6 +1617,78 @@ All colors MUST be HSL.
     }
   }
 
+  /* ── Security Awareness page scope (brand green, light-first) ── */
+  .sa-scope {
+    --sa-devA: #f4f7fa;
+    --sa-devB: #dce3ea;
+    --sa-devS: #c5cfd9;
+    --sa-scr: #ffffff;
+    --sa-bar: #b9c4d0;
+    --sa-bar2: #dce3ea;
+    --sa-purple: #7c5cf0;
+  }
+
+  .dark .sa-scope {
+    --sa-devA: #2a333c;
+    --sa-devB: #1d242b;
+    --sa-devS: #3a444d;
+    --sa-scr: #0f1417;
+    --sa-bar: #4a5561;
+    --sa-bar2: #2a333c;
+    --sa-purple: #b7a6ff;
+  }
+
+  .bg-sa-console {
+    background: hsl(0 0% 100%);
+  }
+
+  .dark .bg-sa-console {
+    background: hsl(var(--background));
+  }
+
+  /* Shield hero animation */
+  .sa-threat {
+    animation: sa-lunge 4.2s ease-in-out infinite;
+  }
+
+  @keyframes sa-lunge {
+    0%, 100% { transform: translate(0, 0); }
+    40% { transform: translate(var(--dx), var(--dy)); }
+    50% { transform: translate(calc(var(--dx) * 0.78), calc(var(--dy) * 0.78)) rotate(-8deg); }
+  }
+
+  .sa-shieldbody {
+    animation: sa-breathe 4.2s ease-in-out infinite;
+    transform-origin: 280px 230px;
+  }
+
+  @keyframes sa-breathe {
+    0%, 100% { transform: scale(1); }
+    45% { transform: scale(1.03); }
+  }
+
+  .sa-ring {
+    opacity: 0;
+    animation: sa-ring 3s ease-out infinite;
+    transform-origin: 280px 230px;
+  }
+
+  @keyframes sa-ring {
+    0% { opacity: 0.35; transform: scale(0.7); }
+    100% { opacity: 0; transform: scale(1.25); }
+  }
+
+  /* StormAI Phishing cross-link panel */
+  .sa-phish {
+    border-color: color-mix(in srgb, #7c5cf0 30%, hsl(var(--border)));
+    background: linear-gradient(135deg, color-mix(in srgb, #7c5cf0 7%, hsl(var(--card))), hsl(var(--card)));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sa-threat, .sa-shieldbody, .sa-ring { animation: none; }
+    .sa-ring { opacity: 0.2; }
+  }
+
   /* Floating labels over the isometric hero scene */
   .cloud-scope .iso .lab,
   .devops-scope .iso .lab,
