@@ -1,37 +1,40 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, BookOpen, Check, FlaskConical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileText, Sparkles, Shield, TrendingUp, BookOpen, FlaskConical, FileCheck, Clock, Users } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
+import { AppLauncher } from "@/components/AppLauncher";
 
 type Card = {
-  icon: typeof FileText;
   title: string;
   subtitle: string;
   bullets: string[];
   href?: string;
 };
 
-const TAB_TRIGGER_CLASS =
-  "bg-card/50 text-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-3 px-3 sm:py-4 sm:px-6 text-base font-semibold border-2 border-border data-[state=active]:border-primary hover:border-primary/60 transition-colors duration-200 cursor-pointer rounded-lg";
+type TrackKey = "desktop" | "business" | "compliance";
+
+const TRACK_COLOR: Record<TrackKey, string> = {
+  desktop: "#2B5FA6",
+  business: "#009970",
+  compliance: "#E8931C",
+};
 
 const desktopApps: Card[] = [
   {
-    icon: FileText,
     title: "Microsoft Apps",
     subtitle: "Master Microsoft 365 productivity tools",
     bullets: ["Word, Excel, PowerPoint", "Outlook & Teams", "OneDrive & SharePoint", "OneNote & Planner"],
     href: "/desktop-apps",
   },
   {
-    icon: Sparkles,
     title: "AI Tools",
     subtitle: "Leverage AI to boost productivity",
     bullets: ["Microsoft Copilot", "ChatGPT Essentials", "Prompt Engineering", "AI Best Practices"],
   },
   {
-    icon: Shield,
     title: "Security",
     subtitle: "Protect against cyber threats",
     bullets: ["Phishing Awareness", "Password Security", "Data Protection", "Safe Browsing Practices"],
@@ -41,21 +44,18 @@ const desktopApps: Card[] = [
 
 const businessSkills: Card[] = [
   {
-    icon: TrendingUp,
     title: "Communication",
     subtitle: "Connect clearly across the organization",
     bullets: ["Communication Skills", "Presentation Skills", "Business Writing"],
     href: "/business-skills",
   },
   {
-    icon: Clock,
     title: "Productivity",
     subtitle: "Get more done with less friction",
     bullets: ["Time Management", "Problem Solving", "Workplace Efficiency"],
     href: "/business-skills",
   },
   {
-    icon: Users,
     title: "Leadership",
     subtitle: "Build stronger teams and managers",
     bullets: ["Leadership & Teamwork", "Coaching & Feedback", "Collaboration"],
@@ -65,21 +65,18 @@ const businessSkills: Card[] = [
 
 const hrCompliance: Card[] = [
   {
-    icon: FileCheck,
     title: "Harassment Prevention",
     subtitle: "State-specific, legally reviewed training",
     bullets: ["Harassment Prevention", "Respectful Workplace", "Manager Responsibilities"],
     href: "/hr-compliance",
   },
   {
-    icon: Shield,
     title: "Workplace Safety & Data Protection",
     subtitle: "Keep people and information safe",
     bullets: ["Workplace Safety", "Data Protection", "Privacy Requirements"],
     href: "/hr-compliance",
   },
   {
-    icon: FileCheck,
     title: "Ethics & Compliance",
     subtitle: "Meet regulatory training requirements",
     bullets: ["Ethics & Compliance", "Code of Conduct", "Reporting & Escalation"],
@@ -87,7 +84,13 @@ const hrCompliance: Card[] = [
   },
 ];
 
-const benefits: Record<string, { heading: string; items: string[] }> = {
+const tracks: { key: TrackKey; label: string; cards: Card[] }[] = [
+  { key: "desktop", label: "Desktop Applications", cards: desktopApps },
+  { key: "business", label: "Business Skills", cards: businessSkills },
+  { key: "compliance", label: "HR Compliance", cards: hrCompliance },
+];
+
+const benefits: Record<TrackKey, { heading: string; items: string[] }> = {
   desktop: {
     heading: "Desktop Applications Benefits",
     items: [
@@ -130,120 +133,148 @@ const benefits: Record<string, { heading: string; items: string[] }> = {
 };
 
 const EnterpriseEndUserPage = () => {
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("desktop");
+  const [activeTab, setActiveTab] = useState<TrackKey>("desktop");
 
-  const renderCards = (cards: Card[]) => (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card) => {
-        const Icon = card.icon;
-        return (
-          <div
-            key={card.title}
-            className="rounded-lg bg-card/50 border border-border p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:scale-105 flex flex-col"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <Icon className="w-8 h-8 text-primary flex-shrink-0" />
-              <h4 className="text-xl font-bold">{card.title}</h4>
-            </div>
-            <p className="text-sm text-muted-foreground mb-4">{card.subtitle}</p>
-            <ul className="space-y-2 text-sm mb-4 flex-1">
-              {card.bullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span className="text-muted-foreground">{bullet}</span>
-                </li>
-              ))}
-            </ul>
-            {card.href && (
-              <Button size="sm" variant="outline" className="w-full gap-2" onClick={() => navigate(card.href!)}>
+  useEffect(() => {
+    document.title = "Enterprise End User Package";
+  }, []);
+
+  const color = TRACK_COLOR[activeTab];
+
+  const renderCards = (cards: Card[], c: string) => (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {cards.map((card) => (
+        <article
+          key={card.title}
+          className="relative flex flex-col overflow-hidden rounded-[14px] border border-border bg-card px-[22px] pb-6 pt-[22px] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_30px_60px_-36px_rgba(15,23,32,0.45)]"
+        >
+          <span className="absolute inset-x-0 top-0 h-1" style={{ background: c }} />
+          <h3 className="mb-1.5 text-[17.5px] font-bold leading-[1.25] tracking-[-0.02em] text-foreground">
+            {card.title}
+          </h3>
+          <p className="mb-3 text-[13.5px] text-muted-foreground">{card.subtitle}</p>
+          <ul className="flex-1 space-y-2">
+            {card.bullets.map((bullet) => (
+              <li key={bullet} className="flex items-start gap-2.5 text-[14px] leading-[1.5] text-muted-foreground">
+                <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full" style={{ background: c }} />
+                {bullet}
+              </li>
+            ))}
+          </ul>
+          {card.href && (
+            <Button asChild variant="outline" size="sm" className="mt-[18px] w-full gap-2 rounded-[9px]">
+              <Link to={card.href}>
                 Learn More
-              </Button>
-            )}
-          </div>
-        );
-      })}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          )}
+        </article>
+      ))}
     </div>
   );
 
   return (
-    <PageLayout
-      title="Enterprise End User Package"
-      description="Empower your workforce with comprehensive training in Microsoft applications, AI tools, security awareness, and essential business skills. Build a more productive, secure, and capable team."
-      breadcrumbs={[{ label: "Enterprise End User" }]}
-      heroActions={
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg">
-            <Link to="/courses">
-              <BookOpen className="mr-2 h-5 w-5" />
-              Explore Courses
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link to="/training-samples">
-              <FlaskConical className="mr-2 h-5 w-5" />
-              Try Training Samples
-            </Link>
-          </Button>
-        </div>
-      }
-    >
-      <div id="enterprise-overview" className="mb-32 animate-fade-in scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="rounded-lg bg-gradient-to-br from-card to-card/50 border-2 border-primary/20 p-8">
-            <div className="mb-8">
-              <h3 className="text-3xl font-bold mb-4">Transform Your Workforce</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                StormWind's Enterprise End User Package delivers essential training to help your team work smarter, safer, and more efficiently. From mastering Microsoft 365 applications to understanding AI tools like Copilot and ChatGPT, staying secure against cyber threats, and developing critical business skills—this comprehensive package ensures your employees have the knowledge they need to excel in the modern workplace.
-              </p>
-            </div>
+    <div className="enduser-scope">
+      <PageLayout
+        title="Enterprise End User Package"
+        description=""
+        breadcrumbs={[{ label: "Enterprise End User" }]}
+        hideHero
+        backgroundClassName="bg-enduser-console"
+      >
+        {/* HERO */}
+        <section className="grid items-center gap-12 pt-7 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,560px)]">
+          <div>
+            <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              Enterprise End User Package
+            </span>
 
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-8">
-              <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 gap-4 bg-transparent h-auto p-0 mb-8">
-                <TabsTrigger value="desktop" className={TAB_TRIGGER_CLASS}>
-                  Desktop Applications
-                </TabsTrigger>
-                <TabsTrigger value="business" className={TAB_TRIGGER_CLASS}>
-                  Business Skills
-                </TabsTrigger>
-                <TabsTrigger value="compliance" className={TAB_TRIGGER_CLASS}>
-                  HR Compliance
-                </TabsTrigger>
-              </TabsList>
+            <h1 className="mt-[22px] text-[clamp(42px,5.2vw,64px)] font-bold leading-[1.04] tracking-[-0.045em] text-foreground">
+              Enterprise End User <span className="text-gradient-brand">Package</span>
+            </h1>
 
-              <TabsContent value="desktop" className="mt-0">
-                {renderCards(desktopApps)}
-              </TabsContent>
-              <TabsContent value="business" className="mt-0">
-                {renderCards(businessSkills)}
-              </TabsContent>
-              <TabsContent value="compliance" className="mt-0">
-                {renderCards(hrCompliance)}
-              </TabsContent>
-            </Tabs>
+            <p className="mt-5 max-w-[36rem] text-[17.5px] leading-[1.65] text-muted-foreground">
+              Empower your workforce with comprehensive training in Microsoft applications, AI tools, security awareness, and essential business skills. Build a more productive, secure, and capable team.
+            </p>
 
-            <div className="rounded-lg bg-primary/5 border border-primary/20 p-6">
-              <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-primary" />
-                {benefits[activeTab].heading}
-              </h4>
-              <div className="grid md:grid-cols-2 gap-4">
-                {[benefits[activeTab].items.slice(0, 4), benefits[activeTab].items.slice(4)].map((column, ci) => (
-                  <ul key={ci} className="space-y-2 text-sm">
-                    {column.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-muted-foreground">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </div>
+            <div className="mt-[30px] flex flex-wrap gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-[10px] bg-[hsl(166_100%_30%)] text-white hover:bg-[hsl(166_100%_26%)]"
+              >
+                <Link to="/courses">
+                  <BookOpen className="mr-2 h-5 w-5" />
+                  Explore Courses
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-[10px]">
+                <Link to="/training-samples">
+                  <FlaskConical className="mr-2 h-5 w-5" />
+                  Try Training Samples
+                </Link>
+              </Button>
             </div>
           </div>
-        </div>
-      </div>
-    </PageLayout>
+
+          <AppLauncher />
+        </section>
+
+        {/* OVERVIEW */}
+        <section id="enterprise-overview" className="scroll-mt-24 py-8">
+          <div className="grid items-center gap-8 rounded-[18px] border border-border bg-card px-9 py-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)]">
+            <div>
+              <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-primary">Overview</span>
+              <h2 className="mt-3.5 text-[clamp(27px,3vw,38px)] font-bold leading-[1.14] tracking-[-0.032em] text-foreground">
+                Transform Your Workforce
+              </h2>
+            </div>
+            <p className="border-l-[3px] border-primary pl-[22px] text-[16.5px] leading-[1.7] text-muted-foreground">
+              StormWind's Enterprise End User Package delivers essential training to help your team work smarter, safer, and more efficiently. From mastering Microsoft 365 applications to understanding AI tools like Copilot and ChatGPT, staying secure against cyber threats, and developing critical business skills—this comprehensive package ensures your employees have the knowledge they need to excel in the modern workplace.
+            </p>
+          </div>
+        </section>
+
+        {/* TRACKS */}
+        <section className="pb-16 pt-6">
+          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as TrackKey)} className="w-full">
+            <TabsList className="mb-[22px] grid h-auto w-full grid-cols-1 gap-3 bg-transparent p-0 md:grid-cols-3">
+              {tracks.map((t) => (
+                <TabsTrigger
+                  key={t.key}
+                  value={t.key}
+                  className="eu-tab"
+                  style={{ "--c": TRACK_COLOR[t.key] } as CSSProperties}
+                >
+                  {t.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {tracks.map((t) => (
+              <TabsContent key={t.key} value={t.key} className="mt-0">
+                {renderCards(t.cards, TRACK_COLOR[t.key])}
+              </TabsContent>
+            ))}
+          </Tabs>
+
+          <div className="mt-[18px] grid items-center gap-8 rounded-[18px] border border-border bg-card px-9 py-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.6fr)]">
+            <span className="text-[12px] font-bold uppercase tracking-[0.2em]" style={{ color }}>
+              {benefits[activeTab].heading}
+            </span>
+            <ul className="grid gap-3 md:grid-cols-2 md:gap-x-6">
+              {benefits[activeTab].items.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-[14.5px] leading-[1.5] text-muted-foreground">
+                  <Check className="mt-0.5 h-[18px] w-[18px] flex-none" style={{ color }} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </PageLayout>
+    </div>
   );
 };
 
