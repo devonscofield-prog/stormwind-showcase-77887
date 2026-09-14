@@ -1689,6 +1689,86 @@ All colors MUST be HSL.
     .sa-ring { opacity: 0.2; }
   }
 
+  /* ── Project Management page scope (light-first indigo) ── */
+  .pm-scope {
+    --pm-indigo: 243 75% 59%;
+    --pm-indigo-light: 234 89% 74%;
+    --primary: var(--pm-indigo);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--pm-indigo);
+    --pm-head: #f1f3f7;
+    --pm-bar: #b9c4d0;
+    --pm-bar2: #dce3ea;
+    --pm-grid: #edf0f4;
+    --pm-link: #9aa6b4;
+  }
+
+  .dark .pm-scope {
+    --primary: var(--pm-indigo-light);
+    --primary-foreground: 240 40% 8%;
+    --ring: var(--pm-indigo-light);
+    --pm-head: #1d232b;
+    --pm-bar: #4a5561;
+    --pm-bar2: #2a333c;
+    --pm-grid: #232b33;
+    --pm-link: #5b6874;
+  }
+
+  .bg-pm-console {
+    background: hsl(0 0% 100%);
+  }
+
+  .dark .bg-pm-console {
+    background: hsl(var(--background));
+  }
+
+  .pm-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(var(--foreground)) 8%, hsl(var(--pm-indigo)) 65%, hsl(252 80% 60%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .dark .pm-scope .text-gradient-brand {
+    background-image: linear-gradient(100deg, hsl(0 0% 100%) 8%, hsl(var(--pm-indigo-light)) 62%, hsl(252 90% 80%) 100%);
+  }
+
+  /* Gantt hero animation */
+  .pm-gbar {
+    transform-origin: left center;
+    transform-box: fill-box;
+    animation: pm-grow 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--d);
+  }
+
+  @keyframes pm-grow {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+
+  .pm-today {
+    animation: pm-slide 9s ease-in-out infinite;
+  }
+
+  @keyframes pm-slide {
+    0%, 100% { transform: translateX(392px); }
+    50% { transform: translateX(432px); }
+  }
+
+  .pm-float {
+    animation: pm-bob 5s ease-in-out infinite;
+  }
+
+  @keyframes pm-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pm-gbar, .pm-today, .pm-float { animation: none; }
+    .pm-today { transform: translateX(412px); }
+  }
+
   /* Floating labels over the isometric hero scene */
   .cloud-scope .iso .lab,
   .devops-scope .iso .lab,
