@@ -3,20 +3,28 @@ import wordIcon from "@/assets/apps/word.webp.asset.json";
 import excelIcon from "@/assets/apps/excel.webp.asset.json";
 import powerpointIcon from "@/assets/apps/powerpoint.webp.asset.json";
 import teamsIcon from "@/assets/apps/teams.webp.asset.json";
+import sharepointIcon from "@/assets/apps/sharepoint.webp.asset.json";
+import accessIcon from "@/assets/apps/access.webp.asset.json";
+import powerbiIcon from "@/assets/apps/powerbi.webp.asset.json";
+import copilotIcon from "@/assets/apps/copilot.webp.asset.json";
+import chatgptIcon from "@/assets/apps/chatgpt.webp.asset.json";
+import claudeIcon from "@/assets/apps/claude.webp.asset.json";
+import acrobatIcon from "@/assets/apps/acrobat.webp.asset.json";
+import photoshopIcon from "@/assets/apps/photoshop.webp.asset.json";
 
 const APPS: { slug: string; name: string; src?: string }[] = [
   { slug: "word", name: "Word", src: wordIcon.url },
   { slug: "excel", name: "Excel", src: excelIcon.url },
   { slug: "powerpoint", name: "PowerPoint", src: powerpointIcon.url },
   { slug: "teams", name: "Teams", src: teamsIcon.url },
-  { slug: "sharepoint", name: "SharePoint" },
-  { slug: "access", name: "Access" },
-  { slug: "powerbi", name: "Power BI" },
-  { slug: "copilot", name: "Copilot" },
-  { slug: "chatgpt", name: "ChatGPT" },
-  { slug: "claude", name: "Claude" },
-  { slug: "acrobat", name: "Acrobat" },
-  { slug: "photoshop", name: "Photoshop" },
+  { slug: "sharepoint", name: "SharePoint", src: sharepointIcon.url },
+  { slug: "access", name: "Access", src: accessIcon.url },
+  { slug: "powerbi", name: "Power BI", src: powerbiIcon.url },
+  { slug: "copilot", name: "Copilot", src: copilotIcon.url },
+  { slug: "chatgpt", name: "ChatGPT", src: chatgptIcon.url },
+  { slug: "claude", name: "Claude", src: claudeIcon.url },
+  { slug: "acrobat", name: "Acrobat", src: acrobatIcon.url },
+  { slug: "photoshop", name: "Photoshop", src: photoshopIcon.url },
 ];
 
 /**
