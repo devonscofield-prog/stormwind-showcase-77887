@@ -105,18 +105,53 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
       id="solution-finder"
       className="finder-scope bg-finder-console text-foreground relative z-10 scroll-mt-20 animate-fade-in"
     >
+      {minimized ? (
+        <button
+          type="button"
+          onClick={() => setMinimized(false)}
+          aria-expanded={false}
+          className="w-full flex items-center justify-between gap-4 px-6 py-4 lg:px-10 text-left group transition-colors duration-200 hover:bg-primary/[0.03]"
+        >
+          <span className="flex items-center gap-3 min-w-0">
+            <span className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <Sparkles className="h-4 w-4 text-primary/70" />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-sm font-bold tracking-tight">Find the right program</span>
+              <span className="block text-xs text-muted-foreground truncate">
+                Answer three questions and we will point you at the offering built for it.
+              </span>
+            </span>
+          </span>
+          <span className="flex items-center gap-2 shrink-0 text-muted-foreground group-hover:text-primary transition-colors duration-200">
+            <span className="hidden sm:inline text-xs font-medium">Expand</span>
+            <ChevronDown className="h-4 w-4" />
+          </span>
+        </button>
+      ) : (
       <div className="grid lg:grid-cols-[minmax(0,1fr)_480px] xl:grid-cols-[minmax(0,1fr)_520px]">
         {/* Left column — questions */}
         <div className="p-8 lg:p-10 flex flex-col gap-6">
-          <div className="flex flex-col gap-3">
-            <span className="text-xs font-bold uppercase tracking-[1.3px] text-primary">
-              Step {stepLabel} of 3
-            </span>
-            <h2 className="text-3xl font-bold tracking-tight">Find the right program</h2>
-            <p className="text-sm text-muted-foreground max-w-xl">
-              Answer three questions and we will point you at the offering built for it. Nothing
-              here is a form — no email, no follow-up.
-            </p>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-bold uppercase tracking-[1.3px] text-primary">
+                Step {stepLabel} of 3
+              </span>
+              <h2 className="text-3xl font-bold tracking-tight">Find the right program</h2>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Answer three questions and we will point you at the offering built for it. Nothing
+                here is a form — no email, no follow-up.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setMinimized(true)}
+              aria-expanded={true}
+              className="mt-1 shrink-0 flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-muted-foreground ring-1 ring-inset ring-border transition-colors duration-200 hover:text-foreground hover:ring-primary/50"
+            >
+              Minimize
+              <ChevronUp className="h-3.5 w-3.5" />
+            </button>
           </div>
 
           {/* Progress bars */}
@@ -314,6 +349,7 @@ export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
         </div>
 
       </div>
+      )}
     </section>
   );
 };
