@@ -149,16 +149,6 @@ const Hero = ({
         </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <button onClick={scrollToContent} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/60 hover:text-white/90 transition-colors cursor-pointer group" aria-label="Scroll to content">
-        <span className="text-xs uppercase tracking-widest font-medium">Explore</span>
-        <div className="relative">
-          <ChevronDown className="w-6 h-6 animate-bounce" />
-          <ChevronDown className="w-6 h-6 absolute top-0 left-0 opacity-30 animate-bounce" style={{
-          animationDelay: '0.1s'
-        }} />
-        </div>
-      </button>
 
       {/* Bottom gradient line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
