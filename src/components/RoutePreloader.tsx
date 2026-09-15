@@ -35,7 +35,8 @@ const routeImports: Record<string, () => Promise<unknown>> = {
 
 const loadedRoutes = new Set<string>();
 
-const preloadAnchorRoute = (target: EventTarget | null) => {
+const preloadAnchorRoute = (event: Event) => {
+  const target = event.target;
   if (!(target instanceof Element)) return;
 
   const anchor = target.closest<HTMLAnchorElement>("a[href]");
