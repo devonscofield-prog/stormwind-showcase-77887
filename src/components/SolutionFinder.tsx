@@ -19,6 +19,7 @@ interface SolutionFinderProps {
 type QuestionKey = "who" | "goal" | "effort";
 
 export const SolutionFinder = ({ onTabChange }: SolutionFinderProps) => {
+  const [minimized, setMinimized] = useState(false);
   const [picks, setPicks] = useState<Record<QuestionKey, ProgramKey[]>>({
     who: [],
     goal: [],
