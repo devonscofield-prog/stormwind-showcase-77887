@@ -2,7 +2,6 @@ import { useEffect, useState, useRef, MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { TechBackground } from "./TechBackground";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
 interface HeroProps {
   onTabChange: (tab: string) => void;
 }
