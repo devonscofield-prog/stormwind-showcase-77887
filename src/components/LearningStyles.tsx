@@ -92,7 +92,7 @@ export const LearningStyles = () => (
           <RangeCard icon={Network} title="Network Range" tab="network" description="Configure VLANs, routing protocols (OSPF, BGP), IPv4/IPv6, and security configurations on real network equipment." bullets={["Practice with Cisco and enterprise networking gear", "Master network troubleshooting and design skills"]} />
         </div>
         <div className="mt-8 flex justify-center">
-          <Button size="lg" asChild><Link to="/devops">DevOps Playgrounds</Link></Button>
+          <Button size="lg" asChild><Link to="/ranges">Explore the Ranges</Link></Button>
         </div>
       </TabsContent>
 
