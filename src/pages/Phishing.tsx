@@ -111,6 +111,9 @@ const Phishing = () => {
                           <img
                             src={slide.src}
                             alt={slide.alt}
+                            loading={index === 0 ? "eager" : "lazy"}
+                            decoding="async"
+                            {...{ fetchpriority: index === 0 ? "high" : "auto" }}
                             className="w-full h-auto object-contain"
                           />
                         </div>

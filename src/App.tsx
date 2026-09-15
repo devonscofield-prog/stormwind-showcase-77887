@@ -11,11 +11,13 @@ import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Phishing from "./pages/Phishing";
+import RoutePreloader from "./components/RoutePreloader";
+import RouteLoading from "./components/RouteLoading";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
 const Ranges = lazy(() => import("./pages/Ranges"));
+const Phishing = lazy(() => import("./pages/Phishing"));
 const Mentoring = lazy(() => import("./pages/Mentoring"));
 const DataSciencePro = lazy(() => import("./pages/DataSciencePro"));
 const BusinessSkills = lazy(() => import("./pages/BusinessSkills"));
@@ -58,16 +60,13 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <RoutePreloader />
             <AuthProvider>
               <AnalyticsProvider>
           <ScrollToTop />
           <BackToTop />
           <Suspense
-          fallback={
-            <div className="min-h-screen flex items-center justify-center bg-background">
-              <div className="animate-pulse text-muted-foreground">Loading...</div>
-            </div>
-          }
+          fallback={<RouteLoading />}
         >
           <Routes>
             <Route path="/" element={<Index />} />
