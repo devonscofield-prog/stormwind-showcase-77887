@@ -11,11 +11,11 @@ import { AnalyticsProvider } from "./components/AnalyticsProvider";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Phishing from "./pages/Phishing";
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
 const Ranges = lazy(() => import("./pages/Ranges"));
-const Phishing = lazy(() => import("./pages/Phishing"));
 const Mentoring = lazy(() => import("./pages/Mentoring"));
 const DataSciencePro = lazy(() => import("./pages/DataSciencePro"));
 const BusinessSkills = lazy(() => import("./pages/BusinessSkills"));
