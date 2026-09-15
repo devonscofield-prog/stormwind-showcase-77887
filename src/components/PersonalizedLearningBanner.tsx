@@ -8,10 +8,9 @@ const PersonalizedLearningBanner = () => {
       <div className="container mx-auto px-6">
         <Link to="/stormai-learning" className="block group">
           <div
-            className="relative overflow-hidden rounded-2xl ring-1 ring-inset ring-border dark:ring-0
-              bg-[linear-gradient(155deg,hsl(0_0%_100%)_0%,hsl(166_32%_98%)_60%,hsl(166_26%_96%)_100%)]
-              dark:bg-[linear-gradient(155deg,hsl(160_14%_17%)_0%,hsl(157_9%_14%)_62%,hsl(155_8%_13%)_100%)]
-              transition-[box-shadow] duration-200 hover:shadow-[0_0_30px_rgba(0,154,119,0.12)]"
+            className="relative overflow-hidden rounded-2xl ring-1 ring-inset ring-[hsl(158_12%_26%)]
+              bg-[linear-gradient(155deg,hsl(160_14%_17%)_0%,hsl(157_9%_14%)_62%,hsl(155_8%_13%)_100%)]
+              transition-[box-shadow] duration-200 hover:shadow-[0_0_30px_rgba(0,154,119,0.25)]"
           >
             {/* Animated gradient sheen */}
             <div
@@ -40,10 +39,10 @@ const PersonalizedLearningBanner = () => {
                     New
                   </Badge>
                 </div>
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-foreground">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-[hsl(160_18%_96%)]">
                   StormAI Learning
                 </h3>
-                <p className="text-xs md:text-sm text-muted-foreground max-w-xl">
+                <p className="text-xs md:text-sm text-[hsl(160_10%_68%)] max-w-xl">
                   Seven AI-powered tools. One customized journey.
                   <span className="font-semibold text-primary"> Save up to 80%</span> of your training time.
                 </p>
