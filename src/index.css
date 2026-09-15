@@ -1769,6 +1769,106 @@ All colors MUST be HSL.
     .pm-today { transform: translateX(412px); }
   }
 
+  /* ── AI & ML Training page scope — "Nebula" (dark-first, aurora + glass) ── */
+  .ai-scope {
+    --ai-vio: 250 78% 61%;
+    --ai-cyan: 196 87% 45%;
+    --ai-mint: 164 80% 36%;
+    --ai-glass: rgba(255, 255, 255, 0.72);
+    --ai-border: rgba(124, 92, 240, 0.18);
+    --primary: var(--ai-vio);
+    --primary-foreground: 0 0% 100%;
+    --ring: var(--ai-vio);
+  }
+
+  .dark .ai-scope {
+    --ai-vio: 255 92% 76%;
+    --ai-cyan: 193 91% 62%;
+    --ai-mint: 160 55% 52%;
+    --ai-glass: rgba(255, 255, 255, 0.05);
+    --ai-border: rgba(255, 255, 255, 0.1);
+    --primary: var(--ai-vio);
+    --primary-foreground: 250 40% 10%;
+    --ring: var(--ai-vio);
+  }
+
+  .bg-ai-nebula {
+    background:
+      radial-gradient(60% 45% at 78% 12%, hsl(250 78% 61% / 0.22), transparent 70%),
+      radial-gradient(50% 40% at 15% 30%, hsl(196 87% 45% / 0.16), transparent 70%),
+      radial-gradient(55% 45% at 60% 95%, hsl(164 80% 36% / 0.12), transparent 70%),
+      hsl(246 100% 98%);
+  }
+
+  .dark .bg-ai-nebula {
+    background:
+      radial-gradient(60% 45% at 78% 12%, hsl(255 92% 76% / 0.26), transparent 70%),
+      radial-gradient(50% 40% at 15% 30%, hsl(193 91% 62% / 0.18), transparent 70%),
+      radial-gradient(55% 45% at 60% 95%, hsl(160 55% 52% / 0.14), transparent 70%),
+      hsl(228 52% 6%);
+  }
+
+  .ai-scope .text-gradient-brand {
+    background-image: linear-gradient(90deg, hsl(var(--ai-vio)), hsl(var(--ai-cyan)) 55%, hsl(var(--ai-mint)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .ai-glass {
+    position: relative;
+    border-radius: 20px;
+    background: var(--ai-glass);
+    border: 1px solid var(--ai-border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 20px 50px -30px rgba(20, 10, 60, 0.5);
+    transition: transform 0.25s;
+  }
+
+  .dark .ai-glass {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+  }
+
+  .ai-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--ai-vio) / 0.55), transparent 40%, hsl(var(--ai-cyan) / 0.45));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+
+  .ai-glass:hover { transform: translateY(-4px); }
+  .ai-glass:hover::before { opacity: 1; }
+
+  .ai-pill {
+    background: var(--ai-glass);
+    border: 1px solid var(--ai-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .ai-gradient { background-image: linear-gradient(135deg, hsl(var(--ai-vio)), hsl(var(--ai-cyan))); }
+  .ai-orbit { animation: ai-spin linear infinite; transform-origin: 0 0; }
+  @keyframes ai-spin { to { transform: rotate(360deg); } }
+  .ai-sphere { animation: ai-bob 5s ease-in-out infinite; transform-origin: 0 0; }
+  @keyframes ai-bob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.02); } }
+  .ai-node { animation: ai-np 3s ease-in-out infinite; }
+  @keyframes ai-np { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+  .ai-corepulse { animation: ai-cpp 2.6s ease-in-out infinite; transform-origin: 0 0; }
+  @keyframes ai-cpp { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-orbit, .ai-sphere, .ai-node, .ai-corepulse { animation: none; }
+  }
+
   /* Floating labels over the isometric hero scene */
   .cloud-scope .iso .lab,
   .devops-scope .iso .lab,
