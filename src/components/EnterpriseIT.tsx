@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Check, Cloud, Lock, Network, Server, Shield } from "lucide-react";
+import { Lock } from "lucide-react";
 import { CARD_SURFACE } from "@/components/AnimatedFeatureCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LearningStyles } from "@/components/LearningStyles";
 import {
   MicrosoftIcon,
   CloudIcon,
@@ -27,105 +27,6 @@ const EnterpriseIT = ({
   toggleTechnology: _toggleTechnology,
   toggleFeature: _toggleFeature
 }: EnterpriseITProps) => {
-  const learningStyles = {
-    handsOn: [
-      {
-        icon: Server,
-        title: "Microsoft Range",
-        description: "Practice with Windows Server 2025, Windows 11, Active Directory, DNS, DHCP, and PowerShell in production-like environments.",
-        bullets: ["Real Microsoft infrastructure without setup costs", "Build enterprise-ready Windows administration skills"],
-        to: "/ranges",
-      },
-      {
-        icon: Shield,
-        title: "Cyber Range",
-        description: "Master cybersecurity with hands-on access to Splunk, OpenVAS, Nmap, Wireshark, and other industry-standard security tools.",
-        bullets: ["Practice threat analysis in realistic scenarios", "Develop real-world security defense strategies"],
-        to: "/ranges",
-      },
-      {
-        icon: Cloud,
-        title: "Azure Range",
-        description: "Build cloud infrastructure with VNets, VMs, storage accounts, and more. Includes an empty sandbox for testing ARM, Bicep, or Terraform templates.",
-        bullets: ["Real Azure environment without billing surprises", "Experiment freely with cloud architecture patterns"],
-        to: "/ranges",
-      },
-      {
-        icon: Network,
-        title: "Network Range",
-        description: "Configure VLANs, routing protocols (OSPF, BGP), IPv4/IPv6, and security configurations on real network equipment.",
-        bullets: ["Practice with Cisco and enterprise networking gear", "Master network troubleshooting and design skills"],
-        to: "/ranges",
-      },
-    ],
-    live: [
-      {
-        title: "Live Instructor Led Courses",
-        description: "Learn in live, interactive sessions with world-class instructors, then revisit each lesson with Instant Replay.",
-        bullets: ["Focused 2-hour sessions", "Ask questions and interact in real time"],
-        to: "/live-instructor-led",
-      },
-      {
-        title: "1:1 Mentoring with Industry Experts",
-        description: "Get unstuck with personal guidance from the instructor behind your course.",
-        bullets: ["Direct access to industry-recognized experts", "Guidance tailored to your questions"],
-        to: "/mentoring",
-      },
-    ],
-    onDemand: [
-      {
-        title: "Learning Paths",
-        description: "Follow structured paths with guided assessment, targeted training, and readiness validation.",
-        bullets: ["Flexible pathways for every skill level", "Personalized course recommendations"],
-        to: "/learning-paths",
-      },
-      {
-        title: "Bytes: Microlearning",
-        description: "Build practical skills through short, focused sessions designed for retention.",
-        bullets: ["Focused 3–5 minute sessions", "Sequential skill stacking"],
-        to: "/bytes",
-      },
-      {
-        title: "AI-Powered Learning",
-        description: "Get course-aware answers, certification support, and step-by-step troubleshooting guidance.",
-        bullets: ["Proprietary training knowledge bases", "Support available while you learn"],
-        to: "/ai-learning",
-      },
-      {
-        title: "Skills Assessments",
-        description: "Identify skill gaps, measure proficiency, and receive course suggestions matched to each learner.",
-        bullets: ["Real-time skills data", "Training matched to proficiency"],
-        to: "/skills-assessments",
-      },
-    ],
-  };
-
-  const LearningStyleCards = ({ items }: { items: Array<{ icon?: typeof Server; title: string; description: string; bullets: string[]; to: string }> }) => (
-    <div className="grid gap-4 md:grid-cols-2">
-      {items.map(({ icon: Icon, title, description, bullets, to }) => (
-        <Link
-          key={title}
-          to={to}
-          className="group min-h-[190px] rounded-lg border border-border bg-card/75 p-6 shadow-sm transition-colors hover:border-primary/60 hover:bg-card"
-        >
-          <div className="mb-4 flex items-center gap-3">
-            {Icon && <Icon className="h-7 w-7 text-primary" aria-hidden="true" />}
-            <h4 className="text-lg font-bold text-foreground group-hover:text-primary">{title}</h4>
-          </div>
-          <p className="mb-4 text-sm leading-relaxed text-foreground/85">{description}</p>
-          <ul className="space-y-2">
-            {bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        </Link>
-      ))}
-    </div>
-  );
-
   const technologies = [
     { name: "Microsoft", Icon: MicrosoftIcon, items: "Server 2025, M365 Administration, PowerShell, Windows 11, Intune, Endpoint Administration, and more", link: "/microsoft" },
     { name: "Cloud", Icon: CloudIcon, items: "Azure, AWS, Google Cloud, Virtual Desktops, Cloud Security, and more", link: "/cloud" },
@@ -167,20 +68,7 @@ const EnterpriseIT = ({
         </div>
       </div>
 
-      {/* Learning Styles Section */}
-      <div className="mb-16">
-        <h3 className="mb-8 text-center text-2xl font-bold text-foreground">Learning Styles</h3>
-        <Tabs defaultValue="hands-on" className="w-full">
-          <TabsList className="mb-7 grid h-auto w-full grid-cols-3 rounded-lg border border-border bg-muted/65 p-1">
-            <TabsTrigger value="hands-on" className="py-3 data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm">Hands-On</TabsTrigger>
-            <TabsTrigger value="live" className="py-3 data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm">Live Instructor-Led</TabsTrigger>
-            <TabsTrigger value="on-demand" className="py-3 data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm">On-Demand</TabsTrigger>
-          </TabsList>
-          <TabsContent value="hands-on" className="mt-0"><LearningStyleCards items={learningStyles.handsOn} /></TabsContent>
-          <TabsContent value="live" className="mt-0"><LearningStyleCards items={learningStyles.live} /></TabsContent>
-          <TabsContent value="on-demand" className="mt-0"><LearningStyleCards items={learningStyles.onDemand} /></TabsContent>
-        </Tabs>
-      </div>
+      <LearningStyles />
 
       {/* SSO Banner */}
       <div className="mt-12 animate-fade-in">
