@@ -79,7 +79,7 @@ function ta() {
 }
 function aa(o) {
   const i = y([["personalized", "circle-play"], ["studio", "wand-sparkles"], ["atlas", "map"]], ([n, f]) => `<S data-m="${n}">${c(f)}</S>`) + `<S>${c("bookmark")}</S><em></em><S style="margin-bottom:12px">${c("settings")}</S>`, l = ta();
-  return `<D C="pl auto"><D C="x-modes" role="group" aria-label="StormAI Learning experiences">${y(Rt, ([n, f]) => `<B data-mode="${n}">${f}</B>`)}</D>
+  return `<D C="pl auto"><D C="x-modes" role="group" aria-label="StormAI Learning experiences">${y(Rt, ([n, f]) => `<B data-mode="${n}">${f}</B>`)}</D><D C="x-cap"><S C="x-cap-t" data-cap="personalized">Adaptive</S><S C="x-cap-t" data-cap="studio">Course Builder</S><S C="x-cap-t" data-cap="atlas">Role-Specific Content</S></D>
 <D C="Q20"><D C="Qa" data-tool="0"><D C="Qf"><D C="Qw"><i></i><i></i><i></i><D C="Q1r">${c("lock")}<b></b></D><S C="Q2j"></S></D><D C="Qo">${i}</D><D C="Q29">${Yt()}${Kt()}${ea(o)}</D></D><D C="Qj">${Jt()}${Xt()}${l}</D></D></D>
 <D C="Qy"><D C="Q3 tools on" data-m="personalized">${y(ae, ([n, f], S) => `<B C="Q7" data-t="${S}"><S C="ti">${c(n)}</S>${f}<S C="pg"><i></i></S></B>`)}</D><D C="Q3 studio" data-m="studio"><B C="Q5 br" data-r="cancel">Cancel</B><B C="Q5 br" data-r="back">Back</B><S></S><B C="Q5 pri" data-r="next"><S data-r="nextl">Next</S>${c("chevron-right")}</B></D><D C="Q3 atlas" data-m="atlas"></D></D></D>`;
 }
