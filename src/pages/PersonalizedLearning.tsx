@@ -81,7 +81,7 @@ const PersonalizedLearning = () => {
                 <Link to="/training-samples" className="x-btn ghost"><FlaskConical className="ico" />Try Training Samples</Link>
               </div>
             </div>
-            <div className="x-art" ref={art}><StormAIPlayer ref={player} mode={mode} onModeChange={setMode} /></div>
+            <div className={mode === "atlas" ? "x-art dark" : "x-art"} ref={art}><StormAIPlayer ref={player} mode={mode} onModeChange={setMode} /></div>
           </section>
           <section className="x-sec">
             <div className="x-tabbar"><div className="x-tabs" role="tablist">

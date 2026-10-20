@@ -550,6 +550,7 @@
 .Q0.lit .rim{stroke:var(--sl-ak)}
 .Qi button.on{color:#7fe3bf}
 .Qg .tx2 em{color:#5ee0b2}
+.Q23{background:#1d4f42;border-color:#2db38b;color:#fff}
 .Q1k{stroke:#fff;filter:none}
 }
 :root:not(.dark) .sail-scope{.Q1k{stroke:var(--sl-w);filter:brightness(1.25)}
