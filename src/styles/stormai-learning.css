@@ -519,6 +519,11 @@
 .x-card:focus-visible,.x-tabs button:focus-visible{outline:2px solid var(--sl-a);outline-offset:2px}
 .Q3.atlas .ap{position:relative;inset:auto;zoom:1.32;padding:4px}
 .Q3.atlas .Qh[data-at=pl]{max-height:180px}
+.x-cap{display:flex;align-items:center;gap:10px;margin:0 0 16px;font:700 11.5px/1 var(--sl-ff);letter-spacing:.22em;text-transform:uppercase;color:var(--sl-a)}
+.x-cap:before{content:"";width:22px;height:1px;background:currentColor;opacity:.55;flex:none}
+.x-cap [data-cap]{display:none}
+&[data-mode=personalized] .x-cap [data-cap=personalized],&[data-mode=studio] .x-cap [data-cap=studio],&[data-mode=atlas] .x-cap [data-cap=atlas]{display:inline}
+.pl .x-modes{margin-bottom:12px}
 }
 .dark .sail-scope{--sl-y:#151917;--sl-k:#1E2523;--sl-d:#FAFAFA;--sl-c:#B7C0BC;--sl-b:#2F3A36;--sl-a:#45D39B;--sl-o:#08150F;--sl-q:#3FD1C8;--sl-j:#F2B860;--sl-ae:#151917db;--sl-g:#1A201E;--sl-i:#1C2321;--sl-n:#181E1C;--sl-h:#2C3633;--sl-f:#3A4642;--sl-e:#45d39b1a;--sl-l:#45d39b2e;--sl-r:0 1px 1px #0000004c,0 2px 6px -2px #00000066;--sl-s:0 1px 1px #0000004c,0 8px 18px -8px #00000080,0 20px 44px -20px #00000099;--sl-p:0 1px 1px #00000059,0 12px 24px -10px #0000008c,0 40px 80px -28px #000000bf,0 70px 130px -50px #45d39b29;--sl-z:#14302A;--sl-aa:#123034;--sl-ab:#5E6F6A;--sl-ac:#45534F;.x-banner{background:linear-gradient(120deg,#0e6e54,#13706b)}
 .Q1a b{background:#ffffff59}
