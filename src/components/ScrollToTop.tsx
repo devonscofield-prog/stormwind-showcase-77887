@@ -12,6 +12,7 @@ export default function ScrollToTop() {
       const heading = document.querySelector('h1');
       if (heading) {
         heading.setAttribute('tabindex', '-1');
+        (heading as HTMLElement).style.outline = 'none';
         heading.focus({ preventScroll: true });
       } else {
         document.body.focus();
