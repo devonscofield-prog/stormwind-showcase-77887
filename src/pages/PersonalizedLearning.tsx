@@ -58,6 +58,7 @@ const PersonalizedLearning = () => {
   const [mode, setMode] = useState<Mode>("personalized");
   const player = useRef<StormAIPlayerHandle>(null);
   const art = useRef<HTMLDivElement>(null);
+  const videos = useRef<HTMLElement>(null);
   const p = PANELS[mode], H2 = p.icon, tools = mode === "personalized";
   const play = (i: number) => {
     player.current?.tool(i);
@@ -75,7 +76,8 @@ const PersonalizedLearning = () => {
               <span className="x-kick">Platform Features</span>
               <h1>StormAI <em>Learning</em></h1>
               <p className="x-lede">{DESC}</p>
-              <button type="button" className="x-btn" onClick={() => videos.current?.scrollIntoView({ behavior: "smooth", block: "start" })}><PlayCircle className="ico" />Watch the Demos</button>
+              <div className="x-acts">
+                <button type="button" className="x-btn" onClick={() => videos.current?.scrollIntoView({ behavior: "smooth", block: "start" })}><PlayCircle className="ico" />Watch the Demos</button>
               </div>
             </div>
             <div className={mode === "atlas" ? "x-art dark" : "x-art"} ref={art}><StormAIPlayer ref={player} mode={mode} onModeChange={setMode} /></div>
