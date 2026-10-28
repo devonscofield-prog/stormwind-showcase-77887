@@ -1,6 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from "react";
-import { Link } from "react-router-dom";
-import { BookOpen, BookPlus, Brain, FastForward, FileText, FlaskConical, GitBranch, Layers, LayoutGrid, Map, Search, Sparkles, Target, Timer, Trophy, Wand2, type LucideIcon } from "lucide-react";
+import { BookPlus, Brain, FastForward, FileText, GitBranch, Layers, LayoutGrid, Map, PlayCircle, Search, Sparkles, Target, Timer, Trophy, Wand2, type LucideIcon } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { usePageView } from "@/hooks/usePageView";
@@ -59,6 +58,7 @@ const PersonalizedLearning = () => {
   const [mode, setMode] = useState<Mode>("personalized");
   const player = useRef<StormAIPlayerHandle>(null);
   const art = useRef<HTMLDivElement>(null);
+  const videos = useRef<HTMLElement>(null);
   const p = PANELS[mode], H2 = p.icon, tools = mode === "personalized";
   const play = (i: number) => {
     player.current?.tool(i);
@@ -77,13 +77,12 @@ const PersonalizedLearning = () => {
               <h1>StormAI <em>Learning</em></h1>
               <p className="x-lede">{DESC}</p>
               <div className="x-acts">
-                <Link to="/courses" className="x-btn"><BookOpen className="ico" />Explore Courses</Link>
-                <Link to="/training-samples" className="x-btn ghost"><FlaskConical className="ico" />Try Training Samples</Link>
+                <button type="button" className="x-btn" onClick={() => videos.current?.scrollIntoView({ behavior: "smooth", block: "start" })}><PlayCircle className="ico" />Watch the Demos</button>
               </div>
             </div>
             <div className={mode === "atlas" ? "x-art dark" : "x-art"} ref={art}><StormAIPlayer ref={player} mode={mode} onModeChange={setMode} /></div>
           </section>
-          <section className="x-sec">
+          <section className="x-sec" ref={videos}>
             <div className="x-tabbar"><div className="x-tabs" role="tablist">
               {(Object.keys(PANELS) as Mode[]).map((k) => (
                 <button key={k} type="button" role="tab" aria-selected={mode === k} className={mode === k ? "on" : ""} onClick={() => setMode(k)}>{PANELS[k].tab}</button>
