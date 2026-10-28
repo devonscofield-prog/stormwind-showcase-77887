@@ -1,6 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from "react";
-import { Link } from "react-router-dom";
-import { BookOpen, BookPlus, Brain, FastForward, FileText, FlaskConical, GitBranch, Layers, LayoutGrid, Map, Search, Sparkles, Target, Timer, Trophy, Wand2, type LucideIcon } from "lucide-react";
+import { BookPlus, Brain, FastForward, FileText, GitBranch, Layers, LayoutGrid, Map, PlayCircle, Search, Sparkles, Target, Timer, Trophy, Wand2, type LucideIcon } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { usePageView } from "@/hooks/usePageView";
