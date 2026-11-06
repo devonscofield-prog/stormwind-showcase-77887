@@ -318,50 +318,6 @@ const courses: {
       "Navigate, contribute to and manage SharePoint sites — lists, libraries, pages, permissions and site ownership fundamentals.",
   },
   {
-    code: "M365-PS",
-    title: "Adobe Photoshop",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "M365 + SharePoint",
-    description:
-      "Edit images, work with layers, retouch photos, and create graphics for web and print in Adobe Photoshop.",
-  },
-  {
-    code: "M365-ACROBAT",
-    title: "Adobe Acrobat",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "M365 + SharePoint",
-    description:
-      "Create, edit, sign, and manage PDF documents with Adobe Acrobat workflows for business and collaboration.",
-  },
-  {
-    code: "M365-ILL",
-    title: "Adobe Illustrator",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "M365 + SharePoint",
-    description:
-      "Design vector graphics, logos, icons, and illustrations using Adobe Illustrator tools and techniques.",
-  },
-  {
-    code: "M365-INDD",
-    title: "Adobe InDesign",
-    instructorName: "StormWind Instructor",
-    instructorImage: placeholderInstructor,
-    initials: "SW",
-    audience: "End User",
-    topic: "M365 + SharePoint",
-    description:
-      "Lay out professional documents, brochures, and publications with Adobe InDesign typography and page design tools.",
-  },
-  {
     code: "M365-SP-USER",
     title: "SharePoint 365 Site User",
     instructorName: "StormWind Instructor",
