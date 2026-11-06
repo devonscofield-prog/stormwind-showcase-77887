@@ -9,8 +9,8 @@ import powerbiIcon from "@/assets/apps/powerbi.webp.asset.json";
 import copilotIcon from "@/assets/apps/copilot.webp.asset.json";
 import chatgptIcon from "@/assets/apps/chatgpt.webp.asset.json";
 import claudeIcon from "@/assets/apps/claude.webp.asset.json";
-import acrobatIcon from "@/assets/apps/acrobat.webp.asset.json";
-import photoshopIcon from "@/assets/apps/photoshop.webp.asset.json";
+import outlookIcon from "@/assets/apps/outlook.webp";
+import onenoteIcon from "@/assets/apps/onenote.webp";
 
 const APPS: { slug: string; name: string; src?: string }[] = [
   { slug: "word", name: "Word", src: wordIcon.url },
@@ -23,8 +23,8 @@ const APPS: { slug: string; name: string; src?: string }[] = [
   { slug: "copilot", name: "Copilot", src: copilotIcon.url },
   { slug: "chatgpt", name: "ChatGPT", src: chatgptIcon.url },
   { slug: "claude", name: "Claude", src: claudeIcon.url },
-  { slug: "acrobat", name: "Acrobat", src: acrobatIcon.url },
-  { slug: "photoshop", name: "Photoshop", src: photoshopIcon.url },
+  { slug: "outlook", name: "Outlook", src: outlookIcon },
+  { slug: "onenote", name: "OneNote", src: onenoteIcon },
 ];
 
 /**
