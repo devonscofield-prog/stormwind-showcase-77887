@@ -8,6 +8,13 @@
       "when": 1794492451280,
       "tag": "0000_lock_down_analytics_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794492570995,
+      "tag": "0001_lock_down_form_submissions",
+      "breakpoints": true
     }
   ]
 }
