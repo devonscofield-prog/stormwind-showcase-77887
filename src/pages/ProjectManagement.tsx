@@ -14,28 +14,22 @@ const levelStyles: Record<Level, { background: string; color: string }> = {
   Advanced: { background: "#FBEBD9", color: "#A8560B" },
 };
 
-const testimonials: { quote: string; name: string; org?: string }[] = [
+const testimonials: { quote: string }[] = [
   {
     quote:
       "Ashley is engaging with clear explanations and easy to understand examples. I feel a million times more prepared to take the PMP Exam than I did before class.",
-    name: "Al Whitehouse",
-    org: "Wake County Government",
   },
   {
     quote:
       "Ashley is amazing. She is definitely in the right job. She was engaging and helped the learning feel 'light' through all the sessions.",
-    name: "Leslie Sedlac",
-    org: "SAIC",
   },
   {
     quote:
       "Ashley is AMAZING! Her knowledge is invaluable, she is very engaging and encouraging. She kept the class at a very good pace and made sure everyone understood the content. I've never done a class that has been so engaging and easy to absorb and understand the content. Ashley is brilliant at teaching. I want to do more classes with Ashley!",
-    name: "Danny Parsons",
   },
   {
     quote:
       "Ashley is incredibly knowledgeable, kept the class both focused and energized, and showed genuine kindness throughout the session. Their approachability and expertise made learning not just effective, but enjoyable.",
-    name: "Student from State of Nebraska Government",
   },
 ];
 
@@ -189,17 +183,13 @@ const ProjectManagement = () => {
             </h2>
           </div>
           <div className="mt-7 grid gap-4 md:grid-cols-2">
-            {testimonials.map((t) => (
+            {testimonials.map((t, i) => (
               <blockquote
-                key={t.name}
+                key={i}
                 className="relative flex flex-col rounded-[14px] border border-border bg-card py-[22px] pl-16 pr-[22px] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_30px_60px_-36px_rgba(15,23,32,0.45)]"
               >
                 <Quote className="absolute left-[22px] top-[22px] h-6 w-6 text-primary opacity-60" />
                 <p className="text-[15.5px] leading-[1.65] text-foreground">{t.quote}</p>
-                <footer className="mt-auto flex flex-wrap items-baseline gap-x-2.5 gap-y-1 pt-3.5">
-                  <span className="text-[13.5px] font-bold text-foreground">{t.name}</span>
-                  {t.org && <span className="text-[13px] text-muted-foreground">{t.org}</span>}
-                </footer>
               </blockquote>
             ))}
           </div>

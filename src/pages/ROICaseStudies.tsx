@@ -15,8 +15,8 @@ import {
   FlaskConical,
 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import nathanMielke from "@/assets/nathan-mielke.jpg";
-import ijRosenblum from "@/assets/ij-rosenblum.jpg";
+import caseStudyEducation from "@/assets/case-study-education.jpg";
+import caseStudyVenue from "@/assets/case-study-venue.jpg";
 
 const capabilities = [
   {
@@ -59,11 +59,9 @@ const capabilities = [
 
 const caseStudies = [
   {
-    id: "mielke",
-    name: "Nathan Mielke",
-    image: nathanMielke,
+    id: "education",
+    image: caseStudyEducation,
     role: "K-12 Educational Technology Consultant & Director of Technology Services",
-    org: "Public school district",
     location: "Milwaukee, WI",
     since: "Student since 2016",
     industry: "Education Technology",
@@ -92,11 +90,9 @@ const caseStudies = [
     ],
   },
   {
-    id: "rosenblum",
-    name: "IJ Rosenblum",
-    image: ijRosenblum,
+    id: "venue",
+    image: caseStudyVenue,
     role: "Director of IT",
-    org: "SMG — Philadelphia Convention Center",
     location: "Philadelphia, PA",
     since: "Student since 2016",
     industry: "Venue Management",
@@ -301,12 +297,12 @@ const ROICaseStudies = () => {
               >
                 <img
                   src={study.image}
-                  alt={`${study.name}, ${study.role}`}
+                  alt={study.role}
                   loading="lazy"
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary/30 flex-shrink-0"
                 />
                 <span className="min-w-0">
-                  <span className="block font-semibold truncate">{study.name}</span>
+                  <span className="block font-semibold truncate">{study.role}</span>
                   <span className="block text-xs text-muted-foreground truncate">
                     {study.industry} · {study.location}
                   </span>
@@ -321,15 +317,14 @@ const ROICaseStudies = () => {
                 <div className="flex flex-col sm:flex-row gap-6 items-start mb-8">
                   <img
                     src={study.image}
-                    alt={`Portrait of ${study.name}`}
+                    alt={`Portrait — ${study.role}`}
                     loading="lazy"
                     className="w-28 h-28 rounded-xl object-cover border-2 border-primary/30 flex-shrink-0"
                   />
                   <div>
-                    <h3 className="text-2xl font-bold mb-1">{study.name}</h3>
-                    <p className="text-primary font-medium mb-1">{study.role}</p>
+                    <h3 className="text-2xl font-bold mb-1">{study.role}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {study.org} · {study.location} · {study.since}
+                      {study.location} · {study.since}
                     </p>
                   </div>
                 </div>
