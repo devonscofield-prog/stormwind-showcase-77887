@@ -54,13 +54,15 @@ const Mentoring = () => {
       title="1:1 Mentoring with Industry Experts"
       description="Learn directly from world-class instructors with decades of experience and industry recognition"
       breadcrumbs={[{ label: "1:1 Mentoring" }]}
-      heroClassName="mb-16"
+      heroClassName="mb-16 mentoring-scope"
+      backgroundClassName="bg-mentoring-studio"
+      contentClassName="mentoring-scope"
     >
       {/* Instructors Section */}
       {isLoading ? (
         <div className="space-y-12">
           {[...Array(3)].map((_, index) => (
-            <div key={index} className="rounded-2xl bg-card border overflow-hidden shadow-lg">
+            <div key={index} className="mentoring-card rounded-2xl bg-card border overflow-hidden shadow-lg">
               <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
                 <div className="flex flex-col items-center justify-center space-y-4">
                   <Skeleton className="w-48 h-48 rounded-full" />
@@ -80,7 +82,7 @@ const Mentoring = () => {
       ) : (
         <div className="space-y-12">
           {instructors.map((instructor, index) => (
-            <div key={index} className="animate-fade-in rounded-2xl bg-card border overflow-hidden shadow-lg">
+            <div key={index} className="mentoring-card animate-fade-in rounded-2xl bg-card border overflow-hidden shadow-lg">
               <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
                 <div className="flex flex-col items-center justify-center">
                   {instructor.image ? (

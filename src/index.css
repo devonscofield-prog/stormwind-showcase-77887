@@ -2233,3 +2233,29 @@ All colors MUST be HSL.
 @media (max-width:640px){.er-scope .p4-hero{padding-top:26px}.er-scope .p4-hero h1{font-size:38px}.er-scope .p4-lede{font-size:16px}.er-scope .ds{border-radius:28px;margin-top:32px}.er-scope .p4-grid{grid-template-columns:1fr}.er-scope .p4-card:nth-child(n){background:var(--er-card);box-shadow:inset 0 0 0 1px var(--er-border)}.er-scope .p4-card:nth-child(odd){background:var(--er-sage);box-shadow:none}.er-scope .p4-sec{padding-top:68px}.er-scope .p4-card{padding:26px 24px;border-radius:26px}.er-scope .x-btn{padding:14px 20px;font-size:14.5px}}
 @keyframes p4sway{0%,100%{transform:rotate(-.6deg)}50%{transform:rotate(.7deg) translateX(4px)}}
 @keyframes p4grow{from{transform:scaleY(.15)}to{transform:none}}
+
+/* Mentoring: Enterprise Reporting's light-mode forest, sage and sand palette. */
+.bg-mentoring-studio{background:hsl(var(--background))}
+:root:not(.dark) .bg-mentoring-studio{background:#F6F3EA}
+:root:not(.dark) .mentoring-scope{
+  --background:43 40% 94%;
+  --card:0 0% 100%;
+  --foreground:160 51% 14%;
+  --card-foreground:160 51% 14%;
+  --muted:104 31% 90%;
+  --muted-foreground:147 10% 41%;
+  --border:88 20% 87%;
+  --primary:162 59% 15%;
+  --primary-foreground:43 40% 94%;
+  --ring:162 59% 15%;
+  --mentoring-sage:#E3EEDF;
+  --mentoring-sand:#EFE8D6;
+  --mentoring-heading:#12372B;
+  --mentoring-body:#33473E;
+  --mentoring-shadow:0 1px 2px rgba(40,60,40,.05),0 14px 34px -18px rgba(40,70,50,.28);
+}
+:root:not(.dark) .mentoring-scope .text-gradient-brand{background:none;color:var(--mentoring-heading);-webkit-text-fill-color:var(--mentoring-heading)}
+:root:not(.dark) .mentoring-scope .mentoring-card:nth-child(odd){background:var(--mentoring-sage)}
+:root:not(.dark) .mentoring-scope .mentoring-card:nth-child(even){background:var(--mentoring-sand)}
+:root:not(.dark) .mentoring-scope .shadow-lg{box-shadow:var(--mentoring-shadow)}
+:root:not(.dark) .mentoring-scope p.text-foreground{color:var(--mentoring-body)}
