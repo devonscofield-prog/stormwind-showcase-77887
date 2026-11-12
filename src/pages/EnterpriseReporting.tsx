@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Users, BarChart3, Calendar, TrendingUp, ClipboardCheck, UserPlus, Maximize2, X, Leaf, BookOpen, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
@@ -33,6 +33,39 @@ const EnterpriseReporting = () => {
   const [fullscreenApi, setFullscreenApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const slideTrackRef = useRef<HTMLDivElement>(null);
+  const fullscreenTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observers: ResizeObserver[] = [];
+    const cleanups: (() => void)[] = [];
+    for (const [api, track] of [
+      [carouselApi, slideTrackRef.current],
+      [fullscreenApi, fullscreenTrackRef.current],
+    ] as const) {
+      if (!api || !track) continue;
+      const resize = () => {
+        const slide = track.children[api.selectedScrollSnap()];
+        const viewport = track.parentElement;
+        if (!slide || !viewport) return;
+        viewport.style.height = `${slide.getBoundingClientRect().height}px`;
+      };
+      const observer = new ResizeObserver(resize);
+      Array.from(track.children).forEach((slide) => observer.observe(slide));
+      api.on("select", resize);
+      api.on("reInit", resize);
+      resize();
+      observers.push(observer);
+      cleanups.push(() => {
+        api.off("select", resize);
+        api.off("reInit", resize);
+      });
+    }
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }, [carouselApi, fullscreenApi, isFullscreen]);
 
   useEffect(() => {
     document.title = "Enterprise Reporting";
@@ -120,7 +153,7 @@ const EnterpriseReporting = () => {
                 </div>
                 <div className="ss-view">
                   <Carousel setApi={setCarouselApi} opts={{ loop: true }} className="w-full">
-                    <CarouselContent className="ml-0">
+                    <CarouselContent ref={slideTrackRef} className="ml-0 items-start">
                       {slides.map((slide, index) => (
                         <CarouselItem key={index} className="pl-0">
                           <img
@@ -184,11 +217,11 @@ const EnterpriseReporting = () => {
             </button>
             <div className="p-8">
               <Carousel setApi={setFullscreenApi} opts={{ loop: true }} className="w-full">
-                <CarouselContent>
+                <CarouselContent ref={fullscreenTrackRef} className="items-start">
                   {slides.map((slide, index) => (
                     <CarouselItem key={index}>
                       <div className="flex items-center justify-center">
-                        <img src={slide.src} alt={slide.alt} className="max-h-[80vh] w-auto object-contain rounded-lg" />
+                        <img src={slide.src} alt={slide.alt} className="max-h-[80vh] max-w-full w-auto object-contain rounded-lg" />
                       </div>
                     </CarouselItem>
                   ))}
