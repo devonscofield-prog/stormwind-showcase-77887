@@ -2279,13 +2279,24 @@ All colors MUST be HSL.
   border-top-color: hsl(166 20% 78%);
 }
 
-/* Top bar: the stark near-white gradient bar reads as a harsh stripe against
-   the dark hero. Give it a soft sage-tinted frosted-glass treatment that
-   blends with the home page's tinted surface (light mode, home page only). */
+/* Top bar: on the home page the hero is a near-black navy band, so a light
+   bar across the top reads as a harsh stripe. Give the bar the hero's own
+   surface so the top of the page reads as one continuous dark slab, and let
+   the shadow do the separating once you scroll onto the light content.
+   (light mode, home page only) */
 :root:not(.dark) .home-scope > header {
-  background: linear-gradient(90deg, hsl(166 30% 90% / 0.82), hsl(180 26% 92% / 0.86) 50%, hsl(166 30% 90% / 0.82));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom-color: hsl(166 22% 80% / 0.7);
-  box-shadow: 0 1px 12px hsl(166 30% 30% / 0.08);
+  --foreground: 0 0% 100%;
+  --muted-foreground: 210 14% 72%;
+  background: hsl(207 37% 6%);
+  background-image: none;
+  border-bottom-color: transparent;
+  box-shadow: 0 8px 26px -10px hsl(207 70% 3% / 0.55);
+}
+
+/* The mega-menu panels and the mobile dropdown are light surfaces, so put the
+   light-mode text tokens back inside them. */
+:root:not(.dark) .home-scope > header [role="menu"],
+:root:not(.dark) .home-scope > header nav.md\:hidden {
+  --foreground: 0 0% 17%;
+  --muted-foreground: 0 0% 43%;
 }
