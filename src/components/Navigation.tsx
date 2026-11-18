@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Menu, X, Moon, Sun, ChevronDown, Type, Calendar,
@@ -56,14 +56,31 @@ const platformMenuItems = [
 
 export const Navigation = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [overHomeHero, setOverHomeHero] = useState(pathname === "/");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [techOpen, setTechOpen] = useState(false);
   const [platformOpen, setPlatformOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { textSize, toggleTextSize } = useTextSize();
 
+  useEffect(() => {
+    const updateContrast = () => {
+      const hero = document.querySelector(".home-scope .hero-bg");
+      const bounds = hero?.getBoundingClientRect();
+      setOverHomeHero(pathname === "/" && Boolean(bounds && bounds.top < 40 && bounds.bottom > 96));
+    };
+    updateContrast();
+    window.addEventListener("scroll", updateContrast, { passive: true });
+    window.addEventListener("resize", updateContrast);
+    return () => {
+      window.removeEventListener("scroll", updateContrast);
+      window.removeEventListener("resize", updateContrast);
+    };
+  }, [pathname]);
+
   return (
-    <header className="site-header fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border dark:border-white/15 shadow-lg shadow-black/[0.08] dark:shadow-black/20">
+    <header data-over-home-hero={overHomeHero} className="site-header fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border dark:border-white/15 shadow-lg shadow-black/[0.08] dark:shadow-black/20">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
