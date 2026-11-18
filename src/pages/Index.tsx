@@ -81,7 +81,7 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <div className="dark:pt-20 relative z-10">
+      <div className="relative z-10">
         <Hero onTabChange={setActiveTab} />
       </div>
 

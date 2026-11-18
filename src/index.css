@@ -2279,8 +2279,8 @@ All colors MUST be HSL.
   border-top-color: hsl(166 20% 78%);
 }
 
-/* Light-mode navigation floats directly over each page, without a bar. */
-:root:not(.dark) header.site-header {
+/* Navigation floats directly over each page in both themes, without a bar. */
+header.site-header {
   background: transparent;
   background-image: none;
   border: none;
@@ -2290,7 +2290,8 @@ All colors MUST be HSL.
 }
 
 /* Keep floating controls readable over the home's dark hero. */
-:root:not(.dark) header.site-header[data-over-home-hero="true"] {
+:root:not(.dark) header.site-header[data-over-home-hero="true"],
+:root:not(.dark) header.site-header[data-dark-surface="true"] {
   --foreground: 0 0% 100%;
   --muted-foreground: 210 14% 72%;
 }

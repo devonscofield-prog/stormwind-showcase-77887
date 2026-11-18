@@ -80,7 +80,7 @@ export const Navigation = () => {
   }, [pathname]);
 
   return (
-    <header data-over-home-hero={overHomeHero} className="site-header fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-50 via-white to-slate-50 dark:from-background/90 dark:via-background/90 dark:to-background/90 backdrop-blur-md border-b border-border dark:border-white/15 shadow-lg shadow-black/[0.08] dark:shadow-black/20">
+    <header data-over-home-hero={overHomeHero} data-dark-surface={pathname === "/ranges"} className="site-header fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4">
         <div className="flex items-center justify-between gap-4">
           <img 
@@ -169,7 +169,7 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Dropdown */}
-        <nav className={`md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card/95 dark:bg-[#2d2d2d]/95 border-t border-border pt-4 transition-all duration-200 ease-in-out origin-top ${mobileMenuOpen ? 'opacity-100 max-h-[2000px] scale-y-100' : 'opacity-0 max-h-0 scale-y-95 pointer-events-none overflow-hidden'}`}>
+        <nav className={`md:hidden mt-4 pb-4 flex flex-col gap-3 bg-card border-t border-border pt-4 transition-all duration-200 ease-in-out origin-top ${mobileMenuOpen ? 'opacity-100 max-h-[2000px] scale-y-100' : 'opacity-0 max-h-0 scale-y-95 pointer-events-none overflow-hidden'}`}>
             {/* Technologies Collapsible */}
             <Collapsible open={techOpen} onOpenChange={setTechOpen}>
               <CollapsibleTrigger asChild>

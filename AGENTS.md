@@ -1,3 +1,3 @@
  # Project architecture
 
-- Navigation tracks whether it overlaps the home hero to switch light-mode foreground tokens; dropdowns keep their own surface tokens so transparent navigation remains readable.
+- Navigation is transparent in both themes and tracks home-hero overlap and permanently dark page surfaces for light-mode foreground contrast; dropdowns keep their own surface tokens.
