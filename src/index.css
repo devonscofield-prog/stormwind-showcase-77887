@@ -2259,3 +2259,22 @@ All colors MUST be HSL.
 :root:not(.dark) .mentoring-scope .mentoring-card:nth-child(even){background:var(--mentoring-sand)}
 :root:not(.dark) .mentoring-scope .shadow-lg{box-shadow:var(--mentoring-shadow)}
 :root:not(.dark) .mentoring-scope p.text-foreground{color:var(--mentoring-body)}
+
+/* ===== Home page light-mode surface =====
+   The global light background is near-white, which makes the home page read
+   as one big white slab. Give the home page a deeper sage/slate tinted
+   gradient (light mode only) so white cards and sections stand out. */
+:root:not(.dark) .home-scope {
+  background:
+    radial-gradient(ellipse 90% 45% at 15% 0%, hsl(166 45% 85% / 0.5), transparent 60%),
+    radial-gradient(ellipse 70% 40% at 88% 28%, hsl(177 42% 86% / 0.45), transparent 65%),
+    radial-gradient(ellipse 80% 45% at 50% 100%, hsl(166 38% 85% / 0.45), transparent 60%),
+    linear-gradient(165deg, hsl(166 28% 92%), hsl(180 22% 90%) 45%, hsl(205 26% 92%));
+  background-attachment: fixed;
+}
+
+/* Footer: replace the pure-white slab with a deeper tint that grounds the page */
+:root:not(.dark) .home-scope > footer {
+  background: linear-gradient(180deg, hsl(166 24% 88%), hsl(166 26% 86%));
+  border-top-color: hsl(166 20% 78%);
+}

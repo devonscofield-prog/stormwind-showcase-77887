@@ -69,7 +69,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative home-scope">
       {/* Simplified Floating Blobs - reduced blur for performance */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true" style={{ willChange: 'transform' }}>
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-15 blur-[30px] bg-gradient-to-br from-primary to-transparent"></div>
